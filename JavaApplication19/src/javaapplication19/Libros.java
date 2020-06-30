@@ -5,7 +5,10 @@
  */
 package javaapplication19;
 
+import java.awt.Component;
 import java.awt.Image;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -14,31 +17,53 @@ import javax.swing.JLabel;
  * @author Usuario
  */
 public class Libros extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Libros
      */
     public Libros() {
         initComponents();
-        scaleImage("inventario",inventarioIcon);
-        scaleImage("Packs",packsIcon);
-        scaleImage("Suministros",suministrosIcon);
-        scaleImage("Cuentas",cuentasIcon);
-        scaleImage("Estrategia",estrategiaIcon);
-        scaleImage("Planeacion",planeacionIcon);
-        scaleImage("CRM",crmIcon);
-        scaleImage("Ventas",ventasIcon);
-        scaleImage("Proveedores",provedoresIcon);
-        scaleImage("Deudas_P",pagarIcon);
-        scaleImage("Deudas_C",cobrarIcon);
-        scaleImage("Equipo",equipoIcon);
+        scaleImages((inventarioIcon.getHeight()));
+        getContentPane().addComponentListener(new ComponentAdapter(){
+            public void componentResized(ComponentEvent e){
+                Component c = (Component)e.getSource();
+               // imgScale = img.getScaledInstance(inventarioIcon.getHeight(),inventarioIcon.getHeight(),Image.SCALE_SMOOTH);
+                scaleImages((inventarioIcon.getHeight()));
+                System.out.println(inventarioIcon.getHeight());
+                
+              
+            }
+        }
+        );
+    }
+    
+    public void scaleImages(int imgHeight){
+        
+        scaleImage("inventario",inventarioIcon,imgHeight);
+        scaleImage("Packs",packsIcon,imgHeight);
+        scaleImage("Suministros",suministrosIcon,imgHeight);
+        scaleImage("Cuentas",cuentasIcon,imgHeight);
+        scaleImage("Estrategia",estrategiaIcon,imgHeight);
+        scaleImage("Planeacion",planeacionIcon,imgHeight);
+        scaleImage("CRM",crmIcon,imgHeight);
+        scaleImage("Ventas",ventasIcon,imgHeight);
+        scaleImage("Proveedores",provedoresIcon,imgHeight);
+        scaleImage("Deudas_P",pagarIcon,imgHeight);
+        scaleImage("Deudas_C",cobrarIcon,imgHeight);
+        scaleImage("Equipo",equipoIcon,imgHeight);
+        
         
     }
+    
+    
+    
+    
     //Esta funcion cambia el tam;o de las imagenes y las asigna a su respectivo label
-    public void scaleImage(String icono,JLabel label){
+    public void scaleImage(String icono,JLabel label, int height){
         ImageIcon icon = new ImageIcon("src\\img\\"+ icono +".png");
         Image img = icon.getImage();
-        Image imgScale = img.getScaledInstance(inventarioIcon.getHeight(),inventarioIcon.getHeight(),Image.SCALE_SMOOTH);
+        Image imgScale = img.getScaledInstance(height, height,Image.SCALE_SMOOTH);
+       
         ImageIcon scaledIcon = new ImageIcon(imgScale);
         label.setIcon(scaledIcon);
         
