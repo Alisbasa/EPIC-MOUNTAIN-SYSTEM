@@ -129,7 +129,7 @@ public class Libros extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Inventario");
+        jLabel2.setText("Packs");
         jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
         panelPacks.add(jLabel2, java.awt.BorderLayout.PAGE_END);
 
@@ -147,7 +147,7 @@ public class Libros extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Inventario");
+        jLabel3.setText("dfs");
         jLabel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
         panelnventario2.add(jLabel3, java.awt.BorderLayout.PAGE_END);
 
