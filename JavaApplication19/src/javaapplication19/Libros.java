@@ -24,19 +24,19 @@ public class Libros extends javax.swing.JFrame {
     public Libros() {
         initComponents();
         scaleImages((inventarioIcon.getHeight()));
+        //Evento para actualizar tamano de imagenes
         getContentPane().addComponentListener(new ComponentAdapter(){
             public void componentResized(ComponentEvent e){
-                Component c = (Component)e.getSource();
+                
                // imgScale = img.getScaledInstance(inventarioIcon.getHeight(),inventarioIcon.getHeight(),Image.SCALE_SMOOTH);
                 scaleImages((inventarioIcon.getHeight()));
-                System.out.println(inventarioIcon.getHeight());
-                
+                               
               
             }
         }
         );
     }
-    
+    //Cambia el tama;o de todas las imagenes
     public void scaleImages(int imgHeight){
         
         scaleImage("inventario",inventarioIcon,imgHeight);
