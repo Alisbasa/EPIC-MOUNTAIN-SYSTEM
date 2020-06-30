@@ -28,10 +28,10 @@ public class Libros extends javax.swing.JFrame {
         scaleImage("Planeacion",planeacionIcon);
         scaleImage("CRM",crmIcon);
         scaleImage("Ventas",ventasIcon);
-        scaleImage("Provedores",provedoresIcon);
+        scaleImage("Proveedores",provedoresIcon);
         scaleImage("Deudas_P",pagarIcon);
         scaleImage("Deudas_C",cobrarIcon);
-        scaleImage("Equipo_y_Mov",equipoIcon);
+        scaleImage("Equipo",equipoIcon);
         
     }
     //Esta funcion cambia el tam;o de las imagenes y las asigna a su respectivo label
