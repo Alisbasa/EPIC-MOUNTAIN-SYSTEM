@@ -5,6 +5,10 @@
  */
 package javaapplication19;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Usuario
@@ -16,7 +20,19 @@ public class Libros extends javax.swing.JFrame {
      */
     public Libros() {
         initComponents();
+        scaleImage("inventario",inventarioIcon);
+        scaleImage("Packs",packsIcon);
     }
+    
+    public void scaleImage(String icono,JLabel label){
+        ImageIcon icon = new ImageIcon("C:\\Users\\Usuario\\Desktop\\Desarrollo\\EPIC-MOUNTAIN-SYSTEM\\JavaApplication19\\src\\img\\"+ icono +".png");
+        Image img = icon.getImage();
+        Image imgScale = img.getScaledInstance(inventarioIcon.getHeight(),inventarioIcon.getHeight(),Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(imgScale);
+        label.setIcon(scaledIcon);
+        
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,14 +46,24 @@ public class Libros extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        panelnventario = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        inventarioIcon = new javax.swing.JLabel();
+        panelPacks = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
+        packsIcon = new javax.swing.JLabel();
+        panelnventario2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        inventarioIcon2 = new javax.swing.JLabel();
+        panelnventario3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        inventarioIcon3 = new javax.swing.JLabel();
+        panelnventario4 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        inventarioIcon4 = new javax.swing.JLabel();
+        panelnventario5 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        inventarioIcon5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,7 +95,7 @@ public class Libros extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 666, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.LINE_START);
@@ -78,81 +104,113 @@ public class Libros extends javax.swing.JFrame {
         jPanel3.setPreferredSize(new java.awt.Dimension(130, 470));
         jPanel3.setLayout(new java.awt.GridLayout(6, 1));
 
-        jPanel5.setLayout(new java.awt.BorderLayout());
+        panelnventario.setBackground(new java.awt.Color(51, 51, 51));
+        panelnventario.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setText("jLabel1");
-        jPanel5.add(jLabel1, java.awt.BorderLayout.PAGE_END);
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Inventario");
+        jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelnventario.add(jLabel1, java.awt.BorderLayout.PAGE_END);
 
+        inventarioIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        inventarioIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        inventarioIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelnventario.add(inventarioIcon, java.awt.BorderLayout.CENTER);
+
+        jPanel3.add(panelnventario);
+
+        panelPacks.setBackground(new java.awt.Color(51, 51, 51));
+        panelPacks.setLayout(new java.awt.BorderLayout());
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Inventario.png"))); // NOI18N
-        jPanel5.add(jLabel2, java.awt.BorderLayout.CENTER);
+        jLabel2.setText("Inventario");
+        jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelPacks.add(jLabel2, java.awt.BorderLayout.PAGE_END);
 
-        jPanel3.add(jPanel5);
+        packsIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        packsIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        packsIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelPacks.add(packsIcon, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 111, Short.MAX_VALUE)
-        );
+        jPanel3.add(panelPacks);
 
-        jPanel3.add(jPanel6);
+        panelnventario2.setBackground(new java.awt.Color(51, 51, 51));
+        panelnventario2.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 111, Short.MAX_VALUE)
-        );
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Inventario");
+        jLabel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelnventario2.add(jLabel3, java.awt.BorderLayout.PAGE_END);
 
-        jPanel3.add(jPanel7);
+        inventarioIcon2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        inventarioIcon2.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        inventarioIcon2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelnventario2.add(inventarioIcon2, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 111, Short.MAX_VALUE)
-        );
+        jPanel3.add(panelnventario2);
 
-        jPanel3.add(jPanel8);
+        panelnventario3.setBackground(new java.awt.Color(51, 51, 51));
+        panelnventario3.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 111, Short.MAX_VALUE)
-        );
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Inventario");
+        jLabel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelnventario3.add(jLabel4, java.awt.BorderLayout.PAGE_END);
 
-        jPanel3.add(jPanel9);
+        inventarioIcon3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        inventarioIcon3.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        inventarioIcon3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelnventario3.add(inventarioIcon3, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 111, Short.MAX_VALUE)
-        );
+        jPanel3.add(panelnventario3);
 
-        jPanel3.add(jPanel10);
+        panelnventario4.setBackground(new java.awt.Color(51, 51, 51));
+        panelnventario4.setLayout(new java.awt.BorderLayout());
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Inventario");
+        jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelnventario4.add(jLabel5, java.awt.BorderLayout.PAGE_END);
+
+        inventarioIcon4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        inventarioIcon4.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        inventarioIcon4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelnventario4.add(inventarioIcon4, java.awt.BorderLayout.CENTER);
+
+        jPanel3.add(panelnventario4);
+
+        panelnventario5.setBackground(new java.awt.Color(51, 51, 51));
+        panelnventario5.setLayout(new java.awt.BorderLayout());
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Inventario");
+        jLabel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelnventario5.add(jLabel6, java.awt.BorderLayout.PAGE_END);
+
+        inventarioIcon5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        inventarioIcon5.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        inventarioIcon5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelnventario5.add(inventarioIcon5, java.awt.BorderLayout.CENTER);
+
+        jPanel3.add(panelnventario5);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.LINE_END);
 
@@ -166,7 +224,7 @@ public class Libros extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 666, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
@@ -210,17 +268,27 @@ public class Libros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel inventarioIcon;
+    private javax.swing.JLabel inventarioIcon2;
+    private javax.swing.JLabel inventarioIcon3;
+    private javax.swing.JLabel inventarioIcon4;
+    private javax.swing.JLabel inventarioIcon5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel packsIcon;
+    private javax.swing.JPanel panelPacks;
+    private javax.swing.JPanel panelnventario;
+    private javax.swing.JPanel panelnventario2;
+    private javax.swing.JPanel panelnventario3;
+    private javax.swing.JPanel panelnventario4;
+    private javax.swing.JPanel panelnventario5;
     // End of variables declaration//GEN-END:variables
 }
