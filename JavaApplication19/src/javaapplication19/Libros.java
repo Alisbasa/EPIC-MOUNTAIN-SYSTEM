@@ -5,13 +5,15 @@
  */
 package javaapplication19;
 
-import java.awt.Component;
+
+import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -24,7 +26,7 @@ public class Libros extends javax.swing.JFrame {
      */
     public Libros() {
         initComponents();
-        scaleImages((inventarioIcon.getHeight()));
+        scaleImages(50);
         //Evento para actualizar tamano de imagenes
         getContentPane().addComponentListener(new ComponentAdapter(){
             public void componentResized(ComponentEvent e){
@@ -81,61 +83,126 @@ public class Libros extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        barra = new javax.swing.JPanel();
+        cerrar = new javax.swing.JPanel();
+        maxi = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         panelCRM = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        crmLabel = new javax.swing.JLabel();
         crmIcon = new javax.swing.JLabel();
         panelVentas = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        ventasLabel = new javax.swing.JLabel();
         ventasIcon = new javax.swing.JLabel();
         panelProvedores = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        proverdoresLabel = new javax.swing.JLabel();
         provedoresIcon = new javax.swing.JLabel();
         panelDeudasP = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        pagarLabel = new javax.swing.JLabel();
         pagarIcon = new javax.swing.JLabel();
         panelDeudasC = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        cobrarLabel = new javax.swing.JLabel();
         cobrarIcon = new javax.swing.JLabel();
         panelEquipo = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        equipoLabel = new javax.swing.JLabel();
         equipoIcon = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         panelnventario = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        inventarioLabel = new javax.swing.JLabel();
         inventarioIcon = new javax.swing.JLabel();
         panelPacks = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        packsLabel = new javax.swing.JLabel();
         packsIcon = new javax.swing.JLabel();
         panelSuministros = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        suministrosLabel = new javax.swing.JLabel();
         suministrosIcon = new javax.swing.JLabel();
         panelCuentas = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        cuentasLabel = new javax.swing.JLabel();
         cuentasIcon = new javax.swing.JLabel();
         panelEstrategia = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        estrategiaLabel = new javax.swing.JLabel();
         estrategiaIcon = new javax.swing.JLabel();
         panelPlaneacion = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        planeacionLabel = new javax.swing.JLabel();
         planeacionIcon = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 30));
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        cerrar.setBackground(new java.awt.Color(51, 51, 51));
+        cerrar.setPreferredSize(new java.awt.Dimension(30, 30));
+        cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cerrarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout cerrarLayout = new javax.swing.GroupLayout(cerrar);
+        cerrar.setLayout(cerrarLayout);
+        cerrarLayout.setHorizontalGroup(
+            cerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 30, Short.MAX_VALUE)
         );
+        cerrarLayout.setVerticalGroup(
+            cerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
+        maxi.setBackground(new java.awt.Color(51, 51, 51));
+        maxi.setPreferredSize(new java.awt.Dimension(30, 30));
+        maxi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                maxiMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                maxiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                maxiMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout maxiLayout = new javax.swing.GroupLayout(maxi);
+        maxi.setLayout(maxiLayout);
+        maxiLayout.setHorizontalGroup(
+            maxiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+        maxiLayout.setVerticalGroup(
+            maxiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout barraLayout = new javax.swing.GroupLayout(barra);
+        barra.setLayout(barraLayout);
+        barraLayout.setHorizontalGroup(
+            barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, barraLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(maxi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        barraLayout.setVerticalGroup(
+            barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(barraLayout.createSequentialGroup()
+                .addGroup(barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(maxi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(barra, java.awt.BorderLayout.LINE_END);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -151,13 +218,13 @@ public class Libros extends javax.swing.JFrame {
         });
         panelCRM.setLayout(new java.awt.BorderLayout());
 
-        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("CRM");
-        jLabel7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
-        panelCRM.add(jLabel7, java.awt.BorderLayout.PAGE_END);
+        crmLabel.setBackground(new java.awt.Color(255, 255, 255));
+        crmLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        crmLabel.setForeground(new java.awt.Color(255, 255, 255));
+        crmLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        crmLabel.setText("CRM");
+        crmLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelCRM.add(crmLabel, java.awt.BorderLayout.PAGE_END);
 
         crmIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         crmIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -174,13 +241,13 @@ public class Libros extends javax.swing.JFrame {
         });
         panelVentas.setLayout(new java.awt.BorderLayout());
 
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("VENTAS");
-        jLabel8.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
-        panelVentas.add(jLabel8, java.awt.BorderLayout.PAGE_END);
+        ventasLabel.setBackground(new java.awt.Color(255, 255, 255));
+        ventasLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        ventasLabel.setForeground(new java.awt.Color(255, 255, 255));
+        ventasLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ventasLabel.setText("VENTAS");
+        ventasLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelVentas.add(ventasLabel, java.awt.BorderLayout.PAGE_END);
 
         ventasIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ventasIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -197,13 +264,13 @@ public class Libros extends javax.swing.JFrame {
         });
         panelProvedores.setLayout(new java.awt.BorderLayout());
 
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("PROVEDORES");
-        jLabel9.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
-        panelProvedores.add(jLabel9, java.awt.BorderLayout.PAGE_END);
+        proverdoresLabel.setBackground(new java.awt.Color(255, 255, 255));
+        proverdoresLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        proverdoresLabel.setForeground(new java.awt.Color(255, 255, 255));
+        proverdoresLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        proverdoresLabel.setText("PROVEDORES");
+        proverdoresLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelProvedores.add(proverdoresLabel, java.awt.BorderLayout.PAGE_END);
 
         provedoresIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         provedoresIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -220,13 +287,13 @@ public class Libros extends javax.swing.JFrame {
         });
         panelDeudasP.setLayout(new java.awt.BorderLayout());
 
-        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("DEUDAS A PAGAR");
-        jLabel10.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
-        panelDeudasP.add(jLabel10, java.awt.BorderLayout.PAGE_END);
+        pagarLabel.setBackground(new java.awt.Color(255, 255, 255));
+        pagarLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        pagarLabel.setForeground(new java.awt.Color(255, 255, 255));
+        pagarLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pagarLabel.setText("DEUDAS A PAGAR");
+        pagarLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelDeudasP.add(pagarLabel, java.awt.BorderLayout.PAGE_END);
 
         pagarIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pagarIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -243,13 +310,13 @@ public class Libros extends javax.swing.JFrame {
         });
         panelDeudasC.setLayout(new java.awt.BorderLayout());
 
-        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("DEUDAS A COBRAR");
-        jLabel11.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
-        panelDeudasC.add(jLabel11, java.awt.BorderLayout.PAGE_END);
+        cobrarLabel.setBackground(new java.awt.Color(255, 255, 255));
+        cobrarLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        cobrarLabel.setForeground(new java.awt.Color(255, 255, 255));
+        cobrarLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cobrarLabel.setText("DEUDAS A COBRAR");
+        cobrarLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelDeudasC.add(cobrarLabel, java.awt.BorderLayout.PAGE_END);
 
         cobrarIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cobrarIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -266,13 +333,13 @@ public class Libros extends javax.swing.JFrame {
         });
         panelEquipo.setLayout(new java.awt.BorderLayout());
 
-        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("EQUIPO Y MOB.");
-        jLabel12.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
-        panelEquipo.add(jLabel12, java.awt.BorderLayout.PAGE_END);
+        equipoLabel.setBackground(new java.awt.Color(255, 255, 255));
+        equipoLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        equipoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        equipoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        equipoLabel.setText("EQUIPO Y MOB.");
+        equipoLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelEquipo.add(equipoLabel, java.awt.BorderLayout.PAGE_END);
 
         equipoIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         equipoIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -288,6 +355,7 @@ public class Libros extends javax.swing.JFrame {
         jPanel3.setLayout(new java.awt.GridLayout(6, 1));
 
         panelnventario.setBackground(new java.awt.Color(51, 51, 51));
+        panelnventario.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 1, 1, 1));
         panelnventario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelnventarioMouseClicked(evt);
@@ -295,13 +363,13 @@ public class Libros extends javax.swing.JFrame {
         });
         panelnventario.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("INVENTARIO");
-        jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
-        panelnventario.add(jLabel1, java.awt.BorderLayout.PAGE_END);
+        inventarioLabel.setBackground(new java.awt.Color(255, 255, 255));
+        inventarioLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        inventarioLabel.setForeground(new java.awt.Color(255, 255, 255));
+        inventarioLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        inventarioLabel.setText("INVENTARIO");
+        inventarioLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 1, 5, 1));
+        panelnventario.add(inventarioLabel, java.awt.BorderLayout.PAGE_END);
 
         inventarioIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         inventarioIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -311,6 +379,7 @@ public class Libros extends javax.swing.JFrame {
         jPanel3.add(panelnventario);
 
         panelPacks.setBackground(new java.awt.Color(51, 51, 51));
+        panelPacks.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 1, 1, 1));
         panelPacks.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelPacksMouseClicked(evt);
@@ -318,13 +387,13 @@ public class Libros extends javax.swing.JFrame {
         });
         panelPacks.setLayout(new java.awt.BorderLayout());
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("PACKS");
-        jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
-        panelPacks.add(jLabel2, java.awt.BorderLayout.PAGE_END);
+        packsLabel.setBackground(new java.awt.Color(255, 255, 255));
+        packsLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        packsLabel.setForeground(new java.awt.Color(255, 255, 255));
+        packsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        packsLabel.setText("PACKS");
+        packsLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelPacks.add(packsLabel, java.awt.BorderLayout.PAGE_END);
 
         packsIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         packsIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -334,6 +403,7 @@ public class Libros extends javax.swing.JFrame {
         jPanel3.add(panelPacks);
 
         panelSuministros.setBackground(new java.awt.Color(51, 51, 51));
+        panelSuministros.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 1, 1, 1));
         panelSuministros.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelSuministrosMouseClicked(evt);
@@ -341,13 +411,13 @@ public class Libros extends javax.swing.JFrame {
         });
         panelSuministros.setLayout(new java.awt.BorderLayout());
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("SUMINISTROS");
-        jLabel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
-        panelSuministros.add(jLabel3, java.awt.BorderLayout.PAGE_END);
+        suministrosLabel.setBackground(new java.awt.Color(255, 255, 255));
+        suministrosLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        suministrosLabel.setForeground(new java.awt.Color(255, 255, 255));
+        suministrosLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        suministrosLabel.setText("SUMINISTROS");
+        suministrosLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelSuministros.add(suministrosLabel, java.awt.BorderLayout.PAGE_END);
 
         suministrosIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         suministrosIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -357,6 +427,7 @@ public class Libros extends javax.swing.JFrame {
         jPanel3.add(panelSuministros);
 
         panelCuentas.setBackground(new java.awt.Color(51, 51, 51));
+        panelCuentas.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 1, 1, 1));
         panelCuentas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelCuentasMouseClicked(evt);
@@ -364,13 +435,13 @@ public class Libros extends javax.swing.JFrame {
         });
         panelCuentas.setLayout(new java.awt.BorderLayout());
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("CUENTAS");
-        jLabel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
-        panelCuentas.add(jLabel4, java.awt.BorderLayout.PAGE_END);
+        cuentasLabel.setBackground(new java.awt.Color(255, 255, 255));
+        cuentasLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        cuentasLabel.setForeground(new java.awt.Color(255, 255, 255));
+        cuentasLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cuentasLabel.setText("CUENTAS");
+        cuentasLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelCuentas.add(cuentasLabel, java.awt.BorderLayout.PAGE_END);
 
         cuentasIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cuentasIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -380,6 +451,7 @@ public class Libros extends javax.swing.JFrame {
         jPanel3.add(panelCuentas);
 
         panelEstrategia.setBackground(new java.awt.Color(51, 51, 51));
+        panelEstrategia.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 1, 1, 1));
         panelEstrategia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelEstrategiaMouseClicked(evt);
@@ -387,13 +459,13 @@ public class Libros extends javax.swing.JFrame {
         });
         panelEstrategia.setLayout(new java.awt.BorderLayout());
 
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("ESTRATEGIA");
-        jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
-        panelEstrategia.add(jLabel5, java.awt.BorderLayout.PAGE_END);
+        estrategiaLabel.setBackground(new java.awt.Color(255, 255, 255));
+        estrategiaLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        estrategiaLabel.setForeground(new java.awt.Color(255, 255, 255));
+        estrategiaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        estrategiaLabel.setText("ESTRATEGIA");
+        estrategiaLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelEstrategia.add(estrategiaLabel, java.awt.BorderLayout.PAGE_END);
 
         estrategiaIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         estrategiaIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -403,6 +475,7 @@ public class Libros extends javax.swing.JFrame {
         jPanel3.add(panelEstrategia);
 
         panelPlaneacion.setBackground(new java.awt.Color(51, 51, 51));
+        panelPlaneacion.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 1, 1, 1));
         panelPlaneacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelPlaneacionMouseClicked(evt);
@@ -410,13 +483,13 @@ public class Libros extends javax.swing.JFrame {
         });
         panelPlaneacion.setLayout(new java.awt.BorderLayout());
 
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("PLANEACIÓN");
-        jLabel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
-        panelPlaneacion.add(jLabel6, java.awt.BorderLayout.PAGE_END);
+        planeacionLabel.setBackground(new java.awt.Color(255, 255, 255));
+        planeacionLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        planeacionLabel.setForeground(new java.awt.Color(255, 255, 255));
+        planeacionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        planeacionLabel.setText("PLANEACIÓN");
+        planeacionLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelPlaneacion.add(planeacionLabel, java.awt.BorderLayout.PAGE_END);
 
         planeacionIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         planeacionIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -437,12 +510,13 @@ public class Libros extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGap(0, 497, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
-        pack();
+        setSize(new java.awt.Dimension(900, 527));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
     
@@ -554,6 +628,38 @@ public class Libros extends javax.swing.JFrame {
             e.printStackTrace();       
         }
     }//GEN-LAST:event_panelPlaneacionMouseClicked
+    public void changeColor(JPanel hover,Color rand){
+        hover.setBackground(rand);
+    }
+    
+    private void cerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseEntered
+        changeColor(cerrar, Color.red);       // TODO add your handling code here:
+    }//GEN-LAST:event_cerrarMouseEntered
+
+    private void cerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseExited
+        changeColor(cerrar, new Color(51,51,51));
+    }//GEN-LAST:event_cerrarMouseExited
+
+    private void cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_cerrarMouseClicked
+
+    private void maxiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxiMouseEntered
+        changeColor(maxi, Color.green);  
+    }//GEN-LAST:event_maxiMouseEntered
+
+    private void maxiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxiMouseExited
+        changeColor(maxi, new Color(51,51,51));
+    }//GEN-LAST:event_maxiMouseExited
+
+    private void maxiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxiMouseClicked
+        if(this.getExtendedState()!=Libros.MAXIMIZED_BOTH){
+            this.setExtendedState(Libros.MAXIMIZED_BOTH);
+        }
+        else{
+            this.setExtendedState(Libros.NORMAL);
+        }
+    }//GEN-LAST:event_maxiMouseClicked
 
     //
     
@@ -599,30 +705,29 @@ public class Libros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel barra;
+    private javax.swing.JPanel cerrar;
     private javax.swing.JLabel cobrarIcon;
+    private javax.swing.JLabel cobrarLabel;
     private javax.swing.JLabel crmIcon;
+    private javax.swing.JLabel crmLabel;
     private javax.swing.JLabel cuentasIcon;
+    private javax.swing.JLabel cuentasLabel;
     private javax.swing.JLabel equipoIcon;
+    private javax.swing.JLabel equipoLabel;
     private javax.swing.JLabel estrategiaIcon;
+    private javax.swing.JLabel estrategiaLabel;
     private javax.swing.JLabel inventarioIcon;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel inventarioLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel maxi;
     private javax.swing.JLabel packsIcon;
+    private javax.swing.JLabel packsLabel;
     private javax.swing.JLabel pagarIcon;
+    private javax.swing.JLabel pagarLabel;
     private javax.swing.JPanel panelCRM;
     private javax.swing.JPanel panelCuentas;
     private javax.swing.JPanel panelDeudasC;
@@ -636,8 +741,12 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel panelVentas;
     private javax.swing.JPanel panelnventario;
     private javax.swing.JLabel planeacionIcon;
+    private javax.swing.JLabel planeacionLabel;
     private javax.swing.JLabel provedoresIcon;
+    private javax.swing.JLabel proverdoresLabel;
     private javax.swing.JLabel suministrosIcon;
+    private javax.swing.JLabel suministrosLabel;
     private javax.swing.JLabel ventasIcon;
+    private javax.swing.JLabel ventasLabel;
     // End of variables declaration//GEN-END:variables
 }
