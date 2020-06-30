@@ -17,10 +17,11 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Usuario
+ * @author Usuariomóvil
  */
 public class Libros extends javax.swing.JFrame {
-    
+    int mousepX;
+    int mousepY;
     /**
      * Creates new form Libros
      */
@@ -131,6 +132,16 @@ public class Libros extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 30));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         cerrar.setBackground(new java.awt.Color(51, 51, 51));
@@ -660,6 +671,18 @@ public class Libros extends javax.swing.JFrame {
             this.setExtendedState(Libros.NORMAL);
         }
     }//GEN-LAST:event_maxiMouseClicked
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        int kordinatX = evt.getXOnScreen();
+        int kordinatY = evt.getYOnScreen();
+        this.setLocation(kordinatX-mousepX, kordinatY-mousepY);
+        
+    }//GEN-LAST:event_jPanel1MouseDragged
+
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        mousepX = evt.getX();
+        mousepY =evt.getY();
+    }//GEN-LAST:event_jPanel1MousePressed
 
     //
     
