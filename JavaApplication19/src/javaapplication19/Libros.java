@@ -36,7 +36,7 @@ public class Libros extends javax.swing.JFrame {
     }
     //Esta funcion cambia el tam;o de las imagenes y las asigna a su respectivo label
     public void scaleImage(String icono,JLabel label){
-        ImageIcon icon = new ImageIcon("C:\\Users\\Usuario\\Desktop\\Desarrollo\\EPIC-MOUNTAIN-SYSTEM\\JavaApplication19\\src\\img\\"+ icono +".png");
+        ImageIcon icon = new ImageIcon("src\\img\\"+ icono +".png");
         Image img = icon.getImage();
         Image imgScale = img.getScaledInstance(inventarioIcon.getHeight(),inventarioIcon.getHeight(),Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(imgScale);
