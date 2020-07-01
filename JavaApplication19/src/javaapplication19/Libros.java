@@ -27,7 +27,7 @@ public class Libros extends javax.swing.JFrame {
      */
     public Libros() {
         initComponents();
-        scaleImage("LOGO",LOGO,30);
+        scaleImage("LOGO",LOGO,40);
         scaleImages(50);
         //Evento para actualizar tamano de imagenes
         getContentPane().addComponentListener(new ComponentAdapter(){
@@ -143,7 +143,7 @@ public class Libros extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setPreferredSize(new java.awt.Dimension(900, 30));
+        jPanel1.setPreferredSize(new java.awt.Dimension(900, 40));
         jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jPanel1MouseDragged(evt);
@@ -156,8 +156,10 @@ public class Libros extends javax.swing.JFrame {
         });
         jPanel1.setLayout(new java.awt.BorderLayout());
 
+        barra.setPreferredSize(new java.awt.Dimension(80, 30));
+
         cerrar.setBackground(new java.awt.Color(51, 51, 51));
-        cerrar.setPreferredSize(new java.awt.Dimension(30, 30));
+        cerrar.setPreferredSize(new java.awt.Dimension(40, 40));
         cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cerrarMouseClicked(evt);
@@ -174,15 +176,15 @@ public class Libros extends javax.swing.JFrame {
         cerrar.setLayout(cerrarLayout);
         cerrarLayout.setHorizontalGroup(
             cerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGap(0, 40, Short.MAX_VALUE)
         );
         cerrarLayout.setVerticalGroup(
             cerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGap(0, 40, Short.MAX_VALUE)
         );
 
         maxi.setBackground(new java.awt.Color(51, 51, 51));
-        maxi.setPreferredSize(new java.awt.Dimension(30, 30));
+        maxi.setPreferredSize(new java.awt.Dimension(40, 40));
         maxi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 maxiMouseClicked(evt);
@@ -199,11 +201,11 @@ public class Libros extends javax.swing.JFrame {
         maxi.setLayout(maxiLayout);
         maxiLayout.setHorizontalGroup(
             maxiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGap(0, 40, Short.MAX_VALUE)
         );
         maxiLayout.setVerticalGroup(
             maxiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGap(0, 40, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout barraLayout = new javax.swing.GroupLayout(barra);
@@ -231,7 +233,7 @@ public class Libros extends javax.swing.JFrame {
         jPanel10.setPreferredSize(new java.awt.Dimension(300, 30));
         jPanel10.setLayout(new java.awt.BorderLayout());
 
-        LOGO.setPreferredSize(new java.awt.Dimension(30, 30));
+        LOGO.setPreferredSize(new java.awt.Dimension(40, 40));
         jPanel10.add(LOGO, java.awt.BorderLayout.LINE_START);
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
