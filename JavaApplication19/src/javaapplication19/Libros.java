@@ -127,6 +127,12 @@ public class Libros extends javax.swing.JFrame {
         planeacionIcon = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        ventasLabel1 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        ventasLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -515,7 +521,59 @@ public class Libros extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
         jPanel4.setLayout(new java.awt.BorderLayout());
 
-        jPanel5.setLayout(new java.awt.GridLayout());
+        jPanel5.setPreferredSize(new java.awt.Dimension(0, 100));
+        jPanel5.setLayout(new java.awt.GridLayout(1, 4));
+
+        jPanel9.setLayout(new java.awt.BorderLayout());
+
+        ventasLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        ventasLabel1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        ventasLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        ventasLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ventasLabel1.setText("COMPRAS ");
+        ventasLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        jPanel9.add(ventasLabel1, java.awt.BorderLayout.PAGE_END);
+
+        jPanel5.add(jPanel9);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jPanel5.add(jPanel8);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jPanel5.add(jPanel7);
+
+        jPanel6.setLayout(new java.awt.BorderLayout());
+
+        ventasLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        ventasLabel2.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        ventasLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        ventasLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ventasLabel2.setText("FACTURACIÓN");
+        ventasLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        jPanel6.add(ventasLabel2, java.awt.BorderLayout.PAGE_END);
+
+        jPanel5.add(jPanel6);
+
         jPanel4.add(jPanel5, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
@@ -741,6 +799,10 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel packsIcon;
     private javax.swing.JLabel packsLabel;
@@ -766,5 +828,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel suministrosLabel;
     private javax.swing.JLabel ventasIcon;
     private javax.swing.JLabel ventasLabel;
+    private javax.swing.JLabel ventasLabel1;
+    private javax.swing.JLabel ventasLabel2;
     // End of variables declaration//GEN-END:variables
 }
