@@ -63,6 +63,8 @@ public class Libros extends javax.swing.JFrame {
         scaleImage("Equipo",equipoIcon,imgHeight);
         scaleImage("Compras",comprasIcon2,imgHeight);
         scaleImage("Facturacion",facturacionIcon,imgHeight);
+        scaleImage("Corte",corteIcon,imgHeight);
+        scaleImage("Historial",historialIcon,imgHeight);
         
     }
     
@@ -145,10 +147,13 @@ public class Libros extends javax.swing.JFrame {
         comprasLabel2 = new javax.swing.JLabel();
         comprasIcon2 = new javax.swing.JLabel();
         panelCorte2 = new javax.swing.JPanel();
+        corteIcon = new javax.swing.JLabel();
         panelHistorial = new javax.swing.JPanel();
+        historialIcon = new javax.swing.JLabel();
         panelFacturacion = new javax.swing.JPanel();
         facturacionLabel = new javax.swing.JLabel();
         facturacionIcon = new javax.swing.JLabel();
+        libroCentro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -573,29 +578,20 @@ public class Libros extends javax.swing.JFrame {
 
         jPanel7.add(panelCompras2);
 
-        javax.swing.GroupLayout panelCorte2Layout = new javax.swing.GroupLayout(panelCorte2);
-        panelCorte2.setLayout(panelCorte2Layout);
-        panelCorte2Layout.setHorizontalGroup(
-            panelCorte2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-        );
-        panelCorte2Layout.setVerticalGroup(
-            panelCorte2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        panelCorte2.setBackground(new java.awt.Color(51, 51, 51));
+        panelCorte2.setLayout(new java.awt.BorderLayout());
+
+        corteIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelCorte2.add(corteIcon, java.awt.BorderLayout.CENTER);
 
         jPanel7.add(panelCorte2);
 
-        javax.swing.GroupLayout panelHistorialLayout = new javax.swing.GroupLayout(panelHistorial);
-        panelHistorial.setLayout(panelHistorialLayout);
-        panelHistorialLayout.setHorizontalGroup(
-            panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-        );
-        panelHistorialLayout.setVerticalGroup(
-            panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        panelHistorial.setBackground(new java.awt.Color(51, 51, 51));
+        panelHistorial.setLayout(new java.awt.BorderLayout());
+
+        historialIcon.setBackground(new java.awt.Color(51, 51, 51));
+        historialIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelHistorial.add(historialIcon, java.awt.BorderLayout.CENTER);
 
         jPanel7.add(panelHistorial);
 
@@ -616,6 +612,7 @@ public class Libros extends javax.swing.JFrame {
         jPanel7.add(panelFacturacion);
 
         jPanel4.add(jPanel7, java.awt.BorderLayout.PAGE_END);
+        jPanel4.add(libroCentro, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
@@ -826,12 +823,9 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel cerrar;
     private javax.swing.JLabel cobrarIcon;
     private javax.swing.JLabel cobrarLabel;
-    private javax.swing.JLabel comprasIcon;
-    private javax.swing.JLabel comprasIcon1;
     private javax.swing.JLabel comprasIcon2;
-    private javax.swing.JLabel comprasLabel;
-    private javax.swing.JLabel comprasLabel1;
     private javax.swing.JLabel comprasLabel2;
+    private javax.swing.JLabel corteIcon;
     private javax.swing.JLabel crmIcon;
     private javax.swing.JLabel crmLabel;
     private javax.swing.JLabel cuentasIcon;
@@ -842,6 +836,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel estrategiaLabel;
     private javax.swing.JLabel facturacionIcon;
     private javax.swing.JLabel facturacionLabel;
+    private javax.swing.JLabel historialIcon;
     private javax.swing.JLabel inventarioIcon;
     private javax.swing.JLabel inventarioLabel;
     private javax.swing.JLabel jLabel1;
@@ -850,20 +845,15 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JLabel libroCentro;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel packsIcon;
     private javax.swing.JLabel packsLabel;
     private javax.swing.JLabel pagarIcon;
     private javax.swing.JLabel pagarLabel;
     private javax.swing.JPanel panelCRM;
-    private javax.swing.JPanel panelCompras;
-    private javax.swing.JPanel panelCompras1;
     private javax.swing.JPanel panelCompras2;
-    private javax.swing.JPanel panelCorte;
-    private javax.swing.JPanel panelCorte1;
     private javax.swing.JPanel panelCorte2;
     private javax.swing.JPanel panelCuentas;
     private javax.swing.JPanel panelDeudasC;
