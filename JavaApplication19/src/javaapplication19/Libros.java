@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import javax.swing.ImageIcon;
@@ -28,6 +29,7 @@ public class Libros extends javax.swing.JFrame {
      */
     public Libros() {
         initComponents();
+        myInitComponents();
         this.setExtendedState(Libros.MAXIMIZED_BOTH);
         scaleImage("LOGO",LOGO,40);
         scaleImages(50);
@@ -63,8 +65,7 @@ public class Libros extends javax.swing.JFrame {
         scaleImage("Equipo",equipoIcon,imgHeight);
         scaleImage("Compras",comprasIcon2,imgHeight);
         scaleImage("Facturacion",facturacionIcon,imgHeight);
-        scaleImage("Corte",corteIcon,imgHeight);
-        scaleImage("Historial",historialIcon,imgHeight);
+        
         
     }
     
@@ -153,7 +154,7 @@ public class Libros extends javax.swing.JFrame {
         panelFacturacion = new javax.swing.JPanel();
         facturacionLabel = new javax.swing.JLabel();
         facturacionIcon = new javax.swing.JLabel();
-        libroCentro = new javax.swing.JLabel();
+        libro = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -612,7 +613,19 @@ public class Libros extends javax.swing.JFrame {
         jPanel7.add(panelFacturacion);
 
         jPanel4.add(jPanel7, java.awt.BorderLayout.PAGE_END);
-        jPanel4.add(libroCentro, java.awt.BorderLayout.CENTER);
+
+        javax.swing.GroupLayout libroLayout = new javax.swing.GroupLayout(libro);
+        libro.setLayout(libroLayout);
+        libroLayout.setHorizontalGroup(
+            libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        libroLayout.setVerticalGroup(
+            libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 387, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(libro, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
@@ -621,6 +634,15 @@ public class Libros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     
+    
+    private void myInitComponents(){
+        libro.setBackground(new java.awt.Color(51, 51, 51));
+        ImageIcon icon = new ImageIcon("src\\img\\Libros.png");
+        Image imglibros = icon.getImage();
+        ImagePanel librosPanel = new ImagePanel(imglibros);
+        libro.add(librosPanel,java.awt.BorderLayout.CENTER);
+    
+ }
     //Abre archivo Excel CRM
     private void panelCRMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCRMMouseClicked
         try{
@@ -846,7 +868,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JLabel libroCentro;
+    private javax.swing.JPanel libro;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel packsIcon;
     private javax.swing.JLabel packsLabel;
