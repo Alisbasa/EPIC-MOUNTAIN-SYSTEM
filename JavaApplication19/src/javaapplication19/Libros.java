@@ -126,6 +126,7 @@ public class Libros extends javax.swing.JFrame {
         planeacionLabel = new javax.swing.JLabel();
         planeacionIcon = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -512,17 +513,10 @@ public class Libros extends javax.swing.JFrame {
         getContentPane().add(jPanel3, java.awt.BorderLayout.LINE_END);
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel4.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 497, Short.MAX_VALUE)
-        );
+        jPanel5.setLayout(new java.awt.GridLayout());
+        jPanel4.add(jPanel5, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
@@ -746,6 +740,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel packsIcon;
     private javax.swing.JLabel packsLabel;
