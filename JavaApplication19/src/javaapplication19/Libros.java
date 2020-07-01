@@ -8,6 +8,7 @@ package javaapplication19;
 
 import java.awt.Color;
 import java.awt.Desktop;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
@@ -36,6 +37,9 @@ public class Libros extends javax.swing.JFrame {
                 
                // imgScale = img.getScaledInstance(inventarioIcon.getHeight(),inventarioIcon.getHeight(),Image.SCALE_SMOOTH);
                 scaleImages((inventarioIcon.getHeight()));
+                jPanel7.setBounds(WIDTH, WIDTH, WIDTH, panelCRM.getHeight());
+                jPanel7.setPreferredSize(new Dimension(350,panelCRM.getHeight()));
+                
                                
               
             }
@@ -51,13 +55,13 @@ public class Libros extends javax.swing.JFrame {
         scaleImage("Cuentas",cuentasIcon,imgHeight);
         scaleImage("Estrategia",estrategiaIcon,imgHeight);
         scaleImage("Planeacion",planeacionIcon,imgHeight);
-        setIcon("crm200px",crmIcon);
+        scaleImage("CRM",crmIcon,imgHeight);   
         scaleImage("Ventas",ventasIcon,imgHeight);
         scaleImage("Proveedores",provedoresIcon,imgHeight);
         scaleImage("Deudas_P",pagarIcon,imgHeight);
         scaleImage("Deudas_C",cobrarIcon,imgHeight);
         scaleImage("Equipo",equipoIcon,imgHeight);
-        scaleImage("Compras",comprasIcon,imgHeight);
+        scaleImage("Compras",comprasIcon2,imgHeight);
         scaleImage("Facturacion",facturacionIcon,imgHeight);
         
     }
@@ -136,11 +140,11 @@ public class Libros extends javax.swing.JFrame {
         planeacionLabel = new javax.swing.JLabel();
         planeacionIcon = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        panelCompras = new javax.swing.JPanel();
-        comprasLabel = new javax.swing.JLabel();
-        comprasIcon = new javax.swing.JLabel();
-        panelCorte = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        panelCompras2 = new javax.swing.JPanel();
+        comprasLabel2 = new javax.swing.JLabel();
+        comprasIcon2 = new javax.swing.JLabel();
+        panelCorte2 = new javax.swing.JPanel();
         panelHistorial = new javax.swing.JPanel();
         panelFacturacion = new javax.swing.JPanel();
         facturacionLabel = new javax.swing.JLabel();
@@ -549,38 +553,38 @@ public class Libros extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
         jPanel4.setLayout(new java.awt.BorderLayout());
 
-        jPanel5.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel5.setPreferredSize(new java.awt.Dimension(0, 100));
-        jPanel5.setLayout(new java.awt.GridLayout(1, 4));
+        jPanel7.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel7.setPreferredSize(new java.awt.Dimension(0, 100));
+        jPanel7.setLayout(new java.awt.GridLayout(1, 4));
 
-        panelCompras.setBackground(new java.awt.Color(51, 51, 51));
-        panelCompras.setLayout(new java.awt.BorderLayout());
+        panelCompras2.setBackground(new java.awt.Color(51, 51, 51));
+        panelCompras2.setLayout(new java.awt.BorderLayout());
 
-        comprasLabel.setBackground(new java.awt.Color(255, 255, 255));
-        comprasLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
-        comprasLabel.setForeground(new java.awt.Color(255, 255, 255));
-        comprasLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        comprasLabel.setText("COMPRAS ");
-        comprasLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
-        panelCompras.add(comprasLabel, java.awt.BorderLayout.PAGE_END);
+        comprasLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        comprasLabel2.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        comprasLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        comprasLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        comprasLabel2.setText("COMPRAS ");
+        comprasLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelCompras2.add(comprasLabel2, java.awt.BorderLayout.PAGE_END);
 
-        comprasIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        panelCompras.add(comprasIcon, java.awt.BorderLayout.CENTER);
+        comprasIcon2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelCompras2.add(comprasIcon2, java.awt.BorderLayout.CENTER);
 
-        jPanel5.add(panelCompras);
+        jPanel7.add(panelCompras2);
 
-        javax.swing.GroupLayout panelCorteLayout = new javax.swing.GroupLayout(panelCorte);
-        panelCorte.setLayout(panelCorteLayout);
-        panelCorteLayout.setHorizontalGroup(
-            panelCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelCorte2Layout = new javax.swing.GroupLayout(panelCorte2);
+        panelCorte2.setLayout(panelCorte2Layout);
+        panelCorte2Layout.setHorizontalGroup(
+            panelCorte2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 160, Short.MAX_VALUE)
         );
-        panelCorteLayout.setVerticalGroup(
-            panelCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelCorte2Layout.setVerticalGroup(
+            panelCorte2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        jPanel5.add(panelCorte);
+        jPanel7.add(panelCorte2);
 
         javax.swing.GroupLayout panelHistorialLayout = new javax.swing.GroupLayout(panelHistorial);
         panelHistorial.setLayout(panelHistorialLayout);
@@ -593,7 +597,7 @@ public class Libros extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        jPanel5.add(panelHistorial);
+        jPanel7.add(panelHistorial);
 
         panelFacturacion.setBackground(new java.awt.Color(51, 51, 51));
         panelFacturacion.setLayout(new java.awt.BorderLayout());
@@ -609,9 +613,9 @@ public class Libros extends javax.swing.JFrame {
         facturacionIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         panelFacturacion.add(facturacionIcon, java.awt.BorderLayout.CENTER);
 
-        jPanel5.add(panelFacturacion);
+        jPanel7.add(panelFacturacion);
 
-        jPanel4.add(jPanel5, java.awt.BorderLayout.PAGE_END);
+        jPanel4.add(jPanel7, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
@@ -823,7 +827,11 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel cobrarIcon;
     private javax.swing.JLabel cobrarLabel;
     private javax.swing.JLabel comprasIcon;
+    private javax.swing.JLabel comprasIcon1;
+    private javax.swing.JLabel comprasIcon2;
     private javax.swing.JLabel comprasLabel;
+    private javax.swing.JLabel comprasLabel1;
+    private javax.swing.JLabel comprasLabel2;
     private javax.swing.JLabel crmIcon;
     private javax.swing.JLabel crmLabel;
     private javax.swing.JLabel cuentasIcon;
@@ -843,6 +851,8 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel packsIcon;
     private javax.swing.JLabel packsLabel;
@@ -850,7 +860,11 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel pagarLabel;
     private javax.swing.JPanel panelCRM;
     private javax.swing.JPanel panelCompras;
+    private javax.swing.JPanel panelCompras1;
+    private javax.swing.JPanel panelCompras2;
     private javax.swing.JPanel panelCorte;
+    private javax.swing.JPanel panelCorte1;
+    private javax.swing.JPanel panelCorte2;
     private javax.swing.JPanel panelCuentas;
     private javax.swing.JPanel panelDeudasC;
     private javax.swing.JPanel panelDeudasP;
