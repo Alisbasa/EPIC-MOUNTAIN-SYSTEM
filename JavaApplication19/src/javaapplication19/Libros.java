@@ -51,7 +51,7 @@ public class Libros extends javax.swing.JFrame {
         scaleImage("Cuentas",cuentasIcon,imgHeight);
         scaleImage("Estrategia",estrategiaIcon,imgHeight);
         scaleImage("Planeacion",planeacionIcon,imgHeight);
-        scaleImage("Compras",crmIcon,imgHeight);
+        setIcon("crm200px",crmIcon);
         scaleImage("Ventas",ventasIcon,imgHeight);
         scaleImage("Proveedores",provedoresIcon,imgHeight);
         scaleImage("Deudas_P",pagarIcon,imgHeight);
@@ -62,7 +62,11 @@ public class Libros extends javax.swing.JFrame {
         
     }
     
-    
+    public void setIcon(String icono,JLabel label){
+        ImageIcon icon = new ImageIcon("src\\img\\"+ icono +".png");
+        
+        label.setIcon(icon);
+    }
     
     
     //Esta funcion cambia el tam;o de las imagenes y las asigna a su respectivo label
