@@ -56,8 +56,8 @@ public class Libros extends javax.swing.JFrame {
         scaleImage("Deudas_P",pagarIcon,imgHeight);
         scaleImage("Deudas_C",cobrarIcon,imgHeight);
         scaleImage("Equipo",equipoIcon,imgHeight);
-        
-        
+        scaleImage("Compras",comprasIcon,imgHeight);
+        scaleImage("Facturacion",facturacionIcon,imgHeight);
         
     }
     
@@ -132,12 +132,14 @@ public class Libros extends javax.swing.JFrame {
         planeacionIcon = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        ventasLabel1 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        ventasLabel2 = new javax.swing.JLabel();
+        panelCompras = new javax.swing.JPanel();
+        comprasLabel = new javax.swing.JLabel();
+        comprasIcon = new javax.swing.JLabel();
+        panelCorte = new javax.swing.JPanel();
+        panelHistorial = new javax.swing.JPanel();
+        panelFacturacion = new javax.swing.JPanel();
+        facturacionLabel = new javax.swing.JLabel();
+        facturacionIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -542,58 +544,67 @@ public class Libros extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
         jPanel4.setLayout(new java.awt.BorderLayout());
 
+        jPanel5.setBackground(new java.awt.Color(102, 102, 102));
         jPanel5.setPreferredSize(new java.awt.Dimension(0, 100));
         jPanel5.setLayout(new java.awt.GridLayout(1, 4));
 
-        jPanel9.setLayout(new java.awt.BorderLayout());
+        panelCompras.setBackground(new java.awt.Color(51, 51, 51));
+        panelCompras.setLayout(new java.awt.BorderLayout());
 
-        ventasLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        ventasLabel1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
-        ventasLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        ventasLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ventasLabel1.setText("COMPRAS ");
-        ventasLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
-        jPanel9.add(ventasLabel1, java.awt.BorderLayout.PAGE_END);
+        comprasLabel.setBackground(new java.awt.Color(255, 255, 255));
+        comprasLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        comprasLabel.setForeground(new java.awt.Color(255, 255, 255));
+        comprasLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        comprasLabel.setText("COMPRAS ");
+        comprasLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelCompras.add(comprasLabel, java.awt.BorderLayout.PAGE_END);
 
-        jPanel5.add(jPanel9);
+        comprasIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelCompras.add(comprasIcon, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel5.add(panelCompras);
+
+        javax.swing.GroupLayout panelCorteLayout = new javax.swing.GroupLayout(panelCorte);
+        panelCorte.setLayout(panelCorteLayout);
+        panelCorteLayout.setHorizontalGroup(
+            panelCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 160, Short.MAX_VALUE)
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelCorteLayout.setVerticalGroup(
+            panelCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        jPanel5.add(jPanel8);
+        jPanel5.add(panelCorte);
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelHistorialLayout = new javax.swing.GroupLayout(panelHistorial);
+        panelHistorial.setLayout(panelHistorialLayout);
+        panelHistorialLayout.setHorizontalGroup(
+            panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 160, Short.MAX_VALUE)
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelHistorialLayout.setVerticalGroup(
+            panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        jPanel5.add(jPanel7);
+        jPanel5.add(panelHistorial);
 
-        jPanel6.setLayout(new java.awt.BorderLayout());
+        panelFacturacion.setBackground(new java.awt.Color(51, 51, 51));
+        panelFacturacion.setLayout(new java.awt.BorderLayout());
 
-        ventasLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        ventasLabel2.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
-        ventasLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        ventasLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ventasLabel2.setText("FACTURACIÓN");
-        ventasLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
-        jPanel6.add(ventasLabel2, java.awt.BorderLayout.PAGE_END);
+        facturacionLabel.setBackground(new java.awt.Color(255, 255, 255));
+        facturacionLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        facturacionLabel.setForeground(new java.awt.Color(255, 255, 255));
+        facturacionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        facturacionLabel.setText("FACTURACIÓN");
+        facturacionLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
+        panelFacturacion.add(facturacionLabel, java.awt.BorderLayout.PAGE_END);
 
-        jPanel5.add(jPanel6);
+        facturacionIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelFacturacion.add(facturacionIcon, java.awt.BorderLayout.CENTER);
+
+        jPanel5.add(panelFacturacion);
 
         jPanel4.add(jPanel5, java.awt.BorderLayout.PAGE_END);
 
@@ -806,6 +817,8 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel cerrar;
     private javax.swing.JLabel cobrarIcon;
     private javax.swing.JLabel cobrarLabel;
+    private javax.swing.JLabel comprasIcon;
+    private javax.swing.JLabel comprasLabel;
     private javax.swing.JLabel crmIcon;
     private javax.swing.JLabel crmLabel;
     private javax.swing.JLabel cuentasIcon;
@@ -814,6 +827,8 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel equipoLabel;
     private javax.swing.JLabel estrategiaIcon;
     private javax.swing.JLabel estrategiaLabel;
+    private javax.swing.JLabel facturacionIcon;
+    private javax.swing.JLabel facturacionLabel;
     private javax.swing.JLabel inventarioIcon;
     private javax.swing.JLabel inventarioLabel;
     private javax.swing.JLabel jLabel1;
@@ -823,21 +838,21 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel packsIcon;
     private javax.swing.JLabel packsLabel;
     private javax.swing.JLabel pagarIcon;
     private javax.swing.JLabel pagarLabel;
     private javax.swing.JPanel panelCRM;
+    private javax.swing.JPanel panelCompras;
+    private javax.swing.JPanel panelCorte;
     private javax.swing.JPanel panelCuentas;
     private javax.swing.JPanel panelDeudasC;
     private javax.swing.JPanel panelDeudasP;
     private javax.swing.JPanel panelEquipo;
     private javax.swing.JPanel panelEstrategia;
+    private javax.swing.JPanel panelFacturacion;
+    private javax.swing.JPanel panelHistorial;
     private javax.swing.JPanel panelPacks;
     private javax.swing.JPanel panelPlaneacion;
     private javax.swing.JPanel panelProvedores;
@@ -852,7 +867,5 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel suministrosLabel;
     private javax.swing.JLabel ventasIcon;
     private javax.swing.JLabel ventasLabel;
-    private javax.swing.JLabel ventasLabel1;
-    private javax.swing.JLabel ventasLabel2;
     // End of variables declaration//GEN-END:variables
 }
