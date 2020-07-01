@@ -27,6 +27,7 @@ public class Libros extends javax.swing.JFrame {
      */
     public Libros() {
         initComponents();
+        scaleImage("LOGO",LOGO,30);
         scaleImages(50);
         //Evento para actualizar tamano de imagenes
         getContentPane().addComponentListener(new ComponentAdapter(){
@@ -55,6 +56,7 @@ public class Libros extends javax.swing.JFrame {
         scaleImage("Deudas_P",pagarIcon,imgHeight);
         scaleImage("Deudas_C",cobrarIcon,imgHeight);
         scaleImage("Equipo",equipoIcon,imgHeight);
+        
         
         
     }
@@ -87,6 +89,9 @@ public class Libros extends javax.swing.JFrame {
         barra = new javax.swing.JPanel();
         cerrar = new javax.swing.JPanel();
         maxi = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        LOGO = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         panelCRM = new javax.swing.JPanel();
         crmLabel = new javax.swing.JLabel();
@@ -221,6 +226,20 @@ public class Libros extends javax.swing.JFrame {
         );
 
         jPanel1.add(barra, java.awt.BorderLayout.LINE_END);
+
+        jPanel10.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel10.setPreferredSize(new java.awt.Dimension(300, 30));
+        jPanel10.setLayout(new java.awt.BorderLayout());
+
+        LOGO.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel10.add(LOGO, java.awt.BorderLayout.LINE_START);
+
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("EPIC MOUNTAIN SYSTEM");
+        jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -780,6 +799,7 @@ public class Libros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LOGO;
     private javax.swing.JPanel barra;
     private javax.swing.JPanel cerrar;
     private javax.swing.JLabel cobrarIcon;
@@ -794,7 +814,9 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel estrategiaLabel;
     private javax.swing.JLabel inventarioIcon;
     private javax.swing.JLabel inventarioLabel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
