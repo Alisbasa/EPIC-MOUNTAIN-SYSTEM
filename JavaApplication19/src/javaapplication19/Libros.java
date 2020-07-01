@@ -6,6 +6,7 @@
 package javaapplication19;
 
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -155,6 +156,7 @@ public class Libros extends javax.swing.JFrame {
         facturacionLabel = new javax.swing.JLabel();
         facturacionIcon = new javax.swing.JLabel();
         libro = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -614,16 +616,8 @@ public class Libros extends javax.swing.JFrame {
 
         jPanel4.add(jPanel7, java.awt.BorderLayout.PAGE_END);
 
-        javax.swing.GroupLayout libroLayout = new javax.swing.GroupLayout(libro);
-        libro.setLayout(libroLayout);
-        libroLayout.setHorizontalGroup(
-            libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-        libroLayout.setVerticalGroup(
-            libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 387, Short.MAX_VALUE)
-        );
+        libro.setLayout(new java.awt.BorderLayout());
+        libro.add(jLabel2, java.awt.BorderLayout.CENTER);
 
         jPanel4.add(libro, java.awt.BorderLayout.CENTER);
 
@@ -639,8 +633,10 @@ public class Libros extends javax.swing.JFrame {
         libro.setBackground(new java.awt.Color(51, 51, 51));
         ImageIcon icon = new ImageIcon("src\\img\\Libros.png");
         Image imglibros = icon.getImage();
-        ImagePanel librosPanel = new ImagePanel(imglibros);
-        libro.add(librosPanel,java.awt.BorderLayout.CENTER);
+        
+        jLabel2.setIcon( icon );
+        jLabel2.setLayout( new BorderLayout() );
+        jLabel2.add(new javax.swing.JButton("hola", java.awt.BorderLayout.PAGE_END));
     
  }
     //Abre archivo Excel CRM
@@ -862,6 +858,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel inventarioIcon;
     private javax.swing.JLabel inventarioLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
