@@ -27,6 +27,7 @@ public class Libros extends javax.swing.JFrame {
      */
     public Libros() {
         initComponents();
+        this.setExtendedState(Libros.MAXIMIZED_BOTH);
         scaleImage("LOGO",LOGO,40);
         scaleImages(50);
         //Evento para actualizar tamano de imagenes
@@ -50,7 +51,7 @@ public class Libros extends javax.swing.JFrame {
         scaleImage("Cuentas",cuentasIcon,imgHeight);
         scaleImage("Estrategia",estrategiaIcon,imgHeight);
         scaleImage("Planeacion",planeacionIcon,imgHeight);
-        scaleImage("CRM",crmIcon,imgHeight);
+        scaleImage("Compras",crmIcon,imgHeight);
         scaleImage("Ventas",ventasIcon,imgHeight);
         scaleImage("Proveedores",provedoresIcon,imgHeight);
         scaleImage("Deudas_P",pagarIcon,imgHeight);
