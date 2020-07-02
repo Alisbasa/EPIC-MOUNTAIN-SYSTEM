@@ -81,6 +81,9 @@ public class principal extends javax.swing.JFrame {
         jpFacturacion = new javax.swing.JPanel();
         iconFacturacion = new javax.swing.JLabel();
         textFacturacion = new javax.swing.JLabel();
+        jpHistorial = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        textCompras1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -348,6 +351,21 @@ public class principal extends javax.swing.JFrame {
 
         getContentPane().add(jpFacturacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1520, 900, 200, 180));
 
+        jpHistorial.setBackground(new java.awt.Color(51, 51, 51));
+        jpHistorial.setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cuentas.png"))); // NOI18N
+        jpHistorial.add(jLabel1, java.awt.BorderLayout.CENTER);
+
+        textCompras1.setFont(new java.awt.Font("Franklin Gothic Heavy", 1, 24)); // NOI18N
+        textCompras1.setForeground(new java.awt.Color(255, 255, 255));
+        textCompras1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textCompras1.setText("HISTORIAL");
+        jpHistorial.add(textCompras1, java.awt.BorderLayout.PAGE_END);
+
+        getContentPane().add(jpHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 900, 200, 180));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -411,6 +429,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel iconProvedores;
     private javax.swing.JLabel iconSuministros;
     private javax.swing.JLabel iconVentas;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jpBarra;
     private javax.swing.JPanel jpCRM;
     private javax.swing.JPanel jpCRM1;
@@ -422,6 +441,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JPanel jpEquipo;
     private javax.swing.JPanel jpEstrategia;
     private javax.swing.JPanel jpFacturacion;
+    private javax.swing.JPanel jpHistorial;
     private javax.swing.JPanel jpIconosD;
     private javax.swing.JPanel jpIconosI;
     private javax.swing.JPanel jpInventario;
@@ -433,6 +453,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JPanel jpVentas;
     private javax.swing.JLabel textCRM;
     private javax.swing.JLabel textCompras;
+    private javax.swing.JLabel textCompras1;
     private javax.swing.JLabel textCuentas;
     private javax.swing.JLabel textDeudasC;
     private javax.swing.JLabel textDeudasC1;
