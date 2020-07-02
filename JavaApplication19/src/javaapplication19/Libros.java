@@ -675,7 +675,7 @@ public class Libros extends javax.swing.JFrame {
         libro.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(34, 180, 115));
-        jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 5, 15));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         jPanel2.setLayout(new java.awt.GridLayout(1, 2, 2, 0));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -688,7 +688,7 @@ public class Libros extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 307, Short.MAX_VALUE)
+            .addGap(0, 297, Short.MAX_VALUE)
         );
 
         jPanel2.add(jPanel3);
@@ -703,7 +703,7 @@ public class Libros extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 307, Short.MAX_VALUE)
+            .addGap(0, 297, Short.MAX_VALUE)
         );
 
         jPanel2.add(jPanel5);
