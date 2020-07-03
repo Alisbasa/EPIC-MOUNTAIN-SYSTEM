@@ -207,7 +207,9 @@ public class Libros extends javax.swing.JFrame {
         historialCRMIcon = new javax.swing.JLabel();
         historialCRMLabel = new javax.swing.JLabel();
         jpRegistrar = new javax.swing.JPanel();
+        iconRegistrar = new javax.swing.JLabel();
         jpCorte = new javax.swing.JPanel();
+        iconCorte = new javax.swing.JLabel();
         panelHistorialCuentas = new javax.swing.JPanel();
         historialCuentasIcon = new javax.swing.JLabel();
         historialCuentasLabel = new javax.swing.JLabel();
@@ -624,7 +626,7 @@ public class Libros extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(51, 51, 51));
         jPanel7.setPreferredSize(new java.awt.Dimension(0, 100));
-        jPanel7.setLayout(new java.awt.GridLayout());
+        jPanel7.setLayout(new java.awt.GridLayout(1, 0));
 
         panelCompras2.setBackground(new java.awt.Color(51, 51, 51));
         panelCompras2.setLayout(new java.awt.BorderLayout());
@@ -659,10 +661,14 @@ public class Libros extends javax.swing.JFrame {
 
         jpRegistrar.setBackground(new java.awt.Color(51, 51, 51));
         jpRegistrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpRegistrar.add(iconRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 70, 70));
+
         jPanel7.add(jpRegistrar);
 
         jpCorte.setBackground(new java.awt.Color(51, 51, 51));
         jpCorte.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpCorte.add(iconCorte, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 70, 70));
+
         jPanel7.add(jpCorte);
 
         panelHistorialCuentas.setBackground(new java.awt.Color(51, 51, 51));
@@ -978,6 +984,8 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel historialCRMLabel;
     private javax.swing.JLabel historialCuentasIcon;
     private javax.swing.JLabel historialCuentasLabel;
+    private javax.swing.JLabel iconCorte;
+    private javax.swing.JLabel iconRegistrar;
     private javax.swing.JLabel inventarioIcon;
     private javax.swing.JLabel inventarioLabel;
     private javax.swing.JLabel jLabel1;
