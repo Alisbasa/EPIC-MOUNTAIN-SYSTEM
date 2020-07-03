@@ -773,7 +773,7 @@ public class Libros extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textIngresos.setBackground(new java.awt.Color(0, 0, 0));
-        textIngresos.setFont(new java.awt.Font("Franklin Gothic Heavy", 1, 48)); // NOI18N
+        textIngresos.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 48)); // NOI18N
         textIngresos.setText("INGRESOS");
         textIngresos.setLocation(780,250);
         jPanel3.add(textIngresos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 300, 50));
