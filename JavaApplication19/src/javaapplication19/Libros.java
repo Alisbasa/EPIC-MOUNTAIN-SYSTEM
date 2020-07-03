@@ -58,13 +58,18 @@ public class Libros extends javax.swing.JFrame {
                 corte.setPreferredSize(new Dimension( (int) panelCRM.getHeight()/2,  ((int) panelCorte.getWidth()-30*(panelCorte.getWidth()/10))));
                 panelCorte.setBorder(BorderFactory.createEmptyBorder((int) panelCRM.getHeight()/3, ((int) (panelCorte.getWidth()/10)), (int) panelCRM.getHeight()/3, ((int) (panelCorte.getWidth()/10))));
                 panelRegistrar.setBorder(BorderFactory.createEmptyBorder((int) panelCRM.getHeight()/3, ((int) (panelCorte.getWidth()/10)), (int) panelCRM.getHeight()/3, ((int) (panelCorte.getWidth()/10))));
-                
+                maximiza();
                                
               
             }
         }
         );
     }
+    
+    public void maximiza(){
+        this.setExtendedState(Libros.MAXIMIZED_BOTH);
+    }
+    
     //Cambia el tama;o de todas las imagenes
     public void scaleImages(int imgHeight){
         
@@ -748,11 +753,11 @@ public class Libros extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 244, Short.MAX_VALUE)
+            .addGap(0, 308, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 297, Short.MAX_VALUE)
+            .addGap(0, 351, Short.MAX_VALUE)
         );
 
         jPanel2.add(jPanel3);
@@ -763,11 +768,11 @@ public class Libros extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 244, Short.MAX_VALUE)
+            .addGap(0, 308, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 297, Short.MAX_VALUE)
+            .addGap(0, 351, Short.MAX_VALUE)
         );
 
         jPanel2.add(jPanel5);
@@ -777,6 +782,9 @@ public class Libros extends javax.swing.JFrame {
         jPanel4.add(libro, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
+
+        setSize(new java.awt.Dimension(1028, 581));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
     
