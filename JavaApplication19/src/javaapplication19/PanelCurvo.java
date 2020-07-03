@@ -30,9 +30,9 @@ public class PanelCurvo extends JPanel {
     /** Double values for Horizontal and Vertical radius of corner arcs */
     protected Dimension arcs = new Dimension(40, 40);
     /** Distance between shadow border and opaque panel border */
-    protected int shadowGap = 0;
+    protected int shadowGap = 5;
     /** The offset of shadow.  */
-    protected int shadowOffset = 0;
+    protected int shadowOffset = 5;
     /** The transparency value of shadow. ( 0 - 255) */
     protected int shadowAlpha = 150;
 

@@ -15,6 +15,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,11 +33,17 @@ public class Libros extends javax.swing.JFrame {
      */
     public Libros() {
         initComponents();
-        myInitComponents();
+        scaleImages(100);
+        panelCorte.setBorder(BorderFactory.createEmptyBorder(70, 15, 70,  15));
+        panelRegistrar.setBorder(BorderFactory.createEmptyBorder(70, 15, 70,  15));
+        
+        jPanel7.setPreferredSize(new Dimension(350,300));
+        panelIzq.setPreferredSize(new Dimension(200,470));
+        panelDer.setPreferredSize(new Dimension(200,470));        
         
         this.setExtendedState(Libros.MAXIMIZED_BOTH);
         scaleImage("LOGO",LOGO,40);
-        scaleImages(50);
+        scaleImages(100);
         //Evento para actualizar tamano de imagenes
         getContentPane().addComponentListener(new ComponentAdapter(){
             public void componentResized(ComponentEvent e){
@@ -49,7 +56,9 @@ public class Libros extends javax.swing.JFrame {
                 jPanel7.setPreferredSize(new Dimension(350,panelCRM.getHeight()));
                 panelIzq.setPreferredSize(new Dimension(panelCRM.getHeight()+20,470));
                 panelDer.setPreferredSize(new Dimension(panelCRM.getHeight()+20,470));
-                
+                corte.setPreferredSize(new Dimension( (int) panelCRM.getHeight()/2,  ((int) panelCorte.getWidth()-30*(panelCorte.getWidth()/10))));
+                panelCorte.setBorder(BorderFactory.createEmptyBorder((int) panelCRM.getHeight()/3, ((int) (panelCorte.getWidth()/10)), (int) panelCRM.getHeight()/3, ((int) (panelCorte.getWidth()/10))));
+                panelRegistrar.setBorder(BorderFactory.createEmptyBorder((int) panelCRM.getHeight()/3, ((int) (panelCorte.getWidth()/10)), (int) panelCRM.getHeight()/3, ((int) (panelCorte.getWidth()/10))));
                 
                                
               
@@ -97,9 +106,7 @@ public class Libros extends javax.swing.JFrame {
         scaleImage("Facturacion",facturacionIcon,imgHeight); 
     }
     
-    public void scaleLabels2(int imgHeight, int imgWidth ){
-        scaleImage2("Corte",iconCorte,imgHeight,imgWidth);
-    }
+
     
      public void scaleLabelsText(int size){
         
@@ -119,6 +126,8 @@ public class Libros extends javax.swing.JFrame {
         scaleLabel(facturacionLabel,size);
         scaleLabel(historialCRMLabel,size);
         scaleLabel(historialCuentasLabel,size);
+        scaleLabel(regLabel,size);
+        scaleLabel(corteLabel,size);
         
     }
     
@@ -128,15 +137,7 @@ public class Libros extends javax.swing.JFrame {
         label.setIcon(icon);
     }
     
-    //Esta funcion escala el tama;o de la imagenes de forma normal y las asigna a su respectivo label
-    public void scaleImage2(String icono,JLabel label, int height,int width){
-        ImageIcon icon = new ImageIcon("src\\img\\"+ icono +".png");
-        Image img = icon.getImage();
-        Image imgScale = img.getScaledInstance(height, width,Image.SCALE_SMOOTH);
-       
-        ImageIcon scaledIcon = new ImageIcon(imgScale);
-        label.setIcon(scaledIcon);
-    }
+    
     
     
     //Esta funcion cambia el tam;o de las imagenes de forma cuadrada y las asigna a su respectivo label
@@ -219,8 +220,12 @@ public class Libros extends javax.swing.JFrame {
         panelHistorialCRM = new javax.swing.JPanel();
         historialCRMIcon = new javax.swing.JLabel();
         historialCRMLabel = new javax.swing.JLabel();
-        jpCorte = new javax.swing.JPanel();
-        iconCorte = new javax.swing.JLabel();
+        panelRegistrar = new javax.swing.JPanel();
+        corte1 = new PanelCurvo();
+        regLabel = new javax.swing.JLabel();
+        panelCorte = new javax.swing.JPanel();
+        corte = new PanelCurvo();
+        corteLabel = new javax.swing.JLabel();
         panelHistorialCuentas = new javax.swing.JPanel();
         historialCuentasIcon = new javax.swing.JLabel();
         historialCuentasLabel = new javax.swing.JLabel();
@@ -657,11 +662,39 @@ public class Libros extends javax.swing.JFrame {
 
         jPanel7.add(panelHistorialCRM);
 
-        jpCorte.setBackground(new java.awt.Color(51, 51, 51));
-        jpCorte.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jpCorte.add(iconCorte, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 100, 70));
+        panelRegistrar.setBackground(new java.awt.Color(51, 51, 51));
+        panelRegistrar.setBorder(javax.swing.BorderFactory.createEmptyBorder(30, 5, 30, 5));
+        panelRegistrar.setLayout(new java.awt.BorderLayout());
 
-        jPanel7.add(jpCorte);
+        corte1.setBackground(new java.awt.Color(34, 180, 115));
+        corte1.setLayout(new java.awt.BorderLayout());
+
+        regLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
+        regLabel.setForeground(new java.awt.Color(255, 255, 255));
+        regLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        regLabel.setText("REGISTRAR");
+        corte1.add(regLabel, java.awt.BorderLayout.CENTER);
+
+        panelRegistrar.add(corte1, java.awt.BorderLayout.CENTER);
+
+        jPanel7.add(panelRegistrar);
+
+        panelCorte.setBackground(new java.awt.Color(51, 51, 51));
+        panelCorte.setBorder(javax.swing.BorderFactory.createEmptyBorder(30, 5, 30, 5));
+        panelCorte.setLayout(new java.awt.BorderLayout());
+
+        corte.setBackground(new java.awt.Color(34, 180, 115));
+        corte.setLayout(new java.awt.BorderLayout());
+
+        corteLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
+        corteLabel.setForeground(new java.awt.Color(255, 255, 255));
+        corteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        corteLabel.setText("CORTE");
+        corte.add(corteLabel, java.awt.BorderLayout.CENTER);
+
+        panelCorte.add(corte, java.awt.BorderLayout.CENTER);
+
+        jPanel7.add(panelCorte);
 
         panelHistorialCuentas.setBackground(new java.awt.Color(51, 51, 51));
         panelHistorialCuentas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -984,6 +1017,9 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel cobrarLabel;
     private javax.swing.JLabel comprasIcon2;
     private javax.swing.JLabel comprasLabel2;
+    private javax.swing.JPanel corte;
+    private javax.swing.JPanel corte1;
+    private javax.swing.JLabel corteLabel;
     private javax.swing.JLabel crmIcon;
     private javax.swing.JLabel crmLabel;
     private javax.swing.JLabel cuentasIcon;
@@ -998,7 +1034,6 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel historialCRMLabel;
     private javax.swing.JLabel historialCuentasIcon;
     private javax.swing.JLabel historialCuentasLabel;
-    private javax.swing.JLabel iconCorte;
     private javax.swing.JLabel inventarioIcon;
     private javax.swing.JLabel inventarioLabel;
     private javax.swing.JLabel jLabel1;
@@ -1009,7 +1044,6 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jpCorte;
     private javax.swing.JPanel libro;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel maxiIcon;
@@ -1019,6 +1053,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel pagarLabel;
     private javax.swing.JPanel panelCRM;
     private javax.swing.JPanel panelCompras2;
+    private javax.swing.JPanel panelCorte;
     private javax.swing.JPanel panelCuentas;
     private javax.swing.JPanel panelDer;
     private javax.swing.JPanel panelDeudasC;
@@ -1032,6 +1067,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel panelPacks;
     private javax.swing.JPanel panelPlaneacion;
     private javax.swing.JPanel panelProvedores;
+    private javax.swing.JPanel panelRegistrar;
     private javax.swing.JPanel panelSuministros;
     private javax.swing.JPanel panelVentas;
     private javax.swing.JPanel panelnventario;
@@ -1039,6 +1075,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel planeacionLabel;
     private javax.swing.JLabel provedoresIcon;
     private javax.swing.JLabel provedoresLabel;
+    private javax.swing.JLabel regLabel;
     private javax.swing.JLabel suministrosIcon;
     private javax.swing.JLabel suministrosLabel;
     private javax.swing.JLabel ventasIcon;
