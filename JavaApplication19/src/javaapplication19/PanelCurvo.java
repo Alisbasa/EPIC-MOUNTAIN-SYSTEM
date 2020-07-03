@@ -81,5 +81,9 @@ public class PanelCurvo extends JPanel {
 
        //Sets strokes to default, is better.
        graphics.setStroke(new BasicStroke());
-   }    
+       
+       
+       
+       
+   }
 } 

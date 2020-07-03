@@ -33,9 +33,11 @@ public class Libros extends javax.swing.JFrame {
      */
     public Libros() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../img/Logo.png")).getImage());
+        //setIconImage(new ImageIcon(getClass().getResource("..\\img\\LOGO.png")).getImage());
         Iconos("Cerrar",cerrarIcon);
         Iconos("Minimizar_1",maxiIcon);
+        Iconos("Ingresar",ingresoIcon);
+        Iconos("Ingresar2",ingresoIcon1);
         scaleImages(100);
         panelCorte.setBorder(BorderFactory.createEmptyBorder(70, 15, 70,  15));
         panelRegistrar.setBorder(BorderFactory.createEmptyBorder(70, 15, 70,  15));
@@ -251,7 +253,11 @@ public class Libros extends javax.swing.JFrame {
         libro = new javax.swing.JPanel();
         jPanel2 = new PanelCurvo();
         jPanel3 = new PanelCurvo();
+        textIngresos = new javax.swing.JLabel();
+        ingresoIcon = new javax.swing.JLabel();
         jPanel5 = new PanelCurvo();
+        textIngresos1 = new javax.swing.JLabel();
+        ingresoIcon1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -764,32 +770,25 @@ public class Libros extends javax.swing.JFrame {
         jPanel2.setLayout(new java.awt.GridLayout(1, 2, 2, 0));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 308, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 351, Short.MAX_VALUE)
-        );
+        textIngresos.setBackground(new java.awt.Color(0, 0, 0));
+        textIngresos.setFont(new java.awt.Font("Franklin Gothic Heavy", 1, 48)); // NOI18N
+        textIngresos.setText("INGRESOS");
+        textIngresos.setLocation(780,250);
+        jPanel3.add(textIngresos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 300, 50));
+        jPanel3.add(ingresoIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 50, 50));
 
         jPanel2.add(jPanel3);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 308, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 351, Short.MAX_VALUE)
-        );
+        textIngresos1.setBackground(new java.awt.Color(0, 0, 0));
+        textIngresos1.setFont(new java.awt.Font("Franklin Gothic Heavy", 1, 48)); // NOI18N
+        textIngresos1.setText("GASTOS");
+        jPanel5.add(textIngresos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 200, 50));
+        jPanel5.add(ingresoIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 50, 50));
 
         jPanel2.add(jPanel5);
 
@@ -799,7 +798,7 @@ public class Libros extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(1028, 581));
+        setSize(new java.awt.Dimension(1920, 1080));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
@@ -1056,6 +1055,8 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel historialCRMLabel;
     private javax.swing.JLabel historialCuentasIcon;
     private javax.swing.JLabel historialCuentasLabel;
+    private javax.swing.JLabel ingresoIcon;
+    private javax.swing.JLabel ingresoIcon1;
     private javax.swing.JLabel inventarioIcon;
     private javax.swing.JLabel inventarioLabel;
     private javax.swing.JLabel jLabel1;
@@ -1100,6 +1101,8 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel regLabel;
     private javax.swing.JLabel suministrosIcon;
     private javax.swing.JLabel suministrosLabel;
+    private javax.swing.JLabel textIngresos;
+    private javax.swing.JLabel textIngresos1;
     private javax.swing.JLabel ventasIcon;
     private javax.swing.JLabel ventasLabel;
     // End of variables declaration//GEN-END:variables
