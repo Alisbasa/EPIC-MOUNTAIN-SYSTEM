@@ -68,6 +68,7 @@ public class Libros extends javax.swing.JFrame {
         );
     }
     
+    
     public void maximiza(){
         this.setExtendedState(Libros.MAXIMIZED_BOTH);
     }
