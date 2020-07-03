@@ -147,7 +147,6 @@ public class Libros extends javax.swing.JFrame {
        
         ImageIcon scaledIcon = new ImageIcon(imgScale);
         label.setIcon(scaledIcon);
-        
     }
     
     public void scaleLabel(JLabel label,int size){
