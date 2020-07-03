@@ -50,7 +50,6 @@ public class Libros extends javax.swing.JFrame {
                 
                // imgScale = img.getScaledInstance(inventarioIcon.getHeight(),inventarioIcon.getHeight(),Image.SCALE_SMOOTH);
                 scaleImages(inventarioIcon.getHeight()-3);
-                
                 scaleLabelsText((int) ((panelCRM.getHeight())/7.5));
                 jPanel7.setBounds(WIDTH, WIDTH, WIDTH, panelCRM.getHeight());
                 jPanel7.setPreferredSize(new Dimension(350,panelCRM.getHeight()));
@@ -778,9 +777,6 @@ public class Libros extends javax.swing.JFrame {
         jPanel4.add(libro, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
-
-        setSize(new java.awt.Dimension(900, 527));
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
     
@@ -929,12 +925,13 @@ public class Libros extends javax.swing.JFrame {
     }//GEN-LAST:event_maxiMouseExited
 
     private void maxiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxiMouseClicked
-        if(this.getExtendedState()!=Libros.MAXIMIZED_BOTH){
+       this.setExtendedState(ICONIFIED);     
+        /*if(this.getExtendedState()!=Libros.MAXIMIZED_BOTH){
             this.setExtendedState(Libros.MAXIMIZED_BOTH);
         }
         else{
             this.setExtendedState(Libros.NORMAL);
-        }
+        }*/
     }//GEN-LAST:event_maxiMouseClicked
 
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
