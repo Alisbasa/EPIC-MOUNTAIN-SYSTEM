@@ -33,6 +33,7 @@ public class Libros extends javax.swing.JFrame {
      */
     public Libros() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("../img/Logo.png")).getImage());
         Iconos("Cerrar",cerrarIcon);
         Iconos("Minimizar_1",maxiIcon);
         scaleImages(100);
@@ -335,7 +336,7 @@ public class Libros extends javax.swing.JFrame {
         LOGO.setPreferredSize(new java.awt.Dimension(40, 40));
         jPanel10.add(LOGO, java.awt.BorderLayout.LINE_START);
 
-        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("EPIC MOUNTAIN SYSTEM");
         jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
@@ -940,7 +941,7 @@ public class Libros extends javax.swing.JFrame {
     }//GEN-LAST:event_cerrarMouseClicked
 
     private void maxiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxiMouseEntered
-        changeColor(maxi, Color.green);  
+        changeColor(maxi, new Color(34,180,115));  
     }//GEN-LAST:event_maxiMouseEntered
 
     private void maxiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxiMouseExited
@@ -984,7 +985,7 @@ public class Libros extends javax.swing.JFrame {
             e.printStackTrace();       
         }
     }//GEN-LAST:event_panelHistorialCuentasMouseClicked
-
+/**/
     //
     
 
