@@ -33,6 +33,8 @@ public class Libros extends javax.swing.JFrame {
      */
     public Libros() {
         initComponents();
+        Iconos("Cerrar",cerrarIcon);
+        Iconos("Minimizar_1",maxiIcon);
         scaleImages(100);
         panelCorte.setBorder(BorderFactory.createEmptyBorder(70, 15, 70,  15));
         panelRegistrar.setBorder(BorderFactory.createEmptyBorder(70, 15, 70,  15));
@@ -92,6 +94,12 @@ public class Libros extends javax.swing.JFrame {
         
     }
     
+    public void Iconos(String icono, JLabel label){
+        ImageIcon icon = new ImageIcon("src\\img\\"+ icono +".png");
+        label.setIcon(icon);
+        
+    }
+    
     public void scaleLabels(int imgHeight){
         
         scaleImage("inventario",inventarioIcon,imgHeight);
@@ -107,7 +115,8 @@ public class Libros extends javax.swing.JFrame {
         scaleImage("Deudas_C",cobrarIcon,imgHeight);
         scaleImage("Equipo",equipoIcon,imgHeight);
         scaleImage("Compras",comprasIcon2,imgHeight);
-        scaleImage("Facturacion",facturacionIcon,imgHeight); 
+        scaleImage("Facturacion",facturacionIcon,imgHeight);
+        
     }
     
 
@@ -139,6 +148,7 @@ public class Libros extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon("src\\img\\"+ icono +".png");
         
         label.setIcon(icon);
+        
     }
     
     
@@ -274,6 +284,8 @@ public class Libros extends javax.swing.JFrame {
             }
         });
         cerrar.setLayout(new java.awt.BorderLayout());
+
+        cerrarIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cerrar.add(cerrarIcon, java.awt.BorderLayout.CENTER);
 
         maxi.setBackground(new java.awt.Color(51, 51, 51));
@@ -290,6 +302,8 @@ public class Libros extends javax.swing.JFrame {
             }
         });
         maxi.setLayout(new java.awt.BorderLayout());
+
+        maxiIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         maxi.add(maxiIcon, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout barraLayout = new javax.swing.GroupLayout(barra);
