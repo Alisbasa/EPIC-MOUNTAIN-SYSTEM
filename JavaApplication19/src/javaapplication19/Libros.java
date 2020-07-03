@@ -77,7 +77,6 @@ public class Libros extends javax.swing.JFrame {
         scaleImage("Compras",comprasIcon2,imgHeight);
         scaleImage("Facturacion",facturacionIcon,imgHeight);
         
-        
     }
     
     public void scaleLabels(int imgHeight){
@@ -95,10 +94,13 @@ public class Libros extends javax.swing.JFrame {
         scaleImage("Deudas_C",cobrarIcon,imgHeight);
         scaleImage("Equipo",equipoIcon,imgHeight);
         scaleImage("Compras",comprasIcon2,imgHeight);
-        scaleImage("Facturacion",facturacionIcon,imgHeight);
-        
-        
+        scaleImage("Facturacion",facturacionIcon,imgHeight); 
     }
+    
+    public void scaleLabels2(int imgHeight, int imgWidth ){
+        scaleImage2("Corte",iconCorte,imgHeight,imgWidth);
+    }
+    
      public void scaleLabelsText(int size){
         
         scaleLabel(inventarioLabel,size);
@@ -126,8 +128,18 @@ public class Libros extends javax.swing.JFrame {
         label.setIcon(icon);
     }
     
+    //Esta funcion escala el tama;o de la imagenes de forma normal y las asigna a su respectivo label
+    public void scaleImage2(String icono,JLabel label, int height,int width){
+        ImageIcon icon = new ImageIcon("src\\img\\"+ icono +".png");
+        Image img = icon.getImage();
+        Image imgScale = img.getScaledInstance(height, width,Image.SCALE_SMOOTH);
+       
+        ImageIcon scaledIcon = new ImageIcon(imgScale);
+        label.setIcon(scaledIcon);
+    }
     
-    //Esta funcion cambia el tam;o de las imagenes y las asigna a su respectivo label
+    
+    //Esta funcion cambia el tam;o de las imagenes de forma cuadrada y las asigna a su respectivo label
     public void scaleImage(String icono,JLabel label, int height){
         ImageIcon icon = new ImageIcon("src\\img\\"+ icono +".png");
         Image img = icon.getImage();
@@ -156,7 +168,9 @@ public class Libros extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         barra = new javax.swing.JPanel();
         cerrar = new javax.swing.JPanel();
+        cerrarIcon = new javax.swing.JLabel();
         maxi = new javax.swing.JPanel();
+        maxiIcon = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         LOGO = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -206,8 +220,6 @@ public class Libros extends javax.swing.JFrame {
         panelHistorialCRM = new javax.swing.JPanel();
         historialCRMIcon = new javax.swing.JLabel();
         historialCRMLabel = new javax.swing.JLabel();
-        jpRegistrar = new javax.swing.JPanel();
-        iconRegistrar = new javax.swing.JLabel();
         jpCorte = new javax.swing.JPanel();
         iconCorte = new javax.swing.JLabel();
         panelHistorialCuentas = new javax.swing.JPanel();
@@ -253,17 +265,8 @@ public class Libros extends javax.swing.JFrame {
                 cerrarMouseExited(evt);
             }
         });
-
-        javax.swing.GroupLayout cerrarLayout = new javax.swing.GroupLayout(cerrar);
-        cerrar.setLayout(cerrarLayout);
-        cerrarLayout.setHorizontalGroup(
-            cerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        cerrarLayout.setVerticalGroup(
-            cerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
+        cerrar.setLayout(new java.awt.BorderLayout());
+        cerrar.add(cerrarIcon, java.awt.BorderLayout.CENTER);
 
         maxi.setBackground(new java.awt.Color(51, 51, 51));
         maxi.setPreferredSize(new java.awt.Dimension(40, 40));
@@ -278,17 +281,8 @@ public class Libros extends javax.swing.JFrame {
                 maxiMouseExited(evt);
             }
         });
-
-        javax.swing.GroupLayout maxiLayout = new javax.swing.GroupLayout(maxi);
-        maxi.setLayout(maxiLayout);
-        maxiLayout.setHorizontalGroup(
-            maxiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        maxiLayout.setVerticalGroup(
-            maxiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
+        maxi.setLayout(new java.awt.BorderLayout());
+        maxi.add(maxiIcon, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout barraLayout = new javax.swing.GroupLayout(barra);
         barra.setLayout(barraLayout);
@@ -645,6 +639,11 @@ public class Libros extends javax.swing.JFrame {
         jPanel7.add(panelCompras2);
 
         panelHistorialCRM.setBackground(new java.awt.Color(51, 51, 51));
+        panelHistorialCRM.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelHistorialCRMMouseClicked(evt);
+            }
+        });
         panelHistorialCRM.setLayout(new java.awt.BorderLayout());
 
         historialCRMIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -659,19 +658,18 @@ public class Libros extends javax.swing.JFrame {
 
         jPanel7.add(panelHistorialCRM);
 
-        jpRegistrar.setBackground(new java.awt.Color(51, 51, 51));
-        jpRegistrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jpRegistrar.add(iconRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 70, 70));
-
-        jPanel7.add(jpRegistrar);
-
         jpCorte.setBackground(new java.awt.Color(51, 51, 51));
         jpCorte.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jpCorte.add(iconCorte, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 70, 70));
+        jpCorte.add(iconCorte, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 100, 70));
 
         jPanel7.add(jpCorte);
 
         panelHistorialCuentas.setBackground(new java.awt.Color(51, 51, 51));
+        panelHistorialCuentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelHistorialCuentasMouseClicked(evt);
+            }
+        });
         panelHistorialCuentas.setLayout(new java.awt.BorderLayout());
 
         historialCuentasIcon.setBackground(new java.awt.Color(51, 51, 51));
@@ -919,6 +917,22 @@ public class Libros extends javax.swing.JFrame {
         mousepY =evt.getY();
     }//GEN-LAST:event_jPanel1MousePressed
 
+    private void panelHistorialCRMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHistorialCRMMouseClicked
+        try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/historialCRM.xlsx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_panelHistorialCRMMouseClicked
+
+    private void panelHistorialCuentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHistorialCuentasMouseClicked
+        try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/historialCuentas.xlsx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_panelHistorialCuentasMouseClicked
+
     //
     
 
@@ -966,6 +980,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel LOGO;
     private javax.swing.JPanel barra;
     private javax.swing.JPanel cerrar;
+    private javax.swing.JLabel cerrarIcon;
     private javax.swing.JLabel cobrarIcon;
     private javax.swing.JLabel cobrarLabel;
     private javax.swing.JLabel comprasIcon2;
@@ -985,7 +1000,6 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel historialCuentasIcon;
     private javax.swing.JLabel historialCuentasLabel;
     private javax.swing.JLabel iconCorte;
-    private javax.swing.JLabel iconRegistrar;
     private javax.swing.JLabel inventarioIcon;
     private javax.swing.JLabel inventarioLabel;
     private javax.swing.JLabel jLabel1;
@@ -997,9 +1011,9 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jpCorte;
-    private javax.swing.JPanel jpRegistrar;
     private javax.swing.JPanel libro;
     private javax.swing.JPanel maxi;
+    private javax.swing.JLabel maxiIcon;
     private javax.swing.JLabel packsIcon;
     private javax.swing.JLabel packsLabel;
     private javax.swing.JLabel pagarIcon;
