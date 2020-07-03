@@ -805,6 +805,7 @@ public class Libros extends javax.swing.JFrame {
     
     
     
+    
     private void myInitComponents(){
         
 //        libro.setBackground(new java.awt.Color(51, 51, 51));
