@@ -5,17 +5,14 @@
  */
 package javaapplication19;
 
+import java.awt.Color;
+
 /**
  *
- * @author Usuario
+ * @author Alex
  */
-public class JavaApplication19 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public class Colores { 
+    public static final Color epicColor = new Color(34,180,115);
+    public static final Color gris = new Color(51,51,51);
     
 }
