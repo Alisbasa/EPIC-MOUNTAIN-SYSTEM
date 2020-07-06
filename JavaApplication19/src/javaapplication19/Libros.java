@@ -23,6 +23,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.plaf.ComboBoxUI;
 
 /**
  *
@@ -127,12 +128,10 @@ public class Libros extends javax.swing.JFrame {
         scaleImage("Facturacion",facturacionIcon,imgHeight);
         
     }
-    private String[][] countryList = {{"VENTAS", "src\\img\\us.png"},
-                                      {"INVERSIÓN", "src\\img\\in.png"},
-                                      {"CREDITO", "src\\img\\vn.png"},
-                                      {"IMPUESTOS", "src\\img\\de.png"}
-                                      
-    };
+    private String[] ingresos = {"VENTAS",
+                                      "INVERSIÓN",
+                                      "CRÉDITO",
+                                      "IMPUESTOS"};
     
     
 
@@ -178,6 +177,15 @@ public class Libros extends javax.swing.JFrame {
        
         ImageIcon scaledIcon = new ImageIcon(imgScale);
         label.setIcon(scaledIcon);
+    }
+    public ImageIcon scaleIcon(String icono,int width, int height) {
+        ImageIcon icon = new ImageIcon("src\\img\\"+ icono +".png");
+        Image img = icon.getImage();
+        Image imgScale = img.getScaledInstance(width, height,Image.SCALE_SMOOTH);
+       
+        ImageIcon scaledIcon = new ImageIcon(imgScale);
+        return scaledIcon;
+        
     }
     
     public void scaleLabel(JLabel label,int size){
@@ -268,6 +276,7 @@ public class Libros extends javax.swing.JFrame {
         libroIngresos = new PanelCurvo();
         headerLibroIngresos = new javax.swing.JPanel();
         ingresosLabel = new javax.swing.JLabel();
+        comboIngresos = new javax.swing.JComboBox<>();
         bodyLibroIngresos = new javax.swing.JPanel();
         rellenarIngresos = new javax.swing.JPanel();
         jPanel5 = new PanelCurvo();
@@ -799,17 +808,38 @@ public class Libros extends javax.swing.JFrame {
         libroIngresos.setLayout(new java.awt.BorderLayout());
 
         headerLibroIngresos.setBackground(new java.awt.Color(255, 255, 255));
+        headerLibroIngresos.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         headerLibroIngresos.setPreferredSize(new java.awt.Dimension(70, 70));
 
         ingresosLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 36)); // NOI18N
         ingresosLabel.setText("INGRESOS");
+        ingresosLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 25));
         headerLibroIngresos.add(ingresosLabel);
+
+        comboIngresos.setBackground(new java.awt.Color(255, 255, 255));
+        comboIngresos.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        comboIngresos.setForeground(new java.awt.Color(51, 51, 51));
+        comboIngresos.setModel(new javax.swing.DefaultComboBoxModel<>(ingresos));
+        comboIngresos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        comboIngresos.setPreferredSize(new java.awt.Dimension(150, 35));
+        comboIngresos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboIngresosItemStateChanged(evt);
+            }
+        });
+        comboIngresos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboIngresosActionPerformed(evt);
+            }
+        });
+        headerLibroIngresos.add(comboIngresos);
 
         libroIngresos.add(headerLibroIngresos, java.awt.BorderLayout.PAGE_START);
 
         bodyLibroIngresos.setLayout(new java.awt.BorderLayout());
 
-        rellenarIngresos.setBackground(new java.awt.Color(102, 153, 255));
+        rellenarIngresos.setBackground(new java.awt.Color(255, 255, 255));
+        rellenarIngresos.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 1, 5, 1));
         bodyLibroIngresos.add(rellenarIngresos, java.awt.BorderLayout.PAGE_START);
 
         libroIngresos.add(bodyLibroIngresos, java.awt.BorderLayout.CENTER);
@@ -836,49 +866,18 @@ public class Libros extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1820, 900));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
     
-    private JPanel rellenarVentas(){
-        JPanel rellenar =new JPanel();
-        
-        rellenar.setBackground(Color.red);
-        rellenar.add(LOGO);
-        String[] listaInventario={"inventario","Bici chingona","Bici Chingona 2","Bici Chingona 3"};
-        String[] listaPlataformas={"ML","fACEBOOK","Amazon","Shopiffy"};
-        JComboBox inventario = new JComboBox(listaInventario);
-        JComboBox plataformacb = new JComboBox(listaPlataformas);
-        JTextField monto = new JTextField("$");
-        monto.setPreferredSize(new Dimension(60, 30));
-        
-        JLabel labelchida = new JLabel();
-        labelchida.setText("holawey");
-        
-        rellenar.add(inventario);
-        rellenar.add(monto);
-        rellenar.add(plataformacb);
-        rellenar.add(labelchida);
-        
-        return rellenar;
-    }
     
     
     private void myInitComponents(){
-         CountryComboBox customCombobox = new CountryComboBox();
-        customCombobox.setPreferredSize(new Dimension(220, 50));
-        customCombobox.setEditable(true);
-        customCombobox.addItems(countryList);
         
-        ItemListener oyenteItem;
-        oyenteItem = (ItemEvent e) -> {
-            String ingreso;
-            ingreso = (String) CountryItemEditor.getItem();
-            if(ingreso.equals("VENTA")){
-                rellenarIngresos.add(rellenarVentas());
-            }
-         };
-        customCombobox.addItemListener(oyenteItem);
+        
+        comboIngresos.setUI( PropiedadesCB.createUI(rootPane));
+
          
         
-        headerLibroIngresos.add(customCombobox);
+
         
         
 
@@ -1056,6 +1055,51 @@ public class Libros extends javax.swing.JFrame {
             e.printStackTrace();       
         }
     }//GEN-LAST:event_panelHistorialCuentasMouseClicked
+
+    private void comboIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboIngresosActionPerformed
+
+        if(comboIngresos.getSelectedItem().toString().equals("VENTAS") ) {
+            
+            rellenarIngresos.removeAll();
+            rellenarIngresos.revalidate();
+            rellenarIngresos.repaint();
+            
+                
+            
+            rellenarIngresos.add(Rellenar.rellenarVentas());
+            
+        }
+        else if(comboIngresos.getSelectedItem().toString().equals("CRÉDITO")) {
+//            
+            rellenarIngresos.removeAll();
+            rellenarIngresos.revalidate();
+            rellenarIngresos.repaint();
+            
+            rellenarIngresos.add(Rellenar.rellenarCredito());            
+        }
+        else if(comboIngresos.getSelectedItem().toString().equals("INVERSIÓN")) {
+//            
+            rellenarIngresos.removeAll();
+            rellenarIngresos.revalidate();
+            rellenarIngresos.repaint();
+            
+            rellenarIngresos.add(Rellenar.rellenarInversion());            
+        }
+        else if(comboIngresos.getSelectedItem().toString().equals("IMPUESTOS")) {
+//            
+            rellenarIngresos.removeAll();
+            rellenarIngresos.revalidate();
+            rellenarIngresos.repaint();
+            
+            rellenarIngresos.add(Rellenar.rellenarImpuesto());            
+        }
+
+        
+    }//GEN-LAST:event_comboIngresosActionPerformed
+
+    private void comboIngresosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboIngresosItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboIngresosItemStateChanged
 /**/
     //
     
@@ -1108,6 +1152,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel cerrarIcon;
     private javax.swing.JLabel cobrarIcon;
     private javax.swing.JLabel cobrarLabel;
+    private javax.swing.JComboBox<String> comboIngresos;
     private javax.swing.JLabel comprasIcon2;
     private javax.swing.JLabel comprasLabel2;
     private javax.swing.JPanel corte;
