@@ -25,10 +25,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.plaf.ComboBoxUI;
 
@@ -42,7 +45,7 @@ public class Libros extends javax.swing.JFrame {
     
     
     public List<JPanel> panelesIngresos;
-    public int indice;
+    public int indice=0;
         
     public Libros() {
         initComponents();
@@ -63,9 +66,8 @@ public class Libros extends javax.swing.JFrame {
         this.setExtendedState(Libros.MAXIMIZED_BOTH);
         scaleImage("LOGO",LOGO,40);
         scaleImages(100);
-        
+        DefaultListModel modelo = new DefaultListModel();
         panelesIngresos = new ArrayList<>();
-        indice = 0;
         
         //Evento para actualizar tamano de imagenes
         getContentPane().addComponentListener(new ComponentAdapter(){
@@ -290,8 +292,9 @@ public class Libros extends javax.swing.JFrame {
         ingresosLabel = new javax.swing.JLabel();
         comboIngresos = new javax.swing.JComboBox<>();
         bodyLibroIngresos = new javax.swing.JPanel();
-        scrollIngresos = new javax.swing.JScrollPane();
         rellenarIngresos = new javax.swing.JPanel();
+        scrollIngresos = new javax.swing.JScrollPane();
+        listaIngresos = new javax.swing.JPanel();
         jPanel5 = new PanelCurvo();
         textIngresos1 = new javax.swing.JLabel();
         ingresoIcon1 = new javax.swing.JLabel();
@@ -856,11 +859,24 @@ public class Libros extends javax.swing.JFrame {
         bodyLibroIngresos.setBackground(new java.awt.Color(255, 255, 255));
         bodyLibroIngresos.setLayout(new java.awt.BorderLayout());
 
-        scrollIngresos.setBorder(null);
-
         rellenarIngresos.setBackground(new java.awt.Color(255, 255, 255));
         rellenarIngresos.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 1, 5, 1));
-        scrollIngresos.setViewportView(rellenarIngresos);
+        bodyLibroIngresos.add(rellenarIngresos, java.awt.BorderLayout.PAGE_START);
+
+        scrollIngresos.setBorder(null);
+
+        javax.swing.GroupLayout listaIngresosLayout = new javax.swing.GroupLayout(listaIngresos);
+        listaIngresos.setLayout(listaIngresosLayout);
+        listaIngresosLayout.setHorizontalGroup(
+            listaIngresosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 684, Short.MAX_VALUE)
+        );
+        listaIngresosLayout.setVerticalGroup(
+            listaIngresosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        scrollIngresos.setViewportView(listaIngresos);
 
         bodyLibroIngresos.add(scrollIngresos, java.awt.BorderLayout.CENTER);
 
@@ -1125,7 +1141,7 @@ public class Libros extends javax.swing.JFrame {
                 
             System.out.println(rellenarV.monto2);
             rellenarIngresos.add(rellenarV.rellenarVentas());
-            okBoton(rellenarV.monto, rellenarV.inventario, rellenarV.plataformacb, rellenarV.iconoOkV);
+            botonVenta(rellenarV.monto, rellenarV.inventario, rellenarV.plataformacb, rellenarV.iconoOkV);
             
             
         }
@@ -1152,7 +1168,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarIngresos.revalidate();
             rellenarIngresos.repaint();
             
-            rellenarIngresos.add(rellenarIm.rellenarImpuesto());            
+            rellenarIngresos.add(rellenarIm.rellenarImpuesto());
         }
 
         
@@ -1165,10 +1181,72 @@ public class Libros extends javax.swing.JFrame {
     private void regLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regLabelMouseClicked
         
     }//GEN-LAST:event_regLabelMouseClicked
+    
+    //Pone ingreso: venta
+    public void botonVenta(JTextField monto, JComboBox inventario, JComboBox plataforma, JLabel iconoOkV){
+        MouseListener botonV = new MouseListener() {
+            
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+            //scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            JPanel panelIngreso = new JPanel();
+            panelIngreso.setLayout(new GridLayout(1,4));
+            panelIngreso.setPreferredSize(new Dimension(700,50));
+            listaIngresos.setLayout(new BoxLayout(listaIngresos,BoxLayout.Y_AXIS));
+            
+            JLabel fecha = new JLabel();
+            fecha.setText(fechaActual());
+
+            JLabel inventarioLista = new JLabel();
+            inventarioLista.setText((String) inventario.getSelectedItem());
+
+            JLabel precio = new JLabel();
+            precio.setText(monto.getText());
+
+            JLabel icono = new JLabel();
+            icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
+            listaIngresos.add(panelIngreso);
+            listaIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+
+            panelIngreso.add(fecha);
+            panelIngreso.add(inventarioLista);
+            panelIngreso.add(precio);
+            panelIngreso.add(icono);
+
+            indice++;
+            listaIngresos.updateUI();
+        }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
         
+        iconoOkV.addMouseListener(botonV);
+    }
+    
+    
     //Para rellenar un ingreso:credito
     public void iconoOkCMouseClicked(java.awt.event.MouseEvent evt){
-        JPanel panelIngreso = new JPanel();
+        
+        /*JPanel panelIngreso = new JPanel();
         panelIngreso.setLayout(new GridLayout(1,4));
         rellenarIngresos.setLayout(new GridLayout(indice,1));
         
@@ -1185,7 +1263,7 @@ public class Libros extends javax.swing.JFrame {
         icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
         
         rellenarIngresos.add(panelIngreso);
-        panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+        panelesIngresos.add((JPanel) panelesIngresos);//Ingresa el panelVenta a la arraylist panelesInresos
         
         panelIngreso.add(fecha);
         panelIngreso.add(prestamista);
@@ -1193,7 +1271,7 @@ public class Libros extends javax.swing.JFrame {
         panelIngreso.add(icono);
         
         indice++;
-        rellenarIngresos.updateUI();
+        rellenarIngresos.updateUI();*/
     }
     
     //Para rellenar un ingreso:Inversion
@@ -1348,6 +1426,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel libro;
     private javax.swing.JPanel libroIngresos;
+    private javax.swing.JPanel listaIngresos;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel maxiIcon;
     private javax.swing.JLabel packsIcon;

@@ -148,35 +148,6 @@ public class Rellenar {
         
         return rellenarImpuesto;
     }
-    
-//    public void iconoOkVMouseClicked(java.awt.event.MouseEvent evt){
-//        JPanel panelIngreso = new JPanel();
-//        panelIngreso.setLayout(new GridLayout(1,4));
-//        Libros.rellenarIngresos.setLayout(new GridLayout(indice,1));
-//        
-//        JLabel fecha = new JLabel();
-//        fecha.setText(fechaActual());
-//        
-//        JLabel inventarioLista = new JLabel();
-//        inventarioLista.setText(Rellenar.rellenarVentas.getAccessibleContext().getAccessibleText().toString());
-//        
-//        JLabel precio = new JLabel();
-//        //precio.setText();
-//        
-//        JLabel icono = new JLabel();
-//        icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
-//        
-//        rellenarIngresos.add(panelIngreso);
-//        panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-//        
-//        panelIngreso.add(fecha);
-//        panelIngreso.add(inventarioLista);
-//        panelIngreso.add(precio);
-//        panelIngreso.add(icono);
-//        
-//        indice++;
-//        rellenarIngresos.updateUI();
-//    }
      
     
 }
