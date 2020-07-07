@@ -8,6 +8,10 @@ package javaapplication19;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import static javaapplication19.Libros.fechaActual;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -21,20 +25,31 @@ import javaapplication19.Libros;
  * @author Alex
  */
 public class Rellenar {
-    static JPanel rellenarVentas =new JPanel();
-    static JPanel rellenarInversion =new JPanel();
-    static JPanel rellenarImpuesto =new JPanel();
-    static JPanel rellenarCredito =new JPanel();
-    static JLabel iconoVentas = new JLabel();
-    static JLabel iconoCredito = new JLabel();
-    static JLabel iconoInversion = new JLabel();
-    static JLabel iconoImpuesto = new JLabel();
-    static JLabel iconoOkV = new JLabel();
-    static JLabel iconoOkC = new JLabel();
-    static JLabel iconoOkI = new JLabel();
-    static JLabel iconoOkImp = new JLabel();
+    JPanel rellenarVentas =new JPanel();
+    JPanel rellenarInversion =new JPanel();
+    JPanel rellenarImpuesto =new JPanel();
+    JPanel rellenarCredito =new JPanel();
+    JLabel iconoVentas = new JLabel();
+    JLabel iconoCredito = new JLabel();
+    JLabel iconoInversion = new JLabel();
+    JLabel iconoImpuesto = new JLabel();
+    JLabel iconoOkV = new JLabel();
+    JLabel iconoOkC = new JLabel();
+    JLabel iconoOkI = new JLabel();
+    JLabel iconoOkImp = new JLabel();
+    String monto2;
+    JTextField monto;
+    JComboBox inventario;
+    JComboBox plataformacb;
     
-     public static JPanel rellenarVentas(){
+    
+    
+    private Ventas venta;
+    
+    
+    
+    
+     public  JPanel rellenarVentas(){
         rellenarVentas.removeAll();
         
         rellenarVentas.setBackground(Color.white);
@@ -42,9 +57,18 @@ public class Rellenar {
         rellenarVentas.add(iconoVentas);
         String[] listaInventario={"inventario","Bici chingona","Bici Chingona 2","Bici Chingona 3"};
         String[] listaPlataformas={"ML","fACEBOOK","Amazon","Shopiffy"};
-        JComboBox inventario = new JComboBox(listaInventario);
-        JComboBox plataformacb = new JComboBox(listaPlataformas);
-        JTextField monto = new JTextField("$");
+       
+        inventario = new JComboBox(listaInventario);
+       
+        plataformacb = new JComboBox(listaPlataformas);
+        
+        monto = new JTextField("$");
+        
+        
+        
+        
+        
+//      
         monto.setPreferredSize(new Dimension(60, 30));
         Iconos.scaleImage("ok", iconoOkV, 30);
         
@@ -54,10 +78,11 @@ public class Rellenar {
         rellenarVentas.add(monto);
         rellenarVentas.add(plataformacb);
         rellenarVentas.add(iconoOkV);
+        monto2 = monto.getText();
         
         return rellenarVentas;
     }
-    public static JPanel rellenarCredito(){
+    public  JPanel rellenarCredito(){
         rellenarCredito.removeAll();
         
         rellenarCredito.setBackground(Color.white);
@@ -80,7 +105,7 @@ public class Rellenar {
         return rellenarCredito;
     } 
 
-    public static JPanel rellenarInversion(){
+    public  JPanel rellenarInversion(){
         rellenarInversion.removeAll();
         
         rellenarInversion.setBackground(Color.white);
@@ -102,7 +127,7 @@ public class Rellenar {
         return rellenarInversion;
     } 
     
-    public static JPanel rellenarImpuesto(){
+    public  JPanel rellenarImpuesto(){
         rellenarImpuesto.removeAll();
         
         rellenarImpuesto.setBackground(Color.white);
@@ -124,34 +149,34 @@ public class Rellenar {
         return rellenarImpuesto;
     }
     
-    public void iconoOkVMouseClicked(java.awt.event.MouseEvent evt){
-        JPanel panelIngreso = new JPanel();
-        panelIngreso.setLayout(new GridLayout(1,4));
-        Libros.rellenarIngresos.setLayout(new GridLayout(indice,1));
-        
-        JLabel fecha = new JLabel();
-        fecha.setText(fechaActual());
-        
-        JLabel inventarioLista = new JLabel();
-        inventarioLista.setText(Rellenar.rellenarVentas.getAccessibleContext().getAccessibleText().toString());
-        
-        JLabel precio = new JLabel();
-        //precio.setText();
-        
-        JLabel icono = new JLabel();
-        icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
-        
-        rellenarIngresos.add(panelIngreso);
-        panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-        
-        panelIngreso.add(fecha);
-        panelIngreso.add(inventarioLista);
-        panelIngreso.add(precio);
-        panelIngreso.add(icono);
-        
-        indice++;
-        rellenarIngresos.updateUI();
-    }
+//    public void iconoOkVMouseClicked(java.awt.event.MouseEvent evt){
+//        JPanel panelIngreso = new JPanel();
+//        panelIngreso.setLayout(new GridLayout(1,4));
+//        Libros.rellenarIngresos.setLayout(new GridLayout(indice,1));
+//        
+//        JLabel fecha = new JLabel();
+//        fecha.setText(fechaActual());
+//        
+//        JLabel inventarioLista = new JLabel();
+//        inventarioLista.setText(Rellenar.rellenarVentas.getAccessibleContext().getAccessibleText().toString());
+//        
+//        JLabel precio = new JLabel();
+//        //precio.setText();
+//        
+//        JLabel icono = new JLabel();
+//        icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
+//        
+//        rellenarIngresos.add(panelIngreso);
+//        panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+//        
+//        panelIngreso.add(fecha);
+//        panelIngreso.add(inventarioLista);
+//        panelIngreso.add(precio);
+//        panelIngreso.add(icono);
+//        
+//        indice++;
+//        rellenarIngresos.updateUI();
+//    }
      
     
 }

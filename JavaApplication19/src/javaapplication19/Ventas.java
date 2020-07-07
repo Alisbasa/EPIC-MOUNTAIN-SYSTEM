@@ -8,6 +8,8 @@ package javaapplication19;
 import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 /**
  *
@@ -18,14 +20,15 @@ public class Ventas {
     private ImageIcon icon = new ImageIcon("src\\img\\Ventas.png");
     private double precio;
     private String plataforma;
-    private String cliente;
-    Ventas(String inventario, double precio, String plataforma, String cliente){
+    
+    Ventas(String inventario, double precio, String plataforma){
         this.inventario =inventario;
         this.precio = precio;
         this.plataforma = plataforma;
-        this.cliente = cliente;
-        
+                
     }
+
+    
 
     public String getInventario() {
         return inventario;
@@ -43,9 +46,6 @@ public class Ventas {
         return plataforma;
     }
 
-    public String getCliente() {
-        return cliente;
-    }
 
     public void setInventario(String inventario) {
         this.inventario = inventario;
@@ -58,10 +58,5 @@ public class Ventas {
     public void setPlataforma(String plataforma) {
         this.plataforma = plataforma;
     }
-
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
-    }
-    
     
 }

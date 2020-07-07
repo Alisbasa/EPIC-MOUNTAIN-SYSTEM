@@ -18,6 +18,8 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,6 +39,7 @@ import javax.swing.plaf.ComboBoxUI;
 public class Libros extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
+    
     
     public List<JPanel> panelesIngresos;
     public int indice;
@@ -1074,10 +1077,45 @@ public class Libros extends javax.swing.JFrame {
             e.printStackTrace();       
         }
     }//GEN-LAST:event_panelHistorialCuentasMouseClicked
+    public void okBoton(JTextField monto, JComboBox inventario, JComboBox plataforma, JLabel label){
+        MouseListener botonOk = new MouseListener() {
+            
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            System.out.println(monto.getText());
+            System.out.println( inventario.getSelectedItem().toString());
+            System.out.println(plataforma.getSelectedItem().toString());
+        }
 
+        @Override
+        public void mousePressed(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            
+        }
+        
+    };
+        label.addMouseListener(botonOk);
+    }
+    
+    
+    
     
     private void comboIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboIngresosActionPerformed
-
+        Rellenar rellenarV = new Rellenar();
         if(comboIngresos.getSelectedItem().toString().equals("VENTAS") ) {
             
             rellenarIngresos.removeAll();
@@ -1085,33 +1123,36 @@ public class Libros extends javax.swing.JFrame {
             rellenarIngresos.repaint();
             
                 
+            System.out.println(rellenarV.monto2);
+            rellenarIngresos.add(rellenarV.rellenarVentas());
+            okBoton(rellenarV.monto, rellenarV.inventario, rellenarV.plataformacb, rellenarV.iconoOkV);
             
-            rellenarIngresos.add(Rellenar.rellenarVentas());
             
         }
         else if(comboIngresos.getSelectedItem().toString().equals("CRÉDITO")) {
-//            
+        Rellenar rellenarC = new Rellenar();
             rellenarIngresos.removeAll();
             rellenarIngresos.revalidate();
             rellenarIngresos.repaint();
             
-            rellenarIngresos.add(Rellenar.rellenarCredito());            
+            rellenarIngresos.add(rellenarC.rellenarCredito());            
         }
         else if(comboIngresos.getSelectedItem().toString().equals("INVERSIÓN")) {
-//            
+        Rellenar rellenarI = new Rellenar();
             rellenarIngresos.removeAll();
             rellenarIngresos.revalidate();
             rellenarIngresos.repaint();
             
-            rellenarIngresos.add(Rellenar.rellenarInversion());            
+            rellenarIngresos.add(rellenarI.rellenarInversion());            
         }
         else if(comboIngresos.getSelectedItem().toString().equals("IMPUESTOS")) {
-//            
+            Rellenar rellenarIm = new Rellenar();
+
             rellenarIngresos.removeAll();
             rellenarIngresos.revalidate();
             rellenarIngresos.repaint();
             
-            rellenarIngresos.add(Rellenar.rellenarImpuesto());            
+            rellenarIngresos.add(rellenarIm.rellenarImpuesto());            
         }
 
         
@@ -1135,7 +1176,7 @@ public class Libros extends javax.swing.JFrame {
         fecha.setText(fechaActual());
         
         JLabel prestamista = new JLabel();
-        prestamista.setText(Rellenar.rellenarVentas.getAccessibleContext().getAccessibleText().toString());
+//        prestamista.setText(Rellenar.rellenarVentas.getAccessibleContext().getAccessibleText().toString());
         
         JLabel precio = new JLabel();
         //precio.setText();
@@ -1165,7 +1206,7 @@ public class Libros extends javax.swing.JFrame {
         fecha.setText(fechaActual());
         
         JLabel inversionista = new JLabel();
-        inversionista.setText(Rellenar.rellenarVentas.getAccessibleContext().getAccessibleText().toString());
+//        inversionista.setText(Rellenar.rellenarVentas.getAccessibleContext().getAccessibleText().toString());
         
         JLabel precio = new JLabel();
         //precio.setText();
