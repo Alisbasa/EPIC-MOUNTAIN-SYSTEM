@@ -865,6 +865,8 @@ public class Libros extends javax.swing.JFrame {
 
         scrollIngresos.setBorder(null);
 
+        listaIngresos.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout listaIngresosLayout = new javax.swing.GroupLayout(listaIngresos);
         listaIngresos.setLayout(listaIngresosLayout);
         listaIngresosLayout.setHorizontalGroup(
@@ -1093,7 +1095,7 @@ public class Libros extends javax.swing.JFrame {
             e.printStackTrace();       
         }
     }//GEN-LAST:event_panelHistorialCuentasMouseClicked
-    public void okBoton(JTextField monto, JComboBox inventario, JComboBox plataforma, JLabel label){
+   /* public void okBoton(JTextField monto, JComboBox inventario, JComboBox plataforma, JLabel label){
         MouseListener botonOk = new MouseListener() {
             
         @Override
@@ -1126,7 +1128,7 @@ public class Libros extends javax.swing.JFrame {
     };
         label.addMouseListener(botonOk);
     }
-    
+    */
     
     
     
@@ -1151,7 +1153,8 @@ public class Libros extends javax.swing.JFrame {
             rellenarIngresos.revalidate();
             rellenarIngresos.repaint();
             
-            rellenarIngresos.add(rellenarC.rellenarCredito());            
+            rellenarIngresos.add(rellenarC.rellenarCredito());
+            botonCredito(rellenarC.inversor,rellenarC.montoC,rellenarC.iconoOkC);            
         }
         else if(comboIngresos.getSelectedItem().toString().equals("INVERSIÓN")) {
         Rellenar rellenarI = new Rellenar();
@@ -1191,17 +1194,22 @@ public class Libros extends javax.swing.JFrame {
             
             //scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             JPanel panelIngreso = new JPanel();
+            panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelIngreso.setLayout(new GridLayout(1,4));
+            panelIngreso.setBackground(Color.white);
             panelIngreso.setPreferredSize(new Dimension(700,50));
             listaIngresos.setLayout(new BoxLayout(listaIngresos,BoxLayout.Y_AXIS));
             
             JLabel fecha = new JLabel();
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             fecha.setText(fechaActual());
 
             JLabel inventarioLista = new JLabel();
+            inventarioLista.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             inventarioLista.setText((String) inventario.getSelectedItem());
 
             JLabel precio = new JLabel();
+            precio.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             precio.setText(monto.getText());
 
             JLabel icono = new JLabel();
@@ -1244,95 +1252,70 @@ public class Libros extends javax.swing.JFrame {
     
     
     //Para rellenar un ingreso:credito
-    public void iconoOkCMouseClicked(java.awt.event.MouseEvent evt){
+    public void botonCredito(JTextField montoC, JTextField inversor, JLabel iconoOkC){
+        MouseListener botonC = new MouseListener() {
+            
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+            //scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            JPanel panelIngreso = new JPanel();
+            panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            panelIngreso.setLayout(new GridLayout(1,4));
+            panelIngreso.setBackground(Color.white);
+            panelIngreso.setPreferredSize(new Dimension(700,50));
+            listaIngresos.setLayout(new BoxLayout(listaIngresos,BoxLayout.Y_AXIS));
+            
+            JLabel fecha = new JLabel();
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            fecha.setText(fechaActual());
+
+            JLabel inversionista = new JLabel();
+            inversionista.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            inversionista.setText(inversor.getText());
+
+            JLabel precio = new JLabel();
+            precio.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            precio.setText(montoC.getText());
+
+            JLabel icono = new JLabel();
+            icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
+            listaIngresos.add(panelIngreso);
+            listaIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+
+            panelIngreso.add(fecha);
+            panelIngreso.add(inversionista);
+            panelIngreso.add(precio);
+            panelIngreso.add(icono);
+
+            indice++;
+            listaIngresos.updateUI();
+        }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
         
-        /*JPanel panelIngreso = new JPanel();
-        panelIngreso.setLayout(new GridLayout(1,4));
-        rellenarIngresos.setLayout(new GridLayout(indice,1));
-        
-        JLabel fecha = new JLabel();
-        fecha.setText(fechaActual());
-        
-        JLabel prestamista = new JLabel();
-//        prestamista.setText(Rellenar.rellenarVentas.getAccessibleContext().getAccessibleText().toString());
-        
-        JLabel precio = new JLabel();
-        //precio.setText();
-        
-        JLabel icono = new JLabel();
-        icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
-        
-        rellenarIngresos.add(panelIngreso);
-        panelesIngresos.add((JPanel) panelesIngresos);//Ingresa el panelVenta a la arraylist panelesInresos
-        
-        panelIngreso.add(fecha);
-        panelIngreso.add(prestamista);
-        panelIngreso.add(precio);
-        panelIngreso.add(icono);
-        
-        indice++;
-        rellenarIngresos.updateUI();*/
+        iconoOkC.addMouseListener(botonC);
     }
     
-    //Para rellenar un ingreso:Inversion
-    public void iconoOkIMouseClicked(java.awt.event.MouseEvent evt){
-        JPanel panelIngreso = new JPanel();
-        panelIngreso.setLayout(new GridLayout(1,4));
-        rellenarIngresos.setLayout(new GridLayout(indice,1));
-        
-        JLabel fecha = new JLabel();
-        fecha.setText(fechaActual());
-        
-        JLabel inversionista = new JLabel();
-//        inversionista.setText(Rellenar.rellenarVentas.getAccessibleContext().getAccessibleText().toString());
-        
-        JLabel precio = new JLabel();
-        //precio.setText();
-        
-        JLabel icono = new JLabel();
-        icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
-        
-        rellenarIngresos.add(panelIngreso);
-        panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-        
-        panelIngreso.add(fecha);
-        panelIngreso.add(inversionista);
-        panelIngreso.add(precio);
-        panelIngreso.add(icono);
-        
-        indice++;
-        rellenarIngresos.updateUI();
-    }
-    
-    //Para rellenar un ingreso:Impuesto
-    public void iconoOkImpMouseClicked(java.awt.event.MouseEvent evt){
-        JPanel panelIngreso = new JPanel();
-        panelIngreso.setLayout(new GridLayout(1,4));
-        rellenarIngresos.setLayout(new GridLayout(indice,1));
-        
-        JLabel fecha = new JLabel();
-        fecha.setText(fechaActual());
-        
-        JLabel impuesto = new JLabel();
-        //impuesto.setText();
-        
-        JLabel precio = new JLabel();
-        //precio.setText();
-        
-        JLabel icono = new JLabel();
-        icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
-        
-        rellenarIngresos.add(panelIngreso);
-        panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-        
-        panelIngreso.add(fecha);
-        panelIngreso.add(impuesto);
-        panelIngreso.add(precio);
-        panelIngreso.add(icono);
-        
-        indice++;
-        rellenarIngresos.updateUI();
-    }
 
     public static String fechaActual(){
         java.util.Date fecha = new Date();

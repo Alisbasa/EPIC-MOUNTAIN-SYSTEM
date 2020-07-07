@@ -41,6 +41,8 @@ public class Rellenar {
     JTextField monto;
     JComboBox inventario;
     JComboBox plataformacb;
+    JTextField inversor;
+    JTextField montoC;
     
     
     
@@ -82,6 +84,8 @@ public class Rellenar {
         
         return rellenarVentas;
     }
+     
+     
     public  JPanel rellenarCredito(){
         rellenarCredito.removeAll();
         
@@ -90,15 +94,15 @@ public class Rellenar {
         rellenarCredito.add(iconoCredito);
         Iconos.scaleImage("ok", iconoOkC, 30);
         
-        JTextField inversor = new JTextField("Prestamista");
-        JTextField monto = new JTextField("$");
-        monto.setPreferredSize(new Dimension(60, 30));
+        inversor = new JTextField("Prestamista");
+        montoC = new JTextField("$");
+        montoC.setPreferredSize(new Dimension(60, 30));
         inversor.setPreferredSize(new Dimension(150, 30));      
         
         
         
         rellenarCredito.add(inversor);
-        rellenarCredito.add(monto);
+        rellenarCredito.add(montoC);
         
         rellenarCredito.add(iconoOkC);
         
