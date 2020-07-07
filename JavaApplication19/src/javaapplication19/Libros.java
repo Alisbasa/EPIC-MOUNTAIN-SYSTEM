@@ -11,12 +11,17 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -33,9 +38,9 @@ public class Libros extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
     
-    /**
-     * Creates new form Libros
-     */
+    public List<JPanel> panelesIngresos;
+    public int indice;
+        
     public Libros() {
         initComponents();
         myInitComponents();
@@ -55,6 +60,10 @@ public class Libros extends javax.swing.JFrame {
         this.setExtendedState(Libros.MAXIMIZED_BOTH);
         scaleImage("LOGO",LOGO,40);
         scaleImages(100);
+        
+        panelesIngresos = new ArrayList<>();
+        indice = 0;
+        
         //Evento para actualizar tamano de imagenes
         getContentPane().addComponentListener(new ComponentAdapter(){
             public void componentResized(ComponentEvent e){
@@ -278,6 +287,7 @@ public class Libros extends javax.swing.JFrame {
         ingresosLabel = new javax.swing.JLabel();
         comboIngresos = new javax.swing.JComboBox<>();
         bodyLibroIngresos = new javax.swing.JPanel();
+        scrollIngresos = new javax.swing.JScrollPane();
         rellenarIngresos = new javax.swing.JPanel();
         jPanel5 = new PanelCurvo();
         textIngresos1 = new javax.swing.JLabel();
@@ -729,6 +739,11 @@ public class Libros extends javax.swing.JFrame {
         regLabel.setForeground(new java.awt.Color(255, 255, 255));
         regLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         regLabel.setText("REGISTRAR");
+        regLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regLabelMouseClicked(evt);
+            }
+        });
         corte1.add(regLabel, java.awt.BorderLayout.CENTER);
 
         panelRegistrar.add(corte1, java.awt.BorderLayout.CENTER);
@@ -816,7 +831,6 @@ public class Libros extends javax.swing.JFrame {
         ingresosLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 25));
         headerLibroIngresos.add(ingresosLabel);
 
-        comboIngresos.setBackground(new java.awt.Color(255, 255, 255));
         comboIngresos.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         comboIngresos.setForeground(new java.awt.Color(51, 51, 51));
         comboIngresos.setModel(new javax.swing.DefaultComboBoxModel<>(ingresos));
@@ -836,11 +850,16 @@ public class Libros extends javax.swing.JFrame {
 
         libroIngresos.add(headerLibroIngresos, java.awt.BorderLayout.PAGE_START);
 
+        bodyLibroIngresos.setBackground(new java.awt.Color(255, 255, 255));
         bodyLibroIngresos.setLayout(new java.awt.BorderLayout());
+
+        scrollIngresos.setBorder(null);
 
         rellenarIngresos.setBackground(new java.awt.Color(255, 255, 255));
         rellenarIngresos.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 1, 5, 1));
-        bodyLibroIngresos.add(rellenarIngresos, java.awt.BorderLayout.PAGE_START);
+        scrollIngresos.setViewportView(rellenarIngresos);
+
+        bodyLibroIngresos.add(scrollIngresos, java.awt.BorderLayout.CENTER);
 
         libroIngresos.add(bodyLibroIngresos, java.awt.BorderLayout.CENTER);
 
@@ -1056,6 +1075,7 @@ public class Libros extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_panelHistorialCuentasMouseClicked
 
+    
     private void comboIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboIngresosActionPerformed
 
         if(comboIngresos.getSelectedItem().toString().equals("VENTAS") ) {
@@ -1098,9 +1118,110 @@ public class Libros extends javax.swing.JFrame {
     }//GEN-LAST:event_comboIngresosActionPerformed
 
     private void comboIngresosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboIngresosItemStateChanged
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_comboIngresosItemStateChanged
-/**/
+
+    private void regLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regLabelMouseClicked
+        
+    }//GEN-LAST:event_regLabelMouseClicked
+        
+    //Para rellenar un ingreso:credito
+    public void iconoOkCMouseClicked(java.awt.event.MouseEvent evt){
+        JPanel panelIngreso = new JPanel();
+        panelIngreso.setLayout(new GridLayout(1,4));
+        rellenarIngresos.setLayout(new GridLayout(indice,1));
+        
+        JLabel fecha = new JLabel();
+        fecha.setText(fechaActual());
+        
+        JLabel prestamista = new JLabel();
+        prestamista.setText(Rellenar.rellenarVentas.getAccessibleContext().getAccessibleText().toString());
+        
+        JLabel precio = new JLabel();
+        //precio.setText();
+        
+        JLabel icono = new JLabel();
+        icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
+        
+        rellenarIngresos.add(panelIngreso);
+        panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+        
+        panelIngreso.add(fecha);
+        panelIngreso.add(prestamista);
+        panelIngreso.add(precio);
+        panelIngreso.add(icono);
+        
+        indice++;
+        rellenarIngresos.updateUI();
+    }
+    
+    //Para rellenar un ingreso:Inversion
+    public void iconoOkIMouseClicked(java.awt.event.MouseEvent evt){
+        JPanel panelIngreso = new JPanel();
+        panelIngreso.setLayout(new GridLayout(1,4));
+        rellenarIngresos.setLayout(new GridLayout(indice,1));
+        
+        JLabel fecha = new JLabel();
+        fecha.setText(fechaActual());
+        
+        JLabel inversionista = new JLabel();
+        inversionista.setText(Rellenar.rellenarVentas.getAccessibleContext().getAccessibleText().toString());
+        
+        JLabel precio = new JLabel();
+        //precio.setText();
+        
+        JLabel icono = new JLabel();
+        icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
+        
+        rellenarIngresos.add(panelIngreso);
+        panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+        
+        panelIngreso.add(fecha);
+        panelIngreso.add(inversionista);
+        panelIngreso.add(precio);
+        panelIngreso.add(icono);
+        
+        indice++;
+        rellenarIngresos.updateUI();
+    }
+    
+    //Para rellenar un ingreso:Impuesto
+    public void iconoOkImpMouseClicked(java.awt.event.MouseEvent evt){
+        JPanel panelIngreso = new JPanel();
+        panelIngreso.setLayout(new GridLayout(1,4));
+        rellenarIngresos.setLayout(new GridLayout(indice,1));
+        
+        JLabel fecha = new JLabel();
+        fecha.setText(fechaActual());
+        
+        JLabel impuesto = new JLabel();
+        //impuesto.setText();
+        
+        JLabel precio = new JLabel();
+        //precio.setText();
+        
+        JLabel icono = new JLabel();
+        icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
+        
+        rellenarIngresos.add(panelIngreso);
+        panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+        
+        panelIngreso.add(fecha);
+        panelIngreso.add(impuesto);
+        panelIngreso.add(precio);
+        panelIngreso.add(icono);
+        
+        indice++;
+        rellenarIngresos.updateUI();
+    }
+
+    public static String fechaActual(){
+        java.util.Date fecha = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM");
+        return formatoFecha.format(fecha);
+    }
+    
+    /**/
     //
     
 
@@ -1218,6 +1339,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel provedoresLabel;
     private javax.swing.JLabel regLabel;
     private javax.swing.JPanel rellenarIngresos;
+    private javax.swing.JScrollPane scrollIngresos;
     private javax.swing.JLabel suministrosIcon;
     private javax.swing.JLabel suministrosLabel;
     private javax.swing.JLabel textIngresos1;
