@@ -44,7 +44,7 @@ public class rellenarIngresos {
             panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelIngreso.setLayout(new GridLayout(1,4));
             panelIngreso.setBackground(Color.white);
-            panelIngreso.setMaximumSize(new Dimension(600,60));
+            panelIngreso.setMaximumSize(new Dimension(600,40));
             panelIngreso.setPreferredSize(new Dimension(600,100));;
             
             JLabel fecha = new JLabel();
@@ -60,7 +60,7 @@ public class rellenarIngresos {
             precio.setText(monto.getText());
 
             JLabel icono = new JLabel();
-            Iconos.scaleImage("Ventas", icono, 50);
+            Iconos.scaleImage("Ventas", icono, 30);
             listaIngresos.add(panelIngreso);
             panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -109,7 +109,7 @@ public class rellenarIngresos {
             panelIngresoC.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelIngresoC.setLayout(new GridLayout(1,4));
             panelIngresoC.setBackground(Color.white);
-            panelIngresoC.setMaximumSize(new Dimension(600,60));
+            panelIngresoC.setMaximumSize(new Dimension(600,40));
             panelIngresoC.setPreferredSize(new Dimension(600,100));;
             
             JLabel fecha = new JLabel();
@@ -125,7 +125,7 @@ public class rellenarIngresos {
             precio.setText(montoC.getText());
 
             JLabel icono = new JLabel();
-            Iconos.scaleImage("Credito", icono, 50);
+            Iconos.scaleImage("Credito", icono, 30);
             listaIngresos.add(panelIngresoC);
             panelesIngresos.add(panelIngresoC);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -174,7 +174,7 @@ public class rellenarIngresos {
             panelIngresoI.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelIngresoI.setLayout(new GridLayout(1,4));
             panelIngresoI.setBackground(Color.white);
-            panelIngresoI.setMaximumSize(new Dimension(600,60));
+            panelIngresoI.setMaximumSize(new Dimension(600,40));
             panelIngresoI.setPreferredSize(new Dimension(600,100));;
             
             JLabel fecha = new JLabel();
@@ -190,7 +190,7 @@ public class rellenarIngresos {
             precioI.setText(montoI.getText());
 
             JLabel icono = new JLabel();
-            Iconos.scaleImage("Inversion", icono, 50);
+            Iconos.scaleImage("Inversion", icono, 30);
             listaIngresos.add(panelIngresoI);
             panelesIngresos.add(panelIngresoI);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -239,7 +239,7 @@ public class rellenarIngresos {
             panelIngresoImp.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelIngresoImp.setLayout(new GridLayout(1,4));
             panelIngresoImp.setBackground(Color.white);
-            panelIngresoImp.setMaximumSize(new Dimension(600,60));
+            panelIngresoImp.setMaximumSize(new Dimension(600,40));
             panelIngresoImp.setPreferredSize(new Dimension(600,100));;
             
             JLabel fecha = new JLabel();
@@ -255,7 +255,7 @@ public class rellenarIngresos {
             montoImpuesto.setText(montoImp.getText());
 
             JLabel icono = new JLabel();
-            Iconos.scaleImage("Impuesto", icono, 50);
+            Iconos.scaleImage("Impuesto", icono, 30);
             listaIngresos.add(panelIngresoImp);
             panelesIngresos.add(panelIngresoImp);//Ingresa el panelVenta a la arraylist panelesInresos
 

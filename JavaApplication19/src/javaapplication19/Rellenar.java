@@ -87,7 +87,7 @@ public class Rellenar {
         rellenarCredito.removeAll();
         
         rellenarCredito.setBackground(Color.white);
-        Iconos.scaleImage("Ventas", iconoCredito, 40);
+        Iconos.scaleImage("Credito", iconoCredito, 40);
         rellenarCredito.add(iconoCredito);
         Iconos.scaleImage("ok", iconoOkC, 30);
         
@@ -110,7 +110,7 @@ public class Rellenar {
         rellenarInversion.removeAll();
         
         rellenarInversion.setBackground(Color.white);
-        Iconos.scaleImage("Ventas", iconoInversion, 40);
+        Iconos.scaleImage("Inversion", iconoInversion, 40);
         rellenarInversion.add(iconoInversion);
         Iconos.scaleImage("ok", iconoOkI, 30);
         inversorI = new JTextField("Inversor");
@@ -132,7 +132,7 @@ public class Rellenar {
         rellenarImpuesto.removeAll();
         
         rellenarImpuesto.setBackground(Color.white);
-        Iconos.scaleImage("Ventas", iconoImpuesto, 40);
+        Iconos.scaleImage("Impuesto", iconoImpuesto, 40);
         rellenarImpuesto.add(iconoImpuesto);
         Iconos.scaleImage("ok", iconoOkImp, 30);
         impuesto = new JTextField("Impuesto");
