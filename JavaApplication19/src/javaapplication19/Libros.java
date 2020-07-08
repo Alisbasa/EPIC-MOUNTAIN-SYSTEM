@@ -838,6 +838,7 @@ public class Libros extends javax.swing.JFrame {
         ingresosLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 25));
         headerLibroIngresos.add(ingresosLabel);
 
+        comboIngresos.setBackground(new java.awt.Color(255, 255, 255));
         comboIngresos.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         comboIngresos.setForeground(new java.awt.Color(51, 51, 51));
         comboIngresos.setModel(new javax.swing.DefaultComboBoxModel<>(ingresos));
@@ -867,19 +868,9 @@ public class Libros extends javax.swing.JFrame {
         scrollIngresos.setBorder(null);
 
         listaIngresos.setBackground(new java.awt.Color(255, 255, 255));
-        listaIngresos.setBorder(javax.swing.BorderFactory.createEmptyBorder(30, 30, 30, 30));
-
-        javax.swing.GroupLayout listaIngresosLayout = new javax.swing.GroupLayout(listaIngresos);
-        listaIngresos.setLayout(listaIngresosLayout);
-        listaIngresosLayout.setHorizontalGroup(
-            listaIngresosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 684, Short.MAX_VALUE)
-        );
-        listaIngresosLayout.setVerticalGroup(
-            listaIngresosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
-        );
-
+        listaIngresos.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        listaIngresos.setAlignmentY(TOP_ALIGNMENT);
+        listaIngresos.setLayout(new javax.swing.BoxLayout(listaIngresos, javax.swing.BoxLayout.Y_AXIS));
         scrollIngresos.setViewportView(listaIngresos);
 
         bodyLibroIngresos.add(scrollIngresos, java.awt.BorderLayout.CENTER);
@@ -1201,8 +1192,11 @@ public class Libros extends javax.swing.JFrame {
             panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelIngreso.setLayout(new GridLayout(1,4));
             panelIngreso.setBackground(Color.white);
-            panelIngreso.setPreferredSize(new Dimension(600,50));
-            listaIngresos.setLayout(new BoxLayout(listaIngresos,BoxLayout.Y_AXIS));
+            panelIngreso.setMaximumSize(new Dimension(600,60));
+            panelIngreso.setPreferredSize(new Dimension(600,100));
+           
+           
+            
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
@@ -1268,7 +1262,7 @@ public class Libros extends javax.swing.JFrame {
             panelIngresoC.setLayout(new GridLayout(1,4));
             panelIngresoC.setBackground(Color.white);
             panelIngresoC.setPreferredSize(new Dimension(700,50));
-            listaIngresos.setLayout(new BoxLayout(listaIngresos,BoxLayout.Y_AXIS));
+            
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
@@ -1333,7 +1327,7 @@ public class Libros extends javax.swing.JFrame {
             panelIngresoI.setLayout(new GridLayout(1,4));
             panelIngresoI.setBackground(Color.white);
             panelIngresoI.setPreferredSize(new Dimension(700,50));
-            listaIngresos.setLayout(new BoxLayout(listaIngresos,BoxLayout.Y_AXIS));
+            
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
