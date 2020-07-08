@@ -125,7 +125,7 @@ public class rellenarIngresos {
             precio.setText(montoC.getText());
 
             JLabel icono = new JLabel();
-            icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
+            Iconos.scaleImage("Credito", icono, 50);
             listaIngresos.add(panelIngresoC);
             panelesIngresos.add(panelIngresoC);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -190,7 +190,7 @@ public class rellenarIngresos {
             precioI.setText(montoI.getText());
 
             JLabel icono = new JLabel();
-            icono.setIcon(new ImageIcon("src\\img\\Ventas.png"));
+            Iconos.scaleImage("Inversion", icono, 50);
             listaIngresos.add(panelIngresoI);
             panelesIngresos.add(panelIngresoI);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -255,7 +255,7 @@ public class rellenarIngresos {
             montoImpuesto.setText(montoImp.getText());
 
             JLabel icono = new JLabel();
-            icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
+            Iconos.scaleImage("Impuesto", icono, 50);
             listaIngresos.add(panelIngresoImp);
             panelesIngresos.add(panelIngresoImp);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -298,5 +298,4 @@ public class rellenarIngresos {
         return formatoFecha.format(fecha);
     }
 
-    
 }
