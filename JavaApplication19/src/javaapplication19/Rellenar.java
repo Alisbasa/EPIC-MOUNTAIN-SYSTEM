@@ -43,6 +43,10 @@ public class Rellenar {
     JComboBox plataformacb;
     JTextField inversor;
     JTextField montoC;
+    JTextField montoI;
+    JTextField inversorI;
+    JTextField impuesto;
+    JTextField montoImp;
     
     
     
@@ -116,15 +120,15 @@ public class Rellenar {
         Iconos.scaleImage("Ventas", iconoInversion, 40);
         rellenarInversion.add(iconoInversion);
         Iconos.scaleImage("ok", iconoOkI, 30);
-        JTextField inversor = new JTextField("Inversor");
-        JTextField monto = new JTextField("$");
-        monto.setPreferredSize(new Dimension(60, 30));
-        inversor.setPreferredSize(new Dimension(150, 30));      
+        inversorI = new JTextField("Inversor");
+        montoI = new JTextField("$");
+        montoI.setPreferredSize(new Dimension(60, 30));
+        inversorI.setPreferredSize(new Dimension(150, 30));      
         
         
         
-        rellenarInversion.add(inversor);
-        rellenarInversion.add(monto);
+        rellenarInversion.add(inversorI);
+        rellenarInversion.add(montoI);
         
         rellenarInversion.add(iconoOkI);
         
@@ -138,15 +142,15 @@ public class Rellenar {
         Iconos.scaleImage("Ventas", iconoImpuesto, 40);
         rellenarImpuesto.add(iconoImpuesto);
         Iconos.scaleImage("ok", iconoOkImp, 30);
-        JTextField inversor = new JTextField("Impuesto");
-        JTextField monto = new JTextField("$");
-        monto.setPreferredSize(new Dimension(60, 30));
-        inversor.setPreferredSize(new Dimension(150, 30));      
+        impuesto = new JTextField("Impuesto");
+        montoImp = new JTextField("$");
+        montoImp.setPreferredSize(new Dimension(60, 30));
+        impuesto.setPreferredSize(new Dimension(150, 30));      
         
         
         
-        rellenarImpuesto.add(inversor);
-        rellenarImpuesto.add(monto);
+        rellenarImpuesto.add(impuesto);
+        rellenarImpuesto.add(montoImp);
         
         rellenarImpuesto.add(iconoOkImp);
         

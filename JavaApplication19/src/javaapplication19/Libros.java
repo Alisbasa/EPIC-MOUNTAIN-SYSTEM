@@ -13,6 +13,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.PopupMenu;
 import java.awt.Toolkit;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
@@ -1162,7 +1163,8 @@ public class Libros extends javax.swing.JFrame {
             rellenarIngresos.revalidate();
             rellenarIngresos.repaint();
             
-            rellenarIngresos.add(rellenarI.rellenarInversion());            
+            rellenarIngresos.add(rellenarI.rellenarInversion());
+            botonInversion(rellenarI.montoI,rellenarI.inversorI,rellenarI.iconoOkI);
         }
         else if(comboIngresos.getSelectedItem().toString().equals("IMPUESTOS")) {
             Rellenar rellenarIm = new Rellenar();
@@ -1172,6 +1174,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarIngresos.repaint();
             
             rellenarIngresos.add(rellenarIm.rellenarImpuesto());
+            botonImpuesto(rellenarIm.impuesto,rellenarIm.montoImp,rellenarIm.iconoOkImp);
         }
 
         
@@ -1215,7 +1218,7 @@ public class Libros extends javax.swing.JFrame {
             JLabel icono = new JLabel();
             icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
             listaIngresos.add(panelIngreso);
-            listaIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+            panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
             panelIngreso.add(fecha);
             panelIngreso.add(inventarioLista);
@@ -1259,20 +1262,20 @@ public class Libros extends javax.swing.JFrame {
         public void mouseClicked(MouseEvent e) {
             
             //scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            JPanel panelIngreso = new JPanel();
-            panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
-            panelIngreso.setLayout(new GridLayout(1,4));
-            panelIngreso.setBackground(Color.white);
-            panelIngreso.setPreferredSize(new Dimension(700,50));
+            JPanel panelIngresoC = new JPanel();
+            panelIngresoC.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            panelIngresoC.setLayout(new GridLayout(1,4));
+            panelIngresoC.setBackground(Color.white);
+            panelIngresoC.setPreferredSize(new Dimension(700,50));
             listaIngresos.setLayout(new BoxLayout(listaIngresos,BoxLayout.Y_AXIS));
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             fecha.setText(fechaActual());
 
-            JLabel inversionista = new JLabel();
-            inversionista.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
-            inversionista.setText(inversor.getText());
+            JLabel credito = new JLabel();
+            credito.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            credito.setText(inversor.getText());
 
             JLabel precio = new JLabel();
             precio.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
@@ -1280,13 +1283,13 @@ public class Libros extends javax.swing.JFrame {
 
             JLabel icono = new JLabel();
             icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
-            listaIngresos.add(panelIngreso);
-            listaIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+            listaIngresos.add(panelIngresoC);
+            panelesIngresos.add(panelIngresoC);//Ingresa el panelVenta a la arraylist panelesInresos
 
-            panelIngreso.add(fecha);
-            panelIngreso.add(inversionista);
-            panelIngreso.add(precio);
-            panelIngreso.add(icono);
+            panelIngresoC.add(fecha);
+            panelIngresoC.add(precio);
+            panelIngresoC.add(credito);
+            panelIngresoC.add(icono);
 
             indice++;
             listaIngresos.updateUI();
@@ -1316,6 +1319,135 @@ public class Libros extends javax.swing.JFrame {
         iconoOkC.addMouseListener(botonC);
     }
     
+    //Para rellenar un ingreso:inversion
+    public void botonInversion(JTextField montoI, JTextField inversorI, JLabel iconoOkI){
+        MouseListener botonI = new MouseListener() {
+            
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+            //scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            JPanel panelIngresoI = new JPanel();
+            panelIngresoI.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            panelIngresoI.setLayout(new GridLayout(1,4));
+            panelIngresoI.setBackground(Color.white);
+            panelIngresoI.setPreferredSize(new Dimension(700,50));
+            listaIngresos.setLayout(new BoxLayout(listaIngresos,BoxLayout.Y_AXIS));
+            
+            JLabel fecha = new JLabel();
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            fecha.setText(fechaActual());
+
+            JLabel inversionista = new JLabel();
+            inversionista.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            inversionista.setText(inversorI.getText());
+
+            JLabel precioI = new JLabel();
+            precioI.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            precioI.setText(montoI.getText());
+
+            JLabel icono = new JLabel();
+            icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
+            listaIngresos.add(panelIngresoI);
+            panelesIngresos.add(panelIngresoI);//Ingresa el panelVenta a la arraylist panelesInresos
+
+            panelIngresoI.add(fecha);
+            panelIngresoI.add(inversionista);
+            panelIngresoI.add(precioI);
+            panelIngresoI.add(icono);
+
+            indice++;
+            listaIngresos.updateUI();
+        }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+        
+        iconoOkI.addMouseListener(botonI);
+    }
+    
+    //Para rellenar un ingreso:impuesto
+    public void botonImpuesto(JTextField montoImp, JTextField impuesto, JLabel iconoOkImp){
+        MouseListener botonImp = new MouseListener() {
+            
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+            //scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            JPanel panelIngresoImp = new JPanel();
+            panelIngresoImp.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            panelIngresoImp.setLayout(new GridLayout(1,4));
+            panelIngresoImp.setBackground(Color.white);
+            panelIngresoImp.setPreferredSize(new Dimension(700,50));
+            listaIngresos.setLayout(new BoxLayout(listaIngresos,BoxLayout.Y_AXIS));
+            
+            JLabel fecha = new JLabel();
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            fecha.setText(fechaActual());
+
+            JLabel imp = new JLabel();
+            imp.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            imp.setText(impuesto.getText());
+
+            JLabel montoImpuesto = new JLabel();
+            montoImpuesto.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            montoImpuesto.setText(montoImp.getText());
+
+            JLabel icono = new JLabel();
+            icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
+            listaIngresos.add(panelIngresoImp);
+            panelesIngresos.add(panelIngresoImp);//Ingresa el panelVenta a la arraylist panelesInresos
+
+            panelIngresoImp.add(fecha);
+            panelIngresoImp.add(montoImpuesto);
+            panelIngresoImp.add(imp);
+            panelIngresoImp.add(icono);
+
+            indice++;
+            listaIngresos.updateUI();
+        }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+        
+        iconoOkImp.addMouseListener(botonImp);
+    }
 
     public static String fechaActual(){
         java.util.Date fecha = new Date();
