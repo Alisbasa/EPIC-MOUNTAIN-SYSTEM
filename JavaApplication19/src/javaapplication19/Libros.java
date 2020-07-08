@@ -925,22 +925,11 @@ public class Libros extends javax.swing.JFrame {
         bodyLibroIgresos.add(rellenarGastos, java.awt.BorderLayout.PAGE_START);
 
         scrollGastos.setBorder(null);
-        scrollGastos.setViewportBorder(null);
 
         listaGastos.setBackground(new java.awt.Color(255, 255, 255));
-        listaGastos.setBorder(null);
-
-        javax.swing.GroupLayout listaGastosLayout = new javax.swing.GroupLayout(listaGastos);
-        listaGastos.setLayout(listaGastosLayout);
-        listaGastosLayout.setHorizontalGroup(
-            listaGastosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 684, Short.MAX_VALUE)
-        );
-        listaGastosLayout.setVerticalGroup(
-            listaGastosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 577, Short.MAX_VALUE)
-        );
-
+        listaGastos.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        listaGastos.setAlignmentY(TOP_ALIGNMENT);
+        listaGastos.setLayout(new javax.swing.BoxLayout(listaGastos, javax.swing.BoxLayout.Y_AXIS));
         scrollGastos.setViewportView(listaGastos);
 
         bodyLibroIgresos.add(scrollGastos, java.awt.BorderLayout.CENTER);
@@ -1220,7 +1209,122 @@ public class Libros extends javax.swing.JFrame {
     }//GEN-LAST:event_comboGastosItemStateChanged
 
     private void comboGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGastosActionPerformed
-        // TODO add your handling code here:
+        RellenarG rellenarDes = new RellenarG();
+        if(comboGastos.getSelectedItem().toString().equals("DESARROLLO") ) {
+            rellenarGastos rellenarDesarrollo = new rellenarGastos();
+            
+            rellenarGastos.removeAll();
+            rellenarGastos.revalidate();
+            rellenarGastos.repaint();
+            
+                
+            
+            rellenarGastos.add(rellenarDes.rellenarDesarrollo());
+            rellenarDesarrollo.botonDesarrollo(rellenarDes.desarrollo, rellenarDes.montoDes , rellenarDes.iconoOkDesarrollo, scrollIngresos, listaIngresos);
+          
+        }
+        
+        else if(comboGastos.getSelectedItem().toString().equals("DEUDAS A PAGAR")) {
+            RellenarG rellenarD = new RellenarG();
+            rellenarGastos rellenarDeudas = new rellenarGastos();
+            
+            rellenarIngresos.removeAll();
+            rellenarIngresos.revalidate();
+            rellenarIngresos.repaint();
+            
+            rellenarGastos.add(rellenarD.rellenarDeudasPagar());
+            rellenarDeudas.botonDeudas(rellenarD.deudas, rellenarD.montoDeuda, rellenarD.iconoOkDeudas, scrollIngresos, listaIngresos);
+            
+            
+        }
+        
+        else if(comboGastos.getSelectedItem().toString().equals("MANTENIMIENTO")) {
+            Rellenar rellenarMant = new Rellenar();
+            rellenarGastos rellenarMantenimiento = new rellenarGastos();
+            rellenarGastos.removeAll();
+            rellenarGastos.revalidate();
+            rellenarGastos.repaint();
+            
+            rellenarGastos.add(rellenarMant.rellenarInversion());
+            rellenarMantenimiento.botonMantenimiento(rellenarMant.inversorI,rellenarMant.montoI , rellenarMant.iconoOkI, scrollIngresos, listaIngresos);
+            
+        }
+        
+        else if(comboGastos.getSelectedItem().toString().equals("IMPUESTOS")) {
+            RellenarG rellenarIm = new RellenarG();
+            rellenarGastos rellenarImpuesto = new rellenarGastos();
+
+            rellenarGastos.removeAll();
+            rellenarGastos.revalidate();
+            rellenarGastos.repaint();
+            
+            rellenarGastos.add(rellenarIm.rellenarImpuestoG());
+            rellenarImpuesto.botonImpuestoG(rellenarIm.impuesto,  rellenarIm.montoImpuesto, rellenarIm.iconoOkImpuesto, scrollIngresos, listaIngresos);
+        
+        }
+        else if(comboGastos.getSelectedItem().toString().equals("SUMINISTROS")) {
+            RellenarG rellenarSum = new RellenarG();
+            rellenarGastos rellenarSuministro = new rellenarGastos();
+
+            rellenarGastos.removeAll();
+            rellenarGastos.revalidate();
+            rellenarGastos.repaint();
+            
+            rellenarGastos.add(rellenarSum.rellenarSuministros());
+            rellenarSuministro.botonImpuestoG( rellenarSum.suministros,rellenarSum.montoSum , rellenarSum.iconoOkSuministros, scrollIngresos, listaIngresos);
+        
+        }
+        
+        else if(comboGastos.getSelectedItem().toString().equals("PUBLICIDAD")) {
+            RellenarG rellenarPub = new RellenarG();
+            rellenarGastos rellenarPublicidad = new rellenarGastos();
+
+            rellenarGastos.removeAll();
+            rellenarGastos.revalidate();
+            rellenarGastos.repaint();
+            
+            rellenarGastos.add(rellenarPub.rellenarSuministros());
+            rellenarPublicidad.botonImpuestoG( rellenarPub.publicidad,rellenarPub.montoPublicidad , rellenarPub.iconoOkPublicidad, scrollIngresos, listaIngresos);
+        
+        }
+        
+        else if(comboGastos.getSelectedItem().toString().equals("TRANSPORTE")) {
+            RellenarG rellenarTrans = new RellenarG();
+            rellenarGastos rellenarTransporte = new rellenarGastos();
+
+            rellenarGastos.removeAll();
+            rellenarGastos.revalidate();
+            rellenarGastos.repaint();
+            
+            rellenarGastos.add(rellenarTrans.rellenarSuministros());
+            rellenarTransporte.botonImpuestoG( rellenarTrans.publicidad,rellenarTrans.montoPublicidad , rellenarTrans.iconoOkPublicidad, scrollIngresos, listaIngresos);
+        
+        }
+        
+        else if(comboGastos.getSelectedItem().toString().equals("HONORARIOS")) {
+            RellenarG rellenarHon = new RellenarG();
+            rellenarGastos rellenarHonorarios = new rellenarGastos();
+
+            rellenarGastos.removeAll();
+            rellenarGastos.revalidate();
+            rellenarGastos.repaint();
+            
+            rellenarGastos.add(rellenarHon.rellenarSuministros());
+            rellenarHonorarios.botonImpuestoG( rellenarHon.publicidad,rellenarHon.montoPublicidad , rellenarHon.iconoOkPublicidad, scrollIngresos, listaIngresos);
+        
+        }
+        else if(comboGastos.getSelectedItem().toString().equals("REDUC. DE INV.")) {
+            RellenarG rellenarRed = new RellenarG();
+            rellenarGastos rellenarReduccion = new rellenarGastos();
+
+            rellenarGastos.removeAll();
+            rellenarGastos.revalidate();
+            rellenarGastos.repaint();
+            
+            rellenarGastos.add(rellenarRed.rellenarSuministros());
+            rellenarReduccion.botonImpuestoG( rellenarRed.publicidad,rellenarRed.montoPublicidad , rellenarRed.iconoOkPublicidad, scrollIngresos, listaIngresos);
+        
+        }
     }//GEN-LAST:event_comboGastosActionPerformed
     
     
