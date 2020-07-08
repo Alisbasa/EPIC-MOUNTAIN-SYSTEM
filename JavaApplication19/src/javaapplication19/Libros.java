@@ -55,7 +55,7 @@ public class Libros extends javax.swing.JFrame {
         Iconos("Cerrar",cerrarIcon);
         Iconos("Minimizar_1",maxiIcon);
         
-        Iconos("Ingresar2",ingresoIcon1);
+        //Iconos("Ingresar2",ingresoIcon1);
         scaleImages(100);
         panelCorte.setBorder(BorderFactory.createEmptyBorder(70, 15, 70,  15));
         panelRegistrar.setBorder(BorderFactory.createEmptyBorder(70, 15, 70,  15));
@@ -147,7 +147,10 @@ public class Libros extends javax.swing.JFrame {
                                       "INVERSIÓN",
                                       "CRÉDITO",
                                       "IMPUESTOS"};
-    
+    private String[] gastos = {"DESARROLLO",
+                                      "DEUDAS A PAGAR",
+                                      "MANTENIMIENTO",
+                                      "IMPUESTOS","SUMINISTROS","PUBLICIDAD","TRANSPORTE","HONORARIOS","REDUC. DE INV."};
     
 
     
@@ -296,9 +299,14 @@ public class Libros extends javax.swing.JFrame {
         rellenarIngresos = new javax.swing.JPanel();
         scrollIngresos = new javax.swing.JScrollPane();
         listaIngresos = new javax.swing.JPanel();
-        jPanel5 = new PanelCurvo();
-        textIngresos1 = new javax.swing.JLabel();
-        ingresoIcon1 = new javax.swing.JLabel();
+        libroGastos = new PanelCurvo();
+        headerLibroGastos = new javax.swing.JPanel();
+        ingresosLabel1 = new javax.swing.JLabel();
+        comboGastos = new javax.swing.JComboBox<>();
+        bodyLibroIgresos = new javax.swing.JPanel();
+        rellenarGastos = new javax.swing.JPanel();
+        scrollGastos = new javax.swing.JScrollPane();
+        listaGastos = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -831,7 +839,7 @@ public class Libros extends javax.swing.JFrame {
 
         headerLibroIngresos.setBackground(new java.awt.Color(255, 255, 255));
         headerLibroIngresos.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        headerLibroIngresos.setPreferredSize(new java.awt.Dimension(70, 70));
+        headerLibroIngresos.setPreferredSize(new java.awt.Dimension(60, 60));
 
         ingresosLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 36)); // NOI18N
         ingresosLabel.setText("INGRESOS");
@@ -879,16 +887,67 @@ public class Libros extends javax.swing.JFrame {
 
         jPanel2.add(libroIngresos);
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        libroGastos.setBackground(new java.awt.Color(255, 255, 255));
+        libroGastos.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        libroGastos.setLayout(new java.awt.BorderLayout());
 
-        textIngresos1.setBackground(new java.awt.Color(0, 0, 0));
-        textIngresos1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 48)); // NOI18N
-        textIngresos1.setText("GASTOS");
-        jPanel5.add(textIngresos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 200, 50));
-        jPanel5.add(ingresoIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 50, 50));
+        headerLibroGastos.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.add(jPanel5);
+        ingresosLabel1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 36)); // NOI18N
+        ingresosLabel1.setText("GASTOS");
+        ingresosLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 25));
+        headerLibroGastos.add(ingresosLabel1);
+
+        comboGastos.setBackground(new java.awt.Color(255, 255, 255));
+        comboGastos.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        comboGastos.setForeground(new java.awt.Color(51, 51, 51));
+        comboGastos.setModel(new javax.swing.DefaultComboBoxModel<>(gastos));
+        comboGastos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        comboGastos.setPreferredSize(new java.awt.Dimension(160, 35));
+        comboGastos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboGastosItemStateChanged(evt);
+            }
+        });
+        comboGastos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboGastosActionPerformed(evt);
+            }
+        });
+        headerLibroGastos.add(comboGastos);
+
+        libroGastos.add(headerLibroGastos, java.awt.BorderLayout.PAGE_START);
+
+        bodyLibroIgresos.setLayout(new java.awt.BorderLayout());
+
+        rellenarGastos.setBackground(new java.awt.Color(255, 255, 255));
+        rellenarGastos.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 1, 5, 1));
+        bodyLibroIgresos.add(rellenarGastos, java.awt.BorderLayout.PAGE_START);
+
+        scrollGastos.setBorder(null);
+        scrollGastos.setViewportBorder(null);
+
+        listaGastos.setBackground(new java.awt.Color(255, 255, 255));
+        listaGastos.setBorder(null);
+
+        javax.swing.GroupLayout listaGastosLayout = new javax.swing.GroupLayout(listaGastos);
+        listaGastos.setLayout(listaGastosLayout);
+        listaGastosLayout.setHorizontalGroup(
+            listaGastosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 684, Short.MAX_VALUE)
+        );
+        listaGastosLayout.setVerticalGroup(
+            listaGastosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 577, Short.MAX_VALUE)
+        );
+
+        scrollGastos.setViewportView(listaGastos);
+
+        bodyLibroIgresos.add(scrollGastos, java.awt.BorderLayout.CENTER);
+
+        libroGastos.add(bodyLibroIgresos, java.awt.BorderLayout.CENTER);
+
+        jPanel2.add(libroGastos);
 
         libro.add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -907,7 +966,7 @@ public class Libros extends javax.swing.JFrame {
         
         
         comboIngresos.setUI( PropiedadesCB.createUI(rootPane));
-
+        comboGastos.setUI( PropiedadesCB.createUI(rootPane));
          
         
 
@@ -1190,6 +1249,14 @@ public class Libros extends javax.swing.JFrame {
     private void regLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regLabelMouseClicked
         
     }//GEN-LAST:event_regLabelMouseClicked
+
+    private void comboGastosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboGastosItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboGastosItemStateChanged
+
+    private void comboGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGastosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboGastosActionPerformed
     
     
     /**/
@@ -1239,11 +1306,13 @@ public class Libros extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LOGO;
     private javax.swing.JPanel barra;
+    private javax.swing.JPanel bodyLibroIgresos;
     private javax.swing.JPanel bodyLibroIngresos;
     private javax.swing.JPanel cerrar;
     private javax.swing.JLabel cerrarIcon;
     private javax.swing.JLabel cobrarIcon;
     private javax.swing.JLabel cobrarLabel;
+    private javax.swing.JComboBox<String> comboGastos;
     private javax.swing.JComboBox<String> comboIngresos;
     private javax.swing.JLabel comprasIcon2;
     private javax.swing.JLabel comprasLabel2;
@@ -1260,13 +1329,14 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel estrategiaLabel;
     private javax.swing.JLabel facturacionIcon;
     private javax.swing.JLabel facturacionLabel;
+    private javax.swing.JPanel headerLibroGastos;
     private javax.swing.JPanel headerLibroIngresos;
     private javax.swing.JLabel historialCRMIcon;
     private javax.swing.JLabel historialCRMLabel;
     private javax.swing.JLabel historialCuentasIcon;
     private javax.swing.JLabel historialCuentasLabel;
-    private javax.swing.JLabel ingresoIcon1;
     private javax.swing.JLabel ingresosLabel;
+    private javax.swing.JLabel ingresosLabel1;
     private javax.swing.JLabel inventarioIcon;
     private javax.swing.JLabel inventarioLabel;
     private javax.swing.JLabel jLabel1;
@@ -1274,10 +1344,11 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel libro;
+    private javax.swing.JPanel libroGastos;
     private javax.swing.JPanel libroIngresos;
+    private javax.swing.JPanel listaGastos;
     private javax.swing.JPanel listaIngresos;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel maxiIcon;
@@ -1310,11 +1381,12 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel provedoresIcon;
     private javax.swing.JLabel provedoresLabel;
     private javax.swing.JLabel regLabel;
+    private javax.swing.JPanel rellenarGastos;
     private javax.swing.JPanel rellenarIngresos;
+    private javax.swing.JScrollPane scrollGastos;
     private javax.swing.JScrollPane scrollIngresos;
     private javax.swing.JLabel suministrosIcon;
     private javax.swing.JLabel suministrosLabel;
-    private javax.swing.JLabel textIngresos1;
     private javax.swing.JLabel ventasIcon;
     private javax.swing.JLabel ventasLabel;
     // End of variables declaration//GEN-END:variables
