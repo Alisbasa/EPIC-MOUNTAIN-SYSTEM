@@ -97,7 +97,7 @@ public class rellenarGastos {
     }
 
     //Para rellenar un Gasto:deudas
-    void botonDeudas(JTextField deudas, JTextField montoDeuda, JLabel iconoOkDeudas,JScrollPane scrollGastos, JPanel listaGastos){
+    void botonDeudas(JComboBox deudas, JTextField montoDeuda, JLabel iconoOkDeudas,JScrollPane scrollGastos, JPanel listaGastos){
         MouseListener botonC = new MouseListener() {
             
         @Override
@@ -115,9 +115,9 @@ public class rellenarGastos {
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             fecha.setText(fechaActual());
 
-            JLabel deudas = new JLabel();
-            deudas.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            deudas.setText(deudas.getText());
+            JLabel deudasPagar = new JLabel();
+            deudasPagar.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            deudasPagar.setText((String) deudas.getSelectedItem());
 
             JLabel precio = new JLabel();
             precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
@@ -161,8 +161,8 @@ public class rellenarGastos {
         iconoOkDeudas.addMouseListener(botonC);
     }
     
-    //Para rellenar un Gasto:inversion
-    public void botonMantenimiento(JTextField montoMant, JTextField mantenimiento, JLabel iconoOkM,JScrollPane scrollGastos, JPanel listaGastos){
+    //Para rellenar un Gasto:mantenimiento
+    public void botonMantenimiento(JTextField mantenimiento, JTextField montoMant, JLabel iconoOkM,JScrollPane scrollGastos, JPanel listaGastos){
         MouseListener botonI = new MouseListener() {
             
         @Override

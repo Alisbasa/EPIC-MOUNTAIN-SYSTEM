@@ -79,7 +79,7 @@ public class RellenarG {
     
     
     
-     public  JPanel rellenarDesarrollo(){
+    public  JPanel rellenarDesarrollo(){
         rellenarDesarrollo.removeAll();
         
         rellenarDesarrollo.setBackground(Color.white);
