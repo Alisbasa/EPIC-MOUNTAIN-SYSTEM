@@ -32,8 +32,8 @@ public class rellenarGastos {
         panelesGastos = new ArrayList<>();
     }
     
-    //Pone Gasto: venta
-    void botonDesarrollo(JTextField monto, JComboBox desarrollo, JLabel iconoOkDes, JScrollPane scrollGastos, JPanel listaGastos){
+    //Pone Gasto: Desarollo
+    void botonDesarrollo(JComboBox desarrollo,JTextField montoDes, JLabel iconoOkDesarrollo, JScrollPane scrollGastos, JPanel listaGastos){
         MouseListener botonV = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -56,7 +56,7 @@ public class rellenarGastos {
 
             JLabel precio = new JLabel();
             precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            precio.setText(monto.getText());
+            precio.setText(montoDes.getText());
 
             JLabel icono = new JLabel();
             Iconos.scaleImage("Ventas", icono, 30);
@@ -93,11 +93,11 @@ public class rellenarGastos {
             }
         };
         
-        iconoOkV.addMouseListener(botonV);
+        iconoOkDesarrollo.addMouseListener(botonV);
     }
 
     //Para rellenar un Gasto:deudas
-    void botonDeudas(JTextField montoD, JTextField deudas, JLabel iconoOkD,JScrollPane scrollGastos, JPanel listaGastos){
+    void botonDeudas(JTextField deudas, JTextField montoDeuda, JLabel iconoOkDeudas,JScrollPane scrollGastos, JPanel listaGastos){
         MouseListener botonC = new MouseListener() {
             
         @Override
@@ -121,7 +121,7 @@ public class rellenarGastos {
 
             JLabel precio = new JLabel();
             precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            precio.setText(montoD.getText());
+            precio.setText(montoDeuda.getText());
 
             JLabel icono = new JLabel();
             Iconos.scaleImage("Deudas", icono, 30);
@@ -158,7 +158,7 @@ public class rellenarGastos {
             }
         };
         
-        iconoOkD.addMouseListener(botonC);
+        iconoOkDeudas.addMouseListener(botonC);
     }
     
     //Para rellenar un Gasto:inversion

@@ -46,7 +46,7 @@ public class RellenarG {
     JLabel iconoReducInv = new JLabel();
     
     JComboBox desarrollo;
-    JTextField deudas;
+    JComboBox deudas;
     JTextField impuesto;
     JTextField mantenimiento;
     JTextField suministros;
@@ -110,7 +110,8 @@ public class RellenarG {
         rellenarDeudasPagar.add(iconoDesarrollo);
         Iconos.scaleImage("ok", iconoOkDeudas, 30);
         
-        deudas = new JTextField("Deudor");
+        String[] listaDeudores={"Mobiliario, Equisde"};
+        deudas = new JComboBox(listaDeudores);
         montoDeuda = new JTextField("$");
         montoDeuda.setPreferredSize(new Dimension(60, 30));
         deudas.setPreferredSize(new Dimension(150, 30));      
@@ -119,7 +120,6 @@ public class RellenarG {
         
         rellenarDeudasPagar.add(deudas);
         rellenarDeudasPagar.add(montoDeuda);
-        
         rellenarDeudasPagar.add(iconoOkDeudas);
         
         return rellenarDeudasPagar;
