@@ -892,6 +892,7 @@ public class Libros extends javax.swing.JFrame {
         libroGastos.setLayout(new java.awt.BorderLayout());
 
         headerLibroGastos.setBackground(new java.awt.Color(255, 255, 255));
+        headerLibroGastos.setPreferredSize(new java.awt.Dimension(704, 60));
 
         ingresosLabel1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 36)); // NOI18N
         ingresosLabel1.setText("GASTOS");
@@ -918,6 +919,7 @@ public class Libros extends javax.swing.JFrame {
 
         libroGastos.add(headerLibroGastos, java.awt.BorderLayout.PAGE_START);
 
+        bodyLibroIgresos.setBackground(new java.awt.Color(255, 255, 255));
         bodyLibroIgresos.setLayout(new java.awt.BorderLayout());
 
         rellenarGastos.setBackground(new java.awt.Color(255, 255, 255));

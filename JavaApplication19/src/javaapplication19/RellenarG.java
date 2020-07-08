@@ -251,6 +251,8 @@ public class RellenarG {
         return rellenarHonorarios;
     }
     
+    
+    
     public  JPanel rellenarReducInv(){
         rellenarReducInv.removeAll();
         

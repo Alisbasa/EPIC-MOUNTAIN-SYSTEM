@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javaapplication19.Rellenar;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 
 public class rellenarGastos {
@@ -39,12 +40,13 @@ public class rellenarGastos {
         public void mouseClicked(MouseEvent e) {
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            JPanel panelGasto = new JPanel();
+            PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelGasto.setLayout(new GridLayout(1,4));
-            panelGasto.setBackground(Color.white);
-            panelGasto.setMaximumSize(new Dimension(600,40));
-            panelGasto.setPreferredSize(new Dimension(600,100));;
+            panelGasto.setBackground(Colores.epicColorBajito);
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGasto.setMaximumSize(new Dimension(500,40));
+            panelGasto.setPreferredSize(new Dimension(500,100));;
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
@@ -84,12 +86,12 @@ public class rellenarGastos {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("okh", iconoOkDesarrollo, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("ok", iconoOkDesarrollo, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         };
         
@@ -104,12 +106,13 @@ public class rellenarGastos {
         public void mouseClicked(MouseEvent e) {
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            JPanel panelGastoC = new JPanel();
+            PanelCurvoSinSombra panelGastoC = new PanelCurvoSinSombra();
             panelGastoC.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelGastoC.setLayout(new GridLayout(1,4));
-            panelGastoC.setBackground(Color.white);
-            panelGastoC.setMaximumSize(new Dimension(600,40));
-            panelGastoC.setPreferredSize(new Dimension(600,100));;
+            panelGastoC.setBackground(Colores.epicColorBajito);
+            panelGastoC.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGastoC.setMaximumSize(new Dimension(500,40));
+            panelGastoC.setPreferredSize(new Dimension(500,100));;
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
@@ -149,12 +152,12 @@ public class rellenarGastos {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("okh", iconoOkDeudas, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("ok", iconoOkDeudas, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         };
         
@@ -169,12 +172,13 @@ public class rellenarGastos {
         public void mouseClicked(MouseEvent e) {
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            JPanel panelGastoMmp = new JPanel();
-            panelGastoMmp.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            panelGastoMmp.setLayout(new GridLayout(1,4));
-            panelGastoMmp.setBackground(Color.white);
-            panelGastoMmp.setMaximumSize(new Dimension(600,40));
-            panelGastoMmp.setPreferredSize(new Dimension(600,40));;
+            PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
+            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelGasto.setLayout(new GridLayout(1,4));
+            panelGasto.setBackground(Colores.epicColorBajito);
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGasto.setMaximumSize(new Dimension(500,40));
+            panelGasto.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
@@ -190,13 +194,13 @@ public class rellenarGastos {
 
             JLabel icono = new JLabel();
             Iconos.scaleImage("Impuesto", icono, 30);
-            listaGastos.add(panelGastoMmp);
-            panelesGastos.add(panelGastoMmp);//Ingresa el panelVenta a la arraylist panelesInresos
+            listaGastos.add(panelGasto);
+            panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
-            panelGastoMmp.add(fecha);
-            panelGastoMmp.add(imp);
-            panelGastoMmp.add(montoImpues);
-            panelGastoMmp.add(icono);
+            panelGasto.add(fecha);
+            panelGasto.add(imp);
+            panelGasto.add(montoImpues);
+            panelGasto.add(icono);
 
             indice++;
             listaGastos.updateUI();
@@ -214,12 +218,12 @@ public class rellenarGastos {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("okh", iconoOkImpuesto, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("ok", iconoOkImpuesto, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         };
         
@@ -234,12 +238,13 @@ public class rellenarGastos {
         public void mouseClicked(MouseEvent e) {
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            JPanel panelGastoM = new JPanel();
-            panelGastoM.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            panelGastoM.setLayout(new GridLayout(1,4));
-            panelGastoM.setBackground(Color.white);
-            panelGastoM.setMaximumSize(new Dimension(600,40));
-            panelGastoM.setPreferredSize(new Dimension(600,100));;
+            PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
+            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelGasto.setLayout(new GridLayout(1,4));
+            panelGasto.setBackground(Colores.epicColorBajito);
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGasto.setMaximumSize(new Dimension(500,40));
+            panelGasto.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
@@ -255,13 +260,13 @@ public class rellenarGastos {
 
             JLabel icono = new JLabel();
             Iconos.scaleImage("Mantenimiento", icono, 30);
-            listaGastos.add(panelGastoM);
-            panelesGastos.add(panelGastoM);//Ingresa el panelVenta a la arraylist panelesInresos
+            listaGastos.add(panelGasto);
+            panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
-            panelGastoM.add(fecha);
-            panelGastoM.add(descripcion);
-            panelGastoM.add(precioMant);
-            panelGastoM.add(icono);
+            panelGasto.add(fecha);
+            panelGasto.add(descripcion);
+            panelGasto.add(precioMant);
+            panelGasto.add(icono);
 
             indice++;
             listaGastos.updateUI();
@@ -279,12 +284,12 @@ public class rellenarGastos {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("okh", iconoOkMantenimiento, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("ok", iconoOkMantenimiento, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         };
         
@@ -299,12 +304,13 @@ public class rellenarGastos {
         public void mouseClicked(MouseEvent e) {
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            JPanel panelGasto = new JPanel();
+            PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelGasto.setLayout(new GridLayout(1,4));
-            panelGasto.setBackground(Color.white);
-            panelGasto.setMaximumSize(new Dimension(600,40));
-            panelGasto.setPreferredSize(new Dimension(600,40));;
+            panelGasto.setBackground(Colores.epicColorBajito);
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGasto.setMaximumSize(new Dimension(500,40));
+            panelGasto.setPreferredSize(new Dimension(500,100));;
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
@@ -344,12 +350,12 @@ public class rellenarGastos {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("okh", iconoOkSuministros, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("ok", iconoOkSuministros, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         };
         
@@ -363,13 +369,14 @@ public class rellenarGastos {
         @Override
         public void mouseClicked(MouseEvent e) {
             
-            scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            JPanel panelGasto = new JPanel();
+           scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelGasto.setLayout(new GridLayout(1,4));
-            panelGasto.setBackground(Color.white);
-            panelGasto.setMaximumSize(new Dimension(600,40));
-            panelGasto.setPreferredSize(new Dimension(600,40));;
+            panelGasto.setBackground(Colores.epicColorBajito);
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGasto.setMaximumSize(new Dimension(500,40));
+            panelGasto.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
@@ -409,12 +416,12 @@ public class rellenarGastos {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("okh", iconoOkPublicidad, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("ok", iconoOkPublicidad, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         };
         
@@ -429,12 +436,13 @@ public class rellenarGastos {
         public void mouseClicked(MouseEvent e) {
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            JPanel panelGasto = new JPanel();
+            PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelGasto.setLayout(new GridLayout(1,4));
-            panelGasto.setBackground(Color.white);
-            panelGasto.setMaximumSize(new Dimension(600,40));
-            panelGasto.setPreferredSize(new Dimension(600,40));;
+            panelGasto.setBackground(Colores.epicColorBajito);
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGasto.setMaximumSize(new Dimension(500,40));
+            panelGasto.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
@@ -474,12 +482,12 @@ public class rellenarGastos {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("okh", iconoOkTransporte, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("ok", iconoOkTransporte, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         };
         
@@ -494,12 +502,13 @@ public class rellenarGastos {
         public void mouseClicked(MouseEvent e) {
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            JPanel panelGasto = new JPanel();
+            PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelGasto.setLayout(new GridLayout(1,4));
-            panelGasto.setBackground(Color.white);
-            panelGasto.setMaximumSize(new Dimension(600,40));
-            panelGasto.setPreferredSize(new Dimension(600,40));;
+            panelGasto.setBackground(Colores.epicColorBajito);
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGasto.setMaximumSize(new Dimension(500,40));
+            panelGasto.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
@@ -539,12 +548,12 @@ public class rellenarGastos {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("okh", iconoOkHonorarios, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("ok", iconoOkHonorarios, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         };
         
@@ -559,12 +568,13 @@ public class rellenarGastos {
         public void mouseClicked(MouseEvent e) {
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            JPanel panelGasto = new JPanel();
+            PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelGasto.setLayout(new GridLayout(1,4));
-            panelGasto.setBackground(Color.white);
-            panelGasto.setMaximumSize(new Dimension(600,40));
-            panelGasto.setPreferredSize(new Dimension(600,40));;
+            panelGasto.setBackground(Colores.epicColorBajito);
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGasto.setMaximumSize(new Dimension(500,40));
+            panelGasto.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
@@ -604,12 +614,12 @@ public class rellenarGastos {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("okh", iconoOkReducInv, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("ok", iconoOkReducInv, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         };
         
