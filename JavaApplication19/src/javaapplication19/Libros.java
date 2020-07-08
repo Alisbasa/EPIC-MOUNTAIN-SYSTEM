@@ -1175,7 +1175,7 @@ public class Libros extends javax.swing.JFrame {
     private void comboIngresosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboIngresosItemStateChanged
         
     }//GEN-LAST:event_comboIngresosItemStateChanged
-
+//hola
     private void regLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regLabelMouseClicked
         
     }//GEN-LAST:event_regLabelMouseClicked
