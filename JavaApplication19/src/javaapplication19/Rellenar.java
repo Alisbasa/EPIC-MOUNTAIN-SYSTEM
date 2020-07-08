@@ -63,17 +63,11 @@ public class Rellenar {
         plataformacb = new JComboBox(listaPlataformas);
         
         monto = new JTextField("$");
-        
-        
-        
-        
-        
+      
 //      
         monto.setPreferredSize(new Dimension(60, 30));
         Iconos.scaleImage("ok", iconoOkV, 30);
-        
-        
-        
+       
         rellenarVentas.add(inventario);
         rellenarVentas.add(monto);
         rellenarVentas.add(plataformacb);

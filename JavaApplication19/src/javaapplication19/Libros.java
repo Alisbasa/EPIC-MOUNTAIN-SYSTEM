@@ -1123,7 +1123,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarIngresos.repaint();
             
                 
-            System.out.println(rellenarV.monto2);
+            
             rellenarIngresos.add(rellenarV.rellenarVentas());
             okBoton(rellenarV.monto, rellenarV.inventario, rellenarV.plataformacb, rellenarV.iconoOkV);
             
