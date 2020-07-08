@@ -129,7 +129,7 @@ public class rellenarGastos {
             panelesGastos.add(panelGastoC);//Ingresa el panelVenta a la arraylist panelesInresos
 
             panelGastoC.add(fecha);
-            panelGastoC.add(deudas);
+            panelGastoC.add(deudasPagar);
             panelGastoC.add(precio);
             panelGastoC.add(icono);
 
@@ -195,7 +195,7 @@ public class rellenarGastos {
 
             panelGastoMmp.add(fecha);
             panelGastoMmp.add(imp);
-            panelGastoMmp.add(montoImpuesto);
+            panelGastoMmp.add(montoImpues);
             panelGastoMmp.add(icono);
 
             indice++;
@@ -249,9 +249,9 @@ public class rellenarGastos {
             descripcion.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             descripcion.setText(mantenimiento.getText());
 
-            JLabel precioI = new JLabel();
-            precioI.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            precioI.setText(montoMant.getText());
+            JLabel precioMant = new JLabel();
+            precioMant.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            precioMant.setText(montoMant.getText());
 
             JLabel icono = new JLabel();
             Iconos.scaleImage("Mantenimiento", icono, 30);
@@ -260,7 +260,7 @@ public class rellenarGastos {
 
             panelGastoM.add(fecha);
             panelGastoM.add(descripcion);
-            panelGastoM.add(precioI);
+            panelGastoM.add(precioMant);
             panelGastoM.add(icono);
 
             indice++;

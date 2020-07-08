@@ -1239,14 +1239,14 @@ public class Libros extends javax.swing.JFrame {
         }
         
         else if(comboGastos.getSelectedItem().toString().equals("MANTENIMIENTO")) {
-            Rellenar rellenarMant = new Rellenar();
+            RellenarG rellenarMant = new RellenarG();
             rellenarGastos rellenarMantenimiento = new rellenarGastos();
             rellenarGastos.removeAll();
             rellenarGastos.revalidate();
             rellenarGastos.repaint();
             
-            rellenarGastos.add(rellenarMant.rellenarInversion());
-            rellenarMantenimiento.botonMantenimiento(rellenarMant.inversorI,rellenarMant.montoI , rellenarMant.iconoOkI, scrollGastos, listaGastos);
+            rellenarGastos.add(rellenarMant.rellenarMantenimiento());
+            rellenarMantenimiento.botonMantenimiento(rellenarMant.mantenimiento,rellenarMant.montoMant , rellenarMant.iconoOkMantenimiento, scrollGastos, listaGastos);
             
         }
         
@@ -1271,7 +1271,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.repaint();
             
             rellenarGastos.add(rellenarSum.rellenarSuministros());
-            rellenarSuministro.botonImpuestoG( rellenarSum.suministros,rellenarSum.montoSum , rellenarSum.iconoOkSuministros, scrollGastos, listaGastos);
+            rellenarSuministro.botonSuministros(rellenarSum.suministros,rellenarSum.montoSum , rellenarSum.iconoOkSuministros, scrollGastos, listaGastos);
         
         }
         
@@ -1283,8 +1283,8 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.revalidate();
             rellenarGastos.repaint();
             
-            rellenarGastos.add(rellenarPub.rellenarSuministros());
-            rellenarPublicidad.botonImpuestoG( rellenarPub.publicidad,rellenarPub.montoPublicidad , rellenarPub.iconoOkPublicidad, scrollGastos, listaGastos);
+            rellenarGastos.add(rellenarPub.rellenarPubliidad());
+            rellenarPublicidad.botonPublicidad(rellenarPub.publicidad,rellenarPub.montoPublicidad , rellenarPub.iconoOkPublicidad, scrollGastos, listaGastos);
         
         }
         
@@ -1296,8 +1296,8 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.revalidate();
             rellenarGastos.repaint();
             
-            rellenarGastos.add(rellenarTrans.rellenarSuministros());
-            rellenarTransporte.botonImpuestoG( rellenarTrans.publicidad,rellenarTrans.montoPublicidad , rellenarTrans.iconoOkPublicidad, scrollGastos, listaGastos);
+            rellenarGastos.add(rellenarTrans.rellenarTransporte());
+            rellenarTransporte.botonTransporte(rellenarTrans.transporte,rellenarTrans.montoTrans , rellenarTrans.iconoOkTransporte, scrollGastos, listaGastos);
         
         }
         
@@ -1309,8 +1309,8 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.revalidate();
             rellenarGastos.repaint();
             
-            rellenarGastos.add(rellenarHon.rellenarSuministros());
-            rellenarHonorarios.botonImpuestoG( rellenarHon.publicidad,rellenarHon.montoPublicidad , rellenarHon.iconoOkPublicidad, scrollGastos, listaGastos);
+            rellenarGastos.add(rellenarHon.rellenarHonorarios());
+            rellenarHonorarios.botonHonorarios(rellenarHon.honorarios,rellenarHon.montoHonor , rellenarHon.iconoOkHonorarios, scrollGastos, listaGastos);
         
         }
         else if(comboGastos.getSelectedItem().toString().equals("REDUC. DE INV.")) {
@@ -1321,8 +1321,8 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.revalidate();
             rellenarGastos.repaint();
             
-            rellenarGastos.add(rellenarRed.rellenarSuministros());
-            rellenarReduccion.botonImpuestoG( rellenarRed.publicidad,rellenarRed.montoPublicidad , rellenarRed.iconoOkPublicidad, scrollGastos, listaGastos);
+            rellenarGastos.add(rellenarRed.rellenarReducInv());
+            rellenarReduccion.botonReducInv(rellenarRed.reducInv,rellenarRed.montoReduc , rellenarRed.iconoOkReducInv, scrollGastos, listaGastos);
         
         }
     }//GEN-LAST:event_comboGastosActionPerformed

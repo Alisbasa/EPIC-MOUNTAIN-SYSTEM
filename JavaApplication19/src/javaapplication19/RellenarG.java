@@ -85,7 +85,7 @@ public class RellenarG {
         rellenarDesarrollo.setBackground(Color.white);
         Iconos.scaleImage("Ventas", iconoDesarrollo, 40);
         rellenarDesarrollo.add(iconoDesarrollo);
-        String[] listaDesarrollo={"Mobiliario, Equisde"};
+        String[] listaDesarrollo={"Mobiliario", "Equisde"};
        
         desarrollo = new JComboBox(listaDesarrollo);
        
@@ -107,10 +107,10 @@ public class RellenarG {
         
         rellenarDeudasPagar.setBackground(Color.white);
         Iconos.scaleImage("Ventas", iconoDeudasPagar, 40);
-        rellenarDeudasPagar.add(iconoDesarrollo);
+        rellenarDeudasPagar.add(iconoDeudasPagar);
         Iconos.scaleImage("ok", iconoOkDeudas, 30);
         
-        String[] listaDeudores={"Mobiliario, Equisde"};
+        String[] listaDeudores={"Alex", "Ivan"};
         deudas = new JComboBox(listaDeudores);
         montoDeuda = new JTextField("$");
         montoDeuda.setPreferredSize(new Dimension(60, 30));
@@ -160,7 +160,7 @@ public class RellenarG {
         
         
         
-        rellenarMantenimiento.add(impuesto);
+        rellenarMantenimiento.add(mantenimiento);
         rellenarMantenimiento.add(montoMant);
         rellenarMantenimiento.add(iconoOkMantenimiento);
         
@@ -216,7 +216,7 @@ public class RellenarG {
         Iconos.scaleImage("Ventas", iconoTransporte, 40);
         rellenarTransporte.add(iconoTransporte);
         Iconos.scaleImage("ok", iconoOkTransporte, 30);
-        transporte = new JTextField("Publicidad");
+        transporte = new JTextField("Transporte");
         montoTrans = new JTextField("$");
         montoTrans.setPreferredSize(new Dimension(60, 30));
         transporte.setPreferredSize(new Dimension(150, 30));      
@@ -237,7 +237,7 @@ public class RellenarG {
         Iconos.scaleImage("Ventas", iconoHonorarios, 40);
         rellenarHonorarios.add(iconoHonorarios);
         Iconos.scaleImage("ok", iconoOkHonorarios, 30);
-        honorarios = new JTextField("Publicidad");
+        honorarios = new JTextField("Honorarios");
         montoHonor = new JTextField("$");
         montoHonor.setPreferredSize(new Dimension(60, 30));
         honorarios.setPreferredSize(new Dimension(150, 30));      
@@ -257,7 +257,7 @@ public class RellenarG {
         rellenarReducInv.setBackground(Color.white);
         Iconos.scaleImage("Ventas", iconoReducInv, 40);
         rellenarReducInv.add(iconoReducInv);
-        Iconos.scaleImage("ok", iconoReducInv, 30);
+        Iconos.scaleImage("ok", iconoOkReducInv, 30);
         String[] listaInventario={"inventario","Bici chingona","Bici Chingona 2","Bici Chingona 3"};
         reducInv = new JComboBox(listaInventario);
         montoReduc = new JTextField("$");
