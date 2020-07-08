@@ -161,73 +161,8 @@ public class rellenarGastos {
         iconoOkDeudas.addMouseListener(botonC);
     }
     
-    //Para rellenar un Gasto:mantenimiento
-    public void botonMantenimiento(JTextField mantenimiento, JTextField montoMant, JLabel iconoOkM,JScrollPane scrollGastos, JPanel listaGastos){
-        MouseListener botonI = new MouseListener() {
-            
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            
-            scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-            JPanel panelGastoM = new JPanel();
-            panelGastoM.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            panelGastoM.setLayout(new GridLayout(1,4));
-            panelGastoM.setBackground(Color.white);
-            panelGastoM.setMaximumSize(new Dimension(600,40));
-            panelGastoM.setPreferredSize(new Dimension(600,100));;
-            
-            JLabel fecha = new JLabel();
-            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            fecha.setText(fechaActual());
-
-            JLabel descripcion = new JLabel();
-            descripcion.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            descripcion.setText(inversorM.getText());
-
-            JLabel precioI = new JLabel();
-            precioI.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            precioI.setText(montoM.getText());
-
-            JLabel icono = new JLabel();
-            Iconos.scaleImage("Mantenimiento", icono, 30);
-            listaGastos.add(panelGastoM);
-            panelesGastos.add(panelGastoM);//Ingresa el panelVenta a la arraylist panelesInresos
-
-            panelGastoM.add(fecha);
-            panelGastoM.add(descripcion);
-            panelGastoM.add(precioI);
-            panelGastoM.add(icono);
-
-            indice++;
-            listaGastos.updateUI();
-        }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        };
-        
-        iconoOkM.addMouseListener(botonI);
-    }
-    
     //Para rellenar un Gasto:impuesto
-    public void botonImpuestoG(JTextField montoImp, JTextField impuesto, JLabel iconoOkImp,JScrollPane scrollGastos, JPanel listaGastos){
+    void botonImpuestoG(JTextField impuesto, JTextField montoImpuesto, JLabel iconoOkImpuesto,JScrollPane scrollGastos, JPanel listaGastos){
         MouseListener botonImp = new MouseListener() {
             
         @Override
@@ -249,9 +184,9 @@ public class rellenarGastos {
             imp.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             imp.setText(impuesto.getText());
 
-            JLabel montoImpuesto = new JLabel();
-            montoImpuesto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            montoImpuesto.setText(montoImp.getText());
+            JLabel montoImpues = new JLabel();
+            montoImpues.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            montoImpues.setText(montoImpuesto.getText());
 
             JLabel icono = new JLabel();
             Iconos.scaleImage("Impuesto", icono, 30);
@@ -288,10 +223,76 @@ public class rellenarGastos {
             }
         };
         
-        iconoOkImp.addMouseListener(botonImp);
+        iconoOkImpuesto.addMouseListener(botonImp);
     }
     
-    public void botonSuministros(JTextField monto, JTextField suministro, JLabel iconoOkSum,JScrollPane scrollGastos, JPanel listaGastos){
+    //Para rellenar un Gasto:mantenimiento
+    void botonMantenimiento(JTextField mantenimiento, JTextField montoMant, JLabel iconoOkMantenimiento,JScrollPane scrollGastos, JPanel listaGastos){
+        MouseListener botonI = new MouseListener() {
+            
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+            scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            JPanel panelGastoM = new JPanel();
+            panelGastoM.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelGastoM.setLayout(new GridLayout(1,4));
+            panelGastoM.setBackground(Color.white);
+            panelGastoM.setMaximumSize(new Dimension(600,40));
+            panelGastoM.setPreferredSize(new Dimension(600,100));;
+            
+            JLabel fecha = new JLabel();
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setText(fechaActual());
+
+            JLabel descripcion = new JLabel();
+            descripcion.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            descripcion.setText(mantenimiento.getText());
+
+            JLabel precioI = new JLabel();
+            precioI.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            precioI.setText(montoMant.getText());
+
+            JLabel icono = new JLabel();
+            Iconos.scaleImage("Mantenimiento", icono, 30);
+            listaGastos.add(panelGastoM);
+            panelesGastos.add(panelGastoM);//Ingresa el panelVenta a la arraylist panelesInresos
+
+            panelGastoM.add(fecha);
+            panelGastoM.add(descripcion);
+            panelGastoM.add(precioI);
+            panelGastoM.add(icono);
+
+            indice++;
+            listaGastos.updateUI();
+        }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+        
+        iconoOkMantenimiento.addMouseListener(botonI);
+    }
+    
+    //Para rellenar un Gasto:suministros
+    void botonSuministros(JTextField suministro, JTextField montoSum, JLabel iconoOkSuministros,JScrollPane scrollGastos, JPanel listaGastos){
         MouseListener botonImp = new MouseListener() {
             
         @Override
@@ -315,7 +316,7 @@ public class rellenarGastos {
 
             JLabel monto = new JLabel();
             monto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            monto.setText(monto.getText());
+            monto.setText(montoSum.getText());
 
             JLabel icono = new JLabel();
             Iconos.scaleImage("Impuesto", icono, 30);
@@ -352,16 +353,11 @@ public class rellenarGastos {
             }
         };
         
-        iconoOkSum.addMouseListener(botonImp);
-    }
-
-    public static String fechaActual(){
-        java.util.Date fecha = new Date();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM");
-        return formatoFecha.format(fecha);
+        iconoOkSuministros.addMouseListener(botonImp);
     }
     
-    public void botonPublicidad(JTextField monto, JTextField publicidad, JLabel iconoOkPub,JScrollPane scrollGastos, JPanel listaGastos){
+    //Para rellenar un Gasto:publicidad
+    public void botonPublicidad(JTextField publicidad, JTextField montoPublicidad, JLabel iconoOkPublicidad,JScrollPane scrollGastos, JPanel listaGastos){
         MouseListener botonPub = new MouseListener() {
             
         @Override
@@ -385,7 +381,7 @@ public class rellenarGastos {
 
             JLabel monto = new JLabel();
             monto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            monto.setText(monto.getText());
+            monto.setText(montoPublicidad.getText());
 
             JLabel icono = new JLabel();
             Iconos.scaleImage("Impuesto", icono, 30);
@@ -422,10 +418,11 @@ public class rellenarGastos {
             }
         };
         
-        iconoOkPub.addMouseListener(botonPub);
+        iconoOkPublicidad.addMouseListener(botonPub);
     }
     
-    public void botonTransporte(JTextField monto, JTextField transporte, JLabel iconoOkTrans,JScrollPane scrollGastos, JPanel listaGastos){
+    //Para rellenar un Gasto:transporte
+    public void botonTransporte(JTextField transporte, JTextField montoTrans, JLabel iconoOkTransporte,JScrollPane scrollGastos, JPanel listaGastos){
         MouseListener botonImp = new MouseListener() {
             
         @Override
@@ -486,10 +483,11 @@ public class rellenarGastos {
             }
         };
         
-        iconoOkTrans.addMouseListener(botonImp);
+        iconoOkTransporte.addMouseListener(botonImp);
     }
 
-    public void botonHonorarios(JTextField monto, JTextField honorario, JLabel iconoOkHon,JScrollPane scrollGastos, JPanel listaGastos){
+    //Para rellenar un Gasto:Honorarios
+    public void botonHonorarios(JTextField honorarios, JTextField montoHonor, JLabel iconoOkHonorarios,JScrollPane scrollGastos, JPanel listaGastos){
         MouseListener botonImp = new MouseListener() {
             
         @Override
@@ -509,11 +507,11 @@ public class rellenarGastos {
 
             JLabel hon = new JLabel();
             hon.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            hon.setText(honorario.getText());
+            hon.setText(honorarios.getText());
 
             JLabel monto = new JLabel();
             monto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            monto.setText(monto.getText());
+            monto.setText(montoHonor.getText());
 
             JLabel icono = new JLabel();
             Iconos.scaleImage("Impuesto", icono, 30);
@@ -550,9 +548,82 @@ public class rellenarGastos {
             }
         };
         
-        iconoOkHon.addMouseListener(botonImp);
+        iconoOkHonorarios.addMouseListener(botonImp);
     }
+    
+    //Para rellenar un Gasto:reducInv
+    public void botonReducInv(JComboBox reducInv, JTextField montoReduc, JLabel iconoOkReducInv,JScrollPane scrollGastos, JPanel listaGastos){
+        MouseListener botonImp = new MouseListener() {
+            
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+            scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            JPanel panelGasto = new JPanel();
+            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelGasto.setLayout(new GridLayout(1,4));
+            panelGasto.setBackground(Color.white);
+            panelGasto.setMaximumSize(new Dimension(600,40));
+            panelGasto.setPreferredSize(new Dimension(600,40));;
+            
+            JLabel fecha = new JLabel();
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setText(fechaActual());
 
+            JLabel reduc = new JLabel();
+            reduc.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            reduc.setText((String) reducInv.getSelectedItem());
+
+            JLabel montoR = new JLabel();
+            montoR.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            montoR.setText(montoReduc.getText());
+
+            JLabel icono = new JLabel();
+            Iconos.scaleImage("Impuesto", icono, 30);
+            listaGastos.add(panelGasto);
+            panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
+
+            panelGasto.add(fecha);
+            panelGasto.add(reduc);
+            panelGasto.add(montoR);
+            panelGasto.add(icono);
+
+            indice++;
+            listaGastos.updateUI();
+        }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+        
+        iconoOkReducInv.addMouseListener(botonImp);
+    }
+    
+    
+    
+    
+    public static String fechaActual(){
+        java.util.Date fecha = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM");
+        return formatoFecha.format(fecha);
+    }
    
     
 }
