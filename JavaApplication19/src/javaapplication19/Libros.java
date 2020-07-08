@@ -1220,7 +1220,7 @@ public class Libros extends javax.swing.JFrame {
                 
             
             rellenarGastos.add(rellenarDes.rellenarDesarrollo());
-            rellenarDesarrollo.botonDesarrollo(rellenarDes.desarrollo, rellenarDes.montoDes , rellenarDes.iconoOkDesarrollo, scrollIngresos, listaIngresos);
+            rellenarDesarrollo.botonDesarrollo(rellenarDes.desarrollo, rellenarDes.montoDes , rellenarDes.iconoOkDesarrollo, scrollGastos, listaGastos);
           
         }
         
@@ -1228,12 +1228,12 @@ public class Libros extends javax.swing.JFrame {
             RellenarG rellenarD = new RellenarG();
             rellenarGastos rellenarDeudas = new rellenarGastos();
             
-            rellenarIngresos.removeAll();
-            rellenarIngresos.revalidate();
-            rellenarIngresos.repaint();
+            rellenarGastos.removeAll();
+            rellenarGastos.revalidate();
+            rellenarGastos.repaint();
             
             rellenarGastos.add(rellenarD.rellenarDeudasPagar());
-            rellenarDeudas.botonDeudas(rellenarD.deudas, rellenarD.montoDeuda, rellenarD.iconoOkDeudas, scrollIngresos, listaIngresos);
+            rellenarDeudas.botonDeudas(rellenarD.deudas, rellenarD.montoDeuda, rellenarD.iconoOkDeudas, scrollGastos, listaGastos);
             
             
         }
@@ -1246,7 +1246,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.repaint();
             
             rellenarGastos.add(rellenarMant.rellenarInversion());
-            rellenarMantenimiento.botonMantenimiento(rellenarMant.inversorI,rellenarMant.montoI , rellenarMant.iconoOkI, scrollIngresos, listaIngresos);
+            rellenarMantenimiento.botonMantenimiento(rellenarMant.inversorI,rellenarMant.montoI , rellenarMant.iconoOkI, scrollGastos, listaGastos);
             
         }
         
@@ -1259,7 +1259,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.repaint();
             
             rellenarGastos.add(rellenarIm.rellenarImpuestoG());
-            rellenarImpuesto.botonImpuestoG(rellenarIm.impuesto,  rellenarIm.montoImpuesto, rellenarIm.iconoOkImpuesto, scrollIngresos, listaIngresos);
+            rellenarImpuesto.botonImpuestoG(rellenarIm.impuesto,  rellenarIm.montoImpuesto, rellenarIm.iconoOkImpuesto, scrollGastos, listaGastos);
         
         }
         else if(comboGastos.getSelectedItem().toString().equals("SUMINISTROS")) {
@@ -1271,7 +1271,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.repaint();
             
             rellenarGastos.add(rellenarSum.rellenarSuministros());
-            rellenarSuministro.botonImpuestoG( rellenarSum.suministros,rellenarSum.montoSum , rellenarSum.iconoOkSuministros, scrollIngresos, listaIngresos);
+            rellenarSuministro.botonImpuestoG( rellenarSum.suministros,rellenarSum.montoSum , rellenarSum.iconoOkSuministros, scrollGastos, listaGastos);
         
         }
         
@@ -1284,7 +1284,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.repaint();
             
             rellenarGastos.add(rellenarPub.rellenarSuministros());
-            rellenarPublicidad.botonImpuestoG( rellenarPub.publicidad,rellenarPub.montoPublicidad , rellenarPub.iconoOkPublicidad, scrollIngresos, listaIngresos);
+            rellenarPublicidad.botonImpuestoG( rellenarPub.publicidad,rellenarPub.montoPublicidad , rellenarPub.iconoOkPublicidad, scrollGastos, listaGastos);
         
         }
         
@@ -1297,7 +1297,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.repaint();
             
             rellenarGastos.add(rellenarTrans.rellenarSuministros());
-            rellenarTransporte.botonImpuestoG( rellenarTrans.publicidad,rellenarTrans.montoPublicidad , rellenarTrans.iconoOkPublicidad, scrollIngresos, listaIngresos);
+            rellenarTransporte.botonImpuestoG( rellenarTrans.publicidad,rellenarTrans.montoPublicidad , rellenarTrans.iconoOkPublicidad, scrollGastos, listaGastos);
         
         }
         
@@ -1310,7 +1310,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.repaint();
             
             rellenarGastos.add(rellenarHon.rellenarSuministros());
-            rellenarHonorarios.botonImpuestoG( rellenarHon.publicidad,rellenarHon.montoPublicidad , rellenarHon.iconoOkPublicidad, scrollIngresos, listaIngresos);
+            rellenarHonorarios.botonImpuestoG( rellenarHon.publicidad,rellenarHon.montoPublicidad , rellenarHon.iconoOkPublicidad, scrollGastos, listaGastos);
         
         }
         else if(comboGastos.getSelectedItem().toString().equals("REDUC. DE INV.")) {
@@ -1322,7 +1322,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.repaint();
             
             rellenarGastos.add(rellenarRed.rellenarSuministros());
-            rellenarReduccion.botonImpuestoG( rellenarRed.publicidad,rellenarRed.montoPublicidad , rellenarRed.iconoOkPublicidad, scrollIngresos, listaIngresos);
+            rellenarReduccion.botonImpuestoG( rellenarRed.publicidad,rellenarRed.montoPublicidad , rellenarRed.iconoOkPublicidad, scrollGastos, listaGastos);
         
         }
     }//GEN-LAST:event_comboGastosActionPerformed
