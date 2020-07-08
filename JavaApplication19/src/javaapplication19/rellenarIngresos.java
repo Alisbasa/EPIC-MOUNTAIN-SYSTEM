@@ -44,8 +44,8 @@ public class rellenarIngresos {
             panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelIngreso.setLayout(new GridLayout(1,4));
             panelIngreso.setBackground(Color.white);
-            panelIngreso.setPreferredSize(new Dimension(600,50));
-            listaIngresos.setLayout(new BoxLayout(listaIngresos,BoxLayout.Y_AXIS));
+            panelIngreso.setMaximumSize(new Dimension(600,60));
+            panelIngreso.setPreferredSize(new Dimension(600,100));;
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
@@ -109,8 +109,8 @@ public class rellenarIngresos {
             panelIngresoC.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelIngresoC.setLayout(new GridLayout(1,4));
             panelIngresoC.setBackground(Color.white);
-            panelIngresoC.setPreferredSize(new Dimension(700,50));
-            listaIngresos.setLayout(new BoxLayout(listaIngresos,BoxLayout.Y_AXIS));
+            panelIngresoC.setMaximumSize(new Dimension(600,60));
+            panelIngresoC.setPreferredSize(new Dimension(600,100));;
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
@@ -169,13 +169,13 @@ public class rellenarIngresos {
         @Override
         public void mouseClicked(MouseEvent e) {
             
-            //scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             JPanel panelIngresoI = new JPanel();
             panelIngresoI.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelIngresoI.setLayout(new GridLayout(1,4));
             panelIngresoI.setBackground(Color.white);
-            panelIngresoI.setPreferredSize(new Dimension(700,50));
-            listaIngresos.setLayout(new BoxLayout(listaIngresos,BoxLayout.Y_AXIS));
+            panelIngresoI.setMaximumSize(new Dimension(600,60));
+            panelIngresoI.setPreferredSize(new Dimension(600,100));;
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
@@ -239,8 +239,8 @@ public class rellenarIngresos {
             panelIngresoImp.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelIngresoImp.setLayout(new GridLayout(1,4));
             panelIngresoImp.setBackground(Color.white);
-            panelIngresoImp.setPreferredSize(new Dimension(700,50));
-            listaIngresos.setLayout(new BoxLayout(listaIngresos,BoxLayout.Y_AXIS));
+            panelIngresoImp.setMaximumSize(new Dimension(600,60));
+            panelIngresoImp.setPreferredSize(new Dimension(600,100));;
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
