@@ -1147,42 +1147,7 @@ public class Libros extends javax.swing.JFrame {
             e.printStackTrace();       
         }
     }//GEN-LAST:event_panelHistorialCuentasMouseClicked
-   /* public void okBoton(JTextField monto, JComboBox inventario, JComboBox plataforma, JLabel label){
-        MouseListener botonOk = new MouseListener() {
-            
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            System.out.println(monto.getText());
-            System.out.println( inventario.getSelectedItem().toString());
-            System.out.println(plataforma.getSelectedItem().toString());
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-            
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            
-        }
-        
-    };
-        label.addMouseListener(botonOk);
-    }
-    */
-    
-    
+  
     
     private void comboIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboIngresosActionPerformed
         Rellenar rellenarV = new Rellenar();
