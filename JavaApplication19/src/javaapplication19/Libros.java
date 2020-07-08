@@ -867,6 +867,7 @@ public class Libros extends javax.swing.JFrame {
         scrollIngresos.setBorder(null);
 
         listaIngresos.setBackground(new java.awt.Color(255, 255, 255));
+        listaIngresos.setBorder(javax.swing.BorderFactory.createEmptyBorder(30, 30, 30, 30));
 
         javax.swing.GroupLayout listaIngresosLayout = new javax.swing.GroupLayout(listaIngresos);
         listaIngresos.setLayout(listaIngresosLayout);
@@ -1195,12 +1196,12 @@ public class Libros extends javax.swing.JFrame {
         @Override
         public void mouseClicked(MouseEvent e) {
             
-            //scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             JPanel panelIngreso = new JPanel();
             panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelIngreso.setLayout(new GridLayout(1,4));
             panelIngreso.setBackground(Color.white);
-            panelIngreso.setPreferredSize(new Dimension(700,50));
+            panelIngreso.setPreferredSize(new Dimension(600,50));
             listaIngresos.setLayout(new BoxLayout(listaIngresos,BoxLayout.Y_AXIS));
             
             JLabel fecha = new JLabel();
@@ -1216,7 +1217,7 @@ public class Libros extends javax.swing.JFrame {
             precio.setText(monto.getText());
 
             JLabel icono = new JLabel();
-            icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
+            Iconos.scaleImage("Ventas", icono, 50);
             listaIngresos.add(panelIngreso);
             panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -1261,7 +1262,7 @@ public class Libros extends javax.swing.JFrame {
         @Override
         public void mouseClicked(MouseEvent e) {
             
-            //scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             JPanel panelIngresoC = new JPanel();
             panelIngresoC.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelIngresoC.setLayout(new GridLayout(1,4));
@@ -1347,7 +1348,7 @@ public class Libros extends javax.swing.JFrame {
             precioI.setText(montoI.getText());
 
             JLabel icono = new JLabel();
-            icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
+            icono.setIcon(new ImageIcon("src\\img\\Ventas.png"));
             listaIngresos.add(panelIngresoI);
             panelesIngresos.add(panelIngresoI);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -1391,7 +1392,7 @@ public class Libros extends javax.swing.JFrame {
         @Override
         public void mouseClicked(MouseEvent e) {
             
-            //scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             JPanel panelIngresoImp = new JPanel();
             panelIngresoImp.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelIngresoImp.setLayout(new GridLayout(1,4));
