@@ -216,7 +216,7 @@ public class RellenarG {
         Iconos.scaleImage("Ventas", iconoTransporte, 40);
         rellenarTransporte.add(iconoTransporte);
         Iconos.scaleImage("ok", iconoOkTransporte, 30);
-        transporte = new JTextField("Publicidad");
+        transporte = new JTextField("Transporte");
         montoTrans = new JTextField("$");
         montoTrans.setPreferredSize(new Dimension(60, 30));
         transporte.setPreferredSize(new Dimension(150, 30));      
@@ -237,7 +237,7 @@ public class RellenarG {
         Iconos.scaleImage("Ventas", iconoHonorarios, 40);
         rellenarHonorarios.add(iconoHonorarios);
         Iconos.scaleImage("ok", iconoOkHonorarios, 30);
-        honorarios = new JTextField("Publicidad");
+        honorarios = new JTextField("Honorarios");
         montoHonor = new JTextField("$");
         montoHonor.setPreferredSize(new Dimension(60, 30));
         honorarios.setPreferredSize(new Dimension(150, 30));      
