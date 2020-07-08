@@ -41,6 +41,12 @@ public class Rellenar {
     JTextField monto;
     JComboBox inventario;
     JComboBox plataformacb;
+    JTextField inversor;
+    JTextField montoC;
+    JTextField montoI;
+    JTextField inversorI;
+    JTextField impuesto;
+    JTextField montoImp;
     
     
     
@@ -76,6 +82,8 @@ public class Rellenar {
         
         return rellenarVentas;
     }
+     
+     
     public  JPanel rellenarCredito(){
         rellenarCredito.removeAll();
         
@@ -84,15 +92,15 @@ public class Rellenar {
         rellenarCredito.add(iconoCredito);
         Iconos.scaleImage("ok", iconoOkC, 30);
         
-        JTextField inversor = new JTextField("Prestamista");
-        JTextField monto = new JTextField("$");
-        monto.setPreferredSize(new Dimension(60, 30));
+        inversor = new JTextField("Prestamista");
+        montoC = new JTextField("$");
+        montoC.setPreferredSize(new Dimension(60, 30));
         inversor.setPreferredSize(new Dimension(150, 30));      
         
         
         
         rellenarCredito.add(inversor);
-        rellenarCredito.add(monto);
+        rellenarCredito.add(montoC);
         
         rellenarCredito.add(iconoOkC);
         
@@ -106,15 +114,15 @@ public class Rellenar {
         Iconos.scaleImage("Ventas", iconoInversion, 40);
         rellenarInversion.add(iconoInversion);
         Iconos.scaleImage("ok", iconoOkI, 30);
-        JTextField inversor = new JTextField("Inversor");
-        JTextField monto = new JTextField("$");
-        monto.setPreferredSize(new Dimension(60, 30));
-        inversor.setPreferredSize(new Dimension(150, 30));      
+        inversorI = new JTextField("Inversor");
+        montoI = new JTextField("$");
+        montoI.setPreferredSize(new Dimension(60, 30));
+        inversorI.setPreferredSize(new Dimension(150, 30));      
         
         
         
-        rellenarInversion.add(inversor);
-        rellenarInversion.add(monto);
+        rellenarInversion.add(inversorI);
+        rellenarInversion.add(montoI);
         
         rellenarInversion.add(iconoOkI);
         
@@ -128,49 +136,20 @@ public class Rellenar {
         Iconos.scaleImage("Ventas", iconoImpuesto, 40);
         rellenarImpuesto.add(iconoImpuesto);
         Iconos.scaleImage("ok", iconoOkImp, 30);
-        JTextField inversor = new JTextField("Impuesto");
-        JTextField monto = new JTextField("$");
-        monto.setPreferredSize(new Dimension(60, 30));
-        inversor.setPreferredSize(new Dimension(150, 30));      
+        impuesto = new JTextField("Impuesto");
+        montoImp = new JTextField("$");
+        montoImp.setPreferredSize(new Dimension(60, 30));
+        impuesto.setPreferredSize(new Dimension(150, 30));      
         
         
         
-        rellenarImpuesto.add(inversor);
-        rellenarImpuesto.add(monto);
+        rellenarImpuesto.add(impuesto);
+        rellenarImpuesto.add(montoImp);
         
         rellenarImpuesto.add(iconoOkImp);
         
         return rellenarImpuesto;
     }
-    
-//    public void iconoOkVMouseClicked(java.awt.event.MouseEvent evt){
-//        JPanel panelIngreso = new JPanel();
-//        panelIngreso.setLayout(new GridLayout(1,4));
-//        Libros.rellenarIngresos.setLayout(new GridLayout(indice,1));
-//        
-//        JLabel fecha = new JLabel();
-//        fecha.setText(fechaActual());
-//        
-//        JLabel inventarioLista = new JLabel();
-//        inventarioLista.setText(Rellenar.rellenarVentas.getAccessibleContext().getAccessibleText().toString());
-//        
-//        JLabel precio = new JLabel();
-//        //precio.setText();
-//        
-//        JLabel icono = new JLabel();
-//        icono.setIcon(new ImageIcon("..\\src\\img\\Ventas.png"));
-//        
-//        rellenarIngresos.add(panelIngreso);
-//        panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-//        
-//        panelIngreso.add(fecha);
-//        panelIngreso.add(inventarioLista);
-//        panelIngreso.add(precio);
-//        panelIngreso.add(icono);
-//        
-//        indice++;
-//        rellenarIngresos.updateUI();
-//    }
      
     
 }
