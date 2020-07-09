@@ -423,6 +423,14 @@ public class Libros extends javax.swing.JFrame {
         crmIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         crmIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         crmIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        crmIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                crmIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                crmIconMouseExited(evt);
+            }
+        });
         panelCRM.add(crmIcon, java.awt.BorderLayout.CENTER);
 
         panelIzq.add(panelCRM);
@@ -446,6 +454,14 @@ public class Libros extends javax.swing.JFrame {
         ventasIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ventasIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         ventasIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ventasIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ventasIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ventasIconMouseExited(evt);
+            }
+        });
         panelVentas.add(ventasIcon, java.awt.BorderLayout.CENTER);
 
         panelIzq.add(panelVentas);
@@ -469,6 +485,14 @@ public class Libros extends javax.swing.JFrame {
         provedoresIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         provedoresIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         provedoresIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        provedoresIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                provedoresIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                provedoresIconMouseExited(evt);
+            }
+        });
         panelProvedores.add(provedoresIcon, java.awt.BorderLayout.CENTER);
 
         panelIzq.add(panelProvedores);
@@ -492,6 +516,14 @@ public class Libros extends javax.swing.JFrame {
         pagarIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pagarIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         pagarIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pagarIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pagarIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pagarIconMouseExited(evt);
+            }
+        });
         panelDeudasP.add(pagarIcon, java.awt.BorderLayout.CENTER);
 
         panelIzq.add(panelDeudasP);
@@ -516,6 +548,14 @@ public class Libros extends javax.swing.JFrame {
         cobrarIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cobrarIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         cobrarIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cobrarIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cobrarIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cobrarIconMouseExited(evt);
+            }
+        });
         panelDeudasC.add(cobrarIcon, java.awt.BorderLayout.CENTER);
 
         panelIzq.add(panelDeudasC);
@@ -540,6 +580,14 @@ public class Libros extends javax.swing.JFrame {
         equipoIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         equipoIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         equipoIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        equipoIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                equipoIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                equipoIconMouseExited(evt);
+            }
+        });
         panelEquipo.add(equipoIcon, java.awt.BorderLayout.CENTER);
 
         panelIzq.add(panelEquipo);
@@ -570,6 +618,14 @@ public class Libros extends javax.swing.JFrame {
         inventarioIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         inventarioIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         inventarioIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inventarioIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inventarioIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inventarioIconMouseExited(evt);
+            }
+        });
         panelnventario.add(inventarioIcon, java.awt.BorderLayout.CENTER);
 
         panelDer.add(panelnventario);
@@ -594,6 +650,14 @@ public class Libros extends javax.swing.JFrame {
         packsIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         packsIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         packsIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        packsIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                packsIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                packsIconMouseExited(evt);
+            }
+        });
         panelPacks.add(packsIcon, java.awt.BorderLayout.CENTER);
 
         panelDer.add(panelPacks);
@@ -618,6 +682,14 @@ public class Libros extends javax.swing.JFrame {
         suministrosIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         suministrosIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         suministrosIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        suministrosIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                suministrosIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                suministrosIconMouseExited(evt);
+            }
+        });
         panelSuministros.add(suministrosIcon, java.awt.BorderLayout.CENTER);
 
         panelDer.add(panelSuministros);
@@ -642,6 +714,14 @@ public class Libros extends javax.swing.JFrame {
         cuentasIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cuentasIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         cuentasIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cuentasIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cuentasIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cuentasIconMouseExited(evt);
+            }
+        });
         panelCuentas.add(cuentasIcon, java.awt.BorderLayout.CENTER);
 
         panelDer.add(panelCuentas);
@@ -666,6 +746,14 @@ public class Libros extends javax.swing.JFrame {
         estrategiaIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         estrategiaIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         estrategiaIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        estrategiaIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                estrategiaIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                estrategiaIconMouseExited(evt);
+            }
+        });
         panelEstrategia.add(estrategiaIcon, java.awt.BorderLayout.CENTER);
 
         panelDer.add(panelEstrategia);
@@ -690,6 +778,14 @@ public class Libros extends javax.swing.JFrame {
         planeacionIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         planeacionIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         planeacionIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        planeacionIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                planeacionIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                planeacionIconMouseExited(evt);
+            }
+        });
         panelPlaneacion.add(planeacionIcon, java.awt.BorderLayout.CENTER);
 
         panelDer.add(panelPlaneacion);
@@ -716,6 +812,14 @@ public class Libros extends javax.swing.JFrame {
         panelCompras2.add(comprasLabel2, java.awt.BorderLayout.PAGE_END);
 
         comprasIcon2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        comprasIcon2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                comprasIcon2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                comprasIcon2MouseExited(evt);
+            }
+        });
         panelCompras2.add(comprasIcon2, java.awt.BorderLayout.CENTER);
 
         jPanel7.add(panelCompras2);
@@ -730,6 +834,14 @@ public class Libros extends javax.swing.JFrame {
         panelHistorialCRM.setLayout(new java.awt.BorderLayout());
 
         historialCRMIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        historialCRMIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                historialCRMIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                historialCRMIconMouseExited(evt);
+            }
+        });
         panelHistorialCRM.add(historialCRMIcon, java.awt.BorderLayout.CENTER);
 
         historialCRMLabel.setBackground(new java.awt.Color(51, 51, 51));
@@ -757,6 +869,12 @@ public class Libros extends javax.swing.JFrame {
         regLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 regLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                regLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                regLabelMouseExited(evt);
             }
         });
         corte1.add(regLabel, java.awt.BorderLayout.CENTER);
@@ -794,6 +912,14 @@ public class Libros extends javax.swing.JFrame {
 
         historialCuentasIcon.setBackground(new java.awt.Color(51, 51, 51));
         historialCuentasIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        historialCuentasIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                historialCuentasIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                historialCuentasIconMouseExited(evt);
+            }
+        });
         panelHistorialCuentas.add(historialCuentasIcon, java.awt.BorderLayout.CENTER);
 
         historialCuentasLabel.setBackground(new java.awt.Color(51, 51, 51));
@@ -819,6 +945,14 @@ public class Libros extends javax.swing.JFrame {
         panelFacturacion.add(facturacionLabel, java.awt.BorderLayout.PAGE_END);
 
         facturacionIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        facturacionIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                facturacionIconMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                facturacionIconMouseExited(evt);
+            }
+        });
         panelFacturacion.add(facturacionIcon, java.awt.BorderLayout.CENTER);
 
         jPanel7.add(panelFacturacion);
@@ -846,6 +980,7 @@ public class Libros extends javax.swing.JFrame {
         ingresosLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 25));
         headerLibroIngresos.add(ingresosLabel);
 
+        comboIngresos.setBackground(new java.awt.Color(255, 255, 255));
         comboIngresos.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         comboIngresos.setForeground(new java.awt.Color(51, 51, 51));
         comboIngresos.setModel(new javax.swing.DefaultComboBoxModel<>(ingresos));
@@ -899,11 +1034,12 @@ public class Libros extends javax.swing.JFrame {
         ingresosLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 25));
         headerLibroGastos.add(ingresosLabel1);
 
+        comboGastos.setBackground(new java.awt.Color(255, 255, 255));
         comboGastos.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         comboGastos.setForeground(new java.awt.Color(51, 51, 51));
         comboGastos.setModel(new javax.swing.DefaultComboBoxModel<>(gastos));
         comboGastos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        comboGastos.setPreferredSize(new java.awt.Dimension(160, 35));
+        comboGastos.setPreferredSize(new java.awt.Dimension(180, 35));
         comboGastos.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboGastosItemStateChanged(evt);
@@ -1328,6 +1464,144 @@ public class Libros extends javax.swing.JFrame {
         
         }
     }//GEN-LAST:event_comboGastosActionPerformed
+
+    private void comprasIcon2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprasIcon2MouseEntered
+        scaleImage("Comprash",comprasIcon2,inventarioIcon.getHeight()-3);        // TODO add your handling code here:
+    }//GEN-LAST:event_comprasIcon2MouseEntered
+
+    private void comprasIcon2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprasIcon2MouseExited
+        scaleImage("Compras",comprasIcon2,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_comprasIcon2MouseExited
+
+    private void crmIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crmIconMouseEntered
+        scaleImage("CRMh",crmIcon,inventarioIcon.getHeight()-3); 
+    }//GEN-LAST:event_crmIconMouseEntered
+
+    private void crmIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crmIconMouseExited
+        scaleImage("CRM",crmIcon,inventarioIcon.getHeight()-3); 
+    }//GEN-LAST:event_crmIconMouseExited
+
+    private void ventasIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventasIconMouseEntered
+        scaleImage("Ventash",ventasIcon,inventarioIcon.getHeight()-3); 
+    }//GEN-LAST:event_ventasIconMouseEntered
+
+    private void ventasIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventasIconMouseExited
+        scaleImage("Ventas",ventasIcon,inventarioIcon.getHeight()-3); 
+    }//GEN-LAST:event_ventasIconMouseExited
+
+    private void provedoresIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_provedoresIconMouseEntered
+        scaleImage("Provedoresh",provedoresIcon,inventarioIcon.getHeight()-3); 
+    }//GEN-LAST:event_provedoresIconMouseEntered
+
+    private void provedoresIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_provedoresIconMouseExited
+        scaleImage("Proveedores",provedoresIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_provedoresIconMouseExited
+
+    private void pagarIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarIconMouseEntered
+        scaleImage("DeudasPh",pagarIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_pagarIconMouseEntered
+
+    private void pagarIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarIconMouseExited
+        scaleImage("DeudasP",pagarIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_pagarIconMouseExited
+
+    private void cobrarIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cobrarIconMouseEntered
+        scaleImage("DeudasCh",cobrarIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_cobrarIconMouseEntered
+
+    private void cobrarIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cobrarIconMouseExited
+        scaleImage("DeudasC",cobrarIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_cobrarIconMouseExited
+
+    private void equipoIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_equipoIconMouseEntered
+        scaleImage("Equipoh",equipoIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_equipoIconMouseEntered
+
+    private void equipoIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_equipoIconMouseExited
+        scaleImage("Equipo",equipoIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_equipoIconMouseExited
+
+    private void historialCRMIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialCRMIconMouseEntered
+        scaleImage("CRMh",historialCRMIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_historialCRMIconMouseEntered
+
+    private void regLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regLabelMouseEntered
+        this.setBackground(Color.white);
+        this.setForeground(Colores.epicColor);        // TODO add your handling code here:
+    }//GEN-LAST:event_regLabelMouseEntered
+
+    private void regLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regLabelMouseExited
+       this.setBackground(Colores.epicColor);
+        this.setForeground(Color.white); 
+    }//GEN-LAST:event_regLabelMouseExited
+
+    private void inventarioIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventarioIconMouseEntered
+        scaleImage("Inventarioh",inventarioIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_inventarioIconMouseEntered
+
+    private void historialCRMIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialCRMIconMouseExited
+        scaleImage("CRM",historialCRMIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_historialCRMIconMouseExited
+
+    private void inventarioIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventarioIconMouseExited
+        scaleImage("Inventario",inventarioIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_inventarioIconMouseExited
+
+    private void packsIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_packsIconMouseEntered
+        scaleImage("Packsh",packsIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_packsIconMouseEntered
+
+    private void packsIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_packsIconMouseExited
+        scaleImage("Packs",packsIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_packsIconMouseExited
+
+    private void suministrosIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_suministrosIconMouseEntered
+        scaleImage("Suministrosh",suministrosIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_suministrosIconMouseEntered
+
+    private void suministrosIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_suministrosIconMouseExited
+        scaleImage("Suministros",suministrosIcon,inventarioIcon.getHeight()-3);       // TODO add your handling code here:
+    }//GEN-LAST:event_suministrosIconMouseExited
+
+    private void cuentasIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuentasIconMouseEntered
+        scaleImage("Cuentash",cuentasIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_cuentasIconMouseEntered
+
+    private void estrategiaIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estrategiaIconMouseEntered
+        scaleImage("Estrategiah",estrategiaIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_estrategiaIconMouseEntered
+
+    private void estrategiaIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estrategiaIconMouseExited
+        scaleImage("Estrategia",estrategiaIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_estrategiaIconMouseExited
+
+    private void planeacionIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_planeacionIconMouseEntered
+        scaleImage("Planeacionh",planeacionIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_planeacionIconMouseEntered
+
+    private void planeacionIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_planeacionIconMouseExited
+        scaleImage("Planeacion",planeacionIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_planeacionIconMouseExited
+
+    private void facturacionIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_facturacionIconMouseEntered
+        scaleImage("Facturacionh",facturacionIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_facturacionIconMouseEntered
+
+    private void facturacionIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_facturacionIconMouseExited
+        scaleImage("Facturacion",facturacionIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_facturacionIconMouseExited
+
+    private void historialCuentasIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialCuentasIconMouseEntered
+        scaleImage("Cuentash",historialCuentasIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_historialCuentasIconMouseEntered
+
+    private void historialCuentasIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialCuentasIconMouseExited
+        scaleImage("Cuentas",historialCuentasIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_historialCuentasIconMouseExited
+
+    private void cuentasIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuentasIconMouseExited
+        scaleImage("Cuentas",cuentasIcon,inventarioIcon.getHeight()-3);
+    }//GEN-LAST:event_cuentasIconMouseExited
     
     
     /**/

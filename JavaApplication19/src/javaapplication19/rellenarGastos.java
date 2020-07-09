@@ -23,6 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javaapplication19.Rellenar;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 
 public class rellenarGastos {
@@ -333,6 +334,7 @@ public class rellenarGastos {
             panelGasto.add(sum);
             panelGasto.add(monto);
             panelGasto.add(icono);
+            
 
             indice++;
             listaGastos.updateUI();
