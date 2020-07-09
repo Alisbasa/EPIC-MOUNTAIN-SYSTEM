@@ -88,6 +88,7 @@ public class RellenarG {
         String[] listaDesarrollo={"Mobiliario", "Equisde"};
        
         desarrollo = new JComboBox(listaDesarrollo);
+        desarrollo.setBackground(Color.white);
        
         montoDes = new JTextField("$");
       
@@ -112,6 +113,7 @@ public class RellenarG {
         
         String[] listaDeudores={"Alex", "Ivan"};
         deudas = new JComboBox(listaDeudores);
+        deudas.setBackground(Color.white);
         montoDeuda = new JTextField("$");
         montoDeuda.setPreferredSize(new Dimension(60, 30));
         deudas.setPreferredSize(new Dimension(150, 30));      
@@ -131,7 +133,7 @@ public class RellenarG {
         rellenarImpuestoG.setBackground(Color.white);
         Iconos.scaleImage("Impuesto", iconoImpuesto, 25);
         rellenarImpuestoG.add(iconoImpuesto);
-        Iconos.scaleImage("ok", iconoOkImpuesto, 40);
+        Iconos.scaleImage("ok", iconoOkImpuesto, 30);
         impuesto = new JTextField("Impuesto");
         montoImpuesto = new JTextField("$");
         montoImpuesto.setPreferredSize(new Dimension(60, 30));
@@ -262,6 +264,7 @@ public class RellenarG {
         Iconos.scaleImage("ok", iconoOkReducInv, 30);
         String[] listaInventario={"inventario","Bici chingona","Bici Chingona 2","Bici Chingona 3"};
         reducInv = new JComboBox(listaInventario);
+        reducInv.setBackground(Color.white);
         montoReduc = new JTextField("$");
         montoReduc.setPreferredSize(new Dimension(60, 30));
         reducInv.setPreferredSize(new Dimension(150, 30));      

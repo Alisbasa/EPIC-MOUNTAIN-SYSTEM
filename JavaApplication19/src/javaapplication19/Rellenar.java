@@ -18,6 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javaapplication19.Libros;
+import javax.swing.BorderFactory;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -64,11 +66,15 @@ public class Rellenar {
         String[] listaPlataformas={"ML","fACEBOOK","Amazon","Shopiffy"};
        
         inventario = new JComboBox(listaInventario);
+        inventario.setBackground(Color.white);
        
         plataformacb = new JComboBox(listaPlataformas);
+        plataformacb.setBackground(Color.white);
         
         monto = new JTextField("$");
-      
+       monto.setBorder(new LineBorder(Colores.epicColor,0,true));
+       monto.setBackground(Colores.epicColorBajito);
+       monto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
 //      
         monto.setPreferredSize(new Dimension(60, 30));
         Iconos.scaleImage("ok", iconoOkV, 30);

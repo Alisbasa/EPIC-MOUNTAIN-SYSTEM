@@ -186,7 +186,7 @@ public class rellenarGastos {
             fecha.setText(fechaActual());
 
             JLabel imp = new JLabel();
-            imp.setFont(new Font("Franklin Gothic",Font.PLAIN,144));
+            imp.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             imp.setText(impuesto.getText());
 
             JLabel montoImpues = new JLabel();

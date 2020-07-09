@@ -45,7 +45,7 @@ public class rellenarIngresos {
             panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelIngreso.setLayout(new GridLayout(1,4));
             panelIngreso.setBackground(Colores.epicColorBajito);
-            panelIngreso.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
             panelIngreso.setMaximumSize(new Dimension(500,40));
             panelIngreso.setPreferredSize(new Dimension(500,100));
             
@@ -63,6 +63,7 @@ public class rellenarIngresos {
 
             JLabel icono = new JLabel();
             Iconos.scaleImage("VentasG", icono, 25);
+            icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             listaIngresos.add(panelIngreso);
             panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 

@@ -1079,6 +1079,7 @@ public class Libros extends javax.swing.JFrame {
         comboGastos.setBackground(new java.awt.Color(255, 255, 255));
         comboGastos.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         comboGastos.setForeground(new java.awt.Color(51, 51, 51));
+        comboGastos.setMaximumRowCount(9);
         comboGastos.setModel(new javax.swing.DefaultComboBoxModel<>(gastos));
         comboGastos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         comboGastos.setPreferredSize(new java.awt.Dimension(180, 35));
