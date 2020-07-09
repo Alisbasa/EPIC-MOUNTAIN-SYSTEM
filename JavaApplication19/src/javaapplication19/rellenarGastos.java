@@ -42,7 +42,7 @@ public class rellenarGastos {
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
-            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelGasto.setLayout(new GridLayout(1,4));
             panelGasto.setBackground(Colores.epicColorBajito);
             panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
@@ -50,19 +50,19 @@ public class rellenarGastos {
             panelGasto.setPreferredSize(new Dimension(500,100));;
             
             JLabel fecha = new JLabel();
-            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             fecha.setText(fechaActual());
 
             JLabel desarrolloLista = new JLabel();
-            desarrolloLista.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            desarrolloLista.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             desarrolloLista.setText((String) desarrollo.getSelectedItem());
 
             JLabel precio = new JLabel();
-            precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            precio.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             precio.setText(montoDes.getText());
 
             JLabel icono = new JLabel();
-            Iconos.scaleImage("Ventas", icono, 30);
+            Iconos.scaleImage("desarrolloG", icono, 25);
             listaGastos.add(panelGasto);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -108,7 +108,7 @@ public class rellenarGastos {
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGastoC = new PanelCurvoSinSombra();
-            panelGastoC.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelGastoC.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelGastoC.setLayout(new GridLayout(1,4));
             panelGastoC.setBackground(Colores.epicColorBajito);
             panelGastoC.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
@@ -116,19 +116,19 @@ public class rellenarGastos {
             panelGastoC.setPreferredSize(new Dimension(500,100));;
             
             JLabel fecha = new JLabel();
-            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             fecha.setText(fechaActual());
 
             JLabel deudasPagar = new JLabel();
-            deudasPagar.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            deudasPagar.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             deudasPagar.setText((String) deudas.getSelectedItem());
 
             JLabel precio = new JLabel();
-            precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            precio.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             precio.setText(montoDeuda.getText());
 
             JLabel icono = new JLabel();
-            Iconos.scaleImage("Deudas", icono, 30);
+            Iconos.scaleImage("DeudasPG_1", icono, 25);
             listaGastos.add(panelGastoC);
             panelesGastos.add(panelGastoC);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -174,7 +174,7 @@ public class rellenarGastos {
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
-            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelGasto.setLayout(new GridLayout(1,4));
             panelGasto.setBackground(Colores.epicColorBajito);
             panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
@@ -182,19 +182,19 @@ public class rellenarGastos {
             panelGasto.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
-            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             fecha.setText(fechaActual());
 
             JLabel imp = new JLabel();
-            imp.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            imp.setFont(new Font("Franklin Gothic",Font.PLAIN,148));
             imp.setText(impuesto.getText());
 
             JLabel montoImpues = new JLabel();
-            montoImpues.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            montoImpues.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             montoImpues.setText(montoImpuesto.getText());
 
             JLabel icono = new JLabel();
-            Iconos.scaleImage("Impuesto", icono, 30);
+            Iconos.scaleImage("impuestoG", icono, 25);
             listaGastos.add(panelGasto);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -240,7 +240,7 @@ public class rellenarGastos {
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
-            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelGasto.setLayout(new GridLayout(1,4));
             panelGasto.setBackground(Colores.epicColorBajito);
             panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
@@ -248,19 +248,19 @@ public class rellenarGastos {
             panelGasto.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
-            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             fecha.setText(fechaActual());
 
             JLabel descripcion = new JLabel();
-            descripcion.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            descripcion.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             descripcion.setText(mantenimiento.getText());
 
             JLabel precioMant = new JLabel();
-            precioMant.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            precioMant.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             precioMant.setText(montoMant.getText());
 
             JLabel icono = new JLabel();
-            Iconos.scaleImage("Mantenimiento", icono, 30);
+            Iconos.scaleImage("mantenimientoG", icono, 25);
             listaGastos.add(panelGasto);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -306,7 +306,7 @@ public class rellenarGastos {
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
-            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelGasto.setLayout(new GridLayout(1,4));
             panelGasto.setBackground(Colores.epicColorBajito);
             panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
@@ -314,19 +314,19 @@ public class rellenarGastos {
             panelGasto.setPreferredSize(new Dimension(500,100));;
             
             JLabel fecha = new JLabel();
-            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             fecha.setText(fechaActual());
 
             JLabel sum = new JLabel();
-            sum.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            sum.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             sum.setText(suministro.getText());
 
             JLabel monto = new JLabel();
-            monto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            monto.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             monto.setText(montoSum.getText());
 
             JLabel icono = new JLabel();
-            Iconos.scaleImage("Impuesto", icono, 30);
+            Iconos.scaleImage("suministrosG", icono, 25);
             listaGastos.add(panelGasto);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -373,7 +373,7 @@ public class rellenarGastos {
             
            scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
-            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelGasto.setLayout(new GridLayout(1,4));
             panelGasto.setBackground(Colores.epicColorBajito);
             panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
@@ -381,19 +381,19 @@ public class rellenarGastos {
             panelGasto.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
-            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             fecha.setText(fechaActual());
 
             JLabel pub = new JLabel();
-            pub.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            pub.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             pub.setText(publicidad.getText());
 
             JLabel monto = new JLabel();
-            monto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            monto.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             monto.setText(montoPublicidad.getText());
 
             JLabel icono = new JLabel();
-            Iconos.scaleImage("Impuesto", icono, 30);
+            Iconos.scaleImage("publicidadG", icono, 25);
             listaGastos.add(panelGasto);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -439,7 +439,7 @@ public class rellenarGastos {
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
-            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelGasto.setLayout(new GridLayout(1,4));
             panelGasto.setBackground(Colores.epicColorBajito);
             panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
@@ -447,19 +447,19 @@ public class rellenarGastos {
             panelGasto.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
-            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             fecha.setText(fechaActual());
 
             JLabel trans = new JLabel();
-            trans.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            trans.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             trans.setText(transporte.getText());
 
             JLabel monto = new JLabel();
-            monto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            monto.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             monto.setText(monto.getText());
 
             JLabel icono = new JLabel();
-            Iconos.scaleImage("Impuesto", icono, 30);
+            Iconos.scaleImage("transporteG", icono, 25);
             listaGastos.add(panelGasto);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -505,7 +505,7 @@ public class rellenarGastos {
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
-            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelGasto.setLayout(new GridLayout(1,4));
             panelGasto.setBackground(Colores.epicColorBajito);
             panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
@@ -513,19 +513,19 @@ public class rellenarGastos {
             panelGasto.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
-            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             fecha.setText(fechaActual());
 
             JLabel hon = new JLabel();
-            hon.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            hon.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             hon.setText(honorarios.getText());
 
             JLabel monto = new JLabel();
-            monto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            monto.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             monto.setText(montoHonor.getText());
 
             JLabel icono = new JLabel();
-            Iconos.scaleImage("Impuesto", icono, 30);
+            Iconos.scaleImage("honorariosG", icono, 25);
             listaGastos.add(panelGasto);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -571,7 +571,7 @@ public class rellenarGastos {
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
-            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             panelGasto.setLayout(new GridLayout(1,4));
             panelGasto.setBackground(Colores.epicColorBajito);
             panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
@@ -579,19 +579,19 @@ public class rellenarGastos {
             panelGasto.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
-            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             fecha.setText(fechaActual());
 
             JLabel reduc = new JLabel();
-            reduc.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            reduc.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             reduc.setText((String) reducInv.getSelectedItem());
 
             JLabel montoR = new JLabel();
-            montoR.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            montoR.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
             montoR.setText(montoReduc.getText());
 
             JLabel icono = new JLabel();
-            Iconos.scaleImage("Impuesto", icono, 30);
+            Iconos.scaleImage("inventarioG", icono, 25);
             listaGastos.add(panelGasto);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
