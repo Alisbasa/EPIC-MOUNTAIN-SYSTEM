@@ -846,7 +846,6 @@ public class Libros extends javax.swing.JFrame {
         ingresosLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 25));
         headerLibroIngresos.add(ingresosLabel);
 
-        comboIngresos.setBackground(new java.awt.Color(255, 255, 255));
         comboIngresos.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         comboIngresos.setForeground(new java.awt.Color(51, 51, 51));
         comboIngresos.setModel(new javax.swing.DefaultComboBoxModel<>(ingresos));
@@ -882,6 +881,7 @@ public class Libros extends javax.swing.JFrame {
         scrollIngresos.setViewportView(listaIngresos);
 
         bodyLibroIngresos.add(scrollIngresos, java.awt.BorderLayout.CENTER);
+        scrollIngresos.getVerticalScrollBar().setUI(new scrollI());
 
         libroIngresos.add(bodyLibroIngresos, java.awt.BorderLayout.CENTER);
 
@@ -899,7 +899,6 @@ public class Libros extends javax.swing.JFrame {
         ingresosLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 25));
         headerLibroGastos.add(ingresosLabel1);
 
-        comboGastos.setBackground(new java.awt.Color(255, 255, 255));
         comboGastos.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         comboGastos.setForeground(new java.awt.Color(51, 51, 51));
         comboGastos.setModel(new javax.swing.DefaultComboBoxModel<>(gastos));
@@ -935,6 +934,7 @@ public class Libros extends javax.swing.JFrame {
         scrollGastos.setViewportView(listaGastos);
 
         bodyLibroIgresos.add(scrollGastos, java.awt.BorderLayout.CENTER);
+        scrollGastos.getVerticalScrollBar().setUI(new scrollI());
 
         libroGastos.add(bodyLibroIgresos, java.awt.BorderLayout.CENTER);
 
