@@ -424,6 +424,9 @@ public class Libros extends javax.swing.JFrame {
         crmIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         crmIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         crmIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                crmIconMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 crmIconMouseEntered(evt);
             }
@@ -455,6 +458,9 @@ public class Libros extends javax.swing.JFrame {
         ventasIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         ventasIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ventasIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ventasIconMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ventasIconMouseEntered(evt);
             }
@@ -486,6 +492,9 @@ public class Libros extends javax.swing.JFrame {
         provedoresIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         provedoresIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         provedoresIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                provedoresIconMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 provedoresIconMouseEntered(evt);
             }
@@ -517,6 +526,9 @@ public class Libros extends javax.swing.JFrame {
         pagarIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         pagarIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pagarIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pagarIconMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pagarIconMouseEntered(evt);
             }
@@ -549,6 +561,9 @@ public class Libros extends javax.swing.JFrame {
         cobrarIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         cobrarIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cobrarIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cobrarIconMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 cobrarIconMouseEntered(evt);
             }
@@ -581,6 +596,9 @@ public class Libros extends javax.swing.JFrame {
         equipoIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         equipoIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         equipoIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                equipoIconMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 equipoIconMouseEntered(evt);
             }
@@ -619,6 +637,9 @@ public class Libros extends javax.swing.JFrame {
         inventarioIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         inventarioIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inventarioIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                inventarioIconMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 inventarioIconMouseEntered(evt);
             }
@@ -651,6 +672,9 @@ public class Libros extends javax.swing.JFrame {
         packsIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         packsIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         packsIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                packsIconMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 packsIconMouseEntered(evt);
             }
@@ -683,6 +707,9 @@ public class Libros extends javax.swing.JFrame {
         suministrosIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         suministrosIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         suministrosIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                suministrosIconMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 suministrosIconMouseEntered(evt);
             }
@@ -715,6 +742,9 @@ public class Libros extends javax.swing.JFrame {
         cuentasIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         cuentasIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cuentasIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cuentasIconMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 cuentasIconMouseEntered(evt);
             }
@@ -747,6 +777,9 @@ public class Libros extends javax.swing.JFrame {
         estrategiaIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         estrategiaIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         estrategiaIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                estrategiaIconMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 estrategiaIconMouseEntered(evt);
             }
@@ -779,6 +812,9 @@ public class Libros extends javax.swing.JFrame {
         planeacionIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         planeacionIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         planeacionIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                planeacionIconMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 planeacionIconMouseEntered(evt);
             }
@@ -835,6 +871,9 @@ public class Libros extends javax.swing.JFrame {
 
         historialCRMIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         historialCRMIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                historialCRMIconMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 historialCRMIconMouseEntered(evt);
             }
@@ -913,6 +952,9 @@ public class Libros extends javax.swing.JFrame {
         historialCuentasIcon.setBackground(new java.awt.Color(51, 51, 51));
         historialCuentasIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         historialCuentasIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                historialCuentasIconMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 historialCuentasIconMouseEntered(evt);
             }
@@ -1602,6 +1644,118 @@ public class Libros extends javax.swing.JFrame {
     private void cuentasIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuentasIconMouseExited
         scaleImage("Cuentas",cuentasIcon,inventarioIcon.getHeight()-3);
     }//GEN-LAST:event_cuentasIconMouseExited
+
+    private void inventarioIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventarioIconMouseClicked
+      try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/Inventario.xlsx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_inventarioIconMouseClicked
+
+    private void packsIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_packsIconMouseClicked
+        try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/Packs.xlsx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_packsIconMouseClicked
+
+    private void suministrosIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_suministrosIconMouseClicked
+        try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/Suministros.xlsx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_suministrosIconMouseClicked
+
+    private void cuentasIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuentasIconMouseClicked
+        try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/Cuentas.xlsx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_cuentasIconMouseClicked
+
+    private void estrategiaIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estrategiaIconMouseClicked
+        try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/Estrategia.docx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_estrategiaIconMouseClicked
+
+    private void planeacionIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_planeacionIconMouseClicked
+         try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/Planeacion.docx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_planeacionIconMouseClicked
+
+    private void crmIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crmIconMouseClicked
+        try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/CRM.xlsx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_crmIconMouseClicked
+
+    private void ventasIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventasIconMouseClicked
+        try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/Ventas.xlsx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_ventasIconMouseClicked
+
+    private void provedoresIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_provedoresIconMouseClicked
+        try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/Provedores.xlsx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_provedoresIconMouseClicked
+
+    private void pagarIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarIconMouseClicked
+        try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/DeudasP.xlsx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_pagarIconMouseClicked
+
+    private void cobrarIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cobrarIconMouseClicked
+        try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/DeudasC.xlsx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_cobrarIconMouseClicked
+
+    private void equipoIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_equipoIconMouseClicked
+        try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/Equipo.xlsx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_equipoIconMouseClicked
+
+    private void historialCRMIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialCRMIconMouseClicked
+        try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/historialCRM.xlsx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_historialCRMIconMouseClicked
+
+    private void historialCuentasIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialCuentasIconMouseClicked
+        try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/historialCuentas.xlsx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_historialCuentasIconMouseClicked
     
     
     /**/
