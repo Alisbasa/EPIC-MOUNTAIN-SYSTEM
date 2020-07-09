@@ -129,7 +129,7 @@ public class RellenarG {
         rellenarImpuestoG.removeAll();
         
         rellenarImpuestoG.setBackground(Color.white);
-        Iconos.scaleImage("Impuesto", iconoImpuesto, 40);
+        Iconos.scaleImage("Impuesto", iconoImpuesto, 25);
         rellenarImpuestoG.add(iconoImpuesto);
         Iconos.scaleImage("ok", iconoOkImpuesto, 40);
         impuesto = new JTextField("Impuesto");
@@ -150,7 +150,7 @@ public class RellenarG {
         rellenarMantenimiento.removeAll();
         
         rellenarMantenimiento.setBackground(Color.white);
-        Iconos.scaleImage("Mantenimiento", iconoMantenimiento, 40);
+        Iconos.scaleImage("Mantenimiento", iconoMantenimiento, 25);
         rellenarMantenimiento.add(iconoMantenimiento);
         Iconos.scaleImage("ok", iconoOkMantenimiento, 30);
         mantenimiento = new JTextField("Mantenimiento");

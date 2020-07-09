@@ -50,15 +50,15 @@ public class rellenarIngresos {
             panelIngreso.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
-            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             fecha.setText(fechaActual());
 
             JLabel inventarioLista = new JLabel();
-            inventarioLista.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            inventarioLista.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             inventarioLista.setText((String) inventario.getSelectedItem());
 
             JLabel precio = new JLabel();
-            precio.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             precio.setText(monto.getText());
 
             JLabel icono = new JLabel();
@@ -116,15 +116,15 @@ public class rellenarIngresos {
             panelIngreso.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
-            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             fecha.setText(fechaActual());
 
             JLabel credito = new JLabel();
-            credito.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            credito.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             credito.setText(inversor.getText());
 
             JLabel precio = new JLabel();
-            precio.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             precio.setText(montoC.getText());
 
             JLabel icono = new JLabel();
@@ -182,15 +182,15 @@ public class rellenarIngresos {
             panelIngreso.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
-            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             fecha.setText(fechaActual());
 
             JLabel inversionista = new JLabel();
-            inversionista.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            inversionista.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             inversionista.setText(inversorI.getText());
 
             JLabel precioI = new JLabel();
-            precioI.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            precioI.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             precioI.setText(montoI.getText());
 
             JLabel icono = new JLabel();
@@ -248,15 +248,15 @@ public class rellenarIngresos {
             panelIngreso.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
-            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             fecha.setText(fechaActual());
 
             JLabel imp = new JLabel();
-            imp.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            imp.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             imp.setText(impuesto.getText());
 
             JLabel montoImpuesto = new JLabel();
-            montoImpuesto.setFont(new Font("Franklin Gothic",Font.PLAIN,18));
+            montoImpuesto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             montoImpuesto.setText(montoImp.getText());
 
             JLabel icono = new JLabel();
