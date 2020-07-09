@@ -40,9 +40,9 @@ public class scrollI extends BasicScrollBarUI {
       color = Colores.gris;
     }
     g2.setPaint(color);
-    g2.fillRoundRect(r.x, r.y, r.width, r.height, 10, 10);
+    g2.fillRoundRect(r.x, r.y, r.width, r.height, 20, 10);
     g2.setPaint(Color.WHITE);
-    g2.drawRoundRect(r.x, r.y, r.width, r.height, 10, 10);
+    g2.drawRoundRect(r.x, r.y, r.width, r.height, 20, 10);
     g2.dispose();
   }
 

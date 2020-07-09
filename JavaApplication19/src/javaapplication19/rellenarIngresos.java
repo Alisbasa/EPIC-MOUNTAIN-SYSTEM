@@ -130,6 +130,7 @@ public class rellenarIngresos {
 
             JLabel icono = new JLabel();
             Iconos.scaleImage("CreditoG", icono, 25);
+            icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             listaIngresos.add(panelIngreso);
             panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -196,6 +197,7 @@ public class rellenarIngresos {
 
             JLabel icono = new JLabel();
             Iconos.scaleImage("InversionG", icono, 25);
+            icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             listaIngresos.add(panelIngreso);
             panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -262,6 +264,7 @@ public class rellenarIngresos {
 
             JLabel icono = new JLabel();
             Iconos.scaleImage("impuestoG", icono, 30);
+            icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             listaIngresos.add(panelIngreso);
             panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
