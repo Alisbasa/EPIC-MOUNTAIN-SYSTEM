@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javaapplication19.Libros;
+import javax.swing.BorderFactory;
 
 /**
  *
@@ -91,6 +92,8 @@ public class RellenarG {
         desarrollo.setBackground(Color.white);
        
         montoDes = new JTextField("$");
+        montoDes.setBackground(Colores.epicColorBajito);
+        montoDes.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
       
 //      
         montoDes.setPreferredSize(new Dimension(60, 30));
@@ -114,8 +117,12 @@ public class RellenarG {
         String[] listaDeudores={"Alex", "Ivan"};
         deudas = new JComboBox(listaDeudores);
         deudas.setBackground(Color.white);
+        
         montoDeuda = new JTextField("$");
         montoDeuda.setPreferredSize(new Dimension(60, 30));
+        montoDeuda.setBackground(Colores.epicColorBajito);
+        montoDeuda.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        
         deudas.setPreferredSize(new Dimension(150, 30));      
         
         
@@ -135,8 +142,11 @@ public class RellenarG {
         rellenarImpuestoG.add(iconoImpuesto);
         Iconos.scaleImage("ok", iconoOkImpuesto, 30);
         impuesto = new JTextField("Impuesto");
+        
         montoImpuesto = new JTextField("$");
         montoImpuesto.setPreferredSize(new Dimension(60, 30));
+        montoImpuesto.setBackground(Colores.epicColorBajito);
+        montoImpuesto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         impuesto.setPreferredSize(new Dimension(150, 30));      
         
         
@@ -156,8 +166,12 @@ public class RellenarG {
         rellenarMantenimiento.add(iconoMantenimiento);
         Iconos.scaleImage("ok", iconoOkMantenimiento, 30);
         mantenimiento = new JTextField("Mantenimiento");
+        
         montoMant = new JTextField("$");
         montoMant.setPreferredSize(new Dimension(60, 30));
+        montoMant.setBackground(Colores.epicColorBajito);
+        montoMant.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        
         mantenimiento.setPreferredSize(new Dimension(150, 30));      
         
         
@@ -177,8 +191,12 @@ public class RellenarG {
         rellenarSuministros.add(iconoSuministros);
         Iconos.scaleImage("ok", iconoOkSuministros, 30);
         suministros = new JTextField("Suministros");
+        
         montoSum = new JTextField("$");
         montoSum.setPreferredSize(new Dimension(60, 30));
+        montoSum.setBackground(Colores.epicColorBajito);
+        montoSum.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        
         suministros.setPreferredSize(new Dimension(150, 30));      
         
         
@@ -198,8 +216,12 @@ public class RellenarG {
         rellenarPubliidad.add(iconoPublicidad);
         Iconos.scaleImage("ok", iconoOkPublicidad, 30);
         publicidad = new JTextField("Publicidad");
+        
         montoPublicidad = new JTextField("$");
         montoPublicidad.setPreferredSize(new Dimension(60, 30));
+        montoPublicidad.setBackground(Colores.epicColorBajito);
+        montoPublicidad.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        
         publicidad.setPreferredSize(new Dimension(150, 30));      
         
         
@@ -219,8 +241,12 @@ public class RellenarG {
         rellenarTransporte.add(iconoTransporte);
         Iconos.scaleImage("ok", iconoOkTransporte, 30);
         transporte = new JTextField("Transporte");
+        
         montoTrans = new JTextField("$");
         montoTrans.setPreferredSize(new Dimension(60, 30));
+        montoTrans.setBackground(Colores.epicColorBajito);
+        montoTrans.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        
         transporte.setPreferredSize(new Dimension(150, 30));      
         
         
@@ -240,8 +266,12 @@ public class RellenarG {
         rellenarHonorarios.add(iconoHonorarios);
         Iconos.scaleImage("ok", iconoOkHonorarios, 30);
         honorarios = new JTextField("Honorarios");
+        
         montoHonor = new JTextField("$");
         montoHonor.setPreferredSize(new Dimension(60, 30));
+        montoHonor.setBackground(Colores.epicColorBajito);
+        montoHonor.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        
         honorarios.setPreferredSize(new Dimension(150, 30));      
         
         
@@ -267,6 +297,9 @@ public class RellenarG {
         reducInv.setBackground(Color.white);
         montoReduc = new JTextField("$");
         montoReduc.setPreferredSize(new Dimension(60, 30));
+        montoReduc.setBackground(Colores.epicColorBajito);
+        montoReduc.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        
         reducInv.setPreferredSize(new Dimension(150, 30));      
         
         

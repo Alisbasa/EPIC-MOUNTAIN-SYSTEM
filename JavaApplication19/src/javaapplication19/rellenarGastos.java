@@ -45,7 +45,7 @@ public class rellenarGastos {
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelGasto.setLayout(new GridLayout(1,4));
             panelGasto.setBackground(Colores.epicColorBajito);
-            panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 10 , 5, 10));
             panelGasto.setMaximumSize(new Dimension(500,40));
             panelGasto.setPreferredSize(new Dimension(500,100));;
             
@@ -111,7 +111,7 @@ public class rellenarGastos {
             panelGastoC.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelGastoC.setLayout(new GridLayout(1,4));
             panelGastoC.setBackground(Colores.epicColorBajito);
-            panelGastoC.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGastoC.setBorder(BorderFactory.createEmptyBorder(5, 10 , 5, 10));
             panelGastoC.setMaximumSize(new Dimension(500,40));
             panelGastoC.setPreferredSize(new Dimension(500,100));;
             
@@ -177,7 +177,7 @@ public class rellenarGastos {
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelGasto.setLayout(new GridLayout(1,4));
             panelGasto.setBackground(Colores.epicColorBajito);
-            panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 10 , 5, 10));
             panelGasto.setMaximumSize(new Dimension(500,40));
             panelGasto.setPreferredSize(new Dimension(500,100));
             
@@ -243,7 +243,7 @@ public class rellenarGastos {
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelGasto.setLayout(new GridLayout(1,4));
             panelGasto.setBackground(Colores.epicColorBajito);
-            panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 10 , 5, 10));
             panelGasto.setMaximumSize(new Dimension(500,40));
             panelGasto.setPreferredSize(new Dimension(500,100));
             
@@ -309,7 +309,7 @@ public class rellenarGastos {
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelGasto.setLayout(new GridLayout(1,4));
             panelGasto.setBackground(Colores.epicColorBajito);
-            panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 10 , 5, 10));
             panelGasto.setMaximumSize(new Dimension(500,40));
             panelGasto.setPreferredSize(new Dimension(500,100));;
             
@@ -376,7 +376,7 @@ public class rellenarGastos {
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelGasto.setLayout(new GridLayout(1,4));
             panelGasto.setBackground(Colores.epicColorBajito);
-            panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 10 , 5, 10));
             panelGasto.setMaximumSize(new Dimension(500,40));
             panelGasto.setPreferredSize(new Dimension(500,100));
             
@@ -442,7 +442,7 @@ public class rellenarGastos {
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelGasto.setLayout(new GridLayout(1,4));
             panelGasto.setBackground(Colores.epicColorBajito);
-            panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 10 , 5, 10));
             panelGasto.setMaximumSize(new Dimension(500,40));
             panelGasto.setPreferredSize(new Dimension(500,100));
             
@@ -508,7 +508,7 @@ public class rellenarGastos {
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelGasto.setLayout(new GridLayout(1,4));
             panelGasto.setBackground(Colores.epicColorBajito);
-            panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 10 , 5, 10));
             panelGasto.setMaximumSize(new Dimension(500,40));
             panelGasto.setPreferredSize(new Dimension(500,100));
             
@@ -574,7 +574,7 @@ public class rellenarGastos {
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelGasto.setLayout(new GridLayout(1,4));
             panelGasto.setBackground(Colores.epicColorBajito);
-            panelGasto.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 10 , 5, 10));
             panelGasto.setMaximumSize(new Dimension(500,40));
             panelGasto.setPreferredSize(new Dimension(500,100));
             

@@ -112,7 +112,7 @@ public class rellenarIngresos {
             panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelIngreso.setLayout(new GridLayout(1,4));
             panelIngreso.setBackground(Colores.epicColorBajito);
-            panelIngreso.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 10 , 5, 10));
             panelIngreso.setMaximumSize(new Dimension(500,40));
             panelIngreso.setPreferredSize(new Dimension(500,100));
             
@@ -178,7 +178,7 @@ public class rellenarIngresos {
             panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelIngreso.setLayout(new GridLayout(1,4));
             panelIngreso.setBackground(Colores.epicColorBajito);
-            panelIngreso.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 10 , 5, 10));
             panelIngreso.setMaximumSize(new Dimension(500,40));
             panelIngreso.setPreferredSize(new Dimension(500,100));
             
@@ -244,7 +244,7 @@ public class rellenarIngresos {
             panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             panelIngreso.setLayout(new GridLayout(1,4));
             panelIngreso.setBackground(Colores.epicColorBajito);
-            panelIngreso.setBorder(BorderFactory.createEmptyBorder(7, 10 , 5, 10));
+            panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 10 , 5, 10));
             panelIngreso.setMaximumSize(new Dimension(500,40));
             panelIngreso.setPreferredSize(new Dimension(500,100));
             

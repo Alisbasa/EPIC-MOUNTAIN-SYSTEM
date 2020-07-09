@@ -72,9 +72,9 @@ public class Rellenar {
         plataformacb.setBackground(Color.white);
         
         monto = new JTextField("$");
-       monto.setBorder(new LineBorder(Colores.epicColor,0,true));
-       monto.setBackground(Colores.epicColorBajito);
-       monto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        monto.setBorder(new LineBorder(Colores.epicColor,0,true));
+        monto.setBackground(Colores.epicColorBajito);
+        monto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
 //      
         monto.setPreferredSize(new Dimension(60, 30));
         Iconos.scaleImage("ok", iconoOkV, 30);
@@ -100,7 +100,9 @@ public class Rellenar {
         inversor = new JTextField("Prestamista");
         montoC = new JTextField("$");
         montoC.setPreferredSize(new Dimension(60, 30));
-        inversor.setPreferredSize(new Dimension(150, 30));      
+        inversor.setPreferredSize(new Dimension(150, 30));
+        montoC.setBackground(Colores.epicColorBajito);
+        montoC.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         
         
         
@@ -122,7 +124,10 @@ public class Rellenar {
         inversorI = new JTextField("Inversor");
         montoI = new JTextField("$");
         montoI.setPreferredSize(new Dimension(60, 30));
-        inversorI.setPreferredSize(new Dimension(150, 30));      
+        inversorI.setPreferredSize(new Dimension(150, 30));
+        montoI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        montoI.setBackground(Colores.epicColorBajito);
+        montoI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         
         
         
@@ -144,7 +149,9 @@ public class Rellenar {
         impuesto = new JTextField("Impuesto");
         montoImp = new JTextField("$");
         montoImp.setPreferredSize(new Dimension(60, 30));
-        impuesto.setPreferredSize(new Dimension(150, 30));      
+        impuesto.setPreferredSize(new Dimension(150, 30)); 
+        montoImp.setBackground(Colores.epicColorBajito);
+        montoImp.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         
         
         
