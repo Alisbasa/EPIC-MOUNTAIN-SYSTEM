@@ -83,7 +83,7 @@ public class RellenarG {
         rellenarDesarrollo.removeAll();
         
         rellenarDesarrollo.setBackground(Color.white);
-        Iconos.scaleImage("Ventas", iconoDesarrollo, 40);
+        Iconos.scaleImage("desarrollo", iconoDesarrollo, 40);
         rellenarDesarrollo.add(iconoDesarrollo);
         String[] listaDesarrollo={"Mobiliario", "Equisde"};
        
@@ -106,7 +106,7 @@ public class RellenarG {
         rellenarDeudasPagar.removeAll();
         
         rellenarDeudasPagar.setBackground(Color.white);
-        Iconos.scaleImage("Ventas", iconoDeudasPagar, 40);
+        Iconos.scaleImage("DeudasP_1", iconoDeudasPagar, 40);
         rellenarDeudasPagar.add(iconoDeudasPagar);
         Iconos.scaleImage("ok", iconoOkDeudas, 30);
         
@@ -129,9 +129,9 @@ public class RellenarG {
         rellenarImpuestoG.removeAll();
         
         rellenarImpuestoG.setBackground(Color.white);
-        Iconos.scaleImage("Ventas", iconoImpuesto, 40);
+        Iconos.scaleImage("Impuesto", iconoImpuesto, 40);
         rellenarImpuestoG.add(iconoImpuesto);
-        Iconos.scaleImage("ok", iconoOkImpuesto, 30);
+        Iconos.scaleImage("ok", iconoOkImpuesto, 40);
         impuesto = new JTextField("Impuesto");
         montoImpuesto = new JTextField("$");
         montoImpuesto.setPreferredSize(new Dimension(60, 30));
@@ -150,7 +150,7 @@ public class RellenarG {
         rellenarMantenimiento.removeAll();
         
         rellenarMantenimiento.setBackground(Color.white);
-        Iconos.scaleImage("Ventas", iconoMantenimiento, 40);
+        Iconos.scaleImage("Mantenimiento", iconoMantenimiento, 40);
         rellenarMantenimiento.add(iconoMantenimiento);
         Iconos.scaleImage("ok", iconoOkMantenimiento, 30);
         mantenimiento = new JTextField("Mantenimiento");
@@ -171,7 +171,7 @@ public class RellenarG {
         rellenarSuministros.removeAll();
         
         rellenarSuministros.setBackground(Color.white);
-        Iconos.scaleImage("Ventas", iconoSuministros, 40);
+        Iconos.scaleImage("Suministros", iconoSuministros, 40);
         rellenarSuministros.add(iconoSuministros);
         Iconos.scaleImage("ok", iconoOkSuministros, 30);
         suministros = new JTextField("Suministros");
@@ -192,7 +192,7 @@ public class RellenarG {
         rellenarPubliidad.removeAll();
         
         rellenarPubliidad.setBackground(Color.white);
-        Iconos.scaleImage("Ventas", iconoPublicidad, 40);
+        Iconos.scaleImage("publicidad", iconoPublicidad, 40);
         rellenarPubliidad.add(iconoPublicidad);
         Iconos.scaleImage("ok", iconoOkPublicidad, 30);
         publicidad = new JTextField("Publicidad");
@@ -213,7 +213,7 @@ public class RellenarG {
         rellenarTransporte.removeAll();
         
         rellenarTransporte.setBackground(Color.white);
-        Iconos.scaleImage("Ventas", iconoTransporte, 40);
+        Iconos.scaleImage("transporte", iconoTransporte, 40);
         rellenarTransporte.add(iconoTransporte);
         Iconos.scaleImage("ok", iconoOkTransporte, 30);
         transporte = new JTextField("Transporte");
@@ -234,7 +234,7 @@ public class RellenarG {
         rellenarHonorarios.removeAll();
         
         rellenarHonorarios.setBackground(Color.white);
-        Iconos.scaleImage("Ventas", iconoHonorarios, 40);
+        Iconos.scaleImage("honorarios", iconoHonorarios, 40);
         rellenarHonorarios.add(iconoHonorarios);
         Iconos.scaleImage("ok", iconoOkHonorarios, 30);
         honorarios = new JTextField("Honorarios");
@@ -257,7 +257,7 @@ public class RellenarG {
         rellenarReducInv.removeAll();
         
         rellenarReducInv.setBackground(Color.white);
-        Iconos.scaleImage("Ventas", iconoReducInv, 40);
+        Iconos.scaleImage("Inventario", iconoReducInv, 40);
         rellenarReducInv.add(iconoReducInv);
         Iconos.scaleImage("ok", iconoOkReducInv, 30);
         String[] listaInventario={"inventario","Bici chingona","Bici Chingona 2","Bici Chingona 3"};
