@@ -43,8 +43,8 @@ public class PropiedadesCB2 extends BasicComboBoxUI {
     @Override
     protected JButton createArrowButton() {
         JButton btn = new JButton();
-        btn.setIcon(scaleIcon("Flecha",20,20));
-        btn.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+        btn.setIcon(scaleIcon("Flecha",15,10));
+        btn.setBorder(BorderFactory.createEmptyBorder(0,0,0,5));
         btn.setContentAreaFilled(false);
         return btn;
         
