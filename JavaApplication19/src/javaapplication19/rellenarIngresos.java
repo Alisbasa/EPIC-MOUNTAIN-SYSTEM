@@ -150,6 +150,16 @@ public class rellenarIngresos {
             panelIngreso.add(credito);
             panelIngreso.add(precio);
             panelIngreso.add(icono);
+            
+            
+            String [] data ={(String)fechaActual(),"Venta",(String) inversor.getText(), montoC.getText()};
+            
+            Escribir escribirVentas = new Escribir();
+            try {
+                escribirVentas.escribirExcel("src\\excel\\Libros.xlsx", "Ingresos", data);
+            } catch (IOException ex) {
+                Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             indice++;
             listaIngresos.updateUI();
