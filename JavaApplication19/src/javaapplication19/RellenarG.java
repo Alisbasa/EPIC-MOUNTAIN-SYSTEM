@@ -5,6 +5,7 @@
  */
 package javaapplication19;
 
+import com.sun.javafx.scene.control.skin.ColorPalette;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -19,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javaapplication19.Libros;
 import javax.swing.BorderFactory;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -84,12 +86,14 @@ public class RellenarG {
         rellenarDesarrollo.removeAll();
         
         rellenarDesarrollo.setBackground(Color.white);
-        Iconos.scaleImage("desarrollo", iconoDesarrollo, 40);
+        Iconos.scaleImage("desarrollo", iconoDesarrollo, 30);
         rellenarDesarrollo.add(iconoDesarrollo);
         String[] listaDesarrollo={"Mobiliario", "Equisde"};
        
         desarrollo = new JComboBox(listaDesarrollo);
         desarrollo.setBackground(Color.white);
+        desarrollo.setUI( PropiedadesCB2.createUI(desarrollo));
+        desarrollo.setBorder(new LineBorder(Colores.gris, 1));
        
         montoDes = new JTextField("$");
         montoDes.setBackground(Colores.epicColorBajito);
@@ -117,6 +121,8 @@ public class RellenarG {
         String[] listaDeudores={"Alex", "Ivan"};
         deudas = new JComboBox(listaDeudores);
         deudas.setBackground(Color.white);
+        deudas.setUI( PropiedadesCB2.createUI(deudas));
+        deudas.setBorder(new LineBorder(Colores.gris, 1));
         
         montoDeuda = new JTextField("$");
         montoDeuda.setPreferredSize(new Dimension(60, 30));
@@ -292,9 +298,13 @@ public class RellenarG {
         Iconos.scaleImage("Inventario", iconoReducInv, 40);
         rellenarReducInv.add(iconoReducInv);
         Iconos.scaleImage("ok", iconoOkReducInv, 30);
+        
         String[] listaInventario={"inventario","Bici chingona","Bici Chingona 2","Bici Chingona 3"};
         reducInv = new JComboBox(listaInventario);
         reducInv.setBackground(Color.white);
+        reducInv.setUI( PropiedadesCB2.createUI(reducInv));
+        reducInv.setBorder(new LineBorder(Colores.gris, 1));
+        
         montoReduc = new JTextField("$");
         montoReduc.setPreferredSize(new Dimension(60, 30));
         montoReduc.setBackground(Colores.epicColorBajito);
