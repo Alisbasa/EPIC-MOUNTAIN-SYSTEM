@@ -71,6 +71,10 @@ public class rellenarGastos {
             panelGasto.add(desarrolloLista);
             panelGasto.add(precio);
             panelGasto.add(icono);
+            
+            
+            
+            
 
             indice++;
             listaGastos.updateUI();

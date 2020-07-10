@@ -11,10 +11,13 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -71,6 +74,15 @@ public class rellenarIngresos {
             panelIngreso.add(inventarioLista);
             panelIngreso.add(precio);
             panelIngreso.add(icono);
+            String [] data ={(String)fechaActual(),"Venta",(String) inventario.getSelectedItem(), monto.getText()};
+            
+            Escribir escribirVentas = new Escribir();
+            try {
+                escribirVentas.escribirExcel("src\\excel\\Libros.xlsx", "Ingresos", data);
+            } catch (IOException ex) {
+                Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
 
             indice++;
             listaIngresos.updateUI();
