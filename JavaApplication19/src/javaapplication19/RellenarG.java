@@ -5,7 +5,7 @@
  */
 package javaapplication19;
 
-import com.sun.javafx.scene.control.skin.ColorPalette;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -93,7 +93,7 @@ public class RellenarG {
         desarrollo = new JComboBox(listaDesarrollo);
         desarrollo.setBackground(Color.white);
         desarrollo.setUI( PropiedadesCB2.createUI(desarrollo));
-        desarrollo.setBorder(new LineBorder(Colores.gris, 1));
+//        desarrollo.setBorder(new LineBorder(Colores.gris, 1,true));
        
         montoDes = new JTextField("$");
         montoDes.setBackground(Colores.epicColorBajito);
@@ -122,7 +122,7 @@ public class RellenarG {
         deudas = new JComboBox(listaDeudores);
         deudas.setBackground(Color.white);
         deudas.setUI( PropiedadesCB2.createUI(deudas));
-        deudas.setBorder(new LineBorder(Colores.gris, 1));
+//        deudas.setBorder(new LineBorder(Colores.gris, 1));
         
         montoDeuda = new JTextField("$");
         montoDeuda.setPreferredSize(new Dimension(60, 30));
@@ -303,7 +303,7 @@ public class RellenarG {
         reducInv = new JComboBox(listaInventario);
         reducInv.setBackground(Color.white);
         reducInv.setUI( PropiedadesCB2.createUI(reducInv));
-        reducInv.setBorder(new LineBorder(Colores.gris, 1));
+//        reducInv.setBorder(new LineBorder(Colores.gris, 1));
         
         montoReduc = new JTextField("$");
         montoReduc.setPreferredSize(new Dimension(60, 30));

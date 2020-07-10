@@ -64,12 +64,12 @@ public class Rellenar {
         inventario = new JComboBox(listaInventario);
         inventario.setBackground(Color.white);
         inventario.setUI( PropiedadesCB2.createUI(inventario));
-        inventario.setBorder(new LineBorder(Colores.gris, 1));
+//        inventario.setBorder(new LineBorder(Colores.gris, 1));
        
         plataformacb = new JComboBox(listaPlataformas);
         plataformacb.setBackground(Color.white);
         plataformacb.setUI( PropiedadesCB2.createUI(plataformacb));
-        plataformacb.setBorder(new LineBorder(Colores.gris, 1));
+//        plataformacb.setBorder(new LineBorder(Colores.gris, 1));
         
         monto = new JTextField("$");
         monto.setBorder(new LineBorder(Colores.epicColor,0,true));

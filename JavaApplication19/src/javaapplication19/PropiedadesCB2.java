@@ -5,7 +5,6 @@
  */
 package javaapplication19;
 
-import com.sun.javafx.scene.control.skin.ColorPalette;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
@@ -43,9 +42,11 @@ public class PropiedadesCB2 extends BasicComboBoxUI {
     @Override
     protected JButton createArrowButton() {
         JButton btn = new JButton();
-        btn.setIcon(scaleIcon("Flecha",15,10));
-        btn.setBorder(BorderFactory.createEmptyBorder(0,0,0,5));
+        btn.setIcon(scaleIcon("Flecha",13,9));
+        btn.setBorder(BorderFactory.createEmptyBorder(0,4,0,4));
         btn.setContentAreaFilled(false);
+        btn.setBackground(Colores.epicColorBajito);
+        
         return btn;
         
     }
@@ -54,8 +55,9 @@ public class PropiedadesCB2 extends BasicComboBoxUI {
 
     @Override
     public void paintCurrentValueBackground(Graphics g, Rectangle bounds, boolean hasFocus) {
-        g.setColor(Color.white);
-        g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+        g.setColor(Colores.epicColorBajito);
+      g.fillRoundRect(bounds.x, bounds.y, bounds.width+29, bounds.height,10,10);
+  //      g.drawRoundRect(bounds.x, bounds.y, bounds.width+29, bounds.height,10,10);
     }
     
     
@@ -66,8 +68,8 @@ public class PropiedadesCB2 extends BasicComboBoxUI {
             @Override
             public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus); //To change body of generated methods, choose Tools | Templates.
-                list.setSelectionBackground(Color.white);
-                list.setSelectionForeground(Colores.epicColor);
+                list.setSelectionBackground(Colores.epicColorBajito);
+                list.setSelectionForeground(Colores.gris);
                 
                 return this;
             }
