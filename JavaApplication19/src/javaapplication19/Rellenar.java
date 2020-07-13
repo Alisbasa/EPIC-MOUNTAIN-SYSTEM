@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -74,7 +75,7 @@ public class Rellenar {
     
     
     
-    public  JPanel rellenarVentas(){
+    public  JPanel rellenarVentas() throws IOException{
         rellenarVentas.removeAll();
         
         rellenarVentas.setBackground(Color.white);
@@ -84,9 +85,10 @@ public class Rellenar {
         String[] listaPlataformas={"Mercado Libre","Amazon","Shopiffy"};
         String[] listaCRM = {"Alejandro", "Alvaro"};
        
-        inventario = new JComboBox(listaInventario);
+        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "INVENTARIO", 0));
         inventario.setBackground(Color.white);
         inventario.setUI( PropiedadesCB2.createUI(inventario));
+        inventario.setPreferredSize(new Dimension(150, 30));
 
         cliente = new JComboBox (listaCRM);
         cliente.setBackground(Color.white);

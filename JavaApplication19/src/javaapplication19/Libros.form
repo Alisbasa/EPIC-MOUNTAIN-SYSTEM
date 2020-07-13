@@ -1493,7 +1493,7 @@
                               <Color blue="33" green="33" red="33" type="rgb"/>
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(ingresos)" type="code"/>
+                              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(ListasCB.getIngresos())" type="code"/>
                             </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -1650,7 +1650,7 @@
                             </Property>
                             <Property name="maximumRowCount" type="int" value="9"/>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(gastos)" type="code"/>
+                              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(ListasCB.getGastos())" type="code"/>
                             </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">

@@ -21,10 +21,13 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
@@ -43,6 +46,7 @@ import javax.swing.plaf.ComboBoxUI;
 public class Libros extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
+    static String[] listaInventario;
     
     
     public List<JPanel> panelesIngresos;
@@ -143,23 +147,7 @@ public class Libros extends javax.swing.JFrame {
         scaleImage("Facturacion",facturacionIcon,imgHeight);
         
     }
-    private String[] ingresos = {"VENTAS",
-                                      "INVERSIÓN",
-                                      "CRÉDITO",
-                                      "IMPUESTOS",
-                                       "DEUDAS A COB.",
-                                       "VENTAS A COB.",
-                                       "DEVOLUCIONES"};
     
-    private String[] gastos = {"DESARROLLO",
-                                "DEUDAS A PAGAR",
-                                "MANTENIMIENTO",
-                                "IMPUESTOS",
-                                "SUMINISTROS",
-                                "PUBLICIDAD",
-                                "TRANSPORTE",
-                                "HONORARIOS",
-                                "REDUC. DE INV."};
     
 
     
@@ -1031,10 +1019,9 @@ public class Libros extends javax.swing.JFrame {
         ingresosLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 25));
         headerLibroIngresos.add(ingresosLabel);
 
-        comboIngresos.setBackground(new java.awt.Color(255, 255, 255));
         comboIngresos.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         comboIngresos.setForeground(new java.awt.Color(51, 51, 51));
-        comboIngresos.setModel(new javax.swing.DefaultComboBoxModel<>(ingresos));
+        comboIngresos.setModel(new javax.swing.DefaultComboBoxModel<>(ListasCB.getIngresos()));
         comboIngresos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         comboIngresos.setPreferredSize(new java.awt.Dimension(150, 35));
         comboIngresos.addItemListener(new java.awt.event.ItemListener() {
@@ -1085,11 +1072,10 @@ public class Libros extends javax.swing.JFrame {
         ingresosLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 25));
         headerLibroGastos.add(ingresosLabel1);
 
-        comboGastos.setBackground(new java.awt.Color(255, 255, 255));
         comboGastos.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         comboGastos.setForeground(new java.awt.Color(51, 51, 51));
         comboGastos.setMaximumRowCount(9);
-        comboGastos.setModel(new javax.swing.DefaultComboBoxModel<>(gastos));
+        comboGastos.setModel(new javax.swing.DefaultComboBoxModel<>(ListasCB.getGastos()));
         comboGastos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         comboGastos.setPreferredSize(new java.awt.Dimension(180, 35));
         comboGastos.addItemListener(new java.awt.event.ItemListener() {
@@ -1336,10 +1322,16 @@ public class Libros extends javax.swing.JFrame {
             rellenarIngresos.removeAll();
             rellenarIngresos.revalidate();
             rellenarIngresos.repaint();
+            LeerExcel lectura = new LeerExcel();
+            
             
                 
             
-            rellenarIngresos.add(rellenarV.rellenarVentas());
+            try {
+                rellenarIngresos.add(rellenarV.rellenarVentas());
+            } catch (IOException ex) {
+                Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
+            }
             rellenarVenta.botonVenta(rellenarV.monto,rellenarV.inventario, rellenarV.iconoOkV, scrollIngresos,listaIngresos, rellenarV.plataformacb);
           
         }
