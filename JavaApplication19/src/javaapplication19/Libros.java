@@ -146,11 +146,20 @@ public class Libros extends javax.swing.JFrame {
     private String[] ingresos = {"VENTAS",
                                       "INVERSIÓN",
                                       "CRÉDITO",
-                                      "IMPUESTOS"};
+                                      "IMPUESTOS",
+                                       "DEUDAS A COB.",
+                                       "VENTAS A COB.",
+                                       "DEVOLUCIONES"};
+    
     private String[] gastos = {"DESARROLLO",
-                                      "DEUDAS A PAGAR",
-                                      "MANTENIMIENTO",
-                                      "IMPUESTOS","SUMINISTROS","PUBLICIDAD","TRANSPORTE","HONORARIOS","REDUC. DE INV."};
+                                "DEUDAS A PAGAR",
+                                "MANTENIMIENTO",
+                                "IMPUESTOS",
+                                "SUMINISTROS",
+                                "PUBLICIDAD",
+                                "TRANSPORTE",
+                                "HONORARIOS",
+                                "REDUC. DE INV."};
     
 
     
@@ -1331,7 +1340,7 @@ public class Libros extends javax.swing.JFrame {
                 
             
             rellenarIngresos.add(rellenarV.rellenarVentas());
-            rellenarVenta.botonVenta(rellenarV.monto, rellenarV.inventario, rellenarV.iconoOkV, scrollIngresos, listaIngresos);
+            rellenarVenta.botonVenta(rellenarV.monto,rellenarV.inventario, rellenarV.iconoOkV, scrollIngresos,listaIngresos, rellenarV.plataformacb);
           
         }
         
@@ -1372,6 +1381,48 @@ public class Libros extends javax.swing.JFrame {
             rellenarIngresos.add(rellenarIm.rellenarImpuesto());
             rellenarImpuesto.botonImpuesto(rellenarIm.montoImp, rellenarIm.impuesto, rellenarIm.iconoOkImp, scrollIngresos, listaIngresos);
         
+        }
+        
+        else if(comboIngresos.getSelectedItem().toString().equals("DEUDAS A COB.")) {
+            Rellenar rellenarDeuC = new Rellenar();
+            rellenarIngresos rellenarDeudaCobrar = new rellenarIngresos();
+
+            rellenarIngresos.removeAll();
+            rellenarIngresos.revalidate();
+            rellenarIngresos.repaint();
+            
+            rellenarIngresos.add(rellenarDeuC.rellenarDeudasC());
+            rellenarDeudaCobrar.botonDeudaC(rellenarDeuC.montoDeuC, rellenarDeuC.deudor, rellenarDeuC.iconoOkDeudasC, scrollIngresos, listaIngresos);
+        
+        }
+        else if(comboIngresos.getSelectedItem().toString().equals("VENTAS A COB.") ) {
+            rellenarIngresos rellenarVentaC = new rellenarIngresos();
+            Rellenar rellenarVC = new Rellenar();
+                
+            rellenarIngresos.removeAll();
+            rellenarIngresos.revalidate();
+            rellenarIngresos.repaint();
+            
+                
+            
+            rellenarIngresos.add(rellenarVC.rellenarVentasC());
+            rellenarVentaC.botonVentaC(rellenarVC.montoVC,rellenarVC.inventario, rellenarVC.iconoOkVentasC, scrollIngresos,listaIngresos, rellenarVC.plataformacb);
+          
+        }
+        
+        else if(comboIngresos.getSelectedItem().toString().equals("DEVOLUCIONES") ) {
+            rellenarIngresos rellenarDevolucion = new rellenarIngresos();
+            Rellenar rellenarDev = new Rellenar();
+                
+            rellenarIngresos.removeAll();
+            rellenarIngresos.revalidate();
+            rellenarIngresos.repaint();
+            
+                
+            
+            rellenarIngresos.add(rellenarDev.rellenarDevoluciones());
+            rellenarDevolucion.botonDev(rellenarDev.devolucion,rellenarDev.montoDev, rellenarDev.iconoOkDev, scrollIngresos,listaIngresos);
+          
         }
 
         

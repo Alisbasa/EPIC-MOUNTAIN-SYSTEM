@@ -30,60 +30,91 @@ public class Rellenar {
     JPanel rellenarInversion =new JPanel();
     JPanel rellenarImpuesto =new JPanel();
     JPanel rellenarCredito =new JPanel();
+    JPanel rellenarDeudasC = new JPanel();
+    JPanel rellenarVentasC = new JPanel();
+    JPanel rellenarDevoluciones = new JPanel();
+            
     JLabel iconoVentas = new JLabel();
     JLabel iconoCredito = new JLabel();
     JLabel iconoInversion = new JLabel();
     JLabel iconoImpuesto = new JLabel();
+    JLabel iconoDeudasC = new JLabel();
+    JLabel iconoVentasC = new JLabel();
+    JLabel iconoDevoluciones = new JLabel();
+    
     JLabel iconoOkV = new JLabel();
     JLabel iconoOkC = new JLabel();
     JLabel iconoOkI = new JLabel();
     JLabel iconoOkImp = new JLabel();
-    String monto2;
+    JLabel iconoOkDeudasC = new JLabel();
+    JLabel iconoOkVentasC = new JLabel();
+    JLabel iconoOkDev = new JLabel();
+    
     JTextField monto;
-    JComboBox inventario;
-    JComboBox plataformacb;
-    JTextField inversor;
     JTextField montoC;
     JTextField montoI;
+    JTextField montoImp;
+    JTextField montoDeuC;
+    JTextField montoVC;
+    JTextField montoDev;
+    
+    JComboBox inventario; //Ventas //VentasC
+    JComboBox plataformacb;//Ventas
+    JComboBox cliente;//Ventas//VentasC
+    JTextField destino;//Ventas
+    
+    JTextField inversor; 
     JTextField inversorI;
     JTextField impuesto;
-    JTextField montoImp;
+    
+    JTextField devolucion;
+    
+    JComboBox deudor; //DeudasC
     
     
     
     
-     public  JPanel rellenarVentas(){
+    public  JPanel rellenarVentas(){
         rellenarVentas.removeAll();
         
         rellenarVentas.setBackground(Color.white);
         Iconos.scaleImage("Ventas", iconoVentas, 40);
         rellenarVentas.add(iconoVentas);
         String[] listaInventario={"inventario","Bici chingona","Bici Chingona 2","Bici Chingona 3"};
-        String[] listaPlataformas={"Mercado Libre","Facebook","Amazon","Shopiffy"};
+        String[] listaPlataformas={"Mercado Libre","Amazon","Shopiffy"};
+        String[] listaCRM = {"Alejandro", "Alvaro"};
        
         inventario = new JComboBox(listaInventario);
         inventario.setBackground(Color.white);
         inventario.setUI( PropiedadesCB2.createUI(inventario));
-//        inventario.setBorder(new LineBorder(Colores.gris, 1));
+
+        cliente = new JComboBox (listaCRM);
+        cliente.setBackground(Color.white);
+        cliente.setUI( PropiedadesCB2.createUI(cliente));
        
         plataformacb = new JComboBox(listaPlataformas);
         plataformacb.setBackground(Color.white);
         plataformacb.setUI( PropiedadesCB2.createUI(plataformacb));
-//        plataformacb.setBorder(new LineBorder(Colores.gris, 1));
+
         
         monto = new JTextField("$");
         monto.setBorder(new LineBorder(Colores.epicColor,0,true));
         monto.setBackground(Colores.epicColorBajito);
         monto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-//      
+        
+        destino = new JTextField("Destino");
+        destino.setBorder(new LineBorder(Colores.epicColor,0,true));
+        destino.setBackground(Colores.epicColorBajito);
+        destino.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+      
         monto.setPreferredSize(new Dimension(60, 30));
         Iconos.scaleImage("ok", iconoOkV, 30);
        
         rellenarVentas.add(inventario);
         rellenarVentas.add(monto);
+        rellenarVentas.add(cliente);
         rellenarVentas.add(plataformacb);
         rellenarVentas.add(iconoOkV);
-        monto2 = monto.getText();
         
         return rellenarVentas;
     }
@@ -162,6 +193,100 @@ public class Rellenar {
         
         return rellenarImpuesto;
     }
-     
     
+    public  JPanel rellenarDeudasC(){
+        rellenarDeudasC.removeAll();
+        
+        rellenarDeudasC.setBackground(Color.white);
+        Iconos.scaleImage("DeudasC", iconoDeudasC, 40);
+        rellenarDeudasC.add(iconoDeudasC);
+        String[] listaDeudores={"Panchito","Mario","Navarro"};
+       
+        deudor = new JComboBox(listaDeudores);
+        deudor.setBackground(Color.white);
+        deudor.setUI(PropiedadesCB2.createUI(deudor));
+        
+        montoDeuC = new JTextField("$");
+        montoDeuC.setBorder(new LineBorder(Colores.epicColor,0,true));
+        montoDeuC.setBackground(Colores.epicColorBajito);
+        montoDeuC.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+      
+        montoDeuC.setPreferredSize(new Dimension(60, 30));
+        deudor.setPreferredSize(new Dimension(150, 30)); 
+        Iconos.scaleImage("ok", iconoOkDeudasC, 30);
+       
+        rellenarDeudasC.add(deudor);
+        rellenarDeudasC.add(montoDeuC);
+        rellenarDeudasC.add(iconoOkDeudasC);
+        
+        return rellenarDeudasC;
+    }
+    
+    public  JPanel rellenarVentasC(){
+        rellenarVentasC.removeAll();
+        
+        rellenarVentasC.setBackground(Color.white);
+        Iconos.scaleImage("VentasC", iconoVentasC, 40);
+        rellenarVentasC.add(iconoVentasC);
+        String[] listaInventario={"inventario","Bici chingona","Bici Chingona 2","Bici Chingona 3"};
+        String[] listaPlataformas={"Mercado Libre","Facebook","Amazon","Shopiffy"};
+        String[] listaCRM = {"Alejandro", "Alvaro"};
+       
+        inventario = new JComboBox(listaInventario);
+        inventario.setBackground(Color.white);
+        inventario.setUI( PropiedadesCB2.createUI(inventario));
+        
+        cliente = new JComboBox (listaCRM);
+        cliente.setBackground(Color.white);
+        cliente.setUI( PropiedadesCB2.createUI(cliente));
+       
+        plataformacb = new JComboBox(listaPlataformas);
+        plataformacb.setBackground(Color.white);
+        plataformacb.setUI( PropiedadesCB2.createUI(plataformacb));
+        
+        montoVC = new JTextField("$");
+        montoVC.setBorder(new LineBorder(Colores.epicColor,0,true));
+        montoVC.setBackground(Colores.epicColorBajito);
+        montoVC.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+//      
+        montoVC.setPreferredSize(new Dimension(60, 30));
+        Iconos.scaleImage("ok", iconoOkVentasC, 30);
+       
+        rellenarVentasC.add(inventario);
+        rellenarVentasC.add(montoVC);
+        rellenarVentasC.add(cliente);
+        rellenarVentasC.add(plataformacb);
+        rellenarVentasC.add(iconoOkVentasC);
+        
+        return rellenarVentasC;
+    }
+    
+    public  JPanel rellenarDevoluciones(){
+        rellenarDevoluciones.removeAll();
+        
+        rellenarDevoluciones.setBackground(Color.white);
+        Iconos.scaleImage("Devolucion", iconoDevoluciones, 40);
+        rellenarDevoluciones.add(iconoDevoluciones);
+        
+       
+        devolucion = new JTextField();
+        devolucion.setBorder(new LineBorder(Colores.epicColor,0,true));
+        devolucion.setBackground(Colores.epicColorBajito);
+        devolucion.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        
+        
+        montoDev = new JTextField("$");
+        montoDev.setBorder(new LineBorder(Colores.epicColor,0,true));
+        montoDev.setBackground(Colores.epicColorBajito);
+        montoDev.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+      
+        montoDev.setPreferredSize(new Dimension(60, 30));
+        Iconos.scaleImage("ok", iconoOkDev, 30);
+       
+        rellenarDevoluciones.add(devolucion);
+        rellenarDevoluciones.add(montoDev);
+        rellenarDevoluciones.add(iconoOkDev);
+        
+        return rellenarDevoluciones;
+    }
 }

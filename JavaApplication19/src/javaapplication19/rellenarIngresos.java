@@ -32,12 +32,14 @@ public class rellenarIngresos {
     public List<JPanel> panelesIngresos;
     public int indice=0;
     
+    public List<String> deudoresCompras;
+            
     public rellenarIngresos(){
         panelesIngresos = new ArrayList<>();
     }
     
     //Pone ingreso: venta
-    void botonVenta(JTextField monto, JComboBox inventario, JLabel iconoOkV, JScrollPane scrollIngresos, JPanel listaIngresos){
+    void botonVenta(JTextField monto, JComboBox inventario, JLabel iconoOkV, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb){
         MouseListener botonV = new MouseListener() {
             
         @Override
@@ -46,7 +48,7 @@ public class rellenarIngresos {
             scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
             panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            panelIngreso.setLayout(new GridLayout(1,4));
+            panelIngreso.setLayout(new GridLayout(1,5));
             panelIngreso.setBackground(Colores.epicColorBajito);
             panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
             panelIngreso.setMaximumSize(new Dimension(500,40));
@@ -63,6 +65,11 @@ public class rellenarIngresos {
             JLabel precio = new JLabel();
             precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             precio.setText(monto.getText());
+            
+            
+            JLabel plataforma = new JLabel();
+            plataforma.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            plataforma.setText((String) plataformacb.getSelectedItem());
 
             JLabel icono = new JLabel();
             Iconos.scaleImage("VentasG", icono, 25);
@@ -73,6 +80,7 @@ public class rellenarIngresos {
             panelIngreso.add(fecha);
             panelIngreso.add(inventarioLista);
             panelIngreso.add(precio);
+            panelIngreso.add(plataforma);
             panelIngreso.add(icono);
             String [] data ={(String)fechaActual(),"Venta",(String) inventario.getSelectedItem(), monto.getText()};
             
@@ -122,7 +130,7 @@ public class rellenarIngresos {
             scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
             panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            panelIngreso.setLayout(new GridLayout(1,4));
+            panelIngreso.setLayout(new GridLayout(1,5));
             panelIngreso.setBackground(Colores.epicColorBajito);
             panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
             panelIngreso.setMaximumSize(new Dimension(500,40));
@@ -199,7 +207,7 @@ public class rellenarIngresos {
             scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
             panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            panelIngreso.setLayout(new GridLayout(1,4));
+            panelIngreso.setLayout(new GridLayout(1,5));
             panelIngreso.setBackground(Colores.epicColorBajito);
             panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
             panelIngreso.setMaximumSize(new Dimension(500,40));
@@ -266,7 +274,7 @@ public class rellenarIngresos {
             scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
             panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            panelIngreso.setLayout(new GridLayout(1,4));
+            panelIngreso.setLayout(new GridLayout(1,5));
             panelIngreso.setBackground(Colores.epicColorBajito);
             panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
             panelIngreso.setMaximumSize(new Dimension(500,40));
@@ -322,11 +330,231 @@ public class rellenarIngresos {
         
         iconoOkImp.addMouseListener(botonImp);
     }
+    
+    //Para rellenar un ingreso: deuda a Cobrar
+    public void botonDeudaC(JTextField montoDeuC, JComboBox deudor, JLabel iconoOkDeudasC,JScrollPane scrollIngresos, JPanel listaIngresos){
+        MouseListener botonDeuC = new MouseListener() {
+            
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+            scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
+            panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelIngreso.setLayout(new GridLayout(1,5));
+            panelIngreso.setBackground(Colores.epicColorBajito);
+            panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
+            panelIngreso.setMaximumSize(new Dimension(500,40));
+            panelIngreso.setPreferredSize(new Dimension(500,100));
+            
+            JLabel fecha = new JLabel();
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setText(fechaActual());
 
+            JLabel deuda = new JLabel();
+            deuda.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            deuda.setText((String) deudor.getSelectedItem());
+
+            JLabel montoDeudaC = new JLabel();
+            montoDeudaC.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            montoDeudaC.setText(montoDeuC.getText());
+
+            JLabel icono = new JLabel();
+            Iconos.scaleImage("deudaC", icono, 30);
+            icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+            listaIngresos.add(panelIngreso);
+            panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+
+            panelIngreso.add(fecha);
+            panelIngreso.add(deuda);
+            panelIngreso.add(montoDeudaC);
+            panelIngreso.add(icono);
+
+            indice++;
+            listaIngresos.updateUI();
+        }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Iconos.scaleImage("okh", iconoOkDeudasC, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                Iconos.scaleImage("ok", iconoOkDeudasC, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+            
+    };
+        iconoOkDeudasC.addMouseListener(botonDeuC);
+    }
+    
+    void botonVentaC(JTextField montoVC, JComboBox inventario, JLabel iconoOkVentasC, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb){
+        MouseListener botonV = new MouseListener() {
+            
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+            scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
+            panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelIngreso.setLayout(new GridLayout(1,5));
+            panelIngreso.setBackground(Colores.epicColorBajito);
+            panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
+            panelIngreso.setMaximumSize(new Dimension(500,40));
+            panelIngreso.setPreferredSize(new Dimension(500,100));
+            
+            JLabel fecha = new JLabel();
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setText(fechaActual());
+
+            JLabel inventarioLista = new JLabel();
+            inventarioLista.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            inventarioLista.setText((String) inventario.getSelectedItem());
+
+            JLabel precio = new JLabel();
+            precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            precio.setText(montoVC.getText());
+            
+            
+            JLabel plataforma = new JLabel();
+            plataforma.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            plataforma.setText((String) plataformacb.getSelectedItem());
+            
+            
+            
+
+            JLabel icono = new JLabel();
+            Iconos.scaleImage("VentasG", icono, 25);
+            icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+            listaIngresos.add(panelIngreso);
+            panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+
+            panelIngreso.add(fecha);
+            panelIngreso.add(inventarioLista);
+            panelIngreso.add(precio);
+            panelIngreso.add(plataforma);
+            panelIngreso.add(icono);
+            String [] data ={(String)fechaActual(),"Venta",(String) inventario.getSelectedItem(), montoVC.getText()};
+            
+            Escribir escribirVentas = new Escribir();
+            try {
+                escribirVentas.escribirExcel("src\\excel\\Libros.xlsx", "Ingresos", data);
+            } catch (IOException ex) {
+                Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+
+            indice++;
+            listaIngresos.updateUI();
+        }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Iconos.scaleImage("okh", iconoOkVentasC, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                Iconos.scaleImage("ok", iconoOkVentasC, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+        
+        iconoOkVentasC.addMouseListener(botonV);
+    }
+    
+    //Para rellenar un ingreso:impuesto
+    public void botonDev(JTextField montoDev, JTextField devolucion, JLabel iconoOkDev,JScrollPane scrollIngresos, JPanel listaIngresos){
+        MouseListener botonDev = new MouseListener() {
+            
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+            scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
+            panelIngreso.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelIngreso.setLayout(new GridLayout(1,5));
+            panelIngreso.setBackground(Colores.epicColorBajito);
+            panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
+            panelIngreso.setMaximumSize(new Dimension(500,40));
+            panelIngreso.setPreferredSize(new Dimension(500,100));
+            
+            JLabel fecha = new JLabel();
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setText(fechaActual());
+
+            JLabel dev = new JLabel();
+            dev.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            dev.setText(devolucion.getText());
+
+            JLabel montoDevolucion = new JLabel();
+            montoDevolucion.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            montoDevolucion.setText(montoDev.getText());
+
+            JLabel icono = new JLabel();
+            Iconos.scaleImage("impuestoG", icono, 30);
+            icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+            listaIngresos.add(panelIngreso);
+            panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+
+            panelIngreso.add(fecha);
+            panelIngreso.add(dev);
+            panelIngreso.add(montoDevolucion);
+            panelIngreso.add(icono);
+
+            indice++;
+            listaIngresos.updateUI();
+        }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Iconos.scaleImage("okh", iconoOkDev, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                Iconos.scaleImage("ok", iconoOkDev, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+        
+        iconoOkDev.addMouseListener(botonDev);
+    }
+    
     public static String fechaActual(){
         java.util.Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM");
         return formatoFecha.format(fecha);
     }
+
+
 
 }
