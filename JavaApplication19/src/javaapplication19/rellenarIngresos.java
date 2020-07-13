@@ -86,13 +86,14 @@ public class rellenarIngresos {
             
             Escribir escribirVentas = new Escribir();
             try {
-                escribirVentas.escribirExcel("src\\excel\\Libros.xlsx", "Ingresos", data);
+                escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
             } catch (IOException ex) {
                 Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
             }
             
 
             indice++;
+            
             listaIngresos.updateUI();
         }
 
@@ -160,16 +161,17 @@ public class rellenarIngresos {
             panelIngreso.add(icono);
             
             
-            String [] data ={(String)fechaActual(),"Venta",(String) inversor.getText(), montoC.getText()};
+            String [] data ={(String)fechaActual(),"Crédito",(String) inversor.getText(), montoC.getText()};
             
             Escribir escribirVentas = new Escribir();
             try {
-                escribirVentas.escribirExcel("src\\excel\\Libros.xlsx", "Ingresos", data);
+                escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
             } catch (IOException ex) {
                 Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             indice++;
+            
             listaIngresos.updateUI();
         }
 
@@ -235,6 +237,16 @@ public class rellenarIngresos {
             panelIngreso.add(inversionista);
             panelIngreso.add(precioI);
             panelIngreso.add(icono);
+            
+            
+            String [] data ={(String)fechaActual(),"Inversión",(String) inversorI.getText(), montoI.getText()};
+            
+            Escribir escribirVentas = new Escribir();
+            try {
+                escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+            } catch (IOException ex) {
+                Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             indice++;
             listaIngresos.updateUI();
@@ -302,6 +314,16 @@ public class rellenarIngresos {
             panelIngreso.add(imp);
             panelIngreso.add(montoImpuesto);
             panelIngreso.add(icono);
+            
+            
+            String [] data ={(String)fechaActual(),"Impuesto a favor",(String) impuesto.getText(), montoImp.getText()};
+            
+            Escribir escribirVentas = new Escribir();
+            try {
+                escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+            } catch (IOException ex) {
+                Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             indice++;
             listaIngresos.updateUI();
