@@ -1421,7 +1421,7 @@ public class Libros extends javax.swing.JFrame {
                 
             
             rellenarIngresos.add(rellenarDev.rellenarDevoluciones());
-            rellenarDevolucion.botonDev(rellenarDev.devolucion,rellenarDev.montoDev, rellenarDev.iconoOkDev, scrollIngresos,listaIngresos);
+            rellenarDevolucion.botonDev(rellenarDev.montoDev,rellenarDev.devolucion, rellenarDev.iconoOkDev, scrollIngresos,listaIngresos);
           
         }
 
