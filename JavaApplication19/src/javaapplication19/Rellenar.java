@@ -269,16 +269,18 @@ public class Rellenar {
         rellenarDevoluciones.add(iconoDevoluciones);
         
        
-        devolucion = new JTextField();
+        devolucion = new JTextField("Devolucion");
         devolucion.setBorder(new LineBorder(Colores.epicColor,0,true));
         devolucion.setBackground(Colores.epicColorBajito);
         devolucion.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        devolucion.setPreferredSize(new Dimension(150, 30));
         
         
         montoDev = new JTextField("$");
         montoDev.setBorder(new LineBorder(Colores.epicColor,0,true));
         montoDev.setBackground(Colores.epicColorBajito);
         montoDev.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        montoDev.setPreferredSize(new Dimension(60, 30));
       
         montoDev.setPreferredSize(new Dimension(60, 30));
         Iconos.scaleImage("ok", iconoOkDev, 30);
