@@ -115,7 +115,7 @@ public class RellenarG {
                     Iconos.scaleImage("Equipo", iconoDesarrollo, 30);
                     rellenarDesarrollo.add(iconoDesarrollo);
 
-                    desarrolloTipoE = new JTextField("");
+                    desarrolloTipoE = new JTextField("Equipo y Mob.");
                     desarrolloTipoE.setBackground(Colores.epicColorBajito);
                     desarrolloTipoE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
                     desarrolloTipoE.setPreferredSize(new Dimension(150, 30));

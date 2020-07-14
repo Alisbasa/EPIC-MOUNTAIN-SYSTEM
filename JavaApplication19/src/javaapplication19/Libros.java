@@ -15,6 +15,8 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.PopupMenu;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ItemEvent;
@@ -1438,24 +1440,40 @@ public class Libros extends javax.swing.JFrame {
 
     private void comboGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGastosActionPerformed
         RellenarG rellenarDes = new RellenarG();
+        
+            
         if(comboGastos.getSelectedItem().toString().equals("DESARROLLO") ) {
+            
             rellenarGastos rellenarDesarrollo = new rellenarGastos();
             
             rellenarGastos.removeAll();
             rellenarGastos.revalidate();
             rellenarGastos.repaint();
-            
                 
             
             rellenarGastos.add(rellenarDes.rellenarDesarrollo());
+            
+            if(rellenarDes.desarrolloTipoE == null)
+                System.out.println("Hola meco");
             rellenarDesarrollo.botonDesEquipo(rellenarDes.desarrolloTipoE, rellenarDes.montoDes, rellenarDes.iconoOkDesarrolloEq, scrollGastos, listaGastos);
-          
+            
+            /*
+            rellenarDes.desarrollo.addActionListener (new ActionListener () {
+            
+            public void actionPerformed(ActionEvent e) {
+                if(rellenarDes.desarrollo.getSelectedItem().toString().equals("Equipo y Mob.")){
+                    rellenarDesarrollo.botonDesEquipo(rellenarDes.desarrolloTipoE, rellenarDes.montoDes, rellenarDes.iconoOkDesarrolloEq, scrollGastos, listaGastos);
+
+                }
+            }
+            });
+            */
         }
         
         else if(comboGastos.getSelectedItem().toString().equals("DEUDAS A PAGAR")) {
             RellenarG rellenarD = new RellenarG();
             rellenarGastos rellenarDeudas = new rellenarGastos();
-            
+     
             rellenarGastos.removeAll();
             rellenarGastos.revalidate();
             rellenarGastos.repaint();
