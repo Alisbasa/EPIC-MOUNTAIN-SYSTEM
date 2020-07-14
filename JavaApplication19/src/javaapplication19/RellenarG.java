@@ -53,6 +53,7 @@ public class RellenarG {
     
     JComboBox desarrollo;
     JTextField desarrolloTipo;
+    JTextField desarrolloTipoE;
     JComboBox producto;
     JComboBox deudas;
     JTextField impuesto;
@@ -74,6 +75,7 @@ public class RellenarG {
     JTextField montoHonor;
     JTextField montoReduc;
     
+    JLabel iconoOkDesarrolloEq = new JLabel();
     JLabel iconoOkDesarrollo = new JLabel();
     JLabel iconoOkDeudas = new JLabel();
     JLabel iconoOkImpuesto = new JLabel();
@@ -104,6 +106,7 @@ public class RellenarG {
         desarrollo.addActionListener (new ActionListener () {
     
             public void actionPerformed(ActionEvent e) {
+                
                 if (desarrollo.getSelectedItem().toString().equals("Equipo y Mob.")){
                     rellenarDesarrollo.removeAll();
                     rellenarDesarrollo.revalidate();
@@ -112,21 +115,21 @@ public class RellenarG {
                     Iconos.scaleImage("Equipo", iconoDesarrollo, 30);
                     rellenarDesarrollo.add(iconoDesarrollo);
 
-                    desarrolloTipo = new JTextField("");
-                    desarrolloTipo.setBackground(Colores.epicColorBajito);
-                    desarrolloTipo.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-                    desarrolloTipo.setPreferredSize(new Dimension(150, 30));
+                    desarrolloTipoE = new JTextField("");
+                    desarrolloTipoE.setBackground(Colores.epicColorBajito);
+                    desarrolloTipoE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+                    desarrolloTipoE.setPreferredSize(new Dimension(150, 30));
 
                     montoDes = new JTextField("$");
                     montoDes.setBackground(Colores.epicColorBajito);
                     montoDes.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
                     montoDes.setPreferredSize(new Dimension(60, 30));
 
-                    Iconos.scaleImage("ok", iconoOkDesarrollo, 30);
+                    Iconos.scaleImage("ok", iconoOkDesarrolloEq, 30);
 
-                    rellenarDesarrollo.add(desarrolloTipo);
+                    rellenarDesarrollo.add(desarrolloTipoE);
                     rellenarDesarrollo.add(montoDes);
-                    rellenarDesarrollo.add(iconoOkDesarrollo);
+                    rellenarDesarrollo.add(iconoOkDesarrolloEq);
                 }
                 
                 else if(desarrollo.getSelectedItem().toString().equals("Inventario Principal")){
