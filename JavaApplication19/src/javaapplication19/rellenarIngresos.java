@@ -38,6 +38,8 @@ public class rellenarIngresos {
         panelesIngresos = new ArrayList<>();
     }
     
+   
+    
     //Pone ingreso: venta
     void botonVenta(JTextField monto, JComboBox inventario, JLabel iconoOkV, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb){
         MouseListener botonV = new MouseListener() {
@@ -61,10 +63,25 @@ public class rellenarIngresos {
             JLabel inventarioLista = new JLabel();
             inventarioLista.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             inventarioLista.setText((String) inventario.getSelectedItem());
+            int numeroLista = inventario.getSelectedIndex() + 1;
+            int numeroPlataforma = 12;
+            if(plataformacb.getSelectedIndex()==0)
+                numeroPlataforma=14;
+                             
+           String precioExcel="precio";
+            try {
+                precioExcel = LeerExcel.obtenerPrecio("src//excel/Inventario.xlsx", "INVENTARIO", numeroPlataforma, numeroLista);
+            } catch (IOException ex) {
+                Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
 
             JLabel precio = new JLabel();
             precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            precio.setText(monto.getText());
+            
+            precio.setText(precioExcel);
+            
+           
             
             
             JLabel plataforma = new JLabel();
@@ -82,7 +99,7 @@ public class rellenarIngresos {
             panelIngreso.add(precio);
             panelIngreso.add(plataforma);
             panelIngreso.add(icono);
-            String [] data ={(String)fechaActual(),"Venta",(String) inventario.getSelectedItem(), monto.getText()};
+            String [] data ={(String)fechaActual(),"Venta",(String) inventario.getSelectedItem(),precioExcel};
             
             Escribir escribirVentas = new Escribir();
             try {

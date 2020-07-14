@@ -15,6 +15,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -406,7 +407,7 @@ public class RellenarG {
     
     
     
-    public  JPanel rellenarReducInv(){
+    public  JPanel rellenarReducInv() throws IOException{
         rellenarReducInv.removeAll();
         
         rellenarReducInv.setBackground(Color.white);
@@ -414,8 +415,8 @@ public class RellenarG {
         rellenarReducInv.add(iconoReducInv);
         Iconos.scaleImage("ok", iconoOkReducInv, 30);
         
-        String[] listaInventario={"inventario","Bici chingona","Bici Chingona 2","Bici Chingona 3"};
-        reducInv = new JComboBox(listaInventario);
+    
+        reducInv = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "INVENTARIO", 0));
         reducInv.setBackground(Color.white);
         reducInv.setUI( PropiedadesCB2.createUI(reducInv));
 //        reducInv.setBorder(new LineBorder(Colores.gris, 1));

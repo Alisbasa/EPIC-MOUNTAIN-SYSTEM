@@ -7,10 +7,11 @@ package javaapplication19;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
-import org.apache.poi.ss.usermodel.Cell;
+
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFCell;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -25,27 +26,6 @@ public class LeerExcel {
     public LeerExcel(){
         
     }
-    
-    public void rellenaCB(String filepath, String hoja,int columna,String[] lista) throws IOException{
-        File file = new File(filepath);
-        FileInputStream inputStream = new FileInputStream(file);
-        XSSFWorkbook newWorkbook =new XSSFWorkbook(inputStream);
-        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
-        int rowCount = newSheet.getLastRowNum() - newSheet.getFirstRowNum();
-        for(int i =1; i< rowCount; i++){
-            XSSFRow row = newSheet.getRow(i);
-            if( row.getCell(columna).getCellType() != CellType.BLANK ){
-                 System.out.println(row.getCell(columna).getStringCellValue());
-                 lista[i-1]=row.getCell(columna).getStringCellValue();
-            }else{
-                break;
-            }
-                  
-            
-        }
-        
-    }
-    
     static public String[] rellenaCB2(String filepath, String hoja,int columna) throws IOException{
         File file = new File(filepath);
         FileInputStream inputStream = new FileInputStream(file);
@@ -60,9 +40,7 @@ public class LeerExcel {
                  renglones++;
             }else{
                 break;
-            }
-                  
-            
+            }                    
         }
         String[] lista = new String[renglones];
         for(int i =1; i<= renglones; i++){
@@ -73,12 +51,19 @@ public class LeerExcel {
             }else{
                 break;
             }
-                  
-            
         }
-        return lista;
-        
+        return lista;    
     }
-    
-    
+    static public String obtenerPrecio (String filepath, String hoja,int columna, int rowNumber) throws FileNotFoundException, IOException{ 
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook =new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+        XSSFRow row = newSheet.getRow(rowNumber);
+        XSSFCell cell = row.getCell(columna);
+        String monto =  Double.toString(cell.getNumericCellValue());
+        
+        return "$"+monto ;
+    }
+        
 }

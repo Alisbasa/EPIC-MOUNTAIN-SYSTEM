@@ -81,14 +81,14 @@ public class Rellenar {
         rellenarVentas.setBackground(Color.white);
         Iconos.scaleImage("Ventas", iconoVentas, 40);
         rellenarVentas.add(iconoVentas);
-        String[] listaInventario={"inventario","Bici chingona","Bici Chingona 2","Bici Chingona 3"};
+        
         String[] listaPlataformas={"Mercado Libre","Amazon","Shopiffy"};
         String[] listaCRM = {"Alejandro", "Alvaro"};
        
         inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "INVENTARIO", 0));
         inventario.setBackground(Color.white);
         inventario.setUI( PropiedadesCB2.createUI(inventario));
-        inventario.setPreferredSize(new Dimension(150, 30));
+        inventario.setPreferredSize(new Dimension(200, 30));
 
         cliente = new JComboBox (listaCRM);
         cliente.setBackground(Color.white);
@@ -99,23 +99,24 @@ public class Rellenar {
         plataformacb.setUI( PropiedadesCB2.createUI(plataformacb));
 
         
-        monto = new JTextField("$");
-        monto.setBorder(new LineBorder(Colores.epicColor,0,true));
-        monto.setBackground(Colores.epicColorBajito);
-        monto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+//        monto = new JTextField("$");
+//        monto.setBorder(new LineBorder(Colores.epicColor,0,true));
+//        monto.setBackground(Colores.epicColorBajito);
+//        monto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         
         destino = new JTextField("Destino");
         destino.setBorder(new LineBorder(Colores.epicColor,0,true));
         destino.setBackground(Colores.epicColorBajito);
         destino.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
       
-        monto.setPreferredSize(new Dimension(60, 30));
+//        monto.setPreferredSize(new Dimension(60, 30));
         Iconos.scaleImage("ok", iconoOkV, 30);
        
         rellenarVentas.add(inventario);
-        rellenarVentas.add(monto);
-        rellenarVentas.add(cliente);
+//        rellenarVentas.add(monto);
+        
         rellenarVentas.add(plataformacb);
+        rellenarVentas.add(cliente);
         rellenarVentas.add(iconoOkV);
         
         return rellenarVentas;
