@@ -30,6 +30,7 @@ public class Escribir {
         XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
         XSSFSheet newSheet = newWorkbook.getSheet(hoja);
         int rowCount = newSheet.getLastRowNum()-newSheet.getFirstRowNum();
+        System.out.println(rowCount);
         XSSFRow row = newSheet.getRow(0);
         XSSFRow newRow = newSheet.createRow(rowCount+1);
         for(int i=0; i< row.getLastCellNum(); i++){

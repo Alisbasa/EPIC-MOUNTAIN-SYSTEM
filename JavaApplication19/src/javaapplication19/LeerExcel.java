@@ -26,6 +26,19 @@ public class LeerExcel {
     public LeerExcel(){
         
     }
+    
+    static public boolean tablaVacia(String filepath, String hoja) throws FileNotFoundException, IOException{
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook =new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+        int rowCount = newSheet.getLastRowNum() - newSheet.getFirstRowNum();
+        
+        return rowCount<1;
+        
+ 
+    }
+    
     static public int contarRenglones(String filepath, String hoja) throws FileNotFoundException, IOException{
         File file = new File(filepath);
         FileInputStream inputStream = new FileInputStream(file);
@@ -34,7 +47,7 @@ public class LeerExcel {
         int rowCount = newSheet.getLastRowNum() - newSheet.getFirstRowNum();
         
         int renglones =0;
-        for(int i =1; i< rowCount; i++){
+        for(int i =1; i<= rowCount; i++){
             XSSFRow row = newSheet.getRow(i);
             if( row.getCell(0).getCellType() != CellType.BLANK ){
                  renglones++;
