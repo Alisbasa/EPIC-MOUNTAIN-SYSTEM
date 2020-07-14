@@ -95,7 +95,7 @@ public class rellenarIngresos {
                 panelIngreso.add(precio);
                 panelIngreso.add(plataforma);
                 panelIngreso.add(icono);
-                String[] data = {(String) fechaActual(), "Venta", (String) inventario.getSelectedItem(), precioExcel};
+                String[] data = {(String) fechaActual(), "Venta", (String) inventario.getSelectedItem(), precioExcel, plataforma.getText()};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -459,9 +459,6 @@ public class rellenarIngresos {
                 JLabel plataforma = new JLabel();
                 plataforma.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
                 plataforma.setText((String) plataformacb.getSelectedItem());
-                
-                
-                
 
                 JLabel icono = new JLabel();
                 Iconos.scaleImage("VentasG", icono, 25);
@@ -474,7 +471,7 @@ public class rellenarIngresos {
                 panelIngreso.add(precio);
                 panelIngreso.add(plataforma);
                 panelIngreso.add(icono);
-                String[] data = {(String) fechaActual(), "Venta", (String) inventario.getSelectedItem(), montoVC.getText()};
+                String[] data = {(String) fechaActual(), "Venta", (String) inventario.getSelectedItem(), montoVC.getText(), plataforma.getText()};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -585,57 +582,59 @@ public class rellenarIngresos {
     }
 
     public void rellenarLibro(JScrollPane scrollIngresos, JPanel listaIngresos) throws IOException {
-        for (int i = 1; i <= LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"); i++) {
-            PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
-            panelIngreso.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
-            panelIngreso.setLayout(new GridLayout(1, 5));
-            panelIngreso.setBackground(Colores.epicColorBajito);
-            panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-            panelIngreso.setMaximumSize(new Dimension(500, 40));
-            panelIngreso.setPreferredSize(new Dimension(500, 100));
+        if (!LeerExcel.tablaVacia("src\\excel\\LibrosContables.xlsx", "Ingresos")) {
+            for (int i = 1; i <= LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"); i++) {
+                PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
+                panelIngreso.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+                panelIngreso.setLayout(new GridLayout(1, 5));
+                panelIngreso.setBackground(Colores.epicColorBajito);
+                panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
+                panelIngreso.setMaximumSize(new Dimension(500, 40));
+                panelIngreso.setPreferredSize(new Dimension(500, 100));
 
-            JLabel fecha = new JLabel();
-            fecha.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
-            fecha.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 0, i));
+                JLabel fecha = new JLabel();
+                fecha.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+                fecha.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 0, i));
 
-            JLabel dev = new JLabel();
-            dev.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
-            dev.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 2, i));
+                JLabel dev = new JLabel();
+                dev.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+                dev.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 2, i));
 
-            JLabel montoDevolucion = new JLabel();
-            montoDevolucion.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
-            montoDevolucion.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 3, i));
-            
-            String IconoTipo="VentasG";
+                JLabel montoDevolucion = new JLabel();
+                montoDevolucion.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+                montoDevolucion.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 3, i));
+
+                String IconoTipo = "VentasG";
                 String tipo = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 1, i);
-                switch(tipo){
+                switch (tipo) {
                     case "Venta":
-                        IconoTipo="VentasG";
+                        IconoTipo = "VentasG";
                         break;
                     case "Inversión":
-                        IconoTipo="inversionG";
+                        IconoTipo = "inversionG";
                         break;
                     case "Crédito":
-                        IconoTipo="CreditoG";
+                        IconoTipo = "CreditoG";
                         break;
                     case "Impuesto a favor":
-                        IconoTipo="impuestoG";
+                        IconoTipo = "impuestoG";
                         break;
                 }
 
-            JLabel icono = new JLabel();
-            Iconos.scaleImage(IconoTipo, icono, 30);
-            icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-            listaIngresos.add(panelIngreso);
-            panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+                JLabel icono = new JLabel();
+                Iconos.scaleImage(IconoTipo, icono, 30);
+                icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+                listaIngresos.add(panelIngreso);
+                panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
-            panelIngreso.add(fecha);
-            panelIngreso.add(dev);
-            panelIngreso.add(montoDevolucion);
-            panelIngreso.add(icono);
+                panelIngreso.add(fecha);
+                panelIngreso.add(dev);
+                panelIngreso.add(montoDevolucion);
+                panelIngreso.add(icono);
 
-            indice++;
-            listaIngresos.updateUI();
+                indice++;
+                listaIngresos.updateUI();
+            }
         }
     }
 
