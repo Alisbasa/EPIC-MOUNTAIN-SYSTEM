@@ -1397,11 +1397,7 @@ public class Libros extends javax.swing.JFrame {
             
                 
             
-            try {
-                rellenarIngresos.add(rellenarVC.rellenarVentasC());
-            } catch (IOException ex) {
-                Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            rellenarIngresos.add(rellenarVC.rellenarVentasC());
             rellenarVentaC.botonVentaC(rellenarVC.montoVC,rellenarVC.inventario, rellenarVC.iconoOkVentasC, scrollIngresos,listaIngresos, rellenarVC.plataformacb);
           
         }
@@ -1549,7 +1545,11 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.revalidate();
             rellenarGastos.repaint();
             
-            rellenarGastos.add(rellenarRed.rellenarReducInv());
+            try {
+                rellenarGastos.add(rellenarRed.rellenarReducInv());
+            } catch (IOException ex) {
+                Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
+            }
             rellenarReduccion.botonReducInv(rellenarRed.reducInv,rellenarRed.montoReduc , rellenarRed.iconoOkReducInv, scrollGastos, listaGastos);
         
         }
