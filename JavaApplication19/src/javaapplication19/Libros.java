@@ -54,7 +54,7 @@ public class Libros extends javax.swing.JFrame {
     public List<JPanel> panelesIngresos;
     public int indice=0;
         
-    public Libros() {
+    public Libros() throws IOException {
         initComponents();
         myInitComponents();
         setIconImage(new ImageIcon(getClass().getResource("..\\img\\LOGO.png")).getImage());
@@ -1129,12 +1129,13 @@ public class Libros extends javax.swing.JFrame {
     
     
     
-    private void myInitComponents(){
+    private void myInitComponents() throws IOException{
         
         
         comboIngresos.setUI( PropiedadesCB.createUI(rootPane));
         comboGastos.setUI( PropiedadesCB.createUI(rootPane));
-         
+        rellenarIngresos rellenar = new rellenarIngresos();
+        rellenar.rellenarLibro(scrollIngresos, listaIngresos);
         
 
         
@@ -1867,7 +1868,11 @@ public class Libros extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Libros().setVisible(true);
+                try {
+                    new Libros().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
