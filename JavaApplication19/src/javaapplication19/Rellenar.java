@@ -81,7 +81,6 @@ public class Rellenar {
         rellenarVentas.setBackground(Color.white);
         Iconos.scaleImage("Ventas", iconoVentas, 40);
         rellenarVentas.add(iconoVentas);
-        String[] listaInventario={"inventario","Bici chingona","Bici Chingona 2","Bici Chingona 3"};
         String[] listaPlataformas={"Mercado Libre","Amazon","Shopiffy"};
         String[] listaCRM = {"Alejandro", "Alvaro"};
        
@@ -224,17 +223,16 @@ public class Rellenar {
         return rellenarDeudasC;
     }
     
-    public  JPanel rellenarVentasC(){
+    public  JPanel rellenarVentasC() throws IOException{
         rellenarVentasC.removeAll();
         
         rellenarVentasC.setBackground(Color.white);
         Iconos.scaleImage("VentasC", iconoVentasC, 40);
         rellenarVentasC.add(iconoVentasC);
-        String[] listaInventario={"inventario","Bici chingona","Bici Chingona 2","Bici Chingona 3"};
         String[] listaPlataformas={"Mercado Libre","Facebook","Amazon","Shopiffy"};
         String[] listaCRM = {"Alejandro", "Alvaro"};
        
-        inventario = new JComboBox(listaInventario);
+        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "INVENTARIO", 0));
         inventario.setBackground(Color.white);
         inventario.setUI( PropiedadesCB2.createUI(inventario));
         
