@@ -90,7 +90,7 @@ public class Rellenar {
         inventario.setUI( PropiedadesCB2.createUI(inventario));
         inventario.setPreferredSize(new Dimension(200, 30));
 
-        cliente = new JComboBox (listaCRM);
+        cliente = new JComboBox (LeerExcel.rellenaCB2("src//excel/CRM.xlsx", "CLIENTES DE INICIO", 0));
         cliente.setBackground(Color.white);
         cliente.setUI( PropiedadesCB2.createUI(cliente));
        
@@ -225,7 +225,7 @@ public class Rellenar {
         return rellenarDeudasC;
     }
     
-    public  JPanel rellenarVentasC(){
+    public  JPanel rellenarVentasC() throws IOException{
         rellenarVentasC.removeAll();
         
         rellenarVentasC.setBackground(Color.white);
@@ -235,11 +235,11 @@ public class Rellenar {
         String[] listaPlataformas={"Mercado Libre","Facebook","Amazon","Shopiffy"};
         String[] listaCRM = {"Alejandro", "Alvaro"};
        
-        inventario = new JComboBox(listaInventario);
+        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "INVENTARIO", 0));
         inventario.setBackground(Color.white);
         inventario.setUI( PropiedadesCB2.createUI(inventario));
         
-        cliente = new JComboBox (listaCRM);
+        cliente = new JComboBox (LeerExcel.rellenaCB2("src//excel/CRM.xlsx", "CLIENTES DE INICIO", 0));
         cliente.setBackground(Color.white);
         cliente.setUI( PropiedadesCB2.createUI(cliente));
        

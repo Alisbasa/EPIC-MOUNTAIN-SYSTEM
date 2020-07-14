@@ -35,7 +35,7 @@ public class rellenarGastos {
     }
     
     //Pone Gasto: Desarollo
-    void botonDesarrollo(JComboBox desarrollo,JTextField montoDes, JLabel iconoOkDesarrollo, JScrollPane scrollGastos, JPanel listaGastos){
+    void botonDesEquipo(JTextField desarrolloTipoE, JTextField montoDes, JLabel iconoOkDesarrolloEq, JScrollPane scrollGastos, JPanel listaGastos){
         MouseListener botonV = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -56,7 +56,7 @@ public class rellenarGastos {
 
             JLabel desarrolloLista = new JLabel();
             desarrolloLista.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            desarrolloLista.setText((String) desarrollo.getSelectedItem());
+            desarrolloLista.setText(desarrolloTipoE.getText());
 
             JLabel precio = new JLabel();
             precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
@@ -93,16 +93,16 @@ public class rellenarGastos {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                Iconos.scaleImage("okh", iconoOkDesarrollo, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("okh", iconoOkDesarrolloEq, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                Iconos.scaleImage("ok", iconoOkDesarrollo, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("ok", iconoOkDesarrolloEq, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         };
         
-        iconoOkDesarrollo.addMouseListener(botonV);
+        iconoOkDesarrolloEq.addMouseListener(botonV);
     }
 
     //Para rellenar un Gasto:deudas
