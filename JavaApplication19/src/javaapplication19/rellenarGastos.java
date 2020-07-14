@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -648,6 +649,59 @@ public class rellenarGastos {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM");
         return formatoFecha.format(fecha);
     }
-   
+    public void rellenarLibro(JScrollPane scrollIngresos, JPanel listaIngresos) throws IOException {
+        for (int i = 1; i <= LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"); i++) {
+            PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
+            panelGasto.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+            panelGasto.setLayout(new GridLayout(1, 5));
+            panelGasto.setBackground(Colores.epicColorBajito);
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
+            panelGasto.setMaximumSize(new Dimension(500, 40));
+            panelGasto.setPreferredSize(new Dimension(500, 100));
+
+            JLabel fecha = new JLabel();
+            fecha.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+            fecha.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 0, i));
+
+            JLabel dev = new JLabel();
+            dev.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+            dev.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 2, i));
+
+            JLabel monto = new JLabel();
+            monto.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+            monto.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 3, i));
+            
+            String IconoTipo="VentasG";
+                String tipo = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 1, i);
+                switch(tipo){
+                    case "Venta":
+                        IconoTipo="VentasG";
+                        break;
+                    case "Inversión":
+                        IconoTipo="inversionG";
+                        break;
+                    case "Crédito":
+                        IconoTipo="CreditoG";
+                        break;
+                    case "Impuesto a favor":
+                        IconoTipo="impuestoG";
+                        break;
+                }
+
+            JLabel icono = new JLabel();
+            Iconos.scaleImage(IconoTipo, icono, 30);
+            icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+            listaIngresos.add(panelGasto);
+            panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
+
+            panelGasto.add(fecha);
+            panelGasto.add(dev);
+            panelGasto.add(monto);
+            panelGasto.add(icono);
+
+            indice++;
+            listaIngresos.updateUI();
+        }
+    }
     
 }
