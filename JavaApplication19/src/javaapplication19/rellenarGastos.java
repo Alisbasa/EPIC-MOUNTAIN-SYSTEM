@@ -16,6 +16,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -144,6 +146,16 @@ public class rellenarGastos {
             panelGastoC.add(deudasPagar);
             panelGastoC.add(precio);
             panelGastoC.add(icono);
+            
+            String [] data = {(String) fechaActual(), "Deudas a Pagar", (String) deudasPagar.getText(), precio.getText()};
+            
+            Escribir escribirVentas = new Escribir();
+                try {
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
 
             indice++;
             listaGastos.updateUI();
@@ -211,6 +223,15 @@ public class rellenarGastos {
             panelGasto.add(imp);
             panelGasto.add(montoImpues);
             panelGasto.add(icono);
+            
+            String [] data = {(String) fechaActual(), "Impuesto", (String) imp.getText(), montoImpues.getText()};
+            
+            Escribir escribirVentas = new Escribir();
+                try {
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             indice++;
             listaGastos.updateUI();
@@ -278,6 +299,15 @@ public class rellenarGastos {
             panelGasto.add(descripcion);
             panelGasto.add(precioMant);
             panelGasto.add(icono);
+            
+            String [] data = {(String) fechaActual(), "Mantenimiento", (String) descripcion.getText(), precioMant.getText()};
+            
+            Escribir escribirVentas = new Escribir();
+                try {
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             indice++;
             listaGastos.updateUI();
@@ -346,6 +376,15 @@ public class rellenarGastos {
             panelGasto.add(monto);
             panelGasto.add(icono);
             
+            String [] data = {(String) fechaActual(), "Suministros", (String) sum.getText(), monto.getText()};
+            
+            Escribir escribirVentas = new Escribir();
+                try {
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
 
             indice++;
             listaGastos.updateUI();
@@ -413,6 +452,15 @@ public class rellenarGastos {
             panelGasto.add(pub);
             panelGasto.add(monto);
             panelGasto.add(icono);
+            
+            String [] data = {(String) fechaActual(), "Mantenimiento", (String) pub.getText(), monto.getText()};
+            
+            Escribir escribirVentas = new Escribir();
+                try {
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             indice++;
             listaGastos.updateUI();
@@ -480,6 +528,15 @@ public class rellenarGastos {
             panelGasto.add(trans);
             panelGasto.add(monto);
             panelGasto.add(icono);
+            
+            String [] data = {(String) fechaActual(), "Transporte", (String) trans.getText(), monto.getText()};
+            
+            Escribir escribirVentas = new Escribir();
+                try {
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             indice++;
             listaGastos.updateUI();
@@ -547,6 +604,15 @@ public class rellenarGastos {
             panelGasto.add(hon);
             panelGasto.add(monto);
             panelGasto.add(icono);
+            
+            String [] data = {(String) fechaActual(), "Honorarios", (String) hon.getText(), monto.getText()};
+            
+            Escribir escribirVentas = new Escribir();
+                try {
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             indice++;
             listaGastos.updateUI();
@@ -614,6 +680,15 @@ public class rellenarGastos {
             panelGasto.add(reduc);
             panelGasto.add(montoR);
             panelGasto.add(icono);
+            
+            String [] data = {(String) fechaActual(), "Reduccion de Inventario", (String) reduc.getText(), montoR.getText()};
+            
+            Escribir escribirVentas = new Escribir();
+                try {
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             indice++;
             listaGastos.updateUI();
@@ -649,58 +724,66 @@ public class rellenarGastos {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM");
         return formatoFecha.format(fecha);
     }
-    public void rellenarLibro(JScrollPane scrollIngresos, JPanel listaIngresos) throws IOException {
-        for (int i = 1; i <= LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"); i++) {
-            PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
-            panelGasto.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
-            panelGasto.setLayout(new GridLayout(1, 5));
-            panelGasto.setBackground(Colores.epicColorBajito);
-            panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-            panelGasto.setMaximumSize(new Dimension(500, 40));
-            panelGasto.setPreferredSize(new Dimension(500, 100));
+    public void rellenarLibro(JScrollPane scrollGastos, JPanel listaGastos) throws IOException {
+        if (!LeerExcel.tablaVacia("src\\excel\\LibrosContables.xlsx", "Gastos")) {
+            for (int i = 1; i <= LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"); i++) {
+                PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
+                panelGasto.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+                panelGasto.setLayout(new GridLayout(1, 5));
+                panelGasto.setBackground(Colores.epicColorBajito);
+                panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
+                panelGasto.setMaximumSize(new Dimension(500, 40));
+                panelGasto.setPreferredSize(new Dimension(500, 100));
 
-            JLabel fecha = new JLabel();
-            fecha.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
-            fecha.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 0, i));
+                JLabel fecha = new JLabel();
+                fecha.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+                fecha.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Gastos", 0, i));
 
-            JLabel dev = new JLabel();
-            dev.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
-            dev.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 2, i));
+                JLabel dev = new JLabel();
+                dev.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+                dev.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Gastos", 2, i));
 
-            JLabel monto = new JLabel();
-            monto.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
-            monto.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 3, i));
-            
-            String IconoTipo="VentasG";
-                String tipo = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 1, i);
-                switch(tipo){
-                    case "Venta":
-                        IconoTipo="VentasG";
-                        break;
-                    case "Inversión":
-                        IconoTipo="inversionG";
-                        break;
-                    case "Crédito":
-                        IconoTipo="CreditoG";
-                        break;
-                    case "Impuesto a favor":
-                        IconoTipo="impuestoG";
-                        break;
-                }
+                JLabel monto = new JLabel();
+                monto.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+                monto.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Gastos", 3, i));
 
-            JLabel icono = new JLabel();
-            Iconos.scaleImage(IconoTipo, icono, 30);
-            icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-            listaIngresos.add(panelGasto);
-            panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
+                String IconoTipo="VentasG";
+                    String tipo = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Gastos", 1, i);
+                    switch(tipo){
+                        case "Deudas a Pagar":
+                            IconoTipo="DeudasPG_1";
+                            break;
+                        case "Impuesto":
+                            IconoTipo="impuestoG";
+                            break;
+                        case "Mantenimiento":
+                            IconoTipo="mantenimientoG";
+                            break;                            
+                        case "Transporte":
+                            IconoTipo="transporteG";
+                            break;
+                        case "Honorarios":
+                            IconoTipo="honorariosG";
+                            break;
+                        case "Reduccion de Inventario":
+                            IconoTipo="inventarioG";
+                            break;
+                    }
 
-            panelGasto.add(fecha);
-            panelGasto.add(dev);
-            panelGasto.add(monto);
-            panelGasto.add(icono);
+                JLabel icono = new JLabel();
+                Iconos.scaleImage(IconoTipo, icono, 30);
+                icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+                listaGastos.add(panelGasto);
+                panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
-            indice++;
-            listaIngresos.updateUI();
+                panelGasto.add(fecha);
+                panelGasto.add(dev);
+                panelGasto.add(monto);
+                panelGasto.add(icono);
+
+                indice++;
+                listaGastos.updateUI();
+            }
         }
     }
     

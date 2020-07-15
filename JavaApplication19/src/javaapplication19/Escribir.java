@@ -33,17 +33,18 @@ public class Escribir {
         System.out.println(rowCount);
         XSSFRow row = newSheet.getRow(0);
         XSSFRow newRow = newSheet.createRow(rowCount+1);
-        for(int i=0; i< row.getLastCellNum(); i++){
+         
+            
+        
+        for(int i=0; i<row.getLastCellNum(); i++){
             XSSFCell newCell = newRow.createCell(i);
-            newCell.setCellValue(data[i]);
-        }    
+            newCell.setCellValue(data[i]);       
+        }
+        
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkbook.write(outputStream);
-        outputStream.close();
-        
-        
-        
+        outputStream.close();        
         
     }
     

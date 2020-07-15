@@ -1135,10 +1135,9 @@ public class Libros extends javax.swing.JFrame {
         comboIngresos.setUI( PropiedadesCB.createUI(rootPane));
         comboGastos.setUI( PropiedadesCB.createUI(rootPane));
         rellenarIngresos rellenar = new rellenarIngresos();
+        rellenarGastos rellenarG = new rellenarGastos();
         rellenar.rellenarLibro(scrollIngresos, listaIngresos);
-        
-
-        
+        rellenarG.rellenarLibro(scrollGastos, listaGastos);        
         
 
     

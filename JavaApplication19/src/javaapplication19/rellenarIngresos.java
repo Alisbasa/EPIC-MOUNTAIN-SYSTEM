@@ -172,7 +172,7 @@ public class rellenarIngresos {
                 panelIngreso.add(precio);
                 panelIngreso.add(icono);
 
-                String[] data = {(String) fechaActual(), "Crédito", (String) inversor.getText(), montoC.getText()};
+                String[] data = {(String) fechaActual(), "Crédito", (String) inversor.getText(), montoC.getText(), "    "};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -249,7 +249,7 @@ public class rellenarIngresos {
                 panelIngreso.add(precioI);
                 panelIngreso.add(icono);
 
-                String[] data = {(String) fechaActual(), "Inversión", (String) inversorI.getText(), montoI.getText()};
+                String[] data = {(String) fechaActual(), "Inversión", (String) inversorI.getText(), montoI.getText(), "    "};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -325,7 +325,7 @@ public class rellenarIngresos {
                 panelIngreso.add(montoImpuesto);
                 panelIngreso.add(icono);
 
-                String[] data = {(String) fechaActual(), "Impuesto a favor", (String) impuesto.getText(), montoImp.getText()};
+                String[] data = {(String) fechaActual(), "Impuesto a favor", (String) impuesto.getText(), montoImp.getText(), "    "};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -391,7 +391,7 @@ public class rellenarIngresos {
                 montoDeudaC.setText(montoDeuC.getText());
 
                 JLabel icono = new JLabel();
-                Iconos.scaleImage("deudaC", icono, 30);
+                Iconos.scaleImage("DeudasCG", icono, 30);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
@@ -400,6 +400,15 @@ public class rellenarIngresos {
                 panelIngreso.add(deuda);
                 panelIngreso.add(montoDeudaC);
                 panelIngreso.add(icono);
+                
+                String[] data = {(String) fechaActual(), "Deuda a Cobrar",  deuda.getText(), montoDeudaC.getText(), "    "};
+
+                Escribir escribirVentas = new Escribir();
+                try {
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
                 indice++;
                 listaIngresos.updateUI();
@@ -451,10 +460,19 @@ public class rellenarIngresos {
                 JLabel inventarioLista = new JLabel();
                 inventarioLista.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
                 inventarioLista.setText((String) inventario.getSelectedItem());
+                int numeroLista = inventario.getSelectedIndex() + 1;
+                int numeroPlataforma = 12;
+                if (plataformacb.getSelectedIndex() == 0) {
+                    numeroPlataforma = 14;
+                }
+                
 
-                JLabel precio = new JLabel();
-                precio.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
-                precio.setText(montoVC.getText());
+                String precioExcel = "precio";
+                try {
+                    precioExcel = LeerExcel.obtenerPrecio("src//excel/Inventario.xlsx", "INVENTARIO", numeroPlataforma, numeroLista);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
                 JLabel plataforma = new JLabel();
                 plataforma.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
@@ -468,10 +486,9 @@ public class rellenarIngresos {
 
                 panelIngreso.add(fecha);
                 panelIngreso.add(inventarioLista);
-                panelIngreso.add(precio);
                 panelIngreso.add(plataforma);
                 panelIngreso.add(icono);
-                String[] data = {(String) fechaActual(), "Venta", (String) inventario.getSelectedItem(), montoVC.getText(), plataforma.getText()};
+                String[] data = {(String) fechaActual(), "Venta a Cobrar", (String) inventario.getSelectedItem(), precioExcel, plataforma.getText()};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -546,6 +563,18 @@ public class rellenarIngresos {
                 panelIngreso.add(dev);
                 panelIngreso.add(montoDevolucion);
                 panelIngreso.add(icono);
+                
+                String[] data = {(String) fechaActual(), "Devolucion", dev.getText(), montoDevolucion.getText(), "   "};
+
+                Escribir escribirVentas = new Escribir();
+                try {
+                    escribirVentas.escribirExcel("src\\excel\\Libros.xlsx", "Ingresos", data);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                indice++;
+                listaIngresos.updateUI();
 
                 indice++;
                 listaIngresos.updateUI();
@@ -616,8 +645,17 @@ public class rellenarIngresos {
                     case "Crédito":
                         IconoTipo = "CreditoG";
                         break;
+                    case "Deuda a Cobrar":
+                        IconoTipo = "DeudasCG";
+                        break;
                     case "Impuesto a favor":
                         IconoTipo = "impuestoG";
+                        break;
+                    case "Venta a Cobrar":
+                        IconoTipo = "ventaCG";
+                        break;
+                    case "Devolucion":
+                        IconoTipo = "devolucionG";
                         break;
                 }
 

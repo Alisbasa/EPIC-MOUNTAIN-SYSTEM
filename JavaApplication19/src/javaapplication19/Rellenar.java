@@ -83,7 +83,6 @@ public class Rellenar {
         rellenarVentas.add(iconoVentas);
         
         String[] listaPlataformas={"Mercado Libre","Amazon","Shopiffy"};
-        String[] listaCRM = {"Alejandro", "Alvaro"};
        
         inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "INVENTARIO", 0));
         inventario.setBackground(Color.white);
@@ -98,22 +97,14 @@ public class Rellenar {
         plataformacb.setBackground(Color.white);
         plataformacb.setUI( PropiedadesCB2.createUI(plataformacb));
 
-        
-//        monto = new JTextField("$");
-//        monto.setBorder(new LineBorder(Colores.epicColor,0,true));
-//        monto.setBackground(Colores.epicColorBajito);
-//        monto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        
         destino = new JTextField("Destino");
         destino.setBorder(new LineBorder(Colores.epicColor,0,true));
         destino.setBackground(Colores.epicColorBajito);
         destino.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
       
-//        monto.setPreferredSize(new Dimension(60, 30));
         Iconos.scaleImage("ok", iconoOkV, 30);
        
         rellenarVentas.add(inventario);
-//        rellenarVentas.add(monto);
         
         rellenarVentas.add(plataformacb);
         rellenarVentas.add(cliente);
