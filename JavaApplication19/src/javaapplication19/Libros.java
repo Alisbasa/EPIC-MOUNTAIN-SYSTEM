@@ -48,7 +48,7 @@ import javax.swing.plaf.ComboBoxUI;
 public class Libros extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
-    static String[] listaInventario;
+    static String[] listaInventar;
     
     
     public List<JPanel> panelesIngresos;
@@ -1956,7 +1956,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel regLabel;
     private javax.swing.JPanel rellenarGastos;
     private javax.swing.JPanel rellenarIngresos;
-    private javax.swing.JScrollPane scrollGastos;
+    public javax.swing.JScrollPane scrollGastos;
     private javax.swing.JScrollPane scrollIngresos;
     private javax.swing.JLabel suministrosIcon;
     private javax.swing.JLabel suministrosLabel;

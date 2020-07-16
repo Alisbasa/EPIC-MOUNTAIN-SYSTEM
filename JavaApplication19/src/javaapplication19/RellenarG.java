@@ -16,6 +16,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -219,8 +221,8 @@ public class RellenarG {
                     rellenarDesarrollo.add(producto);
                     rellenarDesarrollo.add(iconoOkDesarrollo);
                 
-                }
-        
+                }   
+            
             }
         });
 
@@ -241,7 +243,6 @@ public class RellenarG {
         deudas = new JComboBox(listaDeudores);
         deudas.setBackground(Color.white);
         deudas.setUI( PropiedadesCB2.createUI(deudas));
-//        deudas.setBorder(new LineBorder(Colores.gris, 1));
         
         montoDeuda = new JTextField("$");
         montoDeuda.setPreferredSize(new Dimension(60, 30));
@@ -249,8 +250,6 @@ public class RellenarG {
         montoDeuda.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         
         deudas.setPreferredSize(new Dimension(150, 30));      
-        
-        
         
         rellenarDeudasPagar.add(deudas);
         rellenarDeudasPagar.add(montoDeuda);
@@ -299,8 +298,6 @@ public class RellenarG {
         
         mantenimiento.setPreferredSize(new Dimension(150, 30));      
         
-        
-        
         rellenarMantenimiento.add(mantenimiento);
         rellenarMantenimiento.add(montoMant);
         rellenarMantenimiento.add(iconoOkMantenimiento);
@@ -324,8 +321,6 @@ public class RellenarG {
         
         suministros.setPreferredSize(new Dimension(150, 30));      
         
-        
-        
         rellenarSuministros.add(suministros);
         rellenarSuministros.add(montoSum);
         rellenarSuministros.add(iconoOkSuministros);
@@ -348,9 +343,7 @@ public class RellenarG {
         montoPublicidad.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         
         publicidad.setPreferredSize(new Dimension(150, 30));      
-        
-        
-        
+         
         rellenarPubliidad.add(publicidad);
         rellenarPubliidad.add(montoPublicidad);
         rellenarPubliidad.add(iconoOkPublicidad);
@@ -373,8 +366,6 @@ public class RellenarG {
         montoTrans.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         
         transporte.setPreferredSize(new Dimension(150, 30));      
-        
-        
         
         rellenarTransporte.add(transporte);
         rellenarTransporte.add(montoTrans);
@@ -399,16 +390,12 @@ public class RellenarG {
         
         honorarios.setPreferredSize(new Dimension(150, 30));      
         
-        
-        
         rellenarHonorarios.add(honorarios);
         rellenarHonorarios.add(montoHonor);
         rellenarHonorarios.add(iconoOkHonorarios);
         
         return rellenarHonorarios;
     }
-    
-    
     
     public  JPanel rellenarReducInv() throws IOException{
         rellenarReducInv.removeAll();
@@ -422,7 +409,6 @@ public class RellenarG {
         reducInv = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "INVENTARIO", 0));
         reducInv.setBackground(Color.white);
         reducInv.setUI( PropiedadesCB2.createUI(reducInv));
-//        reducInv.setBorder(new LineBorder(Colores.gris, 1));
         
         montoReduc = new JTextField("$");
         montoReduc.setPreferredSize(new Dimension(60, 30));
@@ -431,15 +417,11 @@ public class RellenarG {
         
         reducInv.setPreferredSize(new Dimension(150, 30));      
         
-        
-        
         rellenarReducInv.add(reducInv);
         rellenarReducInv.add(montoReduc);
         rellenarReducInv.add(iconoOkReducInv);
         
         return rellenarReducInv;
     }
-    
-    
-     
+      
 }

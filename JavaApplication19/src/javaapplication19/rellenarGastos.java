@@ -69,7 +69,7 @@ public class rellenarGastos {
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             Iconos.scaleImage("desarrolloG", icono, 25);
             listaGastos.add(panelGasto);
-            panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
+            panelesGastos.add(panelGasto);
 
             panelGasto.add(fecha);
             panelGasto.add(desarrolloLista);
