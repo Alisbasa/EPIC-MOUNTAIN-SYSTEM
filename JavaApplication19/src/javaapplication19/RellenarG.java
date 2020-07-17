@@ -103,11 +103,16 @@ public class RellenarG {
        
         desarrollo = new JComboBox(listaDesarrollo);
         desarrollo.setBackground(Color.white);
+        
         desarrollo.setUI( PropiedadesCB2.createUI(desarrollo));
+        
+        desarrolloTipoE = new JTextField("Equipo y Mob.");
+        montoDes = new JTextField("$");
         
         desarrollo.addActionListener (new ActionListener () {
     
             public void actionPerformed(ActionEvent e) {
+                
                 
                 if (desarrollo.getSelectedItem().toString().equals("Equipo y Mob.")){
                     
@@ -118,12 +123,12 @@ public class RellenarG {
                     Iconos.scaleImage("Equipo", iconoDesarrollo, 30);
                     rellenarDesarrollo.add(iconoDesarrollo);
 
-                    desarrolloTipoE = new JTextField("Equipo y Mob.");
+                    
                     desarrolloTipoE.setBackground(Colores.epicColorBajito);
                     desarrolloTipoE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
                     desarrolloTipoE.setPreferredSize(new Dimension(150, 30));
 
-                    montoDes = new JTextField("$");
+                    
                     montoDes.setBackground(Colores.epicColorBajito);
                     montoDes.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
                     montoDes.setPreferredSize(new Dimension(60, 30));
@@ -133,6 +138,9 @@ public class RellenarG {
                     rellenarDesarrollo.add(desarrolloTipoE);
                     rellenarDesarrollo.add(montoDes);
                     rellenarDesarrollo.add(iconoOkDesarrolloEq);
+                    
+                    
+                    
                 }
                 
                 else if(desarrollo.getSelectedItem().toString().equals("Inventario Principal")){

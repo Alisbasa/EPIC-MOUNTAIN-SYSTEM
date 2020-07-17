@@ -448,7 +448,7 @@ public class rellenarIngresos {
                 PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
                 panelIngreso.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
                 panelIngreso.setLayout(new GridLayout(1, 5));
-                panelIngreso.setBackground(Colores.epicColorBajito);
+                panelIngreso.setBackground(Colores.amarillo);
                 panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
                 panelIngreso.setMaximumSize(new Dimension(500, 40));
                 panelIngreso.setPreferredSize(new Dimension(500, 100));
@@ -462,6 +462,7 @@ public class rellenarIngresos {
                 inventarioLista.setText((String) inventario.getSelectedItem());
                 int numeroLista = inventario.getSelectedIndex() + 1;
                 int numeroPlataforma = 12;
+                //selecciona mercado libre como plataforma
                 if (plataformacb.getSelectedIndex() == 0) {
                     numeroPlataforma = 14;
                 }
@@ -473,6 +474,11 @@ public class rellenarIngresos {
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+                 JLabel precio = new JLabel();
+                precio.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+
+                precio.setText(precioExcel);
 
                 JLabel plataforma = new JLabel();
                 plataforma.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
@@ -486,13 +492,14 @@ public class rellenarIngresos {
 
                 panelIngreso.add(fecha);
                 panelIngreso.add(inventarioLista);
+                panelIngreso.add(precio);
                 panelIngreso.add(plataforma);
                 panelIngreso.add(icono);
                 String[] data = {(String) fechaActual(), "Venta a Cobrar", (String) inventario.getSelectedItem(), precioExcel, plataforma.getText()};
 
                 Escribir escribirVentas = new Escribir();
                 try {
-                    escribirVentas.escribirExcel("src\\excel\\Libros.xlsx", "Ingresos", data);
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -568,7 +575,7 @@ public class rellenarIngresos {
 
                 Escribir escribirVentas = new Escribir();
                 try {
-                    escribirVentas.escribirExcel("src\\excel\\Libros.xlsx", "Ingresos", data);
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -632,6 +639,11 @@ public class rellenarIngresos {
                 JLabel montoDevolucion = new JLabel();
                 montoDevolucion.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
                 montoDevolucion.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 3, i));
+                
+                JLabel plataforma = new JLabel();
+                plataforma.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+                plataforma.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 4, i));
+
 
                 String IconoTipo = "VentasG";
                 String tipo = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 1, i);
@@ -652,7 +664,9 @@ public class rellenarIngresos {
                         IconoTipo = "impuestoG";
                         break;
                     case "Venta a Cobrar":
-                        IconoTipo = "ventaCG";
+                        IconoTipo = "VentasG";
+                        panelIngreso.setBackground(Colores.amarillo);
+                        
                         break;
                     case "Devolucion":
                         IconoTipo = "devolucionG";
@@ -668,6 +682,7 @@ public class rellenarIngresos {
                 panelIngreso.add(fecha);
                 panelIngreso.add(dev);
                 panelIngreso.add(montoDevolucion);
+                panelIngreso.add(plataforma);
                 panelIngreso.add(icono);
 
                 indice++;

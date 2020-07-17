@@ -1453,8 +1453,7 @@ public class Libros extends javax.swing.JFrame {
             
             rellenarGastos.add(rellenarDes.rellenarDesarrollo());
             
-            if(rellenarDes.desarrolloTipoE == null)
-                System.out.println("Hola meco");
+            
             rellenarDesarrollo.botonDesEquipo(rellenarDes.desarrolloTipoE, rellenarDes.montoDes, rellenarDes.iconoOkDesarrolloEq, scrollGastos, listaGastos);
             
             /*
@@ -1921,7 +1920,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel libro;
     private javax.swing.JPanel libroGastos;
     private javax.swing.JPanel libroIngresos;
-    private javax.swing.JPanel listaGastos;
+    public javax.swing.JPanel listaGastos;
     private javax.swing.JPanel listaIngresos;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel maxiIcon;

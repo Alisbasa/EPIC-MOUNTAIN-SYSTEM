@@ -1737,6 +1737,9 @@
                                   <Connection code="TOP_ALIGNMENT" type="code"/>
                                 </Property>
                               </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
                                 <Property name="axis" type="int" value="1"/>
