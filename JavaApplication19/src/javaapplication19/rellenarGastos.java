@@ -25,6 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javaapplication19.Rellenar;
+import static javaapplication19.rellenarIngresos.fechaActual;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -74,6 +75,14 @@ public class rellenarGastos {
             panelGasto.add(desarrolloLista);
             panelGasto.add(precio);
             panelGasto.add(icono);
+            String[] data = {(String) fechaActual(), "Equipo y Mob", desarrolloTipoE.getText(),montoDes.getText(), "    "};
+
+                Escribir escribirVentas = new Escribir();
+                try {
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             
             indice++;
             listaGastos.updateUI();
@@ -146,6 +155,15 @@ public class rellenarGastos {
             panelGasto.add(precio);
             panelGasto.add(icono);
             
+            String[] data = {(String) fechaActual(), "Inventario", desarrolloTipoI.getText(),montoDesI.getText(),(String) producto.getSelectedItem()};
+
+                Escribir escribirVentas = new Escribir();
+                try {
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
             indice++;
             listaGastos.updateUI();
         }
@@ -172,6 +190,163 @@ public class rellenarGastos {
         };
         
         iconoOkDesarrolloI.addMouseListener(botonV);
+    }
+    
+    //Pone Gasto: Desarollo: Packs
+    void botonDesP(JTextField desarrolloTipoP, JTextField montoDesP, JLabel iconoOkDesarrolloP, JScrollPane scrollGastos, JPanel listaGastos){
+        MouseListener botonV = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+            scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
+            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelGasto.setLayout(new GridLayout(1,4));
+            panelGasto.setBackground(Colores.epicColorBajito);
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
+            panelGasto.setMaximumSize(new Dimension(500,40));
+            panelGasto.setPreferredSize(new Dimension(500,100));;
+            
+            JLabel fecha = new JLabel();
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setText(fechaActual());
+
+            JLabel desarrolloLista = new JLabel();
+            desarrolloLista.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            desarrolloLista.setText(desarrolloTipoP.getText());
+            
+
+            JLabel precio = new JLabel();
+            precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            precio.setText(montoDesP.getText());
+
+            JLabel icono = new JLabel();
+            icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+            Iconos.scaleImage("packsG", icono, 25);
+            listaGastos.add(panelGasto);
+            panelesGastos.add(panelGasto);
+
+            panelGasto.add(fecha);
+            panelGasto.add(desarrolloLista);
+            panelGasto.add(precio);
+            panelGasto.add(icono);
+            
+            String[] data = {(String) fechaActual(), "Pack de Ventas", desarrolloTipoP.getText(),montoDesP.getText(), "    "};
+
+                Escribir escribirVentas = new Escribir();
+                try {
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
+            indice++;
+            listaGastos.updateUI();
+        }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Iconos.scaleImage("okh", iconoOkDesarrolloP, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                Iconos.scaleImage("ok", iconoOkDesarrolloP, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+        
+        iconoOkDesarrolloP.addMouseListener(botonV);
+    }
+    
+    //Pone Gasto: Desarollo: Compras en Transito
+    void botonDesCT(JTextField desarrolloTipoCT, JComboBox productoCT,JTextField montoDesCT, JLabel iconoOkDesarrolloCT, JScrollPane scrollGastos, JPanel listaGastos){
+        MouseListener botonV = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+            scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
+            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelGasto.setLayout(new GridLayout(1,4));
+            panelGasto.setBackground(Colores.amarillo);
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
+            panelGasto.setMaximumSize(new Dimension(500,40));
+            panelGasto.setPreferredSize(new Dimension(500,100));;
+            
+            JLabel fecha = new JLabel();
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setText(fechaActual());
+
+            JLabel desarrolloLista = new JLabel();
+            desarrolloLista.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            desarrolloLista.setText(desarrolloTipoCT.getText());
+            
+            JLabel productoAg  = new JLabel();
+            productoAg.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            productoAg.setText((String) productoCT.getSelectedItem());
+            
+
+            JLabel precio = new JLabel();
+            precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            precio.setText(montoDesCT.getText());
+
+            JLabel icono = new JLabel();
+            icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+            Iconos.scaleImage("packsG", icono, 25);
+            listaGastos.add(panelGasto);
+            panelesGastos.add(panelGasto);
+
+            panelGasto.add(fecha);
+            panelGasto.add(desarrolloLista);
+            panelGasto.add(precio);
+            panelGasto.add(icono);
+            
+            String[] data = {(String) fechaActual(), "Compra en Transito", desarrolloTipoCT.getText() , montoDesCT.getText(),(String) productoCT.getSelectedItem()};
+
+                Escribir escribirVentas = new Escribir();
+                try {
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            
+            indice++;
+            listaGastos.updateUI();
+        }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Iconos.scaleImage("okh", iconoOkDesarrolloCT, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                Iconos.scaleImage("ok", iconoOkDesarrolloCT, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+        
+        iconoOkDesarrolloCT.addMouseListener(botonV);
     }
     
     //Para rellenar un Gasto:deudas
@@ -790,6 +965,7 @@ public class rellenarGastos {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM");
         return formatoFecha.format(fecha);
     }
+    
     public void rellenarLibro(JScrollPane scrollGastos, JPanel listaGastos) throws IOException {
         if (!LeerExcel.tablaVacia("src\\excel\\LibrosContables.xlsx", "Gastos")) {
             for (int i = 1; i <= LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"); i++) {
@@ -816,6 +992,22 @@ public class rellenarGastos {
                 String IconoTipo="VentasG";
                     String tipo = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Gastos", 1, i);
                     switch(tipo){
+                        case "Equipo y Mob":
+                            IconoTipo="equipoG";
+                            panelGasto.setBackground(Colores.amarillo);
+                            break;
+                        case "Inventario":
+                            IconoTipo="inventarioG";
+                            panelGasto.setBackground(Colores.amarillo);
+                            break;
+                        case "Pack de Ventas":
+                            IconoTipo="packsG";
+                            panelGasto.setBackground(Colores.amarillo);
+                            break;
+                        case "Compra en Transito":
+                            IconoTipo="comprasTG";
+                            panelGasto.setBackground(Colores.amarillo);
+                            break;      
                         case "Deudas a Pagar":
                             IconoTipo="DeudasPG_1";
                             break;
@@ -852,5 +1044,6 @@ public class rellenarGastos {
             }
         }
     }
+    
     
 }

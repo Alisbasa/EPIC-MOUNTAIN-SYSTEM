@@ -1453,9 +1453,13 @@ public class Libros extends javax.swing.JFrame {
             
             rellenarGastos.add(rellenarDes.rellenarDesarrollo());
             
-            rellenarDesarrollo.botonDesEquipo(rellenarDes.desarrolloTipoE, rellenarDes.montoDes, rellenarDes.iconoOkDesarrolloEq, scrollGastos, listaGastos);
+            rellenarDesarrollo.botonDesEquipo(rellenarDes.desarrolloTipoE, rellenarDes.montoDesE, rellenarDes.iconoOkDesarrolloEq, scrollGastos, listaGastos);
             
             rellenarDesarrollo.botonDesInv(rellenarDes.desarrolloTipoI, rellenarDes.producto, rellenarDes.montoDesI, rellenarDes.iconoOkDesarrolloI, scrollGastos, listaGastos);
+            
+            rellenarDesarrollo.botonDesP(rellenarDes.desarrolloTipoP, rellenarDes.montoDesP, rellenarDes.iconoOkDesarrolloP, scrollGastos, listaGastos);
+            
+            rellenarDesarrollo.botonDesCT(rellenarDes.desarrolloTipoCT, rellenarDes.productoCT, rellenarDes.montoDesCT, rellenarDes.iconoOkDesarrolloCT, scrollGastos, listaGastos);
             
         }
         
