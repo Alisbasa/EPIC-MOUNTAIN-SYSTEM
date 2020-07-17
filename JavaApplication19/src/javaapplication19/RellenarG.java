@@ -135,7 +135,7 @@ public class RellenarG {
                     rellenarDesarrollo.add(iconoDesarrollo);
 
                     
-                    desarrolloTipoE.setBackground(Colores.epicColorBajito);
+                    desarrolloTipo.setBackground(Colores.epicColorBajito);
                     desarrolloTipoE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
                     desarrolloTipoE.setPreferredSize(new Dimension(150, 30));
 

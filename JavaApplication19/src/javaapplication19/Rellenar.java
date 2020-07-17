@@ -90,6 +90,7 @@ public class Rellenar {
         inventario.setPreferredSize(new Dimension(200, 30));
 
         cliente = new JComboBox (LeerExcel.rellenaCB2("src//excel/CRM.xlsx", "CLIENTES DE INICIO", 0));
+        cliente.addItem("Nuevo Cliente");
         cliente.setBackground(Color.white);
         cliente.setUI( PropiedadesCB2.createUI(cliente));
        
