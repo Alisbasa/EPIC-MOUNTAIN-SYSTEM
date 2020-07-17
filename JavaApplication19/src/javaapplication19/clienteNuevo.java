@@ -6,6 +6,9 @@
 package javaapplication19;
 
 import java.awt.Color;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -248,7 +251,7 @@ public class clienteNuevo extends javax.swing.JFrame {
     }
     
     private void cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseClicked
-        System.exit(0);
+        this.setVisible(false);
     }//GEN-LAST:event_cerrarMouseClicked
 
     private void cerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseEntered
@@ -294,7 +297,14 @@ public class clienteNuevo extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
-        
+        String[] Registro = {jtNombre.getText(),jtNumero.getText(),jtCorreo.getText(),jtUbicacion.getText()}; 
+        Escribir EscribirCRM = new Escribir();
+        try {
+            EscribirCRM.escribirExcel("src\\excel\\CRM.xlsx", "CLIENTES", Registro);
+        } catch (IOException ex) {
+            Logger.getLogger(clienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.setVisible(false);
     }//GEN-LAST:event_jbRegistrarMouseClicked
 
     /**

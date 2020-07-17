@@ -89,7 +89,7 @@ public class Rellenar {
         inventario.setUI( PropiedadesCB2.createUI(inventario));
         inventario.setPreferredSize(new Dimension(200, 30));
 
-        cliente = new JComboBox (LeerExcel.rellenaCB2("src//excel/CRM.xlsx", "CLIENTES DE INICIO", 0));
+        cliente = new JComboBox (LeerExcel.rellenaCB2("src//excel//CRM.xlsx", "CLIENTES", 0));
         cliente.addItem("Nuevo Cliente");
         cliente.setBackground(Color.white);
         cliente.setUI( PropiedadesCB2.createUI(cliente));
@@ -231,7 +231,7 @@ public class Rellenar {
         inventario.setBackground(Color.white);
         inventario.setUI( PropiedadesCB2.createUI(inventario));
         
-        cliente = new JComboBox (LeerExcel.rellenaCB2("src//excel/CRM.xlsx", "CLIENTES DE INICIO", 0));
+        cliente = new JComboBox (LeerExcel.rellenaCB2("src//excel/CRM.xlsx", "CLIENTES", 0));
         cliente.setBackground(Color.white);
         cliente.setUI( PropiedadesCB2.createUI(cliente));
        

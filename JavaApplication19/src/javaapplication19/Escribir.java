@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -30,9 +31,18 @@ public class Escribir {
         XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
         XSSFSheet newSheet = newWorkbook.getSheet(hoja);
         int rowCount = newSheet.getLastRowNum()-newSheet.getFirstRowNum();
-        System.out.println(rowCount);
+        int renglones =0;
+        for(int i =1; i<= rowCount; i++){
+            XSSFRow row = newSheet.getRow(i);
+            if( row.getCell(0).getCellType() != CellType.BLANK ){
+                 renglones++;
+            }else{
+                break;
+            }                    
+        }
+        System.out.println(renglones);
         XSSFRow row = newSheet.getRow(0);
-        XSSFRow newRow = newSheet.createRow(rowCount+1);
+        XSSFRow newRow = newSheet.createRow(renglones+1);
          
             
         
