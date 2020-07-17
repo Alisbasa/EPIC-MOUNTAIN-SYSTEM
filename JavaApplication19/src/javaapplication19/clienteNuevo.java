@@ -147,7 +147,7 @@ public class clienteNuevo extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("  EPIC MOUNTAIN SYSTEM");
+        jLabel1.setText("REGISTRAR NUEVO CLIENTE");
         jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);

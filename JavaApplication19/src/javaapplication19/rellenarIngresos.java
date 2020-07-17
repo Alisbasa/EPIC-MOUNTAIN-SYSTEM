@@ -40,7 +40,7 @@ public class rellenarIngresos {
     }
 
     //Pone ingreso: venta
-    void botonVenta(JTextField monto, JComboBox inventario, JLabel iconoOkV, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb) {
+    void botonVenta(JTextField monto, JComboBox inventario, JLabel iconoOkV, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb, JComboBox cliente) {
         MouseListener botonV = new MouseListener() {
 
             @Override
@@ -102,6 +102,11 @@ public class rellenarIngresos {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                if(cliente.getSelectedItem().toString()=="Nuevo Cliente"){
+                    clienteNuevo cliente =new clienteNuevo();
+                    cliente.setVisible(true);
                 }
 
                 indice++;
