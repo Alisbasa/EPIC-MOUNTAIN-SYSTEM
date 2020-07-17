@@ -110,6 +110,7 @@ public class RellenarG {
             public void actionPerformed(ActionEvent e) {
                 
                 if (desarrollo.getSelectedItem().toString().equals("Equipo y Mob.")){
+                    
                     rellenarDesarrollo.removeAll();
                     rellenarDesarrollo.revalidate();
                     rellenarDesarrollo.repaint();

@@ -43,7 +43,6 @@ public class rellenarGastos {
         @Override
         public void mouseClicked(MouseEvent e) {
             
-            
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
@@ -76,10 +75,6 @@ public class rellenarGastos {
             panelGasto.add(precio);
             panelGasto.add(icono);
             
-            
-            
-            
-
             indice++;
             listaGastos.updateUI();
         }
