@@ -37,7 +37,7 @@ public class rellenarGastos {
         panelesGastos = new ArrayList<>();
     }
     
-    //Pone Gasto: Desarollo
+    //Pone Gasto: Desarollo: Equipo y Mob
     void botonDesEquipo(JTextField desarrolloTipoE, JTextField montoDes, JLabel iconoOkDesarrolloEq, JScrollPane scrollGastos, JPanel listaGastos){
         MouseListener botonV = new MouseListener() {
         @Override
@@ -103,6 +103,77 @@ public class rellenarGastos {
         iconoOkDesarrolloEq.addMouseListener(botonV);
     }
 
+    //Pone Gasto: Desarollo: Inventario
+    void botonDesInv(JTextField desarrolloTipoI, JComboBox producto, JTextField montoDesI, JLabel iconoOkDesarrolloI, JScrollPane scrollGastos, JPanel listaGastos){
+        MouseListener botonV = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+            scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
+            panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            panelGasto.setLayout(new GridLayout(1,5));
+            panelGasto.setBackground(Colores.epicColorBajito);
+            panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
+            panelGasto.setMaximumSize(new Dimension(500,40));
+            panelGasto.setPreferredSize(new Dimension(500,100));;
+            
+            JLabel fecha = new JLabel();
+            fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            fecha.setText(fechaActual());
+
+            JLabel desarrolloLista = new JLabel();
+            desarrolloLista.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            desarrolloLista.setText(desarrolloTipoI.getText());
+            
+            JLabel productoAg  = new JLabel();
+            producto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            productoAg.setText((String) producto.getSelectedItem());
+
+            JLabel precio = new JLabel();
+            precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            precio.setText(montoDesI.getText());
+
+            JLabel icono = new JLabel();
+            icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+            Iconos.scaleImage("desarrolloG", icono, 25);
+            listaGastos.add(panelGasto);
+            panelesGastos.add(panelGasto);
+
+            panelGasto.add(fecha);
+            panelGasto.add(desarrolloLista);
+            panelGasto.add(productoAg);
+            panelGasto.add(precio);
+            panelGasto.add(icono);
+            
+            indice++;
+            listaGastos.updateUI();
+        }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Iconos.scaleImage("okh", iconoOkDesarrolloI, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                Iconos.scaleImage("ok", iconoOkDesarrolloI, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+        
+        iconoOkDesarrolloI.addMouseListener(botonV);
+    }
+    
     //Para rellenar un Gasto:deudas
     void botonDeudas(JComboBox deudas, JTextField montoDeuda, JLabel iconoOkDeudas,JScrollPane scrollGastos, JPanel listaGastos){
         MouseListener botonC = new MouseListener() {

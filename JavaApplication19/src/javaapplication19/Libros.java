@@ -1453,20 +1453,10 @@ public class Libros extends javax.swing.JFrame {
             
             rellenarGastos.add(rellenarDes.rellenarDesarrollo());
             
-            
             rellenarDesarrollo.botonDesEquipo(rellenarDes.desarrolloTipoE, rellenarDes.montoDes, rellenarDes.iconoOkDesarrolloEq, scrollGastos, listaGastos);
             
-            /*
-            rellenarDes.desarrollo.addActionListener (new ActionListener () {
+            rellenarDesarrollo.botonDesInv(rellenarDes.desarrolloTipoI, rellenarDes.producto, rellenarDes.montoDesI, rellenarDes.iconoOkDesarrolloI, scrollGastos, listaGastos);
             
-            public void actionPerformed(ActionEvent e) {
-                if(rellenarDes.desarrollo.getSelectedItem().toString().equals("Equipo y Mob.")){
-                    rellenarDesarrollo.botonDesEquipo(rellenarDes.desarrolloTipoE, rellenarDes.montoDes, rellenarDes.iconoOkDesarrolloEq, scrollGastos, listaGastos);
-
-                }
-            }
-            });
-            */
         }
         
         else if(comboGastos.getSelectedItem().toString().equals("DEUDAS A PAGAR")) {
