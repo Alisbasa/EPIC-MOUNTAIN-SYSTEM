@@ -67,7 +67,7 @@ public class rellenarGastos {
 
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-            Iconos.scaleImage("desarrolloG", icono, 25);
+            Iconos.scaleImage("equipoG", icono, 25);
             listaGastos.add(panelGasto);
             panelesGastos.add(panelGasto);
 
@@ -131,28 +131,28 @@ public class rellenarGastos {
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             fecha.setText(fechaActual());
 
-            JLabel desarrolloLista = new JLabel();
-            desarrolloLista.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            desarrolloLista.setText(desarrolloTipoI.getText());
+            JLabel desarrolloListaI = new JLabel();
+            desarrolloListaI.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            desarrolloListaI.setText(desarrolloTipoI.getText());
             
             JLabel productoAg  = new JLabel();
             producto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             productoAg.setText((String) producto.getSelectedItem());
 
-            JLabel precio = new JLabel();
-            precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            precio.setText(montoDesI.getText());
+            JLabel precioI = new JLabel();
+            precioI.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            precioI.setText(montoDesI.getText());
 
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-            Iconos.scaleImage("desarrolloG", icono, 25);
+            Iconos.scaleImage("inventarioG", icono, 25);
             listaGastos.add(panelGasto);
             panelesGastos.add(panelGasto);
 
             panelGasto.add(fecha);
-            panelGasto.add(desarrolloLista);
+            panelGasto.add(desarrolloListaI);
             panelGasto.add(productoAg);
-            panelGasto.add(precio);
+            panelGasto.add(precioI);
             panelGasto.add(icono);
             
             String[] data = {(String) fechaActual(), "Inventario", desarrolloTipoI.getText(),montoDesI.getText(),(String) producto.getSelectedItem()};
@@ -302,7 +302,7 @@ public class rellenarGastos {
 
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-            Iconos.scaleImage("packsG", icono, 25);
+            Iconos.scaleImage("comprasTG", icono, 25);
             listaGastos.add(panelGasto);
             panelesGastos.add(panelGasto);
 
