@@ -994,15 +994,12 @@ public class rellenarGastos {
                     switch(tipo){
                         case "Equipo y Mob":
                             IconoTipo="equipoG";
-                            panelGasto.setBackground(Colores.amarillo);
                             break;
                         case "Inventario":
                             IconoTipo="inventarioG";
-                            panelGasto.setBackground(Colores.amarillo);
                             break;
                         case "Pack de Ventas":
                             IconoTipo="packsG";
-                            panelGasto.setBackground(Colores.amarillo);
                             break;
                         case "Compra en Transito":
                             IconoTipo="comprasTG";
