@@ -107,12 +107,15 @@ public class RellenarG {
         rellenarDesEquipo.removeAll();
         rellenarDesEquipo.setBackground(Color.white);
         
-        Iconos.scaleImage("desarrollo", iconoDesarrollo, 30);
+        Iconos.scaleImage("Equipo", iconoDesarrollo, 30);
         rellenarDesEquipo.add(iconoDesarrollo);
+        
+        desarrolloTipoE = new JTextField("Equipo y Mobiliario");
         desarrolloTipoE.setBackground(Colores.epicColorBajito);
         desarrolloTipoE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         desarrolloTipoE.setPreferredSize(new Dimension(150, 30));
 
+        montoDesE = new JTextField("$ ");
         montoDesE.setBackground(Colores.epicColorBajito);
         montoDesE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         montoDesE.setPreferredSize(new Dimension(60, 30));
