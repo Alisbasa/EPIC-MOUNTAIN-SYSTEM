@@ -160,7 +160,7 @@ public class packsDeVentas extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("REGISTRAR NUEVO INVENTARIO");
+        jLabel1.setText("REGISTRAR NUEVO PACK");
         jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
@@ -209,7 +209,7 @@ public class packsDeVentas extends javax.swing.JFrame {
 
         jtTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         jtTIG.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpPack.add(jtTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 120, 50));
+        jpPack.add(jtTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 120, 48));
         jtTIG.setBackground(Colores.epicColorBajito);
 
         jpDatos.add(jpPack);

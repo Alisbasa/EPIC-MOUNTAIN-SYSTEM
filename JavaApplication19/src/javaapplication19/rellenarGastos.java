@@ -160,6 +160,11 @@ public class rellenarGastos {
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+                if(producto.getSelectedItem().toString().equals("Nuevo")){
+                    inventarioPrincipal inv =new inventarioPrincipal();
+                    inv.setVisible(true);
+                }
             
             indice++;
             listaGastos.updateUI();
@@ -316,6 +321,8 @@ public class rellenarGastos {
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+                
                 
             
             indice++;
