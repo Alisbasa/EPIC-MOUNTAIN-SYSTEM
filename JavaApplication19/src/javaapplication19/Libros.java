@@ -1477,7 +1477,7 @@ public class Libros extends javax.swing.JFrame {
             
             rellenarGastos.add(rellenarDes.rellenarDesPacks());
             
-            rellenarDesPack.botonDesP(rellenarDes.desarrolloTipoP, rellenarDes.montoDesP, rellenarDes.iconoOkDesarrolloP, scrollGastos, listaGastos); 
+            rellenarDesPack.botonDesP(rellenarDes.desarrolloTipoP, rellenarDes.tipoPack, rellenarDes.montoDesP, rellenarDes.iconoOkDesarrolloP, scrollGastos, listaGastos); 
         }
         else if(comboGastos.getSelectedItem().toString().equals("COMPRAS EN TRANSITO")){
             rellenarGastos rellenarDesCompra = new rellenarGastos();

@@ -195,7 +195,7 @@ public class rellenarGastos {
     }
     
     //Pone Gasto: Desarollo: Packs
-    void botonDesP(JTextField desarrolloTipoP, JTextField montoDesP, JLabel iconoOkDesarrolloP, JScrollPane scrollGastos, JPanel listaGastos){
+    void botonDesP(JTextField desarrolloTipoP, JComboBox tipoPack, JTextField montoDesP, JLabel iconoOkDesarrolloP, JScrollPane scrollGastos, JPanel listaGastos){
         MouseListener botonV = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -234,6 +234,10 @@ public class rellenarGastos {
             panelGasto.add(icono);
             
             String[] data = {(String) fechaActual(), "Pack de Ventas", desarrolloTipoP.getText(),montoDesP.getText(), "    "};
+            if(tipoPack.getSelectedItem().toString().equals("Nuevo")){
+                    packsDeVentas inv =new packsDeVentas();
+                    inv.setVisible(true);
+                }
 
                 Escribir escribirVentas = new Escribir();
                 try {

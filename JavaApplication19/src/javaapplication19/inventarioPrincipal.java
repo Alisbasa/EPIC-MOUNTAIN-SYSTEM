@@ -320,10 +320,10 @@ public class inventarioPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
-        String[] inventario = {}; 
+        String[] inventario = {"Azu", "2","3","45","56","67","78","89","90","10","11","12","13","14","15","16","17","18","19","20","21","22","23"}; 
         Escribir EscribirCRM = new Escribir();
         try {
-            EscribirCRM.escribirExcel("src\\excel\\CRM.xlsx", "CLIENTES", inventario);
+            EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "INVENTARIO", inventario);
         } catch (IOException ex) {
             Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }

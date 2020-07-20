@@ -72,6 +72,7 @@ public class RellenarG {
     JTextField transporte;
     JTextField honorarios;
     JComboBox reducInv;
+    JComboBox tipoPack;
     
     JTextField montoDesCT;
     JTextField montoDesE;
@@ -176,6 +177,10 @@ public class RellenarG {
         desarrolloTipoP.setBackground(Colores.epicColorBajito);
         desarrolloTipoP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         desarrolloTipoP.setPreferredSize(new Dimension(150, 30));
+        
+        String []tipos ={"Nuevo", "Existente"}; 
+        tipoPack = new JComboBox(tipos);
+        tipoPack.setUI(PropiedadesCB2.createUI(tipoPack));
                     
 
         montoDesP = new JTextField("$");
@@ -186,6 +191,7 @@ public class RellenarG {
         Iconos.scaleImage("ok", iconoOkDesarrolloP, 30);
 
         rellenarDesPacks.add(desarrolloTipoP);
+        rellenarDesPacks.add(tipoPack);
         rellenarDesPacks.add(montoDesP);
         rellenarDesPacks.add(iconoOkDesarrolloP);
         
