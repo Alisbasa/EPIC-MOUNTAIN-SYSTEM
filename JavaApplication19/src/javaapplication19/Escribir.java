@@ -96,10 +96,9 @@ public class Escribir {
         //XSSFRow newRow = newSheet.createRow(renglones);
         int createNewRowAt = renglones;
         
-        newSheet.shiftRows(createNewRowAt, newSheet.getLastRowNum()+1, newSheet.getLastRowNum(), true, true);
+        newSheet.shiftRows(0, newSheet.getLastRowNum(), 1 , true, true);
         XSSFRow newRow = newSheet.createRow(createNewRowAt); 
         newRow = newSheet.getRow(createNewRowAt);
-        
         
         for(int i=rowCount-1; i<row.getLastCellNum(); i++){
             XSSFCell newCell = newRow.createCell(i);
