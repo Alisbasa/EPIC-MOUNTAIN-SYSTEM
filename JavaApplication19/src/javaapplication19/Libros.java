@@ -1404,7 +1404,7 @@ public class Libros extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
             }
-            rellenarVentaC.botonVentaC(rellenarVC.montoVC,rellenarVC.inventario, rellenarVC.iconoOkVentasC, scrollIngresos,listaIngresos, rellenarVC.plataformacb);
+            rellenarVentaC.botonVentaC(rellenarVC.montoVC,rellenarVC.inventario, rellenarVC.iconoOkVentasC, scrollIngresos,listaIngresos, rellenarVC.plataformacb, rellenarVC.cliente);
           
         }
         

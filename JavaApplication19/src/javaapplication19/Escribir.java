@@ -40,17 +40,15 @@ public class Escribir {
                 break;
             }                    
         }
-        
         System.out.println(renglones);
         XSSFRow row = newSheet.getRow(0);
         XSSFRow newRow = newSheet.createRow(renglones+1);
          
-        System.out.println(row.getLastCellNum());
+            
         
         for(int i=0; i<row.getLastCellNum(); i++){
             XSSFCell newCell = newRow.createCell(i);
-            newCell.setCellValue(data[i]);   
-            System.out.println(i);
+            newCell.setCellValue(data[i]);       
         }
         
         inputStream.close();
@@ -60,4 +58,20 @@ public class Escribir {
         
     }
     
+    public static void removeRow(String filepath, String hoja, int rowIndex) throws FileNotFoundException, IOException {
+       File file = new File(filepath);
+       FileInputStream inputStream = new FileInputStream(file);
+       XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
+       XSSFSheet sheet = newWorkbook.getSheet(hoja);
+       int lastRowNum=sheet.getLastRowNum();
+       if(rowIndex>=0&&rowIndex<lastRowNum){
+           sheet.shiftRows(rowIndex+1,lastRowNum, -1);
+       }
+       if(rowIndex==lastRowNum){
+           XSSFRow removingRow=sheet.getRow(rowIndex);
+           if(removingRow!=null){
+               sheet.removeRow(removingRow);
+           }
+       }
+}
 }

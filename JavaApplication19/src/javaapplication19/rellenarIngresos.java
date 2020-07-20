@@ -443,7 +443,7 @@ public class rellenarIngresos {
         iconoOkDeudasC.addMouseListener(botonDeuC);
     }
 
-    void botonVentaC(JTextField montoVC, JComboBox inventario, JLabel iconoOkVentasC, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb) {
+    void botonVentaC(JTextField montoVC, JComboBox inventario, JLabel iconoOkVentasC, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb,JComboBox cliente) {
         MouseListener botonV = new MouseListener() {
 
             @Override
@@ -507,6 +507,11 @@ public class rellenarIngresos {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                if(cliente.getSelectedItem().toString()=="Nuevo Cliente"){
+                    clienteNuevo cliente =new clienteNuevo();
+                    cliente.setVisible(true);
                 }
 
                 indice++;
