@@ -211,14 +211,14 @@ public class RellenarG {
         montoDesCT.setPreferredSize(new Dimension(60, 30));
                     
         String [] listaComprasCT = {"Publicidad", "Mantenimiento" , "Suministros"};
-        producto = new JComboBox (listaComprasCT);
-        producto.setUI(PropiedadesCB2.createUI(producto));
+        productoCT = new JComboBox (listaComprasCT);
+        productoCT.setUI(PropiedadesCB2.createUI(productoCT));
 
         Iconos.scaleImage("ok", iconoOkDesarrolloCT, 30);
                     
         rellenarDesCompras.add(desarrolloTipoCT);
         rellenarDesCompras.add(montoDesCT);
-        rellenarDesCompras.add(producto);
+        rellenarDesCompras.add(productoCT);
         rellenarDesCompras.add(iconoOkDesarrolloCT);
         
         return rellenarDesCompras;

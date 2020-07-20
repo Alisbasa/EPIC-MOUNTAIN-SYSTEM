@@ -40,15 +40,17 @@ public class Escribir {
                 break;
             }                    
         }
+        
         System.out.println(renglones);
         XSSFRow row = newSheet.getRow(0);
         XSSFRow newRow = newSheet.createRow(renglones+1);
          
-            
+        System.out.println(row.getLastCellNum());
         
-        for(int i=0; i<=row.getLastCellNum(); i++){
+        for(int i=0; i<row.getLastCellNum(); i++){
             XSSFCell newCell = newRow.createCell(i);
-            newCell.setCellValue(data[i]);       
+            newCell.setCellValue(data[i]);   
+            System.out.println(i);
         }
         
         inputStream.close();
