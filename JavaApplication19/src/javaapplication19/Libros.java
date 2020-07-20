@@ -1442,26 +1442,55 @@ public class Libros extends javax.swing.JFrame {
         RellenarG rellenarDes = new RellenarG();
         
             
-        if(comboGastos.getSelectedItem().toString().equals("DESARROLLO") ) {
+        if(comboGastos.getSelectedItem().toString().equals("EQUIPO Y MOB.") ) {
             
-            rellenarGastos rellenarDesarrollo = new rellenarGastos();
+            rellenarGastos rellenarDesEquipo = new rellenarGastos();
+            
             
             rellenarGastos.removeAll();
             rellenarGastos.revalidate();
             rellenarGastos.repaint();
-                
             
-            rellenarGastos.add(rellenarDes.rellenarDesarrollo());
+            rellenarGastos.add(rellenarDes.rellenarDesEquipo);
             
-            rellenarDesarrollo.botonDesEquipo(rellenarDes.desarrolloTipoE, rellenarDes.montoDesE, rellenarDes.iconoOkDesarrolloEq, scrollGastos, listaGastos);
+            rellenarDesEquipo.botonDesEquipo(rellenarDes.desarrolloTipoE, rellenarDes.montoDesE, rellenarDes.iconoOkDesarrolloEq, scrollGastos, listaGastos);        
+        }
+        
+        else if(comboGastos.getSelectedItem().toString().equals("INVENTARIO PRINCIPAL")){
+            rellenarGastos rellenarDesInv = new rellenarGastos();
             
-            rellenarDesarrollo.botonDesInv(rellenarDes.desarrolloTipoI, rellenarDes.producto, rellenarDes.montoDesI, rellenarDes.iconoOkDesarrolloI, scrollGastos, listaGastos);
+            rellenarGastos.removeAll();
+            rellenarGastos.revalidate();
+            rellenarGastos.repaint();
             
-            rellenarDesarrollo.botonDesP(rellenarDes.desarrolloTipoP, rellenarDes.montoDesP, rellenarDes.iconoOkDesarrolloP, scrollGastos, listaGastos);
+            rellenarGastos.add(rellenarDes.rellenarDesInv());
             
-            rellenarDesarrollo.botonDesCT(rellenarDes.desarrolloTipoCT, rellenarDes.productoCT, rellenarDes.montoDesCT, rellenarDes.iconoOkDesarrolloCT, scrollGastos, listaGastos);
+            rellenarDesInv.botonDesInv(rellenarDes.desarrolloTipoI, rellenarDes.producto, rellenarDes.montoDesI, rellenarDes.iconoOkDesarrolloI, scrollGastos, listaGastos);
             
         }
+        else if(comboGastos.getSelectedItem().toString().equals("PACKS DE VENTAS")){
+            rellenarGastos rellenarDesPack = new rellenarGastos();
+            
+            rellenarGastos.removeAll();
+            rellenarGastos.revalidate();
+            rellenarGastos.repaint();
+            
+            rellenarGastos.add(rellenarDes.rellenarDesPacks());
+            
+            rellenarDesPack.botonDesP(rellenarDes.desarrolloTipoP, rellenarDes.montoDesP, rellenarDes.iconoOkDesarrolloP, scrollGastos, listaGastos); 
+        }
+        else if(comboGastos.getSelectedItem().toString().equals("COMPRAS EN TRANSITO")){
+            rellenarGastos rellenarDesCompra = new rellenarGastos();
+            
+            rellenarGastos.removeAll();
+            rellenarGastos.revalidate();
+            rellenarGastos.repaint();
+            
+            rellenarGastos.add(rellenarDes.rellenarDesCompras());
+            
+            rellenarDesCompra.botonDesCT(rellenarDes.desarrolloTipoCT, rellenarDes.productoCT, rellenarDes.montoDesCT, rellenarDes.iconoOkDesarrolloCT, scrollGastos, listaGastos);  
+        }
+        
         
         else if(comboGastos.getSelectedItem().toString().equals("DEUDAS A PAGAR")) {
             RellenarG rellenarD = new RellenarG();

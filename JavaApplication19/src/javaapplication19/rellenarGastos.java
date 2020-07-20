@@ -5,7 +5,7 @@
  */
 package javaapplication19;
 
-import java.awt.Color;
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -18,17 +18,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.BoxLayout;
+import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javaapplication19.Rellenar;
-import static javaapplication19.rellenarIngresos.fechaActual;
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.ImageIcon;
+
 
 public class rellenarGastos {
     public List<JPanel> panelesGastos;
@@ -47,7 +43,7 @@ public class rellenarGastos {
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            panelGasto.setLayout(new GridLayout(1,4));
+            panelGasto.setLayout(new GridLayout(1,5));
             panelGasto.setBackground(Colores.epicColorBajito);
             panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
             panelGasto.setMaximumSize(new Dimension(500,40));
@@ -201,7 +197,7 @@ public class rellenarGastos {
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            panelGasto.setLayout(new GridLayout(1,4));
+            panelGasto.setLayout(new GridLayout(1,5));
             panelGasto.setBackground(Colores.epicColorBajito);
             panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
             panelGasto.setMaximumSize(new Dimension(500,40));
@@ -277,7 +273,7 @@ public class rellenarGastos {
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            panelGasto.setLayout(new GridLayout(1,4));
+            panelGasto.setLayout(new GridLayout(1,5));
             panelGasto.setBackground(Colores.amarillo);
             panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
             panelGasto.setMaximumSize(new Dimension(500,40));
@@ -359,7 +355,7 @@ public class rellenarGastos {
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGastoC = new PanelCurvoSinSombra();
             panelGastoC.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            panelGastoC.setLayout(new GridLayout(1,4));
+            panelGastoC.setLayout(new GridLayout(1,5));
             panelGastoC.setBackground(Colores.epicColorBajito);
             panelGastoC.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
             panelGastoC.setMaximumSize(new Dimension(500,40));
@@ -436,7 +432,7 @@ public class rellenarGastos {
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            panelGasto.setLayout(new GridLayout(1,4));
+            panelGasto.setLayout(new GridLayout(1,5));
             panelGasto.setBackground(Colores.epicColorBajito);
             panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
             panelGasto.setMaximumSize(new Dimension(500,40));
@@ -512,7 +508,7 @@ public class rellenarGastos {
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            panelGasto.setLayout(new GridLayout(1,4));
+            panelGasto.setLayout(new GridLayout(1,5));
             panelGasto.setBackground(Colores.epicColorBajito);
             panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
             panelGasto.setMaximumSize(new Dimension(500,40));
@@ -588,7 +584,7 @@ public class rellenarGastos {
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
             panelGasto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            panelGasto.setLayout(new GridLayout(1,4));
+            panelGasto.setLayout(new GridLayout(1,5));
             panelGasto.setBackground(Colores.epicColorBajito);
             panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
             panelGasto.setMaximumSize(new Dimension(500,40));

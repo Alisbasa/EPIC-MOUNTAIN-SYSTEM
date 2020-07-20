@@ -21,6 +21,10 @@ public class ListasCB {
                                        "DEVOLUCIONES"};
     
     static  String[] gastos = {"DESARROLLO",
+                               "EQUIPO Y MOB.",
+                               "INVENTARIO PRINCIPAL",
+                               "PACKS DE VENTAS",
+                               "COMPRAS EN TRANSITO",
                                 "DEUDAS A PAGAR",
                                 "MANTENIMIENTO",
                                 "IMPUESTOS",

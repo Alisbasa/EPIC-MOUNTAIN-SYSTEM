@@ -33,7 +33,10 @@ import javax.swing.border.LineBorder;
  */
 public class RellenarG {
     
-    JPanel rellenarDesarrollo =new JPanel();
+    JPanel rellenarDesEquipo =new JPanel();
+    JPanel rellenarDesInv =new JPanel();
+    JPanel rellenarDesPacks = new JPanel();
+    JPanel rellenarDesCompras = new JPanel();
     JPanel rellenarDeudasPagar =new JPanel();
     JPanel rellenarImpuestoG =new JPanel();
     JPanel rellenarMantenimiento =new JPanel();
@@ -100,168 +103,124 @@ public class RellenarG {
     
     
     
-    public  JPanel rellenarDesarrollo(){
-        rellenarDesarrollo.removeAll();
+    public  JPanel rellenarDesEquipo(){
+        rellenarDesEquipo.removeAll();
+        rellenarDesEquipo.setBackground(Color.white);
         
-        rellenarDesarrollo.setBackground(Color.white);
         Iconos.scaleImage("desarrollo", iconoDesarrollo, 30);
-        rellenarDesarrollo.add(iconoDesarrollo);
-        String[] listaDesarrollo={"Equipo y Mob.", "Inventario Principal", "Packs de Ventas", "Compras en Transito"};
+        rellenarDesEquipo.add(iconoDesarrollo);
+        desarrolloTipoE.setBackground(Colores.epicColorBajito);
+        desarrolloTipoE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        desarrolloTipoE.setPreferredSize(new Dimension(150, 30));
+
+        montoDesE.setBackground(Colores.epicColorBajito);
+        montoDesE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        montoDesE.setPreferredSize(new Dimension(60, 30));
+
+        Iconos.scaleImage("ok", iconoOkDesarrolloEq, 30);
+
+        rellenarDesEquipo.add(desarrolloTipoE);
+        rellenarDesEquipo.add(montoDesE);
+        rellenarDesEquipo.add(iconoOkDesarrolloEq);
         
-       
-        desarrollo = new JComboBox(listaDesarrollo);
-        desarrollo.setBackground(Color.white);
+        return rellenarDesEquipo;
+ 
+    }
+    
+    public JPanel rellenarDesInv(){
+        rellenarDesInv.removeAll();
+        rellenarDesInv.setBackground(Color.white);
         
-        desarrollo.setUI( PropiedadesCB2.createUI(desarrollo));
-        
-        desarrolloTipoE = new JTextField("Equipo y Mob.");
-        montoDesE = new JTextField("$");
-        
+        Iconos.scaleImage("Inventario", iconoDesarrollo, 30);
+        Iconos.scaleImage("Inventario", iconoDesarrollo, 30);
+        rellenarDesInv.add(iconoDesarrollo);
+
         desarrolloTipoI = new JTextField("Inventario");
-        montoDesI = new JTextField("$");
+        desarrolloTipoI.setBackground(Colores.epicColorBajito);
+        desarrolloTipoI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        desarrolloTipoI.setPreferredSize(new Dimension(150, 30));
+                    
+                    
         String[] listaProductos = {"Nuevo", "Existente" , "Aditamento"};
         producto = new JComboBox (listaProductos);
+        producto.setUI(PropiedadesCB2.createUI(producto));
+
+        montoDesI = new JTextField("$");
+        montoDesI.setBackground(Colores.epicColorBajito);
+        montoDesI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        montoDesI.setPreferredSize(new Dimension(60, 30));
+
+        Iconos.scaleImage("ok", iconoOkDesarrolloI, 30);
+
+        rellenarDesInv.add(desarrolloTipoI);
+        rellenarDesInv.add(producto);
+        rellenarDesInv.add(montoDesI);
+        rellenarDesInv.add(iconoOkDesarrolloI);            
         
-        desarrolloTipoP = new JTextField("Pack");
-        montoDesP = new JTextField("$");
-        
-        desarrolloTipoCT = new JTextField("Compra");
-        montoDesCT = new JTextField("$");
-        String [] listaComprasCT = {"Publicidad", "Mantenimiento" , "Suministros"};
-        productoCT = new JComboBox (listaComprasCT);
-        
-        
-        
-        desarrollo.addActionListener (new ActionListener () {
     
-            public void actionPerformed(ActionEvent e) {
-                
-                
-                if (desarrollo.getSelectedItem().toString().equals("Equipo y Mob.")){
-                    
-                    rellenarDesarrollo.removeAll();
-                    rellenarDesarrollo.revalidate();
-                    rellenarDesarrollo.repaint();
-                     
-                    Iconos.scaleImage("Equipo", iconoDesarrollo, 30);
-                    rellenarDesarrollo.add(iconoDesarrollo);
-
-                    
-                    desarrolloTipoE.setBackground(Colores.epicColorBajito);
-                    desarrolloTipoE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-                    desarrolloTipoE.setPreferredSize(new Dimension(150, 30));
-
-                    
-                    montoDesE.setBackground(Colores.epicColorBajito);
-                    montoDesE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-                    montoDesE.setPreferredSize(new Dimension(60, 30));
-
-                    Iconos.scaleImage("ok", iconoOkDesarrolloEq, 30);
-
-                    rellenarDesarrollo.add(desarrolloTipoE);
-                    rellenarDesarrollo.add(montoDesE);
-                    rellenarDesarrollo.add(iconoOkDesarrolloEq);
-                    
-                    
-                    
-                }
-                
-                else if(desarrollo.getSelectedItem().toString().equals("Inventario Principal")){
-                    rellenarDesarrollo.removeAll();
-                    rellenarDesarrollo.revalidate();
-                    rellenarDesarrollo.repaint();
-                    
-                    Iconos.scaleImage("Inventario", iconoDesarrollo, 30);
-                    rellenarDesarrollo.add(iconoDesarrollo);
-
-                    desarrolloTipoI = new JTextField("Inventario");
-                    desarrolloTipoI.setBackground(Colores.epicColorBajito);
-                    desarrolloTipoI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-                    desarrolloTipoI.setPreferredSize(new Dimension(150, 30));
-                    
-                    
-                    String[] listaProductos = {"Nuevo", "Existente" , "Aditamento"};
-                    producto = new JComboBox (listaProductos);
-                    producto.setUI(PropiedadesCB2.createUI(producto));
-
-                    montoDesI = new JTextField("$");
-                    montoDesI.setBackground(Colores.epicColorBajito);
-                    montoDesI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-                    montoDesI.setPreferredSize(new Dimension(60, 30));
-
-                    Iconos.scaleImage("ok", iconoOkDesarrolloI, 30);
-
-                    rellenarDesarrollo.add(desarrolloTipoI);
-                    rellenarDesarrollo.add(producto);
-                    rellenarDesarrollo.add(montoDesI);
-                    rellenarDesarrollo.add(iconoOkDesarrolloI);
-                
-                }
-                else if(desarrollo.getSelectedItem().toString().equals("Packs de Ventas")){
-                    rellenarDesarrollo.removeAll();
-                    rellenarDesarrollo.revalidate();
-                    rellenarDesarrollo.repaint();
-                    
-                    Iconos.scaleImage("Packs", iconoDesarrollo, 30);
-                    rellenarDesarrollo.add(iconoDesarrollo);
-
-                    desarrolloTipoP = new JTextField("Packs");
-                    desarrolloTipoP.setBackground(Colores.epicColorBajito);
-                    desarrolloTipoP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-                    desarrolloTipoP.setPreferredSize(new Dimension(150, 30));
-                    
-
-                    montoDesP = new JTextField("$");
-                    montoDesP.setBackground(Colores.epicColorBajito);
-                    montoDesP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-                    montoDesP.setPreferredSize(new Dimension(60, 30));
-
-                    Iconos.scaleImage("ok", iconoOkDesarrolloP, 30);
-
-                    rellenarDesarrollo.add(desarrolloTipoP);
-                    rellenarDesarrollo.add(montoDesP);
-                    rellenarDesarrollo.add(iconoOkDesarrolloP);
-                
-                }
-                else if(desarrollo.getSelectedItem().toString().equals("Compras en Transito")){
-                    rellenarDesarrollo.removeAll();
-                    rellenarDesarrollo.revalidate();
-                    rellenarDesarrollo.repaint();
-                    
-                    Iconos.scaleImage("Compras", iconoDesarrollo, 30);
-                    rellenarDesarrollo.add(iconoDesarrollo);
-
-                    desarrolloTipoCT = new JTextField("Compra en Transito");
-                    desarrolloTipoCT.setBackground(Colores.epicColorBajito);
-                    desarrolloTipoCT.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-                    desarrolloTipoCT.setPreferredSize(new Dimension(150, 30));
-                    
-
-                    montoDesCT = new JTextField("$");
-                    montoDesCT.setBackground(Colores.epicColorBajito);
-                    montoDesCT.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-                    montoDesCT.setPreferredSize(new Dimension(60, 30));
-                    
-                    String [] listaComprasCT = {"Publicidad", "Mantenimiento" , "Suministros"};
-                    producto = new JComboBox (listaComprasCT);
-                    producto.setUI(PropiedadesCB2.createUI(producto));
-
-                    Iconos.scaleImage("ok", iconoOkDesarrolloCT, 30);
-                    
-                    rellenarDesarrollo.add(desarrolloTipoCT);
-                    rellenarDesarrollo.add(montoDesCT);
-                    rellenarDesarrollo.add(producto);
-                    rellenarDesarrollo.add(iconoOkDesarrolloCT);
-                
-                }   
-            
-            }
-        });
-
-        rellenarDesarrollo.add(desarrollo);
-        
-        return rellenarDesarrollo;
+        return rellenarDesInv;
+    
     }
+    
+    public JPanel rellenarDesPacks(){
+        rellenarDesPacks.removeAll();
+        rellenarDesPacks.setBackground(Color.white);
+                    
+        Iconos.scaleImage("Packs", iconoDesarrollo, 30);
+        rellenarDesPacks.add(iconoDesarrollo);
+
+        desarrolloTipoP = new JTextField("Packs");
+        desarrolloTipoP.setBackground(Colores.epicColorBajito);
+        desarrolloTipoP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        desarrolloTipoP.setPreferredSize(new Dimension(150, 30));
+                    
+
+        montoDesP = new JTextField("$");
+        montoDesP.setBackground(Colores.epicColorBajito);
+        montoDesP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        montoDesP.setPreferredSize(new Dimension(60, 30));
+
+        Iconos.scaleImage("ok", iconoOkDesarrolloP, 30);
+
+        rellenarDesPacks.add(desarrolloTipoP);
+        rellenarDesPacks.add(montoDesP);
+        rellenarDesPacks.add(iconoOkDesarrolloP);
+        
+        return rellenarDesPacks;
+    }
+    
+    public JPanel rellenarDesCompras(){
+        rellenarDesCompras.removeAll();
+        rellenarDesCompras.setBackground(Color.white);
+
+        Iconos.scaleImage("Compras", iconoDesarrollo, 30);
+        rellenarDesCompras.add(iconoDesarrollo);
+
+        desarrolloTipoCT = new JTextField("Compra en Transito");
+        desarrolloTipoCT.setBackground(Colores.epicColorBajito);
+        desarrolloTipoCT.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        desarrolloTipoCT.setPreferredSize(new Dimension(150, 30));
+                    
+
+        montoDesCT = new JTextField("$");
+        montoDesCT.setBackground(Colores.epicColorBajito);
+        montoDesCT.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        montoDesCT.setPreferredSize(new Dimension(60, 30));
+                    
+        String [] listaComprasCT = {"Publicidad", "Mantenimiento" , "Suministros"};
+        producto = new JComboBox (listaComprasCT);
+        producto.setUI(PropiedadesCB2.createUI(producto));
+
+        Iconos.scaleImage("ok", iconoOkDesarrolloCT, 30);
+                    
+        rellenarDesCompras.add(desarrolloTipoCT);
+        rellenarDesCompras.add(montoDesCT);
+        rellenarDesCompras.add(producto);
+        rellenarDesCompras.add(iconoOkDesarrolloCT);
+        
+        return rellenarDesCompras;
+    }
+    
      
     public  JPanel rellenarDeudasPagar(){
         rellenarDeudasPagar.removeAll();

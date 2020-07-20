@@ -46,7 +46,7 @@ public class Escribir {
          
             
         
-        for(int i=0; i<row.getLastCellNum(); i++){
+        for(int i=0; i<=row.getLastCellNum(); i++){
             XSSFCell newCell = newRow.createCell(i);
             newCell.setCellValue(data[i]);       
         }
