@@ -933,6 +933,11 @@ public class Libros extends javax.swing.JFrame {
         corteLabel.setForeground(new java.awt.Color(255, 255, 255));
         corteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         corteLabel.setText("CORTE");
+        corteLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                corteLabelMouseClicked(evt);
+            }
+        });
         corte.add(corteLabel, java.awt.BorderLayout.CENTER);
 
         panelCorte.add(corte, java.awt.BorderLayout.CENTER);
@@ -1848,6 +1853,10 @@ public class Libros extends javax.swing.JFrame {
             e.printStackTrace();       
         }
     }//GEN-LAST:event_historialCuentasIconMouseClicked
+
+    private void corteLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_corteLabelMouseClicked
+        
+    }//GEN-LAST:event_corteLabelMouseClicked
     
     
     /**/

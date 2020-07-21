@@ -38,6 +38,47 @@ public class rellenarIngresos {
     public rellenarIngresos() {
         panelesIngresos = new ArrayList<>();
     }
+    
+    void botonBorrar(JLabel boton, JPanel padre, JPanel hijo, int panelIndex){
+        MouseListener botonV = new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                padre.remove(hijo);
+                panelesIngresos.remove(hijo);
+                padre.updateUI();
+                try {
+                    Escribir.removeRow("src//excel/eliminar.xlsx", "borrar", 19);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Iconos.scaleImage("okh", boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                Iconos.scaleImage("ok", boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+
+        boton.addMouseListener(botonV);
+    }
+        
+    
 
     //Pone ingreso: venta
     void botonVenta(JTextField monto, JComboBox inventario, JLabel iconoOkV, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb, JComboBox cliente, JComboBox unidades) {
@@ -90,6 +131,11 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+                
+                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
+                
+                
+                 
 
                 panelIngreso.add(fecha);
                 panelIngreso.add(inventarioLista);
