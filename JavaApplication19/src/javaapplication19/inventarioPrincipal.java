@@ -6,6 +6,7 @@
 package javaapplication19;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -332,7 +333,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
     private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbRegistrarActionPerformed
-
+    
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
         RellenarG rellenar = new RellenarG();
         rellenarGastos rellenar2 = new rellenarGastos();
@@ -356,6 +357,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         this.setVisible(false);    
     }//GEN-LAST:event_jbRegistrarMouseClicked
     
+
     public static String fechaActual(){
         java.util.Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM YY");
