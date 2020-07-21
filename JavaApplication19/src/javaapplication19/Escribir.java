@@ -76,7 +76,7 @@ public class Escribir {
        }
 }
     
-        public void escribirExcelInv(String filepath, String hoja) throws FileNotFoundException, IOException{
+        public void escribirExcelInv(String filepath, String hoja, String [] data) throws FileNotFoundException, IOException{
         File file = new File(filepath);
         FileInputStream inputStream = new FileInputStream(file);
         XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
@@ -84,8 +84,9 @@ public class Escribir {
         int rowCount = newSheet.getLastRowNum()-newSheet.getFirstRowNum();
         int renglones =0;
         
-        for(int i =0; i<= rowCount; i++){
+        for(int i =1; i<= rowCount; i++){
             XSSFRow row = newSheet.getRow(i);
+            System.out.println("Error" + i);
             if( row.getCell(0).getCellType() != CellType.BLANK ){
                  renglones++;
                  System.out.println(renglones);
@@ -95,17 +96,19 @@ public class Escribir {
         }
         
         XSSFRow row = newSheet.getRow(0);
-        //XSSFRow newRow = newSheet.createRow(renglones);
-        int createNewRowAt = renglones;
         
-        newSheet.shiftRows(newSheet.getLastRowNum(), newSheet.getLastRowNum()+1, 1 , true, true);
-        XSSFRow newRow = newSheet.createRow(createNewRowAt); 
-        newRow = newSheet.getRow(createNewRowAt);
+        newSheet.shiftRows(renglones+1, renglones+2, 1 , true, true);
+        XSSFRow newRow = newSheet.createRow(renglones+1); 
+        
+        for(int i=0; i<8; i++){
+            XSSFCell newCell = newRow.createCell(i);
+            newCell.setCellValue(data[i]);       
+        }
+        
 
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkbook.write(outputStream);
-        outputStream.close();        
-        
+        outputStream.close();                
     }
 }
