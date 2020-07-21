@@ -51,6 +51,7 @@ public class Libros extends javax.swing.JFrame {
     static String[] listaInventar;
     
     
+    
     public List<JPanel> panelesIngresos;
     public int indice=0;
         
@@ -1469,7 +1470,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.repaint();
             
             rellenarGastos.add(rellenarDes.rellenarDesInv());
-            
+             
             rellenarDesInv.botonDesInv(rellenarDes.desarrolloTipoI, rellenarDes.producto, rellenarDes.montoDesI, rellenarDes.iconoOkDesarrolloI, scrollGastos, listaGastos);
             
         }

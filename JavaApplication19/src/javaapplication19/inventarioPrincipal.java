@@ -62,6 +62,8 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         jlPack1 = new javax.swing.JLabel();
         jpTIG = new javax.swing.JPanel();
         jlTIG = new javax.swing.JLabel();
+        jtCosto = new javax.swing.JTextField();
+        jlCosto = new javax.swing.JLabel();
         jtTIG = new javax.swing.JTextField();
         jpUbicacion = new javax.swing.JPanel();
         jtUnidades = new javax.swing.JTextField();
@@ -221,12 +223,22 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         jlTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlTIG.setForeground(new java.awt.Color(255, 255, 255));
         jlTIG.setText("T.I.G");
-        jpTIG.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 70, 30));
+        jpTIG.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 50, 30));
+
+        jtCosto.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        jtCosto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jpTIG.add(jtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 100, 48));
+        jtCosto.setBackground(Colores.epicColorBajito);
+
+        jlCosto.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
+        jlCosto.setForeground(new java.awt.Color(255, 255, 255));
+        jlCosto.setText("COSTO");
+        jpTIG.add(jlCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 90, 30));
 
         jtTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         jtTIG.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpTIG.add(jtTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 400, 48));
-        jtTIG.setBackground(Colores.epicColorBajito);
+        jpTIG.add(jtTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 100, 48));
+        jtCosto.setBackground(Colores.epicColorBajito);
 
         jpDatos.add(jpTIG);
 
@@ -323,16 +335,18 @@ public class inventarioPrincipal extends javax.swing.JFrame {
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
         RellenarG rellenar = new RellenarG();
-                
-        String[] inventario = {rellenar.desarrolloTipoI.getText(),
+        rellenarGastos rellenar2 = new rellenarGastos();
+               
+        /*String[] inventario = {rellenar.desarrolloTipoI.getText(),
                                jtDesc.getText(),fechaActual(),
                                jcCond.getSelectedItem().toString(),
                                jcPack.getSelectedItem().toString(),
                                jtTIG.getText(),jtUnidades.getText(),
-                               rellenar.montoDesI.getText()};
+                               rellenar.montoDesI.getText()};*/
         
         
-        
+        String [] inventario = {rellenar2.tipoI2,jtDesc.getText(),fechaActual(),jcCond.getSelectedItem().toString(),
+                                jcPack.getSelectedItem().toString(),jtCosto.getText(),jtUnidades.getText(),"8"};
         Escribir EscribirCRM = new Escribir();
         try {
             EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "INVENTARIO",inventario);
@@ -344,7 +358,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
     
     public static String fechaActual(){
         java.util.Date fecha = new Date();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM");
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM YY");
         return formatoFecha.format(fecha);
     }
     
@@ -401,6 +415,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jbRegistrar;
     private javax.swing.JComboBox<String> jcCond;
     private javax.swing.JComboBox<String> jcPack;
+    private javax.swing.JLabel jlCosto;
     private javax.swing.JLabel jlDesc;
     private javax.swing.JLabel jlPack;
     private javax.swing.JLabel jlPack1;
@@ -412,6 +427,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jpPack;
     private javax.swing.JPanel jpTIG;
     private javax.swing.JPanel jpUbicacion;
+    private javax.swing.JTextField jtCosto;
     private javax.swing.JTextField jtDesc;
     private javax.swing.JTextField jtTIG;
     private javax.swing.JTextField jtUnidades;

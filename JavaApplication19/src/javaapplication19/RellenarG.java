@@ -130,7 +130,7 @@ public class RellenarG {
         return rellenarDesEquipo;
  
     }
-    
+    String tipoI;
     public JPanel rellenarDesInv(){
         rellenarDesInv.removeAll();
         rellenarDesInv.setBackground(Color.white);
@@ -143,6 +143,7 @@ public class RellenarG {
         desarrolloTipoI.setBackground(Colores.epicColorBajito);
         desarrolloTipoI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         desarrolloTipoI.setPreferredSize(new Dimension(150, 30));
+        tipoI = desarrolloTipoI.getText();
                     
                     
         String[] listaProductos = {"Nuevo", "Existente" , "Aditamento"};

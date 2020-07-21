@@ -108,7 +108,7 @@ public class rellenarGastos {
         
         iconoOkDesarrolloEq.addMouseListener(botonV);
     }
-
+    String tipoI2;
     //Pone Gasto: Desarollo: Inventario
     void botonDesInv(JTextField desarrolloTipoI, JComboBox producto, JTextField montoDesI, JLabel iconoOkDesarrolloI, JScrollPane scrollGastos, JPanel listaGastos){
         MouseListener botonV = new MouseListener() {
@@ -131,6 +131,7 @@ public class rellenarGastos {
             JLabel desarrolloListaI = new JLabel();
             desarrolloListaI.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             desarrolloListaI.setText(desarrolloTipoI.getText());
+            tipoI2 = desarrolloTipoI.getText();
             
             JLabel productoAg  = new JLabel();
             producto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
