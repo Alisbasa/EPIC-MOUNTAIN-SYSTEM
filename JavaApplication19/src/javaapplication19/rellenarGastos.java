@@ -64,7 +64,7 @@ public class rellenarGastos {
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             Iconos.scaleImage("equipoG", icono, 25);
-            listaGastos.add(panelGasto);
+            listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);
 
             panelGasto.add(fecha);
@@ -144,7 +144,7 @@ public class rellenarGastos {
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             Iconos.scaleImage("inventarioG", icono, 25);
-            listaGastos.add(panelGasto);
+            listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);
 
             panelGasto.add(fecha);
@@ -226,7 +226,7 @@ public class rellenarGastos {
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             Iconos.scaleImage("packsG", icono, 25);
-            listaGastos.add(panelGasto);
+            listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);
 
             panelGasto.add(fecha);
@@ -310,7 +310,7 @@ public class rellenarGastos {
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             Iconos.scaleImage("comprasTG", icono, 25);
-            listaGastos.add(panelGasto);
+            listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);
 
             panelGasto.add(fecha);
@@ -466,7 +466,7 @@ public class rellenarGastos {
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             Iconos.scaleImage("impuestoG", icono, 25);
-            listaGastos.add(panelGasto);
+            listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
             panelGasto.add(fecha);
@@ -542,7 +542,7 @@ public class rellenarGastos {
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             Iconos.scaleImage("mantenimientoG", icono, 25);
-            listaGastos.add(panelGasto);
+            listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
             panelGasto.add(fecha);
@@ -618,7 +618,7 @@ public class rellenarGastos {
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             Iconos.scaleImage("suministrosG", icono, 25);
-            listaGastos.add(panelGasto);
+            listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
             panelGasto.add(fecha);
@@ -695,7 +695,7 @@ public class rellenarGastos {
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             Iconos.scaleImage("publicidadG", icono, 25);
-            listaGastos.add(panelGasto);
+            listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
             panelGasto.add(fecha);
@@ -771,7 +771,7 @@ public class rellenarGastos {
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             Iconos.scaleImage("transporteG", icono, 25);
-            listaGastos.add(panelGasto);
+            listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
             panelGasto.add(fecha);
@@ -847,7 +847,7 @@ public class rellenarGastos {
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             Iconos.scaleImage("honorariosG", icono, 25);
-            listaGastos.add(panelGasto);
+            listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
             panelGasto.add(fecha);
@@ -923,7 +923,7 @@ public class rellenarGastos {
             JLabel icono = new JLabel();
             Iconos.scaleImage("inventarioG", icono, 25);
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-            listaGastos.add(panelGasto);
+            listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
             panelGasto.add(fecha);
@@ -1037,7 +1037,7 @@ public class rellenarGastos {
                 JLabel icono = new JLabel();
                 Iconos.scaleImage(IconoTipo, icono, 30);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                listaGastos.add(panelGasto);
+                listaGastos.add(panelGasto,0);
                 panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
                 panelGasto.add(fecha);
