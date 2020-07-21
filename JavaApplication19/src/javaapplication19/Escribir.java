@@ -44,7 +44,7 @@ public class Escribir {
         XSSFRow row = newSheet.getRow(0);
         XSSFRow newRow = newSheet.createRow(renglones+1);
          
-        System.out.println(row.getLastCellNum());
+        
         
         for(int i=0; i<row.getLastCellNum(); i++){
             XSSFCell newCell = newRow.createCell(i);
@@ -66,6 +66,7 @@ public class Escribir {
        int lastRowNum=sheet.getLastRowNum();
        if(rowIndex>=0&&rowIndex<lastRowNum){
            sheet.shiftRows(rowIndex+1,lastRowNum, -1);
+           System.out.println("borrar "+rowIndex);
        }
        if(rowIndex==lastRowNum){
            XSSFRow removingRow=sheet.getRow(rowIndex);
