@@ -72,7 +72,7 @@ public class Escribir {
         if (rowIndex == lastRowNum) {
             XSSFRow removingRow = sheet.getRow(rowIndex);
             if (removingRow != null) {
-
+               sheet.removeRow(removingRow);
                 
             }
         }

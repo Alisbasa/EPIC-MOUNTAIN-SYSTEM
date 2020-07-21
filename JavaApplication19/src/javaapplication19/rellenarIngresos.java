@@ -48,7 +48,7 @@ public class rellenarIngresos {
                 panelesIngresos.remove(hijo);
                 padre.updateUI();
                 try {
-                    Escribir.removeRow("src//excel/LibrosContables.xlsx", "Ingresos", panelesIngresos.size());
+                    Escribir.removeRow("src//excel/LibrosContables.xlsx", "Ingresos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Ingresos"));
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
