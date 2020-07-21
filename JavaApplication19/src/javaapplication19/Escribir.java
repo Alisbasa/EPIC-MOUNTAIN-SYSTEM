@@ -99,8 +99,7 @@ public class Escribir {
         newSheet.shiftRows(newSheet.getLastRowNum(), newSheet.getLastRowNum()+1, 1 , true, true);
         XSSFRow newRow = newSheet.createRow(createNewRowAt); 
         newRow = newSheet.getRow(createNewRowAt);
-        
-        
+
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkbook.write(outputStream);
