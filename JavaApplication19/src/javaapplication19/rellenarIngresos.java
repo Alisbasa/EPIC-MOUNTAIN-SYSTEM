@@ -48,7 +48,7 @@ public class rellenarIngresos {
                 panelesIngresos.remove(hijo);
                 padre.updateUI();
                 try {
-                    Escribir.removeRow("src//excel/eliminar.xlsx", "borrar", 19);
+                    Escribir.removeRow("src//excel/LibrosContables.xlsx", "Ingresos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Ingresos"));
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -129,7 +129,7 @@ public class rellenarIngresos {
                 JLabel icono = new JLabel();
                 Iconos.scaleImage("VentasG", icono, 25);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                listaIngresos.add(panelIngreso);
+                listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
                 
                 botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
@@ -147,6 +147,7 @@ public class rellenarIngresos {
                 Escribir escribirVentas = new Escribir();
                 try {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                    
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -216,7 +217,7 @@ public class rellenarIngresos {
                 JLabel icono = new JLabel();
                 Iconos.scaleImage("CreditoG", icono, 25);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                listaIngresos.add(panelIngreso);
+                listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
                 panelIngreso.add(fecha);
@@ -293,7 +294,7 @@ public class rellenarIngresos {
                 JLabel icono = new JLabel();
                 Iconos.scaleImage("InversionG", icono, 25);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                listaIngresos.add(panelIngreso);
+                listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
                 panelIngreso.add(fecha);
@@ -369,7 +370,7 @@ public class rellenarIngresos {
                 JLabel icono = new JLabel();
                 Iconos.scaleImage("impuestoG", icono, 30);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                listaIngresos.add(panelIngreso);
+                listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
                 panelIngreso.add(fecha);
@@ -445,7 +446,7 @@ public class rellenarIngresos {
                 JLabel icono = new JLabel();
                 Iconos.scaleImage("DeudasCG", icono, 30);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                listaIngresos.add(panelIngreso);
+                listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
                 panelIngreso.add(fecha);
@@ -539,7 +540,7 @@ public class rellenarIngresos {
                 JLabel icono = new JLabel();
                 Iconos.scaleImage("VentasG", icono, 25);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                listaIngresos.add(panelIngreso);
+                listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
                 panelIngreso.add(fecha);
@@ -620,7 +621,7 @@ public class rellenarIngresos {
                 JLabel icono = new JLabel();
                 Iconos.scaleImage("impuestoG", icono, 30);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                listaIngresos.add(panelIngreso);
+                listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
                 panelIngreso.add(fecha);
@@ -676,7 +677,7 @@ public class rellenarIngresos {
 
     public void rellenarLibro(JScrollPane scrollIngresos, JPanel listaIngresos) throws IOException {
         if (!LeerExcel.tablaVacia("src\\excel\\LibrosContables.xlsx", "Ingresos")) {
-            for (int i = 1; i <= LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"); i++) {
+            for (int i = 1; i <=LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"); i++) {
                 PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
                 panelIngreso.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
                 panelIngreso.setLayout(new GridLayout(1, 5));
@@ -733,7 +734,7 @@ public class rellenarIngresos {
                 JLabel icono = new JLabel();
                 Iconos.scaleImage(IconoTipo, icono, 30);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                listaIngresos.add(panelIngreso);
+                listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
                 panelIngreso.add(fecha);
