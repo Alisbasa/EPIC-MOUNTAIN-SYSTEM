@@ -40,11 +40,11 @@ public class Escribir {
                 break;
             }                    
         }
-        System.out.println(renglones);
+        //System.out.println(renglones);
         XSSFRow row = newSheet.getRow(0);
         XSSFRow newRow = newSheet.createRow(renglones+1);
          
-            
+        System.out.println(row.getLastCellNum());
         
         for(int i=0; i<row.getLastCellNum(); i++){
             XSSFCell newCell = newRow.createCell(i);
@@ -74,4 +74,41 @@ public class Escribir {
            }
        }
 }
+    
+        public void escribirExcelInv(String filepath, String hoja, String[] data) throws FileNotFoundException, IOException{
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+        int rowCount = newSheet.getLastRowNum()-newSheet.getFirstRowNum();
+        int renglones =0;
+        
+        for(int i =0; i<= rowCount; i++){
+            XSSFRow row = newSheet.getRow(i);
+            if( row.getCell(0).getCellType() != CellType.BLANK ){
+                 renglones++;
+                 System.out.println(renglones);
+            }else{
+                break;
+            }                    
+        }
+        XSSFRow row = newSheet.getRow(0);
+        //XSSFRow newRow = newSheet.createRow(renglones);
+        int createNewRowAt = renglones;
+        
+        newSheet.shiftRows(0, newSheet.getLastRowNum(), 1 , true, true);
+        XSSFRow newRow = newSheet.createRow(createNewRowAt); 
+        newRow = newSheet.getRow(createNewRowAt);
+        
+        for(int i=rowCount-1; i<row.getLastCellNum(); i++){
+            XSSFCell newCell = newRow.createCell(i);
+            newCell.setCellValue(data[i]);       
+        }
+        
+        inputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkbook.write(outputStream);
+        outputStream.close();        
+        
+    }
 }
