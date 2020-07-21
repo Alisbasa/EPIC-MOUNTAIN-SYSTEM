@@ -323,16 +323,13 @@ public class inventarioPrincipal extends javax.swing.JFrame {
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
         RellenarG rellenar = new RellenarG();
-        rellenarGastos rellenar2 = new rellenarGastos();
-        
-        System.out.println(rellenar.desarrolloTipoI.getText());
+                
         String[] inventario = {rellenar.desarrolloTipoI.getText(),
-                                                    jtDesc.getText(),
-                                                rellenar2.fechaActual(),
-                                        jcCond.getSelectedItem().toString(),
-                                        jcPack.getSelectedItem().toString(),
-                                        jtTIG.getText(),jtUnidades.getText(),
-                                         rellenar.montoDesI.getText()};
+                               jtDesc.getText(),fechaActual(),
+                               jcCond.getSelectedItem().toString(),
+                               jcPack.getSelectedItem().toString(),
+                               jtTIG.getText(),jtUnidades.getText(),
+                               rellenar.montoDesI.getText()};
         
         
         
@@ -342,14 +339,14 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.setVisible(false);
+        this.setVisible(false);    
     }//GEN-LAST:event_jbRegistrarMouseClicked
+    
     public static String fechaActual(){
         java.util.Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM");
         return formatoFecha.format(fecha);
     }
-    
     
     private void jtDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDescActionPerformed
         // TODO add your handling code here:

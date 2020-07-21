@@ -159,7 +159,7 @@ public class RellenarG {
         rellenarDesInv.add(desarrolloTipoI);
         rellenarDesInv.add(producto);
         rellenarDesInv.add(montoDesI);
-        rellenarDesInv.add(iconoOkDesarrolloI);            
+        rellenarDesInv.add(iconoOkDesarrolloI);    
         
     
         return rellenarDesInv;
