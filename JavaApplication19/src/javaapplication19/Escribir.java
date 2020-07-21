@@ -92,6 +92,7 @@ public class Escribir {
                 break;
             }                    
         }
+        
         XSSFRow row = newSheet.getRow(0);
         //XSSFRow newRow = newSheet.createRow(renglones);
         int createNewRowAt = renglones;
