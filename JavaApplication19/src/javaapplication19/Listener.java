@@ -26,37 +26,10 @@ import javax.swing.JTextField;
  * @author Alex
  */
 public class Listener {
-     void botonVenta( JLabel iconoOk) {
-        MouseListener botonV = new MouseListener() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-                
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                Iconos.scaleImage("okh", iconoOk, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                Iconos.scaleImage("ok", iconoOk, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        };
-
-        iconoOk.addMouseListener(botonV);
+      int comboBoxActionPerformed(java.awt.event.ActionEvent evt, JComboBox combo) {  
+      return combo.getSelectedIndex();     
+          
+        
     }
     
 }

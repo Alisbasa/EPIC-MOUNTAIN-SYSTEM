@@ -109,5 +109,16 @@ public class LeerExcel {
         
         return cell.getStringCellValue() ;
     }
+    static public double obtenerCeldaNumerica (String filepath, String hoja,int columna, int rowNumber) throws FileNotFoundException, IOException{ 
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook =new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+        XSSFRow row = newSheet.getRow(rowNumber);
+        XSSFCell cell = row.getCell(columna);
+        
+        
+        return cell.getNumericCellValue();
+    }
         
 }

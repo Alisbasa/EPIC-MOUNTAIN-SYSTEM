@@ -40,7 +40,7 @@ public class rellenarIngresos {
     }
 
     //Pone ingreso: venta
-    void botonVenta(JTextField monto, JComboBox inventario, JLabel iconoOkV, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb, JComboBox cliente) {
+    void botonVenta(JTextField monto, JComboBox inventario, JLabel iconoOkV, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb, JComboBox cliente, JComboBox unidades) {
         MouseListener botonV = new MouseListener() {
 
             @Override
@@ -63,14 +63,15 @@ public class rellenarIngresos {
                 inventarioLista.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
                 inventarioLista.setText((String) inventario.getSelectedItem());
                 int numeroLista = inventario.getSelectedIndex() + 1;
-                int numeroPlataforma = 12;
+                int numeroPlataforma = 11;
                 if (plataformacb.getSelectedIndex() == 0) {
-                    numeroPlataforma = 14;
+                    numeroPlataforma = 13;
                 }
 
                 String precioExcel = "precio";
                 try {
-                    precioExcel = LeerExcel.obtenerPrecio("src//excel/Inventario.xlsx", "INVENTARIO", numeroPlataforma, numeroLista);
+                    precioExcel = "$"+String.valueOf(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", numeroPlataforma, numeroLista)*(unidades.getSelectedIndex()+1));
+                    
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
