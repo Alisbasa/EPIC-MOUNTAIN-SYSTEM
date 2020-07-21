@@ -7,6 +7,8 @@ package javaapplication19;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
@@ -55,8 +57,8 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         jlDesc = new javax.swing.JLabel();
         jpPack = new javax.swing.JPanel();
         jlPack = new javax.swing.JLabel();
+        jcCond = new javax.swing.JComboBox<>();
         jcPack = new javax.swing.JComboBox<>();
-        jcPack1 = new javax.swing.JComboBox<>();
         jlPack1 = new javax.swing.JLabel();
         jpTIG = new javax.swing.JPanel();
         jlTIG = new javax.swing.JLabel();
@@ -160,7 +162,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("REGISTRAR NUEVO PACK");
+        jLabel1.setText("REGISTRAR NUEVO INVENTARIO");
         jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
@@ -198,13 +200,13 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         jlPack.setText("CONDICION");
         jpPack.add(jlPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 130, 30));
 
-        jcPack.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 13)); // NOI18N
-        jcPack.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Seminuevo", "Usado" }));
-        jpPack.add(jcPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 90, 50));
+        jcCond.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 13)); // NOI18N
+        jcCond.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Seminuevo", "Usado" }));
+        jpPack.add(jcCond, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 90, 50));
 
-        jcPack1.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 13)); // NOI18N
-        jcPack1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pack1", "Pack2", "Pack3" }));
-        jpPack.add(jcPack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 90, 50));
+        jcPack.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 13)); // NOI18N
+        jcPack.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pack1", "Pack2", "Pack3" }));
+        jpPack.add(jcPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 90, 50));
 
         jlPack1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlPack1.setForeground(new java.awt.Color(255, 255, 255));
@@ -218,12 +220,12 @@ public class inventarioPrincipal extends javax.swing.JFrame {
 
         jlTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlTIG.setForeground(new java.awt.Color(255, 255, 255));
-        jlTIG.setText("PRECIO BASE POR UNIDAD");
-        jpTIG.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 310, 30));
+        jlTIG.setText("T.I.G");
+        jpTIG.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 70, 30));
 
         jtTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         jtTIG.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpTIG.add(jtTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 160, 48));
+        jpTIG.add(jtTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 400, 48));
         jtTIG.setBackground(Colores.epicColorBajito);
 
         jpDatos.add(jpTIG);
@@ -320,16 +322,35 @@ public class inventarioPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
-        //String[] inventario = {"Azu", "2","3","45","56","67","78","89","90","10","11","12","13","14","15","16","17","18","19","20","21","22","23"}; 
+        RellenarG rellenar = new RellenarG();
+        rellenarGastos rellenar2 = new rellenarGastos();
+        
+        System.out.println(rellenar.desarrolloTipoI.getText());
+        String[] inventario = {rellenar.desarrolloTipoI.getText(),
+                                                    jtDesc.getText(),
+                                                rellenar2.fechaActual(),
+                                        jcCond.getSelectedItem().toString(),
+                                        jcPack.getSelectedItem().toString(),
+                                        jtTIG.getText(),jtUnidades.getText(),
+                                         rellenar.montoDesI.getText()};
+        
+        
+        
         Escribir EscribirCRM = new Escribir();
         try {
-            EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "INVENTARIO");
+            EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "INVENTARIO",inventario);
         } catch (IOException ex) {
             Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.setVisible(false);
     }//GEN-LAST:event_jbRegistrarMouseClicked
-
+    public static String fechaActual(){
+        java.util.Date fecha = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM");
+        return formatoFecha.format(fecha);
+    }
+    
+    
     private void jtDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDescActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtDescActionPerformed
@@ -381,8 +402,8 @@ public class inventarioPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbRegistrar;
+    private javax.swing.JComboBox<String> jcCond;
     private javax.swing.JComboBox<String> jcPack;
-    private javax.swing.JComboBox<String> jcPack1;
     private javax.swing.JLabel jlDesc;
     private javax.swing.JLabel jlPack;
     private javax.swing.JLabel jlPack1;
