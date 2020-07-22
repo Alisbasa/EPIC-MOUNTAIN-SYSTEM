@@ -226,12 +226,21 @@ public class rellenarIngresos {
                 panelIngreso.add(icono);
 
                 String[] data = {(String) fechaActual(), "Crédito", (String) inversor.getText(), montoC.getText(), "    "};
+                
+                String[]deuda = {(String) fechaActual(), inversor.getText(), montoC.getText()};
 
                 Escribir escribirVentas = new Escribir();
                 try {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                Escribir EscribirExcel = new Escribir();
+                try {
+                    EscribirExcel.escribirExcelInv("src\\excel\\DeudasP.xlsx", "DeudasPagar",deuda,3);
+                } catch (IOException ex) {
+                    Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 indice++;
@@ -309,6 +318,14 @@ public class rellenarIngresos {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                String[]inversion = {(String) fechaActual(), inversorI.getText(), montoI.getText()};
+                
+                Escribir EscribirExcel = new Escribir();
+                try {
+                    EscribirExcel.escribirExcelInv("src\\excel\\DeudasP.xlsx", "DeudasPagar",inversion,3);
+                } catch (IOException ex) {
+                    Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 indice++;
@@ -531,7 +548,7 @@ public class rellenarIngresos {
                  JLabel precio = new JLabel();
                 precio.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
 
-                precio.setText(precioExcel);
+                precio.setText(montoVC.getText());
 
                 JLabel plataforma = new JLabel();
                 plataforma.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
@@ -548,7 +565,7 @@ public class rellenarIngresos {
                 panelIngreso.add(precio);
                 panelIngreso.add(plataforma);
                 panelIngreso.add(icono);
-                String[] data = {(String) fechaActual(), "Venta a Cobrar", (String) inventario.getSelectedItem(), precioExcel, plataforma.getText()};
+                String[] data = {(String) fechaActual(), "Venta a Cobrar", (String) inventario.getSelectedItem(), montoVC.getText(), plataforma.getText()};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -560,6 +577,14 @@ public class rellenarIngresos {
                 if(cliente.getSelectedItem().toString()=="Nuevo Cliente"){
                     clienteNuevo cliente =new clienteNuevo();
                     cliente.setVisible(true);
+                }
+                
+                String [] deudaC = {(String) fechaActual(), cliente.getSelectedItem().toString(), montoVC.getText()};
+                Escribir escribirD = new Escribir();
+                try {
+                    escribirD.escribirExcelInv("src\\excel\\DeudasC.xlsx", "DEUDAS", deudaC,3);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 indice++;
