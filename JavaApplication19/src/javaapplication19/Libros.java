@@ -1464,7 +1464,7 @@ public class Libros extends javax.swing.JFrame {
             
             rellenarGastos.add(rellenarDes.rellenarDesEquipo());
             
-            rellenarDesEquipo.botonDesEquipo(rellenarDes.desarrolloTipoE, rellenarDes.montoDesE, rellenarDes.iconoOkDesarrolloEq, scrollGastos, listaGastos);        
+            rellenarDesEquipo.botonDesEquipo(rellenarDes.tipo,rellenarDes.desarrolloTipoE, rellenarDes.descripcion,rellenarDes.montoDesE,  rellenarDes.iconoOkDesarrolloEq, scrollGastos, listaGastos);        
         }
         
         else if(comboGastos.getSelectedItem().toString().equals("INVENTARIO PRINCIPAL")){

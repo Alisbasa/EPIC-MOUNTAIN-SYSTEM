@@ -56,6 +56,7 @@ public class RellenarG {
     JLabel iconoHonorarios = new JLabel();
     JLabel iconoReducInv = new JLabel();
     
+    JComboBox tipo;
     JComboBox desarrollo;
     JTextField desarrolloTipoCT;
     JTextField desarrolloTipoE;
@@ -86,6 +87,7 @@ public class RellenarG {
     JTextField montoTrans;
     JTextField montoHonor;
     JTextField montoReduc;
+    JTextField descripcion;
     
     JLabel iconoOkDesarrolloEq = new JLabel();
     JLabel iconoOkDesarrolloI = new JLabel();
@@ -111,10 +113,22 @@ public class RellenarG {
         Iconos.scaleImage("Equipo", iconoDesarrollo, 30);
         rellenarDesEquipo.add(iconoDesarrollo);
         
+        String[] lista = {"Herramientas", "Equipo de Taller", "Mobiliario", "Equipo de Limpieza"};
+        
+        tipo = new JComboBox(lista);
+        tipo.setUI(PropiedadesCB2.createUI(tipo));
+        
+        
         desarrolloTipoE = new JTextField("Equipo y Mobiliario");
         desarrolloTipoE.setBackground(Colores.epicColorBajito);
         desarrolloTipoE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         desarrolloTipoE.setPreferredSize(new Dimension(150, 30));
+        
+        descripcion = new JTextField("Descripcion");
+        descripcion.setBackground(Colores.epicColorBajito);
+        descripcion.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        descripcion.setPreferredSize(new Dimension(150, 30));
+        
 
         montoDesE = new JTextField("$ ");
         montoDesE.setBackground(Colores.epicColorBajito);
@@ -122,8 +136,10 @@ public class RellenarG {
         montoDesE.setPreferredSize(new Dimension(60, 30));
 
         Iconos.scaleImage("ok", iconoOkDesarrolloEq, 30);
-
+        
+        rellenarDesEquipo.add(tipo);
         rellenarDesEquipo.add(desarrolloTipoE);
+        rellenarDesEquipo.add(descripcion);
         rellenarDesEquipo.add(montoDesE);
         rellenarDesEquipo.add(iconoOkDesarrolloEq);
         

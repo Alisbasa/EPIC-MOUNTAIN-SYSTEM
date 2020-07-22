@@ -35,7 +35,7 @@ public class rellenarGastos {
     }
     
     //Pone Gasto: Desarollo: Equipo y Mob
-    void botonDesEquipo(JTextField desarrolloTipoE, JTextField montoDes, JLabel iconoOkDesarrolloEq, JScrollPane scrollGastos, JPanel listaGastos){
+    void botonDesEquipo(JComboBox tipo, JTextField desarrolloTipoE, JTextField descripcion, JTextField montoDes, JLabel iconoOkDesarrolloEq, JScrollPane scrollGastos, JPanel listaGastos){
         MouseListener botonV = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -80,6 +80,45 @@ public class rellenarGastos {
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            
+            if(tipo.getSelectedItem().toString().equals("Herramientas")){
+                String [] equipo = {(String) fechaActual(), desarrolloTipoE.getText(), descripcion.getText() ,montoDes.getText()};
+            Escribir EscribirExcel = new Escribir();
+                try {
+                    EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Herramientas",equipo,4);
+                } catch (IOException ex) {
+                    Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }                
+            }
+            else if(tipo.getSelectedItem().toString().equals("Equipo de Taller")){
+                String [] equipo = {(String) fechaActual(), desarrolloTipoE.getText(), descripcion.getText() ,montoDes.getText()};
+            Escribir EscribirExcel = new Escribir();
+                try {
+                    EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Equipo de Taller",equipo,4);
+                } catch (IOException ex) {
+                    Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }    
+            }
+            
+            else if(tipo.getSelectedItem().toString().equals("Mobiliario")){
+                String [] equipo = {(String) fechaActual(), desarrolloTipoE.getText(), descripcion.getText() ,montoDes.getText()};
+            Escribir EscribirExcel = new Escribir();
+                try {
+                    EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Mobiliario",equipo,4);
+                } catch (IOException ex) {
+                    Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }    
+            }
+            
+            else if(tipo.getSelectedItem().toString().equals("Equipo de Limpieza")){
+                String [] equipo = {(String) fechaActual(), desarrolloTipoE.getText(), descripcion.getText() ,montoDes.getText()};
+            Escribir EscribirExcel = new Escribir();
+                try {
+                    EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Equipo de Limpieza",equipo,4);
+                } catch (IOException ex) {
+                    Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }    
+            }
             
             indice++;
             listaGastos.updateUI();
