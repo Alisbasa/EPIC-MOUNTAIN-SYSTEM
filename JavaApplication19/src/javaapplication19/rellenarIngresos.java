@@ -226,6 +226,8 @@ public class rellenarIngresos {
                 panelIngreso.add(icono);
 
                 String[] data = {(String) fechaActual(), "Crédito", (String) inversor.getText(), montoC.getText(), "    "};
+                
+                String[]deuda = {(String) fechaActual(), inversor.getText(), montoC.getText()};
 
                 Escribir escribirVentas = new Escribir();
                 try {

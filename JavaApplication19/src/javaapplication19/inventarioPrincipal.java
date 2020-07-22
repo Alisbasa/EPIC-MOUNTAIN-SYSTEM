@@ -350,7 +350,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
                                 jcPack.getSelectedItem().toString(),jtCosto.getText(),jtUnidades.getText(),"8"};
         Escribir EscribirCRM = new Escribir();
         try {
-            EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "INVENTARIO",inventario);
+            EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "INVENTARIO",inventario,8);
         } catch (IOException ex) {
             Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
