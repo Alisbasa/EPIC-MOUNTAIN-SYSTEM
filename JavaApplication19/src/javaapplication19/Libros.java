@@ -837,6 +837,11 @@ public class Libros extends javax.swing.JFrame {
 
         panelCompras2.setBackground(new java.awt.Color(51, 51, 51));
         panelCompras2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelCompras2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelCompras2MouseClicked(evt);
+            }
+        });
         panelCompras2.setLayout(new java.awt.BorderLayout());
 
         comprasLabel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -1858,6 +1863,14 @@ public class Libros extends javax.swing.JFrame {
     private void corteLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_corteLabelMouseClicked
         
     }//GEN-LAST:event_corteLabelMouseClicked
+
+    private void panelCompras2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCompras2MouseClicked
+        try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/comprasT.xlsx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_panelCompras2MouseClicked
     
     
     /**/
