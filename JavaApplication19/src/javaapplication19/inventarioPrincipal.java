@@ -348,6 +348,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         
         String [] inventario = {rellenar2.tipoI2,jtDesc.getText(),fechaActual(),jcCond.getSelectedItem().toString(),
                                 jcPack.getSelectedItem().toString(),jtCosto.getText(),jtUnidades.getText(),"8"};
+        
         Escribir EscribirCRM = new Escribir();
         try {
             EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "INVENTARIO",inventario,8);

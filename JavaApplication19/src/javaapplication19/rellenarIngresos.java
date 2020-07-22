@@ -235,6 +235,13 @@ public class rellenarIngresos {
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+                Escribir EscribirExcel = new Escribir();
+                try {
+                    EscribirExcel.escribirExcelInv("src\\excel\\DeudasP.xlsx", "DeudasPagar",deuda,3);
+                } catch (IOException ex) {
+                    Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
                 indice++;
 
@@ -311,6 +318,14 @@ public class rellenarIngresos {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                String[]inversion = {(String) fechaActual(), inversorI.getText(), montoI.getText()};
+                
+                Escribir EscribirExcel = new Escribir();
+                try {
+                    EscribirExcel.escribirExcelInv("src\\excel\\DeudasP.xlsx", "DeudasPagar",inversion,3);
+                } catch (IOException ex) {
+                    Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 indice++;
