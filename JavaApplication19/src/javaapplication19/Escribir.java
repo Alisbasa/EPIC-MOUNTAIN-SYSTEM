@@ -91,13 +91,15 @@ public class Escribir {
         int rowCount = newSheet.getLastRowNum() - newSheet.getFirstRowNum();
         int renglones = 0;
         CellStyle estilo= newSheet.getColumnStyle(2);
+        
 
         for (int i = 1; i <= rowCount; i++) {
             XSSFRow row = newSheet.getRow(i);
-            estilo = row.getRowStyle();
+            
+            estilo = row.getCell(0).getCellStyle();
             if (row.getCell(0).getCellType() != CellType.BLANK) {
                 renglones++;
-                System.out.println(renglones);
+               
             } else {
                 break;
             }
@@ -107,11 +109,13 @@ public class Escribir {
 
         newSheet.shiftRows(renglones + 1, renglones + 2, 1, true, true);
         XSSFRow newRow = newSheet.createRow(renglones + 1);
-        newRow.setRowStyle(estilo);
+        
 
         for (int i = 0; i < col; i++) {
             XSSFCell newCell = newRow.createCell(i);
             newCell.setCellValue(data[i]);
+            newCell.setCellStyle(estilo);
+          
             
         }
 

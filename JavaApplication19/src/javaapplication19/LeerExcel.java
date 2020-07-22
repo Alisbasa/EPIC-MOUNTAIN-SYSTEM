@@ -68,7 +68,7 @@ public class LeerExcel {
         int renglones =0;
         for(int i =1; i<= rowCount; i++){
             XSSFRow row = newSheet.getRow(i);
-            if( row.getCell(columna).getCellType() != CellType.BLANK ){
+            if( row.getCell(columna) != null && row.getCell(columna).getCellType() != CellType.BLANK ){
                  renglones++;
             }else{
                 break;
