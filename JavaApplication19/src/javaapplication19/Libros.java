@@ -1396,7 +1396,11 @@ public class Libros extends javax.swing.JFrame {
             rellenarIngresos.revalidate();
             rellenarIngresos.repaint();
             
-            rellenarIngresos.add(rellenarDeuC.rellenarDeudasC());
+            try {
+                rellenarIngresos.add(rellenarDeuC.rellenarDeudasC());
+            } catch (IOException ex) {
+                Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
+            }
             rellenarDeudaCobrar.botonDeudaC(rellenarDeuC.montoDeuC, rellenarDeuC.deudor, rellenarDeuC.iconoOkDeudasC, scrollIngresos, listaIngresos,rellenarDeuC.rellenarDeudasC);
         
         }
@@ -1511,7 +1515,11 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.revalidate();
             rellenarGastos.repaint();
             
-            rellenarGastos.add(rellenarD.rellenarDeudasPagar());
+            try {
+                rellenarGastos.add(rellenarD.rellenarDeudasPagar());
+            } catch (IOException ex) {
+                Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
+            }
             rellenarDeudas.botonDeudas(rellenarD.deudas, rellenarD.montoDeuda, rellenarD.iconoOkDeudas, scrollGastos, listaGastos);
             
             
