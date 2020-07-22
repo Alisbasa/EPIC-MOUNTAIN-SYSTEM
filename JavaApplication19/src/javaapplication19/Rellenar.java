@@ -210,15 +210,14 @@ public class Rellenar {
         return rellenarImpuesto;
     }
 
-    public JPanel rellenarDeudasC() {
+    public JPanel rellenarDeudasC() throws IOException {
         rellenarDeudasC.removeAll();
 
         rellenarDeudasC.setBackground(Color.white);
         Iconos.scaleImage("DeudasC", iconoDeudasC, 40);
         rellenarDeudasC.add(iconoDeudasC);
-        String[] listaDeudores = {"Panchito", "Mario", "Navarro"};
 
-        deudor = new JComboBox(listaDeudores);
+        deudor = new JComboBox(LeerExcel.rellenaCB2("src//excel/deudasC.xlsx", "deudasCobrar", 1));
         deudor.setBackground(Color.white);
         deudor.setUI(PropiedadesCB2.createUI(deudor));
 
