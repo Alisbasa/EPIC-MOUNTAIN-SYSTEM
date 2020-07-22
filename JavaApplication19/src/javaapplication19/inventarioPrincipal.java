@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -21,12 +22,18 @@ import javax.swing.JPanel;
 public class inventarioPrincipal extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
+    static JLabel monto;
+    static JLabel nombre;
 
     /**
      * Creates new form clienteNuevo
+     * @param nombre
+     * @param monto
      */
-    public inventarioPrincipal() {
+    public inventarioPrincipal(JLabel nombre, JLabel monto) {
         initComponents();
+        this.monto = monto;
+        this. nombre = nombre;
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -346,8 +353,8 @@ public class inventarioPrincipal extends javax.swing.JFrame {
                                rellenar.montoDesI.getText()};*/
         
         
-        String [] inventario = {rellenar2.tipoI2,jtDesc.getText(),fechaActual(),jcCond.getSelectedItem().toString(),
-                                jcPack.getSelectedItem().toString(),jtCosto.getText(),jtUnidades.getText(),"8"};
+        String [] inventario = {nombre.getText(),jtDesc.getText(),fechaActual(),jcCond.getSelectedItem().toString(),
+                                jcPack.getSelectedItem().toString(),jtTIG.getText(),jtUnidades.getText(),monto.getText()};
         Escribir EscribirCRM = new Escribir();
         try {
             EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "INVENTARIO",inventario);
@@ -399,7 +406,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new inventarioPrincipal().setVisible(true);
+                new inventarioPrincipal(nombre, monto).setVisible(true);
             }
         });
     }
