@@ -248,7 +248,7 @@ public class RellenarG {
     }
     
      
-    public  JPanel rellenarDeudasPagar(){
+    public  JPanel rellenarDeudasPagar() throws IOException{
         rellenarDeudasPagar.removeAll();
         
         rellenarDeudasPagar.setBackground(Color.white);
@@ -256,8 +256,7 @@ public class RellenarG {
         rellenarDeudasPagar.add(iconoDeudasPagar);
         Iconos.scaleImage("ok", iconoOkDeudas, 30);
         
-        String[] listaDeudores={"Alex", "Ivan"};
-        deudas = new JComboBox(listaDeudores);
+        deudas = new JComboBox(LeerExcel.rellenaCB2("src//excel/deudasP.xlsx", "deudasPagar", 1));
         deudas.setBackground(Color.white);
         deudas.setUI( PropiedadesCB2.createUI(deudas));
         
