@@ -81,7 +81,7 @@ public class rellenarIngresos {
     
 
     //Pone ingreso: venta
-    void botonVenta(JTextField monto, JComboBox inventario, JLabel iconoOkV, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb, JComboBox cliente, JComboBox unidades) {
+    void botonVenta(JTextField monto, JComboBox inventario, JLabel iconoOkV, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb, JComboBox cliente, JComboBox unidades, JPanel panelPadre) {
         MouseListener botonV = new MouseListener() {
 
             @Override
@@ -158,7 +158,8 @@ public class rellenarIngresos {
                 }
 
                 indice++;
-
+                panelPadre.removeAll();
+                panelPadre.updateUI();
                 listaIngresos.updateUI();
             }
 
