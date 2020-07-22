@@ -163,7 +163,7 @@ public class rellenarGastos {
                 }
                 
                 if(producto.getSelectedItem().toString().equals("Nuevo")){
-                    inventarioPrincipal inv =new inventarioPrincipal();
+                    inventarioPrincipal inv =new inventarioPrincipal(desarrolloListaI,precioI);
                     inv.setVisible(true);
                 }
             

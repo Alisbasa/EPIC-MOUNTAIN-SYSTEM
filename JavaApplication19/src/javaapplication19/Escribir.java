@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -89,10 +90,11 @@ public class Escribir {
         XSSFSheet newSheet = newWorkbook.getSheet(hoja);
         int rowCount = newSheet.getLastRowNum() - newSheet.getFirstRowNum();
         int renglones = 0;
+        CellStyle estilo= newSheet.getColumnStyle(2);
 
         for (int i = 1; i <= rowCount; i++) {
             XSSFRow row = newSheet.getRow(i);
-            System.out.println("Error" + i);
+            estilo = row.getRowStyle();
             if (row.getCell(0).getCellType() != CellType.BLANK) {
                 renglones++;
                 System.out.println(renglones);
@@ -105,10 +107,12 @@ public class Escribir {
 
         newSheet.shiftRows(renglones + 1, renglones + 2, 1, true, true);
         XSSFRow newRow = newSheet.createRow(renglones + 1);
+        newRow.setRowStyle(estilo);
 
         for (int i = 0; i < col; i++) {
             XSSFCell newCell = newRow.createCell(i);
             newCell.setCellValue(data[i]);
+            
         }
 
         inputStream.close();
