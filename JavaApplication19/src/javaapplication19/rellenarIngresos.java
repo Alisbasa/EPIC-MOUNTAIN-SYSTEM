@@ -582,7 +582,7 @@ public class rellenarIngresos {
                 String [] deudaC = {(String) fechaActual(), cliente.getSelectedItem().toString(), montoVC.getText()};
                 Escribir escribirD = new Escribir();
                 try {
-                    escribirD.escribirExcelInv("src\\excel\\DeudasC.xlsx", "DEUDAS", deudaC,3);
+                    escribirD.escribirExcelInv("src\\excel\\DeudasC.xlsx", "deudasCobrar", deudaC,3);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
