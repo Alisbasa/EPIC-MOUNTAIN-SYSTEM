@@ -89,7 +89,7 @@ public class Rellenar {
 
         String[] listaPlataformas = {"Mercado Libre", "Amazon", "Shopiffy"};
 
-        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "INVENTARIO", 0));
+        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
         inventario.setPreferredSize(new Dimension(200, 30));
@@ -122,7 +122,7 @@ public class Rellenar {
             public void actionPerformed(ActionEvent e) {
                 indexInventario = inventario.getSelectedIndex();
                 try {
-                    numeroUnidades =(int)LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", 6, indexInventario + 1);
+                    numeroUnidades =(int)LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 6, indexInventario + 1);
                 } catch (IOException ex) {
                     Logger.getLogger(Rellenar.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -248,7 +248,7 @@ public class Rellenar {
         String[] listaPlataformas = {"Mercado Libre", "Facebook", "Amazon", "Shopiffy"};
         String[] listaCRM = {"Alejandro", "Alvaro"};
 
-        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "INVENTARIO", 0));
+        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
 
