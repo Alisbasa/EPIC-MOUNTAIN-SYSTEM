@@ -66,7 +66,7 @@ public class rellenarIngresos {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                Iconos.scaleImage("Cerrar", boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("cancel", boton, 20);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
@@ -591,7 +591,7 @@ public class rellenarIngresos {
                 String [] deudaC = {(String) fechaActual(), cliente.getSelectedItem().toString(), montoVC.getText()};
                 Escribir escribirD = new Escribir();
                 try {
-                    escribirD.escribirExcelInv("src\\excel\\DeudasC.xlsx", "DEUDAS", deudaC,3);
+                    escribirD.escribirExcelInv("src\\excel\\DeudasC.xlsx", "deudasCobrar", deudaC,3);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -773,7 +773,7 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
+                
                 panelIngreso.add(fecha);
                 panelIngreso.add(dev);
                 panelIngreso.add(montoDevolucion);
