@@ -39,7 +39,7 @@ public class rellenarIngresos {
         panelesIngresos = new ArrayList<>();
     }
     
-    void botonBorrar(JLabel boton, JPanel padre, JPanel hijo, int panelIndex){
+    void botonBorrar(JLabel boton, JPanel padre, JPanel hijo, int panelIndex, String img){
         MouseListener botonV = new MouseListener() {
 
             @Override
@@ -66,12 +66,12 @@ public class rellenarIngresos {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                Iconos.scaleImage("cancel", boton, 20);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage("cancelG", boton, 20);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                Iconos.scaleImage("ventasG", boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage(img, boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         };
 
@@ -132,7 +132,7 @@ public class rellenarIngresos {
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
                 
-                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
+                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"ventasG");
                 
                 
                  
@@ -220,11 +220,12 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
+                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"CreditoG");
 
                 panelIngreso.add(fecha);
                 panelIngreso.add(credito);
                 panelIngreso.add(precio);
+                panelIngreso.add(new JLabel(""));
                 panelIngreso.add(icono);
 
                 String[] data = {(String) fechaActual(), "Crédito", (String) inversor.getText(), montoC.getText(), "    "};
@@ -308,10 +309,11 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
+                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"inversionG");
                 panelIngreso.add(fecha);
                 panelIngreso.add(inversionista);
                 panelIngreso.add(precioI);
+                panelIngreso.add(new JLabel(""));
                 panelIngreso.add(icono);
 
                 String[] data = {(String) fechaActual(), "Inversión", (String) inversorI.getText(), montoI.getText(), "    "};
@@ -394,10 +396,11 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
+                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"impuestoG");
                 panelIngreso.add(fecha);
                 panelIngreso.add(imp);
                 panelIngreso.add(montoImpuesto);
+                panelIngreso.add(new JLabel(""));
                 panelIngreso.add(icono);
 
                 String[] data = {(String) fechaActual(), "Impuesto a favor", (String) impuesto.getText(), montoImp.getText(), "    "};
@@ -472,10 +475,11 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
+                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"DeudasCG");
                 panelIngreso.add(fecha);
                 panelIngreso.add(deuda);
                 panelIngreso.add(montoDeudaC);
+                panelIngreso.add(new JLabel(""));
                 panelIngreso.add(icono);
                 
                 String[] data = {(String) fechaActual(), "Deuda a Cobrar",  deuda.getText(), montoDeudaC.getText(), "    "};
@@ -568,11 +572,12 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
+                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"ventasG");
                 panelIngreso.add(fecha);
                 panelIngreso.add(inventarioLista);
                 panelIngreso.add(precio);
                 panelIngreso.add(plataforma);
+                panelIngreso.add(new JLabel(""));
                 panelIngreso.add(icono);
                 String[] data = {(String) fechaActual(), "Venta a Cobrar", (String) inventario.getSelectedItem(), montoVC.getText(), plataforma.getText()};
 
@@ -659,10 +664,11 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
+                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"inventarioG");
                 panelIngreso.add(fecha);
                 panelIngreso.add(dev);
                 panelIngreso.add(montoDevolucion);
+                panelIngreso.add(new JLabel(""));
                 panelIngreso.add(icono);
                 
                 String[] data = {(String) fechaActual(), "Devolucion", dev.getText(), montoDevolucion.getText(), "   "};

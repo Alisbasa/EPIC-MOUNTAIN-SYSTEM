@@ -1511,7 +1511,11 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.revalidate();
             rellenarGastos.repaint();
             
-            rellenarGastos.add(rellenarD.rellenarDeudasPagar());
+            try {
+                rellenarGastos.add(rellenarD.rellenarDeudasPagar());
+            } catch (IOException ex) {
+                Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
+            }
             rellenarDeudas.botonDeudas(rellenarD.deudas, rellenarD.montoDeuda, rellenarD.iconoOkDeudas, scrollGastos, listaGastos);
             
             

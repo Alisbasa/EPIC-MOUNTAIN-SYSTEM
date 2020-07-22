@@ -33,7 +33,44 @@ public class rellenarGastos {
     public rellenarGastos(){
         panelesGastos = new ArrayList<>();
     }
-    
+    void botonBorrar(JLabel boton, JPanel padre, JPanel hijo, int panelIndex){
+        MouseListener botonV = new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                padre.remove(hijo);
+                panelesGastos.remove(hijo);
+                padre.updateUI();
+                try {
+                    Escribir.removeRow("src//excel/LibrosContables.xlsx", "Ingresos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Ingresos"));
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Iconos.scaleImage("cancelG", boton, 20);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                Iconos.scaleImage("ventasG", boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+
+        boton.addMouseListener(botonV);
+    }
     //Pone Gasto: Desarollo: Equipo y Mob
     void botonDesEquipo(JComboBox tipo, JTextField desarrolloTipoE, JTextField descripcion, JTextField montoDes, JLabel iconoOkDesarrolloEq, JScrollPane scrollGastos, JPanel listaGastos){
         MouseListener botonV = new MouseListener() {
@@ -66,6 +103,8 @@ public class rellenarGastos {
             Iconos.scaleImage("equipoG", icono, 25);
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);
+            
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto));
 
             panelGasto.add(fecha);
             panelGasto.add(desarrolloLista);
@@ -589,7 +628,7 @@ public class rellenarGastos {
             panelGasto.add(precioMant);
             panelGasto.add(icono);
             
-            String [] data = {(String) fechaActual(), "Mantenimiento", (String) descripcion.getText(), precioMant.getText()};
+            String [] data = {(String) fechaActual(), "Mantenimiento", (String) descripcion.getText(), precioMant.getText(),""};
             
             Escribir escribirVentas = new Escribir();
                 try {
@@ -665,7 +704,7 @@ public class rellenarGastos {
             panelGasto.add(monto);
             panelGasto.add(icono);
             
-            String [] data = {(String) fechaActual(), "Suministros", (String) sum.getText(), monto.getText()};
+            String [] data = {(String) fechaActual(), "Suministros", (String) sum.getText(), monto.getText(),""};
             
             Escribir escribirVentas = new Escribir();
                 try {
@@ -742,7 +781,7 @@ public class rellenarGastos {
             panelGasto.add(monto);
             panelGasto.add(icono);
             
-            String [] data = {(String) fechaActual(), "Mantenimiento", (String) pub.getText(), monto.getText()};
+            String [] data = {(String) fechaActual(), "Mantenimiento", (String) pub.getText(), monto.getText(),""};
             
             Escribir escribirVentas = new Escribir();
                 try {
@@ -818,7 +857,7 @@ public class rellenarGastos {
             panelGasto.add(monto);
             panelGasto.add(icono);
             
-            String [] data = {(String) fechaActual(), "Transporte", (String) trans.getText(), monto.getText()};
+            String [] data = {(String) fechaActual(), "Transporte", (String) trans.getText(), monto.getText(),""};
             
             Escribir escribirVentas = new Escribir();
                 try {
@@ -894,7 +933,7 @@ public class rellenarGastos {
             panelGasto.add(monto);
             panelGasto.add(icono);
             
-            String [] data = {(String) fechaActual(), "Honorarios", (String) hon.getText(), monto.getText()};
+            String [] data = {(String) fechaActual(), "Honorarios", (String) hon.getText(), monto.getText(),""};
             
             Escribir escribirVentas = new Escribir();
                 try {
@@ -970,7 +1009,7 @@ public class rellenarGastos {
             panelGasto.add(montoR);
             panelGasto.add(icono);
             
-            String [] data = {(String) fechaActual(), "Reduccion de Inventario", (String) reduc.getText(), montoR.getText()};
+            String [] data = {(String) fechaActual(), "Reduccion de Inventario", (String) reduc.getText(), montoR.getText(),""};
             
             Escribir escribirVentas = new Escribir();
                 try {
