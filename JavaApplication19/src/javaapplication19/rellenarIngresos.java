@@ -188,7 +188,7 @@ public class rellenarIngresos {
     }
 
     //Para rellenar un ingreso:credito
-    void botonCredito(JTextField montoC, JTextField inversor, JLabel iconoOkC, JScrollPane scrollIngresos, JPanel listaIngresos) {
+    void botonCredito(JTextField montoC, JTextField inversor, JLabel iconoOkC, JScrollPane scrollIngresos, JPanel listaIngresos, JPanel panelPadre) {
         MouseListener botonC = new MouseListener() {
 
             @Override
@@ -220,6 +220,7 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
 
                 panelIngreso.add(fecha);
                 panelIngreso.add(credito);
@@ -245,7 +246,8 @@ public class rellenarIngresos {
                 }
 
                 indice++;
-
+                panelPadre.removeAll();
+                panelPadre.updateUI();
                 listaIngresos.updateUI();
             }
 
@@ -274,7 +276,7 @@ public class rellenarIngresos {
     }
 
     //Para rellenar un ingreso:inversion
-    public void botonInversion(JTextField montoI, JTextField inversorI, JLabel iconoOkI, JScrollPane scrollIngresos, JPanel listaIngresos) {
+    public void botonInversion(JTextField montoI, JTextField inversorI, JLabel iconoOkI, JScrollPane scrollIngresos, JPanel listaIngresos, JPanel panelPadre) {
         MouseListener botonI = new MouseListener() {
 
             @Override
@@ -306,7 +308,7 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-
+                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
                 panelIngreso.add(fecha);
                 panelIngreso.add(inversionista);
                 panelIngreso.add(precioI);
@@ -330,6 +332,8 @@ public class rellenarIngresos {
                 }
 
                 indice++;
+                panelPadre.removeAll();
+                panelPadre.updateUI();
                 listaIngresos.updateUI();
             }
 
@@ -358,7 +362,7 @@ public class rellenarIngresos {
     }
 
     //Para rellenar un ingreso:impuesto
-    public void botonImpuesto(JTextField montoImp, JTextField impuesto, JLabel iconoOkImp, JScrollPane scrollIngresos, JPanel listaIngresos) {
+    public void botonImpuesto(JTextField montoImp, JTextField impuesto, JLabel iconoOkImp, JScrollPane scrollIngresos, JPanel listaIngresos, JPanel panelPadre) {
         MouseListener botonImp = new MouseListener() {
 
             @Override
@@ -390,7 +394,7 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-
+                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
                 panelIngreso.add(fecha);
                 panelIngreso.add(imp);
                 panelIngreso.add(montoImpuesto);
@@ -406,6 +410,8 @@ public class rellenarIngresos {
                 }
 
                 indice++;
+                panelPadre.removeAll();
+                panelPadre.updateUI();
                 listaIngresos.updateUI();
             }
 
@@ -434,7 +440,7 @@ public class rellenarIngresos {
     }
 
     //Para rellenar un ingreso: deuda a Cobrar
-    public void botonDeudaC(JTextField montoDeuC, JComboBox deudor, JLabel iconoOkDeudasC, JScrollPane scrollIngresos, JPanel listaIngresos) {
+    public void botonDeudaC(JTextField montoDeuC, JComboBox deudor, JLabel iconoOkDeudasC, JScrollPane scrollIngresos, JPanel listaIngresos, JPanel panelPadre) {
         MouseListener botonDeuC = new MouseListener() {
 
             @Override
@@ -466,7 +472,7 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-
+                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
                 panelIngreso.add(fecha);
                 panelIngreso.add(deuda);
                 panelIngreso.add(montoDeudaC);
@@ -482,6 +488,8 @@ public class rellenarIngresos {
                 }
 
                 indice++;
+                panelPadre.removeAll();
+                panelPadre.updateUI();
                 listaIngresos.updateUI();
             }
 
@@ -509,7 +517,7 @@ public class rellenarIngresos {
         iconoOkDeudasC.addMouseListener(botonDeuC);
     }
 
-    void botonVentaC(JTextField montoVC, JComboBox inventario, JLabel iconoOkVentasC, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb,JComboBox cliente) {
+    void botonVentaC(JTextField montoVC, JComboBox inventario, JLabel iconoOkVentasC, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb,JComboBox cliente,  JPanel panelPadre) {
         MouseListener botonV = new MouseListener() {
 
             @Override
@@ -560,7 +568,7 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-
+                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
                 panelIngreso.add(fecha);
                 panelIngreso.add(inventarioLista);
                 panelIngreso.add(precio);
@@ -589,6 +597,8 @@ public class rellenarIngresos {
                 }
 
                 indice++;
+                panelPadre.removeAll();
+                panelPadre.updateUI();
                 listaIngresos.updateUI();
             }
 
@@ -617,7 +627,7 @@ public class rellenarIngresos {
     }
 
     //Para rellenar un ingreso:impuesto
-    public void botonDev(JTextField montoDev, JTextField devolucion, JLabel iconoOkDev, JScrollPane scrollIngresos, JPanel listaIngresos) {
+    public void botonDev(JTextField montoDev, JTextField devolucion, JLabel iconoOkDev, JScrollPane scrollIngresos, JPanel listaIngresos,  JPanel panelPadre) {
         MouseListener botonDev = new MouseListener() {
 
             @Override
@@ -649,7 +659,7 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-
+                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
                 panelIngreso.add(fecha);
                 panelIngreso.add(dev);
                 panelIngreso.add(montoDevolucion);
@@ -665,10 +675,11 @@ public class rellenarIngresos {
                 }
 
                 indice++;
+                panelPadre.removeAll();
+                panelPadre.updateUI();
                 listaIngresos.updateUI();
 
-                indice++;
-                listaIngresos.updateUI();
+               
             }
 
             @Override
@@ -762,7 +773,7 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-
+                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso));
                 panelIngreso.add(fecha);
                 panelIngreso.add(dev);
                 panelIngreso.add(montoDevolucion);
