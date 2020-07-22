@@ -1358,7 +1358,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarIngresos.repaint();
             
             rellenarIngresos.add(rellenarC.rellenarCredito());
-            rellenarCredito.botonCredito(rellenarC.montoC, rellenarC.inversor, rellenarC.iconoOkC, scrollIngresos, listaIngresos);
+            rellenarCredito.botonCredito(rellenarC.montoC, rellenarC.inversor, rellenarC.iconoOkC, scrollIngresos, listaIngresos,rellenarC.rellenarCredito);
             
             
         }
@@ -1371,7 +1371,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarIngresos.repaint();
             
             rellenarIngresos.add(rellenarI.rellenarInversion());
-            rellenarInversion.botonInversion(rellenarI.montoI, rellenarI.inversorI, rellenarI.iconoOkI, scrollIngresos, listaIngresos);
+            rellenarInversion.botonInversion(rellenarI.montoI, rellenarI.inversorI, rellenarI.iconoOkI, scrollIngresos, listaIngresos,rellenarI.rellenarInversion);
             
         }
         
@@ -1384,7 +1384,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarIngresos.repaint();
             
             rellenarIngresos.add(rellenarIm.rellenarImpuesto());
-            rellenarImpuesto.botonImpuesto(rellenarIm.montoImp, rellenarIm.impuesto, rellenarIm.iconoOkImp, scrollIngresos, listaIngresos);
+            rellenarImpuesto.botonImpuesto(rellenarIm.montoImp, rellenarIm.impuesto, rellenarIm.iconoOkImp, scrollIngresos, listaIngresos,rellenarIm.rellenarImpuesto);
         
         }
         
@@ -1397,7 +1397,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarIngresos.repaint();
             
             rellenarIngresos.add(rellenarDeuC.rellenarDeudasC());
-            rellenarDeudaCobrar.botonDeudaC(rellenarDeuC.montoDeuC, rellenarDeuC.deudor, rellenarDeuC.iconoOkDeudasC, scrollIngresos, listaIngresos);
+            rellenarDeudaCobrar.botonDeudaC(rellenarDeuC.montoDeuC, rellenarDeuC.deudor, rellenarDeuC.iconoOkDeudasC, scrollIngresos, listaIngresos,rellenarDeuC.rellenarDeudasC);
         
         }
         else if(comboIngresos.getSelectedItem().toString().equals("VENTAS A COB.") ) {
@@ -1415,7 +1415,7 @@ public class Libros extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
             }
-            rellenarVentaC.botonVentaC(rellenarVC.montoVC,rellenarVC.inventario, rellenarVC.iconoOkVentasC, scrollIngresos,listaIngresos, rellenarVC.plataformacb, rellenarVC.cliente);
+            rellenarVentaC.botonVentaC(rellenarVC.montoVC,rellenarVC.inventario, rellenarVC.iconoOkVentasC, scrollIngresos,listaIngresos, rellenarVC.plataformacb, rellenarVC.cliente,rellenarVC.rellenarVentasC);
           
         }
         
@@ -1430,7 +1430,7 @@ public class Libros extends javax.swing.JFrame {
                 
             
             rellenarIngresos.add(rellenarDev.rellenarDevoluciones());
-            rellenarDevolucion.botonDev(rellenarDev.montoDev,rellenarDev.devolucion, rellenarDev.iconoOkDev, scrollIngresos,listaIngresos);
+            rellenarDevolucion.botonDev(rellenarDev.montoDev,rellenarDev.devolucion, rellenarDev.iconoOkDev, scrollIngresos,listaIngresos,rellenarDev.rellenarDevoluciones);
           
         }
 
