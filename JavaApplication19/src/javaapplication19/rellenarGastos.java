@@ -72,7 +72,7 @@ public class rellenarGastos {
         boton.addMouseListener(botonV);
     }
     //Pone Gasto: Desarollo: Equipo y Mob
-    void botonDesEquipo(JComboBox tipo, JTextField desarrolloTipoE, JTextField descripcion, JTextField montoDes, JLabel iconoOkDesarrolloEq, JScrollPane scrollGastos, JPanel listaGastos){
+    void botonDesEquipo(JComboBox tipo, JTextField desarrolloTipoE, JTextField descripcion, JTextField montoDes, JLabel iconoOkDesarrolloEq, JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre){
         MouseListener botonV = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -109,6 +109,7 @@ public class rellenarGastos {
             panelGasto.add(fecha);
             panelGasto.add(desarrolloLista);
             panelGasto.add(precio);
+            panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
             String[] data = {(String) fechaActual(), "Equipo y Mob", desarrolloTipoE.getText(), montoDes.getText(), "    "};
@@ -160,6 +161,8 @@ public class rellenarGastos {
             }
             
             indice++;
+            panelPadre.removeAll();
+                panelPadre.updateUI();
             listaGastos.updateUI();
         }
 
@@ -188,7 +191,7 @@ public class rellenarGastos {
     }
     String tipoI2;
     //Pone Gasto: Desarollo: Inventario
-    void botonDesInv(JTextField desarrolloTipoI, JComboBox producto, JTextField montoDesI, JLabel iconoOkDesarrolloI, JScrollPane scrollGastos, JPanel listaGastos){
+    void botonDesInv(JTextField desarrolloTipoI, JComboBox producto, JTextField montoDesI, JLabel iconoOkDesarrolloI, JScrollPane scrollGastos, JPanel listaGastos,  JPanel panelPadre){
         MouseListener botonV = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -248,6 +251,8 @@ public class rellenarGastos {
                 }
             
             indice++;
+            panelPadre.removeAll();
+                panelPadre.updateUI();
             listaGastos.updateUI();
         }
 
@@ -276,7 +281,7 @@ public class rellenarGastos {
     }
     
     //Pone Gasto: Desarollo: Packs
-    void botonDesP(JTextField desarrolloTipoP, JComboBox tipoPack, JTextField montoDesP, JLabel iconoOkDesarrolloP, JScrollPane scrollGastos, JPanel listaGastos){
+    void botonDesP(JTextField desarrolloTipoP, JComboBox tipoPack, JTextField montoDesP, JLabel iconoOkDesarrolloP, JScrollPane scrollGastos, JPanel listaGastos,  JPanel panelPadre){
         MouseListener botonV = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -314,6 +319,7 @@ public class rellenarGastos {
             panelGasto.add(fecha);
             panelGasto.add(desarrolloLista);
             panelGasto.add(precio);
+            panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
             String[] data = {(String) fechaActual(), "Pack de Ventas", desarrolloTipoP.getText(),montoDesP.getText(), "    "};
@@ -330,6 +336,8 @@ public class rellenarGastos {
                 }
             
             indice++;
+            panelPadre.removeAll();
+                panelPadre.updateUI();
             listaGastos.updateUI();
         }
 
@@ -358,7 +366,7 @@ public class rellenarGastos {
     }
     
     //Pone Gasto: Desarollo: Compras en Transito
-    void botonDesCT(JTextField desarrolloTipoCT, JComboBox productoCT,JTextField montoDesCT, JLabel iconoOkDesarrolloCT, JScrollPane scrollGastos, JPanel listaGastos){
+    void botonDesCT(JTextField desarrolloTipoCT, JComboBox productoCT,JTextField montoDesCT, JLabel iconoOkDesarrolloCT, JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre){
         MouseListener botonV = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -400,6 +408,7 @@ public class rellenarGastos {
             panelGasto.add(fecha);
             panelGasto.add(desarrolloLista);
             panelGasto.add(precio);
+            panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
             String[] data = {(String) fechaActual(), "Compra en Transito", desarrolloTipoCT.getText() , montoDesCT.getText(),(String) productoCT.getSelectedItem()};
@@ -415,6 +424,8 @@ public class rellenarGastos {
                 
             
             indice++;
+            panelPadre.removeAll();
+                panelPadre.updateUI();
             listaGastos.updateUI();
         }
 
@@ -443,7 +454,7 @@ public class rellenarGastos {
     }
     
     //Para rellenar un Gasto:deudas
-    void botonDeudas(JComboBox deudas, JTextField montoDeuda, JLabel iconoOkDeudas,JScrollPane scrollGastos, JPanel listaGastos){
+    void botonDeudas(JComboBox deudas, JTextField montoDeuda, JLabel iconoOkDeudas,JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre){
         MouseListener botonC = new MouseListener() {
             
         @Override
@@ -481,6 +492,7 @@ public class rellenarGastos {
             panelGastoC.add(fecha);
             panelGastoC.add(deudasPagar);
             panelGastoC.add(precio);
+            panelGastoC.add(new JLabel(""));
             panelGastoC.add(icono);
             
             String [] data = {(String) fechaActual(), "Deudas a Pagar", (String) deudasPagar.getText(), precio.getText(),""};
@@ -494,6 +506,8 @@ public class rellenarGastos {
 
 
             indice++;
+            panelPadre.removeAll();
+                panelPadre.updateUI();
             listaGastos.updateUI();
         }
 
@@ -522,7 +536,7 @@ public class rellenarGastos {
     }
     
     //Para rellenar un Gasto:impuesto
-    void botonImpuestoG(JTextField impuesto, JTextField montoImpuesto, JLabel iconoOkImpuesto,JScrollPane scrollGastos, JPanel listaGastos){
+    void botonImpuestoG(JTextField impuesto, JTextField montoImpuesto, JLabel iconoOkImpuesto,JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre){
         MouseListener botonImp = new MouseListener() {
             
         @Override
@@ -560,9 +574,10 @@ public class rellenarGastos {
             panelGasto.add(fecha);
             panelGasto.add(imp);
             panelGasto.add(montoImpues);
+            panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
-            String [] data = {(String) fechaActual(), "Impuesto", (String) imp.getText(), montoImpues.getText()};
+            String [] data = {(String) fechaActual(), "Impuesto", (String) imp.getText(), montoImpues.getText(),""};
             
             Escribir escribirVentas = new Escribir();
                 try {
@@ -572,6 +587,8 @@ public class rellenarGastos {
                 }
 
             indice++;
+            panelPadre.removeAll();
+                panelPadre.updateUI();
             listaGastos.updateUI();
         }
 
@@ -600,7 +617,7 @@ public class rellenarGastos {
     }
     
     //Para rellenar un Gasto:mantenimiento
-    void botonMantenimiento(JTextField mantenimiento, JTextField montoMant, JLabel iconoOkMantenimiento,JScrollPane scrollGastos, JPanel listaGastos){
+    void botonMantenimiento(JTextField mantenimiento, JTextField montoMant, JLabel iconoOkMantenimiento,JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre){
         MouseListener botonI = new MouseListener() {
             
         @Override
@@ -638,6 +655,7 @@ public class rellenarGastos {
             panelGasto.add(fecha);
             panelGasto.add(descripcion);
             panelGasto.add(precioMant);
+            panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
             String [] data = {(String) fechaActual(), "Mantenimiento", (String) descripcion.getText(), precioMant.getText(),""};
@@ -650,6 +668,8 @@ public class rellenarGastos {
                 }
 
             indice++;
+            panelPadre.removeAll();
+                panelPadre.updateUI();
             listaGastos.updateUI();
         }
 
@@ -678,7 +698,7 @@ public class rellenarGastos {
     }
     
     //Para rellenar un Gasto:suministros
-    void botonSuministros(JTextField suministro, JTextField montoSum, JLabel iconoOkSuministros,JScrollPane scrollGastos, JPanel listaGastos){
+    void botonSuministros(JTextField suministro, JTextField montoSum, JLabel iconoOkSuministros,JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre){
         MouseListener botonImp = new MouseListener() {
             
         @Override
@@ -716,6 +736,7 @@ public class rellenarGastos {
             panelGasto.add(fecha);
             panelGasto.add(sum);
             panelGasto.add(monto);
+            panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
             String [] data = {(String) fechaActual(), "Suministros", (String) sum.getText(), monto.getText(),""};
@@ -729,6 +750,8 @@ public class rellenarGastos {
             
 
             indice++;
+            panelPadre.removeAll();
+                panelPadre.updateUI();
             listaGastos.updateUI();
         }
 
@@ -757,7 +780,7 @@ public class rellenarGastos {
     }
     
     //Para rellenar un Gasto:publicidad
-    public void botonPublicidad(JTextField publicidad, JTextField montoPublicidad, JLabel iconoOkPublicidad,JScrollPane scrollGastos, JPanel listaGastos){
+    public void botonPublicidad(JTextField publicidad, JTextField montoPublicidad, JLabel iconoOkPublicidad,JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre){
         MouseListener botonPub = new MouseListener() {
             
         @Override
@@ -795,6 +818,7 @@ public class rellenarGastos {
             panelGasto.add(fecha);
             panelGasto.add(pub);
             panelGasto.add(monto);
+            panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
             String [] data = {(String) fechaActual(), "Mantenimiento", (String) pub.getText(), monto.getText(),""};
@@ -807,6 +831,8 @@ public class rellenarGastos {
                 }
 
             indice++;
+            panelPadre.removeAll();
+                panelPadre.updateUI();
             listaGastos.updateUI();
         }
 
@@ -835,7 +861,7 @@ public class rellenarGastos {
     }
     
     //Para rellenar un Gasto:transporte
-    public void botonTransporte(JTextField transporte, JTextField montoTrans, JLabel iconoOkTransporte,JScrollPane scrollGastos, JPanel listaGastos){
+    public void botonTransporte(JTextField transporte, JTextField montoTrans, JLabel iconoOkTransporte,JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre){
         MouseListener botonImp = new MouseListener() {
             
         @Override
@@ -873,6 +899,7 @@ public class rellenarGastos {
             panelGasto.add(fecha);
             panelGasto.add(trans);
             panelGasto.add(monto);
+            panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
             String [] data = {(String) fechaActual(), "Transporte", (String) trans.getText(), monto.getText(),""};
@@ -885,6 +912,8 @@ public class rellenarGastos {
                 }
 
             indice++;
+            panelPadre.removeAll();
+                panelPadre.updateUI();
             listaGastos.updateUI();
         }
 
@@ -913,7 +942,7 @@ public class rellenarGastos {
     }
 
     //Para rellenar un Gasto:Honorarios
-    public void botonHonorarios(JTextField honorarios, JTextField montoHonor, JLabel iconoOkHonorarios,JScrollPane scrollGastos, JPanel listaGastos){
+    public void botonHonorarios(JTextField honorarios, JTextField montoHonor, JLabel iconoOkHonorarios,JScrollPane scrollGastos, JPanel listaGastos,JPanel panelPadre){
         MouseListener botonImp = new MouseListener() {
             
         @Override
@@ -951,6 +980,7 @@ public class rellenarGastos {
             panelGasto.add(fecha);
             panelGasto.add(hon);
             panelGasto.add(monto);
+            panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
             String [] data = {(String) fechaActual(), "Honorarios", (String) hon.getText(), monto.getText(),""};
@@ -963,6 +993,8 @@ public class rellenarGastos {
                 }
 
             indice++;
+            panelPadre.removeAll();
+                panelPadre.updateUI();
             listaGastos.updateUI();
         }
 
@@ -991,7 +1023,7 @@ public class rellenarGastos {
     }
     
     //Para rellenar un Gasto:reducInv
-    public void botonReducInv(JComboBox reducInv, JTextField montoReduc, JLabel iconoOkReducInv,JScrollPane scrollGastos, JPanel listaGastos){
+    public void botonReducInv(JComboBox reducInv, JTextField montoReduc, JLabel iconoOkReducInv,JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre){
         MouseListener botonImp = new MouseListener() {
             
         @Override
@@ -1029,6 +1061,7 @@ public class rellenarGastos {
             panelGasto.add(fecha);
             panelGasto.add(reduc);
             panelGasto.add(montoR);
+            panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
             String [] data = {(String) fechaActual(), "Reduccion de Inventario", (String) reduc.getText(), montoR.getText(),""};
@@ -1041,6 +1074,8 @@ public class rellenarGastos {
                 }
 
             indice++;
+            panelPadre.removeAll();
+                panelPadre.updateUI();
             listaGastos.updateUI();
         }
 
@@ -1143,6 +1178,7 @@ public class rellenarGastos {
                 panelGasto.add(fecha);
                 panelGasto.add(dev);
                 panelGasto.add(monto);
+                panelGasto.add(new JLabel(""));
                 panelGasto.add(icono);
 
                 indice++;
