@@ -33,7 +33,7 @@ public class rellenarGastos {
     public rellenarGastos(){
         panelesGastos = new ArrayList<>();
     }
-    void botonBorrar(JLabel boton, JPanel padre, JPanel hijo, int panelIndex){
+    void botonBorrar(JLabel boton, JPanel padre, JPanel hijo, int panelIndex, String img){
         MouseListener botonV = new MouseListener() {
 
             @Override
@@ -42,7 +42,7 @@ public class rellenarGastos {
                 panelesGastos.remove(hijo);
                 padre.updateUI();
                 try {
-                    Escribir.removeRow("src//excel/LibrosContables.xlsx", "Ingresos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Ingresos"));
+                    Escribir.removeRow("src//excel/LibrosContables.xlsx", "Gastos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Gastos"));
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -65,7 +65,7 @@ public class rellenarGastos {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                Iconos.scaleImage("ventasG", boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage(img, boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         };
 
@@ -104,7 +104,7 @@ public class rellenarGastos {
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);
             
-            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto));
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"equipoG");
 
             panelGasto.add(fecha);
             panelGasto.add(desarrolloLista);
@@ -224,6 +224,8 @@ public class rellenarGastos {
             Iconos.scaleImage("inventarioG", icono, 25);
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);
+            
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"inventarioG");
 
             panelGasto.add(fecha);
             panelGasto.add(desarrolloListaI);
@@ -306,7 +308,9 @@ public class rellenarGastos {
             Iconos.scaleImage("packsG", icono, 25);
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);
-
+            
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"packsG");
+            
             panelGasto.add(fecha);
             panelGasto.add(desarrolloLista);
             panelGasto.add(precio);
@@ -390,7 +394,9 @@ public class rellenarGastos {
             Iconos.scaleImage("comprasTG", icono, 25);
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);
-
+            
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"comprasTG");
+            
             panelGasto.add(fecha);
             panelGasto.add(desarrolloLista);
             panelGasto.add(precio);
@@ -467,15 +473,17 @@ public class rellenarGastos {
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             Iconos.scaleImage("DeudasPG_1", icono, 25);
-            listaGastos.add(panelGastoC);
+            listaGastos.add(panelGastoC, 0);
             panelesGastos.add(panelGastoC);//Ingresa el panelVenta a la arraylist panelesInresos
+            
+            botonBorrar(icono, listaGastos, panelGastoC, panelesGastos.indexOf(panelGastoC),"DeudasPG");
 
             panelGastoC.add(fecha);
             panelGastoC.add(deudasPagar);
             panelGastoC.add(precio);
             panelGastoC.add(icono);
             
-            String [] data = {(String) fechaActual(), "Deudas a Pagar", (String) deudasPagar.getText(), precio.getText()};
+            String [] data = {(String) fechaActual(), "Deudas a Pagar", (String) deudasPagar.getText(), precio.getText(),""};
             
             Escribir escribirVentas = new Escribir();
                 try {
@@ -546,6 +554,8 @@ public class rellenarGastos {
             Iconos.scaleImage("impuestoG", icono, 25);
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
+            
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"impuestoG");
 
             panelGasto.add(fecha);
             panelGasto.add(imp);
@@ -622,6 +632,8 @@ public class rellenarGastos {
             Iconos.scaleImage("mantenimientoG", icono, 25);
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
+            
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"mantenimientoG");
 
             panelGasto.add(fecha);
             panelGasto.add(descripcion);
@@ -698,6 +710,8 @@ public class rellenarGastos {
             Iconos.scaleImage("suministrosG", icono, 25);
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
+            
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"mantenimientoG");
 
             panelGasto.add(fecha);
             panelGasto.add(sum);
@@ -775,6 +789,8 @@ public class rellenarGastos {
             Iconos.scaleImage("publicidadG", icono, 25);
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
+            
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"publicidadG");
 
             panelGasto.add(fecha);
             panelGasto.add(pub);
@@ -851,6 +867,8 @@ public class rellenarGastos {
             Iconos.scaleImage("transporteG", icono, 25);
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
+            
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"transporteG");
 
             panelGasto.add(fecha);
             panelGasto.add(trans);
@@ -927,6 +945,8 @@ public class rellenarGastos {
             Iconos.scaleImage("honorariosG", icono, 25);
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
+            
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"honorariosG");
 
             panelGasto.add(fecha);
             panelGasto.add(hon);
@@ -1003,6 +1023,8 @@ public class rellenarGastos {
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
+            
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"inventarioG");
 
             panelGasto.add(fecha);
             panelGasto.add(reduc);
