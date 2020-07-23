@@ -318,9 +318,9 @@ public class rellenarGastos {
             
             String[] data = {(String) fechaActual(), "Pack de Ventas", desarrolloTipoP.getText(),montoDesP.getText(), "    "};
             if(tipoPack.getSelectedItem().toString().equals("Nuevo")){
-                    packsDeVentas inv =new packsDeVentas();
+                    packsDeVentas inv  = new packsDeVentas(desarrolloLista, precio);
                     inv.setVisible(true);
-                }
+            }
 
                 Escribir escribirVentas = new Escribir();
                 try {
