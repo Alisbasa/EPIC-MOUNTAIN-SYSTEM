@@ -7,8 +7,12 @@ package javaapplication19;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javaapplication19.inventarioPrincipal.fechaActual;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -18,17 +22,22 @@ import javax.swing.JPanel;
 public class packsDeVentas extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
-
+    static JLabel desarrolloTipoP;
+    static JLabel montoDesP;
+    
     /**
      * Creates new form clienteNuevo
+     * @param desarrolloTipoP
+     * @param montoDesP
      */
-    public packsDeVentas() {
+    public packsDeVentas(JLabel desarrolloTipoP, JLabel montoDesP) {
         initComponents();
+        this.desarrolloTipoP = desarrolloTipoP;
+        this.montoDesP = montoDesP;
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,10 +66,10 @@ public class packsDeVentas extends javax.swing.JFrame {
         jlPack = new javax.swing.JLabel();
         jcPack = new javax.swing.JComboBox<>();
         jlPack1 = new javax.swing.JLabel();
-        jtTIG = new javax.swing.JTextField();
+        jtPack = new javax.swing.JTextField();
         jpTIG = new javax.swing.JPanel();
         jlTIG = new javax.swing.JLabel();
-        jtTIG1 = new javax.swing.JTextField();
+        jtTIG = new javax.swing.JTextField();
         jpUbicacion = new javax.swing.JPanel();
         jtUnidades = new javax.swing.JTextField();
         jlUnidades = new javax.swing.JLabel();
@@ -207,10 +216,10 @@ public class packsDeVentas extends javax.swing.JFrame {
         jlPack1.setText("PACK");
         jpPack.add(jlPack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 30));
 
-        jtTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtTIG.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpPack.add(jtTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 120, 48));
-        jtTIG.setBackground(Colores.epicColorBajito);
+        jtPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        jtPack.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jpPack.add(jtPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 120, 48));
+        jtPack.setBackground(Colores.epicColorBajito);
 
         jpDatos.add(jpPack);
 
@@ -219,13 +228,13 @@ public class packsDeVentas extends javax.swing.JFrame {
 
         jlTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlTIG.setForeground(new java.awt.Color(255, 255, 255));
-        jlTIG.setText("PRECIO BASE POR UNIDAD");
-        jpTIG.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 310, 30));
+        jlTIG.setText("T.I.G");
+        jpTIG.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 60, 30));
 
-        jtTIG1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtTIG1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpTIG.add(jtTIG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 160, 48));
-        jtTIG.setBackground(Colores.epicColorBajito);
+        jtTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        jtTIG.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jpTIG.add(jtTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 160, 48));
+        jtPack.setBackground(Colores.epicColorBajito);
 
         jpDatos.add(jpTIG);
 
@@ -321,16 +330,23 @@ public class packsDeVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
-        String[] Registro = {}; 
-        Escribir EscribirCRM = new Escribir();
+        String[] Registro = {desarrolloTipoP.getText(), jtDesc.getText(),fechaActual(), jcPack.getSelectedItem().toString(),
+                             jtPack.getText(), jtTIG.getText(), jtUnidades.getText(),montoDesP.getText() }; 
+        Escribir escribirExcel = new Escribir();
         try {
-            EscribirCRM.escribirExcel("src\\excel\\CRM.xlsx", "CLIENTES", Registro);
+            escribirExcel.escribirExcelInv("src\\excel\\Packs.xlsx", "PacksVentas", Registro,8);
         } catch (IOException ex) {
             Logger.getLogger(packsDeVentas.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.setVisible(false);
     }//GEN-LAST:event_jbRegistrarMouseClicked
 
+    public static String fechaActual(){
+        java.util.Date fecha = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM YY");
+        return formatoFecha.format(fecha);
+    }
+    
     private void jtDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDescActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtDescActionPerformed
@@ -367,8 +383,9 @@ public class packsDeVentas extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new packsDeVentas().setVisible(true);
+                new packsDeVentas(desarrolloTipoP, montoDesP).setVisible(true);
             }
         });
     }
@@ -397,8 +414,8 @@ public class packsDeVentas extends javax.swing.JFrame {
     private javax.swing.JPanel jpTIG;
     private javax.swing.JPanel jpUbicacion;
     private javax.swing.JTextField jtDesc;
+    private javax.swing.JTextField jtPack;
     private javax.swing.JTextField jtTIG;
-    private javax.swing.JTextField jtTIG1;
     private javax.swing.JTextField jtUnidades;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel maxiIcon;
