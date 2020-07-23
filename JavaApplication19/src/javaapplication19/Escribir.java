@@ -90,7 +90,7 @@ public class Escribir {
         XSSFSheet newSheet = newWorkbook.getSheet(hoja);
         int rowCount = newSheet.getLastRowNum() - newSheet.getFirstRowNum();
         int renglones = 0;
-        CellStyle estilo= newSheet.getColumnStyle(2);
+        CellStyle estilo= newSheet.getColumnStyle(9);
         
 
         for (int i = 1; i <= rowCount; i++) {

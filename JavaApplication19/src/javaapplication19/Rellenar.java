@@ -89,7 +89,7 @@ public class Rellenar {
 
         String[] listaPlataformas = {"Mercado Libre", "Amazon", "Shopiffy"};
 
-        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
+        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 1));
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
         inventario.setPreferredSize(new Dimension(200, 30));
@@ -217,7 +217,7 @@ public class Rellenar {
         Iconos.scaleImage("DeudasC", iconoDeudasC, 40);
         rellenarDeudasC.add(iconoDeudasC);
 
-        deudor = new JComboBox(LeerExcel.rellenaCB2("src//excel/deudasC.xlsx", "deudasCobrar", 1));
+        deudor = new JComboBox(LeerExcel.rellenaCB2("src//excel/deudasC.xlsx", "deudasCobrar", 0));
         deudor.setBackground(Color.white);
         deudor.setUI(PropiedadesCB2.createUI(deudor));
 
@@ -247,7 +247,7 @@ public class Rellenar {
         String[] listaPlataformas = {"Mercado Libre", "Facebook", "Amazon", "Shopiffy"};
         String[] listaCRM = {"Alejandro", "Alvaro"};
 
-        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
+        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 1));
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
 

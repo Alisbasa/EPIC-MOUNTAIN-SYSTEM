@@ -423,7 +423,7 @@ public class RellenarG {
         Iconos.scaleImage("ok", iconoOkReducInv, 30);
         
     
-        reducInv = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "INVENTARIO", 0));
+        reducInv = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "INVENTARIO", 1));
         reducInv.setBackground(Color.white);
         reducInv.setUI( PropiedadesCB2.createUI(reducInv));
         

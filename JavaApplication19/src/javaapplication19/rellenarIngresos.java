@@ -153,15 +153,7 @@ public class rellenarIngresos {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
-                String [] venta = {fechaActual(), };
-                if(fechaActualEscribir().equals("julio")){
-                    try {
-                        escribirVentas.escribirExcelInv("src\\excel\\Ventas.xlsx", "JULIO", venta, 9);
-
-                    } catch (IOException ex) {
-                        Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
+                
                 
                 if(cliente.getSelectedItem().toString()=="Nuevo Cliente"){
                     clienteNuevo cliente =new clienteNuevo();
@@ -172,6 +164,13 @@ public class rellenarIngresos {
                 panelPadre.removeAll();
                 panelPadre.updateUI();
                 listaIngresos.updateUI();
+                try {
+                    vender(inventario,unidades);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
             }
 
             @Override
@@ -731,7 +730,7 @@ public class rellenarIngresos {
     
     public static String fechaActualEscribir() {
         java.util.Date fecha = new Date();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM");
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("MMMM");
         return formatoFecha.format(fecha);
     }
 
@@ -807,6 +806,36 @@ public class rellenarIngresos {
                 listaIngresos.updateUI();
             }
         }
+        
+    }
+    public void vender(JComboBox inventario,JComboBox unidadesCB) throws IOException{
+        String fecha = fechaActual();
+               
+        int seleccion=inventario.getSelectedIndex()+1;
+        
+        String venta= LeerExcel.obtenerCelda("src\\excel\\inventario.xlsx", "Inventario", 1, seleccion);
+        String descripion= LeerExcel.obtenerCelda("src\\excel\\inventario.xlsx", "Inventario", 2, seleccion);
+        String condicion= LeerExcel.obtenerCelda("src\\excel\\inventario.xlsx", "Inventario", 3, seleccion);
+        String pack= LeerExcel.obtenerCelda("src\\excel\\inventario.xlsx", "Inventario", 4, seleccion);
+        String tig= LeerExcel.obtenerCelda("src\\excel\\inventario.xlsx", "Inventario", 5, seleccion);
+        String unidades=unidadesCB.getSelectedItem().toString();
+        String costoUnidad=  Double.toString(LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 7, seleccion));
+        System.out.println(costoUnidad);
+        String costoNeto=  Double.toString(Integer.parseInt(unidades)*Double.parseDouble(costoUnidad));
+        String costoBaseUnidad=  Double.toString(LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 9, seleccion));
+        String costoBaseNeto=  Double.toString(Integer.parseInt(unidades)*Double.parseDouble(costoBaseUnidad));
+        
+        String[] data = {fecha,venta,descripion,condicion,pack,tig,unidades,costoUnidad,costoNeto,costoBaseUnidad,costoBaseNeto,};
+        
+        Escribir escribirVentas = new Escribir();       
+                
+                escribirVentas.escribirExcelInv("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), data, 10);
+                
+        
+        
+        
+        
+        
     }
 
 }
