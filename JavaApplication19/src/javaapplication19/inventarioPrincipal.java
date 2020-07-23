@@ -353,7 +353,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
                                rellenar.montoDesI.getText()};*/
         
         
-        String [] inventario = {nombre.getText(),jtDesc.getText(),fechaActual(),jcCond.getSelectedItem().toString(),
+        String [] inventario = {fechaActual(), nombre.getText(),jtDesc.getText(),jcCond.getSelectedItem().toString(),
                                 jcPack.getSelectedItem().toString(),jtTIG.getText(),jtUnidades.getText(),monto.getText()};
         Escribir EscribirCRM = new Escribir();
         try {
