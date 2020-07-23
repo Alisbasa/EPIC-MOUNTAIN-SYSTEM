@@ -85,6 +85,7 @@ public class rellenarIngresos {
         MouseListener botonV = new MouseListener() {
 
             @Override
+            @SuppressWarnings("empty-statement")
             public void mouseClicked(MouseEvent e) {
 
                 scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -150,6 +151,16 @@ public class rellenarIngresos {
                     
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                String [] venta = {fechaActual(), };
+                if(fechaActualEscribir().equals("julio")){
+                    try {
+                        escribirVentas.escribirExcelInv("src\\excel\\Ventas.xlsx", "JULIO", venta, 9);
+
+                    } catch (IOException ex) {
+                        Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
                 
                 if(cliente.getSelectedItem().toString()=="Nuevo Cliente"){
@@ -713,6 +724,12 @@ public class rellenarIngresos {
     }
 
     public static String fechaActual() {
+        java.util.Date fecha = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM");
+        return formatoFecha.format(fecha);
+    }
+    
+    public static String fechaActualEscribir() {
         java.util.Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM");
         return formatoFecha.format(fecha);
