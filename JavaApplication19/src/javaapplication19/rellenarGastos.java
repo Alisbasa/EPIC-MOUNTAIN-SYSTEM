@@ -110,6 +110,7 @@ public class rellenarGastos {
     }
     
     
+    
     //Pone Gasto: Desarollo: Equipo y Mob
     void botonDesEquipo(JComboBox tipo, JTextField desarrolloTipoE, JTextField descripcion, JTextField montoDes, JLabel iconoOkDesarrolloEq, JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre){
         MouseListener botonV = new MouseListener() {
@@ -198,9 +199,13 @@ public class rellenarGastos {
                     Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }    
             }
+            
+
+            
+            
             String tipoEquipo;
             try {
-                tipoEquipo = LeerExcel.obtenerCelda("src//excel/LibrosContables.xlsx", "Gastos", 5,
+                tipoEquipo = LeerExcel.obtenerCelda("src//excel/LibrosContables.xlsx", "Gastos", 4,
                              LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Gastos"));
                 
                 System.out.println(tipoEquipo);
@@ -208,6 +213,19 @@ public class rellenarGastos {
                     case "Herramientas":
                         botonBorrarInd(icono, "src\\excel\\Equipo.xlsx", "HERRAMIENTAS");
                     break;
+                    
+                    case "Equipo de Taller":
+                        botonBorrarInd(icono, "src\\excel\\Equipo.xlsx", "Equipo de Taller");
+                    break;
+                    
+                    case "Mobiliario":
+                        botonBorrarInd(icono, "src\\excel\\Equipo.xlsx", "Mobiliario");
+                    break;
+                    
+                    case "Equipo de Limpieza":
+                        botonBorrarInd(icono, "src\\excel\\Equipo.xlsx", "Equipo de Limpieza");
+                    break;
+                    
                 }
             
             } catch (IOException ex) {
@@ -349,7 +367,7 @@ public class rellenarGastos {
             panelGasto.setBackground(Colores.epicColorBajito);
             panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
             panelGasto.setMaximumSize(new Dimension(500,40));
-            panelGasto.setPreferredSize(new Dimension(500,100));;
+            panelGasto.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
@@ -435,7 +453,7 @@ public class rellenarGastos {
             panelGasto.setBackground(Colores.amarillo);
             panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20 , 5, 10));
             panelGasto.setMaximumSize(new Dimension(500,40));
-            panelGasto.setPreferredSize(new Dimension(500,100));;
+            panelGasto.setPreferredSize(new Dimension(500,100));
             
             JLabel fecha = new JLabel();
             fecha.setFont(new Font("Franklin Gothic",Font.PLAIN,14));

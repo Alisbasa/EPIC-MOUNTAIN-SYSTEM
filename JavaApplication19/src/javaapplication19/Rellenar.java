@@ -243,15 +243,13 @@ public class Rellenar {
         rellenarVentasC.setBackground(Color.white);
         Iconos.scaleImage("VentasC", iconoVentasC, 40);
         rellenarVentasC.add(iconoVentasC);
-        String[] listaInventario = {"inventario", "Bici chingona", "Bici Chingona 2", "Bici Chingona 3"};
         String[] listaPlataformas = {"Mercado Libre", "Facebook", "Amazon", "Shopiffy"};
-        String[] listaCRM = {"Alejandro", "Alvaro"};
 
         inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 1));
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
 
-        cliente = new JComboBox(LeerExcel.rellenaCB2("src//excel/CRM.xlsx", "Clientes", 0));
+        cliente = new JComboBox(LeerExcel.rellenaCB2("src//excel/CRM.xlsx", "Clientes", 1));
         cliente.addItem("Nuevo Cliente");
         cliente.setBackground(Color.white);
         cliente.setUI(PropiedadesCB2.createUI(cliente));

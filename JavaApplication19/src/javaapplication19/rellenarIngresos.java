@@ -523,7 +523,7 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"DeudasCG");
+                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"DeudasCG");  
                 panelIngreso.add(fecha);
                 panelIngreso.add(deuda);
                 panelIngreso.add(montoDeudaC);
@@ -648,7 +648,7 @@ public class rellenarIngresos {
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                botonBorrarInd(icono, "src\\excel\\DeudasC.xlsx", "deudasCobrar");
+                botonBorrarInd(icono, "src\\excel\\Ventas.xlsx", "deudasCobrar");
                 
                 indice++;
                 panelPadre.removeAll();
