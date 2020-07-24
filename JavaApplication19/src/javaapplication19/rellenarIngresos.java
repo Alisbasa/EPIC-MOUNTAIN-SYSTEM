@@ -77,6 +77,43 @@ public class rellenarIngresos {
 
         boton.addMouseListener(botonV);
     }
+    
+    void botonBorrarInd(JLabel boton, String filepath, String hoja){
+        MouseListener botonV = new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Escribir.removeRow(filepath, hoja , LeerExcel.contarRenglones(filepath, hoja));
+                    //Escribir.removeRow("src//excel/LibrosContables.xlsx", "Gastos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Gastos"));
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //Iconos.scaleImage("cancelG", boton, 20);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                //Iconos.scaleImage(img, boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+
+        boton.addMouseListener(botonV);
+    }
         
     
 
@@ -134,10 +171,8 @@ public class rellenarIngresos {
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
                 
                 botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"ventasG");
+                botonBorrarInd(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
                 
-                
-                 
-
                 panelIngreso.add(fecha);
                 panelIngreso.add(inventarioLista);
                 panelIngreso.add(precio);
@@ -231,6 +266,7 @@ public class rellenarIngresos {
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
                 botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"CreditoG");
+                botonBorrarInd(icono, "src\\excel\\DeudasP.xlsx", "DeudasPagar");
 
                 panelIngreso.add(fecha);
                 panelIngreso.add(credito);
@@ -342,7 +378,9 @@ public class rellenarIngresos {
                 } catch (IOException ex) {
                     Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+                
+                botonBorrarInd(icono, "src\\excel\\DeudasP.xlsx", "DeudasPagar");
+                
                 indice++;
                 panelPadre.removeAll();
                 panelPadre.updateUI();
@@ -610,7 +648,8 @@ public class rellenarIngresos {
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+                botonBorrarInd(icono, "src\\excel\\DeudasC.xlsx", "deudasCobrar");
+                
                 indice++;
                 panelPadre.removeAll();
                 panelPadre.updateUI();
@@ -641,7 +680,7 @@ public class rellenarIngresos {
         iconoOkVentasC.addMouseListener(botonV);
     }
 
-    //Para rellenar un ingreso:impuesto
+    //Para rellenar un ingreso:devolucion
     public void botonDev(JTextField montoDev, JTextField devolucion, JLabel iconoOkDev, JScrollPane scrollIngresos, JPanel listaIngresos,  JPanel panelPadre) {
         MouseListener botonDev = new MouseListener() {
 

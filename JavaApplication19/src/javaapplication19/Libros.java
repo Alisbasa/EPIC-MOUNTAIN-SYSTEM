@@ -1501,9 +1501,13 @@ public class Libros extends javax.swing.JFrame {
             rellenarGastos.revalidate();
             rellenarGastos.repaint();
             
-            rellenarGastos.add(rellenarDes.rellenarDesCompras());
+            try {
+                rellenarGastos.add(rellenarDes.rellenarDesCompras());
+            } catch (IOException ex) {
+                Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
-            rellenarDesCompra.botonDesCT(rellenarDes.desarrolloTipoCT, rellenarDes.productoCT, rellenarDes.montoDesCT, rellenarDes.iconoOkDesarrolloCT, scrollGastos, listaGastos, rellenarDes.rellenarDesCompras);  
+            rellenarDesCompra.botonDesCT(rellenarDes.desarrolloTipoCT, rellenarDes.productoCT, rellenarDes.montoDesCT, rellenarDes.iconoOkDesarrolloCT, scrollGastos, listaGastos, rellenarDes.rellenarDesCompras, rellenarDes.provedores);  
         }
         
         

@@ -33,7 +33,7 @@ public class rellenarGastos {
     public rellenarGastos(){
         panelesGastos = new ArrayList<>();
     }
-    void botonBorrar(JLabel boton, JPanel padre, JPanel hijo, int panelIndex, String img){
+    void botonBorrar(JLabel boton, JPanel padre, JPanel hijo, int panelIndex, String img, String filepath, String hoja){
         MouseListener botonV = new MouseListener() {
 
             @Override
@@ -42,7 +42,8 @@ public class rellenarGastos {
                 panelesGastos.remove(hijo);
                 padre.updateUI();
                 try {
-                    Escribir.removeRow("src//excel/LibrosContables.xlsx", "Gastos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Gastos"));
+                    Escribir.removeRow(filepath, hoja , LeerExcel.contarRenglones(filepath, hoja));
+                    //Escribir.removeRow("src//excel/LibrosContables.xlsx", "Gastos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Gastos"));
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -71,6 +72,44 @@ public class rellenarGastos {
 
         boton.addMouseListener(botonV);
     }
+    void botonBorrarInd(JLabel boton, String filepath, String hoja){
+        MouseListener botonV = new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Escribir.removeRow(filepath, hoja , LeerExcel.contarRenglones(filepath, hoja));
+                    //Escribir.removeRow("src//excel/LibrosContables.xlsx", "Gastos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Gastos"));
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //Iconos.scaleImage("cancelG", boton, 20);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                //Iconos.scaleImage(img, boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+
+        boton.addMouseListener(botonV);
+    }
+    
+    
     //Pone Gasto: Desarollo: Equipo y Mob
     void botonDesEquipo(JComboBox tipo, JTextField desarrolloTipoE, JTextField descripcion, JTextField montoDes, JLabel iconoOkDesarrolloEq, JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre){
         MouseListener botonV = new MouseListener() {
@@ -104,7 +143,7 @@ public class rellenarGastos {
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);
             
-            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"equipoG");
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"equipoG", "src//excel/LibrosContables.xlsx", "Gastos");
 
             panelGasto.add(fecha);
             panelGasto.add(desarrolloLista);
@@ -112,7 +151,7 @@ public class rellenarGastos {
             panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
-            String[] data = {(String) fechaActual(), "Equipo y Mob", desarrolloTipoE.getText(), montoDes.getText(), "    "};
+            String[] data = {(String) fechaActual(), "Equipo y Mob", desarrolloTipoE.getText(), montoDes.getText(), tipo.getSelectedItem().toString()};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -158,6 +197,21 @@ public class rellenarGastos {
                 } catch (IOException ex) {
                     Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }    
+            }
+            String tipoEquipo;
+            try {
+                tipoEquipo = LeerExcel.obtenerCelda("src//excel/LibrosContables.xlsx", "Gastos", 5,
+                             LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Gastos"));
+                
+                System.out.println(tipoEquipo);
+                switch(tipoEquipo){
+                    case "Herramientas":
+                        botonBorrarInd(icono, "src\\excel\\Equipo.xlsx", "HERRAMIENTAS");
+                    break;
+                }
+            
+            } catch (IOException ex) {
+                Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
             }
             
             indice++;
@@ -228,7 +282,9 @@ public class rellenarGastos {
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);
             
-            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"inventarioG");
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"inventarioG", "src//excel/LibrosContables.xlsx", "Gastos");;
+            
+            botonBorrarInd(icono,"src\\excel\\Inventario.xlsx","Inventario");
 
             panelGasto.add(fecha);
             panelGasto.add(desarrolloListaI);
@@ -314,7 +370,8 @@ public class rellenarGastos {
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);
             
-            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"packsG");
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"packsG", "src//excel/LibrosContables.xlsx", "Gastos");
+            botonBorrarInd(icono,"src\\excel\\Packs.xlsx", "PacksVentas");
             
             panelGasto.add(fecha);
             panelGasto.add(desarrolloLista);
@@ -366,7 +423,7 @@ public class rellenarGastos {
     }
     
     //Pone Gasto: Desarollo: Compras en Transito
-    void botonDesCT(JTextField desarrolloTipoCT, JComboBox productoCT,JTextField montoDesCT, JLabel iconoOkDesarrolloCT, JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre){
+    void botonDesCT(JTextField desarrolloTipoCT, JComboBox productoCT,JTextField montoDesCT, JLabel iconoOkDesarrolloCT, JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre, JComboBox provedores){
         MouseListener botonV = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -403,7 +460,8 @@ public class rellenarGastos {
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);
             
-            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"comprasTG");
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"comprasTG", "src//excel/LibrosContables.xlsx", "Gastos");
+            botonBorrarInd(icono,"src\\excel\\comprasT.xlsx", "COMPRAS");
             
             panelGasto.add(fecha);
             panelGasto.add(desarrolloLista);
@@ -412,14 +470,19 @@ public class rellenarGastos {
             panelGasto.add(icono);
             
             String[] data = {(String) fechaActual(), "Compra en Transito", desarrolloTipoCT.getText() , montoDesCT.getText(),(String) productoCT.getSelectedItem()};
-
+            String[] compraT = {productoCT.getSelectedItem().toString(), desarrolloTipoCT.getText(), provedores.getSelectedItem().toString(), 
+                               (String) fechaActual(), "Unidades", montoDesCT.getText(), "Monto Total"};
                 Escribir escribirVentas = new Escribir();
                 try {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                    escribirVentas.escribirExcelInv("src\\excel\\comprasT.xlsx", "COMPRAS", compraT, 7);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+            if(provedores.getSelectedItem().toString()=="Nuevo"){
+                    Provedores prov =new Provedores();
+                    prov.setVisible(true);
+                }
                 
                 
             
@@ -487,7 +550,7 @@ public class rellenarGastos {
             listaGastos.add(panelGastoC, 0);
             panelesGastos.add(panelGastoC);//Ingresa el panelVenta a la arraylist panelesInresos
             
-            botonBorrar(icono, listaGastos, panelGastoC, panelesGastos.indexOf(panelGastoC),"DeudasPG");
+            botonBorrar(icono, listaGastos, panelGastoC, panelesGastos.indexOf(panelGastoC),"DeudasPG", "src//excel/LibrosContables.xlsx", "Gastos");
 
             panelGastoC.add(fecha);
             panelGastoC.add(deudasPagar);
@@ -569,7 +632,7 @@ public class rellenarGastos {
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
             
-            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"impuestoG");
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"impuestoG", "src//excel/LibrosContables.xlsx", "Gastos");
 
             panelGasto.add(fecha);
             panelGasto.add(imp);
@@ -650,7 +713,7 @@ public class rellenarGastos {
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
             
-            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"mantenimientoG");
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"mantenimientoG", "src//excel/LibrosContables.xlsx", "Gastos");
 
             panelGasto.add(fecha);
             panelGasto.add(descripcion);
@@ -731,7 +794,7 @@ public class rellenarGastos {
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
             
-            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"mantenimientoG");
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"mantenimientoG", "src//excel/LibrosContables.xlsx", "Gastos");
 
             panelGasto.add(fecha);
             panelGasto.add(sum);
@@ -813,7 +876,7 @@ public class rellenarGastos {
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
             
-            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"publicidadG");
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"publicidadG", "src//excel/LibrosContables.xlsx", "Gastos");
 
             panelGasto.add(fecha);
             panelGasto.add(pub);
@@ -894,7 +957,7 @@ public class rellenarGastos {
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
             
-            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"transporteG");
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"transporteG", "src//excel/LibrosContables.xlsx", "Gastos");
 
             panelGasto.add(fecha);
             panelGasto.add(trans);
@@ -975,7 +1038,7 @@ public class rellenarGastos {
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
             
-            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"honorariosG");
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"honorariosG", "src//excel/LibrosContables.xlsx", "Gastos");
 
             panelGasto.add(fecha);
             panelGasto.add(hon);
@@ -1056,7 +1119,7 @@ public class rellenarGastos {
             listaGastos.add(panelGasto,0);
             panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
             
-            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"inventarioG");
+            botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto),"inventarioG", "src//excel/LibrosContables.xlsx", "Gastos");
 
             panelGasto.add(fecha);
             panelGasto.add(reduc);
