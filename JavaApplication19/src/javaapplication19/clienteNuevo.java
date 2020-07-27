@@ -300,7 +300,7 @@ public class clienteNuevo extends javax.swing.JFrame {
         String[] Registro = {jtNombre.getText(),jtNumero.getText(),jtCorreo.getText(),jtUbicacion.getText()}; 
         Escribir EscribirCRM = new Escribir();
         try {
-            EscribirCRM.escribirExcel("src\\excel\\CRM.xlsx", "CLIENTES", Registro);
+            EscribirCRM.escribirExcelClientes("src\\excel\\CRM.xlsx", "CLIENTES", Registro);
         } catch (IOException ex) {
             Logger.getLogger(clienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -32,6 +32,8 @@ public class Escribir {
         FileInputStream inputStream = new FileInputStream(file);
         XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
         XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+        newSheet.setDefaultRowHeight((short) 500.0);
+
         int rowCount = newSheet.getLastRowNum() - newSheet.getFirstRowNum();
         int renglones = 0;
         for (int i = 1; i <= rowCount; i++) {
@@ -45,6 +47,11 @@ public class Escribir {
         //System.out.println(renglones);
         XSSFRow row = newSheet.getRow(0);
         XSSFRow newRow = newSheet.createRow(renglones + 1);
+         XSSFRow suma = newSheet.createRow(renglones + 2);
+        suma.setRowStyle(row.getRowStyle());
+        XSSFCell celda = newRow.createCell(3);
+        celda.setCellFormula("SUM(D2:D"+renglones+1+")");
+        newWorkbook.setForceFormulaRecalculation(true);
 
         for (int i = 0; i < row.getLastCellNum(); i++) {
             XSSFCell newCell = newRow.createCell(i);
@@ -57,7 +64,40 @@ public class Escribir {
         outputStream.close();
 
     }
+    
+    public void escribirExcelClientes(String filepath, String hoja, String[] data) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+        newSheet.setDefaultRowHeight((short) 500.0);
 
+        int rowCount = newSheet.getLastRowNum() - newSheet.getFirstRowNum();
+        int renglones = 0;
+        for (int i = 1; i <= rowCount; i++) {
+            XSSFRow row = newSheet.getRow(i);
+            if (row.getCell(0).getCellType() != CellType.BLANK) {
+                renglones++;
+            } else {
+                break;
+            }
+        }
+        //System.out.println(renglones);
+        XSSFRow row = newSheet.getRow(0);
+        XSSFRow newRow = newSheet.createRow(renglones + 1);
+       
+        
+        for (int i = 0; i < row.getLastCellNum(); i++) {
+            XSSFCell newCell = newRow.createCell(i);
+            newCell.setCellValue(data[i]);
+        }
+
+        inputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkbook.write(outputStream);
+        outputStream.close();
+
+    }
     public static void removeRow(String filepath, String hoja, int rowIndex) throws FileNotFoundException, IOException {
         File file = new File(filepath);
         FileInputStream inputStream = new FileInputStream(file);

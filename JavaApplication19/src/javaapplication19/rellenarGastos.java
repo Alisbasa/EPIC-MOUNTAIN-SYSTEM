@@ -1201,6 +1201,7 @@ public class rellenarGastos {
     
     public void rellenarLibro(JScrollPane scrollGastos, JPanel listaGastos) throws IOException {
         if (!LeerExcel.tablaVacia("src\\excel\\LibrosContables.xlsx", "Gastos")) {
+            
             for (int i = 1; i <= LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"); i++) {
                 PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
                 panelGasto.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
