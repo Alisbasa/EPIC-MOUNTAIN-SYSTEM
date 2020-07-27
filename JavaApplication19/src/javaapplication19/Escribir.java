@@ -134,7 +134,10 @@ public class Escribir {
 
         //System.out.println(renglones);
         XSSFRow row = newSheet.getRow(0);
-        XSSFRow newRow = newSheet.createRow(renglones + 2);
+        XSSFRow newRow = newSheet.createRow(renglones+1);
+        XSSFCell newCell = newRow.getCell(col);
+        newCell.setCellFormula(hoja);
+        
 
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);

@@ -152,7 +152,7 @@ public class rellenarGastos {
             panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
-            String[] data = {(String) fechaActual(), "Equipo y Mob", desarrolloTipoE.getText(), montoDes.getText(), tipo.getSelectedItem().toString()};
+            String[] data = {(String) fechaActual(), "Equipo y Mob", desarrolloTipoE.getText(), montoDes.getText(), tipo.getSelectedItem().toString(), " "};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -163,13 +163,11 @@ public class rellenarGastos {
             
             if(tipo.getSelectedItem().toString().equals("Herramientas")){
                 String [] equipo = {(String) fechaActual(), desarrolloTipoE.getText(), descripcion.getText() ,montoDes.getText()};
-                String [] dataFormula = {" ", " ", " ", "SUM(D2:D63)"};
             Escribir EscribirExcel = new Escribir();
                 try {
                     EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Herramientas",equipo,4);
-                    //EscribirExcel.escribirExcel2("src\\excel\\Equipo.xlsx", "Herramientas", dataFormula);
-                    Escribir.removeRow("src\\excel\\Equipo.xlsx", "Herramientas", LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas"));
-                    
+                    //Escribir.removeRow("src\\excel\\Equipo.xlsx", "Herramientas", LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas"));
+                    //EscribirExcel.escribirExcel2("src\\excel\\Equipo.xlsx", "Herramientas", 3, LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas"));
                 } catch (IOException ex) {
                     Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }                
