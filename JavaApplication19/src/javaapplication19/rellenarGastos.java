@@ -152,7 +152,7 @@ public class rellenarGastos {
             panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
-            String[] data = {(String) fechaActual(), "Equipo y Mob", desarrolloTipoE.getText(), montoDes.getText(), tipo.getSelectedItem().toString(), " "};
+            String[] data = {(String) fechaActual(), "Equipo y Mob", desarrolloTipoE.getText(), montoDes.getText(), tipo.getSelectedItem().toString() ,"VERDE"};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -314,7 +314,7 @@ public class rellenarGastos {
             panelGasto.add(precioI);
             panelGasto.add(icono);
             
-            String[] data = {(String) fechaActual(), "Inventario", desarrolloTipoI.getText(),montoDesI.getText(),(String) producto.getSelectedItem()};
+            String[] data = {(String) fechaActual(), "Inventario", desarrolloTipoI.getText(),montoDesI.getText(),(String) producto.getSelectedItem(),"VERDE"};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -401,7 +401,7 @@ public class rellenarGastos {
             panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
-            String[] data = {(String) fechaActual(), "Pack de Ventas", desarrolloTipoP.getText(),montoDesP.getText(), "    "};
+            String[] data = {(String) fechaActual(), "Pack de Ventas", desarrolloTipoP.getText(),montoDesP.getText(), "    ","VERDE"};
             if(tipoPack.getSelectedItem().toString().equals("Nuevo")){
                     packsDeVentas inv  = new packsDeVentas(desarrolloLista, precio);
                     inv.setVisible(true);
@@ -491,7 +491,7 @@ public class rellenarGastos {
             panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
-            String[] data = {(String) fechaActual(), "Compra en Transito", desarrolloTipoCT.getText() , montoDesCT.getText(),(String) productoCT.getSelectedItem()};
+            String[] data = {(String) fechaActual(), "Compra en Transito", desarrolloTipoCT.getText() , montoDesCT.getText(),(String) productoCT.getSelectedItem(),"VERDE"};
             String[] compraT = {productoCT.getSelectedItem().toString(), desarrolloTipoCT.getText(), provedores.getSelectedItem().toString(), 
                                (String) fechaActual(), "Unidades", montoDesCT.getText(), "Monto Total"};
                 Escribir escribirVentas = new Escribir();
