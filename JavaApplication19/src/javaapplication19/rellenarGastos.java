@@ -163,9 +163,11 @@ public class rellenarGastos {
             
             if(tipo.getSelectedItem().toString().equals("Herramientas")){
                 String [] equipo = {(String) fechaActual(), desarrolloTipoE.getText(), descripcion.getText() ,montoDes.getText()};
+                String [] dataFormula = {" ", " ", " ", "SUM(D2:D63)"};
             Escribir EscribirExcel = new Escribir();
                 try {
                     EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Herramientas",equipo,4);
+                    //EscribirExcel.escribirExcel2("src\\excel\\Equipo.xlsx", "Herramientas", dataFormula);
                 } catch (IOException ex) {
                     Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }                

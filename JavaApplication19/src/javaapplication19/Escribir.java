@@ -94,6 +94,7 @@ public class Escribir {
         
 
         for (int i = 1; i <= rowCount; i++) {
+            System.out.println(i);
             XSSFRow row = newSheet.getRow(i);
             
             estilo = row.getCell(0).getCellStyle();
@@ -108,6 +109,7 @@ public class Escribir {
         XSSFRow row = newSheet.getRow(0);
 
         newSheet.shiftRows(renglones + 1, renglones + 2, 1, true, true);
+        XSSFRow newRow2 = newSheet.createRow(renglones);
         XSSFRow newRow = newSheet.createRow(renglones + 1);
         
 
@@ -115,13 +117,42 @@ public class Escribir {
             XSSFCell newCell = newRow.createCell(i);
             newCell.setCellValue(data[i]);
             newCell.setCellStyle(estilo);
-          
-            
+           
         }
 
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkbook.write(outputStream);
         outputStream.close();
+    }
+    public void escribirExcel2(String filepath, String hoja, String[] data) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+        int rowCount = newSheet.getLastRowNum() - newSheet.getFirstRowNum();
+        int renglones = 0;
+        for (int i = 1; i <= rowCount; i++) {
+            XSSFRow row = newSheet.getRow(i);
+            if (row.getCell(0).getCellType() != CellType.BLANK) {
+                renglones++;
+            } else {
+                break;
+            }
+        }
+        //System.out.println(renglones);
+        XSSFRow row = newSheet.getRow(0);
+        XSSFRow newRow = newSheet.createRow(renglones + 2);
+
+        for (int i = 0; i < row.getLastCellNum(); i++) {
+            XSSFCell newCell = newRow.createCell(i);
+            newCell.setCellValue(data[i]);
+        }
+
+        inputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkbook.write(outputStream);
+        outputStream.close();
+
     }
 }
