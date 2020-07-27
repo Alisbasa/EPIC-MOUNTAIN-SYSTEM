@@ -249,7 +249,7 @@ public class Rellenar {
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
 
-        cliente = new JComboBox(LeerExcel.rellenaCB2("src//excel/CRM.xlsx", "Clientes", 1));
+        cliente = new JComboBox(LeerExcel.rellenaCB2("src//excel/CRM.xlsx", "Clientes", 0));
         cliente.addItem("Nuevo Cliente");
         cliente.setBackground(Color.white);
         cliente.setUI(PropiedadesCB2.createUI(cliente));
