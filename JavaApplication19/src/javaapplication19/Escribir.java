@@ -109,7 +109,6 @@ public class Escribir {
         XSSFRow row = newSheet.getRow(0);
 
         newSheet.shiftRows(renglones + 1, renglones + 2, 1, true, true);
-        XSSFRow newRow2 = newSheet.createRow(renglones);
         XSSFRow newRow = newSheet.createRow(renglones + 1);
         
 
@@ -159,6 +158,28 @@ public class Escribir {
             XSSFCell newCell = row.createCell(columna);
             newCell.setCellValue(data);
         
+
+        inputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkbook.write(outputStream);
+        outputStream.close();
+
+    }
+    
+    public void escribirFormula(String filepath, String hoja,String formula, int fila,int columna) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+        
+        //System.out.println(renglones);
+        XSSFRow row = newSheet.getRow(fila);
+        
+
+        
+            XSSFCell newCell = row.createCell(columna);
+            newCell.setCellFormula(formula);
+            newWorkbook.setForceFormulaRecalculation(true);
 
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
