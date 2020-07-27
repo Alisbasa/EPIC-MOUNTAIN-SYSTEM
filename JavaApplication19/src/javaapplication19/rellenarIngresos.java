@@ -5,7 +5,6 @@
  */
 package javaapplication19;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -178,7 +177,7 @@ public class rellenarIngresos {
                 panelIngreso.add(precio);
                 panelIngreso.add(plataforma);
                 panelIngreso.add(icono);
-                String[] data = {(String) fechaActual(), "Venta", (String) inventario.getSelectedItem(), precioExcel, plataforma.getText()};
+                String[] data = {(String) fechaActual(), "Venta", (String) inventario.getSelectedItem(), precioExcel, plataforma.getText(),"VERDE"};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -274,7 +273,7 @@ public class rellenarIngresos {
                 panelIngreso.add(new JLabel(""));
                 panelIngreso.add(icono);
 
-                String[] data = {(String) fechaActual(), "Crédito", (String) inversor.getText(), montoC.getText(), "    "};
+                String[] data = {(String) fechaActual(), "Crédito", (String) inversor.getText(), montoC.getText(), "    ","VERDE"};
                 
                 String[]deuda = {(String) fechaActual(), inversor.getText(), montoC.getText()};
 
@@ -362,7 +361,7 @@ public class rellenarIngresos {
                 panelIngreso.add(new JLabel(""));
                 panelIngreso.add(icono);
 
-                String[] data = {(String) fechaActual(), "Inversión", (String) inversorI.getText(), montoI.getText(), "    "};
+                String[] data = {(String) fechaActual(), "Inversión", (String) inversorI.getText(), montoI.getText(), "    ","VERDE"};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -451,7 +450,7 @@ public class rellenarIngresos {
                 panelIngreso.add(new JLabel(""));
                 panelIngreso.add(icono);
 
-                String[] data = {(String) fechaActual(), "Impuesto a favor", (String) impuesto.getText(), montoImp.getText(), "    "};
+                String[] data = {(String) fechaActual(), "Impuesto a favor", (String) impuesto.getText(), montoImp.getText(), "    ","VERDE"};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -530,7 +529,7 @@ public class rellenarIngresos {
                 panelIngreso.add(new JLabel(""));
                 panelIngreso.add(icono);
                 
-                String[] data = {(String) fechaActual(), "Deuda a Cobrar",  deuda.getText(), montoDeudaC.getText(), "    "};
+                String[] data = {(String) fechaActual(), "Deuda a Cobrar",  deuda.getText(), montoDeudaC.getText(), "    ","AMARILLO"};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -627,7 +626,7 @@ public class rellenarIngresos {
                 panelIngreso.add(plataforma);
                 panelIngreso.add(new JLabel(""));
                 panelIngreso.add(icono);
-                String[] data = {(String) fechaActual(), "Venta a Cobrar", (String) inventario.getSelectedItem(), montoVC.getText(), plataforma.getText()};
+                String[] data = {(String) fechaActual(), "Venta a Cobrar", (String) inventario.getSelectedItem(), montoVC.getText(), plataforma.getText(),"AMARILLO"};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -720,7 +719,7 @@ public class rellenarIngresos {
                 panelIngreso.add(new JLabel(""));
                 panelIngreso.add(icono);
                 
-                String[] data = {(String) fechaActual(), "Devolucion", dev.getText(), montoDevolucion.getText(), "   "};
+                String[] data = {(String) fechaActual(), "Devolucion", dev.getText(), montoDevolucion.getText(), "   ","VERDE"};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -821,13 +820,28 @@ public class rellenarIngresos {
                         break;
                     case "Venta a Cobrar":
                         IconoTipo = "VentasG";
-                        panelIngreso.setBackground(Colores.amarillo);
+                        
                         
                         break;
                     case "Devolucion":
                         IconoTipo = "devolucionG";
                         break;
                 }
+                
+                String colorR = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 5, i);
+                switch (colorR) {
+                    case "VERDE":
+                        panelIngreso.setBackground(Colores.epicColorBajito);
+                        break;
+                    case "AMARILLO":
+                        panelIngreso.setBackground(Colores.amarillo);
+                        break;
+                    case "GRIS":
+                        panelIngreso.setBackground(Colores.gris);
+                        break;
+                    
+                }
+                
 
                 JLabel icono = new JLabel();
                 Iconos.scaleImage(IconoTipo, icono, 30);
