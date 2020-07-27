@@ -837,7 +837,7 @@ public class rellenarIngresos {
                         panelIngreso.setBackground(Colores.amarillo);
                         break;
                     case "GRIS":
-                        panelIngreso.setBackground(Colores.gris);
+                        panelIngreso.setBackground(Colores.grisBajito);
                         break;
                     
                 }
@@ -883,12 +883,100 @@ public class rellenarIngresos {
         Escribir escribirVentas = new Escribir();       
                 
                 escribirVentas.escribirExcelInv("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), data, 10);
+      
+    }
+    
+    public void corte(JScrollPane scrollIngresos, JPanel listaIngresos) throws IOException{
+        listaIngresos.removeAll();
+        if (!LeerExcel.tablaVacia("src\\excel\\LibrosContables.xlsx", "Ingresos")) {
+            for (int i = 1; i <=LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"); i++) {
+                PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
+                panelIngreso.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+                panelIngreso.setLayout(new GridLayout(1, 5));
+                panelIngreso.setBackground(Colores.grisBajito);
+                panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
+                panelIngreso.setMaximumSize(new Dimension(500, 40));
+                panelIngreso.setPreferredSize(new Dimension(500, 100));
+
+                JLabel fecha = new JLabel();
+                fecha.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+                fecha.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 0, i));
+
+                JLabel dev = new JLabel();
+                dev.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+                dev.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 2, i));
+
+                JLabel montoDevolucion = new JLabel();
+                montoDevolucion.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+                montoDevolucion.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 3, i));
                 
-        
-        
-        
-        
+                JLabel plataforma = new JLabel();
+                plataforma.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+                plataforma.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 4, i));
+
+
+                String IconoTipo = "VentasG";
+                String tipo = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 1, i);
+                switch (tipo) {
+                    case "Venta":
+                        IconoTipo = "VentasG";
+                        break;
+                    case "Inversión":
+                        IconoTipo = "inversionG";
+                        break;
+                    case "Crédito":
+                        IconoTipo = "CreditoG";
+                        break;
+                    case "Deuda a Cobrar":
+                        IconoTipo = "DeudasCG";
+                        break;
+                    case "Impuesto a favor":
+                        IconoTipo = "impuestoG";
+                        break;
+                    case "Venta a Cobrar":
+                        IconoTipo = "VentasG";
+                        
+                        
+                        break;
+                    case "Devolucion":
+                        IconoTipo = "devolucionG";
+                        break;
+                }
+                
+                String colorR = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 5, i);
+                switch (colorR) {
+                    case "VERDE":
+                        Escribir cambiarEstado = new Escribir();
+                        cambiarEstado.escribirCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", "GRIS",i, 5);
+                        
+                        panelIngreso.setBackground(Colores.grisBajito);
+                        break;
+                    case "AMARILLO":
+                        panelIngreso.setBackground(Colores.amarillo);
+                        break;
+                    case "GRIS":
+                        panelIngreso.setBackground(Colores.grisBajito);
+                        break;
+                    
+                }
+                
+
+                JLabel icono = new JLabel();
+                Iconos.scaleImage(IconoTipo, icono, 30);
+                icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+                listaIngresos.add(panelIngreso,0);
+                panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+                
+                panelIngreso.add(fecha);
+                panelIngreso.add(dev);
+                panelIngreso.add(montoDevolucion);
+                panelIngreso.add(plataforma);
+                panelIngreso.add(icono);
+
+                indice++;
+                listaIngresos.updateUI();
+            }
+        }
         
     }
-
 }
