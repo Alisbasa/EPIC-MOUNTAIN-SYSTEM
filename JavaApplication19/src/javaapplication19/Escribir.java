@@ -142,27 +142,18 @@ public class Escribir {
         outputStream.close();
 
     }
-    public void escribirCelda(String filepath, String hoja, String data, int columna) throws FileNotFoundException, IOException {
+    public void escribirCelda(String filepath, String hoja, String data, int fila,int columna) throws FileNotFoundException, IOException {
         File file = new File(filepath);
         FileInputStream inputStream = new FileInputStream(file);
         XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
         XSSFSheet newSheet = newWorkbook.getSheet(hoja);
-        int rowCount = newSheet.getLastRowNum() - newSheet.getFirstRowNum();
-        int renglones = 0;
-        for (int i = 1; i <= rowCount; i++) {
-            XSSFRow row = newSheet.getRow(i);
-            if (row.getCell(0).getCellType() != CellType.BLANK) {
-                renglones++;
-            } else {
-                break;
-            }
-        }
+        
         //System.out.println(renglones);
-        XSSFRow row = newSheet.getRow(0);
-        XSSFRow newRow = newSheet.createRow(renglones + 1);
+        XSSFRow row = newSheet.getRow(fila);
+        
 
         
-            XSSFCell newCell = newRow.createCell(columna);
+            XSSFCell newCell = row.createCell(columna);
             newCell.setCellValue(data);
         
 

@@ -1873,7 +1873,12 @@ public class Libros extends javax.swing.JFrame {
     }//GEN-LAST:event_historialCuentasIconMouseClicked
 
     private void corteLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_corteLabelMouseClicked
-        
+        rellenarIngresos rellenarCorte = new rellenarIngresos();
+        try {
+            rellenarCorte.corte(scrollIngresos, listaIngresos);
+        } catch (IOException ex) {
+            Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_corteLabelMouseClicked
 
     private void panelCompras2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCompras2MouseClicked
