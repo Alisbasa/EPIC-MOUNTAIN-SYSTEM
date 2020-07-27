@@ -97,7 +97,7 @@ public class Escribir {
             System.out.println(i);
             XSSFRow row = newSheet.getRow(i);
             
-            estilo = row.getCell(0).getCellStyle();
+            
             if (row.getCell(0).getCellType() != CellType.BLANK) {
                 renglones++;
                
