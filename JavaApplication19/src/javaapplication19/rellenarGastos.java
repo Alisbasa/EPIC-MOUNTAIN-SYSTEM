@@ -166,8 +166,7 @@ public class rellenarGastos {
             Escribir EscribirExcel = new Escribir();
                 try {
                     EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Herramientas",equipo,4);
-                    //Escribir.removeRow("src\\excel\\Equipo.xlsx", "Herramientas", LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas"));
-                    //EscribirExcel.escribirExcel2("src\\excel\\Equipo.xlsx", "Herramientas", 3, LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas"));
+                    EscribirExcel.escribirCelda("src\\excel\\Equipo.xlsx", "Herramientas", LeerExcel.contarRenglones(tipoI2, tipoI2), indice);
                 } catch (IOException ex) {
                     Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }                
