@@ -189,6 +189,8 @@ public class rellenarGastos {
             Escribir EscribirExcel = new Escribir();
                 try {
                     EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Mobiliario",equipo,4);
+                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Mobiliario")+ 1) + ")";
+                    EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Mobiliario", formula, (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Mobiliario")+1), 3);
                 } catch (IOException ex) {
                     Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }    
@@ -199,6 +201,8 @@ public class rellenarGastos {
             Escribir EscribirExcel = new Escribir();
                 try {
                     EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Equipo de Limpieza",equipo,4);
+                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Limpieza")+ 1) +")";
+                    EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", formula, (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Limpieza")+ 1), 3);
                 } catch (IOException ex) {
                     Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }    
