@@ -287,6 +287,8 @@ public class rellenarIngresos {
                 Escribir EscribirExcel = new Escribir();
                 try {
                     EscribirExcel.escribirExcelInv("src\\excel\\DeudasP.xlsx", "DeudasPagar",deuda,3);
+                    String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "DeudasPagar")+1) + ")";
+                    EscribirExcel.escribirFormula("src\\excel\\DeudasP.xlsx", "DeudasPagar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "DeudasPagar")+1), 2);
                 } catch (IOException ex) {
                     Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -374,6 +376,8 @@ public class rellenarIngresos {
                 Escribir EscribirExcel = new Escribir();
                 try {
                     EscribirExcel.escribirExcelInv("src\\excel\\DeudasP.xlsx", "DeudasPagar",inversion,3);
+                    String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "DeudasPagar")+1) + ")";
+                    EscribirExcel.escribirFormula("src\\excel\\DeudasP.xlsx", "DeudasPagar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "DeudasPagar")+1), 2);
                 } catch (IOException ex) {
                     Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -534,6 +538,7 @@ public class rellenarIngresos {
                 Escribir escribirVentas = new Escribir();
                 try {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                    
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
