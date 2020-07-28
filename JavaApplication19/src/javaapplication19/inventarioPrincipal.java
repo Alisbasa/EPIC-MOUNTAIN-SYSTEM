@@ -350,11 +350,48 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         String [] inventario = {nombre.getText(),jtDesc.getText(),fechaActual(), jcCond.getSelectedItem().toString(),
                                 jtPack.getText(),Double.toString(Double.valueOf(jtPrecio.getText())/Double.valueOf(monto.getText())),jtUnidades.getText(),monto.getText(),
                                 Double.toString(Integer.valueOf(jtUnidades.getText())*Double.valueOf(monto.getText())), jtPrecio.getText(), 
-                                Double.toString(Integer.valueOf(jtUnidades.getText())*Double.valueOf(jtPrecio.getText()))};
+                                Double.toString(Integer.valueOf(jtUnidades.getText())*Double.valueOf(jtPrecio.getText())), 
+                                Double.toString((Double.valueOf((jtPrecio.getText()))*.16)+Double.valueOf(jtPrecio.getText())),
+                                Double.toString(((Double.valueOf((jtPrecio.getText()))*.16)+Double.valueOf(jtPrecio.getText()))*Integer.valueOf(jtUnidades.getText()))};
         
         Escribir EscribirCRM = new Escribir();
         try {
-            EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "Inventario",inventario,11);
+            EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "Inventario",inventario,13);
+            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula,
+                                        LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 8);
+            
+            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula2,
+                                                LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 10);
+            
+            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula3,
+                                                LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 12);
+            
+            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula4,
+                                                LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 14);
+            
+            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula5,
+                                                LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 16);
+            
+            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula6,
+                                                LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 18);
+            
+            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula7,
+                                                LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 20);
+            
+            String formula8 = "SUM(W2:W" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula8,
+                                                LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 22);
+            
+            
+                    
+                    
         } catch (IOException ex) {
             Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }

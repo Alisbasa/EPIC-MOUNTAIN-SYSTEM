@@ -26,11 +26,11 @@ public class DeudaCobrar extends javax.swing.JFrame {
     
     /**
      * Creates new form clienteNuevo
-     * @param desarrolloTipoP
-     * @param montoDesP
+     * @param monto
      */
     public DeudaCobrar(JLabel monto) {
         initComponents();
+        this.monto = monto;
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -332,11 +332,8 @@ public class DeudaCobrar extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new DeudaCobrar(monto).setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new DeudaCobrar(monto).setVisible(true);
         });
     }
 

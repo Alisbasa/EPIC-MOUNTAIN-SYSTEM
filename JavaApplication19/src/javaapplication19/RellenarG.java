@@ -232,17 +232,17 @@ public class RellenarG {
         montoDesCT = new JTextField("$");
         montoDesCT.setBackground(Colores.epicColorBajito);
         montoDesCT.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        montoDesCT.setPreferredSize(new Dimension(80, 30));
+        montoDesCT.setPreferredSize(new Dimension(150, 30));
                     
-        String [] listaComprasCT = {"Publicidad", "Mantenimiento" , "Suministros"};
+        String [] listaComprasCT = {"Equipo y Mob.", "Inventario Princ." , "Packs de Ventas", "Egresos"};
         productoCT = new JComboBox (listaComprasCT);
         productoCT.setUI(PropiedadesCB2.createUI(productoCT));
-        productoCT.setPreferredSize(new Dimension(60,30));
+        productoCT.setPreferredSize(new Dimension(100,30));
         
         provedores = new JComboBox(LeerExcel.rellenaCB2("src//excel/Provedores.xlsx", "MIS PROVEEDORES", 0));
         provedores.addItem("Nuevo");
         provedores.setUI(PropiedadesCB2.createUI(provedores));
-        provedores.setPreferredSize(new Dimension(40,30));
+        provedores.setPreferredSize(new Dimension(150,30));
 
         Iconos.scaleImage("ok", iconoOkDesarrolloCT, 30);
                     
