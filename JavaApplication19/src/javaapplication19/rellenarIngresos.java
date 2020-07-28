@@ -891,7 +891,8 @@ public class rellenarIngresos {
          int restaUnidades = unidadesCB.getItemCount()-Integer.valueOf(unidades);
                 try {
                     System.out.println(restaUnidades);
-                    escribirVentas.escribirCelda("src//excel/Inventario.xlsx", "INVENTARIO", Integer.toString(restaUnidades), unidadesCB.getSelectedIndex(), 6);
+                    escribirVentas.borrarCelda("src//excel/Inventario.xlsx", "Inventario", unidadesCB.getSelectedIndex(), 6);
+                    escribirVentas.escribirCelda("src//excel/Inventario.xlsx", "Inventario", Integer.toString(restaUnidades), unidadesCB.getSelectedIndex(), 6);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
