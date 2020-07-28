@@ -47,11 +47,7 @@ public class Escribir {
         //System.out.println(renglones);
         XSSFRow row = newSheet.getRow(0);
         XSSFRow newRow = newSheet.createRow(renglones + 1);
-         XSSFRow suma = newSheet.createRow(renglones + 2);
-        suma.setRowStyle(row.getRowStyle());
-        XSSFCell celda = newRow.createCell(3);
-        celda.setCellFormula("SUM(D2:D"+renglones+1+")");
-        newWorkbook.setForceFormulaRecalculation(true);
+        
 
         for (int i = 0; i < row.getLastCellNum(); i++) {
             XSSFCell newCell = newRow.createCell(i);

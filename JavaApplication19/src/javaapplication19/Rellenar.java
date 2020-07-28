@@ -217,7 +217,7 @@ public class Rellenar {
         Iconos.scaleImage("DeudasC", iconoDeudasC, 40);
         rellenarDeudasC.add(iconoDeudasC);
 
-        deudor = new JComboBox(LeerExcel.rellenaCB2("src//excel/deudasC.xlsx", "deudasCobrar", 0));
+        deudor = new JComboBox(LeerExcel.rellenaCB2("src//excel/deudasC.xlsx", "deudasCobrar", 1));
         deudor.setBackground(Color.white);
         deudor.setUI(PropiedadesCB2.createUI(deudor));
 
