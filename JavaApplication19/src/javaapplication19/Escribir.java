@@ -201,6 +201,27 @@ public class Escribir {
         outputStream.close();
 
     }
+    public void escribirCeldaNumerica(String filepath, String hoja, int data, int fila,int columna) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+        
+        //System.out.println(renglones);
+        XSSFRow row = newSheet.getRow(fila);
+        
+
+        
+            XSSFCell newCell = row.createCell(columna);
+            newCell.setCellValue(data);
+        
+
+        inputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkbook.write(outputStream);
+        outputStream.close();
+
+    }
     public void borrarCelda(String filepath, String hoja,  int fila,int columna) throws FileNotFoundException, IOException {
         File file = new File(filepath);
         FileInputStream inputStream = new FileInputStream(file);
