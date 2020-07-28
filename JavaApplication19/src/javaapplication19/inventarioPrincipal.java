@@ -69,7 +69,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         jtPack = new javax.swing.JTextField();
         jlPack = new javax.swing.JLabel();
         jpTIG = new javax.swing.JPanel();
-        jtCosto = new javax.swing.JTextField();
+        jtPrecio = new javax.swing.JTextField();
         jlCosto = new javax.swing.JLabel();
         jpUbicacion = new javax.swing.JPanel();
         jtUnidades = new javax.swing.JTextField();
@@ -232,15 +232,15 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         jpTIG.setBackground(new java.awt.Color(51, 51, 51));
         jpTIG.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jtCosto.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtCosto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpTIG.add(jtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 330, 48));
-        jtCosto.setBackground(Colores.epicColorBajito);
+        jtPrecio.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        jtPrecio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jpTIG.add(jtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 330, 48));
+        jtPrecio.setBackground(Colores.epicColorBajito);
 
         jlCosto.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlCosto.setForeground(new java.awt.Color(255, 255, 255));
-        jlCosto.setText("COSTO");
-        jpTIG.add(jlCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 80, 30));
+        jlCosto.setText("PRECIO");
+        jpTIG.add(jlCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 100, 30));
 
         jpDatos.add(jpTIG);
 
@@ -348,11 +348,13 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         
         
         String [] inventario = {nombre.getText(),jtDesc.getText(),fechaActual(), jcCond.getSelectedItem().toString(),
-                                jtPack.getText(),Double.toString(Double.valueOf(monto.getText())/Double.valueOf(jtCosto.getText())),jtUnidades.getText(),monto.getText()};
+                                jtPack.getText(),Double.toString(Double.valueOf(jtPrecio.getText())/Double.valueOf(monto.getText())),jtUnidades.getText(),monto.getText(),
+                                Double.toString(Integer.valueOf(jtUnidades.getText())*Double.valueOf(monto.getText())), jtPrecio.getText(), 
+                                Double.toString(Integer.valueOf(jtUnidades.getText())*Double.valueOf(jtPrecio.getText()))};
         
         Escribir EscribirCRM = new Escribir();
         try {
-            EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "Inventario",inventario,8);
+            EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "Inventario",inventario,11);
         } catch (IOException ex) {
             Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -434,9 +436,9 @@ public class inventarioPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jpPack;
     private javax.swing.JPanel jpTIG;
     private javax.swing.JPanel jpUbicacion;
-    private javax.swing.JTextField jtCosto;
     private javax.swing.JTextField jtDesc;
     private javax.swing.JTextField jtPack;
+    private javax.swing.JTextField jtPrecio;
     private javax.swing.JTextField jtUnidades;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel maxiIcon;
