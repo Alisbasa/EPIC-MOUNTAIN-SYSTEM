@@ -348,7 +348,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         
         
         String [] inventario = {nombre.getText(),jtDesc.getText(),fechaActual(), jcCond.getSelectedItem().toString(),
-                                jtPack.getText(),(Double.valueOf(monto.getText()/jtCosto.getText())),jtUnidades.getText(),monto.getText()};
+                                jtPack.getText(),Double.toString(Double.valueOf(monto.getText())/Double.valueOf(jtCosto.getText())),jtUnidades.getText(),monto.getText()};
         
         Escribir EscribirCRM = new Escribir();
         try {

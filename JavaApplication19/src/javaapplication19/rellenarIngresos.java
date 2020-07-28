@@ -187,6 +187,7 @@ public class rellenarIngresos {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
+               
                 
                 
                 if(cliente.getSelectedItem().toString()=="Nuevo Cliente"){
@@ -871,8 +872,8 @@ public class rellenarIngresos {
                
         int seleccion=inventario.getSelectedIndex()+1;
         
-        String venta= LeerExcel.obtenerCelda("src\\excel\\inventario.xlsx", "Inventario", 1, seleccion);
-        String descripion= LeerExcel.obtenerCelda("src\\excel\\inventario.xlsx", "Inventario", 2, seleccion);
+        String venta= LeerExcel.obtenerCelda("src\\excel\\inventario.xlsx", "Inventario", 0, seleccion);
+        String descripion= LeerExcel.obtenerCelda("src\\excel\\inventario.xlsx", "Inventario", 1, seleccion);
         String condicion= LeerExcel.obtenerCelda("src\\excel\\inventario.xlsx", "Inventario", 3, seleccion);
         String pack= LeerExcel.obtenerCelda("src\\excel\\inventario.xlsx", "Inventario", 4, seleccion);
         String tig= LeerExcel.obtenerCelda("src\\excel\\inventario.xlsx", "Inventario", 5, seleccion);
@@ -883,9 +884,18 @@ public class rellenarIngresos {
         String costoBaseUnidad=  Double.toString(LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 9, seleccion));
         String costoBaseNeto=  Double.toString(Integer.parseInt(unidades)*Double.parseDouble(costoBaseUnidad));
         
-        String[] data = {fecha,venta,descripion,condicion,pack,tig,unidades,costoUnidad,costoNeto,costoBaseUnidad,costoBaseNeto,};
+        String[] data = {venta,descripion,fecha,condicion,pack,tig,unidades,costoUnidad,costoNeto,costoBaseUnidad,costoBaseNeto,};
         
         Escribir escribirVentas = new Escribir();       
+        
+         int restaUnidades = unidadesCB.getItemCount()-Integer.valueOf(unidades);
+                try {
+                    System.out.println(restaUnidades);
+                    escribirVentas.escribirCelda("src//excel/Inventario.xlsx", "INVENTARIO", Integer.toString(restaUnidades), unidadesCB.getSelectedIndex(), 6);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                 
                 
                 escribirVentas.escribirExcelInv("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), data, 10);
       
