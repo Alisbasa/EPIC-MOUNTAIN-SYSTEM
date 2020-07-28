@@ -543,6 +543,13 @@ public class rellenarIngresos {
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+                if(deudor.getSelectedItem().toString().equals("Nuevo")){
+                    DeudaCobrar deudorNuevo = new DeudaCobrar();
+                    
+                    deudorNuevo.setVisible(true);
+                    
+                }
 
                 indice++;
                 panelPadre.removeAll();

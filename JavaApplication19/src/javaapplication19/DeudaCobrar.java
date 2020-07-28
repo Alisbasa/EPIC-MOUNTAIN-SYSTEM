@@ -28,7 +28,7 @@ public class DeudaCobrar extends javax.swing.JFrame {
      * @param desarrolloTipoP
      * @param montoDesP
      */
-    public DeudaCobrar(JLabel desarrolloTipoP, JLabel montoDesP) {
+    public DeudaCobrar() {
         initComponents();
         this.setExtendedState(NORMAL);
         this.setResizable(false);
