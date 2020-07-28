@@ -48,7 +48,7 @@ public class LeerExcel {
         
         int renglones =0;
         for(int i =1; i<= rowCount; i++){
-            System.out.println(hoja+i);
+            
                     
             XSSFRow row = newSheet.getRow(i);
             if(row.getCell(0).getCellType() != CellType.BLANK ){

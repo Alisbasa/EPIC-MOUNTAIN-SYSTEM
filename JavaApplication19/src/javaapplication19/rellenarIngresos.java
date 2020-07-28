@@ -113,7 +113,50 @@ public class rellenarIngresos {
 
         boton.addMouseListener(botonV);
     }
-        
+    void revertirUnidades(JLabel boton, String filepath, String hoja){
+        MouseListener botonV = new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    for(int i =0; i<=LeerExcel.contarRenglones("src//excel/Inventario.xlsx", "Inventario"); i++){
+                        if((LeerExcel.obtenerCelda(filepath, hoja, 0, LeerExcel.contarRenglones(filepath, hoja))).equals(LeerExcel.obtenerCelda("src//excel/Inventario.xlsx", "INVENTARIO", 0, i))){
+                            int suma=Integer.valueOf( LeerExcel.obtenerCelda(filepath, hoja, 6, LeerExcel.contarRenglones(filepath, hoja)))+(int)LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", 6, i);
+                            Escribir escribirVentas = new Escribir();
+                             escribirVentas.escribirCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", suma, i, 6);
+                             System.out.println(Integer.valueOf( LeerExcel.obtenerCelda(filepath, hoja, 6, LeerExcel.contarRenglones(filepath, hoja))));
+                        }
+                    }
+                    
+                    //Escribir.removeRow("src//excel/LibrosContables.xlsx", "Gastos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Gastos"));
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //Iconos.scaleImage("cancelG", boton, 20);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                //Iconos.scaleImage(img, boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+
+        boton.addMouseListener(botonV);
+    }    
     
 
     //Pone ingreso: venta
@@ -170,7 +213,9 @@ public class rellenarIngresos {
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
                 
                 botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"ventasG");
+                revertirUnidades(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
                 botonBorrarInd(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
+                
                 
                 panelIngreso.add(fecha);
                 panelIngreso.add(inventarioLista);
@@ -886,7 +931,7 @@ public class rellenarIngresos {
         String tig= LeerExcel.obtenerCelda("src\\excel\\inventario.xlsx", "Inventario", 5, seleccion);
         String unidades=unidadesCB.getSelectedItem().toString();
         String costoUnidad=  Double.toString(LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 7, seleccion));
-        System.out.println(costoUnidad);
+        
         String costoNeto=  Double.toString(Integer.parseInt(unidades)*Double.parseDouble(costoUnidad));
         String costoBaseUnidad=  Double.toString(LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 9, seleccion));
         String costoBaseNeto=  Double.toString(Integer.parseInt(unidades)*Double.parseDouble(costoBaseUnidad));
@@ -897,7 +942,7 @@ public class rellenarIngresos {
         
          int restaUnidades = unidadesCB.getItemCount()-Integer.valueOf(unidades);
                 try {
-                    System.out.println(restaUnidades);
+                    
                    // escribirVentas.borrarCelda("src//excel/Inventario.xlsx", "Inventario", unidadesCB.getSelectedIndex(), 6);
                     escribirVentas.escribirCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", restaUnidades, inventario.getSelectedIndex()+1, 6);
                 } catch (IOException ex) {

@@ -44,7 +44,7 @@ public class Escribir {
                 break;
             }
         }
-        //System.out.println(renglones);
+        
         XSSFRow row = newSheet.getRow(0);
         XSSFRow newRow = newSheet.createRow(renglones + 1);
         
@@ -130,7 +130,7 @@ public class Escribir {
         
 
         for (int i = 1; i <= rowCount; i++) {
-            System.out.println(i);
+            
             XSSFRow row = newSheet.getRow(i);
             
             
@@ -167,7 +167,7 @@ public class Escribir {
         XSSFSheet newSheet = newWorkbook.getSheet(hoja);
         int rowCount = newSheet.getLastRowNum() - newSheet.getFirstRowNum();
 
-        //System.out.println(renglones);
+        
         XSSFRow row = newSheet.getRow(0);
         XSSFRow newRow = newSheet.createRow(renglones+1);
         XSSFCell newCell = newRow.getCell(col);
@@ -186,7 +186,7 @@ public class Escribir {
         XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
         XSSFSheet newSheet = newWorkbook.getSheet(hoja);
         
-        //System.out.println(renglones);
+       
         XSSFRow row = newSheet.getRow(fila);
         
 
@@ -207,7 +207,7 @@ public class Escribir {
         XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
         XSSFSheet newSheet = newWorkbook.getSheet(hoja);
         
-        //System.out.println(renglones);
+       
         XSSFRow row = newSheet.getRow(fila);
         
 
@@ -250,7 +250,7 @@ public class Escribir {
         XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
         XSSFSheet newSheet = newWorkbook.getSheet(hoja);
         
-        //System.out.println(renglones);
+        
         XSSFRow row = newSheet.getRow(fila);
         
 
