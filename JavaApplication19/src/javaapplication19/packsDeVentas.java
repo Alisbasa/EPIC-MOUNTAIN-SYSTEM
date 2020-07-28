@@ -64,12 +64,12 @@ public class packsDeVentas extends javax.swing.JFrame {
         jlDesc = new javax.swing.JLabel();
         jpPack = new javax.swing.JPanel();
         jlPack = new javax.swing.JLabel();
-        jcPack = new javax.swing.JComboBox<>();
+        jcCondicion = new javax.swing.JComboBox<>();
         jlPack1 = new javax.swing.JLabel();
         jtPack = new javax.swing.JTextField();
         jpTIG = new javax.swing.JPanel();
         jlTIG = new javax.swing.JLabel();
-        jtTIG = new javax.swing.JTextField();
+        jtPrecio = new javax.swing.JTextField();
         jpUbicacion = new javax.swing.JPanel();
         jtUnidades = new javax.swing.JTextField();
         jlUnidades = new javax.swing.JLabel();
@@ -207,9 +207,9 @@ public class packsDeVentas extends javax.swing.JFrame {
         jlPack.setText("CONDICION");
         jpPack.add(jlPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 130, 30));
 
-        jcPack.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 13)); // NOI18N
-        jcPack.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Seminuevo", "Usado" }));
-        jpPack.add(jcPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 90, 50));
+        jcCondicion.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 13)); // NOI18N
+        jcCondicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Seminuevo", "Usado" }));
+        jpPack.add(jcCondicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 90, 50));
 
         jlPack1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlPack1.setForeground(new java.awt.Color(255, 255, 255));
@@ -228,12 +228,12 @@ public class packsDeVentas extends javax.swing.JFrame {
 
         jlTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlTIG.setForeground(new java.awt.Color(255, 255, 255));
-        jlTIG.setText("T.I.G");
-        jpTIG.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 60, 30));
+        jlTIG.setText("PRECIO");
+        jpTIG.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 120, 30));
 
-        jtTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtTIG.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpTIG.add(jtTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 160, 48));
+        jtPrecio.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        jtPrecio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jpTIG.add(jtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 200, 48));
         jtPack.setBackground(Colores.epicColorBajito);
 
         jpDatos.add(jpTIG);
@@ -330,8 +330,10 @@ public class packsDeVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
-        String[] Registro = {desarrolloTipoP.getText(), jtDesc.getText(),fechaActual(), jcPack.getSelectedItem().toString(),
-                             jtPack.getText(), jtTIG.getText(), jtUnidades.getText(),montoDesP.getText() }; 
+        String[] Registro = {desarrolloTipoP.getText(), jtDesc.getText(),fechaActual(), jcCondicion.getSelectedItem().toString(),
+                             jtPack.getText(), Double.toString(Double.valueOf(jtPrecio.getText())/Double.valueOf(montoDesP.getText())),
+                             jtPrecio.getText(),Double.toString(Double.valueOf(jtPrecio.getText())*Integer.valueOf(jtUnidades.getText())),
+                             jtUnidades.getText(),montoDesP.getText() }; 
         Escribir escribirExcel = new Escribir();
         try {
             escribirExcel.escribirExcelInv("src\\excel\\Packs.xlsx", "PacksVentas", Registro,8);
@@ -401,7 +403,7 @@ public class packsDeVentas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbRegistrar;
-    private javax.swing.JComboBox<String> jcPack;
+    private javax.swing.JComboBox<String> jcCondicion;
     private javax.swing.JLabel jlDesc;
     private javax.swing.JLabel jlPack;
     private javax.swing.JLabel jlPack1;
@@ -415,7 +417,7 @@ public class packsDeVentas extends javax.swing.JFrame {
     private javax.swing.JPanel jpUbicacion;
     private javax.swing.JTextField jtDesc;
     private javax.swing.JTextField jtPack;
-    private javax.swing.JTextField jtTIG;
+    private javax.swing.JTextField jtPrecio;
     private javax.swing.JTextField jtUnidades;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel maxiIcon;
