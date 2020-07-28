@@ -22,13 +22,14 @@ import javax.swing.JPanel;
 public class DeudaCobrar extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
+    static JLabel monto;
     
     /**
      * Creates new form clienteNuevo
      * @param desarrolloTipoP
      * @param montoDesP
      */
-    public DeudaCobrar() {
+    public DeudaCobrar(JLabel monto) {
         initComponents();
         this.setExtendedState(NORMAL);
         this.setResizable(false);
@@ -59,13 +60,10 @@ public class DeudaCobrar extends javax.swing.JFrame {
         jtNombre = new javax.swing.JTextField();
         jlDesc = new javax.swing.JLabel();
         jpPack = new javax.swing.JPanel();
-        jlTIG = new javax.swing.JLabel();
-        jtPrecio = new javax.swing.JTextField();
-        jtPack = new javax.swing.JTextField();
+        jbRegistrar = new javax.swing.JButton();
         jpTIG = new javax.swing.JPanel();
         jpUbicacion = new javax.swing.JPanel();
         jpBoton = new javax.swing.JPanel();
-        jbRegistrar = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -193,34 +191,6 @@ public class DeudaCobrar extends javax.swing.JFrame {
         jpPack.setBackground(new java.awt.Color(51, 51, 51));
         jpPack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
-        jlTIG.setForeground(new java.awt.Color(255, 255, 255));
-        jlTIG.setText("PRECIO");
-        jpPack.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 30));
-
-        jtPrecio.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtPrecio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpPack.add(jtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 200, 48));
-        jtPack.setBackground(Colores.epicColorBajito);
-
-        jtPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtPack.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpPack.add(jtPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 0, 48));
-        jtPack.setBackground(Colores.epicColorBajito);
-
-        jpDatos.add(jpPack);
-
-        jpTIG.setBackground(new java.awt.Color(51, 51, 51));
-        jpTIG.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jpDatos.add(jpTIG);
-
-        jpUbicacion.setBackground(new java.awt.Color(51, 51, 51));
-        jpUbicacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jpDatos.add(jpUbicacion);
-
-        jpBoton.setBackground(new java.awt.Color(51, 51, 51));
-        jpBoton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jbRegistrar.setFont(new java.awt.Font("Franklin Gothic Book", 2, 24)); // NOI18N
         jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         jbRegistrar.setText("Registrar");
@@ -234,9 +204,21 @@ public class DeudaCobrar extends javax.swing.JFrame {
                 jbRegistrarActionPerformed(evt);
             }
         });
-        jpBoton.add(jbRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 170, 60));
+        jpPack.add(jbRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 170, 60));
         jbRegistrar.setBackground(Colores.epicColor);
 
+        jpDatos.add(jpPack);
+
+        jpTIG.setBackground(new java.awt.Color(51, 51, 51));
+        jpTIG.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpDatos.add(jpTIG);
+
+        jpUbicacion.setBackground(new java.awt.Color(51, 51, 51));
+        jpUbicacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpDatos.add(jpUbicacion);
+
+        jpBoton.setBackground(new java.awt.Color(51, 51, 51));
+        jpBoton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jpDatos.add(jpBoton);
 
         getContentPane().add(jpDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 500, 410));
@@ -295,7 +277,7 @@ public class DeudaCobrar extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
-        String[] Registro = {fechaActual(), jtNombre.getText(), jtPrecio.getText()}; 
+        String[] Registro = {fechaActual(), jtNombre.getText(), monto.getText()}; 
         Escribir escribirExcel = new Escribir();
         try {
             escribirExcel.escribirExcelInv("src\\excel\\DeudasC.xlsx","deudasCobrar", Registro,3);
@@ -353,6 +335,7 @@ public class DeudaCobrar extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
+                new DeudaCobrar(monto).setVisible(true);
             }
         });
     }
@@ -369,7 +352,6 @@ public class DeudaCobrar extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbRegistrar;
     private javax.swing.JLabel jlDesc;
-    private javax.swing.JLabel jlTIG;
     private javax.swing.JPanel jpBoton;
     private javax.swing.JPanel jpDatos;
     private javax.swing.JPanel jpDescripcion;
@@ -377,8 +359,6 @@ public class DeudaCobrar extends javax.swing.JFrame {
     private javax.swing.JPanel jpTIG;
     private javax.swing.JPanel jpUbicacion;
     private javax.swing.JTextField jtNombre;
-    private javax.swing.JTextField jtPack;
-    private javax.swing.JTextField jtPrecio;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel maxiIcon;
     // End of variables declaration//GEN-END:variables
