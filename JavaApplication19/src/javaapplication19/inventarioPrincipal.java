@@ -349,6 +349,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         
         String [] inventario = {nombre.getText(),jtDesc.getText(),fechaActual(), jcCond.getSelectedItem().toString(),
                                 jtPack.getText(),(Double.valueOf(monto.getText()/jtCosto.getText())),jtUnidades.getText(),monto.getText()};
+        
         Escribir EscribirCRM = new Escribir();
         try {
             EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "Inventario",inventario,8);
@@ -359,6 +360,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarMouseClicked
     
 
+    
     public static String fechaActual(){
         java.util.Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM YY");
