@@ -590,7 +590,7 @@ public class rellenarIngresos {
                 }
                 
                 if(deudor.getSelectedItem().toString().equals("Nuevo")){
-                    DeudaCobrar deudorNuevo = new DeudaCobrar();
+                    DeudaCobrar deudorNuevo = new DeudaCobrar(montoDeudaC);
                     
                     deudorNuevo.setVisible(true);
                     
