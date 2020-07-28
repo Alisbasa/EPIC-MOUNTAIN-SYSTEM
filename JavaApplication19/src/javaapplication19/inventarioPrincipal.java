@@ -64,15 +64,13 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         jtDesc = new javax.swing.JTextField();
         jlDesc = new javax.swing.JLabel();
         jpPack = new javax.swing.JPanel();
-        jlPack = new javax.swing.JLabel();
         jcCond = new javax.swing.JComboBox<>();
-        jcPack = new javax.swing.JComboBox<>();
         jlPack1 = new javax.swing.JLabel();
+        jtPack = new javax.swing.JTextField();
+        jlPack = new javax.swing.JLabel();
         jpTIG = new javax.swing.JPanel();
-        jlTIG = new javax.swing.JLabel();
         jtCosto = new javax.swing.JTextField();
         jlCosto = new javax.swing.JLabel();
-        jtTIG = new javax.swing.JTextField();
         jpUbicacion = new javax.swing.JPanel();
         jtUnidades = new javax.swing.JTextField();
         jlUnidades = new javax.swing.JLabel();
@@ -205,48 +203,44 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         jpPack.setBackground(new java.awt.Color(51, 51, 51));
         jpPack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
-        jlPack.setForeground(new java.awt.Color(255, 255, 255));
-        jlPack.setText("CONDICION");
-        jpPack.add(jlPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 130, 30));
-
         jcCond.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 13)); // NOI18N
         jcCond.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Seminuevo", "Usado" }));
         jpPack.add(jcCond, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 90, 50));
-
-        jcPack.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 13)); // NOI18N
-        jcPack.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pack1", "Pack2", "Pack3" }));
-        jpPack.add(jcPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 90, 50));
 
         jlPack1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlPack1.setForeground(new java.awt.Color(255, 255, 255));
         jlPack1.setText("PACK");
         jpPack.add(jlPack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 30));
 
+        jtPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        jtPack.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtPack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtPackActionPerformed(evt);
+            }
+        });
+        jpPack.add(jtPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 120, 48));
+        jtUnidades.setBackground(Colores.epicColorBajito);
+
+        jlPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
+        jlPack.setForeground(new java.awt.Color(255, 255, 255));
+        jlPack.setText("CONDICION");
+        jpPack.add(jlPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 130, 30));
+
         jpDatos.add(jpPack);
 
         jpTIG.setBackground(new java.awt.Color(51, 51, 51));
         jpTIG.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
-        jlTIG.setForeground(new java.awt.Color(255, 255, 255));
-        jlTIG.setText("T.I.G");
-        jpTIG.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 50, 30));
-
         jtCosto.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         jtCosto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpTIG.add(jtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 100, 48));
+        jpTIG.add(jtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 330, 48));
         jtCosto.setBackground(Colores.epicColorBajito);
 
         jlCosto.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlCosto.setForeground(new java.awt.Color(255, 255, 255));
         jlCosto.setText("COSTO");
-        jpTIG.add(jlCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 90, 30));
-
-        jtTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtTIG.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpTIG.add(jtTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 100, 48));
-        jtCosto.setBackground(Colores.epicColorBajito);
+        jpTIG.add(jlCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 80, 30));
 
         jpDatos.add(jpTIG);
 
@@ -353,8 +347,8 @@ public class inventarioPrincipal extends javax.swing.JFrame {
                                rellenar.montoDesI.getText()};*/
         
         
-        String [] inventario = {fechaActual(), nombre.getText(),jtDesc.getText(),jcCond.getSelectedItem().toString(),
-                                jcPack.getSelectedItem().toString(),jtTIG.getText(),jtUnidades.getText(),monto.getText()};
+        String [] inventario = {nombre.getText(),jtDesc.getText(),fechaActual(), jcCond.getSelectedItem().toString(),
+                                jtPack.getText(),(Double.valueOf(monto.getText()/jtCosto.getText())),jtUnidades.getText(),monto.getText()};
         Escribir EscribirCRM = new Escribir();
         try {
             EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "Inventario",inventario,8);
@@ -374,6 +368,10 @@ public class inventarioPrincipal extends javax.swing.JFrame {
     private void jtDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDescActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtDescActionPerformed
+
+    private void jtPackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtPackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtPackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -423,12 +421,10 @@ public class inventarioPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbRegistrar;
     private javax.swing.JComboBox<String> jcCond;
-    private javax.swing.JComboBox<String> jcPack;
     private javax.swing.JLabel jlCosto;
     private javax.swing.JLabel jlDesc;
     private javax.swing.JLabel jlPack;
     private javax.swing.JLabel jlPack1;
-    private javax.swing.JLabel jlTIG;
     private javax.swing.JLabel jlUnidades;
     private javax.swing.JPanel jpBoton;
     private javax.swing.JPanel jpDatos;
@@ -438,7 +434,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jpUbicacion;
     private javax.swing.JTextField jtCosto;
     private javax.swing.JTextField jtDesc;
-    private javax.swing.JTextField jtTIG;
+    private javax.swing.JTextField jtPack;
     private javax.swing.JTextField jtUnidades;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel maxiIcon;
