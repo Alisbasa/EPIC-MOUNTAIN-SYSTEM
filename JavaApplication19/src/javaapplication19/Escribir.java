@@ -12,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import org.apache.commons.compress.archivers.dump.InvalidFormatException;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.FillPatternType;
@@ -46,8 +47,12 @@ public class Escribir {
         font.setItalic(false);
 
         XSSFCellStyle style = wb.createCellStyle();
-        //
-        XSSFColor color = new XSSFColor(Colores.epicColor);
+        
+        style.setBorderBottom(BorderStyle.THIN);
+        style.setBorderLeft(BorderStyle.THIN);
+        style.setBorderRight(BorderStyle.THIN);
+        style.setBorderTop(BorderStyle.THIN);
+        XSSFColor color = new XSSFColor(Colores.grisBajito);
         style.setFillForegroundColor(color);//color de fondo
         //style.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());//color de fondo
         style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
@@ -300,7 +305,7 @@ public class Escribir {
 
         XSSFCell newCell = row.createCell(columna);
         newCell.setCellFormula(formula);
-        setCellStyle(newWorkbook, newCell);
+        setCellStyleVerde(newWorkbook, newCell);
         newWorkbook.setForceFormulaRecalculation(true);
 
         inputStream.close();
