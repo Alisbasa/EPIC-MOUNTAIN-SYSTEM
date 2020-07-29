@@ -32,13 +32,13 @@ public class Escribir {
         FileInputStream inputStream = new FileInputStream(file);
         XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
         XSSFSheet newSheet = newWorkbook.getSheet(hoja);
-        newSheet.setDefaultRowHeight((short) 500.0);
+        
 
         int rowCount = newSheet.getLastRowNum() - newSheet.getFirstRowNum();
         int renglones = 0;
         for (int i = 1; i <= rowCount; i++) {
             XSSFRow row = newSheet.getRow(i);
-            row.setHeightInPoints((3 * newSheet.getDefaultRowHeightInPoints()));
+            row.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
             if (row.getCell(0).getCellType() != CellType.BLANK) {
                 renglones++;
             } else {
@@ -48,6 +48,7 @@ public class Escribir {
         
         XSSFRow row = newSheet.getRow(0);
         XSSFRow newRow = newSheet.createRow(renglones + 1);
+        newRow.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
         
 
         for (int i = 0; i < row.getLastCellNum(); i++) {
@@ -73,8 +74,8 @@ public class Escribir {
         int renglones = 0;
         for (int i = 1; i <= rowCount; i++) {
             XSSFRow row = newSheet.getRow(i);
-            row.setHeightInPoints((3 * newSheet.getDefaultRowHeightInPoints()));
-            System.out.println(rowCount);
+            row.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
+            
             if (row.getCell(0).getCellType() != CellType.BLANK) {
                 renglones++;
             } else {
@@ -84,6 +85,7 @@ public class Escribir {
         //System.out.println(renglones);
         XSSFRow row = newSheet.getRow(0);
         XSSFRow newRow = newSheet.createRow(renglones + 1);
+        newRow.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
        
         
         for (int i = 0; i < row.getLastCellNum(); i++) {
@@ -135,7 +137,7 @@ public class Escribir {
         for (int i = 1; i <= rowCount; i++) {
             
             XSSFRow row = newSheet.getRow(i);
-            
+            row.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
             
             if (row.getCell(0).getCellType() != CellType.BLANK) {
                 renglones++;
@@ -149,7 +151,7 @@ public class Escribir {
 
         newSheet.shiftRows(renglones + 1, renglones + 2, 1, true, true);
         XSSFRow newRow = newSheet.createRow(renglones + 1);
-        
+        newRow.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
 
         for (int i = 0; i < col; i++) {
             XSSFCell newCell = newRow.createCell(i);
