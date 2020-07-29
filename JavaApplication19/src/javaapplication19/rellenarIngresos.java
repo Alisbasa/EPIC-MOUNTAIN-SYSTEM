@@ -583,7 +583,7 @@ public class rellenarIngresos {
 
                 Escribir escribirVentas = new Escribir();
                 try {
-                    escribirVentas.escribirExcel("src\\excel\\DeudasC.xlsx", deuda.getText(), data);
+                    escribirVentas.escribirExcel("src\\excel\\DeudasC.xlsx", "deudasC", data);
                     
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
@@ -689,6 +689,7 @@ public class rellenarIngresos {
                 Escribir escribirVentas = new Escribir();
                 try {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                    Escribir.crearHoja("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString());
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
