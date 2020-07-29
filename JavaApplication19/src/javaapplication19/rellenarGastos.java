@@ -449,7 +449,7 @@ public class rellenarGastos {
     }
     
     //Pone Gasto: Desarollo: Compras en Transito
-    void botonDesCT(JTextField desarrolloTipoCT, JComboBox productoCT,JTextField montoDesCT, JLabel iconoOkDesarrolloCT, JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre, JComboBox provedores){
+    void botonDesCT(JTextField desarrolloTipoCT, JComboBox productoCT,JTextField montoDesCT, JLabel iconoOkDesarrolloCT, JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre, JComboBox provedores, JTextField unidadesCT){
         MouseListener botonV = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -497,7 +497,7 @@ public class rellenarGastos {
             
             String[] data = {(String) fechaActual(), "Compra en Transito", desarrolloTipoCT.getText() , montoDesCT.getText(),(String) productoCT.getSelectedItem(),"VERDE"};
             String[] compraT = {productoCT.getSelectedItem().toString(), desarrolloTipoCT.getText(), provedores.getSelectedItem().toString(), 
-                               (String) fechaActual(), "Unidades", montoDesCT.getText(), "Monto Total"};
+                               (String) fechaActual(), unidadesCT.getText(), montoDesCT.getText(), Double.toString(Integer.valueOf(unidadesCT.getText())*Double.valueOf(montoDesCT.getText()))};
                 Escribir escribirVentas = new Escribir();
                 try {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);

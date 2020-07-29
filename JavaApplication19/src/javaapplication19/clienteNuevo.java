@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -18,11 +19,14 @@ import javax.swing.JPanel;
 public class clienteNuevo extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
+    static JLabel unidades;
 
     /**
      * Creates new form clienteNuevo
+     * @param unidades
      */
-    public clienteNuevo() {
+    public clienteNuevo(JLabel unidades) {
+        this.unidades = unidades;
         initComponents();
         this.setExtendedState(NORMAL);
         this.setResizable(false);
@@ -337,7 +341,7 @@ public class clienteNuevo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new clienteNuevo().setVisible(true);
+                new clienteNuevo(unidades).setVisible(true);
             }
         });
     }
