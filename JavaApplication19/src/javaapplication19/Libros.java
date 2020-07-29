@@ -1433,7 +1433,11 @@ public class Libros extends javax.swing.JFrame {
             
                 
             
-            rellenarIngresos.add(rellenarDev.rellenarDevoluciones());
+            try {
+                rellenarIngresos.add(rellenarDev.rellenarDevoluciones());
+            } catch (IOException ex) {
+                Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
+            }
             rellenarDevolucion.botonDev(rellenarDev.montoDev,rellenarDev.devolucion, rellenarDev.iconoOkDev, scrollIngresos,listaIngresos,rellenarDev.rellenarDevoluciones);
           
         }

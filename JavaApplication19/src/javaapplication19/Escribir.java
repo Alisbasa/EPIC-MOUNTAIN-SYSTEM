@@ -16,6 +16,7 @@ import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
@@ -37,7 +38,12 @@ public class Escribir {
     public Escribir() {
 
     }
-
+    
+    public void evaluar(XSSFWorkbook wb, XSSFCell R){
+        FormulaEvaluator evaluator = wb.getCreationHelper().createFormulaEvaluator();
+        evaluator.evaluate(R);
+    }
+    
     public void setCellStyle(XSSFWorkbook wb, XSSFCell R) {
         XSSFFont font = wb.createFont();
         font.setFontHeightInPoints((short) 12);
@@ -109,7 +115,7 @@ public class Escribir {
             newCell.setCellValue(data[i]);
             setCellStyle(newWorkbook, newCell);
         }
-
+        newSheet.getWorkbook().getCreationHelper().createFormulaEvaluator().evaluateAll();
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkbook.write(outputStream);
@@ -144,8 +150,9 @@ public class Escribir {
             XSSFCell newCell = newRow.createCell(i);
             newCell.setCellValue(data[i]);
             setCellStyle(newWorkbook, newCell);
+           
         }
-
+        
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkbook.write(outputStream);
@@ -172,6 +179,7 @@ public class Escribir {
 
             }
         }
+        
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkbook.write(outputStream);
@@ -209,9 +217,10 @@ public class Escribir {
             XSSFCell newCell = newRow.createCell(i);
             newCell.setCellValue(data[i]);
             setCellStyle(newWorkbook, newCell);
+            
 
         }
-
+        
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkbook.write(outputStream);
@@ -268,7 +277,7 @@ public class Escribir {
         XSSFCell newCell = row.createCell(columna);
         newCell.setCellValue(data);
         setCellStyle(newWorkbook, newCell);
-
+         evaluar(newWorkbook, newCell);
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkbook.write(outputStream);
@@ -306,7 +315,7 @@ public class Escribir {
         XSSFCell newCell = row.createCell(columna);
         newCell.setCellFormula(formula);
         setCellStyleVerde(newWorkbook, newCell);
-        newWorkbook.setForceFormulaRecalculation(true);
+         evaluar(newWorkbook, newCell);
 
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);

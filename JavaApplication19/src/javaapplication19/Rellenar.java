@@ -23,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javaapplication19.Libros;
+import static javaapplication19.rellenarIngresos.fechaActualEscribir;
 import javax.swing.BorderFactory;
 import javax.swing.border.LineBorder;
 
@@ -76,7 +77,7 @@ public class Rellenar {
     JTextField impuesto;
     int indexInventario = 1;
 
-    JTextField devolucion;
+    JComboBox devolucion;
 
     JComboBox deudor; //DeudasC
 
@@ -277,30 +278,25 @@ public class Rellenar {
         return rellenarVentasC;
     }
 
-    public JPanel rellenarDevoluciones() {
+    public JPanel rellenarDevoluciones() throws IOException {
         rellenarDevoluciones.removeAll();
 
         rellenarDevoluciones.setBackground(Color.white);
-        Iconos.scaleImage("Devolucion", iconoDevoluciones, 40);
-        rellenarDevoluciones.add(iconoDevoluciones);
+        Iconos.scaleImage("Inventario", iconoDevoluciones, 40);
+        
 
-        devolucion = new JTextField("Devolucion");
-        devolucion.setBorder(new LineBorder(Colores.epicColor, 0, true));
-        devolucion.setBackground(Colores.epicColorBajito);
-        devolucion.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        devolucion.setPreferredSize(new Dimension(150, 30));
+        devolucion = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 0));
+        devolucion.setBackground(Color.white);
+        devolucion.setUI(PropiedadesCB2.createUI(inventario));
+        devolucion.setPreferredSize(new Dimension(300,30));
 
-        montoDev = new JTextField("$");
-        montoDev.setBorder(new LineBorder(Colores.epicColor, 0, true));
-        montoDev.setBackground(Colores.epicColorBajito);
-        montoDev.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        montoDev.setPreferredSize(new Dimension(60, 30));
+        
 
-        montoDev.setPreferredSize(new Dimension(60, 30));
+        
         Iconos.scaleImage("ok", iconoOkDev, 30);
-
+        rellenarDevoluciones.add(iconoDevoluciones);
         rellenarDevoluciones.add(devolucion);
-        rellenarDevoluciones.add(montoDev);
+        
         rellenarDevoluciones.add(iconoOkDev);
 
         return rellenarDevoluciones;
