@@ -168,8 +168,10 @@ public class clienteNuevo extends javax.swing.JFrame {
 
         jtNombre.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         jtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtNombre.setToolTipText("hola");
         jpNombre.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 370, 48));
         jtNombre.setBackground(Colores.epicColorBajito);
+        jtNombre.getAccessibleContext().setAccessibleName("hola");
 
         jlNombre.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlNombre.setForeground(new java.awt.Color(255, 255, 255));
