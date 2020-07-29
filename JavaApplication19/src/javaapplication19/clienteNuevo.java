@@ -300,7 +300,7 @@ public class clienteNuevo extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
-        String[] Registro = {jtNombre.getText(),jtNumero.getText(),jtCorreo.getText(),jtUbicacion.getText()}; 
+        String[] Registro = {jtNombre.getText(),jtNumero.getText(),jtCorreo.getText(),jtUbicacion.getText(),""}; 
         Escribir EscribirCRM = new Escribir();
         try {
             EscribirCRM.escribirExcelClientes("src\\excel\\CRM.xlsx", "Clientes", Registro);

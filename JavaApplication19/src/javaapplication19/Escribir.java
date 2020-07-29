@@ -38,6 +38,7 @@ public class Escribir {
         int renglones = 0;
         for (int i = 1; i <= rowCount; i++) {
             XSSFRow row = newSheet.getRow(i);
+            
             if (row.getCell(0).getCellType() != CellType.BLANK) {
                 renglones++;
             } else {
@@ -72,6 +73,7 @@ public class Escribir {
         int renglones = 0;
         for (int i = 1; i <= rowCount; i++) {
             XSSFRow row = newSheet.getRow(i);
+            System.out.println(rowCount);
             if (row.getCell(0).getCellType() != CellType.BLANK) {
                 renglones++;
             } else {
