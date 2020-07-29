@@ -636,7 +636,7 @@ public class rellenarIngresos {
                 PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
                 panelIngreso.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
                 panelIngreso.setLayout(new GridLayout(1, 5));
-                panelIngreso.setBackground(Colores.amarillo);
+                panelIngreso.setBackground(Colores.epicColorBajito);
                 panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
                 panelIngreso.setMaximumSize(new Dimension(500, 40));
                 panelIngreso.setPreferredSize(new Dimension(500, 100));
@@ -673,7 +673,7 @@ public class rellenarIngresos {
                 plataforma.setText((String) plataformacb.getSelectedItem());
 
                 JLabel icono = new JLabel();
-                Iconos.scaleImage("VentasG", icono, 25);
+                Iconos.scaleImage("Ventas", icono, 25);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
@@ -871,13 +871,14 @@ public class rellenarIngresos {
                         IconoTipo = "CreditoG";
                         break;
                     case "Deuda a Cobrar":
-                        IconoTipo = "DeudasCG";
+                        IconoTipo = "DeudasC";
+                        panelIngreso.setBackground(Colores.epicColorBajito);
                         break;
                     case "Impuesto a favor":
                         IconoTipo = "impuestoG";
                         break;
                     case "Venta a Cobrar":
-                        IconoTipo = "VentasG";
+                        IconoTipo = "Ventas";
                         
                         
                         break;
@@ -891,9 +892,9 @@ public class rellenarIngresos {
                     case "VERDE":
                         panelIngreso.setBackground(Colores.epicColorBajito);
                         break;
-                    case "AMARILLO":
+                    /*case "AMARILLO":
                         panelIngreso.setBackground(Colores.amarillo);
-                        break;
+                        break;*/
                     case "GRIS":
                         panelIngreso.setBackground(Colores.grisBajito);
                         break;
