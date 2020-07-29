@@ -97,7 +97,7 @@ public class Rellenar {
         unidades = new JComboBox();
         unidades.setBackground(Color.white);
         unidades.setUI(PropiedadesCB2.createUI(inventario));
-        unidades.setPreferredSize(new Dimension(55, 30));
+        unidades.setPreferredSize(new Dimension(65, 30));
 
         cliente = new JComboBox(LeerExcel.rellenaCB2("src//excel//CRM.xlsx", "Clientes", 0));
         cliente.addItem("Nuevo Cliente");
@@ -246,7 +246,7 @@ public class Rellenar {
         rellenarVentasC.add(iconoVentasC);
         String[] listaPlataformas = {"Mercado Libre", "Facebook", "Amazon", "Shopiffy"};
 
-        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 1));
+        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
         inventario.setPreferredSize(new Dimension(200,30));
