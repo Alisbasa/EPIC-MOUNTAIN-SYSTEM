@@ -38,7 +38,7 @@ public class Escribir {
         int renglones = 0;
         for (int i = 1; i <= rowCount; i++) {
             XSSFRow row = newSheet.getRow(i);
-            
+            row.setHeightInPoints((3 * newSheet.getDefaultRowHeightInPoints()));
             if (row.getCell(0).getCellType() != CellType.BLANK) {
                 renglones++;
             } else {
@@ -67,12 +67,13 @@ public class Escribir {
         FileInputStream inputStream = new FileInputStream(file);
         XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
         XSSFSheet newSheet = newWorkbook.getSheet(hoja);
-        newSheet.setDefaultRowHeight((short) 500.0);
+        
 
         int rowCount = newSheet.getLastRowNum() - newSheet.getFirstRowNum();
         int renglones = 0;
         for (int i = 1; i <= rowCount; i++) {
             XSSFRow row = newSheet.getRow(i);
+            row.setHeightInPoints((3 * newSheet.getDefaultRowHeightInPoints()));
             System.out.println(rowCount);
             if (row.getCell(0).getCellType() != CellType.BLANK) {
                 renglones++;
