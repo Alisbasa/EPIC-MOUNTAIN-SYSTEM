@@ -685,12 +685,12 @@ public class rellenarIngresos {
                 panelIngreso.add(new JLabel(""));
                 panelIngreso.add(icono);
                 String[] data = {(String) fechaActual(), "Venta a Cobrar", (String) inventario.getSelectedItem(), montoVC.getText(), plataforma.getText(),"AMARILLO"};
-                String [] deuda = {(String) fechaActual(), cliente.getSelectedItem().toString(), montoVC.getText()};
+                String [] deuda = {(String) fechaActual(), montoVC.getText()};
                 Escribir escribirVentas = new Escribir();
                 try {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
                     Escribir.crearHoja("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString());
-                    escribirVentas.escribirExcel("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(), data);
+                    escribirVentas.escribirExcelInv("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(), deuda, 2);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }

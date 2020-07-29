@@ -320,10 +320,38 @@ public class Escribir {
         XSSFWorkbook newWorkBook;
         try ( FileInputStream inputStream = new FileInputStream(file)) {
             newWorkBook = new XSSFWorkbook(inputStream);
-            newWorkBook.createSheet(hoja);
+            XSSFRow row;
+            row = newWorkBook.createSheet(hoja).createRow(0);
+            String[] headers = new String[]{
+                "Fecha",
+                "Monto"
+            };
+        
+            for(int i=0; i<2; i++){
+                XSSFCell newCell = row.createCell(i);
+                newCell.setCellValue(headers[i]);
+                XSSFFont font = newWorkBook.createFont();
+                font.setFontHeightInPoints((short) 12);
+                font.setFontName("Calibri");
+                font.setColor(IndexedColors.BLACK.getIndex());
+                font.setBold(true);
+                font.setItalic(false);
+
+                XSSFCellStyle style = newWorkBook.createCellStyle();
+                XSSFColor color = new XSSFColor(Colores.epicColor);
+                style.setFillForegroundColor(color);//color de fondo
+                style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                style.setAlignment(HorizontalAlignment.CENTER);
+                style.setVerticalAlignment(VerticalAlignment.CENTER);
+                style.setFont(font);
+                newCell.setCellStyle(style);
+                
+            }
         }
+        
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkBook.write(outputStream);
         outputStream.close();
     }
+    
 }

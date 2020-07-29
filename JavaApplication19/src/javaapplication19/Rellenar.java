@@ -246,7 +246,7 @@ public class Rellenar {
         rellenarVentasC.add(iconoVentasC);
         String[] listaPlataformas = {"Mercado Libre", "Facebook", "Amazon", "Shopiffy"};
 
-        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 1));
+        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
         inventario.setPreferredSize(new Dimension(200,30));
