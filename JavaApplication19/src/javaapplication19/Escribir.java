@@ -10,8 +10,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import org.apache.commons.compress.archivers.dump.InvalidFormatException;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -269,5 +272,16 @@ public class Escribir {
         newWorkbook.write(outputStream);
         outputStream.close();
 
+    }
+    public static void crearHoja (String filepath, String hoja) throws FileNotFoundException, IOException{
+        File file = new File(filepath);
+        XSSFWorkbook newWorkBook;
+        try (FileInputStream inputStream = new FileInputStream(file)) {
+            newWorkBook = new XSSFWorkbook(inputStream);
+            newWorkBook.createSheet(hoja);
+        }
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkBook.write(outputStream);
+        outputStream.close();
     }
 }

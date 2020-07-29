@@ -281,6 +281,7 @@ public class DeudaCobrar extends javax.swing.JFrame {
         Escribir escribirExcel = new Escribir();
         try {
             escribirExcel.escribirExcelInv("src\\excel\\DeudasC.xlsx","deudasCobrar", Registro,3);
+            Escribir.crearHoja("src\\excel\\DeudasC.xlsx", jtNombre.getText());
         } catch (IOException ex) {
             Logger.getLogger(DeudaCobrar.class.getName()).log(Level.SEVERE, null, ex);
         }
