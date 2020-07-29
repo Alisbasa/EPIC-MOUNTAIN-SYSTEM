@@ -25,8 +25,7 @@ public class clienteNuevo extends javax.swing.JFrame {
      * Creates new form clienteNuevo
      * @param unidades
      */
-    public clienteNuevo(JLabel unidades) {
-        this.unidades = unidades;
+    public clienteNuevo() {;
         initComponents();
         this.setExtendedState(NORMAL);
         this.setResizable(false);
@@ -341,7 +340,6 @@ public class clienteNuevo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new clienteNuevo(unidades).setVisible(true);
             }
         });
     }
