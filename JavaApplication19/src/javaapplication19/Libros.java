@@ -1507,7 +1507,7 @@ public class Libros extends javax.swing.JFrame {
                 Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            rellenarDesCompra.botonDesCT(rellenarDes.desarrolloTipoCT, rellenarDes.productoCT, rellenarDes.montoDesCT, rellenarDes.iconoOkDesarrolloCT, scrollGastos, listaGastos, rellenarDes.rellenarDesCompras, rellenarDes.provedores);  
+            rellenarDesCompra.botonDesCT(rellenarDes.desarrolloTipoCT, rellenarDes.productoCT, rellenarDes.montoDesCT, rellenarDes.iconoOkDesarrolloCT, scrollGastos, listaGastos, rellenarDes.rellenarDesCompras, rellenarDes.provedores, rellenarDes.unidadesCT);  
         }
         
         

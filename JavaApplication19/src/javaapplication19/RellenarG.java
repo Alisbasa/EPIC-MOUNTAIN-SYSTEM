@@ -75,6 +75,7 @@ public class RellenarG {
     JComboBox reducInv;
     JComboBox tipoPack;
     JComboBox provedores;
+    JTextField unidadesCT;
     
     JTextField montoDesCT;
     JTextField montoDesE;
@@ -227,12 +228,18 @@ public class RellenarG {
         desarrolloTipoCT.setBackground(Colores.epicColorBajito);
         desarrolloTipoCT.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         desarrolloTipoCT.setPreferredSize(new Dimension(150, 30));
+       
                     
 
         montoDesCT = new JTextField("$");
         montoDesCT.setBackground(Colores.epicColorBajito);
         montoDesCT.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        montoDesCT.setPreferredSize(new Dimension(150, 30));
+        montoDesCT.setPreferredSize(new Dimension(60, 30));
+        
+        unidadesCT = new JTextField("Unidades");
+        unidadesCT.setBackground(Colores.epicColorBajito);
+        unidadesCT.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        unidadesCT.setPreferredSize(new Dimension(60, 30));
                     
         String [] listaComprasCT = {"Equipo y Mob.", "Inventario Princ." , "Packs de Ventas", "Egresos"};
         productoCT = new JComboBox (listaComprasCT);
@@ -248,6 +255,7 @@ public class RellenarG {
                     
         rellenarDesCompras.add(desarrolloTipoCT);
         rellenarDesCompras.add(montoDesCT);
+        rellenarDesCompras.add(unidadesCT);
         rellenarDesCompras.add(productoCT);
         rellenarDesCompras.add(provedores);
         rellenarDesCompras.add(iconoOkDesarrolloCT);
