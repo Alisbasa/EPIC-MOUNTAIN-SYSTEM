@@ -583,7 +583,7 @@ public class rellenarIngresos {
 
                 Escribir escribirVentas = new Escribir();
                 try {
-                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                    escribirVentas.escribirExcel("src\\excel\\DeudasC.xlsx", deuda.getText(), data);
                     
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
