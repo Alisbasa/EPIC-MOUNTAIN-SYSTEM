@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 public class InventarioExistente extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
+    JComboBox inventarioCB;
     
     /**
      * Creates new form clienteNuevo
@@ -32,7 +33,7 @@ public class InventarioExistente extends javax.swing.JFrame {
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        JComboBox inventarioCB = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
+        inventarioCB = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
     }
     /**
      * This method is called from within the constructor to initialize the form.
