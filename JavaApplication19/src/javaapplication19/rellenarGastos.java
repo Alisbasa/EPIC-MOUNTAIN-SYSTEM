@@ -331,6 +331,16 @@ public class rellenarGastos {
                     inventarioPrincipal inv =new inventarioPrincipal(desarrolloListaI,precioI);
                     inv.setVisible(true);
                 }
+                
+                if(producto.getSelectedItem().toString().equals("Existente")){
+                    InventarioExistente inv;
+                try {
+                    inv = new InventarioExistente();
+                    inv.setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                }
             
             indice++;
             panelPadre.removeAll();

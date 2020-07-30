@@ -583,9 +583,11 @@ public class rellenarIngresos {
 
                 Escribir escribirVentas = new Escribir();
                 try {
+                    
                     if(deudor.getSelectedItem().toString()!="Nuevo"){
                         escribirVentas.escribirExcelInv("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), data, 2);
                     }
+                    
                     String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+ 1) + ")";
                     escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar",formula,LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+ 1, 2);
                     //String formula2 = "SUM(B2:B" + LeerExcel.obtenerCelda("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), 1, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString()));
