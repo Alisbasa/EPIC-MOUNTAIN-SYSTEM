@@ -73,8 +73,8 @@ public class packsDeVentas extends javax.swing.JFrame {
         jpUbicacion = new javax.swing.JPanel();
         jtUnidades = new javax.swing.JTextField();
         jlUnidades = new javax.swing.JLabel();
-        jpBoton = new javax.swing.JPanel();
         jbRegistrar = new javax.swing.JButton();
+        jpBoton = new javax.swing.JPanel();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -189,13 +189,13 @@ public class packsDeVentas extends javax.swing.JFrame {
                 jtDescActionPerformed(evt);
             }
         });
-        jpDescripcion.add(jtDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 370, 48));
+        jpDescripcion.add(jtDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 310, 48));
         jtDesc.setBackground(Colores.epicColorBajito);
 
-        jlDesc.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
+        jlDesc.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlDesc.setForeground(new java.awt.Color(255, 255, 255));
         jlDesc.setText("DESCRIPCION");
-        jpDescripcion.add(jlDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 100, 30));
+        jpDescripcion.add(jlDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 160, 40));
 
         jpDatos.add(jpDescripcion);
 
@@ -205,7 +205,7 @@ public class packsDeVentas extends javax.swing.JFrame {
         jlPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlPack.setForeground(new java.awt.Color(255, 255, 255));
         jlPack.setText("CONDICION");
-        jpPack.add(jlPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 130, 30));
+        jpPack.add(jlPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 130, 30));
 
         jcCondicion.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 13)); // NOI18N
         jcCondicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Seminuevo", "Usado" }));
@@ -214,11 +214,11 @@ public class packsDeVentas extends javax.swing.JFrame {
         jlPack1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlPack1.setForeground(new java.awt.Color(255, 255, 255));
         jlPack1.setText("PACK");
-        jpPack.add(jlPack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 30));
+        jpPack.add(jlPack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, 30));
 
         jtPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         jtPack.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpPack.add(jtPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 120, 48));
+        jpPack.add(jtPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 120, 48));
         jtPack.setBackground(Colores.epicColorBajito);
 
         jpDatos.add(jpPack);
@@ -229,11 +229,11 @@ public class packsDeVentas extends javax.swing.JFrame {
         jlTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlTIG.setForeground(new java.awt.Color(255, 255, 255));
         jlTIG.setText("PRECIO");
-        jpTIG.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 120, 30));
+        jpTIG.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 120, 30));
 
         jtPrecio.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         jtPrecio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpTIG.add(jtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 200, 48));
+        jpTIG.add(jtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 120, 48));
         jtPack.setBackground(Colores.epicColorBajito);
 
         jpDatos.add(jpTIG);
@@ -243,18 +243,13 @@ public class packsDeVentas extends javax.swing.JFrame {
 
         jtUnidades.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         jtUnidades.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpUbicacion.add(jtUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 120, 48));
+        jpUbicacion.add(jtUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 100, 48));
         jtUnidades.setBackground(Colores.epicColorBajito);
 
         jlUnidades.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlUnidades.setForeground(new java.awt.Color(255, 255, 255));
-        jlUnidades.setText("Unidades");
-        jpUbicacion.add(jlUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 110, 30));
-
-        jpDatos.add(jpUbicacion);
-
-        jpBoton.setBackground(new java.awt.Color(51, 51, 51));
-        jpBoton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jlUnidades.setText("UNIDADES");
+        jpUbicacion.add(jlUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 30));
 
         jbRegistrar.setFont(new java.awt.Font("Franklin Gothic Book", 2, 24)); // NOI18N
         jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -269,12 +264,16 @@ public class packsDeVentas extends javax.swing.JFrame {
                 jbRegistrarActionPerformed(evt);
             }
         });
-        jpBoton.add(jbRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 170, 60));
+        jpUbicacion.add(jbRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 170, 60));
         jbRegistrar.setBackground(Colores.epicColor);
 
+        jpDatos.add(jpUbicacion);
+
+        jpBoton.setBackground(new java.awt.Color(51, 51, 51));
+        jpBoton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jpDatos.add(jpBoton);
 
-        getContentPane().add(jpDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 500, 410));
+        getContentPane().add(jpDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 500, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -330,13 +329,24 @@ public class packsDeVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
-        String[] Registro = {desarrolloTipoP.getText(), jtDesc.getText(),fechaActual(), jcCondicion.getSelectedItem().toString(),
-                             jtPack.getText(), Double.toString(Double.valueOf(jtPrecio.getText())/Double.valueOf(montoDesP.getText())),
-                             jtPrecio.getText(),Double.toString(Double.valueOf(jtPrecio.getText())*Integer.valueOf(jtUnidades.getText())),
-                             jtUnidades.getText(),montoDesP.getText() }; 
+        String[] Registro = {desarrolloTipoP.getText(),
+            jtDesc.getText(),
+            fechaActual(),
+            jcCondicion.getSelectedItem().toString(),
+                             jtPack.getText(),
+                             
+                             Double.toString(Double.valueOf(jtPrecio.getText())/Double.valueOf(montoDesP.getText())),
+                             jtUnidades.getText(),
+                             montoDesP.getText(),
+                             Double.toString(Double.valueOf(montoDesP.getText())*Integer.valueOf(jtUnidades.getText())),
+                             
+                             jtPrecio.getText(),
+                             Double.toString(Double.valueOf(jtPrecio.getText())*Integer.valueOf(jtUnidades.getText()))}; 
         Escribir escribirExcel = new Escribir();
         try {
-            escribirExcel.escribirExcelInv("src\\excel\\Packs.xlsx", "PacksVentas", Registro,8);
+            escribirExcel.escribirExcelInv("src\\excel\\Packs.xlsx", "PacksVentas", Registro,10);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", "PacksVentas"   , Double.valueOf(Registro[8]), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas"), 8);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", "PacksVentas"   , Double.valueOf(Registro[10]), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas"), 10);
         } catch (IOException ex) {
             Logger.getLogger(packsDeVentas.class.getName()).log(Level.SEVERE, null, ex);
         }

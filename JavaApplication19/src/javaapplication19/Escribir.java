@@ -220,7 +220,7 @@ public class Escribir {
             XSSFCell newCell = newRow.createCell(i);
             newCell.setCellValue(data[i]);
             setCellStyle(newWorkbook, newCell);
-            evaluar(newWorkbook, newCell);
+            //evaluar(newWorkbook, newCell);
 
         }
         newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
