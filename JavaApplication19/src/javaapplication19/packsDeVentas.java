@@ -347,6 +347,10 @@ public class packsDeVentas extends javax.swing.JFrame {
             escribirExcel.escribirExcelInv("src\\excel\\Packs.xlsx", "PacksVentas", Registro,10);
             escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", "PacksVentas"   , Double.valueOf(Registro[8]), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas"), 8);
             escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", "PacksVentas"   , Double.valueOf(Registro[10]), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas"), 10);
+            String formula = "SUM(I2:I" + LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas") + ")";
+            escribirExcel.escribirFormula("src\\excel\\Packs.xlsx", "PacksVentas", formula,LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas")+1, 8);
+            String formula2 = "SUM(K2:K" + LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas") + ")";
+            escribirExcel.escribirFormula("src\\excel\\Packs.xlsx", "PacksVentas", formula2, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas")+1, 10);
         } catch (IOException ex) {
             Logger.getLogger(packsDeVentas.class.getName()).log(Level.SEVERE, null, ex);
         }
