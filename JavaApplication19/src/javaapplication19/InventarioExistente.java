@@ -34,6 +34,9 @@ public class InventarioExistente extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         inventarioCB = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
+        inventarioCB.setBackground(Color.white);
+        inventarioCB.setUI(PropiedadesCB2.createUI(inventarioCB));
+        jpDescripcion.add(inventarioCB);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -167,21 +170,20 @@ public class InventarioExistente extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
         jpDatos.setBackground(new java.awt.Color(51, 51, 51));
-        jpDatos.setLayout(new java.awt.GridLayout(5, 0));
+        jpDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jpDescripcion.setBackground(new java.awt.Color(51, 51, 51));
-        jpDescripcion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jlDesc1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
         jlDesc1.setForeground(new java.awt.Color(255, 255, 255));
         jlDesc1.setText("INVENTARIO");
-        jpDescripcion.add(jlDesc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 100, 30));
+        jpDescripcion.add(jlDesc1);
 
-        jpDatos.add(jpDescripcion);
+        jpDatos.add(jpDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 82));
 
         jpPack.setBackground(new java.awt.Color(51, 51, 51));
         jpPack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jpDatos.add(jpPack);
+        jpDatos.add(jpPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 82, 500, 82));
 
         jpTIG.setBackground(new java.awt.Color(51, 51, 51));
         jpTIG.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -201,7 +203,7 @@ public class InventarioExistente extends javax.swing.JFrame {
         jlDesc.setText("UNIDADES");
         jpTIG.add(jlDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 80, 30));
 
-        jpDatos.add(jpTIG);
+        jpDatos.add(jpTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 164, 500, 82));
 
         jpUbicacion.setBackground(new java.awt.Color(51, 51, 51));
         jpUbicacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -222,11 +224,11 @@ public class InventarioExistente extends javax.swing.JFrame {
         jpUbicacion.add(jbRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 170, 60));
         jbRegistrar.setBackground(Colores.epicColor);
 
-        jpDatos.add(jpUbicacion);
+        jpDatos.add(jpUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 246, 500, 82));
 
         jpBoton.setBackground(new java.awt.Color(51, 51, 51));
         jpBoton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jpDatos.add(jpBoton);
+        jpDatos.add(jpBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 328, 500, 82));
 
         getContentPane().add(jpDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 500, 410));
 
@@ -285,14 +287,11 @@ public class InventarioExistente extends javax.swing.JFrame {
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
         try {
-            for (int i = 0; i < LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"); i++) {
-                if(LeerExcel.obtenerCelda("src\\excel\\Inventario.xlsx", "Inventario", 0, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")).equals(inventarioCB.getSelectedItem())){
-                   int suma = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 6, inventarioCB.getSelectedIndex()) + Integer.valueOf(UNIDADES.getText());
-                   Escribir escribirInv = new Escribir();
-                   escribirInv.escribirCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", suma, inventarioCB.getSelectedIndex(), 6);
-                }
-
-            }
+            int suma = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 6, inventarioCB.getSelectedIndex() + 1) + Integer.valueOf(UNIDADES.getText());
+            Escribir escribirInv = new Escribir();
+            System.out.println(suma);
+            escribirInv.escribirCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", suma, inventarioCB.getSelectedIndex() + 1, 6);
+            
         } catch (IOException ex) {
             Logger.getLogger(InventarioExistente.class.getName()).log(Level.SEVERE, null, ex);
         }
