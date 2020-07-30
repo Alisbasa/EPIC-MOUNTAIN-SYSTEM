@@ -123,7 +123,7 @@ public class Rellenar {
             public void actionPerformed(ActionEvent e) {
                 indexInventario = inventario.getSelectedIndex();
                 try {
-                    numeroUnidades =(int)LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 6, indexInventario + 1);
+                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 6, indexInventario + 1);
                 } catch (IOException ex) {
                     Logger.getLogger(Rellenar.class.getName()).log(Level.SEVERE, null, ex);
                 }
