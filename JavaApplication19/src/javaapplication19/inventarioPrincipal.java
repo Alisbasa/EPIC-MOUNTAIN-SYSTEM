@@ -345,18 +345,30 @@ public class inventarioPrincipal extends javax.swing.JFrame {
                                jcPack.getSelectedItem().toString(),
                                jtTIG.getText(),jtUnidades.getText(),
                                rellenar.montoDesI.getText()};*/
+        String costoBaseNeto =Double.toString(Integer.valueOf(jtUnidades.getText())*Double.valueOf(jtPrecio.getText()));
+        String costoNeto =Double.toString(Integer.valueOf(jtUnidades.getText())*Double.valueOf(monto.getText()));
+        String precioBaseNeto= Double.toString(((Double.valueOf((jtPrecio.getText()))*.16)+Double.valueOf(jtPrecio.getText()))*Integer.valueOf(jtUnidades.getText()));
         
-        
-        String [] inventario = {nombre.getText(),jtDesc.getText(),fechaActual(), jcCond.getSelectedItem().toString(),
-                                jtPack.getText(),Double.toString(Double.valueOf(jtPrecio.getText())/Double.valueOf(monto.getText())),jtUnidades.getText(),monto.getText(),
-                                Double.toString(Integer.valueOf(jtUnidades.getText())*Double.valueOf(monto.getText())), jtPrecio.getText(), 
-                                Double.toString(Integer.valueOf(jtUnidades.getText())*Double.valueOf(jtPrecio.getText())), 
+        String [] inventario = {nombre.getText(),
+            jtDesc.getText(),
+            fechaActual(),
+            jcCond.getSelectedItem().toString(),
+                                jtPack.getText(),
+                                Double.toString(Double.valueOf(jtPrecio.getText())/Double.valueOf(monto.getText())),
+                                jtUnidades.getText(),
+                                monto.getText(),
+                                costoNeto,
+                                jtPrecio.getText(), 
+                                costoBaseNeto, 
                                 Double.toString((Double.valueOf((jtPrecio.getText()))*.16)+Double.valueOf(jtPrecio.getText())),
-                                Double.toString(((Double.valueOf((jtPrecio.getText()))*.16)+Double.valueOf(jtPrecio.getText()))*Integer.valueOf(jtUnidades.getText()))};
+                                precioBaseNeto};
         
         Escribir EscribirCRM = new Escribir();
         try {
             EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "Inventario",inventario,13);
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(costoNeto), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 8);
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(costoBaseNeto), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 10);
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(precioBaseNeto), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 12);
             String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula,
                                         LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 8);

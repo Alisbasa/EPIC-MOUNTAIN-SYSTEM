@@ -43,7 +43,7 @@ public class Escribir {
     public void evaluar(XSSFWorkbook wb, XSSFCell R){
         FormulaEvaluator evaluator = wb.getCreationHelper().createFormulaEvaluator();
         evaluator.evaluate(R);
-        R.setCellType(CellType.NUMERIC);
+        
     }
     
     public void setCellStyle(XSSFWorkbook wb, XSSFCell R) {
@@ -271,6 +271,26 @@ public class Escribir {
     }
 
     public void escribirCeldaNumerica(String filepath, String hoja, int data, int fila, int columna) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+
+        XSSFRow row = newSheet.getRow(fila);
+
+        XSSFCell newCell = row.createCell(columna);
+        newCell.setCellValue(data);
+        setCellStyle(newWorkbook, newCell);
+         evaluar(newWorkbook, newCell);
+         newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
+         XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+        inputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkbook.write(outputStream);
+        outputStream.close();
+
+    }
+    public void escribirCeldaDouble(String filepath, String hoja, double data, int fila, int columna) throws FileNotFoundException, IOException {
         File file = new File(filepath);
         FileInputStream inputStream = new FileInputStream(file);
         XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);

@@ -166,6 +166,7 @@ public class rellenarGastos {
             Escribir EscribirExcel = new Escribir();
                 try {
                     EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Herramientas",equipo,4);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", "Herramientas", Double.valueOf(montoDes.getText()), LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas"), 3);
                     String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas")+ 1) + ")";
                     EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Herramientas", formula, LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas")+1, 3);
                 } catch (IOException ex) {
@@ -177,6 +178,7 @@ public class rellenarGastos {
             Escribir EscribirExcel = new Escribir();
                 try {
                     EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Equipo de Taller",equipo,4);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", "Equipo de Taller", Double.valueOf(montoDes.getText()), LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Taller"), 3);
                     String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Taller")+ 1) + ")";
                     EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Equipo de Taller", formula, (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Taller")+1), 3);
                 } catch (IOException ex) {
@@ -189,6 +191,7 @@ public class rellenarGastos {
             Escribir EscribirExcel = new Escribir();
                 try {
                     EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Mobiliario",equipo,4);
+                     EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", "Mobiliario", Double.valueOf(montoDes.getText()), LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Mobiliario"), 3);
                     String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Mobiliario")+ 1) + ")";
                     EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Mobiliario", formula, (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Mobiliario")+1), 3);
                 } catch (IOException ex) {
@@ -201,6 +204,7 @@ public class rellenarGastos {
             Escribir EscribirExcel = new Escribir();
                 try {
                     EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Equipo de Limpieza",equipo,4);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", Double.valueOf(montoDes.getText()), LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Limpieza"), 3);
                     String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Limpieza")+ 1) +")";
                     EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", formula, (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Limpieza")+ 1), 3);
                 } catch (IOException ex) {
