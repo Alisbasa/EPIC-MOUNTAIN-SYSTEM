@@ -351,6 +351,7 @@ public class packsDeVentas extends javax.swing.JFrame {
             escribirExcel.escribirFormula("src\\excel\\Packs.xlsx", "PacksVentas", formula,LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas")+1, 8);
             String formula2 = "SUM(K2:K" + LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas") + ")";
             escribirExcel.escribirFormula("src\\excel\\Packs.xlsx", "PacksVentas", formula2, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas")+1, 10);
+            
         } catch (IOException ex) {
             Logger.getLogger(packsDeVentas.class.getName()).log(Level.SEVERE, null, ex);
         }
