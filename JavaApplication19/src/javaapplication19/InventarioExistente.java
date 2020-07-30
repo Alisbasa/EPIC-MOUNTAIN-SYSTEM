@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javaapplication19.inventarioPrincipal.fechaActual;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -22,18 +23,16 @@ import javax.swing.JPanel;
 public class InventarioExistente extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
-    static JLabel monto;
     
     /**
      * Creates new form clienteNuevo
-     * @param monto
      */
-    public InventarioExistente(JLabel monto) {
+    public InventarioExistente() throws IOException {
         initComponents();
-        this.monto = monto;
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        JComboBox inventarioCB = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,12 +56,13 @@ public class InventarioExistente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jpDatos = new javax.swing.JPanel();
         jpDescripcion = new javax.swing.JPanel();
-        jtNombre = new javax.swing.JTextField();
-        jlDesc = new javax.swing.JLabel();
+        jlDesc1 = new javax.swing.JLabel();
         jpPack = new javax.swing.JPanel();
-        jbRegistrar = new javax.swing.JButton();
         jpTIG = new javax.swing.JPanel();
+        UNIDADES = new javax.swing.JTextField();
+        jlDesc = new javax.swing.JLabel();
         jpUbicacion = new javax.swing.JPanel();
+        jbRegistrar = new javax.swing.JButton();
         jpBoton = new javax.swing.JPanel();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
@@ -171,25 +171,39 @@ public class InventarioExistente extends javax.swing.JFrame {
         jpDescripcion.setBackground(new java.awt.Color(51, 51, 51));
         jpDescripcion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jtNombre.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtNombreActionPerformed(evt);
-            }
-        });
-        jpDescripcion.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 370, 48));
-        jtNombre.setBackground(Colores.epicColorBajito);
-
-        jlDesc.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
-        jlDesc.setForeground(new java.awt.Color(255, 255, 255));
-        jlDesc.setText("NOMBRE");
-        jpDescripcion.add(jlDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 100, 30));
+        jlDesc1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
+        jlDesc1.setForeground(new java.awt.Color(255, 255, 255));
+        jlDesc1.setText("INVENTARIO");
+        jpDescripcion.add(jlDesc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 100, 30));
 
         jpDatos.add(jpDescripcion);
 
         jpPack.setBackground(new java.awt.Color(51, 51, 51));
         jpPack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpDatos.add(jpPack);
+
+        jpTIG.setBackground(new java.awt.Color(51, 51, 51));
+        jpTIG.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        UNIDADES.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        UNIDADES.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        UNIDADES.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UNIDADESActionPerformed(evt);
+            }
+        });
+        jpTIG.add(UNIDADES, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 370, 48));
+        UNIDADES.setBackground(Colores.epicColorBajito);
+
+        jlDesc.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
+        jlDesc.setForeground(new java.awt.Color(255, 255, 255));
+        jlDesc.setText("UNIDADES");
+        jpTIG.add(jlDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 80, 30));
+
+        jpDatos.add(jpTIG);
+
+        jpUbicacion.setBackground(new java.awt.Color(51, 51, 51));
+        jpUbicacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jbRegistrar.setFont(new java.awt.Font("Franklin Gothic Book", 2, 24)); // NOI18N
         jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -204,17 +218,9 @@ public class InventarioExistente extends javax.swing.JFrame {
                 jbRegistrarActionPerformed(evt);
             }
         });
-        jpPack.add(jbRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 170, 60));
+        jpUbicacion.add(jbRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 170, 60));
         jbRegistrar.setBackground(Colores.epicColor);
 
-        jpDatos.add(jpPack);
-
-        jpTIG.setBackground(new java.awt.Color(51, 51, 51));
-        jpTIG.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jpDatos.add(jpTIG);
-
-        jpUbicacion.setBackground(new java.awt.Color(51, 51, 51));
-        jpUbicacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jpDatos.add(jpUbicacion);
 
         jpBoton.setBackground(new java.awt.Color(51, 51, 51));
@@ -277,13 +283,15 @@ public class InventarioExistente extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
-        String[] Registro = {fechaActual(), jtNombre.getText(), monto.getText()}; 
-        String [] Registro2 = {fechaActual(), monto.getText()};
-        Escribir escribirExcel = new Escribir();
         try {
-            escribirExcel.escribirExcelInv("src\\excel\\DeudasC.xlsx","deudasCobrar", Registro,3);
-            Escribir.crearHoja("src\\excel\\DeudasC.xlsx", jtNombre.getText());
-            escribirExcel.escribirExcel("src\\excel\\DeudasC.xlsx", jtNombre.getText(), Registro2);
+            for (int i = 0; i < LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"); i++) {
+                if(LeerExcel.obtenerCelda("src\\excel\\Inventario.xlsx", "Inventario", 0, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")).equals(inventarioCB.getSelectedItem())){
+                   int suma = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 6, inventarioCB.getSelectedIndex()) + Integer.valueOf(UNIDADES.getText());
+                   Escribir escribirInv = new Escribir();
+                   escribirInv.escribirCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", suma, inventarioCB.getSelectedIndex(), 6);
+                }
+
+            }
         } catch (IOException ex) {
             Logger.getLogger(InventarioExistente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -296,9 +304,9 @@ public class InventarioExistente extends javax.swing.JFrame {
         return formatoFecha.format(fecha);
     }
     
-    private void jtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreActionPerformed
+    private void UNIDADESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UNIDADESActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtNombreActionPerformed
+    }//GEN-LAST:event_UNIDADESActionPerformed
 
     /**
      * @param args the command line arguments
@@ -343,13 +351,17 @@ public class InventarioExistente extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new InventarioExistente(monto).setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                
+            }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LOGO;
+    private javax.swing.JTextField UNIDADES;
     private javax.swing.JPanel barra;
     private javax.swing.JPanel cerrar;
     private javax.swing.JLabel cerrarIcon;
@@ -360,13 +372,13 @@ public class InventarioExistente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbRegistrar;
     private javax.swing.JLabel jlDesc;
+    private javax.swing.JLabel jlDesc1;
     private javax.swing.JPanel jpBoton;
     private javax.swing.JPanel jpDatos;
     private javax.swing.JPanel jpDescripcion;
     private javax.swing.JPanel jpPack;
     private javax.swing.JPanel jpTIG;
     private javax.swing.JPanel jpUbicacion;
-    private javax.swing.JTextField jtNombre;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel maxiIcon;
     // End of variables declaration//GEN-END:variables
