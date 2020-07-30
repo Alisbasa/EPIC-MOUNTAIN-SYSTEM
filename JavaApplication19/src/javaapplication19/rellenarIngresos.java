@@ -579,12 +579,18 @@ public class rellenarIngresos {
                 panelIngreso.add(new JLabel(""));
                 panelIngreso.add(icono);
                 
-                String[] data = {(String) fechaActual(), deudor.getSelectedItem().toString(), montoDeudaC.getText()};
+                String[] data = {(String) fechaActualConA(), Integer.toString(Integer.valueOf(montoDeudaC.getText())*-1)};
 
                 Escribir escribirVentas = new Escribir();
                 try {
-                    escribirVentas.escribirExcelInv("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), data, 3);
-                    
+                    if(deudor.getSelectedItem().toString()!="Nuevo"){
+                        escribirVentas.escribirExcelInv("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), data, 2);
+                    }
+                    String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+ 1) + ")";
+                    escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar",formula,LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+ 1, 2);
+                    //String formula2 = "SUM(B2:B" + LeerExcel.obtenerCelda("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), 1, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString()));
+                    //escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(),  formula2, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString())+ 1, 1);
+                
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1087,5 +1093,10 @@ public class rellenarIngresos {
             }
         }
         
+    }
+    public static String fechaActualConA(){
+        java.util.Date fecha = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM YY");
+        return formatoFecha.format(fecha);
     }
 }
