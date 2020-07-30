@@ -113,6 +113,7 @@ public class rellenarIngresos {
 
         boton.addMouseListener(botonV);
     }
+    
     void revertirUnidades(JLabel boton, String filepath, String hoja){
         MouseListener botonV = new MouseListener() {
 
@@ -215,6 +216,7 @@ public class rellenarIngresos {
                 botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"ventasG");
                 revertirUnidades(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
                 botonBorrarInd(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
+                borrarVenta();
                 
                 
                 panelIngreso.add(fecha);
@@ -1006,6 +1008,37 @@ public class rellenarIngresos {
                 
                 escribirVentas.escribirExcelInv("src//excel/Inventario.xlsx", "Inventario", data, 10);
       
+    }
+    public void borrarVenta() throws IOException{
+        String fecha = fechaActual();
+               
+        int seleccion=LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
+        
+        String venta= LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 0, seleccion);
+        String descripion= LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 1, seleccion);
+        String condicion= LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 3, seleccion);
+        String pack= LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 4, seleccion);
+        String tig= LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 5, seleccion);
+        String unidades=LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 6, seleccion);
+        String costoUnidad=  LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 7, seleccion);
+        
+        String costoNeto=  Double.toString(Integer.parseInt(unidades)*Double.parseDouble(costoUnidad));
+        String costoBaseUnidad=  LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 9, seleccion);
+        String costoBaseNeto=  Double.toString(Integer.parseInt(unidades)*Double.parseDouble(costoBaseUnidad));
+        
+        String[] data = {venta,descripion,fecha,condicion,pack,tig,unidades,costoUnidad,costoNeto,costoBaseUnidad,costoBaseNeto,};
+        
+        Escribir escribirVentas = new Escribir();       
+        
+        try {
+                    Escribir.removeRow("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase())+1);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                 
+                
+                escribirVentas.escribirExcelInv("src//excel/Inventario.xlsx", "Inventario", data, 10);
+        
     }
     
     public void corte(JScrollPane scrollIngresos, JPanel listaIngresos) throws IOException{
