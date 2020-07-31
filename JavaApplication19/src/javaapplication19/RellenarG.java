@@ -468,7 +468,7 @@ public class RellenarG {
         reducInv.setUI( PropiedadesCB2.createUI(reducInv));
         
         montoReduc = new JTextField();
-        addPlaceHolder("Monto", montoRedu);
+        addPlaceHolder("Monto", montoReduc);
         montoReduc.setPreferredSize(new Dimension(60, 30));
         montoReduc.setBackground(Colores.epicColorBajito);
         montoReduc.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
