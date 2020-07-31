@@ -7,6 +7,7 @@ package javaapplication19;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -143,6 +144,12 @@ public class Rellenar {
         return rellenarVentas;
     }
 
+    public static void  addPlaceHolder(String texto,JTextField textField){
+        TextPrompt placeholder = new TextPrompt(texto, textField);
+        placeholder.changeAlpha(0.75f);
+        placeholder.changeStyle(Font.ITALIC);
+        
+    }
     public JPanel rellenarCredito() {
         rellenarCredito.removeAll();
 
@@ -151,8 +158,13 @@ public class Rellenar {
         rellenarCredito.add(iconoCredito);
         Iconos.scaleImage("ok", iconoOkC, 30);
 
-        inversor = new JTextField("Prestamista");
-        montoC = new JTextField("$");
+        inversor = new JTextField();
+        inversor.setBackground(Colores.epicColorBajito);
+        inversor.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        addPlaceHolder("Inversionista", inversor);
+        
+        montoC = new JTextField("");
+        addPlaceHolder("Monto", montoC);
         montoC.setPreferredSize(new Dimension(60, 30));
         inversor.setPreferredSize(new Dimension(150, 30));
         montoC.setBackground(Colores.epicColorBajito);
@@ -173,8 +185,10 @@ public class Rellenar {
         Iconos.scaleImage("Inversion", iconoInversion, 40);
         rellenarInversion.add(iconoInversion);
         Iconos.scaleImage("ok", iconoOkI, 30);
-        inversorI = new JTextField("Inversor");
-        montoI = new JTextField("$");
+        inversorI = new JTextField("");
+        addPlaceHolder("Inversionista", inversorI);
+        montoI = new JTextField("");
+        addPlaceHolder("Monto", montoI);
         montoI.setPreferredSize(new Dimension(60, 30));
         inversorI.setPreferredSize(new Dimension(150, 30));
         montoI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
