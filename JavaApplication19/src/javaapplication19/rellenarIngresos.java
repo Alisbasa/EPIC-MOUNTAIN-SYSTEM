@@ -233,7 +233,21 @@ public class rellenarIngresos {
                 Escribir escribirVentas = new Escribir();
                 try {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
-                    
+                    /*String formula = "SUM(I2:I" + LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + ")";
+                    escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()+1), 8);
+                    String formula2 = "SUM(K2:K" + LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + ")";
+                    escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula2, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()+1), 10);
+                    String formula3 = "SUM(M2:M" + LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + ")";
+                    escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula3, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()+1), 12);
+                    String formula4 = "SUM(O2:O" + LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + ")";
+                    escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula4, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()+1), 14);
+                    String formula5 = "SUM(S2:S" + LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + ")";
+                    escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula5, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()+1), 16);
+                    String formula6 = "SUM(U2:U" + LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + ")";
+                    escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula6, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()+1), 18);
+                    String formula7 = "SUM(W2:W" + LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + ")";
+                    escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula7, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()+1), 20);
+                    */
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -984,6 +998,9 @@ public class rellenarIngresos {
                 escribirVentas.escribirExcelInv("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), data, 10);
                 escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()   , Double.valueOf(data[8]), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 8);
                 escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()   , Double.valueOf(data[10]), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 10);
+                //escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() , Double.valueOf(data[]), indice, indice);
+                
+    
     }
     public void devolver(JComboBox devo) throws IOException{
         String fecha = fechaActual();
