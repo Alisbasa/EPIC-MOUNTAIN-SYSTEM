@@ -24,6 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javaapplication19.Libros;
+import static javaapplication19.Rellenar.addPlaceHolder;
 import javax.swing.BorderFactory;
 import javax.swing.border.LineBorder;
 
@@ -121,18 +122,21 @@ public class RellenarG {
         tipo.setUI(PropiedadesCB2.createUI(tipo));
         
         
-        desarrolloTipoE = new JTextField("Equipo y Mobiliario");
+        desarrolloTipoE = new JTextField();
+        addPlaceHolder("Equipo y Mobiliario", desarrolloTipoE);
         desarrolloTipoE.setBackground(Colores.epicColorBajito);
         desarrolloTipoE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         desarrolloTipoE.setPreferredSize(new Dimension(150, 30));
         
-        descripcion = new JTextField("Descripcion");
+        descripcion = new JTextField();
+        addPlaceHolder("Descripcion", descripcion);
         descripcion.setBackground(Colores.epicColorBajito);
         descripcion.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         descripcion.setPreferredSize(new Dimension(150, 30));
         
 
-        montoDesE = new JTextField("$ ");
+        montoDesE = new JTextField();
+        addPlaceHolder("Monto", montoDesE);
         montoDesE.setBackground(Colores.epicColorBajito);
         montoDesE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         montoDesE.setPreferredSize(new Dimension(60, 30));
@@ -157,7 +161,8 @@ public class RellenarG {
         Iconos.scaleImage("Inventario", iconoDesarrollo, 30);
         rellenarDesInv.add(iconoDesarrollo);
 
-        desarrolloTipoI = new JTextField("Inventario");
+        desarrolloTipoI = new JTextField();
+        addPlaceHolder("Inventario", desarrolloTipoI);
         desarrolloTipoI.setBackground(Colores.epicColorBajito);
         desarrolloTipoI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         desarrolloTipoI.setPreferredSize(new Dimension(150, 30));
@@ -168,7 +173,8 @@ public class RellenarG {
         producto = new JComboBox (listaProductos);
         producto.setUI(PropiedadesCB2.createUI(producto));
 
-        montoDesI = new JTextField("$");
+        montoDesI = new JTextField();
+        addPlaceHolder("Monto", montoDesI);
         montoDesI.setBackground(Colores.epicColorBajito);
         montoDesI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         montoDesI.setPreferredSize(new Dimension(60, 30));
@@ -192,7 +198,8 @@ public class RellenarG {
         Iconos.scaleImage("Packs", iconoDesarrollo, 30);
         rellenarDesPacks.add(iconoDesarrollo);
 
-        desarrolloTipoP = new JTextField("Packs");
+        desarrolloTipoP = new JTextField();
+        addPlaceHolder("Packs", desarrolloTipoP);
         desarrolloTipoP.setBackground(Colores.epicColorBajito);
         desarrolloTipoP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         desarrolloTipoP.setPreferredSize(new Dimension(150, 30));
@@ -202,7 +209,8 @@ public class RellenarG {
         tipoPack.setUI(PropiedadesCB2.createUI(tipoPack));
                     
 
-        montoDesP = new JTextField("$");
+        montoDesP = new JTextField();
+        addPlaceHolder("Monto", montoDesP);
         montoDesP.setBackground(Colores.epicColorBajito);
         montoDesP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         montoDesP.setPreferredSize(new Dimension(60, 30));
@@ -224,19 +232,22 @@ public class RellenarG {
         Iconos.scaleImage("Compras", iconoDesarrollo, 30);
         rellenarDesCompras.add(iconoDesarrollo);
 
-        desarrolloTipoCT = new JTextField("Compra en Transito");
+        desarrolloTipoCT = new JTextField();
+        addPlaceHolder("Compra en Transito", desarrolloTipoCT);
         desarrolloTipoCT.setBackground(Colores.epicColorBajito);
         desarrolloTipoCT.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         desarrolloTipoCT.setPreferredSize(new Dimension(150, 30));
        
                     
 
-        montoDesCT = new JTextField("$");
+        montoDesCT = new JTextField();
+        addPlaceHolder("Monto", montoDesCT);
         montoDesCT.setBackground(Colores.epicColorBajito);
         montoDesCT.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         montoDesCT.setPreferredSize(new Dimension(60, 30));
         
-        unidadesCT = new JTextField("Unidades");
+        unidadesCT = new JTextField();
+        addPlaceHolder("Unidades", unidadesCT);
         unidadesCT.setBackground(Colores.epicColorBajito);
         unidadesCT.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         unidadesCT.setPreferredSize(new Dimension(60, 30));
@@ -277,7 +288,8 @@ public class RellenarG {
         deudas.setBackground(Color.white);
         deudas.setUI( PropiedadesCB2.createUI(deudas));        
         
-        montoDeuda = new JTextField("$");
+        montoDeuda = new JTextField();
+        addPlaceHolder("Monto", montoDeuda);
         montoDeuda.setPreferredSize(new Dimension(60, 30));
         montoDeuda.setBackground(Colores.epicColorBajito);
         montoDeuda.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
@@ -298,9 +310,11 @@ public class RellenarG {
         Iconos.scaleImage("Impuesto", iconoImpuesto, 25);
         rellenarImpuestoG.add(iconoImpuesto);
         Iconos.scaleImage("ok", iconoOkImpuesto, 30);
-        impuesto = new JTextField("Impuesto");
+        impuesto = new JTextField();
+        addPlaceHolder("Impuesto", impuesto);
         
-        montoImpuesto = new JTextField("$");
+        montoImpuesto = new JTextField();
+        addPlaceHolder("Monto", montoImpuesto);
         montoImpuesto.setPreferredSize(new Dimension(60, 30));
         montoImpuesto.setBackground(Colores.epicColorBajito);
         montoImpuesto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
@@ -322,9 +336,11 @@ public class RellenarG {
         Iconos.scaleImage("Mantenimiento", iconoMantenimiento, 25);
         rellenarMantenimiento.add(iconoMantenimiento);
         Iconos.scaleImage("ok", iconoOkMantenimiento, 30);
-        mantenimiento = new JTextField("Mantenimiento");
+        mantenimiento = new JTextField();
+        addPlaceHolder("Mantenimiento", mantenimiento);
         
-        montoMant = new JTextField("$");
+        montoMant = new JTextField();
+        addPlaceHolder("Monto", montoMant);
         montoMant.setPreferredSize(new Dimension(60, 30));
         montoMant.setBackground(Colores.epicColorBajito);
         montoMant.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
@@ -345,9 +361,11 @@ public class RellenarG {
         Iconos.scaleImage("Suministros", iconoSuministros, 40);
         rellenarSuministros.add(iconoSuministros);
         Iconos.scaleImage("ok", iconoOkSuministros, 30);
-        suministros = new JTextField("Suministros");
+        suministros = new JTextField();
+        addPlaceHolder("Suministros", suministros);
         
-        montoSum = new JTextField("$");
+        montoSum = new JTextField();
+        addPlaceHolder("Monto", montoSum);
         montoSum.setPreferredSize(new Dimension(60, 30));
         montoSum.setBackground(Colores.epicColorBajito);
         montoSum.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
@@ -368,9 +386,11 @@ public class RellenarG {
         Iconos.scaleImage("publicidad", iconoPublicidad, 40);
         rellenarPubliidad.add(iconoPublicidad);
         Iconos.scaleImage("ok", iconoOkPublicidad, 30);
-        publicidad = new JTextField("Publicidad");
+        publicidad = new JTextField();
+        addPlaceHolder("Publicidad", publicidad);
         
-        montoPublicidad = new JTextField("$");
+        montoPublicidad = new JTextField();
+        addPlaceHolder("Monto", montoPublicidad);
         montoPublicidad.setPreferredSize(new Dimension(60, 30));
         montoPublicidad.setBackground(Colores.epicColorBajito);
         montoPublicidad.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
@@ -391,9 +411,11 @@ public class RellenarG {
         Iconos.scaleImage("transporte", iconoTransporte, 40);
         rellenarTransporte.add(iconoTransporte);
         Iconos.scaleImage("ok", iconoOkTransporte, 30);
-        transporte = new JTextField("Transporte");
+        transporte = new JTextField();
+        addPlaceHolder("Transporte", transporte);
         
-        montoTrans = new JTextField("$");
+        montoTrans = new JTextField();
+        addPlaceHolder("Monto", montoTrans);
         montoTrans.setPreferredSize(new Dimension(60, 30));
         montoTrans.setBackground(Colores.epicColorBajito);
         montoTrans.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
@@ -414,9 +436,11 @@ public class RellenarG {
         Iconos.scaleImage("honorarios", iconoHonorarios, 40);
         rellenarHonorarios.add(iconoHonorarios);
         Iconos.scaleImage("ok", iconoOkHonorarios, 30);
-        honorarios = new JTextField("Honorarios");
+        honorarios = new JTextField();
+        addPlaceHolder("Honorarios", honorarios);
         
-        montoHonor = new JTextField("$");
+        montoHonor = new JTextField();
+        addPlaceHolder("Monto", montoHonor);
         montoHonor.setPreferredSize(new Dimension(60, 30));
         montoHonor.setBackground(Colores.epicColorBajito);
         montoHonor.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
@@ -443,7 +467,8 @@ public class RellenarG {
         reducInv.setBackground(Color.white);
         reducInv.setUI( PropiedadesCB2.createUI(reducInv));
         
-        montoReduc = new JTextField("$");
+        montoReduc = new JTextField();
+        addPlaceHolder("Monto", montoRedu);
         montoReduc.setPreferredSize(new Dimension(60, 30));
         montoReduc.setBackground(Colores.epicColorBajito);
         montoReduc.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
