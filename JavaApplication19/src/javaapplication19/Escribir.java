@@ -352,13 +352,17 @@ public class Escribir {
 
     }
 
-    public static void crearHoja(String filepath, String hoja) throws FileNotFoundException, IOException {
+    public void crearHoja(String filepath, String hoja) throws FileNotFoundException, IOException {
         File file = new File(filepath);
         XSSFWorkbook newWorkBook;
         try ( FileInputStream inputStream = new FileInputStream(file)) {
             newWorkBook = new XSSFWorkbook(inputStream);
             XSSFRow row;
+            XSSFRow row2;
+            
             row = newWorkBook.createSheet(hoja).createRow(0);
+            row2 = newWorkBook.createSheet(hoja).createRow(1);
+            
             String[] headers = new String[]{
                 "Fecha",
                 "Monto"
@@ -366,6 +370,10 @@ public class Escribir {
         
             for(int i=0; i<2; i++){
                 XSSFCell newCell = row.createCell(i);
+                XSSFCell newCell2 = row.createCell(i);
+                setCellStyleVerde(newWorkBook, newCell2);
+                
+                
                 newCell.setCellValue(headers[i]);
                 XSSFFont font = newWorkBook.createFont();
                 font.setFontHeightInPoints((short) 12);

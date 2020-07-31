@@ -710,7 +710,7 @@ public class rellenarIngresos {
                 Escribir escribirVentas = new Escribir();
                 try {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
-                    Escribir.crearHoja("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString());
+                    escribirVentas.crearHoja("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString());
                     escribirVentas.escribirExcelInv("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(), deuda, 2);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
