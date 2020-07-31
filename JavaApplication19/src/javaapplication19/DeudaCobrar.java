@@ -284,6 +284,11 @@ public class DeudaCobrar extends javax.swing.JFrame {
             escribirExcel.escribirExcelInv("src\\excel\\DeudasC.xlsx","deudasCobrar", Registro,3);
             Escribir.crearHoja("src\\excel\\DeudasC.xlsx", jtNombre.getText());
             escribirExcel.escribirExcel("src\\excel\\DeudasC.xlsx", jtNombre.getText(), Registro2);
+            String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")) + ")";
+                        escribirExcel.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar",formula,(LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+ 1), 2);
+                        System.out.println((LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+ 1));
+                        String formula2 = "SUM(B2:B" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+1) + ")";
+                        escribirExcel.escribirFormula("src\\excel\\DeudasC.xlsx", jtNombre.getText(),  formula2, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+ 1), 1);
         } catch (IOException ex) {
             Logger.getLogger(DeudaCobrar.class.getName()).log(Level.SEVERE, null, ex);
         }

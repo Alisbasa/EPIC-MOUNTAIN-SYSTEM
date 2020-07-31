@@ -303,9 +303,11 @@ public class clienteNuevo extends javax.swing.JFrame {
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
         String[] Registro = {jtNombre.getText(),jtNumero.getText(),jtCorreo.getText(),jtUbicacion.getText(),""}; 
+        String [] registroCobrar = {};
         Escribir EscribirCRM = new Escribir();
         try {
             EscribirCRM.escribirExcelClientes("src\\excel\\CRM.xlsx", "Clientes", Registro);
+            //EscribirCRM.escribirExcelInv("src\\excel\\CRM.xlsx", "deudasC", Registro, ERROR);
         } catch (IOException ex) {
             Logger.getLogger(clienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
         }
