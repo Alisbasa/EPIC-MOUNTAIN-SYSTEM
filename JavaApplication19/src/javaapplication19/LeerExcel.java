@@ -9,8 +9,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
 
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -22,6 +24,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @author Alex
  */
 public class LeerExcel {
+    static String [] sheetNames;
     
     public LeerExcel(){
         
@@ -121,18 +124,18 @@ public class LeerExcel {
         
         return cell.getNumericCellValue();
     }    
-   static public String obtenerHoja(String filepath) throws IOException{
-       File file = new File (filepath);
+    @SuppressWarnings("empty-statement")
+   static public String[] obtenerHoja(String filepath) throws IOException{
+       File file = new File(filepath);
        FileInputStream inputStream = new FileInputStream(file);
        XSSFWorkbook newWorkbook =new XSSFWorkbook(inputStream);
-       
-       for(int i = 0; i<newWorkbook.getSheetIndex(filepath); i++){
-        
-           XSSFSheet sheet = newWorkbook.getSheetAt(i);
-           String hoja = sheet.toString();
-           return hoja; 
-       }
-        return null;
-      
-   }
+       System.out.println("Number of sheets in this workbook : " + newWorkbook.getNumberOfSheets());
+
+        for (int i = 0 ; i < newWorkbook.getNumberOfSheets() ; i ++ ) {
+            String [] sheetNames = {newWorkbook.getSheetName(i)};
+            System.out.println("Sheet Name[" + i + "] = " + Arrays.toString(sheetNames));
+        }
+        return sheetNames;
+        //Falta que devuelva bien el arreglo de strings sheetNames para rellenar la comboBox
+    }
 }
