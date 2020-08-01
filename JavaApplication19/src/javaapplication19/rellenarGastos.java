@@ -136,7 +136,7 @@ public class rellenarGastos {
 
             JLabel precio = new JLabel();
             precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            precio.setText(montoDes.getText());
+            precio.setText("$ " + montoDes.getText());
 
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
@@ -304,7 +304,7 @@ public class rellenarGastos {
 
             JLabel precioI = new JLabel();
             precioI.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            precioI.setText(montoDesI.getText());
+            precioI.setText("$ " + montoDesI.getText());
 
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
@@ -402,7 +402,7 @@ public class rellenarGastos {
 
             JLabel precio = new JLabel();
             precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            precio.setText(montoDesP.getText());
+            precio.setText("$ " + montoDesP.getText());
 
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
@@ -492,7 +492,7 @@ public class rellenarGastos {
 
             JLabel precio = new JLabel();
             precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            precio.setText(montoDesCT.getText());
+            precio.setText("$ " + montoDesCT.getText());
 
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
@@ -582,7 +582,7 @@ public class rellenarGastos {
 
             JLabel precio = new JLabel();
             precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            precio.setText(montoDeuda.getText());
+            precio.setText("$ " + montoDeuda.getText());
 
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
@@ -598,11 +598,17 @@ public class rellenarGastos {
             panelGastoC.add(new JLabel(""));
             panelGastoC.add(icono);
             
-            String [] data = {(String) fechaActual(), "Deudas a Pagar", (String) deudasPagar.getText(), precio.getText(),""};
+            String [] data = {(String) fechaActual(), "Deudas a Pagar", (String) deudasPagar.getText(), precio.getText(), "", ""};
+            String [] deuda = {fechaActual(), precio.getText()};
             
             Escribir escribirVentas = new Escribir();
                 try {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                    escribirVentas.escribirExcelInv("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString(), deuda, 2);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString(), Double.valueOf(precio.getText()),(LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString())+1), 1);
+                    String formula = "SUM(B2:B" + (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString())) + ")";
+                    escribirVentas.escribirFormula("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString(), formula, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString())+1), 1);
+                    
                     
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
@@ -665,7 +671,7 @@ public class rellenarGastos {
 
             JLabel montoImpues = new JLabel();
             montoImpues.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            montoImpues.setText(montoImpuesto.getText());
+            montoImpues.setText("$ " + montoImpuesto.getText());
 
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
@@ -746,7 +752,7 @@ public class rellenarGastos {
 
             JLabel precioMant = new JLabel();
             precioMant.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            precioMant.setText(montoMant.getText());
+            precioMant.setText("$ " + montoMant.getText());
 
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
@@ -827,7 +833,7 @@ public class rellenarGastos {
 
             JLabel monto = new JLabel();
             monto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            monto.setText(montoSum.getText());
+            monto.setText("$ " + montoSum.getText());
 
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
@@ -909,7 +915,7 @@ public class rellenarGastos {
 
             JLabel monto = new JLabel();
             monto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            monto.setText(montoPublicidad.getText());
+            monto.setText("$ " + montoPublicidad.getText());
 
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
@@ -990,7 +996,7 @@ public class rellenarGastos {
 
             JLabel monto = new JLabel();
             monto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            monto.setText(montoTrans.getText());
+            monto.setText("$ " + montoTrans.getText());
 
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
@@ -1071,7 +1077,7 @@ public class rellenarGastos {
 
             JLabel monto = new JLabel();
             monto.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            monto.setText(montoHonor.getText());
+            monto.setText("$ " + montoHonor.getText());
 
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));

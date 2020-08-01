@@ -121,5 +121,18 @@ public class LeerExcel {
         
         return cell.getNumericCellValue();
     }    
+   static public String obtenerHoja(String filepath) throws IOException{
+       File file = new File (filepath);
+       FileInputStream inputStream = new FileInputStream(file);
+       XSSFWorkbook newWorkbook =new XSSFWorkbook(inputStream);
+       
+       for(int i = 0; i<newWorkbook.getSheetIndex(filepath); i++){
         
+           XSSFSheet sheet = newWorkbook.getSheetAt(i);
+           String hoja = sheet.toString();
+           return hoja; 
+       }
+        return null;
+      
+   }
 }

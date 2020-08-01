@@ -352,7 +352,7 @@ public class Escribir {
 
     }
 
-    public void crearHoja(String filepath, String hoja) throws FileNotFoundException, IOException {
+    public void crearHoja(String filepath, String hoja, String header, String header2) throws FileNotFoundException, IOException {
         File file = new File(filepath);
         XSSFWorkbook newWorkBook;
         try ( FileInputStream inputStream = new FileInputStream(file)) {
@@ -364,8 +364,8 @@ public class Escribir {
             row2 = newSheet.createRow(1);
             
             String[] headers = new String[]{
-                "Fecha",
-                "Monto"
+                header,
+                header2
             };
         
             for(int i=0; i<2; i++){

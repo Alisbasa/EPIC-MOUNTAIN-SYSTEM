@@ -262,19 +262,25 @@ public class Rellenar {
     }
 
     public JPanel rellenarVentasC() throws IOException {
-        rellenarVentasC.removeAll();
+        rellenarVentas.removeAll();
 
-        rellenarVentasC.setBackground(Color.white);
-        Iconos.scaleImage("VentasC", iconoVentasC, 40);
-        rellenarVentasC.add(iconoVentasC);
-        String[] listaPlataformas = {"Mercado Libre", "Facebook", "Amazon", "Shopiffy"};
+        rellenarVentas.setBackground(Color.white);
+        Iconos.scaleImage("Ventas", iconoVentas, 40);
+        rellenarVentas.add(iconoVentas);
+
+        String[] listaPlataformas = {"Mercado Libre", "Amazon", "Shopiffy"};
 
         inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
-        inventario.setPreferredSize(new Dimension(200,30));
+        inventario.setPreferredSize(new Dimension(200, 30));
+        
+        unidades = new JComboBox();
+        unidades.setBackground(Color.white);
+        unidades.setUI(PropiedadesCB2.createUI(inventario));
+        unidades.setPreferredSize(new Dimension(65, 30));
 
-        cliente = new JComboBox(LeerExcel.rellenaCB2("src//excel/CRM.xlsx", "Clientes", 0));
+        cliente = new JComboBox(LeerExcel.rellenaCB2("src//excel//CRM.xlsx", "Clientes", 0));
         cliente.addItem("Nuevo Cliente");
         cliente.setBackground(Color.white);
         cliente.setUI(PropiedadesCB2.createUI(cliente));
@@ -283,22 +289,38 @@ public class Rellenar {
         plataformacb.setBackground(Color.white);
         plataformacb.setUI(PropiedadesCB2.createUI(plataformacb));
 
-        montoVC = new JTextField("$");
-        addPlaceHolder("Monto", montoVC);
-        montoVC.setBorder(new LineBorder(Colores.epicColor, 0, true));
-        montoVC.setBackground(Colores.epicColorBajito);
-        montoVC.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-//      
-        montoVC.setPreferredSize(new Dimension(60, 30));
+        destino = new JTextField("Destino");
+        destino.setBorder(new LineBorder(Colores.epicColor, 0, true));
+        destino.setBackground(Colores.epicColorBajito);
+        destino.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+
         Iconos.scaleImage("ok", iconoOkVentasC, 30);
 
-        rellenarVentasC.add(inventario);
-        rellenarVentasC.add(montoVC);
-        rellenarVentasC.add(cliente);
-        rellenarVentasC.add(plataformacb);
-        rellenarVentasC.add(iconoOkVentasC);
+        rellenarVentas.add(inventario);
+        
 
-        return rellenarVentasC;
+        inventario.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                indexInventario = inventario.getSelectedIndex();
+                try {
+                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 6, indexInventario + 1);
+                } catch (IOException ex) {
+                    Logger.getLogger(Rellenar.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                for (int i = 1; i <= numeroUnidades; i++) {
+                    unidades.addItem(i);
+                }
+            }
+        });
+
+        
+        rellenarVentas.add(unidades);
+
+        rellenarVentas.add(plataformacb);
+        rellenarVentas.add(cliente);
+        rellenarVentas.add(iconoOkVentasC);
+
+        return rellenarVentas;
     }
 
     public JPanel rellenarDevoluciones() throws IOException {

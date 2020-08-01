@@ -1419,7 +1419,7 @@ public class Libros extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
             }
-            rellenarVentaC.botonVentaC(rellenarVC.montoVC,rellenarVC.inventario, rellenarVC.iconoOkVentasC, scrollIngresos,listaIngresos, rellenarVC.plataformacb, rellenarVC.cliente,rellenarVC.rellenarVentasC);
+            rellenarVentaC.botonVentaC(rellenarV.monto,rellenarV.inventario, rellenarV.iconoOkVentasC, scrollIngresos,listaIngresos, rellenarV.plataformacb, rellenarV.cliente ,rellenarV.unidades,rellenarV.rellenarVentas);
           
         }
         

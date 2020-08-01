@@ -113,6 +113,61 @@ public class rellenarIngresos {
 
         boton.addMouseListener(botonV);
     }
+    void botonBorrarVenta(JLabel boton){
+        MouseListener botonV = new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Escribir  escribirVentas = new Escribir();
+                
+                try {
+                    int seleccion = LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
+                    String fecha = fechaActual();
+               
+
+                    String venta= LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 0, seleccion);
+                    String descripion= LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 1, seleccion);
+                    String condicion= LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 3, seleccion);
+                    String pack= LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 4, seleccion);
+                    String tig= LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 5, seleccion);
+                    String unidades=LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 6, seleccion);
+                    String costoUnidad=  LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 7, seleccion);
+
+                    String costoNeto=  Double.toString(Integer.parseInt(unidades)*Double.parseDouble(costoUnidad));
+                    String costoBaseUnidad=  LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 9, seleccion);
+                    String costoBaseNeto=  Double.toString(Integer.parseInt(unidades)*Double.parseDouble(costoBaseUnidad));
+
+                    String[] data = {venta,descripion,fecha,condicion,pack,tig,unidades,costoUnidad,costoNeto,costoBaseUnidad,costoBaseNeto,};
+                    escribirVentas.escribirExcelInv("src//excel/Inventario.xlsx", "Inventario", data, 10);
+                   
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Iconos.scaleImage("cancelG", boton, 20);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                Iconos.scaleImage("ventasG", boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+
+        boton.addMouseListener(botonV);
+    }
     
     void revertirUnidades(JLabel boton, String filepath, String hoja){
         MouseListener botonV = new MouseListener() {
@@ -215,6 +270,7 @@ public class rellenarIngresos {
                 
                 botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"ventasG");
                 revertirUnidades(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
+                botonBorrarVenta(icono);
                 botonBorrarInd(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
 //                try {
 //                    //borrarVenta();
@@ -312,7 +368,7 @@ public class rellenarIngresos {
 
                 JLabel precio = new JLabel();
                 precio.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
-                precio.setText(montoC.getText());
+                precio.setText("$ " + montoC.getText());
 
                 JLabel icono = new JLabel();
                 Iconos.scaleImage("CreditoG", icono, 25);
@@ -345,6 +401,13 @@ public class rellenarIngresos {
                     EscribirExcel.escribirCeldaDouble("src\\excel\\DeudasP.xlsx", "DeudasPagar"   , Double.valueOf(deuda[2]), LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "DeudasPagar"), 2);
                     String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "DeudasPagar")+1) + ")";
                     EscribirExcel.escribirFormula("src\\excel\\DeudasP.xlsx", "DeudasPagar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "DeudasPagar")+1), 2);
+                    EscribirExcel.crearHoja("src\\excel\\DeudasP.xlsx", inversor.getText(), "FECHA", "MONTO");
+                    String [] deudaInd = {fechaActual(), montoC.getText()};
+                    EscribirExcel.escribirExcelInv("src\\excel\\DeudasP.xlsx", inversor.getText(), deudaInd, 2);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\DeudasP.xlsx", inversor.getText(), Double.valueOf(montoC.getText()), (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", inversor.getText())), 1);
+                    //String formula2 = "SUM(B2:B" + (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", inversor.getText())+1) + ")";
+                    //EscribirExcel.escribirFormula("src\\excel\\DeudasP.xlsx", inversor.getText(), formula2, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", inversor.getText())+1), 1);
+                
                 } catch (IOException ex) {
                     Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -404,7 +467,7 @@ public class rellenarIngresos {
 
                 JLabel precioI = new JLabel();
                 precioI.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
-                precioI.setText(montoI.getText());
+                precioI.setText("$ " + montoI.getText());
 
                 JLabel icono = new JLabel();
                 Iconos.scaleImage("InversionG", icono, 25);
@@ -434,6 +497,10 @@ public class rellenarIngresos {
                     EscribirExcel.escribirCeldaDouble("src\\excel\\DeudasP.xlsx", "DeudasPagar"   , Double.valueOf(inversion[2]), LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "DeudasPagar"), 2);
                     String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "DeudasPagar")+1) + ")";
                     EscribirExcel.escribirFormula("src\\excel\\DeudasP.xlsx", "DeudasPagar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "DeudasPagar")+1), 2);
+                    EscribirExcel.crearHoja("src\\excel\\DeudasP.xlsx", inversorI.getText(), "FECHA", "MONTO");
+                    String [] deudaInd = {fechaActual(), montoI.getText()};
+                    EscribirExcel.escribirExcelInv("src\\excel\\DeudasP.xlsx", inversorI.getText(), deudaInd, 2);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\DeudasP.xlsx", inversorI.getText(), Double.valueOf(montoI.getText()), (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", inversorI.getText())), 1);
                 } catch (IOException ex) {
                     Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -496,7 +563,7 @@ public class rellenarIngresos {
 
                 JLabel montoImpuesto = new JLabel();
                 montoImpuesto.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
-                montoImpuesto.setText(montoImp.getText());
+                montoImpuesto.setText("$ " + montoImp.getText());
 
                 JLabel icono = new JLabel();
                 Iconos.scaleImage("impuestoG", icono, 30);
@@ -576,7 +643,7 @@ public class rellenarIngresos {
 
                 JLabel montoDeudaC = new JLabel();
                 montoDeudaC.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
-                montoDeudaC.setText(montoDeuC.getText());
+                montoDeudaC.setText("$ " + montoDeuC.getText());
 
                 JLabel icono = new JLabel();
                 Iconos.scaleImage("DeudasCG", icono, 30);
@@ -651,10 +718,12 @@ public class rellenarIngresos {
         iconoOkDeudasC.addMouseListener(botonDeuC);
     }
 
-    void botonVentaC(JTextField montoVC, JComboBox inventario, JLabel iconoOkVentasC, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb,JComboBox cliente,  JPanel panelPadre) {
+    //Pone ingreso: venta
+    void botonVentaC(JTextField monto, JComboBox inventario, JLabel iconoOkVentasC, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb, JComboBox cliente, JComboBox unidades, JPanel panelPadre) {
         MouseListener botonV = new MouseListener() {
 
             @Override
+            @SuppressWarnings("empty-statement")
             public void mouseClicked(MouseEvent e) {
 
                 scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -674,24 +743,23 @@ public class rellenarIngresos {
                 inventarioLista.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
                 inventarioLista.setText((String) inventario.getSelectedItem());
                 int numeroLista = inventario.getSelectedIndex() + 1;
-                int numeroPlataforma = 12;
-                //selecciona mercado libre como plataforma
+                int numeroPlataforma = 11;
                 if (plataformacb.getSelectedIndex() == 0) {
-                    numeroPlataforma = 14;
+                    numeroPlataforma = 13;
                 }
-                
 
                 String precioExcel = "precio";
                 try {
-                    precioExcel = LeerExcel.obtenerPrecio("src//excel/Inventario.xlsx", "INVENTARIO", numeroPlataforma, numeroLista);
+                    precioExcel = "$"+String.valueOf(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", numeroPlataforma, numeroLista)*(unidades.getSelectedIndex()+1));
+                    
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-                 JLabel precio = new JLabel();
+
+                JLabel precio = new JLabel();
                 precio.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
 
-                precio.setText(montoVC.getText());
+                precio.setText("$ " + precioExcel);
 
                 JLabel plataforma = new JLabel();
                 plataforma.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
@@ -702,43 +770,63 @@ public class rellenarIngresos {
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso,0);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+                
                 botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"Ventas");
+                revertirUnidades(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
+                botonBorrarVenta(icono);
+                botonBorrarInd(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
+//                try {
+//                    //borrarVenta();
+//                } catch (IOException ex) {
+//                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+                
+                
                 panelIngreso.add(fecha);
                 panelIngreso.add(inventarioLista);
                 panelIngreso.add(precio);
                 panelIngreso.add(plataforma);
-                
                 panelIngreso.add(icono);
-                String[] data = {(String) fechaActual(), "Venta a Cobrar", (String) inventario.getSelectedItem(), montoVC.getText(), plataforma.getText(),"AMARILLO"};
-                String [] deuda = {(String) fechaActual(), montoVC.getText()};
+                String[] data = {(String) fechaActual(), "Venta", (String) inventario.getSelectedItem(), precioExcel, plataforma.getText(),"VERDE"};
+
                 Escribir escribirVentas = new Escribir();
                 try {
+                    //System.out.println(LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
-                    escribirVentas.crearHoja("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString());
-                    escribirVentas.escribirExcelInv("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(), deuda, 2);
+                    
+                    
+                    
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+               
+                
                 
                 if(cliente.getSelectedItem().toString()=="Nuevo Cliente"){
                     clienteNuevo cliente =new clienteNuevo();
                     cliente.setVisible(true);
                 }
-                
-                String [] deudaC = {(String) fechaActual(), cliente.getSelectedItem().toString(), montoVC.getText()};
-                Escribir escribirD = new Escribir();
-                try {
-                    escribirD.escribirExcelInv("src\\excel\\DeudasC.xlsx", "deudasCobrar", deudaC,3);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", Double.valueOf(deudaC[2]), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 2);
-                } catch (IOException ex) {
-                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                botonBorrarInd(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
+                    
                 
                 indice++;
                 panelPadre.removeAll();
                 panelPadre.updateUI();
                 listaIngresos.updateUI();
+                try {
+                    vender(inventario,unidades);
+                    escribirVentas.crearHoja("src\\excel\\DeudasP.xlsx", cliente.getSelectedItem().toString(), "FECHA", "MONTO");
+                    String [] ventaC = {fechaActual(), cliente.getSelectedItem().toString(), precioExcel};
+                    escribirVentas.escribirExcelInv("src\\excel\\DeudasP.xlsx", cliente.getSelectedItem().toString(), ventaC, 3);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\DeudasP.xlsx", cliente.getSelectedItem().toString(), Double.valueOf(precioExcel), LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", cliente.getSelectedItem().toString()), 2);
+                    String formula = "SUM(C2:C" + LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", cliente.getSelectedItem().toString()) + ")";
+                    escribirVentas.escribirFormula("src\\excel\\DeudasP.xlsx", cliente.getSelectedItem().toString(), formula, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", cliente.getSelectedItem().toString())+1), 2);
+                   
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
             }
 
             @Override
