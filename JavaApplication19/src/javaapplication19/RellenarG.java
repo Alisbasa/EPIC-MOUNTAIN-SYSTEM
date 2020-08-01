@@ -311,6 +311,9 @@ public class RellenarG {
         rellenarImpuestoG.add(iconoImpuesto);
         Iconos.scaleImage("ok", iconoOkImpuesto, 30);
         impuesto = new JTextField();
+        impuesto.setBackground(Colores.epicColorBajito);
+        impuesto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        
         addPlaceHolder("Impuesto", impuesto);
         
         montoImpuesto = new JTextField();
@@ -338,6 +341,8 @@ public class RellenarG {
         Iconos.scaleImage("ok", iconoOkMantenimiento, 30);
         mantenimiento = new JTextField();
         addPlaceHolder("Mantenimiento", mantenimiento);
+        mantenimiento.setBackground(Colores.epicColorBajito);
+        mantenimiento.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         
         montoMant = new JTextField();
         addPlaceHolder("Monto", montoMant);
@@ -362,6 +367,8 @@ public class RellenarG {
         rellenarSuministros.add(iconoSuministros);
         Iconos.scaleImage("ok", iconoOkSuministros, 30);
         suministros = new JTextField();
+        suministros.setBackground(Colores.epicColorBajito);
+       suministros.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         addPlaceHolder("Suministros", suministros);
         
         montoSum = new JTextField();
@@ -387,6 +394,8 @@ public class RellenarG {
         rellenarPubliidad.add(iconoPublicidad);
         Iconos.scaleImage("ok", iconoOkPublicidad, 30);
         publicidad = new JTextField();
+        publicidad .setBackground(Colores.epicColorBajito);
+        publicidad .setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         addPlaceHolder("Publicidad", publicidad);
         
         montoPublicidad = new JTextField();
@@ -412,6 +421,8 @@ public class RellenarG {
         rellenarTransporte.add(iconoTransporte);
         Iconos.scaleImage("ok", iconoOkTransporte, 30);
         transporte = new JTextField();
+        transporte.setBackground(Colores.epicColorBajito);
+        transporte.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         addPlaceHolder("Transporte", transporte);
         
         montoTrans = new JTextField();
@@ -437,6 +448,8 @@ public class RellenarG {
         rellenarHonorarios.add(iconoHonorarios);
         Iconos.scaleImage("ok", iconoOkHonorarios, 30);
         honorarios = new JTextField();
+        honorarios.setBackground(Colores.epicColorBajito);
+        honorarios.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         addPlaceHolder("Honorarios", honorarios);
         
         montoHonor = new JTextField();
@@ -463,20 +476,18 @@ public class RellenarG {
         Iconos.scaleImage("ok", iconoOkReducInv, 30);
         
     
-        reducInv = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "INVENTARIO", 1));
+        reducInv = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "INVENTARIO", 0));
         reducInv.setBackground(Color.white);
         reducInv.setUI( PropiedadesCB2.createUI(reducInv));
         
-        montoReduc = new JTextField();
-        addPlaceHolder("Monto", montoRedu);
-        montoReduc.setPreferredSize(new Dimension(60, 30));
-        montoReduc.setBackground(Colores.epicColorBajito);
-        montoReduc.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         
-        reducInv.setPreferredSize(new Dimension(150, 30));      
+        
+        
+        
+        reducInv.setPreferredSize(new Dimension(250, 30));      
         
         rellenarReducInv.add(reducInv);
-        rellenarReducInv.add(montoReduc);
+        
         rellenarReducInv.add(iconoOkReducInv);
         
         return rellenarReducInv;

@@ -186,6 +186,9 @@ public class Rellenar {
         rellenarInversion.add(iconoInversion);
         Iconos.scaleImage("ok", iconoOkI, 30);
         inversorI = new JTextField("");
+        inversorI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        inversorI.setBackground(Colores.epicColorBajito);
+        
         addPlaceHolder("Inversionista", inversorI);
         montoI = new JTextField("");
         addPlaceHolder("Monto", montoI);
@@ -193,7 +196,7 @@ public class Rellenar {
         inversorI.setPreferredSize(new Dimension(150, 30));
         montoI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         montoI.setBackground(Colores.epicColorBajito);
-        montoI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+       
 
         rellenarInversion.add(inversorI);
         rellenarInversion.add(montoI);
@@ -210,8 +213,12 @@ public class Rellenar {
         Iconos.scaleImage("Impuesto", iconoImpuesto, 40);
         rellenarImpuesto.add(iconoImpuesto);
         Iconos.scaleImage("ok", iconoOkImp, 30);
-        impuesto = new JTextField("Impuesto");
-        montoImp = new JTextField("$");
+        impuesto = new JTextField();
+         impuesto.setBackground(Colores.epicColorBajito);
+        impuesto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        addPlaceHolder("Impuesto", impuesto);
+        montoImp = new JTextField("");
+        addPlaceHolder("Monto", montoImp);
         montoImp.setPreferredSize(new Dimension(60, 30));
         impuesto.setPreferredSize(new Dimension(150, 30));
         montoImp.setBackground(Colores.epicColorBajito);
@@ -237,7 +244,8 @@ public class Rellenar {
         deudor.setBackground(Color.white);
         deudor.setUI(PropiedadesCB2.createUI(deudor));
 
-        montoDeuC = new JTextField("$");
+        montoDeuC = new JTextField("");
+        addPlaceHolder("Monto", montoDeuC);
         montoDeuC.setBorder(new LineBorder(Colores.epicColor, 0, true));
         montoDeuC.setBackground(Colores.epicColorBajito);
         montoDeuC.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
@@ -276,6 +284,7 @@ public class Rellenar {
         plataformacb.setUI(PropiedadesCB2.createUI(plataformacb));
 
         montoVC = new JTextField("$");
+        addPlaceHolder("Monto", montoVC);
         montoVC.setBorder(new LineBorder(Colores.epicColor, 0, true));
         montoVC.setBackground(Colores.epicColorBajito);
         montoVC.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));

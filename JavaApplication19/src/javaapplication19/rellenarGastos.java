@@ -1151,8 +1151,7 @@ public class rellenarGastos {
             reduc.setText((String) reducInv.getSelectedItem());
 
             JLabel montoR = new JLabel();
-            montoR.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            montoR.setText(montoReduc.getText());
+            
 
             JLabel icono = new JLabel();
             Iconos.scaleImage("inventarioG", icono, 25);
@@ -1164,7 +1163,7 @@ public class rellenarGastos {
 
             panelGasto.add(fecha);
             panelGasto.add(reduc);
-            panelGasto.add(montoR);
+            panelGasto.add(new JLabel("RELLENAR DE INV"));
             panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             

@@ -302,7 +302,7 @@ public class Escribir {
         newCell.setCellValue(data);
         setCellStyle(newWorkbook, newCell);
          evaluar(newWorkbook, newCell);
-         newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
+//         newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
          XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
@@ -359,9 +359,9 @@ public class Escribir {
             newWorkBook = new XSSFWorkbook(inputStream);
             XSSFRow row;
             XSSFRow row2;
-            
-            row = newWorkBook.createSheet(hoja).createRow(0);
-            row2 = newWorkBook.createSheet(hoja).createRow(1);
+            XSSFSheet newSheet = newWorkBook.createSheet(hoja);
+            row = newSheet.createRow(0);
+            row2 = newSheet.createRow(1);
             
             String[] headers = new String[]{
                 "Fecha",
@@ -370,7 +370,8 @@ public class Escribir {
         
             for(int i=0; i<2; i++){
                 XSSFCell newCell = row.createCell(i);
-                XSSFCell newCell2 = row.createCell(i);
+                XSSFCell newCell2 = row2.createCell(i);
+                setCellStyleVerde(newWorkBook, newCell);
                 setCellStyleVerde(newWorkBook, newCell2);
                 
                 
