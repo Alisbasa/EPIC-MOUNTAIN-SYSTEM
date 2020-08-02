@@ -582,7 +582,10 @@ public class rellenarGastos {
 
             JLabel precio = new JLabel();
             precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            precio.setText("$ " + montoDeuda.getText());
+            precio.setText( montoDeuda.getText());
+            JLabel precioP = new JLabel();
+            precioP.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            precioP.setText("$ " + montoDeuda.getText());
 
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
@@ -594,7 +597,7 @@ public class rellenarGastos {
 
             panelGastoC.add(fecha);
             panelGastoC.add(deudasPagar);
-            panelGastoC.add(precio);
+            panelGastoC.add(precioP);
             panelGastoC.add(new JLabel(""));
             panelGastoC.add(icono);
             
@@ -605,8 +608,8 @@ public class rellenarGastos {
                 try {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
                     escribirVentas.escribirExcelInv("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString(), deuda, 2);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString(), Double.valueOf(precio.getText()),(LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString())+1), 1);
-                    String formula = "SUM(B2:B" + (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString())) + ")";
+                    escribirVentas.escribirCeldaDouble("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString(), Double.valueOf(precio.getText())*(-1),(LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString())), 1);
+                    String formula = escribirVentas.Sumar(2, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString())+ 1),'b');
                     escribirVentas.escribirFormula("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString(), formula, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString())+1), 1);
                     
                     
