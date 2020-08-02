@@ -24,7 +24,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @author Alex
  */
 public class LeerExcel {
-    static String [] sheetNames;
     
     public LeerExcel(){
         
@@ -130,10 +129,12 @@ public class LeerExcel {
        FileInputStream inputStream = new FileInputStream(file);
        XSSFWorkbook newWorkbook =new XSSFWorkbook(inputStream);
        System.out.println("Number of sheets in this workbook : " + newWorkbook.getNumberOfSheets());
-
+       String [] sheetNames = new String [newWorkbook.getNumberOfSheets()];
+       
         for (int i = 0 ; i < newWorkbook.getNumberOfSheets() ; i ++ ) {
-            String [] sheetNames = {newWorkbook.getSheetName(i)};
-            System.out.println("Sheet Name[" + i + "] = " + Arrays.toString(sheetNames));
+            sheetNames[i] = newWorkbook.getSheetName(i);
+            
+            System.out.println("Sheet Name[" + i + "] = " + sheetNames[i]);
         }
         return sheetNames;
         //Falta que devuelva bien el arreglo de strings sheetNames para rellenar la comboBox

@@ -415,5 +415,60 @@ public class Escribir {
         newWorkBook.write(outputStream);
         outputStream.close();
     }
-    
+    public void crearHojaPacks(String filepath, String hoja) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        XSSFWorkbook newWorkBook;
+        try ( FileInputStream inputStream = new FileInputStream(file)) {
+            newWorkBook = new XSSFWorkbook(inputStream);
+            XSSFRow row;
+            XSSFRow row2;
+            XSSFSheet newSheet = newWorkBook.createSheet(hoja);
+            row = newSheet.createRow(0);
+            row2 = newSheet.createRow(1);
+            
+            String[] headers = new String[]{
+                "     ",
+                "DESCRIPCION",
+                "FECHA DE REGISTRO",
+                "CONDICION",
+                "PACK",
+                "T.I.G",
+                "UNIDADES",
+                "COSTO X UNIDAD",
+                "COSTO NETO",
+                "PRECIO BASE X UNIDAD",
+                "PRECIO BASE NETO"   
+            };
+        
+            for(int i=0; i<11; i++){
+                XSSFCell newCell = row.createCell(i);
+                XSSFCell newCell2 = row2.createCell(i);
+                setCellStyleVerde(newWorkBook, newCell);
+                setCellStyleVerde(newWorkBook, newCell2);
+                
+                
+                newCell.setCellValue(headers[i]);
+                XSSFFont font = newWorkBook.createFont();
+                font.setFontHeightInPoints((short) 12);
+                font.setFontName("Calibri");
+                font.setColor(IndexedColors.BLACK.getIndex());
+                font.setBold(true);
+                font.setItalic(false);
+
+                XSSFCellStyle style = newWorkBook.createCellStyle();
+                XSSFColor color = new XSSFColor(Colores.epicColor);
+                style.setFillForegroundColor(color);//color de fondo
+                style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                style.setAlignment(HorizontalAlignment.CENTER);
+                style.setVerticalAlignment(VerticalAlignment.CENTER);
+                style.setFont(font);
+                newCell.setCellStyle(style);
+                
+            }
+        }
+        
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkBook.write(outputStream);
+        outputStream.close();
+    }
 }

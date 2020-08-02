@@ -420,17 +420,23 @@ public class rellenarGastos {
             panelGasto.add(icono);
             
             String[] data = {(String) fechaActual(), "Pack de Ventas", desarrolloTipoP.getText(),montoDesP.getText(), "    ","VERDE"};
-            if(tipoPack.getSelectedItem().toString().equals("Nuevo")){
-                    packsDeVentas inv  = new packsDeVentas(desarrolloLista, precio);
+            if(tipoPack.getSelectedItem().toString().equals("Rellenar Pack")){
+                    packsDeVentas inv;
+                try {
+                    inv = new packsDeVentas(desarrolloLista, precio);
                     inv.setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-
+            if(tipoPack.getSelectedItem().toString().equals("Nuevo")){
                 Escribir escribirVentas = new Escribir();
                 try {
-                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                    escribirVentas.crearHojaPacks("src\\excel\\Packs.xlsx", desarrolloTipoP.getText());
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
             
             indice++;
             panelPadre.removeAll();

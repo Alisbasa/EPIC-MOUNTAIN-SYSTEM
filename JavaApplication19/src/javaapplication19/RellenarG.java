@@ -204,7 +204,7 @@ public class RellenarG {
         desarrolloTipoP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         desarrolloTipoP.setPreferredSize(new Dimension(150, 30));
         
-        String []tipos ={"Nuevo", "Existente"}; 
+        String []tipos ={"Nuevo", "Rellenar Pack"}; 
         tipoPack = new JComboBox(tipos);
         tipoPack.setUI(PropiedadesCB2.createUI(tipoPack));
                     

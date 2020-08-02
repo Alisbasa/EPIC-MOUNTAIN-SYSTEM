@@ -39,7 +39,7 @@ public class packsDeVentas extends javax.swing.JFrame {
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        packsDisponibles = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
+        packsDisponibles = new JComboBox(LeerExcel.obtenerHoja("src\\excel\\Packs.xlsx"));
         packsDisponibles.setBackground(Color.white);
         packsDisponibles.setUI(PropiedadesCB2.createUI(packsDisponibles));
         jpDescripcion.add(packsDisponibles);
@@ -117,12 +117,11 @@ public class packsDeVentas extends javax.swing.JFrame {
         jpDatos.setLayout(new java.awt.GridLayout(5, 0));
 
         jpDescripcion.setBackground(new java.awt.Color(51, 51, 51));
-        jpDescripcion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jlPack1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlPack1.setForeground(new java.awt.Color(255, 255, 255));
         jlPack1.setText("PACK");
-        jpDescripcion.add(jlPack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 90, 70));
+        jpDescripcion.add(jlPack1);
 
         jpDatos.add(jpDescripcion);
 
@@ -246,13 +245,13 @@ public class packsDeVentas extends javax.swing.JFrame {
                              Double.toString(Double.valueOf(jtPack.getText())*Integer.valueOf(jtUnidades.getText()))}; 
         Escribir escribirExcel = new Escribir();
         try {
-            escribirExcel.escribirExcelInv("src\\excel\\Packs.xlsx", "PacksVentas", Registro,10);
-            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", "PacksVentas"   , Double.valueOf(Registro[8]), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas"), 8);
-            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", "PacksVentas"   , Double.valueOf(Registro[10]), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas"), 10);
-            String formula = "SUM(I2:I" + LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas") + ")";
-            escribirExcel.escribirFormula("src\\excel\\Packs.xlsx", "PacksVentas", formula,LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas")+1, 8);
-            String formula2 = "SUM(K2:K" + LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas") + ")";
-            escribirExcel.escribirFormula("src\\excel\\Packs.xlsx", "PacksVentas", formula2, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "PacksVentas")+1, 10);
+            escribirExcel.escribirExcelInv("src\\excel\\Packs.xlsx", packsDisponibles.getSelectedItem().toString(), Registro,10);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx",packsDisponibles.getSelectedItem().toString() , Double.valueOf(Registro[8]), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles.getSelectedItem().toString()), 8);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx",packsDisponibles.getSelectedItem().toString() , Double.valueOf(Registro[10]), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles.getSelectedItem().toString()), 10);
+            String formula = "SUM(I2:I" + LeerExcel.contarRenglones("src\\excel\\Packs.xlsx",packsDisponibles.getSelectedItem().toString()) + ")";
+            escribirExcel.escribirFormula("src\\excel\\Packs.xlsx", packsDisponibles.getSelectedItem().toString(), formula,LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles.getSelectedItem().toString())+1, 8);
+            String formula2 = "SUM(K2:K" + LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles.getSelectedItem().toString()) + ")";
+            escribirExcel.escribirFormula("src\\excel\\Packs.xlsx", packsDisponibles.getSelectedItem().toString(), formula2, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles.getSelectedItem().toString())+1, 10);
             
         } catch (IOException ex) {
             Logger.getLogger(packsDeVentas.class.getName()).log(Level.SEVERE, null, ex);
@@ -304,7 +303,11 @@ public class packsDeVentas extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                //new packsDeVentas(desarrolloTipoP, montoDesP).setVisible(true);
+                try {
+                    new packsDeVentas(desarrolloTipoP, montoDesP).setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(packsDeVentas.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
