@@ -351,6 +351,22 @@ public class Escribir {
         outputStream.close();
 
     }
+    public String Restar (int filaInicial, int filaFinal, char columna){
+        String Resta = (Character.toUpperCase(columna)+Integer.toString(filaInicial));
+        for(int i = filaInicial+1; i<= filaFinal;i++ ){
+            Resta= Resta + "-"+ Character.toUpperCase(columna)+Integer.toString(i);
+        }
+        System.out.println(Resta);
+        return Resta;
+    }
+    public String Sumar (int filaInicial, int filaFinal, char columna){
+        String Resta = (Character.toUpperCase(columna)+Integer.toString(filaInicial));
+        for(int i = filaInicial+1; i<= filaFinal;i++ ){
+            Resta= Resta + "+"+ Character.toUpperCase(columna)+Integer.toString(i);
+        }
+        System.out.println(Resta);
+        return Resta;
+    }
 
     public void crearHoja(String filepath, String hoja, String header, String header2) throws FileNotFoundException, IOException {
         File file = new File(filepath);

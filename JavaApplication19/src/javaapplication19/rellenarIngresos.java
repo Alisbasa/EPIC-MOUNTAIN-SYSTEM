@@ -643,7 +643,10 @@ public class rellenarIngresos {
 
                 JLabel montoDeudaC = new JLabel();
                 montoDeudaC.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
-                montoDeudaC.setText("$ " + montoDeuC.getText());
+                montoDeudaC.setText( montoDeuC.getText());
+                JLabel montoDeudaCPanel = new JLabel();
+                montoDeudaCPanel.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
+                montoDeudaCPanel.setText( "$"+montoDeuC.getText());
 
                 JLabel icono = new JLabel();
                 Iconos.scaleImage("DeudasCG", icono, 30);
@@ -653,7 +656,8 @@ public class rellenarIngresos {
                 botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"DeudasCG");  
                 panelIngreso.add(fecha);
                 panelIngreso.add(deuda);
-                panelIngreso.add(montoDeudaC);
+                
+                panelIngreso.add(montoDeudaCPanel);
                 panelIngreso.add(new JLabel(""));
                 panelIngreso.add(icono);
                 
@@ -665,7 +669,7 @@ public class rellenarIngresos {
                     if(deudor.getSelectedItem().toString()!="Nuevo"){
                         escribirVentas.escribirExcelInv("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), data, 2);
                         escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), Double.valueOf(montoDeudaC.getText())*-1, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 1);
-                        String formula2 = "SUM(B2:B" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString())+1) + ")";
+                        String formula2 = escribirVentas.Sumar(2, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString())+ 1),'b');
                         escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(),  formula2, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString())+ 1), 1);
                         
                         
