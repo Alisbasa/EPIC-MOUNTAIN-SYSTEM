@@ -210,7 +210,7 @@ public class RellenarG {
                     
 
         montoDesP = new JTextField();
-        addPlaceHolder("Monto", montoDesP);
+        addPlaceHolder("Costo", montoDesP);
         montoDesP.setBackground(Colores.epicColorBajito);
         montoDesP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         montoDesP.setPreferredSize(new Dimension(60, 30));
