@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javaapplication19.inventarioPrincipal.fechaActual;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -22,6 +23,7 @@ import javax.swing.JPanel;
 public class packsDeVentas extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
+    static JComboBox packsDisponibles;
     static JLabel desarrolloTipoP;
     static JLabel montoDesP;
     
@@ -30,13 +32,17 @@ public class packsDeVentas extends javax.swing.JFrame {
      * @param desarrolloTipoP
      * @param montoDesP
      */
-    public packsDeVentas(JLabel desarrolloTipoP, JLabel montoDesP) {
+    public packsDeVentas(JLabel desarrolloTipoP, JLabel montoDesP) throws IOException {
         initComponents();
         this.desarrolloTipoP = desarrolloTipoP;
         this.montoDesP = montoDesP;
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        packsDisponibles = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
+        packsDisponibles.setBackground(Color.white);
+        packsDisponibles.setUI(PropiedadesCB2.createUI(packsDisponibles));
+        jpDescripcion.add(packsDisponibles);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,29 +56,22 @@ public class packsDeVentas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
-        barra = new javax.swing.JPanel();
-        cerrar = new javax.swing.JPanel();
-        cerrarIcon = new javax.swing.JLabel();
-        maxi = new javax.swing.JPanel();
-        maxiIcon = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
-        LOGO = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jpDatos = new javax.swing.JPanel();
         jpDescripcion = new javax.swing.JPanel();
-        jtDesc = new javax.swing.JTextField();
-        jlDesc = new javax.swing.JLabel();
-        jpPack = new javax.swing.JPanel();
-        jlPack = new javax.swing.JLabel();
-        jcCondicion = new javax.swing.JComboBox<>();
         jlPack1 = new javax.swing.JLabel();
-        jtPack = new javax.swing.JTextField();
+        jpPack = new javax.swing.JPanel();
+        jlDesc = new javax.swing.JLabel();
+        jtDesc = new javax.swing.JTextField();
         jpTIG = new javax.swing.JPanel();
         jlTIG = new javax.swing.JLabel();
-        jtPrecio = new javax.swing.JTextField();
+        jtPack = new javax.swing.JTextField();
+        jlPack = new javax.swing.JLabel();
+        jcCondicion = new javax.swing.JComboBox<>();
         jpUbicacion = new javax.swing.JPanel();
-        jtUnidades = new javax.swing.JTextField();
         jlUnidades = new javax.swing.JLabel();
+        jtUnidades = new javax.swing.JTextField();
         jbRegistrar = new javax.swing.JButton();
         jpBoton = new javax.swing.JPanel();
 
@@ -101,86 +100,39 @@ public class packsDeVentas extends javax.swing.JFrame {
         });
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        barra.setPreferredSize(new java.awt.Dimension(80, 30));
-
-        cerrar.setBackground(new java.awt.Color(51, 51, 51));
-        cerrar.setPreferredSize(new java.awt.Dimension(40, 40));
-        cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cerrarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cerrarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cerrarMouseExited(evt);
-            }
-        });
-        cerrar.setLayout(new java.awt.BorderLayout());
-
-        cerrarIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cerrar.add(cerrarIcon, java.awt.BorderLayout.CENTER);
-
-        maxi.setBackground(new java.awt.Color(51, 51, 51));
-        maxi.setPreferredSize(new java.awt.Dimension(40, 40));
-        maxi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                maxiMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                maxiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                maxiMouseExited(evt);
-            }
-        });
-        maxi.setLayout(new java.awt.BorderLayout());
-
-        maxiIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        maxi.add(maxiIcon, java.awt.BorderLayout.CENTER);
-
-        javax.swing.GroupLayout barraLayout = new javax.swing.GroupLayout(barra);
-        barra.setLayout(barraLayout);
-        barraLayout.setHorizontalGroup(
-            barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, barraLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(maxi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        barraLayout.setVerticalGroup(
-            barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(barraLayout.createSequentialGroup()
-                .addGroup(barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(maxi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(barra, java.awt.BorderLayout.LINE_END);
-
         jPanel10.setBackground(new java.awt.Color(0, 0, 0));
         jPanel10.setPreferredSize(new java.awt.Dimension(300, 30));
         jPanel10.setLayout(new java.awt.BorderLayout());
 
-        LOGO.setPreferredSize(new java.awt.Dimension(40, 40));
-        jPanel10.add(LOGO, java.awt.BorderLayout.LINE_START);
-
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("REGISTRAR NUEVO PACK");
-        jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
+        jLabel1.setText("REGISTRAR NUEVO ELEMENTO");
+        jPanel10.add(jLabel1, java.awt.BorderLayout.LINE_END);
 
         jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, -1));
 
         jpDatos.setBackground(new java.awt.Color(51, 51, 51));
         jpDatos.setLayout(new java.awt.GridLayout(5, 0));
 
         jpDescripcion.setBackground(new java.awt.Color(51, 51, 51));
         jpDescripcion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlPack1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
+        jlPack1.setForeground(new java.awt.Color(255, 255, 255));
+        jlPack1.setText("PACK");
+        jpDescripcion.add(jlPack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 90, 70));
+
+        jpDatos.add(jpDescripcion);
+
+        jpPack.setBackground(new java.awt.Color(51, 51, 51));
+        jpPack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlDesc.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
+        jlDesc.setForeground(new java.awt.Color(255, 255, 255));
+        jlDesc.setText("DESCRIPCION");
+        jpPack.add(jlDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 40));
 
         jtDesc.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         jtDesc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -189,37 +141,8 @@ public class packsDeVentas extends javax.swing.JFrame {
                 jtDescActionPerformed(evt);
             }
         });
-        jpDescripcion.add(jtDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 310, 48));
+        jpPack.add(jtDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 310, 48));
         jtDesc.setBackground(Colores.epicColorBajito);
-
-        jlDesc.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
-        jlDesc.setForeground(new java.awt.Color(255, 255, 255));
-        jlDesc.setText("DESCRIPCION");
-        jpDescripcion.add(jlDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 160, 40));
-
-        jpDatos.add(jpDescripcion);
-
-        jpPack.setBackground(new java.awt.Color(51, 51, 51));
-        jpPack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jlPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
-        jlPack.setForeground(new java.awt.Color(255, 255, 255));
-        jlPack.setText("CONDICION");
-        jpPack.add(jlPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 130, 30));
-
-        jcCondicion.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 13)); // NOI18N
-        jcCondicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Seminuevo", "Usado" }));
-        jpPack.add(jcCondicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 90, 50));
-
-        jlPack1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
-        jlPack1.setForeground(new java.awt.Color(255, 255, 255));
-        jlPack1.setText("PACK");
-        jpPack.add(jlPack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, 30));
-
-        jtPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtPack.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpPack.add(jtPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 120, 48));
-        jtPack.setBackground(Colores.epicColorBajito);
 
         jpDatos.add(jpPack);
 
@@ -229,27 +152,38 @@ public class packsDeVentas extends javax.swing.JFrame {
         jlTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlTIG.setForeground(new java.awt.Color(255, 255, 255));
         jlTIG.setText("PRECIO");
-        jpTIG.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 120, 30));
+        jpTIG.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 30));
 
-        jtPrecio.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtPrecio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpTIG.add(jtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 120, 48));
+        jtPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        jtPack.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jpTIG.add(jtPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 120, 48));
         jtPack.setBackground(Colores.epicColorBajito);
+
+        jlPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
+        jlPack.setForeground(new java.awt.Color(255, 255, 255));
+        jlPack.setText("CONDICION");
+        jpTIG.add(jlPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 130, 30));
+
+        jcCondicion.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 13)); // NOI18N
+        jcCondicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Seminuevo", "Usado" }));
+        jpTIG.add(jcCondicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 90, 50));
 
         jpDatos.add(jpTIG);
 
         jpUbicacion.setBackground(new java.awt.Color(51, 51, 51));
         jpUbicacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jtUnidades.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtUnidades.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpUbicacion.add(jtUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 100, 48));
-        jtUnidades.setBackground(Colores.epicColorBajito);
-
         jlUnidades.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlUnidades.setForeground(new java.awt.Color(255, 255, 255));
         jlUnidades.setText("UNIDADES");
-        jpUbicacion.add(jlUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 30));
+        jpUbicacion.add(jlUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 130, 30));
+
+        jtUnidades.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        jtUnidades.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jpUbicacion.add(jtUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 100, 48));
+        jtUnidades.setBackground(Colores.epicColorBajito);
+
+        jpDatos.add(jpUbicacion);
 
         jbRegistrar.setFont(new java.awt.Font("Franklin Gothic Book", 2, 24)); // NOI18N
         jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -264,16 +198,14 @@ public class packsDeVentas extends javax.swing.JFrame {
                 jbRegistrarActionPerformed(evt);
             }
         });
-        jpUbicacion.add(jbRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 170, 60));
+        jpDatos.add(jbRegistrar);
         jbRegistrar.setBackground(Colores.epicColor);
 
-        jpDatos.add(jpUbicacion);
+        getContentPane().add(jpDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 500, 350));
 
         jpBoton.setBackground(new java.awt.Color(51, 51, 51));
         jpBoton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jpDatos.add(jpBoton);
-
-        getContentPane().add(jpDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 500, 350));
+        getContentPane().add(jpBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 500, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -282,36 +214,6 @@ public class packsDeVentas extends javax.swing.JFrame {
         hover.setBackground(rand);
     }
     
-    private void cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseClicked
-        this.setVisible(false);
-    }//GEN-LAST:event_cerrarMouseClicked
-
-    private void cerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseEntered
-        changeColor(cerrar, Color.red);       // TODO add your handling code here:
-    }//GEN-LAST:event_cerrarMouseEntered
-
-    private void cerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseExited
-        changeColor(cerrar, new Color(51,51,51));
-    }//GEN-LAST:event_cerrarMouseExited
-
-    private void maxiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxiMouseClicked
-        this.setExtendedState(ICONIFIED);
-        /*if(this.getExtendedState()!=Libros.MAXIMIZED_BOTH){
-            this.setExtendedState(Libros.MAXIMIZED_BOTH);
-        }
-        else{
-            this.setExtendedState(Libros.NORMAL);
-        }*/
-    }//GEN-LAST:event_maxiMouseClicked
-
-    private void maxiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxiMouseEntered
-        changeColor(maxi, new Color(34,180,115));
-    }//GEN-LAST:event_maxiMouseEntered
-
-    private void maxiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxiMouseExited
-        changeColor(maxi, new Color(51,51,51));
-    }//GEN-LAST:event_maxiMouseExited
-
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
         int kordinatX = evt.getXOnScreen();
         int kordinatY = evt.getYOnScreen();
@@ -335,13 +237,13 @@ public class packsDeVentas extends javax.swing.JFrame {
             jcCondicion.getSelectedItem().toString(),
                              jtPack.getText(),
                              
-                             Double.toString(Double.valueOf(jtPrecio.getText())/Double.valueOf(montoDesP.getText())),
+                             Double.toString(Double.valueOf(jtPack.getText())/Double.valueOf(montoDesP.getText())),
                              jtUnidades.getText(),
                              montoDesP.getText(),
                              Double.toString(Double.valueOf(montoDesP.getText())*Integer.valueOf(jtUnidades.getText())),
                              
-                             jtPrecio.getText(),
-                             Double.toString(Double.valueOf(jtPrecio.getText())*Integer.valueOf(jtUnidades.getText()))}; 
+                             jtPack.getText(),
+                             Double.toString(Double.valueOf(jtPack.getText())*Integer.valueOf(jtUnidades.getText()))}; 
         Escribir escribirExcel = new Escribir();
         try {
             escribirExcel.escribirExcelInv("src\\excel\\Packs.xlsx", "PacksVentas", Registro,10);
@@ -402,16 +304,12 @@ public class packsDeVentas extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new packsDeVentas(desarrolloTipoP, montoDesP).setVisible(true);
+                //new packsDeVentas(desarrolloTipoP, montoDesP).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LOGO;
-    private javax.swing.JPanel barra;
-    private javax.swing.JPanel cerrar;
-    private javax.swing.JLabel cerrarIcon;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
@@ -432,9 +330,6 @@ public class packsDeVentas extends javax.swing.JFrame {
     private javax.swing.JPanel jpUbicacion;
     private javax.swing.JTextField jtDesc;
     private javax.swing.JTextField jtPack;
-    private javax.swing.JTextField jtPrecio;
     private javax.swing.JTextField jtUnidades;
-    private javax.swing.JPanel maxi;
-    private javax.swing.JLabel maxiIcon;
     // End of variables declaration//GEN-END:variables
 }
