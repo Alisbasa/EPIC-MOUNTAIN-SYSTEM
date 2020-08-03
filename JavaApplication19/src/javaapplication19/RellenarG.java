@@ -214,13 +214,31 @@ public class RellenarG {
         montoDesP.setBackground(Colores.epicColorBajito);
         montoDesP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         montoDesP.setPreferredSize(new Dimension(60, 30));
-
+        
         Iconos.scaleImage("ok", iconoOkDesarrolloP, 30);
-
-        rellenarDesPacks.add(desarrolloTipoP);
         rellenarDesPacks.add(tipoPack);
-        rellenarDesPacks.add(montoDesP);
-        rellenarDesPacks.add(iconoOkDesarrolloP);
+        
+        tipoPack.addActionListener((ActionEvent event) -> {
+            if(tipoPack.getSelectedItem().toString().equals("Nuevo")){
+                rellenarDesPacks.removeAll();
+                rellenarDesPacks.revalidate();
+                rellenarDesPacks.repaint();
+                rellenarDesPacks.add(iconoDesarrollo);
+                rellenarDesPacks.add(tipoPack);
+                rellenarDesPacks.add(desarrolloTipoP);
+                rellenarDesPacks.add(montoDesP);
+                rellenarDesPacks.add(iconoOkDesarrolloP);
+                
+            }
+            if(tipoPack.getSelectedItem().toString().equals("Rellenar Pack")){
+                rellenarDesPacks.removeAll();
+                rellenarDesPacks.revalidate();
+                rellenarDesPacks.repaint();
+                rellenarDesPacks.add(iconoDesarrollo);
+                rellenarDesPacks.add(tipoPack);
+                rellenarDesPacks.add(iconoOkDesarrolloP);
+            }
+        });
         
         return rellenarDesPacks;
     }

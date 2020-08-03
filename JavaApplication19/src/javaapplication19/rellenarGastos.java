@@ -377,10 +377,11 @@ public class rellenarGastos {
     }
     
     //Pone Gasto: Desarollo: Packs
-    void botonDesP(JTextField desarrolloTipoP, JComboBox tipoPack, JTextField montoDesP, JLabel iconoOkDesarrolloP, JScrollPane scrollGastos, JPanel listaGastos,  JPanel panelPadre){
+    void botonDesP(JTextField desarrolloTipoP, JComboBox tipoPack, JTextField montoDesP, JLabel iconoOkDesarrolloP, JScrollPane scrollGastos, JPanel listaGastos,  JPanel panelPadre, JTextField jtCostoPack){
         MouseListener botonV = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
+            
             
             scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
             PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
@@ -398,12 +399,27 @@ public class rellenarGastos {
             JLabel desarrolloLista = new JLabel();
             desarrolloLista.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             desarrolloLista.setText(desarrolloTipoP.getText());
-            
-
             JLabel precio = new JLabel();
             precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            precio.setText("$ " + montoDesP.getText());
+            String costoPack = "   ";
+            
+            if(tipoPack.getSelectedItem().toString().equals("Rellenar Pack")){
+                    packsDeVentas inv;
+                try {
+                    inv = new packsDeVentas(desarrolloLista, jtCostoPack.getText());
+                    inv.setVisible(true);
+                    costoPack = jtCostoPack.getText();
+                    precio.setText(costoPack);
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                precio.setText("$ " + montoDesP.getText());
+            }
+         
 
+            
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
             Iconos.scaleImage("packsG", icono, 25);
@@ -419,18 +435,16 @@ public class rellenarGastos {
             panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
+            
             String[] data = {(String) fechaActual(), "Pack de Ventas", desarrolloTipoP.getText(),montoDesP.getText(), "    ","VERDE"};
-            if(tipoPack.getSelectedItem().toString().equals("Rellenar Pack")){
-                    packsDeVentas inv;
-                try {
-                    inv = new packsDeVentas(desarrolloLista, precio);
-                    inv.setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            Escribir escribirVentas = new Escribir();
+            try {
+                escribirVentas.escribirExcel("src//excel/LibrosContables.xlsx", "Gastos", data);
+            } catch (IOException ex) {
+                Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
             if(tipoPack.getSelectedItem().toString().equals("Nuevo")){
-                Escribir escribirVentas = new Escribir();
                 try {
                     escribirVentas.crearHojaPacks("src\\excel\\Packs.xlsx", desarrolloTipoP.getText());
                 } catch (IOException ex) {

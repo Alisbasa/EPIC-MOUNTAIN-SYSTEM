@@ -139,4 +139,36 @@ public class LeerExcel {
         return sheetNames;
         //Falta que devuelva bien el arreglo de strings sheetNames para rellenar la comboBox
     }
+   static public String obtenerHojaInd(String filepath) throws IOException{
+       File file = new File(filepath);
+       FileInputStream inputStream = new FileInputStream(file);
+       XSSFWorkbook newWorkbook =new XSSFWorkbook(inputStream);
+       System.out.println("Number of sheets in this workbook : " + newWorkbook.getNumberOfSheets());
+       String sheetNames = null;
+       
+        for (int i = 0 ; i < newWorkbook.getNumberOfSheets() ; i ++ ) {
+            sheetNames = newWorkbook.getSheetName(i);
+            
+            System.out.println("Sheet Name[" + i + "] = " + sheetNames);
+        }
+        return sheetNames;
+        //Falta que devuelva bien el arreglo de strings sheetNames para rellenar la comboBox
+    }
+   static public int obtenerNumeroHojas(String filepath) throws FileNotFoundException, IOException{
+       File file = new File(filepath);
+       FileInputStream inputStream = new FileInputStream(file);
+       XSSFWorkbook newWorkbook =new XSSFWorkbook(inputStream);
+       
+       int numeroHojas = newWorkbook.getNumberOfSheets();
+       
+       return numeroHojas;
+   }
+   static public int obtenerIndexHoja (String filepath, String hoja) throws FileNotFoundException, IOException{
+       File file = new File(filepath);
+       FileInputStream inputStream = new FileInputStream(file);
+       XSSFWorkbook newWorkbook =new XSSFWorkbook(inputStream);
+       int indexHoja = newWorkbook.getSheetIndex(hoja);
+       
+       return indexHoja;
+   }
 }

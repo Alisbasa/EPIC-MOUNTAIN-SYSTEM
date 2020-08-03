@@ -471,4 +471,10 @@ public class Escribir {
         newWorkBook.write(outputStream);
         outputStream.close();
     }
+    public static void eliminarHoja(String filepath, int indexHoja) throws FileNotFoundException, IOException{
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkBook = newWorkBook = new XSSFWorkbook(inputStream);
+        newWorkBook.removeSheetAt(indexHoja);
+    }
 }

@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javaapplication19.packsDeVentas.desarrolloTipoP;
+import static javaapplication19.rellenarIngresos.fechaActual;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -17,21 +19,23 @@ import javax.swing.JTextField;
  *
  * @author Erick Ivan
  */
-public class clienteNuevo extends javax.swing.JFrame {
+public class clienteNuevoCobrar extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
     static JLabel unidades;
+    static String precioExcel;
 
     /**
      * Creates new form clienteNuevo
+     * @param precioExcel
      * @param unidades
      */
-    public clienteNuevo() {;
+    public clienteNuevoCobrar(String precioExcel) {;
         initComponents();
+        this.precioExcel = precioExcel;
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        
     }
 
     /**
@@ -308,9 +312,22 @@ public class clienteNuevo extends javax.swing.JFrame {
         Escribir EscribirCRM = new Escribir();
         try {
             EscribirCRM.escribirExcelClientes("src\\excel\\CRM.xlsx", "Clientes", Registro);
-            //EscribirCRM.escribirExcelInv("src\\excel\\CRM.xlsx", "deudasC", Registro, ERROR);
+            //Escribe en Excel individual y crea hoja
+            EscribirCRM.crearHoja("src\\excel\\DeudasC.xlsx", jtNombre.getText(), "FECHA", "MONTO");
+            String[] ventaInd = {fechaActual(), precioExcel};
+            EscribirCRM.escribirExcelInv("src\\excel\\DeudasC.xlsx", jtNombre.getText(), ventaInd, 2);
+            EscribirCRM.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", jtNombre.getText(), Double.valueOf(precioExcel), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText()), 1);
+            String formulaInd = "SUM(B2:B" + LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText()) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\DeudasC.xlsx", jtNombre.getText(), formulaInd, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+1), 1);
+            //Escribe en Excel general
+            String [] ventaC = {fechaActual(), jtNombre.getText(), precioExcel};
+            EscribirCRM.escribirExcelInv("src\\excel\\DeudasC.xlsx", "deudasCobrar", ventaC, 3);
+            EscribirCRM.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", Double.valueOf(precioExcel), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 2);
+            String formula = "SUM(C2:C" + LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + ")";
+            EscribirCRM.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+1), 2);
+        
         } catch (IOException ex) {
-            Logger.getLogger(clienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(clienteNuevoCobrar.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.setVisible(false);
     }//GEN-LAST:event_jbRegistrarMouseClicked
@@ -332,19 +349,22 @@ public class clienteNuevo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(clienteNuevo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(clienteNuevoCobrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(clienteNuevo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(clienteNuevoCobrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(clienteNuevo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(clienteNuevoCobrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(clienteNuevo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(clienteNuevoCobrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
+                new clienteNuevoCobrar(precioExcel).setVisible(true);
             }
         });
     }
