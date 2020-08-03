@@ -113,7 +113,7 @@ public class rellenarIngresos {
 
         boton.addMouseListener(botonV);
     }
-    void botonBorrarVenta(JLabel boton){
+    void botonBorrarVenta(JLabel boton,String icono){
         MouseListener botonV = new MouseListener() {
 
             @Override
@@ -162,7 +162,7 @@ public class rellenarIngresos {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                Iconos.scaleImage("ventasG", boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Iconos.scaleImage(icono, boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         };
 
@@ -270,7 +270,7 @@ public class rellenarIngresos {
                 
                 botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"ventasG");
                 revertirUnidades(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
-                botonBorrarVenta(icono);
+                botonBorrarVenta(icono,"ventasG");
                 botonBorrarInd(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
 //                try {
 //                    //borrarVenta();
@@ -724,7 +724,7 @@ public class rellenarIngresos {
 
     //Pone ingreso: venta
     void botonVentaC(JTextField monto, JComboBox inventario, JLabel iconoOkVentasC, JScrollPane scrollIngresos, JPanel listaIngresos, JComboBox plataformacb, JComboBox cliente, JComboBox unidades, JPanel panelPadre) {
-        MouseListener botonV = new MouseListener() {
+        MouseListener botonVC = new MouseListener() {
 
             @Override
             @SuppressWarnings("empty-statement")
@@ -754,7 +754,7 @@ public class rellenarIngresos {
 
                 String precioExcel = "precio";
                 try {
-                    precioExcel = "$"+String.valueOf(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", numeroPlataforma, numeroLista)*(unidades.getSelectedIndex()+1));
+                    precioExcel = String.valueOf(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", numeroPlataforma, numeroLista)*(unidades.getSelectedIndex()+1));
                     
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
@@ -763,7 +763,7 @@ public class rellenarIngresos {
                 JLabel precio = new JLabel();
                 precio.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
 
-                precio.setText("$ " + precioExcel);
+                precio.setText( "$"+precioExcel);
 
                 JLabel plataforma = new JLabel();
                 plataforma.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
@@ -777,7 +777,7 @@ public class rellenarIngresos {
                 
                 botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso),"Ventas");
                 revertirUnidades(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
-                botonBorrarVenta(icono);
+                botonBorrarVenta(icono,"Ventas");
                 botonBorrarInd(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
 //                try {
 //                    //borrarVenta();
@@ -826,6 +826,10 @@ public class rellenarIngresos {
                     String formula = "SUM(C2:C" + LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", cliente.getSelectedItem().toString()) + ")";
                     escribirVentas.escribirFormula("src\\excel\\DeudasP.xlsx", cliente.getSelectedItem().toString(), formula, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", cliente.getSelectedItem().toString())+1), 2);
                    
+//                    for(int i=0;i< LeerExcel.obtenerHoja("src\\excel\\DeudasP.xlsx").length;i++){
+//                        if 
+//                    }
+//                    
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -854,7 +858,7 @@ public class rellenarIngresos {
             }
         };
 
-        iconoOkVentasC.addMouseListener(botonV);
+        iconoOkVentasC.addMouseListener(botonVC);
     }
 
     //Para rellenar un ingreso:devolucion
