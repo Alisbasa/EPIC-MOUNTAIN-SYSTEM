@@ -367,7 +367,7 @@ public class rellenarIngresos {
                 panelPadre.updateUI();
                 listaIngresos.updateUI();
                 try {
-                    vender(inventario,unidades);
+                    vender(inventario,unidades, plataformacb, cliente);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -880,7 +880,7 @@ public class rellenarIngresos {
                 panelPadre.updateUI();
                 listaIngresos.updateUI();
                 try {
-                    vender(inventario,unidades);
+                    vender(inventario,unidades, plataformacb, cliente);
                     //Condicional para verificar que exista la hoja y si es asi escriba en la existente
                     String [] hojas = LeerExcel.obtenerHoja("src\\excel\\DeudasC.xlsx");
   
@@ -1153,7 +1153,7 @@ public class rellenarIngresos {
         }
         
     }
-    public void vender(JComboBox inventario,JComboBox unidadesCB) throws IOException{
+    public void vender(JComboBox inventario,JComboBox unidadesCB, JComboBox medioVenta, JComboBox cliente) throws IOException{
         String fecha = fechaActual();
                
         int seleccion=inventario.getSelectedIndex()+1;
@@ -1167,10 +1167,13 @@ public class rellenarIngresos {
         String costoUnidad=  Double.toString(LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 7, seleccion));
         
         String costoNeto=  Double.toString(Integer.parseInt(unidades)*Double.parseDouble(costoUnidad));
-        String costoBaseUnidad=  Double.toString(LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 9, seleccion));
-        String costoBaseNeto=  Double.toString(Integer.parseInt(unidades)*Double.parseDouble(costoBaseUnidad));
+        String precioBaseUnidad=  Double.toString(LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 9, seleccion));
+        String precioBaseNeto=  Double.toString(Integer.parseInt(unidades)*Double.parseDouble(precioBaseUnidad));
+      
         
-        String[] data = {venta,descripion,fecha,condicion,pack,Double.toString(tig),unidades,costoUnidad,costoNeto,costoBaseUnidad,costoBaseNeto,};
+        
+        String[] data = {venta,descripion,fecha,condicion,pack,Double.toString(tig),unidades,costoUnidad,costoNeto, precioBaseUnidad, precioBaseNeto};
+       
         
         Escribir escribirVentas = new Escribir();       
         
@@ -1186,30 +1189,111 @@ public class rellenarIngresos {
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                 
                 
+                //Escribe arreglo de Strings
                 escribirVentas.escribirExcelInv("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), data, 10);
+                
+                //Escribe unidades como int
+                escribirVentas.escribirCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), Integer.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 6);
+                
+                //Escribe costo*unidad como double
+                escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), Double.valueOf(data[7]), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 7);
+                
+                //Escribe costo neto como double
                 escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()   , Double.valueOf(data[8]), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 8);
+                
+                //Escribe preciobase*unidad como double
+                escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()   , Double.valueOf(data[9]), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 9);
+                
+                //Escribe tig como double
+                Double tigBien = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 9, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()))/LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 7, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
+                escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), tigBien, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 5);
+                
+                //Escribe precio base neto como double
                 escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()   , Double.valueOf(data[10]), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 10);
-                //escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() , Double.valueOf(data[]), indice, indice);
+                
+                //Escribe precio shop*unidad como double
+                Double precioShop = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 11, seleccion);
+                escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), precioShop, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 11);
+                
+                //Escribe precio shop neto como doble
+                Double precioShopN = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 12, seleccion);
+                escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), precioShopN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 12); 
+                
+                //Escribe precio Ml por unidad como doble
+                Double precioML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 13, seleccion);
+                escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), precioML, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 13);
+                
+                //Escribe precio Ml neto como doble
+                Double precioMLN = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 14, seleccion);
+                escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), precioMLN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 14); 
+                
+                //Escribe comision ML como doble
+                Double comisionML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 15, seleccion);
+                escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), comisionML, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 15);
+                
+                //Escribe comison ML neta
+                Double comisionMLN = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 16, seleccion);
+                escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), comisionMLN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 16);
+                 
+                //Escribe IVA * unidad
+                Double iva = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 17, seleccion);
+                escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), iva, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 17);
+                
+                //Escribe IVA neto
+                Double ivaN = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 18, seleccion);
+                escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), ivaN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 18);
+                
+                //Escribe utilidadShop * unidad
+                Double utilidadShop = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 19, seleccion);
+                escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), utilidadShop, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 19);
+
+                //Escribe utilidadShop neta
+                Double utilidadShopN = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 20, seleccion);
+                escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), utilidadShopN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase() ), 20);
+                
+                
+                //Escribe utilidad ML * unidad
+                
+                //Escribe medio de venta
+                escribirVentas.escribirCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), medioVenta.getSelectedItem().toString(),LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 23);
+                
+                //Escribe destino
+                String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "Clientes", 3, cliente.getSelectedIndex()+1);
+                escribirVentas.escribirCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), destino, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 24);
+                
+                //Escribe formula de costo neto en suma
                 String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase())+1) + ")";
-                //System.out.println(LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
                 escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1, 8);
+                
+                //Escribe formula de precio base neto en suma
                 String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1) + ")";
                 escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula2, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1, 10);
+                
+                //Escribe formula de precio local neto en suma
                 String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1) + ")";
                 escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula3, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1, 12);
+                
+                //Escribe formula de precio ml neto en suma
                 String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1) + ")";
                 escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula4, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1, 14);
+                
+                //Escribe formula de comision ml neta en suma
                 String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1) + ")";
                 escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula5, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1, 16);
+                
+                //Escribe formula de IVA neta en suma
                 String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1) + ")";
                 escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula6, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1, 18);
+                
+                //Escribe formula de utilidad local neta en suma
                 String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1) + ")";
                 escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula7, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1, 20);
+                
+                //Escribe formula de utilidad ml neta en suma
                 String formula8 = "SUM(W2:W" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1) + ")";
                 escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula8, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase())+1, 22);
-    
+                
     }
     public void devolver(JComboBox devo) throws IOException{
         String fecha = fechaActual();

@@ -89,7 +89,7 @@ public class Rellenar {
         Iconos.scaleImage("Ventas", iconoVentas, 40);
         rellenarVentas.add(iconoVentas);
 
-        String[] listaPlataformas = {"Mercado Libre", "Amazon", "Shopiffy"};
+        String[] listaPlataformas = {"Mercado Libre", "Local"};
 
         inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
         inventario.setBackground(Color.white);

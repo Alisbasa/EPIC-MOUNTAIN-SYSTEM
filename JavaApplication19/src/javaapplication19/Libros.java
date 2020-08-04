@@ -854,6 +854,9 @@ public class Libros extends javax.swing.JFrame {
 
         comprasIcon2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         comprasIcon2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                comprasIcon2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 comprasIcon2MouseEntered(evt);
             }
@@ -909,7 +912,7 @@ public class Libros extends javax.swing.JFrame {
         regLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
         regLabel.setForeground(new java.awt.Color(255, 255, 255));
         regLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        regLabel.setText("REGISTRAR");
+        regLabel.setText("PENDIENTES");
         regLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 regLabelMouseClicked(evt);
@@ -1892,6 +1895,14 @@ public class Libros extends javax.swing.JFrame {
             e.printStackTrace();       
         }
     }//GEN-LAST:event_panelCompras2MouseClicked
+
+    private void comprasIcon2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprasIcon2MouseClicked
+        try{
+            Desktop.getDesktop().open(new java.io.File("src//excel/comprasT.xlsx"));
+        }catch(Exception e){
+            e.printStackTrace();       
+        }
+    }//GEN-LAST:event_comprasIcon2MouseClicked
     
     
     /**/

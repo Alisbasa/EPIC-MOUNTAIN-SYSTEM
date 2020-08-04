@@ -477,4 +477,25 @@ public class Escribir {
         XSSFWorkbook newWorkBook = newWorkBook = new XSSFWorkbook(inputStream);
         newWorkBook.removeSheetAt(indexHoja);
     }
+    public void escribirFormulaF(String filepath, String hoja, String formula, int fila, int columna) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+
+        XSSFRow row = newSheet.getRow(fila);
+
+        XSSFCell newCell = row.createCell(columna);
+        newCell.setCellFormula(formula);
+        setCellStyle(newWorkbook, newCell);
+        newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
+        evaluar(newWorkbook, newCell);
+        XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+
+        inputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkbook.write(outputStream);
+        outputStream.close();
+
+    }
 }
