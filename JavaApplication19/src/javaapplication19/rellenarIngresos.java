@@ -724,13 +724,16 @@ public class rellenarIngresos {
                 try {
                     
                     if(deudor.getSelectedItem().toString()!="Nuevo"){
+                        
+                        //EXCEL INDIVIDUAL
                         escribirVentas.escribirExcelInv("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), data, 2);
-                        escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), Double.valueOf(montoDeudaC.getText())*-1, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 1);
+                        escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), Double.valueOf(montoDeudaC.getText())*-1, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+1, 1);
                         String formula2 = escribirVentas.Sumar(2, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString())+ 1),'b');
                         escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(),  formula2, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString())+ 1), 1);
                         
-                        
-                        String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")) + ")";
+                        Double suma = LeerExcel.obtenerCeldaNumerica("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), 1, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString())+ 1));
+                        escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", suma, deudor.getSelectedIndex()+1, 2);
+                        String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+1) + ")";
                         escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar",formula,(LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+ 1), 2);
                         System.out.println((LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString())+ 1));
                        
@@ -901,7 +904,7 @@ public class rellenarIngresos {
                             //Escribe en Excel general deudasCobrar
                             //Double suma = LeerExcel.obtenerCeldaNumerica("src\\excel\\DeudasC.xlsx", "deudasCobrar", 2, i) + Double.valueOf(precioExcel);
                             //escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", suma, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 2);
-                            String formula = "SUM(C2:C" + LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + ")";
+                             String formula = escribirVentas.Sumar(2,LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+1 , 'c');
                             escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+1), 2);
                     } 
                     else if(cliente.getSelectedItem().toString().equals("Nuevo Cliente")){
@@ -921,7 +924,7 @@ public class rellenarIngresos {
                             String [] ventaC = {fechaActual(), cliente.getSelectedItem().toString(), precioExcel};
                             escribirVentas.escribirExcelInv("src\\excel\\DeudasC.xlsx", "deudasCobrar", ventaC, 3);
                             escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", Double.valueOf(precioExcel), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 2);
-                            String formula = "SUM(C2:C" + LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + ")";
+                            String formula = escribirVentas.Sumar(2,LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") , 'c');
                             escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+1), 2);
                     }
                     

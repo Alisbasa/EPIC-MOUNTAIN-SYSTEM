@@ -323,7 +323,7 @@ public class clienteNuevoCobrar extends javax.swing.JFrame {
             String [] ventaC = {fechaActual(), jtNombre.getText(), precioExcel};
             EscribirCRM.escribirExcelInv("src\\excel\\DeudasC.xlsx", "deudasCobrar", ventaC, 3);
             EscribirCRM.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", Double.valueOf(precioExcel), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 2);
-            String formula = "SUM(C2:C" + LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + ")";
+            String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+1), 2);
         
         } catch (IOException ex) {
