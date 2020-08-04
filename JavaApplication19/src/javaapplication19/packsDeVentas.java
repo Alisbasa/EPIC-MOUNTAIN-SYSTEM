@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package javaapplication19;
-
+import javaapplication19.rellenarGastos;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.io.IOException;
@@ -24,38 +24,38 @@ import javax.swing.JTextField;
  * @author Erick Ivan
  */
 public class packsDeVentas extends javax.swing.JFrame {
+
     int mousepX;
     int mousepY;
-    static JComboBox packsDisponibles;
-    static JTextField jtCosto;
+
     static JLabel desarrolloTipoP;
-    static String costo;
+    static JTextField costo;
+    static JTextField pieza;
     //static String costoPack;
-    
     /**
      * Creates new form clienteNuevo
+     *
      * @param desarrolloTipoP
      * @param precio
      * @throws java.io.IOException
      */
-    public packsDeVentas(JLabel desarrolloTipoP, String costo) throws IOException {
-        initComponents();
+    public packsDeVentas(JLabel desarrolloTipoP,JTextField costo,JTextField pieza) throws IOException {
+        
+
         this.desarrolloTipoP = desarrolloTipoP;
+        this.costo = costo;
+        this.pieza = pieza;
+        initComponents();
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         
-        packsDisponibles = new JComboBox(LeerExcel.obtenerHoja("src\\excel\\Packs.xlsx"));
-        packsDisponibles.setBackground(Color.white);
-        packsDisponibles.setUI(PropiedadesCB2.createUI(packsDisponibles));
-        jpDescripcion.add(packsDisponibles);
-        
-        jtCosto = new JTextField();
-        jtCosto.setBackground(Colores.epicColorBajito);
-        jtCosto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        jtCosto.setPreferredSize(new Dimension(60, 30));
-        jpUbicacion.add(jtCosto);
+//        packsDisponibles = new JComboBox(LeerExcel.obtenerHoja("src\\excel\\Packs.xlsx"));
+//        packsDisponibles.setBackground(Color.white);
+//        packsDisponibles.setUI(PropiedadesCB2.createUI(packsDisponibles));
+//        jpDescripcion.add(packsDisponibles);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,20 +73,29 @@ public class packsDeVentas extends javax.swing.JFrame {
         jpDatos = new javax.swing.JPanel();
         jpDescripcion = new javax.swing.JPanel();
         jlPack1 = new javax.swing.JLabel();
+        String[] arr={""};
+        try{
+            arr = LeerExcel.obtenerHoja("src\\excel\\Packs.xlsx");
+        }catch(Exception e){}
+        packsDisponibles2 = new javax.swing.JComboBox(arr);
+        jPanel2 = new javax.swing.JPanel();
+        jlPack2 = new javax.swing.JLabel();
+        jtPieza = new javax.swing.JTextField(pieza.getText());
         jpPack = new javax.swing.JPanel();
         jlDesc = new javax.swing.JLabel();
         jtDesc = new javax.swing.JTextField();
         jpTIG = new javax.swing.JPanel();
         jlTIG = new javax.swing.JLabel();
-        jtPack = new javax.swing.JTextField();
+        jtCosto = new javax.swing.JTextField(costo.getText());
         jlPack = new javax.swing.JLabel();
         jcCondicion = new javax.swing.JComboBox<>();
         jpUbicacion = new javax.swing.JPanel();
-        jlUnidades = new javax.swing.JLabel();
-        jtUnidades = new javax.swing.JTextField();
+        jlPrecio = new javax.swing.JLabel();
+        jtPrecio = new javax.swing.JTextField();
         jlUnidades1 = new javax.swing.JLabel();
-        jbRegistrar = new javax.swing.JButton();
+        jtUnidades = new javax.swing.JTextField();
         jpBoton = new javax.swing.JPanel();
+        jbRegistrar = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -127,16 +136,40 @@ public class packsDeVentas extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, -1));
 
         jpDatos.setBackground(new java.awt.Color(51, 51, 51));
-        jpDatos.setLayout(new java.awt.GridLayout(5, 0));
+        jpDatos.setLayout(new java.awt.GridLayout(6, 0));
 
         jpDescripcion.setBackground(new java.awt.Color(51, 51, 51));
+        jpDescripcion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jlPack1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlPack1.setForeground(new java.awt.Color(255, 255, 255));
         jlPack1.setText("PACK");
-        jpDescripcion.add(jlPack1);
+        jpDescripcion.add(jlPack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+
+        packsDisponibles2.setBackground(Color.white);
+        packsDisponibles2.setUI(PropiedadesCB2.createUI(packsDisponibles2));
+        packsDisponibles2.setModel(new javax.swing.DefaultComboBoxModel<>(arr));
+        jpDescripcion.add(packsDisponibles2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 200, 30));
 
         jpDatos.add(jpDescripcion);
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlPack2.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
+        jlPack2.setForeground(new java.awt.Color(255, 255, 255));
+        jlPack2.setText("PIEZA");
+        jPanel2.add(jlPack2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+
+        jtPieza.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        jtPieza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtPiezaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jtPieza, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 340, 50));
+
+        jpDatos.add(jPanel2);
 
         jpPack.setBackground(new java.awt.Color(51, 51, 51));
         jpPack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -153,7 +186,7 @@ public class packsDeVentas extends javax.swing.JFrame {
                 jtDescActionPerformed(evt);
             }
         });
-        jpPack.add(jtDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 310, 48));
+        jpPack.add(jtDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 340, 48));
         jtDesc.setBackground(Colores.epicColorBajito);
 
         jpDatos.add(jpPack);
@@ -163,43 +196,53 @@ public class packsDeVentas extends javax.swing.JFrame {
 
         jlTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlTIG.setForeground(new java.awt.Color(255, 255, 255));
-        jlTIG.setText("PRECIO");
-        jpTIG.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 30));
+        jlTIG.setText("COSTO");
+        jpTIG.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, 30));
 
-        jtPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtPack.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpTIG.add(jtPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 120, 48));
-        jtPack.setBackground(Colores.epicColorBajito);
+        jtCosto.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        jtCosto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jpTIG.add(jtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 100, 48));
+        jtCosto.setBackground(Colores.epicColorBajito);
 
         jlPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlPack.setForeground(new java.awt.Color(255, 255, 255));
         jlPack.setText("CONDICION");
-        jpTIG.add(jlPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 130, 30));
+        jpTIG.add(jlPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 130, 30));
 
         jcCondicion.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 13)); // NOI18N
         jcCondicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Seminuevo", "Usado" }));
-        jpTIG.add(jcCondicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 90, 50));
+        jpTIG.add(jcCondicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 90, 50));
 
         jpDatos.add(jpTIG);
 
         jpUbicacion.setBackground(new java.awt.Color(51, 51, 51));
 
-        jlUnidades.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
-        jlUnidades.setForeground(new java.awt.Color(255, 255, 255));
-        jlUnidades.setText("COSTO");
-        jpUbicacion.add(jlUnidades);
+        jlPrecio.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
+        jlPrecio.setForeground(new java.awt.Color(255, 255, 255));
+        jlPrecio.setText("PRECIO");
+        jpUbicacion.add(jlPrecio);
 
-        jtUnidades.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtUnidades.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpUbicacion.add(jtUnidades);
-        jtUnidades.setBackground(Colores.epicColorBajito);
+        jtPrecio.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        jtPrecio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtPrecio.setPreferredSize(new java.awt.Dimension(100, 40));
+        jpUbicacion.add(jtPrecio);
+        jtPrecio.setBackground(Colores.epicColorBajito);
 
         jlUnidades1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlUnidades1.setForeground(new java.awt.Color(255, 255, 255));
         jlUnidades1.setText("UNIDADES");
         jpUbicacion.add(jlUnidades1);
 
+        jtUnidades.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        jtUnidades.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtUnidades.setPreferredSize(new java.awt.Dimension(100, 40));
+        jpUbicacion.add(jtUnidades);
+        jtPrecio.setBackground(Colores.epicColorBajito);
+
         jpDatos.add(jpUbicacion);
+
+        jpBoton.setBackground(new java.awt.Color(51, 51, 51));
+        jpBoton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jbRegistrar.setFont(new java.awt.Font("Franklin Gothic Book", 2, 24)); // NOI18N
         jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -214,32 +257,30 @@ public class packsDeVentas extends javax.swing.JFrame {
                 jbRegistrarActionPerformed(evt);
             }
         });
-        jpDatos.add(jbRegistrar);
+        jpBoton.add(jbRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 250, 50));
         jbRegistrar.setBackground(Colores.epicColor);
 
-        getContentPane().add(jpDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 500, 350));
+        jpDatos.add(jpBoton);
 
-        jpBoton.setBackground(new java.awt.Color(51, 51, 51));
-        jpBoton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jpBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 500, 70));
+        getContentPane().add(jpDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 580, 430));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    public void changeColor(JPanel hover,Color rand){
+
+    public void changeColor(JPanel hover, Color rand) {
         hover.setBackground(rand);
     }
-    
+
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
         int kordinatX = evt.getXOnScreen();
         int kordinatY = evt.getYOnScreen();
-        this.setLocation(kordinatX-mousepX, kordinatY-mousepY);
+        this.setLocation(kordinatX - mousepX, kordinatY - mousepY);
 
     }//GEN-LAST:event_jPanel1MouseDragged
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
         mousepX = evt.getX();
-        mousepY =evt.getY();
+        mousepY = evt.getY();
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
@@ -248,44 +289,47 @@ public class packsDeVentas extends javax.swing.JFrame {
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
         //costoPack = jtCosto.getText();
-        String[] Registro = {desarrolloTipoP.getText(),
+        String[] Registro = {jtPieza.getText(),
             jtDesc.getText(),
             fechaActual(),
             jcCondicion.getSelectedItem().toString(),
-                             jtPack.getText(),
-                             
-                             Double.toString(Double.valueOf(jtPack.getText())/Double.valueOf(jtCosto.getText())),
-                             jtUnidades.getText(),
-                             jtCosto.getText(),
-                             Double.toString(Double.valueOf(jtCosto.getText())*Integer.valueOf(jtUnidades.getText())),
-                             
-                             jtPack.getText(),
-                             Double.toString(Double.valueOf(jtPack.getText())*Integer.valueOf(jtUnidades.getText()))}; 
+            packsDisponibles2.getSelectedItem().toString(),
+            Double.toString(Double.valueOf(jtPrecio.getText()) / Double.valueOf(jtCosto.getText())),
+            jtUnidades.getText(),
+            jtCosto.getText(),
+            Double.toString(Double.valueOf(jtCosto.getText()) * Integer.valueOf(jtUnidades.getText())),
+            jtPrecio.getText(),
+            Double.toString(Double.valueOf(jtUnidades.getText()) * Integer.valueOf(jtPrecio.getText()))};
         Escribir escribirExcel = new Escribir();
         try {
-            escribirExcel.escribirExcelInv("src\\excel\\Packs.xlsx", packsDisponibles.getSelectedItem().toString(), Registro,10);
-            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx",packsDisponibles.getSelectedItem().toString() , Double.valueOf(Registro[8]), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles.getSelectedItem().toString()), 8);
-            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx",packsDisponibles.getSelectedItem().toString() , Double.valueOf(Registro[10]), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles.getSelectedItem().toString()), 10);
-            String formula = "SUM(I2:I" + LeerExcel.contarRenglones("src\\excel\\Packs.xlsx",packsDisponibles.getSelectedItem().toString()) + ")";
-            escribirExcel.escribirFormula("src\\excel\\Packs.xlsx", packsDisponibles.getSelectedItem().toString(), formula,LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles.getSelectedItem().toString())+1, 8);
-            String formula2 = "SUM(K2:K" + LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles.getSelectedItem().toString()) + ")";
-            escribirExcel.escribirFormula("src\\excel\\Packs.xlsx", packsDisponibles.getSelectedItem().toString(), formula2, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles.getSelectedItem().toString())+1, 10);
-            
+            escribirExcel.escribirExcelInv("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Registro, 10);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Double.valueOf(Registro[8]), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 8);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Double.valueOf(Registro[10]), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 10);
+            String formula = "SUM(I2:I" + LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()) + ")";
+            escribirExcel.escribirFormula("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), formula, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()) + 1, 8);
+            String formula2 = "SUM(K2:K" + LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()) + ")";
+            escribirExcel.escribirFormula("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), formula2, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()) + 1, 10);
+
         } catch (IOException ex) {
             Logger.getLogger(packsDeVentas.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         this.setVisible(false);
     }//GEN-LAST:event_jbRegistrarMouseClicked
 
-    public static String fechaActual(){
+    public static String fechaActual() {
         java.util.Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM YY");
         return formatoFecha.format(fecha);
     }
-    
+
     private void jtDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDescActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtDescActionPerformed
+
+    private void jtPiezaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtPiezaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtPiezaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,7 +366,7 @@ public class packsDeVentas extends javax.swing.JFrame {
             @Override
             public void run() {
                 try {
-                    new packsDeVentas(desarrolloTipoP, costo).setVisible(true);
+                    new packsDeVentas(desarrolloTipoP,costo,pieza).setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(packsDeVentas.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -335,14 +379,16 @@ public class packsDeVentas extends javax.swing.JFrame {
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbRegistrar;
+    public javax.swing.JButton jbRegistrar;
     private javax.swing.JComboBox<String> jcCondicion;
     private javax.swing.JLabel jlDesc;
     private javax.swing.JLabel jlPack;
     private javax.swing.JLabel jlPack1;
+    private javax.swing.JLabel jlPack2;
+    private javax.swing.JLabel jlPrecio;
     private javax.swing.JLabel jlTIG;
-    private javax.swing.JLabel jlUnidades;
     private javax.swing.JLabel jlUnidades1;
     private javax.swing.JPanel jpBoton;
     private javax.swing.JPanel jpDatos;
@@ -350,8 +396,11 @@ public class packsDeVentas extends javax.swing.JFrame {
     private javax.swing.JPanel jpPack;
     private javax.swing.JPanel jpTIG;
     private javax.swing.JPanel jpUbicacion;
+    private javax.swing.JTextField jtCosto;
     private javax.swing.JTextField jtDesc;
-    private javax.swing.JTextField jtPack;
+    private javax.swing.JTextField jtPieza;
+    private javax.swing.JTextField jtPrecio;
     private javax.swing.JTextField jtUnidades;
+    private javax.swing.JComboBox<String> packsDisponibles2;
     // End of variables declaration//GEN-END:variables
 }

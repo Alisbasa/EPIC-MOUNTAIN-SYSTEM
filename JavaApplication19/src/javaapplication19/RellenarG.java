@@ -63,6 +63,7 @@ public class RellenarG {
     JTextField desarrolloTipoE;
     JTextField desarrolloTipoI;
     JTextField desarrolloTipoP;
+    JTextField pieza;
     JComboBox producto;
     JComboBox productoCT;
     JComboBox deudas;
@@ -199,10 +200,14 @@ public class RellenarG {
         rellenarDesPacks.add(iconoDesarrollo);
 
         desarrolloTipoP = new JTextField();
-        addPlaceHolder("Packs", desarrolloTipoP);
+        addPlaceHolder("Pack", desarrolloTipoP);
         desarrolloTipoP.setBackground(Colores.epicColorBajito);
         desarrolloTipoP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         desarrolloTipoP.setPreferredSize(new Dimension(150, 30));
+        
+        
+        
+        
         
         String []tipos ={"Nuevo", "Rellenar Pack"}; 
         tipoPack = new JComboBox(tipos);
@@ -230,12 +235,15 @@ public class RellenarG {
                 rellenarDesPacks.add(iconoOkDesarrolloP);
                 
             }
-            if(tipoPack.getSelectedItem().toString().equals("Rellenar Pack")){
+            else if(tipoPack.getSelectedItem().toString().equals("Rellenar Pack")){
+                addPlaceHolder("Pieza", desarrolloTipoP);
                 rellenarDesPacks.removeAll();
                 rellenarDesPacks.revalidate();
                 rellenarDesPacks.repaint();
                 rellenarDesPacks.add(iconoDesarrollo);
                 rellenarDesPacks.add(tipoPack);
+                rellenarDesPacks.add(desarrolloTipoP);
+                rellenarDesPacks.add(montoDesP);
                 rellenarDesPacks.add(iconoOkDesarrolloP);
             }
         });

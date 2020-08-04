@@ -377,7 +377,7 @@ public class rellenarGastos {
     }
     
     //Pone Gasto: Desarollo: Packs
-    void botonDesP(JTextField desarrolloTipoP, JComboBox tipoPack, JTextField montoDesP, JLabel iconoOkDesarrolloP, JScrollPane scrollGastos, JPanel listaGastos,  JPanel panelPadre, JTextField jtCostoPack){
+    void botonDesP(JTextField desarrolloTipoP, JComboBox tipoPack, JTextField montoDesP, JLabel iconoOkDesarrolloP, JScrollPane scrollGastos, JPanel listaGastos,  JPanel panelPadre){
         MouseListener botonV = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -399,23 +399,23 @@ public class rellenarGastos {
             JLabel desarrolloLista = new JLabel();
             desarrolloLista.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
             desarrolloLista.setText(desarrolloTipoP.getText());
-            JLabel precio = new JLabel();
-            precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            String costoPack = "   ";
+            JLabel costo = new JLabel();
+            costo.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
+            
             
             if(tipoPack.getSelectedItem().toString().equals("Rellenar Pack")){
                     packsDeVentas inv;
                 try {
-                    inv = new packsDeVentas(desarrolloLista, jtCostoPack.getText());
+                    inv = new packsDeVentas(desarrolloLista,montoDesP,desarrolloTipoP);
                     inv.setVisible(true);
-                    costoPack = jtCostoPack.getText();
-                    precio.setText(costoPack);
+                    costo.setText("$ " + montoDesP.getText());
+                    
                     
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }else{
-                precio.setText("$ " + montoDesP.getText());
+                costo.setText("$ " + montoDesP.getText());
             }
          
 
@@ -431,7 +431,7 @@ public class rellenarGastos {
             
             panelGasto.add(fecha);
             panelGasto.add(desarrolloLista);
-            panelGasto.add(precio);
+            panelGasto.add(costo);
             panelGasto.add(new JLabel(""));
             panelGasto.add(icono);
             
