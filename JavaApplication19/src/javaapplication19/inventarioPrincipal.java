@@ -346,7 +346,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
                                jtTIG.getText(),jtUnidades.getText(),
                                rellenar.montoDesI.getText()};*/
         String costoBaseNeto =Double.toString(Integer.valueOf(jtUnidades.getText())*Double.valueOf(jtPrecio.getText()));
-        String costoNeto =Double.toString(Integer.valueOf(jtUnidades.getText())*Double.valueOf(monto.getText()));
+        String costoNeto =Double.toString(Integer.valueOf(jtUnidades.getText())*Integer.valueOf(monto.getText()));
         String precioBaseNeto= Double.toString(((Double.valueOf((jtPrecio.getText()))*.16)+Double.valueOf(jtPrecio.getText()))*Integer.valueOf(jtUnidades.getText()));
         
         String [] inventario = {nombre.getText(),
@@ -369,6 +369,9 @@ public class inventarioPrincipal extends javax.swing.JFrame {
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(costoNeto), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 8);
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(costoBaseNeto), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 10);
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(precioBaseNeto), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 12);
+            
+            //EscribirCRM.Mulitplicar(NORMAL, NORMAL, WIDTH, costoNeto, costoNeto)
+            
             String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula,
                                         LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 8);

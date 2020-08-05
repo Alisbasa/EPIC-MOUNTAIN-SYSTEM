@@ -367,6 +367,27 @@ public class Escribir {
         System.out.println(Resta);
         return Resta;
     }
+    public Double Mulitplicar(int columnaInicial, int ColumnaFinal, int fila, String filepath, String hoja) throws IOException, IOException{
+        Double columnaUno= LeerExcel.obtenerCeldaNumerica(filepath, hoja, columnaInicial, fila);
+        Double columnaDos= LeerExcel.obtenerCeldaNumerica(filepath, hoja, columnaInicial, fila);
+        
+        Double multiplicacion = columnaUno * columnaDos;
+        
+        return multiplicacion; 
+    }
+    
+    public String RestarColumnas (int fila, char columnaUno, char columnaDos, char columnaTres, char columnaCuatro){
+        String Resta = (Character.toUpperCase(columnaUno)+Integer.toString(fila)) + "-" + (Character.toUpperCase(columnaDos)+Integer.toString(fila))
+        + "-" + (Character.toUpperCase(columnaTres)+Integer.toString(fila)) + "-" + (Character.toUpperCase(columnaCuatro)+Integer.toString(fila));
+        System.out.println(Resta);
+        return Resta;
+    }
+    public String RestarColumnas (int fila, char columnaUno, char columnaDos, char columnaTres){
+        String Resta = (Character.toUpperCase(columnaUno)+Integer.toString(fila)) + "-" + (Character.toUpperCase(columnaDos)+Integer.toString(fila))
+        + "-" + (Character.toUpperCase(columnaTres)+Integer.toString(fila));
+        System.out.println(Resta);
+        return Resta;
+    }
 
     public void crearHoja(String filepath, String hoja, String header, String header2) throws FileNotFoundException, IOException {
         File file = new File(filepath);

@@ -136,7 +136,7 @@ public class rellenarGastos {
 
             JLabel precio = new JLabel();
             precio.setFont(new Font("Franklin Gothic",Font.PLAIN,14));
-            precio.setText("$ " + montoDes.getText());
+            precio.setText (montoDes.getText());
 
             JLabel icono = new JLabel();
             icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
