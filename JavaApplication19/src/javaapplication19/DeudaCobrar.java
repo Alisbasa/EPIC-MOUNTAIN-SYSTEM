@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import static javaapplication19.inventarioPrincipal.fechaActual;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -23,17 +24,20 @@ public class DeudaCobrar extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
     static JLabel monto;
+    static String[] data;
     
     /**
      * Creates new form clienteNuevo
      * @param monto
      */
-    public DeudaCobrar(JLabel monto) {
+    public DeudaCobrar(JLabel monto, String[] data) {
         initComponents();
         this.monto = monto;
+        this.data = data;
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -180,10 +184,17 @@ public class DeudaCobrar extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
+        String[] dataLibros ={data[0],data[1],jtNombre.getText(),data[3],data[4],data[5],data[6]};
         String[] Registro = {fechaActual(), jtNombre.getText(), monto.getText()}; 
         String [] Registro2 = {fechaActual(), monto.getText()};
         Escribir escribirExcel = new Escribir();
         try {
+            //ESCRIBIR LIBROS
+            escribirExcel.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", dataLibros);
+            
+            Libros.actualiza();
+            
+            //ESCRIBIR DEUDAS
             escribirExcel.escribirExcelInv("src\\excel\\DeudasC.xlsx","deudasCobrar", Registro,3);
             escribirExcel.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", Double.valueOf(Registro[2]), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 2);
             escribirExcel.crearHoja("src\\excel\\DeudasC.xlsx", jtNombre.getText(), "FECHA", "MONTO");
@@ -246,7 +257,7 @@ public class DeudaCobrar extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new DeudaCobrar(monto).setVisible(true);
+            new DeudaCobrar(monto, data).setVisible(true);
         });
     }
 
