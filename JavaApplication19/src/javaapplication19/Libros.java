@@ -55,7 +55,8 @@ public class Libros extends javax.swing.JFrame {
     public List<JPanel> panelesIngresos;
     public int indice=0;
         
-    public Libros() throws IOException {
+    public Libros() throws IOException, InterruptedException {
+
         initComponents();
         myInitComponents();
         setIconImage(new ImageIcon(getClass().getResource("..\\img\\LOGO.png")).getImage());
@@ -1136,7 +1137,7 @@ public class Libros extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(1820, 900));
+        setSize(new java.awt.Dimension(1820, 908));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1453,7 +1454,7 @@ public class Libros extends javax.swing.JFrame {
     }//GEN-LAST:event_comboIngresosItemStateChanged
 
     private void regLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regLabelMouseClicked
-        
+            
     }//GEN-LAST:event_regLabelMouseClicked
 
     private void comboGastosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboGastosItemStateChanged
@@ -1944,9 +1945,12 @@ public class Libros extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 try {
                     new Libros().setVisible(true);
                 } catch (IOException ex) {
+                    Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InterruptedException ex) {
                     Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

@@ -83,6 +83,7 @@ public class RellenarG {
     JTextField montoDesE;
     JTextField montoDesI;
     JTextField montoDesP;
+    JTextField precioDesP;
     JTextField montoDeuda;
     JTextField montoImpuesto;
     JTextField montoMant;
@@ -220,6 +221,12 @@ public class RellenarG {
         montoDesP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         montoDesP.setPreferredSize(new Dimension(60, 30));
         
+        precioDesP = new JTextField();
+        addPlaceHolder("Precio", precioDesP);
+        precioDesP.setBackground(Colores.epicColorBajito);
+        precioDesP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        precioDesP.setPreferredSize(new Dimension(60, 30));
+        
         Iconos.scaleImage("ok", iconoOkDesarrolloP, 30);
         rellenarDesPacks.add(tipoPack);
         
@@ -232,6 +239,7 @@ public class RellenarG {
                 rellenarDesPacks.add(tipoPack);
                 rellenarDesPacks.add(desarrolloTipoP);
                 rellenarDesPacks.add(montoDesP);
+                rellenarDesPacks.add(precioDesP);
                 rellenarDesPacks.add(iconoOkDesarrolloP);
                 
             }
