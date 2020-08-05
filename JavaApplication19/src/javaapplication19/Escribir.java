@@ -263,6 +263,7 @@ public class Escribir {
         newCell.setCellValue(data);
         setCellStyle(newWorkbook, newCell);
         
+        XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkbook.write(outputStream);
@@ -367,24 +368,43 @@ public class Escribir {
         System.out.println(Resta);
         return Resta;
     }
-    public Double Mulitplicar(int columnaInicial, int ColumnaFinal, int fila, String filepath, String hoja) throws IOException, IOException{
+    public Double Mulitplicar(int columnaInicial, int columnaFinal, int fila, String filepath, String hoja) throws IOException, IOException{
         Double columnaUno= LeerExcel.obtenerCeldaNumerica(filepath, hoja, columnaInicial, fila);
-        Double columnaDos= LeerExcel.obtenerCeldaNumerica(filepath, hoja, columnaInicial, fila);
+        Double columnaDos= LeerExcel.obtenerCeldaNumerica(filepath, hoja, columnaFinal, fila);
         
         Double multiplicacion = columnaUno * columnaDos;
         
         return multiplicacion; 
     }
     
-    public String RestarColumnas (int fila, char columnaUno, char columnaDos, char columnaTres, char columnaCuatro){
-        String Resta = (Character.toUpperCase(columnaUno)+Integer.toString(fila)) + "-" + (Character.toUpperCase(columnaDos)+Integer.toString(fila))
-        + "-" + (Character.toUpperCase(columnaTres)+Integer.toString(fila)) + "-" + (Character.toUpperCase(columnaCuatro)+Integer.toString(fila));
+    public Double SumarColumnasML (int fila, int columnaUno, int columnaDos, int columnaTres, String filepath, String hoja) throws IOException{
+        Double columnaJ;
+        Double columnaR;
+        Double columnaP;
+        columnaJ = LeerExcel.obtenerCeldaNumerica(filepath, hoja, columnaUno, fila);
+        columnaR = LeerExcel.obtenerCeldaNumerica(filepath, hoja, columnaDos, fila);
+        columnaP = LeerExcel.obtenerCeldaNumerica(filepath, hoja, columnaTres, fila);
+        
+        Double Suma = columnaJ + columnaR + columnaP + 35.00;
+        System.out.println(Suma);
+        return Suma;
+    }
+    
+    public Double RestarColumnasML (int fila, int columnaUno, int columnaDos, int columnaTres, int columnaCuatro, String filepath, String hoja) throws IOException{
+        Double columnaN = LeerExcel.obtenerCeldaNumerica(filepath, hoja, columnaUno, fila);
+        Double columnaH = LeerExcel.obtenerCeldaNumerica(filepath, hoja, columnaDos, fila);
+        Double columnaP = LeerExcel.obtenerCeldaNumerica(filepath, hoja,columnaTres, fila);
+        Double columnaR = LeerExcel.obtenerCeldaNumerica(filepath, hoja,columnaCuatro, fila);
+        
+        Double Resta = columnaN - columnaH - columnaP - columnaR - 35; 
         System.out.println(Resta);
         return Resta;
     }
-    public String RestarColumnas (int fila, char columnaUno, char columnaDos, char columnaTres){
-        String Resta = (Character.toUpperCase(columnaUno)+Integer.toString(fila)) + "-" + (Character.toUpperCase(columnaDos)+Integer.toString(fila))
-        + "-" + (Character.toUpperCase(columnaTres)+Integer.toString(fila));
+    public Double RestarColumnas (int fila, int columnaUno, int columnaDos, int columnaTres, String filepath, String hoja) throws IOException{
+        Double columnaL = LeerExcel.obtenerCeldaNumerica(filepath, hoja, columnaUno, fila);
+        Double columnaH = LeerExcel.obtenerCeldaNumerica(filepath, hoja, columnaDos, fila);
+        Double columnaR = LeerExcel.obtenerCeldaNumerica(filepath, hoja,columnaTres, fila);
+        Double Resta = columnaL - columnaH - columnaR; 
         System.out.println(Resta);
         return Resta;
     }
