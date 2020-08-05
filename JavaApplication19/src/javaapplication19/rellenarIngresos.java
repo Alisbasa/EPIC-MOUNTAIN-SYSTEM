@@ -302,17 +302,26 @@ public class rellenarIngresos {
                     }
 
                     String precioExcel = "precio";
-                    try {
-                        precioExcel = "$" + String.valueOf(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", numeroPlataforma, numeroLista) * (unidades.getSelectedIndex() + 1));
+                    
+                        precioExcel = "$" + String.valueOf(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", numeroPlataforma, numeroLista) * (Integer.valueOf(unidades.getSelectedItem().toString()) + 1));
 
-                    } catch (IOException ex) {
-                        Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    
+                    String utilidadExcel = "precio";
+                   
+                    utilidadExcel = "$" + String.valueOf(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", numeroPlataforma+8, numeroLista) * (Integer.valueOf(unidades.getSelectedItem().toString()) + 1));
+
+                    
+                        
+                    
 
                     JLabel precio = new JLabel();
                     precio.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
 
                     precio.setText(precioExcel);
+                    JLabel utilidad = new JLabel();
+                    utilidad.setFont(new Font("Franklin Gothic Heavy", Font.PLAIN, 14));
+
+                    utilidad.setText(utilidadExcel);
 
                     JLabel plataforma = new JLabel();
                     plataforma.setFont(new Font("Franklin Gothic", Font.PLAIN, 14));
@@ -343,7 +352,7 @@ public class rellenarIngresos {
                     panelIngreso.add(fecha);
                     panelIngreso.add(inventarioLista);
                     panelIngreso.add(precio);
-                    panelIngreso.add(plataforma);
+                    panelIngreso.add(utilidad);
                     panelIngreso.add(icono);
                     //System.out.println(LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
@@ -358,7 +367,7 @@ public class rellenarIngresos {
                     panelPadre.updateUI();
                     listaIngresos.updateUI();
 
-                    vender(inventario, unidades, plataformacb, cliente);
+                    
                 } catch (IOException ex) {
                     Caption ventanaEx = new Caption("Recuerda cerrar Excel");
                     ventanaEx.setVisible(true);
@@ -1259,6 +1268,7 @@ public class rellenarIngresos {
             ventanaEx.setVisible(true);
 
         }
+        
     }
 
     public void devolver(JComboBox devo) throws IOException {
