@@ -65,8 +65,6 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         jlDesc = new javax.swing.JLabel();
         jpPack = new javax.swing.JPanel();
         jcCond = new javax.swing.JComboBox<>();
-        jlPack1 = new javax.swing.JLabel();
-        jtPack = new javax.swing.JTextField();
         jlPack = new javax.swing.JLabel();
         jpTIG = new javax.swing.JPanel();
         jtPrecio = new javax.swing.JTextField();
@@ -205,27 +203,12 @@ public class inventarioPrincipal extends javax.swing.JFrame {
 
         jcCond.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 13)); // NOI18N
         jcCond.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Seminuevo", "Usado" }));
-        jpPack.add(jcCond, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 90, 50));
-
-        jlPack1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
-        jlPack1.setForeground(new java.awt.Color(255, 255, 255));
-        jlPack1.setText("PACK");
-        jpPack.add(jlPack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 30));
-
-        jtPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtPack.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtPack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtPackActionPerformed(evt);
-            }
-        });
-        jpPack.add(jtPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 120, 48));
-        jtUnidades.setBackground(Colores.epicColorBajito);
+        jpPack.add(jcCond, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 90, 50));
 
         jlPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlPack.setForeground(new java.awt.Color(255, 255, 255));
         jlPack.setText("CONDICION");
-        jpPack.add(jlPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 130, 30));
+        jpPack.add(jlPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 130, 30));
 
         jpDatos.add(jpPack);
 
@@ -353,7 +336,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
             jtDesc.getText(),
             fechaActual(),
             jcCond.getSelectedItem().toString(),
-                                jtPack.getText(),
+                                "             ",
                                 Double.toString(Double.valueOf(jtPrecio.getText())/Double.valueOf(monto.getText())),
                                 jtUnidades.getText(),
                                 monto.getText(),
@@ -366,11 +349,73 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         Escribir EscribirCRM = new Escribir();
         try {
             EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "Inventario",inventario,13);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(costoNeto), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 8);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(costoBaseNeto), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 10);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(precioBaseNeto), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 12);
+            //UNIDADES
+            EscribirCRM.escribirCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 6);
             
-            //EscribirCRM.Mulitplicar(NORMAL, NORMAL, WIDTH, costoNeto, costoNeto)
+            //TIG
+            Double TIG = Double.valueOf(jtPrecio.getText())/Double.valueOf(monto.getText());
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", TIG, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 5);
+            
+            //COSTO UNIDAD
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(monto.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 7);
+            //COSTO NETO
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(costoNeto), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 8);
+            
+            //PRECIO BASE UNIDAD
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 9);
+            
+            //PRECIO BASE NETO
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(costoBaseNeto), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 10);
+            
+            //PRECIO LOCAL UNIDAD
+            Double precioL = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 9, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")) * 1.16);
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioL, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 11);
+            
+            //PRECIO LOCAL NETO
+            Double precioNeto = EscribirCRM.Mulitplicar(6, 11,LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") ,"src\\excel\\Inventario.xlsx", "Inventario");
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioNeto, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 12);
+            
+            //COMISION ML
+            Double comisionML = ((LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 11, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"))) *.15)+5;
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 15);
+            
+            //COMISION ML NETO
+            Double comisionMLN = EscribirCRM.Mulitplicar(6, 15, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), "src\\excel\\Inventario.xlsx", "Inventario");
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 16);
+            
+            // IVA UNIDAD
+            Double IVA = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 9, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"))*0.16);
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", IVA, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 17);
+            
+            //IVA NETO
+            Double ivaN = EscribirCRM.Mulitplicar(6, 17, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), "src\\excel\\Inventario.xlsx", "Inventario");
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", ivaN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 18);
+            
+            //PRECIO ML
+            Double precioML = EscribirCRM.SumarColumnasML(LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 9, 17, 15, "src\\excel\\Inventario.xlsx", "Inventario");
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 13);
+            
+            //PRECIOML NETO
+            
+            Double precioMLN = EscribirCRM.Mulitplicar(6, 13, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), "src\\excel\\Inventario.xlsx", "Inventario");
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 14);
+            
+
+            //UTILIDAD UNIDAD LOCAL
+            Double utilidad = EscribirCRM.RestarColumnas(LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 11, 7, 17, "src\\excel\\Inventario.xlsx", "Inventario");
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidad, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 19);
+            
+            //UTILIDAD LOCAL NETA
+            Double utilidadLN = EscribirCRM.Mulitplicar(6, 19, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), "src\\excel\\Inventario.xlsx", "Inventario");
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidadLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 20);
+            
+            //UTILIDAD ML UNIDAD
+            Double utilidadML = EscribirCRM.RestarColumnasML(LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 13, 7, 15, 17, "src\\excel\\Inventario.xlsx", "Inventario");
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidadML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 21);
+            
+            //UTILIDAD ML NETA
+            Double utilidadMLN = EscribirCRM.Mulitplicar(6, 21, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), "src\\excel\\Inventario.xlsx", "Inventario");
+            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidadMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 22);
             
             String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula,
@@ -425,10 +470,6 @@ public class inventarioPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtDescActionPerformed
 
-    private void jtPackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtPackActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtPackActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -480,7 +521,6 @@ public class inventarioPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jlCosto;
     private javax.swing.JLabel jlDesc;
     private javax.swing.JLabel jlPack;
-    private javax.swing.JLabel jlPack1;
     private javax.swing.JLabel jlUnidades;
     private javax.swing.JPanel jpBoton;
     private javax.swing.JPanel jpDatos;
@@ -489,7 +529,6 @@ public class inventarioPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jpTIG;
     private javax.swing.JPanel jpUbicacion;
     private javax.swing.JTextField jtDesc;
-    private javax.swing.JTextField jtPack;
     private javax.swing.JTextField jtPrecio;
     private javax.swing.JTextField jtUnidades;
     private javax.swing.JPanel maxi;
