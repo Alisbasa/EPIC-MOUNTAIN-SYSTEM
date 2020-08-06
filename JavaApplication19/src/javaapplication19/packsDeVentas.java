@@ -12,7 +12,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static javaapplication19.inventarioPrincipal.fechaActual;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -303,8 +302,71 @@ public class packsDeVentas extends javax.swing.JFrame {
         Escribir escribirExcel = new Escribir();
         try {
             escribirExcel.escribirExcelInv("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Registro, 10);
-            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Double.valueOf(Registro[8]), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 8);
-            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Double.valueOf(Registro[10]), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 10);
+            
+            //UNIDADES
+            escribirExcel.escribirCeldaNumerica("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 6);
+            
+            //TIG
+            Double TIG = Double.valueOf(jtPrecio.getText())/Double.valueOf(costo.getText());
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), TIG, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 5);
+            
+            //COSTO UNIDAD
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Double.valueOf(costo.getText()), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 7);
+            
+            //COSTO NETO
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Double.valueOf(jtCosto.getText()) * Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 8);
+            
+            //PRECIO BASE UNIDAD
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Double.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 9);
+            
+            //PRECIO BASE NETO
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Double.valueOf(jtUnidades.getText()) * Integer.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 10);
+            
+            //PRECIO LOCAL UNIDAD
+            Double precioL = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), 9, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString())) * 1.16);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), precioL, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 11);
+            
+            //PRECIO LOCAL NETO
+            Double precioNeto = escribirExcel.Mulitplicar(6, 11,LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()) ,"src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString());
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), precioNeto, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 12);
+            
+            //COMISION ML
+            Double comisionML = ((LeerExcel.obtenerCeldaNumerica("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), 11, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()))) *.15)+5;
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), comisionML, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 15);
+            
+            //COMISION ML NETO
+            Double comisionMLN = escribirExcel.Mulitplicar(6, 15, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", "Packs"), "src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString());
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), comisionMLN, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 16);
+            
+            // IVA UNIDAD
+            Double IVA = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), 9, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()))*0.16);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), IVA, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 17);
+            
+            //IVA NETO
+            Double ivaN = escribirExcel.Mulitplicar(6, 17, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), "src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString());
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), ivaN, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 18);
+            
+            //PRECIO ML
+            Double precioML = escribirExcel.SumarColumnasML(LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 9, 17, 15, "src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString());
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), precioML, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 13);
+            
+            //PRECIOML NETO
+            
+            Double precioMLN = escribirExcel.Mulitplicar(6, 13, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), "src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString());
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), precioMLN, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 14);
+            
+
+            //UTILIDAD UNIDAD LOCAL
+            Double utilidad = escribirExcel.RestarColumnas(LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 11, 7, 17, "src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString());
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), utilidad, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 19);
+            
+            //UTILIDAD LOCAL NETA
+            Double utilidadLN = escribirExcel.Mulitplicar(6, 19, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), "src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString());
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), utilidadLN, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 20);
+            
+            
+            
+            
             String formula = "SUM(I2:I" + LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()) + ")";
             escribirExcel.escribirFormula("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), formula, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()) + 1, 8);
             String formula2 = "SUM(K2:K" + LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()) + ")";
