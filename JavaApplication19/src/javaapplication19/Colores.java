@@ -13,6 +13,7 @@ import java.awt.Color;
  */
 public class Colores { 
     public static final Color epicColor = new Color(34,180,115);
+    public static final Color verdeExcel = new Color(3,223,123);
     public static final Color epicColorBajito = new Color(222,244,234);
     public static final Color gris = new Color(51,51,51);
     public static final Color amarillo = new Color(255,231,103);
