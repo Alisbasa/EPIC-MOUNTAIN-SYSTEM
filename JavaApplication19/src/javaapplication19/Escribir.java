@@ -339,8 +339,8 @@ public class Escribir {
         newCell.setCellValue(data);
         setCellStylePrecio(newWorkbook, newCell);
          evaluar(newWorkbook, newCell);
-//         newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
-         XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+//        newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
+        XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkbook.write(outputStream);
