@@ -422,7 +422,7 @@ public class rellenarGastos {
                 panelGasto.add(new JLabel(""));
                 panelGasto.add(icono);
 
-                String[] data = {(String) fechaActual(), "Pack de Ventas", desarrolloTipoP.getText(), montoDesP.getText(), "    ", "VERDE"};
+                String[] data = {(String) fechaActual(), "Pack de Ventas", desarrolloTipoP.getText(), montoDesP.getText(), "    ", "VERDE", "   "};
                 Escribir escribirVentas = new Escribir();
                 try {
                     escribirVentas.escribirExcel("src//excel/LibrosContables.xlsx", "Gastos", data);
@@ -514,13 +514,20 @@ public class rellenarGastos {
                 panelGasto.add(new JLabel(""));
                 panelGasto.add(icono);
 
-                String[] data = {(String) fechaActual(), "Compra en Transito", desarrolloTipoCT.getText(), montoDesCT.getText(), (String) productoCT.getSelectedItem(), "VERDE"};
+                String[] data = {(String) fechaActual(), "Compra en Transito", desarrolloTipoCT.getText(), montoDesCT.getText(), (String) productoCT.getSelectedItem(), "VERDE", "   "};
                 String[] compraT = {productoCT.getSelectedItem().toString(), desarrolloTipoCT.getText(), provedores.getSelectedItem().toString(),
                     (String) fechaActual(), unidadesCT.getText(), montoDesCT.getText(), Double.toString(Integer.valueOf(unidadesCT.getText()) * Double.valueOf(montoDesCT.getText()))};
                 Escribir escribirVentas = new Escribir();
                 try {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
                     escribirVentas.escribirExcelInv("src\\excel\\comprasT.xlsx", "COMPRAS", compraT, 7);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", Integer.valueOf(unidadesCT.getText()), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 4);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", Double.valueOf(montoDesCT.getText()), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 5);
+                    Double precioNeto = escribirVentas.Mulitplicar(4, 5, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), "src\\excel\\comprasT.xlsx", "COMPRAS");
+                    escribirVentas.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", precioNeto, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 6);
+                    String formula = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + ")";
+                    escribirVentas.escribirFormula("src\\excel\\comprasT.xlsx", "COMPRAS", formula, (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+1), 6);
+                    
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -528,7 +535,6 @@ public class rellenarGastos {
                     Provedores prov = new Provedores();
                     prov.setVisible(true);
                 }
-
                 indice++;
                 panelPadre.removeAll();
                 panelPadre.updateUI();
