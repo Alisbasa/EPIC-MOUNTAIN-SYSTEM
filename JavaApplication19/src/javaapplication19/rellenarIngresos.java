@@ -233,13 +233,19 @@ public class rellenarIngresos {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
+                    boolean finder=false;
                     for (int i = 0; i <= LeerExcel.contarRenglones("src//excel/Inventario.xlsx", "Inventario"); i++) {
                         if ((LeerExcel.obtenerCelda(filepath, hoja, 0, LeerExcel.contarRenglones(filepath, hoja))).equals(LeerExcel.obtenerCelda("src//excel/Inventario.xlsx", "INVENTARIO", 0, i))) {
+                            finder=true;
                             int suma = Integer.valueOf(LeerExcel.obtenerCelda(filepath, hoja, 6, LeerExcel.contarRenglones(filepath, hoja))) + (int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", 6, i);
                             Escribir escribirVentas = new Escribir();
                             escribirVentas.escribirCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", suma, i, 6);
                             System.out.println(Integer.valueOf(LeerExcel.obtenerCelda(filepath, hoja, 6, LeerExcel.contarRenglones(filepath, hoja))));
                         }
+                        
+                    }
+                    if(finder==false){
+                        
                     }
 
                     //Escribir.removeRow("src//excel/LibrosContables.xlsx", "Gastos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Gastos"));
@@ -280,6 +286,7 @@ public class rellenarIngresos {
             @SuppressWarnings("empty-statement")
             public void mouseClicked(MouseEvent e) {
                 try {
+                    //CREANDO PANEL
                     scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
                     PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
                     panelIngreso.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -288,11 +295,11 @@ public class rellenarIngresos {
                     panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
                     panelIngreso.setMaximumSize(new Dimension(550, 40));
                     panelIngreso.setPreferredSize(new Dimension(550, 100));
-
+                    //FECHA
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     fecha.setText(fechaActual());
-
+                    //INVENTARIO
                     JLabel inventarioLista = new JLabel();
                     inventarioLista.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     inventarioLista.setText((String) inventario.getSelectedItem());
@@ -301,32 +308,27 @@ public class rellenarIngresos {
                     if (plataformacb.getSelectedIndex() == 0) {
                         numeroPlataforma = 13;
                     }
-
+                    //MONTO
                     String precioExcel = "precio";
-
-                    precioExcel = "$" + String.valueOf(Utilidades.roundTwoDecimals(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", numeroPlataforma, numeroLista) * (Integer.valueOf(unidades.getSelectedItem().toString()))));
-
-                    String utilidadExcel = "precio";
-
-                    utilidadExcel = "$" + String.valueOf(Utilidades.roundTwoDecimals(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", 19, numeroLista) * (Integer.valueOf(unidades.getSelectedItem().toString()))));
-
+                    precioExcel = String.valueOf(Utilidades.roundTwoDecimals(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", numeroPlataforma, numeroLista) * (Integer.valueOf(unidades.getSelectedItem().toString()))));
                     JLabel precio = new JLabel();
                     precio.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-
-                    precio.setText(precioExcel);
+                    precio.setText("$" + precioExcel);
+                    //UTILIDADES
+                    String utilidadExcel = "precio";
+                    utilidadExcel = String.valueOf(Utilidades.roundTwoDecimals(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", 19, numeroLista) * (Integer.valueOf(unidades.getSelectedItem().toString()))));                  
                     JLabel utilidad = new JLabel();
                     utilidad.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-
-                    utilidad.setText(utilidadExcel);
-
+                    utilidad.setText("$" + utilidadExcel);
+                    //PLATAFORMA
                     JLabel plataforma = new JLabel();
                     plataforma.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     plataforma.setText((String) plataformacb.getSelectedItem());
-
+                    //ICONO
                     JLabel icono = new JLabel();
                     Iconos.scaleImage("VentasG", icono, 25);
                     icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-
+                    //BORRAR
                     botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "ventasG");
                     revertirUnidades(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
                     botonBorrarVenta(icono, "ventasG");
@@ -340,13 +342,7 @@ public class rellenarIngresos {
                     String[] data = {(String) fechaActual(), "Venta", (String) inventario.getSelectedItem(), precioExcel, plataforma.getText(), "VERDE", utilidadExcel};
 
                     Escribir escribirVentas = new Escribir();
-                    listaIngresos.add(panelIngreso, 1);
-                    panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-                    panelIngreso.add(fecha);
-                    panelIngreso.add(inventarioLista);
-                    panelIngreso.add(precio);
-                    panelIngreso.add(utilidad);
-                    panelIngreso.add(icono);
+                    
                     //System.out.println(LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
 
@@ -356,7 +352,13 @@ public class rellenarIngresos {
                     } else {
                         vender(inventario, unidades, plataformacb, cliente.getSelectedItem().toString(), cliente);
                     }
-
+                    listaIngresos.add(panelIngreso, 1);
+                    panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+                    panelIngreso.add(fecha);
+                    panelIngreso.add(inventarioLista);
+                    panelIngreso.add(precio);
+                    panelIngreso.add(utilidad);
+                    panelIngreso.add(icono);
                     indice++;
                     panelPadre.removeAll();
                     panelPadre.updateUI();
@@ -830,7 +832,7 @@ public class rellenarIngresos {
                     
                     String utilidadExcel = "precio";
 
-                    utilidadExcel = "$" + String.valueOf(Utilidades.roundTwoDecimals(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", 19, numeroLista) * (Integer.valueOf(unidades.getSelectedItem().toString()))));
+                    utilidadExcel = String.valueOf(Utilidades.roundTwoDecimals(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", 19, numeroLista) * (Integer.valueOf(unidades.getSelectedItem().toString()))));
                     
                     JLabel precio = new JLabel();
                     precio.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -840,14 +842,14 @@ public class rellenarIngresos {
                     JLabel utilidad = new JLabel();
                     utilidad.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
 
-                    utilidad.setText( utilidadExcel);
+                    utilidad.setText("$" +  utilidadExcel);
 
                     JLabel plataforma = new JLabel();
                     plataforma.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     plataforma.setText((String) plataformacb.getSelectedItem());
 
                     JLabel icono = new JLabel();
-                    Iconos.scaleImage("Ventas", icono, 25);
+                    Iconos.scaleImage("ventasC", icono, 25);
                     icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                     ;//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -858,14 +860,9 @@ public class rellenarIngresos {
                     botonBorrarVentaC(icono, "Ventas", LeerExcel.obtenerIndexHoja("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString()));
 
                     botonBorrarInd(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
-//                try {
-//                    //borrarVenta();
-//                } catch (IOException ex) {
-//                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-
+//                
                     
-                    String[] data = {(String) fechaActual(), "Venta", (String) inventario.getSelectedItem(), precioExcel, plataforma.getText(), "VERDE", utilidadExcel};
+                    String[] data = {(String) fechaActual(), "Venta a Cobrar", (String) inventario.getSelectedItem(), precioExcel, plataforma.getText(), "VERDE", utilidadExcel};
 
                     Escribir escribirVentas = new Escribir();
 
@@ -894,15 +891,14 @@ public class rellenarIngresos {
                         String formulaInd = "SUM(B2:B" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
                         escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(), formulaInd, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString()) + 1), 1);
 
-                        //Escribe en Excel general deudasCobrar
-                        //Double suma = LeerExcel.obtenerCeldaNumerica("src\\excel\\DeudasC.xlsx", "deudasCobrar", 2, i) + Double.valueOf(precioExcel);
-                        //escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", suma, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 2);
+                        //Escribe en Excel general deudasCobrar                       
                         String formula = escribirVentas.Sumar(2, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1, 'c');
                         escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
-                    } else if (cliente.getSelectedItem().toString().equals("Nuevo Cliente")) {
-                        clienteNuevoCobrar clienteN = new clienteNuevoCobrar(precioExcel);
-                        clienteN.setVisible(true);
                         vender(inventario, unidades, plataformacb, cliente.getSelectedItem().toString(), cliente);
+                    } else if (cliente.getSelectedItem().toString().equals("Nuevo Cliente")) {
+                        clienteNuevoCobrar clienteN = new clienteNuevoCobrar(precioExcel,inventario, unidades, plataformacb, cliente);
+                        clienteN.setVisible(true);
+                        
                     } else {
                         //Escribe en Excel individual y crea hoja
                         escribirVentas.crearHoja("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(), "FECHA", "MONTO");
@@ -918,6 +914,7 @@ public class rellenarIngresos {
                         escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", Double.valueOf(precioExcel), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 2);
                         String formula = escribirVentas.Sumar(2, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 'c');
                         escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
+                        vender(inventario, unidades, plataformacb, cliente.getSelectedItem().toString(), cliente);
                     }
                     panelIngreso.add(fecha);
                     panelIngreso.add(inventarioLista);
@@ -1151,7 +1148,7 @@ public class rellenarIngresos {
                         IconoTipo = "impuestoG";
                         break;
                     case "Venta a Cobrar":
-                        IconoTipo = "Ventas";
+                        IconoTipo = "ventasC";
 
                         break;
                     case "Devolucion":
@@ -1360,6 +1357,37 @@ public class rellenarIngresos {
         }
 
         escribirVentas.escribirExcelInv("src//excel/Inventario.xlsx", "Inventario", data, 10);
+
+    }
+    
+    public void devolverUltimaVenta() throws IOException {
+        String fecha = fechaActual();
+
+        int seleccion = LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
+
+        String venta = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 0, seleccion);
+        String descripion = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 1, seleccion);
+        String condicion = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 3, seleccion);
+        String pack = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 4, seleccion);
+        String tig = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 5, seleccion);
+        int unidades = (int)LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 6, seleccion);
+        double costoUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 7, seleccion);
+
+        double costoNeto = (unidades) * costoUnidad;
+        String precioBaseUnidad = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 9, seleccion);
+//        String precioBaseNeto = Double.toString(Integer.parseInt(unidades) * Double.parseDouble(costoBaseUnidad));
+//
+//        String[] data = {venta, descripion, fecha, condicion, pack, tig, unidades, costoUnidad, costoNeto, costoBaseUnidad, costoBaseNeto,};
+//
+//        Escribir escribirVentas = new Escribir();
+//
+//        try {
+//            Escribir.removeRow("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), devo.getSelectedIndex() + 1);
+//        } catch (IOException ex) {
+//            Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
+//        escribirVentas.escribirExcelInv("src//excel/Inventario.xlsx", "Inventario", data, 10);
 
     }
 

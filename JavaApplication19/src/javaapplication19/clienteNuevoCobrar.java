@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javaapplication19.packsDeVentas.desarrolloTipoP;
 import static javaapplication19.rellenarIngresos.fechaActual;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -22,6 +23,10 @@ import javax.swing.JTextField;
 public class clienteNuevoCobrar extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
+    static JComboBox inventario;
+    static JComboBox unidadesCB;
+    static JComboBox plataforma;
+    static JComboBox cliente;
     static JLabel unidades;
     static String precioExcel;
 
@@ -30,8 +35,12 @@ public class clienteNuevoCobrar extends javax.swing.JFrame {
      * @param precioExcel
      * @param unidades
      */
-    public clienteNuevoCobrar(String precioExcel) {;
+    public clienteNuevoCobrar(String precioExcel,JComboBox inventario, JComboBox unidadesCB, JComboBox plataforma, JComboBox cliente) {;
         initComponents();
+         this.inventario = inventario;
+        this.unidadesCB = unidadesCB;
+        this.plataforma = plataforma;
+        this.cliente = cliente;
         this.precioExcel = precioExcel;
         this.setExtendedState(NORMAL);
         this.setResizable(false);
@@ -308,10 +317,15 @@ public class clienteNuevoCobrar extends javax.swing.JFrame {
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
         String[] Registro = {jtNombre.getText(),jtNumero.getText(),jtCorreo.getText(),jtUbicacion.getText(),""}; 
-        String [] registroCobrar = {};
+        
         Escribir EscribirCRM = new Escribir();
+        rellenarIngresos vender = new rellenarIngresos();
         try {
+            
+            
             EscribirCRM.escribirExcelClientes("src\\excel\\CRM.xlsx", "Clientes", Registro);
+            vender.vender(inventario, unidadesCB, plataforma, jtNombre.getText(), cliente);
+
             //Escribe en Excel individual y crea hoja
             EscribirCRM.crearHoja("src\\excel\\DeudasC.xlsx", jtNombre.getText(), "FECHA", "MONTO");
             String[] ventaInd = {fechaActual(), precioExcel};
@@ -364,7 +378,7 @@ public class clienteNuevoCobrar extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new clienteNuevoCobrar(precioExcel).setVisible(true);
+                new clienteNuevoCobrar(precioExcel,inventario, unidadesCB, plataforma, cliente).setVisible(true);
             }
         });
     }
