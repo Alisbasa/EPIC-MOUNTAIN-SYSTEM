@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javaapplication19.inventarioPrincipal.fechaActual;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -22,18 +23,19 @@ import javax.swing.JPanel;
 public class Pendientes extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
-    static JLabel monto;
+    static JComboBox ventaC;
     
     /**
      * Creates new form clienteNuevo
      * @param monto
      */
-    public Pendientes(JLabel monto) {
+    public Pendientes() {
         initComponents();
-        this.monto = monto;
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        ventaC.setUI(PropiedadesCB2.createUI(ventaC));
+        jpDescripcion.add(ventaC);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -103,12 +105,11 @@ public class Pendientes extends javax.swing.JFrame {
         jpDatos.setLayout(new java.awt.GridLayout(5, 0));
 
         jpDescripcion.setBackground(new java.awt.Color(51, 51, 51));
-        jpDescripcion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jlDesc1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
         jlDesc1.setForeground(new java.awt.Color(255, 255, 255));
         jlDesc1.setText("VENTA A COBRAR");
-        jpDescripcion.add(jlDesc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 130, 40));
+        jpDescripcion.add(jlDesc1);
 
         jpDatos.add(jpDescripcion);
 
@@ -253,7 +254,6 @@ public class Pendientes extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new Pendientes(monto).setVisible(true);
         });
     }
 

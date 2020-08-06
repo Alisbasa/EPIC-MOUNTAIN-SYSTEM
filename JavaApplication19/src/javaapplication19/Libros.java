@@ -1461,7 +1461,8 @@ public class Libros extends javax.swing.JFrame {
     }//GEN-LAST:event_comboIngresosItemStateChanged
 
     private void regLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regLabelMouseClicked
-            
+        Pendientes pendientesChidos = new Pendientes();
+        pendientesChidos.setVisible(true);
     }//GEN-LAST:event_regLabelMouseClicked
 
     private void comboGastosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboGastosItemStateChanged
