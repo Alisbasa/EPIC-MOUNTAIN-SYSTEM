@@ -117,8 +117,8 @@ public class Pendientes extends javax.swing.JFrame {
 
         jlDesc2.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
         jlDesc2.setForeground(new java.awt.Color(255, 255, 255));
-        jlDesc2.setText("VENTA A COBRAR");
-        jpPack.add(jlDesc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 130, 40));
+        jlDesc2.setText("COMPRA EN TRANSITO");
+        jpPack.add(jlDesc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 160, 40));
 
         jpDatos.add(jpPack);
 
@@ -127,7 +127,7 @@ public class Pendientes extends javax.swing.JFrame {
 
         jlDesc.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
         jlDesc.setForeground(new java.awt.Color(255, 255, 255));
-        jlDesc.setText("VENTA A COBRAR");
+        jlDesc.setText("DEUDAS A PAGAR");
         jpTIG.add(jlDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 130, 40));
 
         jpDatos.add(jpTIG);
