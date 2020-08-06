@@ -1322,6 +1322,7 @@ public class rellenarIngresos {
             escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula8, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1, 22);
         } catch (NullPointerException e) {
             Caption ventanaEx = new Caption("Olvidaste llenar algún campo");
+            Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, e);
             ventanaEx.setVisible(true);
 
         }
