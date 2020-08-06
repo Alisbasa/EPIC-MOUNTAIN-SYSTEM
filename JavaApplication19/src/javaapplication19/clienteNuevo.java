@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -21,13 +22,20 @@ public class clienteNuevo extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
     static JLabel unidades;
-
+    static JComboBox inventario;
+    static JComboBox unidadesCB;
+    static JComboBox plataforma;
+    static JComboBox cliente;
     /**
      * Creates new form clienteNuevo
      * @param unidades
      */
-    public clienteNuevo() {;
+    public clienteNuevo(JComboBox inventario, JComboBox unidadesCB, JComboBox plataforma, JComboBox cliente) {;
         initComponents();
+        this.inventario = inventario;
+        this.unidadesCB = unidadesCB;
+        this.plataforma = plataforma;
+        this.cliente = cliente;
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -303,11 +311,13 @@ public class clienteNuevo extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
-        String[] Registro = {jtNombre.getText(),jtNumero.getText(),jtCorreo.getText(),jtUbicacion.getText(),""}; 
-        String [] registroCobrar = {};
+        String[] Registro = {jtNombre.getText(),jtNumero.getText(),jtCorreo.getText(),jtUbicacion.getText(), "    "}; 
+        rellenarIngresos vender = new rellenarIngresos();
         Escribir EscribirCRM = new Escribir();
         try {
             EscribirCRM.escribirExcelClientes("src\\excel\\CRM.xlsx", "Clientes", Registro);
+            vender.vender(inventario, unidadesCB, plataforma, jtNombre.getText(), cliente);
+            
             //EscribirCRM.escribirExcelInv("src\\excel\\CRM.xlsx", "deudasC", Registro, ERROR);
         } catch (IOException ex) {
             Logger.getLogger(clienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
@@ -345,6 +355,7 @@ public class clienteNuevo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                new clienteNuevo(inventario, unidadesCB, plataforma, cliente).setVisible(true);
             }
         });
     }

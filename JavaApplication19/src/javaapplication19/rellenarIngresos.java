@@ -340,7 +340,6 @@ public class rellenarIngresos {
                     String[] data = {(String) fechaActual(), "Venta", (String) inventario.getSelectedItem(), precioExcel, plataforma.getText(), "VERDE", utilidadExcel};
 
                     Escribir escribirVentas = new Escribir();
-                    vender(inventario, unidades, plataformacb, cliente);
                     listaIngresos.add(panelIngreso, 1);
                     panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
                     panelIngreso.add(fecha);
@@ -352,10 +351,12 @@ public class rellenarIngresos {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
 
                     if (cliente.getSelectedItem().toString() == "Nuevo Cliente") {
-                        clienteNuevo cliente = new clienteNuevo();
-                        cliente.setVisible(true);
+                        clienteNuevo clienteC = new clienteNuevo(inventario, unidades, plataformacb, cliente);
+                        clienteC.setVisible(true);
+                    }else{
+                        vender(inventario, unidades, plataformacb, cliente.getSelectedItem().toString(), cliente);
                     }
-
+                    
                     indice++;
                     panelPadre.removeAll();
                     panelPadre.updateUI();
@@ -866,7 +867,7 @@ public class rellenarIngresos {
                 panelIngreso.add(precio);
                 panelIngreso.add(plataforma);
                 panelIngreso.add(icono);
-                String[] data = {(String) fechaActual(), "Venta", (String) inventario.getSelectedItem(), precioExcel, plataforma.getText(), "VERDE"};
+                String[] data = {(String) fechaActual(), "Venta", (String) inventario.getSelectedItem(), precioExcel, plataforma.getText(), "VERDE", "GANANCIA"};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -877,12 +878,14 @@ public class rellenarIngresos {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
+                
                 indice++;
                 panelPadre.removeAll();
                 panelPadre.updateUI();
                 listaIngresos.updateUI();
                 try {
-                    vender(inventario, unidades, plataformacb, cliente);
+                    
+                    
                     //Condicional para verificar que exista la hoja y si es asi escriba en la existente
                     String[] hojas = LeerExcel.obtenerHoja("src\\excel\\DeudasC.xlsx");
 
@@ -911,6 +914,7 @@ public class rellenarIngresos {
                     } else if (cliente.getSelectedItem().toString().equals("Nuevo Cliente")) {
                         clienteNuevoCobrar cliente = new clienteNuevoCobrar(precioExcel);
                         cliente.setVisible(true);
+                        vender(inventario, unidades, plataformacb, cliente.getSelectedItem().toString(), cliente);
                     } else {
                         //Escribe en Excel individual y crea hoja
                         escribirVentas.crearHoja("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(), "FECHA", "MONTO");
@@ -1189,7 +1193,7 @@ public class rellenarIngresos {
 
     }
 
-    public void vender(JComboBox inventario, JComboBox unidadesCB, JComboBox medioVenta, JComboBox cliente) throws IOException {
+    public void vender(JComboBox inventario, JComboBox unidadesCB, JComboBox medioVenta, String cliente, JComboBox clienteCB) throws IOException {
         String fecha = fechaActual();
 
         int seleccion = inventario.getSelectedIndex() + 1;
@@ -1283,11 +1287,11 @@ public class rellenarIngresos {
 
             //Escribe utilidad ML * unidad
             //Escribe medio de venta
-            escribirVentas.escribirCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), medioVenta.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 23);
+            escribirVentas.escribirCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), medioVenta.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 21);
 
             //Escribe destino
-            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "Clientes", 3, cliente.getSelectedIndex() + 1);
-            escribirVentas.escribirCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), destino, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 24);
+            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "Clientes", 3, clienteCB.getSelectedIndex() + 1);
+            escribirVentas.escribirCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), destino, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 22);
 
             //Escribe formula de costo neto en suma
             String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1) + ")";
@@ -1318,8 +1322,8 @@ public class rellenarIngresos {
             escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula7, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1, 20);
 
             //Escribe formula de utilidad ml neta en suma
-            String formula8 = "SUM(W2:W" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula8, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1, 22);
+            /*String formula8 = "SUM(W2:W" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula8, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1, 22);*/
         } catch (NullPointerException e) {
             Caption ventanaEx = new Caption("Olvidaste llenar algún campo");
             Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, e);
