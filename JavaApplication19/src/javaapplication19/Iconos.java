@@ -33,4 +33,13 @@ public class Iconos {
         label.setIcon(scaledIcon);
     }
     
+    public static void scaleImage(String icono,JLabel label, int height, int width){
+        ImageIcon icon = new ImageIcon("src\\img\\"+ icono +".png");
+        Image img = icon.getImage();
+        Image imgScale = img.getScaledInstance(height, width,Image.SCALE_SMOOTH);
+       
+        ImageIcon scaledIcon = new ImageIcon(imgScale);
+        label.setIcon(scaledIcon);
+    }
+    
 }

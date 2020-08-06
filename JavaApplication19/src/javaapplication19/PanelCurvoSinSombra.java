@@ -67,7 +67,7 @@ public class PanelCurvoSinSombra extends JPanel {
                    height - strokeSize - shadowOffset, // height
                    arcs.width, arcs.height);// arc Dimension
        } else {
-           shadowGap = 1;
+           shadowGap = 3;
        }
 
        //Draws the rounded opaque panel with borders.

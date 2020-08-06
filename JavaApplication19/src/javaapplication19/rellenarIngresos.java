@@ -5,6 +5,7 @@
  */
 package javaapplication19;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -285,8 +286,8 @@ public class rellenarIngresos {
                     panelIngreso.setLayout(new GridLayout(1, 5));
                     panelIngreso.setBackground(Colores.epicColorBajito);
                     panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                    panelIngreso.setMaximumSize(new Dimension(500, 40));
-                    panelIngreso.setPreferredSize(new Dimension(500, 100));
+                    panelIngreso.setMaximumSize(new Dimension(550, 40));
+                    panelIngreso.setPreferredSize(new Dimension(550, 100));
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -307,7 +308,7 @@ public class rellenarIngresos {
 
                     String utilidadExcel = "precio";
 
-                    utilidadExcel = "$" + String.valueOf(Utilidades.roundTwoDecimals(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", numeroPlataforma + 8, numeroLista) * (Integer.valueOf(unidades.getSelectedItem().toString()))));
+                    utilidadExcel = "$" + String.valueOf(Utilidades.roundTwoDecimals(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", 20, numeroLista) * (Integer.valueOf(unidades.getSelectedItem().toString()))));
 
                     JLabel precio = new JLabel();
                     precio.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -340,7 +341,7 @@ public class rellenarIngresos {
 
                     Escribir escribirVentas = new Escribir();
                     vender(inventario, unidades, plataformacb, cliente);
-                    listaIngresos.add(panelIngreso, 0);
+                    listaIngresos.add(panelIngreso, 1);
                     panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
                     panelIngreso.add(fecha);
                     panelIngreso.add(inventarioLista);
@@ -405,8 +406,8 @@ public class rellenarIngresos {
                     panelIngreso.setLayout(new GridLayout(1, 5));
                     panelIngreso.setBackground(Colores.epicColorBajito);
                     panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                    panelIngreso.setMaximumSize(new Dimension(500, 40));
-                    panelIngreso.setPreferredSize(new Dimension(500, 100));
+                    panelIngreso.setMaximumSize(new Dimension(550, 40));
+                    panelIngreso.setPreferredSize(new Dimension(550, 100));
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -423,7 +424,7 @@ public class rellenarIngresos {
                     JLabel icono = new JLabel();
                     Iconos.scaleImage("CreditoG", icono, 25);
                     icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                    listaIngresos.add(panelIngreso, 0);
+                    listaIngresos.add(panelIngreso, 1);
                     panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
                     botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "CreditoG");
                     botonBorrarInd(icono, "src\\excel\\DeudasP.xlsx", "DeudasPagar");
@@ -502,8 +503,8 @@ public class rellenarIngresos {
                     panelIngreso.setLayout(new GridLayout(1, 5));
                     panelIngreso.setBackground(Colores.epicColorBajito);
                     panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                    panelIngreso.setMaximumSize(new Dimension(500, 40));
-                    panelIngreso.setPreferredSize(new Dimension(500, 100));
+                    panelIngreso.setMaximumSize(new Dimension(550, 40));
+                    panelIngreso.setPreferredSize(new Dimension(550, 100));
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -520,7 +521,7 @@ public class rellenarIngresos {
                     JLabel icono = new JLabel();
                     Iconos.scaleImage("InversionG", icono, 25);
                     icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                    listaIngresos.add(panelIngreso, 0);
+                    listaIngresos.add(panelIngreso, 1);
                     panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
                     botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "inversionG");
 
@@ -600,8 +601,8 @@ public class rellenarIngresos {
                 panelIngreso.setLayout(new GridLayout(1, 5));
                 panelIngreso.setBackground(Colores.epicColorBajito);
                 panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelIngreso.setMaximumSize(new Dimension(500, 40));
-                panelIngreso.setPreferredSize(new Dimension(500, 100));
+                panelIngreso.setMaximumSize(new Dimension(550, 40));
+                panelIngreso.setPreferredSize(new Dimension(550, 100));
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -618,7 +619,7 @@ public class rellenarIngresos {
                 JLabel icono = new JLabel();
                 Iconos.scaleImage("impuestoG", icono, 30);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                listaIngresos.add(panelIngreso, 0);
+                listaIngresos.add(panelIngreso, 1);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
                 botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "impuestoG");
                 panelIngreso.add(fecha);
@@ -682,8 +683,8 @@ public class rellenarIngresos {
                     panelIngreso.setLayout(new GridLayout(1, 5));
                     panelIngreso.setBackground(Colores.epicColorBajito);
                     panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                    panelIngreso.setMaximumSize(new Dimension(500, 40));
-                    panelIngreso.setPreferredSize(new Dimension(500, 100));
+                    panelIngreso.setMaximumSize(new Dimension(550, 40));
+                    panelIngreso.setPreferredSize(new Dimension(550, 100));
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -696,39 +697,33 @@ public class rellenarIngresos {
                     JLabel montoDeudaC = new JLabel();
                     montoDeudaC.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     montoDeudaC.setText(montoDeuC.getText());
-                    
+
                     JLabel montoDeudaCPanel = new JLabel();
                     montoDeudaCPanel.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     montoDeudaCPanel.setText("$" + montoDeuC.getText());
-                    
+
                     JLabel utilidadDeudaCPanel = new JLabel();
                     utilidadDeudaCPanel.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     utilidadDeudaCPanel.setText("$" + montoDeuC.getText());
-                    
-                    
-                    
+
                     JLabel icono = new JLabel();
                     Iconos.scaleImage("DeudasCG", icono, 30);
                     icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                    listaIngresos.add(panelIngreso, 0);
-                    panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-                    botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "DeudasCG");
-                    
 
-                    
+                    //Ingresa el panelVenta a la arraylist panelesInresos
+                    botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "DeudasCG");
 
                     String[] data = {(String) fechaActualConA(), Integer.toString(Integer.valueOf(montoDeudaC.getText()) * -1)};
-                    String[] dataLibros = {(String) fechaActual(), "Nueva deuda", (String) deuda.getText(), montoDeudaC.getText(), "", "VERDE", ""};
+                    String[] dataLibros = {(String) fechaActual(), "Deuda a Cobrar", (String) deuda.getText(), montoDeudaC.getText(), "", "VERDE", "0"};
                     Escribir escribirVentas = new Escribir();
 
                     if (deudor.getSelectedItem().toString() != "Nuevo") {
-                        
-                        //EXCEL INDIVIDUAL
 
+                        //EXCEL INDIVIDUAL
                         escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", dataLibros);
 
                         escribirVentas.escribirExcelInv("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), data, 2);
-                        escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), Double.valueOf(montoDeudaC.getText()) * -1, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1, 1);
+                        escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), Double.valueOf(montoDeudaC.getText()) * (-1), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString()), 1);
                         String formula2 = escribirVentas.Sumar(2, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString()) + 1), 'b');
                         escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), formula2, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString()) + 1), 1);
 
@@ -737,20 +732,21 @@ public class rellenarIngresos {
                         String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1) + ")";
                         escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
                         System.out.println((LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString()) + 1));
+                        listaIngresos.add(panelIngreso, 1);
+                        panelesIngresos.add(panelIngreso);
                         panelIngreso.add(fecha);
                         panelIngreso.add(deuda);
                         panelIngreso.add(montoDeudaCPanel);
-                        panelIngreso.add(new JLabel(""));
+                        utilidadDeudaCPanel.setText("$0.00");
+                        panelIngreso.add(utilidadDeudaCPanel);
                         panelIngreso.add(icono);
                     }
 
                     if (deudor.getSelectedItem().toString().equals("Nuevo")) {
-                        
+
                         String[] dataLibros2 = {(String) fechaActual(), "Nueva deuda", (String) deuda.getText(), montoDeudaC.getText(), "", "VERDE", montoDeudaC.getText()};
 
-                        
-
-                        DeudaCobrar deudorNuevo = new DeudaCobrar(montoDeudaC,dataLibros2);
+                        DeudaCobrar deudorNuevo = new DeudaCobrar(montoDeudaC, dataLibros2);
 
                         deudorNuevo.setVisible(true);
                         panelIngreso.add(fecha);
@@ -768,6 +764,7 @@ public class rellenarIngresos {
                 } catch (IOException ex) {
                     Caption ventanaEx = new Caption("Recuerda cerrar Excel");
                     ventanaEx.setVisible(true);
+
                 }
 
             }
@@ -810,8 +807,8 @@ public class rellenarIngresos {
                 panelIngreso.setLayout(new GridLayout(1, 5));
                 panelIngreso.setBackground(Colores.epicColorBajito);
                 panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelIngreso.setMaximumSize(new Dimension(500, 40));
-                panelIngreso.setPreferredSize(new Dimension(500, 100));
+                panelIngreso.setMaximumSize(new Dimension(550, 40));
+                panelIngreso.setPreferredSize(new Dimension(550, 100));
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -846,7 +843,7 @@ public class rellenarIngresos {
                 JLabel icono = new JLabel();
                 Iconos.scaleImage("Ventas", icono, 25);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                listaIngresos.add(panelIngreso, 0);
+                listaIngresos.add(panelIngreso, 1);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
                 botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "Ventas");
@@ -975,8 +972,8 @@ public class rellenarIngresos {
                 panelIngreso.setLayout(new GridLayout(1, 5));
                 panelIngreso.setBackground(Colores.epicColorBajito);
                 panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelIngreso.setMaximumSize(new Dimension(500, 40));
-                panelIngreso.setPreferredSize(new Dimension(500, 100));
+                panelIngreso.setMaximumSize(new Dimension(550, 40));
+                panelIngreso.setPreferredSize(new Dimension(550, 100));
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -993,7 +990,7 @@ public class rellenarIngresos {
                 JLabel icono = new JLabel();
                 Iconos.scaleImage("inventarioG", icono, 30);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                listaIngresos.add(panelIngreso, 0);
+                listaIngresos.add(panelIngreso, 1);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
                 botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "inventarioG");
                 panelIngreso.add(fecha);
@@ -1060,22 +1057,55 @@ public class rellenarIngresos {
         return formatoFecha.format(fecha);
     }
 
-    public void rellenarLibro( JPanel listaIngresos) throws IOException {
+    public void rellenarLibro(JPanel listaIngresos) throws IOException {
         listaIngresos.removeAll();
-        
-        
-        
-        listaIngresos.updateUI();
-       
+        JPanel TOP = new JPanel();
+            TOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+            TOP.setLayout(new GridLayout(1, 5));
+            TOP.setBackground(Color.WHITE);
+            TOP.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
+            TOP.setMaximumSize(new Dimension(550, 40));
+            TOP.setPreferredSize(new Dimension(550, 100));
+
+            JLabel fechaTOP = new JLabel();
+            fechaTOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+            fechaTOP.setForeground(Colores.gris);
+            fechaTOP.setText("FECHA");
+
+            JLabel nombreTOP = new JLabel();
+            nombreTOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+            nombreTOP.setForeground(Colores.gris);
+            nombreTOP.setText("");
+            Iconos.scaleImage("mountain", nombreTOP, 30,15);
+
+            JLabel montoTOP = new JLabel();
+            montoTOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+            montoTOP.setForeground(Colores.gris);
+            montoTOP.setText("MONTO");
+
+            JLabel ingresosTOP = new JLabel();
+            ingresosTOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+            ingresosTOP.setForeground(Colores.gris);
+            ingresosTOP.setText("VARIACIÓN");
+
+            TOP.add(fechaTOP);
+            TOP.add(nombreTOP);
+            TOP.add(montoTOP);
+            TOP.add(ingresosTOP);
+            TOP.add(new JLabel(""));
+
+            listaIngresos.add(TOP, 0);
+
         if (!LeerExcel.tablaVacia("src\\excel\\LibrosContables.xlsx", "Ingresos")) {
+            
             for (int i = 1; i <= LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"); i++) {
                 PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
                 panelIngreso.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                 panelIngreso.setLayout(new GridLayout(1, 5));
                 panelIngreso.setBackground(Colores.epicColorBajito);
                 panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelIngreso.setMaximumSize(new Dimension(500, 40));
-                panelIngreso.setPreferredSize(new Dimension(500, 100));
+                panelIngreso.setMaximumSize(new Dimension(550, 40));
+                panelIngreso.setPreferredSize(new Dimension(550, 100));
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1087,11 +1117,11 @@ public class rellenarIngresos {
 
                 JLabel montoDevolucion = new JLabel();
                 montoDevolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                montoDevolucion.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 3, i));
+                montoDevolucion.setText("$" + LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 3, i));
 
                 JLabel plataforma = new JLabel();
                 plataforma.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                plataforma.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 4, i));
+                plataforma.setText("$" + LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 6, i));
 
                 String IconoTipo = "VentasG";
                 String tipo = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 1, i);
@@ -1106,9 +1136,14 @@ public class rellenarIngresos {
                         IconoTipo = "CreditoG";
                         break;
                     case "Deuda a Cobrar":
-                        IconoTipo = "DeudasC";
-                        panelIngreso.setBackground(Colores.epicColorBajito);
+                        IconoTipo = "DeudasCG";
+
                         break;
+                    case "Nueva deuda":
+                        IconoTipo = "DeudasC";
+
+                        break;
+
                     case "Impuesto a favor":
                         IconoTipo = "impuestoG";
                         break;
@@ -1138,7 +1173,7 @@ public class rellenarIngresos {
                 JLabel icono = new JLabel();
                 Iconos.scaleImage(IconoTipo, icono, 30);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                listaIngresos.add(panelIngreso, 0);
+                listaIngresos.add(panelIngreso, 1);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
                 panelIngreso.add(fecha);
@@ -1333,8 +1368,8 @@ public class rellenarIngresos {
                 panelIngreso.setLayout(new GridLayout(1, 5));
                 panelIngreso.setBackground(Colores.grisBajito);
                 panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelIngreso.setMaximumSize(new Dimension(500, 40));
-                panelIngreso.setPreferredSize(new Dimension(500, 100));
+                panelIngreso.setMaximumSize(new Dimension(550, 40));
+                panelIngreso.setPreferredSize(new Dimension(550, 100));
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1399,7 +1434,7 @@ public class rellenarIngresos {
                 JLabel icono = new JLabel();
                 Iconos.scaleImage(IconoTipo, icono, 30);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                listaIngresos.add(panelIngreso, 0);
+                listaIngresos.add(panelIngreso, 1);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
                 panelIngreso.add(fecha);

@@ -196,7 +196,7 @@ public class RellenarG {
     public JPanel rellenarDesPacks(){
         rellenarDesPacks.removeAll();
         rellenarDesPacks.setBackground(Color.white);
-                    
+                 
         Iconos.scaleImage("Packs", iconoDesarrollo, 30);
         rellenarDesPacks.add(iconoDesarrollo);
 

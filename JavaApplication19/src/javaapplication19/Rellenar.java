@@ -95,25 +95,29 @@ public class Rellenar {
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
         inventario.setPreferredSize(new Dimension(200, 30));
+        inventario.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         
         unidades = new JComboBox();
         unidades.setBackground(Color.white);
         unidades.setUI(PropiedadesCB2.createUI(inventario));
         unidades.setPreferredSize(new Dimension(65, 30));
-
+        unidades.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
         cliente = new JComboBox(LeerExcel.rellenaCB2("src//excel//CRM.xlsx", "Clientes", 0));
         cliente.addItem("Nuevo Cliente");
         cliente.setBackground(Color.white);
         cliente.setUI(PropiedadesCB2.createUI(cliente));
+        cliente.setPreferredSize(new Dimension(130, 30));
+        cliente.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
 
         plataformacb = new JComboBox(listaPlataformas);
         plataformacb.setBackground(Color.white);
         plataformacb.setUI(PropiedadesCB2.createUI(plataformacb));
-
-        destino = new JTextField("Destino");
-        destino.setBorder(new LineBorder(Colores.epicColor, 0, true));
-        destino.setBackground(Colores.epicColorBajito);
-        destino.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        plataformacb.setPreferredSize(new Dimension(130, 30));
+        plataformacb.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
+        
 
         Iconos.scaleImage("ok", iconoOkV, 30);
 
@@ -122,12 +126,14 @@ public class Rellenar {
 
         inventario.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                
                 indexInventario = inventario.getSelectedIndex();
                 try {
                     numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 6, indexInventario + 1);
                 } catch (IOException ex) {
                     Logger.getLogger(Rellenar.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                unidades.removeAllItems();
                 for (int i = 1; i <= numeroUnidades; i++) {
                     unidades.addItem(i);
                 }
@@ -161,14 +167,20 @@ public class Rellenar {
         inversor = new JTextField();
         inversor.setBackground(Colores.epicColorBajito);
         inversor.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        inversor.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Inversionista", inversor);
         
+        
+        
         montoC = new JTextField("");
+         montoC.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Monto", montoC);
         montoC.setPreferredSize(new Dimension(60, 30));
         inversor.setPreferredSize(new Dimension(150, 30));
         montoC.setBackground(Colores.epicColorBajito);
         montoC.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+       
+        
 
         rellenarCredito.add(inversor);
         rellenarCredito.add(montoC);
@@ -188,15 +200,19 @@ public class Rellenar {
         inversorI = new JTextField("");
         inversorI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         inversorI.setBackground(Colores.epicColorBajito);
+        inversorI.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
         
         addPlaceHolder("Inversionista", inversorI);
         montoI = new JTextField("");
+        montoI.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Monto", montoI);
         montoI.setPreferredSize(new Dimension(60, 30));
         inversorI.setPreferredSize(new Dimension(150, 30));
         montoI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         montoI.setBackground(Colores.epicColorBajito);
-       
+        
+        
 
         rellenarInversion.add(inversorI);
         rellenarInversion.add(montoI);
@@ -214,16 +230,22 @@ public class Rellenar {
         rellenarImpuesto.add(iconoImpuesto);
         Iconos.scaleImage("ok", iconoOkImp, 30);
         impuesto = new JTextField();
-         impuesto.setBackground(Colores.epicColorBajito);
+        impuesto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
+        impuesto.setBackground(Colores.epicColorBajito);
         impuesto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         addPlaceHolder("Impuesto", impuesto);
         montoImp = new JTextField("");
+        montoImp.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Monto", montoImp);
         montoImp.setPreferredSize(new Dimension(60, 30));
         impuesto.setPreferredSize(new Dimension(150, 30));
         montoImp.setBackground(Colores.epicColorBajito);
         montoImp.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        
+        
 
+        
         rellenarImpuesto.add(impuesto);
         rellenarImpuesto.add(montoImp);
 
@@ -244,12 +266,17 @@ public class Rellenar {
         deudor.addItem("Nuevo");
         deudor.setBackground(Color.white);
         deudor.setUI(PropiedadesCB2.createUI(deudor));
+        deudor.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
 
         montoDeuC = new JTextField("");
+        montoDeuC.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Monto", montoDeuC);
         montoDeuC.setBorder(new LineBorder(Colores.epicColor, 0, true));
         montoDeuC.setBackground(Colores.epicColorBajito);
         montoDeuC.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        
+        
 
         montoDeuC.setPreferredSize(new Dimension(60, 30));
         deudor.setPreferredSize(new Dimension(150, 30));
@@ -269,31 +296,37 @@ public class Rellenar {
         Iconos.scaleImage("Ventas", iconoVentas, 40);
         rellenarVentas.add(iconoVentas);
 
-        String[] listaPlataformas = {"Mercado Libre", "Amazon", "Shopiffy"};
+        String[] listaPlataformas = {"Mercado Libre", "Local"};
 
         inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
         inventario.setPreferredSize(new Dimension(200, 30));
+        inventario.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
         
         unidades = new JComboBox();
         unidades.setBackground(Color.white);
         unidades.setUI(PropiedadesCB2.createUI(inventario));
         unidades.setPreferredSize(new Dimension(65, 30));
+        unidades.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
 
         cliente = new JComboBox(LeerExcel.rellenaCB2("src//excel//CRM.xlsx", "Clientes", 0));
         cliente.addItem("Nuevo Cliente");
         cliente.setBackground(Color.white);
         cliente.setUI(PropiedadesCB2.createUI(cliente));
+        cliente.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        cliente.setPreferredSize(new Dimension(130, 30));
 
         plataformacb = new JComboBox(listaPlataformas);
         plataformacb.setBackground(Color.white);
         plataformacb.setUI(PropiedadesCB2.createUI(plataformacb));
+        plataformacb.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        plataformacb.setPreferredSize(new Dimension(130, 30));
+        
 
-        destino = new JTextField("Destino");
-        destino.setBorder(new LineBorder(Colores.epicColor, 0, true));
-        destino.setBackground(Colores.epicColorBajito);
-        destino.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+       
 
         Iconos.scaleImage("ok", iconoOkVentasC, 30);
 
@@ -308,6 +341,7 @@ public class Rellenar {
                 } catch (IOException ex) {
                     Logger.getLogger(Rellenar.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                unidades.removeAllItems();
                 for (int i = 1; i <= numeroUnidades; i++) {
                     unidades.addItem(i);
                 }
@@ -335,6 +369,7 @@ public class Rellenar {
         devolucion.setBackground(Color.white);
         devolucion.setUI(PropiedadesCB2.createUI(inventario));
         devolucion.setPreferredSize(new Dimension(300,30));
+        devolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
 
         
 
