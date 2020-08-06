@@ -478,10 +478,20 @@ public class Escribir {
                 "COSTO X UNIDAD",
                 "COSTO NETO",
                 "PRECIO BASE X UNIDAD",
-                "PRECIO BASE NETO"   
+                "PRECIO BASE NETO",
+                "PRECIO SHOP X UNIDAD",
+                "PRECIO SHOP NETO",
+                "PRECIO ML X UNIDAD",
+                "PRECIO ML NETO",
+                "COMISION ML X UNIDAD",
+                "COMISION ML NETA",
+                "IVA X UNIDAD",
+                "IVA NETA",
+                "UTILIDAD X UNIDAD",
+                "UTILIDAD NETA"
             };
         
-            for(int i=0; i<11; i++){
+            for(int i=0; i<21; i++){
                 XSSFCell newCell = row.createCell(i);
                 XSSFCell newCell2 = row2.createCell(i);
                 setCellStyleVerde(newWorkBook, newCell);

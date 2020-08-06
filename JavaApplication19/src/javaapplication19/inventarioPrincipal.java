@@ -409,13 +409,6 @@ public class inventarioPrincipal extends javax.swing.JFrame {
             Double utilidadLN = EscribirCRM.Mulitplicar(6, 19, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), "src\\excel\\Inventario.xlsx", "Inventario");
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidadLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 20);
             
-            //UTILIDAD ML UNIDAD
-            Double utilidadML = EscribirCRM.RestarColumnasML(LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 13, 7, 15, 17, "src\\excel\\Inventario.xlsx", "Inventario");
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidadML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 21);
-            
-            //UTILIDAD ML NETA
-            Double utilidadMLN = EscribirCRM.Mulitplicar(6, 21, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), "src\\excel\\Inventario.xlsx", "Inventario");
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidadMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 22);
             
             String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula,
