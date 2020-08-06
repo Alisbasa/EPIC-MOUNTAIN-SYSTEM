@@ -6,6 +6,9 @@
 package javaapplication19;
 
 import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,7 +26,9 @@ import javax.swing.JPanel;
 public class Pendientes extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
-    static JComboBox ventaC= new JComboBox();
+    static JPanel jpRellenar;
+    JComboBox ventaC;
+    JLabel deudaC;
     
     /**
      * Creates new form clienteNuevo
@@ -31,11 +36,12 @@ public class Pendientes extends javax.swing.JFrame {
      */
     public Pendientes() {
         initComponents();
+        
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        ventaC.setUI(PropiedadesCB2.createUI(ventaC));
-        jpDescripcion.add(ventaC);
+        jpDescripcion.add(RellenarPanel());
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,11 +59,10 @@ public class Pendientes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jpDatos = new javax.swing.JPanel();
         jpDescripcion = new javax.swing.JPanel();
-        jlDesc1 = new javax.swing.JLabel();
+        String[] arr={"Venta a Cobrar", "Deuda a Pagar", "Compra en Transito"};
+        comboPendientes = new javax.swing.JComboBox(arr);
         jpPack = new javax.swing.JPanel();
-        jlDesc2 = new javax.swing.JLabel();
         jpTIG = new javax.swing.JPanel();
-        jlDesc = new javax.swing.JLabel();
         jpUbicacion = new javax.swing.JPanel();
         jbRegistrar = new javax.swing.JButton();
         jpBoton = new javax.swing.JPanel();
@@ -105,32 +110,20 @@ public class Pendientes extends javax.swing.JFrame {
         jpDatos.setLayout(new java.awt.GridLayout(5, 0));
 
         jpDescripcion.setBackground(new java.awt.Color(51, 51, 51));
+        jpDescripcion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlDesc1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
-        jlDesc1.setForeground(new java.awt.Color(255, 255, 255));
-        jlDesc1.setText("VENTA A COBRAR");
-        jpDescripcion.add(jlDesc1);
+        comboPendientes.setUI(PropiedadesCB2.createUI(comboPendientes));
+        comboPendientes.setBackground(Color.white);
+        jpDescripcion.add(comboPendientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 140, 30));
 
         jpDatos.add(jpDescripcion);
 
         jpPack.setBackground(new java.awt.Color(51, 51, 51));
-        jpPack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jlDesc2.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
-        jlDesc2.setForeground(new java.awt.Color(255, 255, 255));
-        jlDesc2.setText("COMPRA EN TRANSITO");
-        jpPack.add(jlDesc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 160, 40));
-
+        jpPack.setLayout(new java.awt.BorderLayout());
         jpDatos.add(jpPack);
 
         jpTIG.setBackground(new java.awt.Color(51, 51, 51));
         jpTIG.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jlDesc.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
-        jlDesc.setForeground(new java.awt.Color(255, 255, 255));
-        jlDesc.setText("DEUDAS A PAGAR");
-        jpTIG.add(jlDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 130, 40));
-
         jpDatos.add(jpTIG);
 
         jpUbicacion.setBackground(new java.awt.Color(51, 51, 51));
@@ -162,6 +155,30 @@ public class Pendientes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    public JPanel RellenarPanel(){
+        comboPendientes.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(comboPendientes.getSelectedItem().toString().equals("Ventas a Cobrar")){
+                   jpRellenar.removeAll();
+                   jpRellenar.setLayout(new GridLayout(1, 3));
+                   
+                    try {
+                        ventaC = new JComboBox(LeerExcel.obtenerHoja("src//excel//DeudasC.xlsx"));
+                        deudaC = new JLabel(Double.toString(LeerExcel.obtenerCeldaNumerica("src//excel//DeudasC.xlsx", ventaC.getSelectedItem().toString(), 1 , LeerExcel.contarRenglones("src//excel//DeudasC.xlsx", ventaC.getSelectedItem().toString()))));
+                        jpRellenar.add(ventaC);
+                        jpRellenar.add(deudaC);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Pendientes.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                   
+                }
+            }
+            
+        }
+        );
+        return jpRellenar;
+    }
     
     public void changeColor(JPanel hover,Color rand){
         hover.setBackground(rand);
@@ -190,23 +207,7 @@ public class Pendientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
-//        String[] Registro = {fechaActual(), jtNombre.getText(), monto.getText()};
-//        String [] Registro2 = {fechaActual(), monto.getText()};
-//        Escribir escribirExcel = new Escribir();
-//        try {
-//            escribirExcel.escribirExcelInv("src\\excel\\DeudasC.xlsx","deudasCobrar", Registro,3);
-//            escribirExcel.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", Double.valueOf(Registro[2]), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 2);
-//            escribirExcel.crearHoja("src\\excel\\DeudasC.xlsx", jtNombre.getText(), "FECHA", "MONTO");
-//            escribirExcel.escribirExcelInv("src\\excel\\DeudasC.xlsx", jtNombre.getText(), Registro2,2);
-//            escribirExcel.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", jtNombre.getText(), Double.valueOf(Registro2[1]), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText()), 1);
-//            String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+1) + ")";
-//            escribirExcel.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar",formula,(LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+ 1), 2);
-//            System.out.println((LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+ 1));
-//            String formula2 = escribirExcel.Restar(2, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+ 1),'b');
-//            escribirExcel.escribirFormula("src\\excel\\DeudasC.xlsx", jtNombre.getText(),  formula2, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+ 1), 1);
-//        } catch (IOException ex) {
-//            Logger.getLogger(Pendientes.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        
         this.setVisible(false);
     }//GEN-LAST:event_jbRegistrarMouseClicked
 
@@ -258,19 +259,17 @@ public class Pendientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<String> comboPendientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbRegistrar;
-    private javax.swing.JLabel jlDesc;
-    private javax.swing.JLabel jlDesc1;
-    private javax.swing.JLabel jlDesc2;
     private javax.swing.JPanel jpBoton;
     private javax.swing.JPanel jpDatos;
     private javax.swing.JPanel jpDescripcion;
-    private javax.swing.JPanel jpPack;
+    public javax.swing.JPanel jpPack;
     private javax.swing.JPanel jpTIG;
     private javax.swing.JPanel jpUbicacion;
     // End of variables declaration//GEN-END:variables
