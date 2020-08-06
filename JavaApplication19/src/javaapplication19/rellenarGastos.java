@@ -314,7 +314,7 @@ public class rellenarGastos {
                 panelGasto.add(precioI);
                 panelGasto.add(icono);
 
-                String[] data = {(String) fechaActual(), "Inventario", desarrolloTipoI.getText(), montoDesI.getText(), (String) producto.getSelectedItem(), "VERDE"};
+                String[] data = {(String) fechaActual(), "Inventario", desarrolloTipoI.getText(), montoDesI.getText(), (String) producto.getSelectedItem(), "VERDE", "   "};
 
                 Escribir escribirVentas = new Escribir();
                 try {

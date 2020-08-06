@@ -438,9 +438,6 @@ public class inventarioPrincipal extends javax.swing.JFrame {
             EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula7,
                                                 LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 20);
             
-            String formula8 = "SUM(W2:W" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula8,
-                                                LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 22);
             
             
                     
