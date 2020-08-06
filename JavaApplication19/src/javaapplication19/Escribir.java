@@ -15,6 +15,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.DataFormat;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
@@ -70,7 +71,11 @@ public class Escribir {
         R.setCellStyle(style);
 
     }
-    public void setCellStyleVerde(XSSFWorkbook wb, XSSFCell R) {
+    
+    public void setCellStylePrecio(XSSFWorkbook wb, XSSFCell R) {
+        
+        DataFormat df = wb.createDataFormat();
+        
         XSSFFont font = wb.createFont();
         font.setFontHeightInPoints((short) 12);
         font.setFontName("Calibri");
@@ -79,8 +84,39 @@ public class Escribir {
         font.setItalic(false);
 
         XSSFCellStyle style = wb.createCellStyle();
-        XSSFColor color = new XSSFColor(Colores.epicColor);
+        style.setDataFormat(df.getFormat("$#,#0.00"));
+        style.setBorderBottom(BorderStyle.THIN);
+        style.setBorderLeft(BorderStyle.THIN);
+        style.setBorderRight(BorderStyle.THIN);
+        style.setBorderTop(BorderStyle.THIN);
+        XSSFColor color = new XSSFColor(Colores.grisBajito);
         style.setFillForegroundColor(color);//color de fondo
+        //style.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());//color de fondo
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style.setAlignment(HorizontalAlignment.CENTER);
+        style.setVerticalAlignment(VerticalAlignment.CENTER);
+        style.setFont(font);
+        R.setCellStyle(style);
+
+    }
+    
+    public void setCellStyleVerde(XSSFWorkbook wb, XSSFCell R) {
+        DataFormat df = wb.createDataFormat();
+        XSSFFont font = wb.createFont();
+        font.setFontHeightInPoints((short) 12);
+        font.setFontName("Calibri");
+        font.setColor(IndexedColors.BLACK.getIndex());
+        font.setBold(true);
+        font.setItalic(false);
+
+        XSSFCellStyle style = wb.createCellStyle();
+        style.setDataFormat(df.getFormat("$#,#0.00"));
+        XSSFColor color = new XSSFColor(Colores.verdeExcel);
+        style.setFillForegroundColor(color);//color de fondo
+        style.setBorderBottom(BorderStyle.THIN);
+        style.setBorderLeft(BorderStyle.THIN);
+        style.setBorderRight(BorderStyle.THIN);
+        style.setBorderTop(BorderStyle.THIN);
         style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         style.setAlignment(HorizontalAlignment.CENTER);
         style.setVerticalAlignment(VerticalAlignment.CENTER);
@@ -301,7 +337,7 @@ public class Escribir {
 
         XSSFCell newCell = row.createCell(columna);
         newCell.setCellValue(data);
-        setCellStyle(newWorkbook, newCell);
+        setCellStylePrecio(newWorkbook, newCell);
          evaluar(newWorkbook, newCell);
 //         newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
          XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
