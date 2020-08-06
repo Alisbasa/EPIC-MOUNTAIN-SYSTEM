@@ -1192,7 +1192,7 @@ public class rellenarIngresos {
     public void vender(JComboBox inventario, JComboBox unidadesCB, JComboBox medioVenta, String cliente, JComboBox clienteCB) throws IOException {
         String fecha = fechaActual();
 
-        int seleccion = inventario.getSelectedIndex() + 1;
+        int seleccion = inventario.getSelectedIndex()+1;
         try {
             String venta = LeerExcel.obtenerCelda("src\\excel\\inventario.xlsx", "Inventario", 0, seleccion);
             String descripion = LeerExcel.obtenerCelda("src\\excel\\inventario.xlsx", "Inventario", 1, seleccion);
@@ -1210,14 +1210,6 @@ public class rellenarIngresos {
 
             Escribir escribirVentas = new Escribir();
 
-            int restaUnidades = unidadesCB.getItemCount() - Integer.valueOf(unidades);
-
-            // escribirVentas.borrarCelda("src//excel/Inventario.xlsx", "Inventario", unidadesCB.getSelectedIndex(), 6);
-            if (restaUnidades == 0) {
-                Escribir.removeRow("src//excel/Inventario.xlsx", "Inventario", inventario.getSelectedIndex() + 1);
-            } else {
-                escribirVentas.escribirCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", restaUnidades, inventario.getSelectedIndex() + 1, 6);
-            }
 
             //Escribe arreglo de Strings
             escribirVentas.escribirExcelInv("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), data, 10);
@@ -1316,10 +1308,16 @@ public class rellenarIngresos {
             //Escribe formula de utilidad local neta en suma
             String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1) + ")";
             escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula7, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1, 20);
+            
+            int restaUnidades = unidadesCB.getItemCount() - Integer.valueOf(unidades);
 
-            //Escribe formula de utilidad ml neta en suma
-            /*String formula8 = "SUM(W2:W" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), formula8, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()) + 1, 22);*/
+            // escribirVentas.borrarCelda("src//excel/Inventario.xlsx", "Inventario", unidadesCB.getSelectedIndex(), 6);
+            if (restaUnidades == 0) {
+                Escribir.removeRow("src//excel/Inventario.xlsx", "Inventario", inventario.getSelectedIndex() + 1);
+            } else {
+                escribirVentas.escribirCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", restaUnidades, inventario.getSelectedIndex() + 1, 6);
+            }
+            
         } catch (NullPointerException e) {
             Caption ventanaEx = new Caption("Olvidaste llenar algún campo");
             Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, e);
