@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 public class Pendientes extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
-    static JComboBox ventaC;
+    static JComboBox ventaC= new JComboBox();
     
     /**
      * Creates new form clienteNuevo
