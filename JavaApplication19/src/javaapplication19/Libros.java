@@ -1491,6 +1491,9 @@ public class Libros extends javax.swing.JFrame {
         }
         else if(comboGastos.getSelectedItem().toString().equals("COMPRAS EN TRANSITO")){
             rellenarGastos rellenarDesCompra = new rellenarGastos();
+            inventarioPrincipalCT inventario = new inventarioPrincipalCT(rellenarDes.paqueteria, rellenarDes.productoCT);
+            equipoymobCT equipo = new equipoymobCT(rellenarDes.paqueteria, rellenarDes.productoCT);
+            packsCT packs = new packsCT(rellenarDes.paqueteria, rellenarDes.productoCT);
             
             rellenarGastos.removeAll();
             rellenarGastos.revalidate();
@@ -1502,7 +1505,7 @@ public class Libros extends javax.swing.JFrame {
                 Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            rellenarDesCompra.botonDesCT(rellenarDes.desarrolloTipoCT, rellenarDes.productoCT, rellenarDes.montoDesCT, rellenarDes.iconoOkDesarrolloCT, scrollGastos, listaGastos, rellenarDes.rellenarDesCompras, rellenarDes.provedores, rellenarDes.unidadesCT, rellenarDes.paqueteria);  
+            rellenarDesCompra.botonDesCT(scrollGastos,listaGastos, rellenarDes.rellenarDesPacks, rellenarDes.productoCT,rellenarDes.paqueteria, inventario.jtCosto, equipo.jtCosto, packs.jtCosto, rellenarDes.iconoOkDesarrolloCT);  
         }
         
         
