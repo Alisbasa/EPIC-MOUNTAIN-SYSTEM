@@ -24,23 +24,24 @@ import javax.swing.JPanel;
  * @author Erick Ivan
  */
 public final class Pendientes extends javax.swing.JFrame {
+
     int mousepX;
     int mousepY;
-    
-    
+
     /**
      * Creates new form clienteNuevo
+     *
      * @param monto
      */
     public Pendientes() {
         initComponents();
-        
+
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        
-        
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,7 +58,6 @@ public final class Pendientes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jpDatos = new javax.swing.JPanel();
         jpDescripcion = new javax.swing.JPanel();
-        jpDescripcion1 = new javax.swing.JPanel();
         try{
             compraT = new javax.swing.JComboBox(LeerExcel.rellenaCB2("src\\excel\\comprasT.xlsx", "COMPRAS", 1));
             jbRegistrar = new javax.swing.JButton();
@@ -93,7 +93,7 @@ public final class Pendientes extends javax.swing.JFrame {
 
             jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
             jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-            jLabel1.setText("ACTIVOS PENDIENTES");
+            jLabel1.setText("COMPRAS EN TRANSITO");
             jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
             jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
 
@@ -102,25 +102,19 @@ public final class Pendientes extends javax.swing.JFrame {
             getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
             jpDatos.setBackground(new java.awt.Color(51, 51, 51));
-            jpDatos.setLayout(new java.awt.GridLayout(3, 0));
+            jpDatos.setLayout(new java.awt.GridLayout());
 
             jpDescripcion.setBackground(new java.awt.Color(51, 51, 51));
             jpDescripcion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-            jpDescripcion1.setBackground(new java.awt.Color(51, 51, 51));
-            jpDescripcion1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-            jpDescripcion.add(jpDescripcion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         }catch(IOException e){}
         compraT.setUI(PropiedadesCB2.createUI(compraT));
         compraT.setBackground(Color.white);
-        jpDescripcion.add(compraT, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 140, 40));
+        jpDescripcion.add(compraT, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 310, 40));
 
-        jpDatos.add(jpDescripcion);
-
-        jbRegistrar.setFont(new java.awt.Font("Franklin Gothic Book", 2, 24)); // NOI18N
+        jbRegistrar.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
         jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
-        jbRegistrar.setText("Registrar");
+        jbRegistrar.setText("OK");
         jbRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jbRegistrarMouseClicked(evt);
@@ -131,29 +125,30 @@ public final class Pendientes extends javax.swing.JFrame {
                 jbRegistrarActionPerformed(evt);
             }
         });
-        jpDatos.add(jbRegistrar);
+        jpDescripcion.add(jbRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 50, 40));
         jbRegistrar.setBackground(Colores.epicColor);
+
+        jpDatos.add(jpDescripcion);
 
         getContentPane().add(jpDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 500, 200));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    public void changeColor(JPanel hover,Color rand){
+    public void changeColor(JPanel hover, Color rand) {
         hover.setBackground(rand);
     }
-    
+
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
         int kordinatX = evt.getXOnScreen();
         int kordinatY = evt.getYOnScreen();
-        this.setLocation(kordinatX-mousepX, kordinatY-mousepY);
+        this.setLocation(kordinatX - mousepX, kordinatY - mousepY);
 
     }//GEN-LAST:event_jPanel1MouseDragged
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
         mousepX = evt.getX();
-        mousepY =evt.getY();
+        mousepY = evt.getY();
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
@@ -161,16 +156,158 @@ public final class Pendientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
+        int fila = compraT.getSelectedIndex() + 1;
+        String fecha = fechaActual();
+        try {
+            String tipo = LeerExcel.obtenerCelda("src\\excel\\comprasT.xlsx", "COMPRAS", fila, 21);
 
-        this.setVisible(false);
+            Escribir EscribirExcel = new Escribir();
+
+            String producto = LeerExcel.obtenerCelda("src\\excel\\comprasT.xlsx", "COMPRAS", fila, 0);
+            String descripcion = LeerExcel.obtenerCelda("src\\excel\\comprasT.xlsx", "COMPRAS", fila, 1);
+            String condicion = LeerExcel.obtenerCelda("src\\excel\\comprasT.xlsx", "COMPRAS", fila, 3);
+            String pack = LeerExcel.obtenerCelda("src\\excel\\comprasT.xlsx", "COMPRAS", fila, 4);
+            double tig = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", fila, 5);
+            int unidades = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", fila, 6);
+            double costoUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", fila, 7);
+            double costoNeto = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", fila, 8);
+            double precioBaseU = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", fila, 9);
+            double precioBaseNeto = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", fila, 10);
+
+            
+            String[] equipo = {fecha, producto, descripcion, Double.toString(costoNeto)};
+            
+
+            switch (tipo) {
+                case "HERRAMIENTAS":
+                    EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", tipo, equipo, 4);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", tipo, costoNeto, fila, 3);
+                    break;
+                case "EQUIPO DE TALLER":
+                    EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", tipo, equipo, 4);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", tipo, costoNeto, fila, 3);
+                    break;
+                case "MOBILIARIO":
+                    EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", tipo, equipo, 4);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", tipo, costoNeto, fila, 3);
+                    break;
+                case "EQUIPO DE LIMPIEZA":
+                    EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", tipo, equipo, 4);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", tipo, costoNeto, fila, 3);
+                    break;
+                case "INVENTARIO PRINCIPAL":
+                    String [] inventario = {producto,descripcion,fecha,condicion,pack};
+                    
+                    EscribirExcel.escribirExcelInv("src\\excel\\Inventario.xlsx", "Inventario",inventario,5);
+                    
+                    
+                    //UNIDADES
+            EscribirExcel.escribirCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", unidades, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 6);
+            
+            //TIG
+            Double TIG = tig;
+            EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", TIG, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 5);
+            
+            //COSTO UNIDAD
+            EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", costoUnidad, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 7);
+            //COSTO NETO
+            EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", costoNeto, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 8);
+            
+            //PRECIO BASE UNIDAD
+            EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioBaseU, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 9);
+            
+            //PRECIO BASE NETO
+            EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioBaseNeto, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 10);
+            
+            
+            //PRECIO LOCAL UNIDAD
+            Double precioL = precioBaseU * 1.16;
+            EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioL, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 11);
+
+            //PRECIO LOCAL NETO
+            Double precioNeto = unidades*precioL;
+            EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioNeto, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 12);
+
+            //COMISION ML
+            Double comisionML = (precioL * .15) + 5;
+            EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 15);
+
+            //COMISION ML NETO
+            Double comisionMLN = unidades*comisionML;
+            EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 16);
+
+            // IVA UNIDAD
+            Double IVA = precioBaseU * 0.16;
+            EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", IVA, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 17);
+
+            //IVA NETO
+            Double ivaN = unidades*IVA;
+            EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", ivaN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 18);
+
+            //PRECIO ML
+            Double precioML = precioBaseU+IVA+comisionML+35;
+            EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 13);
+
+            //PRECIOML NETO
+            Double precioMLN = precioML*unidades;
+            EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 14);
+
+            //UTILIDAD UNIDAD LOCAL
+            Double utilidad = precioL-costoUnidad-IVA;
+            EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidad, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 19);
+
+            //UTILIDAD LOCAL NETA
+            Double utilidadLN = unidades*utilidad;
+            EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidadLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 20);
+
+            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
+            EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula,
+                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 8);
+
+            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
+            EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula2,
+                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 10);
+
+            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
+            EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula3,
+                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 12);
+
+            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
+            EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula4,
+                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 14);
+
+            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
+            EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula5,
+                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 16);
+
+            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
+            EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula6,
+                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 18);
+
+            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
+            EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula7,
+                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 20);
+
+                    break;
+                case "PACK DE VENTAS":
+                    break;
+                case "EGRESO":
+                    break;
+
+            }
+
+            this.setVisible(false);
+        } catch (IOException ex) {
+            Logger.getLogger(Pendientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbRegistrarMouseClicked
 
-    public static String fechaActual(){
+    public static String fechaActual() {
         java.util.Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM YY");
         return formatoFecha.format(fecha);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -228,6 +365,5 @@ public final class Pendientes extends javax.swing.JFrame {
     private javax.swing.JButton jbRegistrar;
     private javax.swing.JPanel jpDatos;
     private javax.swing.JPanel jpDescripcion;
-    private javax.swing.JPanel jpDescripcion1;
     // End of variables declaration//GEN-END:variables
 }

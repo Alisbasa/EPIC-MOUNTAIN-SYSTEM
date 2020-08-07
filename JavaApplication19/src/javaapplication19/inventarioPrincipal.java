@@ -336,15 +336,15 @@ public class inventarioPrincipal extends javax.swing.JFrame {
             jtDesc.getText(),
             fechaActual(),
             jcCond.getSelectedItem().toString(),
-                                "             ",
-                                Double.toString(Double.valueOf(jtPrecio.getText())/Double.valueOf(monto.getText())),
-                                jtUnidades.getText(),
-                                monto.getText(),
-                                costoNeto,
-                                jtPrecio.getText(), 
-                                costoBaseNeto, 
-                                Double.toString((Double.valueOf((jtPrecio.getText()))*.16)+Double.valueOf(jtPrecio.getText())),
-                                precioBaseNeto};
+            "             ",
+            Double.toString(Double.valueOf(jtPrecio.getText())/Double.valueOf(monto.getText())),
+            jtUnidades.getText(),
+            monto.getText(),
+            costoNeto,
+            jtPrecio.getText(), 
+             costoBaseNeto, 
+            Double.toString((Double.valueOf((jtPrecio.getText()))*.16)+Double.valueOf(jtPrecio.getText())),
+            precioBaseNeto};
         
         Escribir EscribirCRM = new Escribir();
         try {
