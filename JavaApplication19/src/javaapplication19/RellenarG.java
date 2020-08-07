@@ -278,7 +278,7 @@ public class RellenarG {
         Iconos.scaleImage("Compras", iconoDesarrollo, 30);
         rellenarDesCompras.add(iconoDesarrollo);
                     
-        String [] listaComprasCT = {"Equipo y Mob.", "Inventario Princ." , "Packs de Ventas", "Egresos"};
+        String [] listaComprasCT = {"Inventario Princ." , "Packs de Ventas", "Egresos"};
         productoCT = new JComboBox (listaComprasCT);
         productoCT.setUI(PropiedadesCB2.createUI(productoCT));
         productoCT.setPreferredSize(new Dimension(100,30));

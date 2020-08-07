@@ -303,6 +303,8 @@ public class inventarioPrincipalCT extends javax.swing.JFrame {
 
         try {
             EscribirCRM.escribirExcelInv("src\\excel\\comprasT.xlsx", "COMPRAS",inventario,5);
+            EscribirCRM.escribirCelda("src\\excel\\comprasT.xlsx", "COMPRAS", tipoGasto.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 21);
+            EscribirCRM.escribirCelda("src\\excel\\comprasT.xlsx", "COMPRAS", paqueteria.getText(), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 22);
 
             //UNIDADES
             EscribirCRM.escribirCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 6);
