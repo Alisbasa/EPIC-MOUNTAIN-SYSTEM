@@ -23,12 +23,12 @@ import javax.swing.JPanel;
  *
  * @author Erick Ivan
  */
-public class Pendientes extends javax.swing.JFrame {
+public final class Pendientes extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
     static JPanel jpRellenar;
-    JComboBox ventaC;
-    JLabel deudaC;
+    static JComboBox ventaC;
+    static JLabel deudaC;
     
     /**
      * Creates new form clienteNuevo
@@ -155,19 +155,20 @@ public class Pendientes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public JPanel RellenarPanel(){
+    public static JPanel RellenarPanel(){
         comboPendientes.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(comboPendientes.getSelectedItem().toString().equals("Ventas a Cobrar")){
-                   jpRellenar.removeAll();
-                   jpRellenar.setLayout(new GridLayout(1, 3));
-                   
                     try {
+                        jpRellenar.removeAll();
+                        jpRellenar.revalidate();
+                        jpRellenar.setLayout(new GridLayout(1, 3));
                         ventaC = new JComboBox(LeerExcel.obtenerHoja("src//excel//DeudasC.xlsx"));
                         deudaC = new JLabel(Double.toString(LeerExcel.obtenerCeldaNumerica("src//excel//DeudasC.xlsx", ventaC.getSelectedItem().toString(), 1 , LeerExcel.contarRenglones("src//excel//DeudasC.xlsx", ventaC.getSelectedItem().toString()))));
                         jpRellenar.add(ventaC);
                         jpRellenar.add(deudaC);
+                        jpRellenar.repaint();
                     } catch (IOException ex) {
                         Logger.getLogger(Pendientes.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -259,7 +260,7 @@ public class Pendientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JComboBox<String> comboPendientes;
+    public static javax.swing.JComboBox<String> comboPendientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
