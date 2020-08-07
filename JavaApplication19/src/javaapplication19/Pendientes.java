@@ -167,37 +167,39 @@ public final class Pendientes extends javax.swing.JFrame {
             String descripcion = LeerExcel.obtenerCelda("src\\excel\\comprasT.xlsx", "COMPRAS", 1, fila);
             String condicion = LeerExcel.obtenerCelda("src\\excel\\comprasT.xlsx", "COMPRAS", 3, fila);
             String pack = LeerExcel.obtenerCelda("src\\excel\\comprasT.xlsx", "COMPRAS", 4, fila);
-            double tig = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 5, fila);
-            int unidades = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 6, fila);
-            double costoUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 7, fila);
+            
             double costoNeto = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 8, fila);
-            double precioBaseU = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 9, fila);
-            double precioBaseNeto = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 10, fila);
+            
 
             String[] equipo = {fecha, producto, descripcion, Double.toString(costoNeto)};
 
             switch (tipo) {
                 case "HERRAMIENTAS":
                     EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", tipo, equipo, 4);
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", tipo, costoUnidad, LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", tipo), 3);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", tipo, costoNeto, LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", tipo), 3);
                     Escribir.removeRow("src\\excel\\comprasT.xlsx", "COMPRAS", fila);
                     break;
                 case "EQUIPO DE TALLER":
                     EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", tipo, equipo, 4);
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", tipo, costoUnidad, LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", tipo), 3);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", tipo, costoNeto, LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", tipo), 3);
                     Escribir.removeRow("src\\excel\\comprasT.xlsx", "COMPRAS", fila);
                     break;
                 case "MOBILIARIO":
                     EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", tipo, equipo, 4);
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", tipo, costoUnidad, LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", tipo), 3);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", tipo, costoNeto, LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", tipo), 3);
                     Escribir.removeRow("src\\excel\\comprasT.xlsx", "COMPRAS", fila);
                     break;
                 case "EQUIPO DE LIMPIEZA":
                     EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", tipo, equipo, 4);
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", tipo, costoUnidad, LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", tipo), 3);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", tipo, costoNeto, LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", tipo), 3);
                     Escribir.removeRow("src\\excel\\comprasT.xlsx", "COMPRAS", fila);
                     break;
                 case "INVENTARIO PRINCIPAL":
+                    double tig = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 5, fila);
+            int unidades = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 6, fila);
+            double costoUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 7, fila);
+            double precioBaseU = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 9, fila);
+            double precioBaseNeto = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 10, fila);
                     String[] inventario = {producto, descripcion, fecha, condicion, pack};
 
                     EscribirExcel.escribirExcelInv("src\\excel\\Inventario.xlsx", "Inventario", inventario, 5);
@@ -291,34 +293,40 @@ public final class Pendientes extends javax.swing.JFrame {
 
                     break;
                 case "PACK DE VENTAS":
+                    double tigP = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 5, fila);
+            int unidadesP = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 6, fila);
+            double costoUnidadP = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 7, fila);
+            double precioBaseUP = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 9, fila);
+            double precioBaseNetoP = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 10, fila);
+                    
                     String[] packs = {producto, descripcion, fecha, condicion, pack};
 
                     EscribirExcel.escribirExcelInv("src\\excel\\Packs.xlsx", pack, packs, 5);
 
                     //UNIDADES
-                    EscribirExcel.escribirCeldaNumerica("src\\excel\\Packs.xlsx", pack, unidades, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 6);
+                    EscribirExcel.escribirCeldaNumerica("src\\excel\\Packs.xlsx", pack, unidadesP, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 6);
 
                     //TIG
-                    Double TIGP = tig;
+                    Double TIGP = tigP;
                     EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, TIGP, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 5);
 
                     //COSTO UNIDAD
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, costoUnidad, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 7);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, costoUnidadP, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 7);
                     //COSTO NETO
                     EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, costoNeto, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 8);
 
                     //PRECIO BASE UNIDAD
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, precioBaseU, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 9);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, precioBaseUP, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 9);
 
                     //PRECIO BASE NETO
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, precioBaseNeto, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 10);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, precioBaseNetoP, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 10);
 
                     //PRECIO LOCAL UNIDAD
-                    Double precioLP = precioBaseU * 1.16;
+                    Double precioLP = precioBaseUP * 1.16;
                     EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, precioLP, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 11);
 
                     //PRECIO LOCAL NETO
-                    Double precioNetoP = unidades * precioLP;
+                    Double precioNetoP = unidadesP * precioLP;
                     EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, precioNetoP, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 12);
 
                     //COMISION ML
@@ -326,31 +334,31 @@ public final class Pendientes extends javax.swing.JFrame {
                     EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, comisionMLP, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 15);
 
                     //COMISION ML NETO
-                    Double comisionMLNP = unidades * comisionMLP;
+                    Double comisionMLNP = unidadesP * comisionMLP;
                     EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, comisionMLNP, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 16);
 
                     // IVA UNIDAD
-                    Double IVAP = precioBaseU * 0.16;
+                    Double IVAP = precioBaseUP * 0.16;
                     EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, IVAP, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 17);
 
                     //IVA NETO
-                    Double ivaNP = unidades * IVAP;
+                    Double ivaNP = unidadesP * IVAP;
                     EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, ivaNP, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 18);
 
                     //PRECIO ML
-                    Double precioMLP = precioBaseU + IVAP + comisionMLP + 35;
+                    Double precioMLP = precioBaseUP + IVAP + comisionMLP + 35;
                     EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, precioMLP, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 13);
 
                     //PRECIOML NETO
-                    Double precioMLNP = precioMLP * unidades;
+                    Double precioMLNP = precioMLP * unidadesP;
                     EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, precioMLNP, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 14);
 
                     //UTILIDAD UNIDAD LOCAL
-                    Double utilidadP = precioLP - costoUnidad - IVAP;
+                    Double utilidadP = precioLP - costoUnidadP - IVAP;
                     EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, utilidadP, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 19);
 
                     //UTILIDAD LOCAL NETA
-                    Double utilidadLNP = unidades * utilidadP;
+                    Double utilidadLNP = unidadesP * utilidadP;
                     EscribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", pack, utilidadLNP, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack), 20);
 
                     String formulaP = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", pack) + 1) + ")";
