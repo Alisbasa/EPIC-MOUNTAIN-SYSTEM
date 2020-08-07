@@ -155,7 +155,7 @@
                 <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="String[] arr={&quot;Venta a Cobrar&quot;, &quot;Deuda a Pagar&quot;, &quot;Compra en Transito&quot;};"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="comboPendientes.setUI(PropiedadesCB2.createUI(comboPendientes));&#xa;comboPendientes.setBackground(Color.white);"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
