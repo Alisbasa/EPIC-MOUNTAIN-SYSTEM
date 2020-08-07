@@ -234,7 +234,7 @@ public class equipoymobCT extends javax.swing.JFrame {
             escribirE.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", Double.valueOf(jtCosto.getText()), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 3);
             escribirE.escribirCelda("src\\excel\\comprasT.xlsx", "COMPRAS", tipoGasto.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 21);
             escribirE.escribirCelda("src\\excel\\comprasT.xlsx", "COMPRAS", paqueteria.getText(), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 22);
-            String[] data = {(String) fechaActual(), "Compra en Transito", jtProducto.getText(), jtCosto.getText(), (String) productoCT.getSelectedItem(), "VERDE", "   "};
+            String[] data = {(String) fechaActual(), "Compra en Transito", jtProducto.getText(), jtCosto.getText(), (String) tipoGasto.getSelectedItem(), "VERDE", "   "};
         } catch (IOException ex) {
             Logger.getLogger(equipoymobCT.class.getName()).log(Level.SEVERE, null, ex);
         }
