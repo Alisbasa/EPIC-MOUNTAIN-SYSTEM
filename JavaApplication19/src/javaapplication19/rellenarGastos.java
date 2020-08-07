@@ -465,7 +465,7 @@ public class rellenarGastos {
     }
 
     //Pone Gasto: Desarollo: Compras en Transito
-    void botonDesCT(JTextField desarrolloTipoCT, JComboBox productoCT, JTextField montoDesCT, JLabel iconoOkDesarrolloCT, JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre, JComboBox provedores, JTextField unidadesCT, JTextField paqueteria) {
+    void botonDesCT(JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre, JComboBox productoCT, JTextField paqueteria, JTextField costoInv, JTextField costoE, JTextField costoP, JLabel iconoOkDesarrolloCT) {
         MouseListener botonV = new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -482,55 +482,32 @@ public class rellenarGastos {
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                 fecha.setText(fechaActual());
-
-                JLabel desarrolloLista = new JLabel();
-                desarrolloLista.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                desarrolloLista.setText(desarrolloTipoCT.getText());
-
-                JLabel productoAg = new JLabel();
-                productoAg.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                productoAg.setText((String) productoCT.getSelectedItem());
-
-                JLabel precio = new JLabel();
-                precio.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                precio.setText("$ " + montoDesCT.getText());
-
+                
                 JLabel icono = new JLabel();
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                Iconos.scaleImage("comprasTG", icono, 25);
-                listaGastos.add(panelGasto, 1);
-                panelesGastos.add(panelGasto);
-
-                botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "comprasTG", "src//excel/LibrosContables.xlsx", "Gastos");
-                botonBorrarInd(icono, "src\\excel\\comprasT.xlsx", "COMPRAS");
-
-                panelGasto.add(fecha);
-                panelGasto.add(desarrolloLista);
-                panelGasto.add(precio);
-                panelGasto.add(new JLabel(""));
-                panelGasto.add(icono);
-
-                String[] data = {(String) fechaActual(), "Compra en Transito", desarrolloTipoCT.getText(), montoDesCT.getText(), (String) productoCT.getSelectedItem(), "VERDE", "   "};
-                String[] compraT = {productoCT.getSelectedItem().toString(), desarrolloTipoCT.getText(),
-                    (String) fechaActual(), unidadesCT.getText(), montoDesCT.getText(), Double.toString(Integer.valueOf(unidadesCT.getText()) * Double.valueOf(montoDesCT.getText()))};
-                Escribir escribirVentas = new Escribir();
-                try {
-                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
-                    escribirVentas.escribirExcelInv("src\\excel\\comprasT.xlsx", "COMPRAS", compraT, 7);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", Integer.valueOf(unidadesCT.getText()), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 4);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", Double.valueOf(montoDesCT.getText()), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 5);
-                    Double precioNeto = escribirVentas.Mulitplicar(4, 5, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), "src\\excel\\comprasT.xlsx", "COMPRAS");
-                    escribirVentas.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", precioNeto, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 6);
-                    String formula = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + ")";
-                    escribirVentas.escribirFormula("src\\excel\\comprasT.xlsx", "COMPRAS", formula, (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + 1), 6);
-
-                } catch (IOException ex) {
-                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                Iconos.scaleImage("packsG", icono, 25);
+                
+                JLabel costoCT = new JLabel();
+                if(productoCT.getSelectedItem().toString().equals("Inventario Princ.")){
+                    
+                    inventarioPrincipalCT inventarioP = new inventarioPrincipalCT(paqueteria, productoCT);
+                    inventarioP.setVisible(true);
+                    costoCT.setText(costoInv.getText());
+ 
+                    
+                }else if(productoCT.getSelectedItem().toString().equals("Equipo y Mob.")){
+                    
+                    equipoymobCT equipo = new equipoymobCT (paqueteria, productoCT);
+                    equipo.setVisible(true);
+                    costoCT.setText(costoE.getText());
+                    
+                }else if(productoCT.getSelectedItem().toString().equals("Packs de Ventas")){
+                    
+                    packsCT packs = new packsCT(paqueteria, productoCT);
+                    packs.setVisible(true);
+                    costoCT.setText(costoP.getText());   
                 }
-                if (provedores.getSelectedItem().toString() == "Nuevo") {
-                    Provedores prov = new Provedores();
-                    prov.setVisible(true);
-                }
+                
                 indice++;
                 panelPadre.removeAll();
                 panelPadre.updateUI();

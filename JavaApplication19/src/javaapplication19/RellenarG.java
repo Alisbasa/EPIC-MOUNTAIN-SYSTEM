@@ -277,45 +277,19 @@ public class RellenarG {
 
         Iconos.scaleImage("Compras", iconoDesarrollo, 30);
         rellenarDesCompras.add(iconoDesarrollo);
-
-        desarrolloTipoCT = new JTextField();
-        addPlaceHolder("Compra en Transito", desarrolloTipoCT);
-        desarrolloTipoCT.setBackground(Colores.epicColorBajito);
-        desarrolloTipoCT.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        desarrolloTipoCT.setPreferredSize(new Dimension(150, 30));
-       
-                    
-
-        montoDesCT = new JTextField();
-        addPlaceHolder("Monto", montoDesCT);
-        montoDesCT.setBackground(Colores.epicColorBajito);
-        montoDesCT.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        montoDesCT.setPreferredSize(new Dimension(60, 30));
-        
-        unidadesCT = new JTextField();
-        addPlaceHolder("Unidades", unidadesCT);
-        unidadesCT.setBackground(Colores.epicColorBajito);
-        unidadesCT.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        unidadesCT.setPreferredSize(new Dimension(60, 30));
                     
         String [] listaComprasCT = {"Equipo y Mob.", "Inventario Princ." , "Packs de Ventas", "Egresos"};
         productoCT = new JComboBox (listaComprasCT);
         productoCT.setUI(PropiedadesCB2.createUI(productoCT));
         productoCT.setPreferredSize(new Dimension(100,30));
         
-        
         paqueteria = new JTextField();
         addPlaceHolder("Paqueteria", paqueteria);
         paqueteria.setBackground(Colores.epicColorBajito);
-        paqueteria.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         paqueteria.setPreferredSize(new Dimension(60,30));
-        
         
         Iconos.scaleImage("ok", iconoOkDesarrolloCT, 30);
                     
-        rellenarDesCompras.add(desarrolloTipoCT);
-        rellenarDesCompras.add(montoDesCT);
-        rellenarDesCompras.add(unidadesCT);
         rellenarDesCompras.add(productoCT);
         rellenarDesCompras.add(paqueteria);
         rellenarDesCompras.add(iconoOkDesarrolloCT);
