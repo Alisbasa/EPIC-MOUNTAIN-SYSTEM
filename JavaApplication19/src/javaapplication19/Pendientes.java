@@ -26,9 +26,7 @@ import javax.swing.JPanel;
 public final class Pendientes extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
-    static JPanel jpRellenar;
-    static JComboBox ventaC;
-    static JLabel deudaC;
+    
     
     /**
      * Creates new form clienteNuevo
@@ -40,7 +38,7 @@ public final class Pendientes extends javax.swing.JFrame {
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        jpDescripcion.add(RellenarPanel());
+        
         
     }
     /**
@@ -59,75 +57,66 @@ public final class Pendientes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jpDatos = new javax.swing.JPanel();
         jpDescripcion = new javax.swing.JPanel();
-        String[] arr={"Venta a Cobrar", "Deuda a Pagar", "Compra en Transito"};
-        comboPendientes = new javax.swing.JComboBox(arr);
-        jpPack = new javax.swing.JPanel();
-        jpTIG = new javax.swing.JPanel();
-        jpUbicacion = new javax.swing.JPanel();
-        jbRegistrar = new javax.swing.JButton();
-        jpBoton = new javax.swing.JPanel();
+        jpDescripcion1 = new javax.swing.JPanel();
+        try{
+            compraT = new javax.swing.JComboBox(LeerExcel.rellenaCB2("src\\excel\\comprasT.xlsx", "COMPRAS", 1));
+            jbRegistrar = new javax.swing.JButton();
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+            jList1.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+            });
+            jScrollPane1.setViewportView(jList1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            setUndecorated(true);
+            getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setPreferredSize(new java.awt.Dimension(900, 40));
-        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jPanel1MouseDragged(evt);
-            }
-        });
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel1MousePressed(evt);
-            }
-        });
-        jPanel1.setLayout(new java.awt.BorderLayout());
+            jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+            jPanel1.setPreferredSize(new java.awt.Dimension(900, 40));
+            jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                public void mouseDragged(java.awt.event.MouseEvent evt) {
+                    jPanel1MouseDragged(evt);
+                }
+            });
+            jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mousePressed(java.awt.event.MouseEvent evt) {
+                    jPanel1MousePressed(evt);
+                }
+            });
+            jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jPanel10.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel10.setPreferredSize(new java.awt.Dimension(300, 30));
-        jPanel10.setLayout(new java.awt.BorderLayout());
+            jPanel10.setBackground(new java.awt.Color(0, 0, 0));
+            jPanel10.setPreferredSize(new java.awt.Dimension(300, 30));
+            jPanel10.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ACTIVOS PENDIENTES");
-        jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
-        jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
+            jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+            jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+            jLabel1.setText("ACTIVOS PENDIENTES");
+            jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
+            jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
 
-        jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
+            jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
+            getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
-        jpDatos.setBackground(new java.awt.Color(51, 51, 51));
-        jpDatos.setLayout(new java.awt.GridLayout(5, 0));
+            jpDatos.setBackground(new java.awt.Color(51, 51, 51));
+            jpDatos.setLayout(new java.awt.GridLayout(3, 0));
 
-        jpDescripcion.setBackground(new java.awt.Color(51, 51, 51));
-        jpDescripcion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+            jpDescripcion.setBackground(new java.awt.Color(51, 51, 51));
+            jpDescripcion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        comboPendientes.setUI(PropiedadesCB2.createUI(comboPendientes));
-        comboPendientes.setBackground(Color.white);
-        jpDescripcion.add(comboPendientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 140, 30));
+            jpDescripcion1.setBackground(new java.awt.Color(51, 51, 51));
+            jpDescripcion1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+            jpDescripcion.add(jpDescripcion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        }catch(IOException e){}
+        compraT.setUI(PropiedadesCB2.createUI(compraT));
+        compraT.setBackground(Color.white);
+        jpDescripcion.add(compraT, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 140, 40));
 
         jpDatos.add(jpDescripcion);
-
-        jpPack.setBackground(new java.awt.Color(51, 51, 51));
-        jpPack.setLayout(new java.awt.BorderLayout());
-        jpDatos.add(jpPack);
-
-        jpTIG.setBackground(new java.awt.Color(51, 51, 51));
-        jpTIG.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jpDatos.add(jpTIG);
-
-        jpUbicacion.setBackground(new java.awt.Color(51, 51, 51));
-        jpUbicacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jbRegistrar.setFont(new java.awt.Font("Franklin Gothic Book", 2, 24)); // NOI18N
         jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -142,44 +131,14 @@ public final class Pendientes extends javax.swing.JFrame {
                 jbRegistrarActionPerformed(evt);
             }
         });
-        jpUbicacion.add(jbRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 170, 60));
+        jpDatos.add(jbRegistrar);
         jbRegistrar.setBackground(Colores.epicColor);
 
-        jpDatos.add(jpUbicacion);
-
-        jpBoton.setBackground(new java.awt.Color(51, 51, 51));
-        jpBoton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jpDatos.add(jpBoton);
-
-        getContentPane().add(jpDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 500, 410));
+        getContentPane().add(jpDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 500, 200));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public static JPanel RellenarPanel(){
-        comboPendientes.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(comboPendientes.getSelectedItem().toString().equals("Ventas a Cobrar")){
-                    try {
-                        jpRellenar.removeAll();
-                        jpRellenar.revalidate();
-                        jpRellenar.setLayout(new GridLayout(1, 3));
-                        ventaC = new JComboBox(LeerExcel.obtenerHoja("src//excel//DeudasC.xlsx"));
-                        deudaC = new JLabel(Double.toString(LeerExcel.obtenerCeldaNumerica("src//excel//DeudasC.xlsx", ventaC.getSelectedItem().toString(), 1 , LeerExcel.contarRenglones("src//excel//DeudasC.xlsx", ventaC.getSelectedItem().toString()))));
-                        jpRellenar.add(ventaC);
-                        jpRellenar.add(deudaC);
-                        jpRellenar.repaint();
-                    } catch (IOException ex) {
-                        Logger.getLogger(Pendientes.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                   
-                }
-            }
-            
-        }
-        );
-        return jpRellenar;
-    }
+
     
     public void changeColor(JPanel hover,Color rand){
         hover.setBackground(rand);
@@ -197,21 +156,21 @@ public final class Pendientes extends javax.swing.JFrame {
         mousepY =evt.getY();
     }//GEN-LAST:event_jPanel1MousePressed
 
+    private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbRegistrarActionPerformed
+
+    private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
+
+        this.setVisible(false);
+    }//GEN-LAST:event_jbRegistrarMouseClicked
+
     public static String fechaActual(){
         java.util.Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM YY");
         return formatoFecha.format(fecha);
     }
     
-    private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbRegistrarActionPerformed
-
-    private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
-        
-        this.setVisible(false);
-    }//GEN-LAST:event_jbRegistrarMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -260,18 +219,15 @@ public final class Pendientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JComboBox<String> comboPendientes;
+    public javax.swing.JComboBox<String> compraT;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbRegistrar;
-    private javax.swing.JPanel jpBoton;
     private javax.swing.JPanel jpDatos;
     private javax.swing.JPanel jpDescripcion;
-    public javax.swing.JPanel jpPack;
-    private javax.swing.JPanel jpTIG;
-    private javax.swing.JPanel jpUbicacion;
+    private javax.swing.JPanel jpDescripcion1;
     // End of variables declaration//GEN-END:variables
 }

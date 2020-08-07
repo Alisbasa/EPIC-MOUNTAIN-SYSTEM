@@ -12,29 +12,32 @@ import java.util.List;
  * @author Alex
  */
 public class ListasCB {
+    
     static  String[] ingresos = {"VENTAS",
-                                      "INVERSIÓN",
-                                      "CRÉDITO",
-                                      "IMPUESTOS",
-                                       "DEUDAS A COB.",
-                                       "VENTAS A COB.",
-                                       "DEVOLUCIONES"};
+                                "INVERSIÓN",
+                                "CRÉDITO",
+                                "IMPUESTOS",
+                                "DEUDAS A COB.",
+                                "VENTAS A COB.",
+                                "DEUDA A PAG. EXIS.",
+                                "APORTACIONES"};
     
     static  String[] gastos = {"EQUIPO Y MOB.",
                                "INVENTARIO PRINCIPAL",
                                "PACKS DE VENTAS",
                                "COMPRAS EN TRANSITO",
-                                "DEUDAS A PAGAR",
-                                "MANTENIMIENTO",
-                                "IMPUESTOS",
-                                "SUMINISTROS",
-                                "PUBLICIDAD",
-                                "TRANSPORTE",
-                                "HONORARIOS",
-                                "REDUC. DE INV."};
-    
-     
+                               "DEUDAS A PAGAR",
+                               "MANTENIMIENTO",
+                               "IMPUESTOS",
+                               "SUMINISTROS",
+                               "PUBLICIDAD",
+                               "TRANSPORTE",
+                               "HONORARIOS",
+                               "REDUC. DE INV.",
+                               "DEVOLUCIONES",
+                               "DESECHAR EQUIPO Y MOB."}; 
 
+    
     static public String[] getIngresos() {
         return ingresos;
     }

@@ -40,7 +40,6 @@ public class Rellenar {
     JPanel rellenarCredito = new JPanel();
     JPanel rellenarDeudasC = new JPanel();
     JPanel rellenarVentasC = new JPanel();
-    JPanel rellenarDevoluciones = new JPanel();
 
     JLabel iconoVentas = new JLabel();
     JLabel iconoCredito = new JLabel();
@@ -48,7 +47,6 @@ public class Rellenar {
     JLabel iconoImpuesto = new JLabel();
     JLabel iconoDeudasC = new JLabel();
     JLabel iconoVentasC = new JLabel();
-    JLabel iconoDevoluciones = new JLabel();
 
     JLabel iconoOkV = new JLabel();
     JLabel iconoOkC = new JLabel();
@@ -56,7 +54,6 @@ public class Rellenar {
     JLabel iconoOkImp = new JLabel();
     JLabel iconoOkDeudasC = new JLabel();
     JLabel iconoOkVentasC = new JLabel();
-    JLabel iconoOkDev = new JLabel();
 
     JTextField monto;
     JTextField montoC;
@@ -64,7 +61,6 @@ public class Rellenar {
     JTextField montoImp;
     JTextField montoDeuC;
     JTextField montoVC;
-    JTextField montoDev;
 
     JComboBox inventario; //Ventas //VentasC
     JComboBox unidades;
@@ -78,7 +74,6 @@ public class Rellenar {
     JTextField impuesto;
     int indexInventario = 1;
 
-    JComboBox devolucion;
 
     JComboBox deudor; //DeudasC
 
@@ -358,28 +353,4 @@ public class Rellenar {
         return rellenarVentas;
     }
 
-    public JPanel rellenarDevoluciones() throws IOException {
-        rellenarDevoluciones.removeAll();
-
-        rellenarDevoluciones.setBackground(Color.white);
-        Iconos.scaleImage("Inventario", iconoDevoluciones, 40);
-        
-
-        devolucion = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 0));
-        devolucion.setBackground(Color.white);
-        devolucion.setUI(PropiedadesCB2.createUI(inventario));
-        devolucion.setPreferredSize(new Dimension(300,30));
-        devolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-
-        
-
-        
-        Iconos.scaleImage("ok", iconoOkDev, 30);
-        rellenarDevoluciones.add(iconoDevoluciones);
-        rellenarDevoluciones.add(devolucion);
-        
-        rellenarDevoluciones.add(iconoOkDev);
-
-        return rellenarDevoluciones;
-    }
 }

@@ -8,6 +8,7 @@ package javaapplication19;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +26,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javaapplication19.Libros;
 import static javaapplication19.Rellenar.addPlaceHolder;
+import static javaapplication19.rellenarIngresos.fechaActualEscribir;
 import javax.swing.BorderFactory;
 import javax.swing.border.LineBorder;
 
@@ -46,6 +48,7 @@ public class RellenarG {
     JPanel rellenarTransporte =new JPanel();
     JPanel rellenarHonorarios =new JPanel();
     JPanel rellenarReducInv =new JPanel();
+    JPanel rellenarDevoluciones = new JPanel();
     
     JLabel iconoDesarrollo = new JLabel();
     JLabel iconoDeudasPagar = new JLabel();
@@ -56,6 +59,7 @@ public class RellenarG {
     JLabel iconoTransporte = new JLabel();
     JLabel iconoHonorarios = new JLabel();
     JLabel iconoReducInv = new JLabel();
+    JLabel iconoDevoluciones = new JLabel();
     
     JComboBox tipo;
     JComboBox desarrollo;
@@ -78,6 +82,9 @@ public class RellenarG {
     JComboBox tipoPack;
     JComboBox provedores;
     JTextField unidadesCT;
+    JComboBox devolucion;
+    JComboBox inventario;
+    JTextField paqueteria;
     
     JTextField montoDesCT;
     JTextField montoDesE;
@@ -93,6 +100,8 @@ public class RellenarG {
     JTextField montoHonor;
     JTextField montoReduc;
     JTextField descripcion;
+    JTextField montoDev;
+    
     
     JLabel iconoOkDesarrolloEq = new JLabel();
     JLabel iconoOkDesarrolloI = new JLabel();
@@ -106,6 +115,7 @@ public class RellenarG {
     JLabel iconoOkTransporte = new JLabel();
     JLabel iconoOkHonorarios = new JLabel();
     JLabel iconoOkReducInv = new JLabel();
+    JLabel iconoOkDev = new JLabel();
      
     
     
@@ -293,18 +303,21 @@ public class RellenarG {
         productoCT.setUI(PropiedadesCB2.createUI(productoCT));
         productoCT.setPreferredSize(new Dimension(100,30));
         
-        provedores = new JComboBox(LeerExcel.rellenaCB2("src//excel/Provedores.xlsx", "MIS PROVEEDORES", 0));
-        provedores.addItem("Nuevo");
-        provedores.setUI(PropiedadesCB2.createUI(provedores));
-        provedores.setPreferredSize(new Dimension(150,30));
-
+        
+        paqueteria = new JTextField();
+        addPlaceHolder("Paqueteria", paqueteria);
+        paqueteria.setBackground(Colores.epicColorBajito);
+        paqueteria.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        paqueteria.setPreferredSize(new Dimension(60,30));
+        
+        
         Iconos.scaleImage("ok", iconoOkDesarrolloCT, 30);
                     
         rellenarDesCompras.add(desarrolloTipoCT);
         rellenarDesCompras.add(montoDesCT);
         rellenarDesCompras.add(unidadesCT);
         rellenarDesCompras.add(productoCT);
-        rellenarDesCompras.add(provedores);
+        rellenarDesCompras.add(paqueteria);
         rellenarDesCompras.add(iconoOkDesarrolloCT);
         
         return rellenarDesCompras;
@@ -527,6 +540,30 @@ public class RellenarG {
         rellenarReducInv.add(iconoOkReducInv);
         
         return rellenarReducInv;
+    }
+    public JPanel rellenarDevoluciones() throws IOException {
+        rellenarDevoluciones.removeAll();
+
+        rellenarDevoluciones.setBackground(Color.white);
+        Iconos.scaleImage("Inventario", iconoDevoluciones, 40);
+        
+
+        devolucion = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 0));
+        devolucion.setBackground(Color.white);
+        devolucion.setUI(PropiedadesCB2.createUI(inventario));
+        devolucion.setPreferredSize(new Dimension(300,30));
+        devolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+
+        
+
+        
+        Iconos.scaleImage("ok", iconoOkDev, 30);
+        rellenarDevoluciones.add(iconoDevoluciones);
+        rellenarDevoluciones.add(devolucion);
+        
+        rellenarDevoluciones.add(iconoOkDev);
+
+        return rellenarDevoluciones;
     }
       
 }

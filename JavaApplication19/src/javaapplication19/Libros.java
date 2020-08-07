@@ -1431,25 +1431,6 @@ public class Libros extends javax.swing.JFrame {
             rellenarVentaC.botonVentaC(rellenarVC.monto,rellenarVC.inventario, rellenarVC.iconoOkVentasC, scrollIngresos,listaIngresos, rellenarVC.plataformacb, rellenarVC.cliente ,rellenarVC.unidades,rellenarVC.rellenarVentas);
           
         }
-        
-        else if(comboIngresos.getSelectedItem().toString().equals("DEVOLUCIONES") ) {
-            rellenarIngresos rellenarDevolucion = new rellenarIngresos();
-            Rellenar rellenarDev = new Rellenar();
-                
-            rellenarIngresos.removeAll();
-            rellenarIngresos.revalidate();
-            rellenarIngresos.repaint();
-            
-                
-            
-            try {
-                rellenarIngresos.add(rellenarDev.rellenarDevoluciones());
-            } catch (IOException ex) {
-                Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            rellenarDevolucion.botonDev(rellenarDev.montoDev,rellenarDev.devolucion, rellenarDev.iconoOkDev, scrollIngresos,listaIngresos,rellenarDev.rellenarDevoluciones);
-          
-        }
 
         
     }//GEN-LAST:event_comboIngresosActionPerformed
@@ -1521,7 +1502,7 @@ public class Libros extends javax.swing.JFrame {
                 Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            rellenarDesCompra.botonDesCT(rellenarDes.desarrolloTipoCT, rellenarDes.productoCT, rellenarDes.montoDesCT, rellenarDes.iconoOkDesarrolloCT, scrollGastos, listaGastos, rellenarDes.rellenarDesCompras, rellenarDes.provedores, rellenarDes.unidadesCT);  
+            rellenarDesCompra.botonDesCT(rellenarDes.desarrolloTipoCT, rellenarDes.productoCT, rellenarDes.montoDesCT, rellenarDes.iconoOkDesarrolloCT, scrollGastos, listaGastos, rellenarDes.rellenarDesCompras, rellenarDes.provedores, rellenarDes.unidadesCT, rellenarDes.paqueteria);  
         }
         
         
@@ -1633,6 +1614,24 @@ public class Libros extends javax.swing.JFrame {
             }
             rellenarReduccion.botonReducInv(rellenarRed.reducInv,rellenarRed.montoReduc , rellenarRed.iconoOkReducInv, scrollGastos, listaGastos, rellenarRed.rellenarReducInv);
         
+        }
+        else if(comboGastos.getSelectedItem().toString().equals("DEVOLUCIONES") ) {
+            rellenarIngresos rellenarDevolucion = new rellenarIngresos();
+            RellenarG rellenarDev = new RellenarG();
+                
+            rellenarGastos.removeAll();
+            rellenarGastos.revalidate();
+            rellenarGastos.repaint();
+            
+                
+            
+            try {
+                rellenarGastos.add(rellenarDev.rellenarDevoluciones());
+            } catch (IOException ex) {
+                Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            rellenarDevolucion.botonDev(rellenarDev.montoDev,rellenarDev.devolucion, rellenarDev.iconoOkDev, scrollIngresos,listaGastos,rellenarDev.rellenarDevoluciones);
+          
         }
     }//GEN-LAST:event_comboGastosActionPerformed
 
