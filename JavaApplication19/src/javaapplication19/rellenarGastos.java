@@ -1301,8 +1301,8 @@ public class rellenarGastos {
                             IconoTipo = "packsG";
                             break;
                         case "Compra en Transito":
-                            IconoTipo = "comprasTG";
-                            panelGasto.setBackground(Colores.amarillo);
+                            IconoTipo = "Comprash";
+                            
                             break;
                         case "Deudas a Pagar":
                             IconoTipo = "DeudasPG_1";
