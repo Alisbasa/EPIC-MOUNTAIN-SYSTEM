@@ -50,6 +50,7 @@ public class Libros extends javax.swing.JFrame {
     int mousepY;
     static String[] listaInventar;
     static rellenarIngresos rellenar = new rellenarIngresos();
+    static rellenarGastos rellenarG = new rellenarGastos();
     
     
     
@@ -1147,13 +1148,12 @@ public class Libros extends javax.swing.JFrame {
     
     private void myInitComponents() throws IOException{
         
-        
         comboIngresos.setUI( PropiedadesCB.createUI(rootPane));
         comboGastos.setUI( PropiedadesCB.createUI(rootPane));
         
-        rellenarGastos rellenarG = new rellenarGastos();
+        
         rellenar.rellenarLibro(listaIngresos);
-        rellenarG.rellenarLibro(scrollGastos, listaGastos);        
+        rellenarG.rellenarLibro(listaGastos);        
         
 
     
@@ -1162,7 +1162,11 @@ public class Libros extends javax.swing.JFrame {
     public static void actualiza() throws IOException{
          System.out.println("HOLA");
          rellenar.rellenarLibro(listaIngresos);
+         rellenarG.rellenarLibro(listaGastos);
+         listaGastos.updateUI();
          listaIngresos.updateUI();
+         
+         
     }
     
     //Abre archivo Excel CRM
@@ -2010,7 +2014,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel libro;
     private javax.swing.JPanel libroGastos;
     private javax.swing.JPanel libroIngresos;
-    public javax.swing.JPanel listaGastos;
+    public static javax.swing.JPanel listaGastos;
     private static javax.swing.JPanel listaIngresos;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel maxiIcon;

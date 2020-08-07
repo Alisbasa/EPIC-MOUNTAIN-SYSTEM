@@ -1221,7 +1221,7 @@ public class rellenarGastos {
         return formatoFecha.format(fecha);
     }
 
-    public void rellenarLibro(JScrollPane scrollGastos, JPanel listaGastos) throws IOException {
+    public void rellenarLibro(JPanel listaGastos) throws IOException {
 
         listaGastos.removeAll();
         JPanel TOP = new JPanel();
@@ -1258,6 +1258,7 @@ public class rellenarGastos {
         TOP.add(montoTOP);
         TOP.add(ingresosTOP);
         TOP.add(new JLabel(""));
+        
 
         listaGastos.add(TOP, 0);
         if (!LeerExcel.tablaVacia("src\\excel\\LibrosContables.xlsx", "Gastos")) {
