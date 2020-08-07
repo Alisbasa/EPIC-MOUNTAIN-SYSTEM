@@ -189,15 +189,13 @@ public class DeudaCobrar extends javax.swing.JFrame {
         String [] Registro2 = {fechaActual(), monto.getText()};
         Escribir escribirExcel = new Escribir();
         try {
-            //ESCRIBIR LIBROS
-            escribirExcel.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", dataLibros);
             
-            Libros.actualiza();
             
             //ESCRIBIR DEUDAS
+            escribirExcel.crearHoja("src\\excel\\DeudasC.xlsx", jtNombre.getText(), "FECHA", "MONTO");
             escribirExcel.escribirExcelInv("src\\excel\\DeudasC.xlsx","deudasCobrar", Registro,3);
             escribirExcel.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", Double.valueOf(Registro[2]), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 2);
-            escribirExcel.crearHoja("src\\excel\\DeudasC.xlsx", jtNombre.getText(), "FECHA", "MONTO");
+            
             escribirExcel.escribirExcelInv("src\\excel\\DeudasC.xlsx", jtNombre.getText(), Registro2,2);
             escribirExcel.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", jtNombre.getText(), Double.valueOf(Registro2[1]), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText()), 1);
             String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+1) + ")";
@@ -205,10 +203,20 @@ public class DeudaCobrar extends javax.swing.JFrame {
                         System.out.println((LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+ 1));
                         String formula2 = escribirExcel.Restar(2, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+ 1),'b');
                         escribirExcel.escribirFormula("src\\excel\\DeudasC.xlsx", jtNombre.getText(),  formula2, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+ 1), 1);
+                        //ESCRIBIR LIBROS
+            escribirExcel.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", dataLibros);
+            
+            Libros.actualiza();
+            this.setVisible(false);
         } catch (IOException ex) {
-            Logger.getLogger(DeudaCobrar.class.getName()).log(Level.SEVERE, null, ex);
+                    Caption ventanaEx = new Caption("Recuerda cerrar Excel");
+                    ventanaEx.setVisible(true);
         }
-        this.setVisible(false);
+         catch (IllegalArgumentException ex) {
+                    Caption ventanaEx = new Caption("<html>"+jtNombre.getText()+" es un deudor <br>registrado</html>"  );
+                    ventanaEx.setVisible(true);
+        }
+        
     }//GEN-LAST:event_jbRegistrarMouseClicked
 
     public static String fechaActual(){

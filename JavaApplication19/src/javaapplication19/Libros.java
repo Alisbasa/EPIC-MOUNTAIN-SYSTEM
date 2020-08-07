@@ -1037,7 +1037,6 @@ public class Libros extends javax.swing.JFrame {
         ingresosLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 25));
         headerLibroIngresos.add(ingresosLabel);
 
-        comboIngresos.setBackground(new java.awt.Color(255, 255, 255));
         comboIngresos.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         comboIngresos.setForeground(new java.awt.Color(51, 51, 51));
         comboIngresos.setModel(new javax.swing.DefaultComboBoxModel<>(ListasCB.getIngresos()));
@@ -1091,13 +1090,12 @@ public class Libros extends javax.swing.JFrame {
         ingresosLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 25));
         headerLibroGastos.add(ingresosLabel1);
 
-        comboGastos.setBackground(new java.awt.Color(255, 255, 255));
         comboGastos.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         comboGastos.setForeground(new java.awt.Color(51, 51, 51));
         comboGastos.setMaximumRowCount(9);
         comboGastos.setModel(new javax.swing.DefaultComboBoxModel<>(ListasCB.getGastos()));
         comboGastos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        comboGastos.setPreferredSize(new java.awt.Dimension(200, 35));
+        comboGastos.setPreferredSize(new java.awt.Dimension(300, 35));
         comboGastos.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboGastosItemStateChanged(evt);

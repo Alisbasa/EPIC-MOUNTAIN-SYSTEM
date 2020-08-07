@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import javax.swing.JComboBox;
 import org.apache.commons.compress.archivers.dump.InvalidFormatException;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.BorderStyle;
@@ -198,7 +199,25 @@ public class Escribir {
         outputStream.close();
 
     }
+    public static void removeRow2( XSSFSheet sheet, int rowIndex) throws FileNotFoundException, IOException {
+       
 
+        int lastRowNum = sheet.getLastRowNum();
+        if (rowIndex >= 0 && rowIndex < lastRowNum) {
+            sheet.shiftRows(rowIndex + 1, lastRowNum, -1);
+            
+
+        }
+        if (rowIndex == lastRowNum) {
+            XSSFRow removingRow = sheet.getRow(rowIndex);
+            if (removingRow != null) {
+                sheet.removeRow(removingRow);
+
+            }
+        }
+        
+        
+    }
     public static void removeRow(String filepath, String hoja, int rowIndex) throws FileNotFoundException, IOException {
         File file = new File(filepath);
         FileInputStream inputStream = new FileInputStream(file);
@@ -208,7 +227,7 @@ public class Escribir {
         int lastRowNum = sheet.getLastRowNum();
         if (rowIndex >= 0 && rowIndex < lastRowNum) {
             sheet.shiftRows(rowIndex + 1, lastRowNum, -1);
-            System.out.println("hola " + rowIndex + " " + lastRowNum);
+            
 
         }
         if (rowIndex == lastRowNum) {
@@ -584,5 +603,21 @@ public class Escribir {
         newWorkbook.write(outputStream);
         outputStream.close();
 
+    }
+    
+    static void saldarDeuda(String filepath,String hoja,int index) throws FileNotFoundException, IOException{
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+        newWorkbook.removeSheetAt(index);
+        removeRow2( newSheet,index);
+        
+        inputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkbook.write(outputStream);
+        outputStream.close();
+        
+        
     }
 }
