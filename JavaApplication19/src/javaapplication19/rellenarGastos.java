@@ -488,24 +488,39 @@ public class rellenarGastos {
                 Iconos.scaleImage("packsG", icono, 25);
                 
                 JLabel costoCT = new JLabel();
-                if(productoCT.getSelectedItem().toString().equals("Inventario Princ.")){
+                if(productoCT.getSelectedItem().toString().equals("INVENTARIO PRINCIPAL")){
                     
                     inventarioPrincipalCT inventarioP = new inventarioPrincipalCT(paqueteria, productoCT);
                     inventarioP.setVisible(true);
                     costoCT.setText(costoInv.getText());
  
                     
-                }else if(productoCT.getSelectedItem().toString().equals("Equipo y Mob.")){
+                }else if(productoCT.getSelectedItem().toString().equals("HERRAMIENTAS")){
                     
                     equipoymobCT equipo = new equipoymobCT (paqueteria, productoCT);
                     equipo.setVisible(true);
-                    costoCT.setText(costoE.getText());
+                    
+               
+                }else if(productoCT.getSelectedItem().toString().equals("EQUIPO DE TALLER")){
+                    
+                    equipoymobCT equipo = new equipoymobCT (paqueteria, productoCT);
+                    equipo.setVisible(true);
+                    
+                
+                }else if(productoCT.getSelectedItem().toString().equals("MOBILIARIO")){
+                    
+                    equipoymobCT equipo = new equipoymobCT (paqueteria, productoCT);
+                    equipo.setVisible(true);
+                    
+                }else if(productoCT.getSelectedItem().toString().equals("EQUIPO DE LIMPIEZA")){
+                    
+                    equipoymobCT equipo = new equipoymobCT (paqueteria, productoCT);
+                    equipo.setVisible(true);
                     
                 }else if(productoCT.getSelectedItem().toString().equals("Packs de Ventas")){
                     
                     packsCT packs = new packsCT(paqueteria, productoCT);
-                    packs.setVisible(true);
-                    costoCT.setText(costoP.getText());   
+                    packs.setVisible(true);   
                 }
                 
                 indice++;

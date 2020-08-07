@@ -302,6 +302,8 @@ public class packsCT extends javax.swing.JFrame {
         Escribir EscribirCRM = new Escribir();
 
         try {
+            String[] data = {(String) fechaActual(), "Compra en Transito", jtProducto.getText(), jtCosto.getText(), (String) tipoGasto.getSelectedItem(), "VERDE", "   "};
+            EscribirCRM.escribirExcelClientes("src\\excel\\comprasT.xlsx", "COMPRAS", data);
             EscribirCRM.escribirExcelInv("src\\excel\\comprasT.xlsx", "COMPRAS",inventario,5);
 
             //UNIDADES

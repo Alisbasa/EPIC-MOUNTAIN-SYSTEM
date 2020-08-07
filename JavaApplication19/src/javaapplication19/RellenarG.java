@@ -278,15 +278,15 @@ public class RellenarG {
         Iconos.scaleImage("Compras", iconoDesarrollo, 30);
         rellenarDesCompras.add(iconoDesarrollo);
                     
-        String [] listaComprasCT = {"Inventario Princ." , "Packs de Ventas", "Egresos"};
+        String [] listaComprasCT = {"HERRAMIENTAS", "EQUIPO DE TALLER", "MOBILIARIO", "EQUIPO DE LIMPIEZA", "INVENTARIO PRINCIPAL" , "PACK DE VENTAS", "EGRESO"};
         productoCT = new JComboBox (listaComprasCT);
         productoCT.setUI(PropiedadesCB2.createUI(productoCT));
-        productoCT.setPreferredSize(new Dimension(100,30));
+        productoCT.setPreferredSize(new Dimension(250,30));
         
         paqueteria = new JTextField();
         addPlaceHolder("Paqueteria", paqueteria);
         paqueteria.setBackground(Colores.epicColorBajito);
-        paqueteria.setPreferredSize(new Dimension(60,30));
+        paqueteria.setPreferredSize(new Dimension(100,30));
         
         Iconos.scaleImage("ok", iconoOkDesarrolloCT, 30);
                     

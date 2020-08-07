@@ -235,6 +235,7 @@ public class equipoymobCT extends javax.swing.JFrame {
             escribirE.escribirCelda("src\\excel\\comprasT.xlsx", "COMPRAS", tipoGasto.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 21);
             escribirE.escribirCelda("src\\excel\\comprasT.xlsx", "COMPRAS", paqueteria.getText(), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 22);
             String[] data = {(String) fechaActual(), "Compra en Transito", jtProducto.getText(), jtCosto.getText(), (String) tipoGasto.getSelectedItem(), "VERDE", "   "};
+            escribirE.escribirExcelClientes("src\\excel\\comprasT.xlsx", "COMPRAS", data);
         } catch (IOException ex) {
             Logger.getLogger(equipoymobCT.class.getName()).log(Level.SEVERE, null, ex);
         }

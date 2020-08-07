@@ -301,6 +301,7 @@ public class packsDeVentas extends javax.swing.JFrame {
             Double.toString(Double.valueOf(jtUnidades.getText()) * Integer.valueOf(jtPrecio.getText()))};
         Escribir escribirExcel = new Escribir();
         try {
+            
             //PACKS DE VENTAS
             escribirExcel.escribirExcelInv("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Registro, 10);
             

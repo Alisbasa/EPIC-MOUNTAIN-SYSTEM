@@ -302,6 +302,8 @@ public class inventarioPrincipalCT extends javax.swing.JFrame {
         Escribir EscribirCRM = new Escribir();
 
         try {
+            String[] data = {(String) fechaActual(), "Compra en Transito", jtProducto.getText(), jtCosto.getText(), (String) tipoGasto.getSelectedItem(), "VERDE", "   "};
+            EscribirCRM.escribirExcelClientes("src\\excel\\comprasT.xlsx", "COMPRAS", data);
             EscribirCRM.escribirExcelInv("src\\excel\\comprasT.xlsx", "COMPRAS",inventario,5);
             EscribirCRM.escribirCelda("src\\excel\\comprasT.xlsx", "COMPRAS", tipoGasto.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 21);
             EscribirCRM.escribirCelda("src\\excel\\comprasT.xlsx", "COMPRAS", paqueteria.getText(), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 22);
