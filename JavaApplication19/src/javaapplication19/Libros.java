@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.PopupMenu;
@@ -75,6 +76,8 @@ public class Libros extends javax.swing.JFrame {
         panelDer.setPreferredSize(new Dimension(200,470));        
         
         this.setExtendedState(Libros.MAXIMIZED_BOTH);
+        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();  
+        this.setMaximizedBounds(env.getMaximumWindowBounds());
         scaleImage("LOGO",LOGO,40);
         scaleImages(100);
         DefaultListModel modelo = new DefaultListModel();

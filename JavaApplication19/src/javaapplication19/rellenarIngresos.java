@@ -312,6 +312,10 @@ public class rellenarIngresos {
                     if (plataformacb.getSelectedIndex() == 0) {
                         numeroPlataforma = 13;
                     }
+                    
+                     Carga carga =new Carga();
+                        carga.setVisible(true);
+                    
                     //MONTO
                     String precioExcel = "precio";
                     precioExcel = String.valueOf(Utilidades.roundTwoDecimals(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", numeroPlataforma, numeroLista) * (Integer.valueOf(unidades.getSelectedItem().toString()))));
@@ -1086,6 +1090,10 @@ public class rellenarIngresos {
                     JLabel montoDeuda = new JLabel();
                     montoDeuda.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     montoDeuda.setText("$" + montoDeuPE.getText());
+                    
+                    JLabel variacion = new JLabel();
+                    variacion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                    variacion.setText("$" + montoDeuPE.getText());
 
 
                     JLabel icono = new JLabel();
@@ -1093,8 +1101,12 @@ public class rellenarIngresos {
                     icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                     
                     botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "DeudasPG");
+                    
+                    
+                       
+                    
 
-                    String[] data = {(String) fechaActual(), "DeudasP", (String) deudasPE.getSelectedItem().toString(), montoDeuda.getText(), "    ", "VERDE", montoDeuPE.getText()};
+                    String[] data = {(String) fechaActual(), "Deuda a Pagar", (String) deudasPE.getSelectedItem().toString(), montoDeuPE.getText(), "    ", "VERDE", montoDeuPE.getText()};
                     Escribir escribirVentas = new Escribir();
                         //Escribe en Excel individual y crea hoja
                         Double suma = LeerExcel.obtenerCeldaNumerica("src\\excel\\DeudasP.xlsx", "deudasPagar", 2, deudasPE.getSelectedIndex()) + Double.valueOf(montoDeuPE.getText());
@@ -1118,7 +1130,7 @@ public class rellenarIngresos {
                     panelIngreso.add(fecha);
                     panelIngreso.add(deudor);
                     panelIngreso.add(montoDeuPE);
-                    panelIngreso.add(new JLabel());
+                    panelIngreso.add(variacion);
                     panelIngreso.add(icono);
                     listaIngresos.add(panelIngreso, 1);
                     panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
@@ -1270,7 +1282,7 @@ public class rellenarIngresos {
                     case "Devolucion":
                         IconoTipo = "devolucionG";
                         break;
-                    case "DeudaP":
+                    case "Deuda a Pagar":
                         IconoTipo = "DeudaPG";
                         break;
                 }
