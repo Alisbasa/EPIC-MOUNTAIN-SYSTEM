@@ -1058,6 +1058,108 @@ public class rellenarIngresos {
 
         iconoOkDev.addMouseListener(botonDev);
     }
+    
+    //Para rellenar un ingreso: Deuda Pagar Existente
+    public void botonDeuPE(JTextField montoDeuPE, JComboBox deudasPE, JLabel iconoOkDeuPE, JScrollPane scrollIngresos, JPanel listaIngresos, JPanel panelPadre) {
+        MouseListener botonDPE = new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+                    PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
+                    panelIngreso.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                    panelIngreso.setLayout(new GridLayout(1, 5));
+                    panelIngreso.setBackground(Colores.epicColorBajito);
+                    panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
+                    panelIngreso.setMaximumSize(new Dimension(550, 40));
+                    panelIngreso.setPreferredSize(new Dimension(550, 100));
+
+                    JLabel fecha = new JLabel();
+                    fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                    fecha.setText(fechaActual());
+                    
+                    JLabel deudor = new JLabel();
+                    deudor.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                    deudor.setText(deudasPE.getSelectedItem().toString());
+
+                    JLabel montoDeuda = new JLabel();
+                    montoDeuda.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                    montoDeuda.setText("$" + montoDeuPE.getText());
+
+
+                    JLabel icono = new JLabel();
+                    Iconos.scaleImage("DeudasPG", icono, 25);
+                    icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+                    
+                    botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "DeudasPG");
+
+                    String[] data = {(String) fechaActual(), "DeudasP", (String) deudasPE.getSelectedItem().toString(), montoDeuda.getText(), "    ", "VERDE", montoDeuPE.getText()};
+                    Escribir escribirVentas = new Escribir();
+                        //Escribe en Excel individual y crea hoja
+                        Double suma = LeerExcel.obtenerCeldaNumerica("src\\excel\\DeudasP.xlsx", "deudasPagar", 2, deudasPE.getSelectedIndex()) + Double.valueOf(montoDeuPE.getText());
+                        escribirVentas.escribirCeldaDouble("src\\excel\\DeudasP.xlsx", "deudasPagar", suma, LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "deudasPagar"), 2);
+                        String[] ventaInd = {fechaActual(), montoDeuPE.getName()};
+                        escribirVentas.escribirExcelInv("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString(), ventaInd, 2);
+                        escribirVentas.escribirCeldaDouble("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString(), Double.valueOf(montoDeuPE.getText()), LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString()), 1);
+                        String formulaInd = "SUM(B2:B" + (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString()) + 1) + ")";
+                        escribirVentas.escribirFormula("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString(), formulaInd, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString()) + 1), 1);
+
+                        //Escribe en Excel general deudasPagar                      
+                        String formula = escribirVentas.Sumar(2, LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "deudasPagar") + 1, 'c');
+                        escribirVentas.escribirFormula("src\\excel\\DeudasP.xlsx", "deudasPagar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "deudasPagar") + 1), 2);
+                    
+                    try {
+                        escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                    } catch (IOException ex) {
+                        Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    panelIngreso.add(fecha);
+                    panelIngreso.add(deudor);
+                    panelIngreso.add(montoDeuPE);
+                    panelIngreso.add(new JLabel());
+                    panelIngreso.add(icono);
+                    listaIngresos.add(panelIngreso, 1);
+                    panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+                    
+
+                    botonBorrarInd(icono, "src\\excel\\DeudasP.xlsx", "DeudasPagar");
+
+                    indice++;
+                    panelPadre.removeAll();
+                    panelPadre.updateUI();
+                    listaIngresos.updateUI();
+                } catch (IOException ex) {
+                    Caption ventanaEx = new Caption("Recuerda cerrar Excel");
+                    ventanaEx.setVisible(true);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Iconos.scaleImage("okh", iconoOkDeuPE, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                Iconos.scaleImage("ok", iconoOkDeuPE, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+
+        iconoOkDeuPE.addMouseListener(botonDPE);
+    }
+    
 
     public static String fechaActual() {
         java.util.Date fecha = new Date();
@@ -1167,6 +1269,9 @@ public class rellenarIngresos {
                         break;
                     case "Devolucion":
                         IconoTipo = "devolucionG";
+                        break;
+                    case "DeudaP":
+                        IconoTipo = "DeudaPG";
                         break;
                 }
 
@@ -1339,6 +1444,7 @@ public class rellenarIngresos {
         }
 
     }
+    
 
     public void devolver(JComboBox devo) throws IOException {
         String fecha = fechaActual();

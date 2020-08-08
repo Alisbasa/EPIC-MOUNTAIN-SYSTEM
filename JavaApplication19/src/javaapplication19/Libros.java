@@ -1435,6 +1435,35 @@ public class Libros extends javax.swing.JFrame {
             rellenarVentaC.botonVentaC(rellenarVC.monto,rellenarVC.inventario, rellenarVC.iconoOkVentasC, scrollIngresos,listaIngresos, rellenarVC.plataformacb, rellenarVC.cliente ,rellenarVC.unidades,rellenarVC.rellenarVentas);
           
         }
+        else if(comboIngresos.getSelectedItem().toString().equals("DEUDA A PAG. EXIS.") ){
+            Rellenar rellenarDeu = new Rellenar();
+            rellenarIngresos rellenarDeuPE = new rellenarIngresos();
+            
+            rellenarIngresos.removeAll();
+            rellenarIngresos.revalidate();
+            rellenarIngresos.repaint();
+            
+            try {
+                rellenarIngresos.add(rellenarDeu.rellenarDeuPE());
+            } catch (IOException ex) {
+                Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            rellenarDeuPE.botonDeuPE(rellenarDeu.montoDeuPE, rellenarDeu.deudasPE, rellenarDeu.iconoOkDeuPE, scrollIngresos, listaIngresos, rellenarDeu.rellenarDeuPE);
+            
+        }
+        else if(comboIngresos.getSelectedItem().toString().equals("APORTACIONES") ){
+            Rellenar rellenarAportacion = new Rellenar();
+            
+            rellenarIngresos.removeAll();
+            rellenarIngresos.revalidate();
+            rellenarIngresos.repaint();
+            
+            try {
+                rellenarIngresos.add(rellenarAportacion.rellenarAport());
+            } catch (IOException ex) {
+                Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
         
     }//GEN-LAST:event_comboIngresosActionPerformed

@@ -40,6 +40,8 @@ public class Rellenar {
     JPanel rellenarCredito = new JPanel();
     JPanel rellenarDeudasC = new JPanel();
     JPanel rellenarVentasC = new JPanel();
+    JPanel rellenarDeuPE = new JPanel();
+    JPanel rellenarAport = new JPanel();
 
     JLabel iconoVentas = new JLabel();
     JLabel iconoCredito = new JLabel();
@@ -47,6 +49,8 @@ public class Rellenar {
     JLabel iconoImpuesto = new JLabel();
     JLabel iconoDeudasC = new JLabel();
     JLabel iconoVentasC = new JLabel();
+    JLabel iconoDeuPE = new JLabel();
+    JLabel iconoAport = new JLabel();
 
     JLabel iconoOkV = new JLabel();
     JLabel iconoOkC = new JLabel();
@@ -54,6 +58,8 @@ public class Rellenar {
     JLabel iconoOkImp = new JLabel();
     JLabel iconoOkDeudasC = new JLabel();
     JLabel iconoOkVentasC = new JLabel();
+    JLabel iconoOkDeuPE = new JLabel();
+    JLabel iconoOkAport = new JLabel();
 
     JTextField monto;
     JTextField montoC;
@@ -61,6 +67,10 @@ public class Rellenar {
     JTextField montoImp;
     JTextField montoDeuC;
     JTextField montoVC;
+    JTextField montoDeuPE;
+    JTextField montoAport;
+    JTextField descripcion;
+    JTextField producto;
 
     JComboBox inventario; //Ventas //VentasC
     JComboBox unidades;
@@ -68,6 +78,9 @@ public class Rellenar {
     JComboBox plataformacb;//Ventas
     JComboBox cliente;//Ventas//VentasC
     JTextField destino;//Ventas
+    JComboBox deudasPE;
+    JComboBox tipoAport;
+    JComboBox tipoEquipo;
 
     JTextField inversor;
     JTextField inversorI;
@@ -351,6 +364,107 @@ public class Rellenar {
         rellenarVentas.add(iconoOkVentasC);
 
         return rellenarVentas;
+    }
+    
+    public JPanel rellenarDeuPE() throws IOException, IOException{
+        rellenarDeuPE.removeAll();
+        rellenarDeuPE.setBackground(Color.white);
+        
+        Iconos.scaleImage("DeudasP", iconoDeuPE, 50);
+        Iconos.scaleImage("ok", iconoOkDeuPE, 30);
+        
+        String [] arr = LeerExcel.obtenerHoja("src\\excel\\DeudasP.xlsx");
+        deudasPE = new JComboBox(arr);
+        deudasPE.setBackground(Color.white);
+        deudasPE.setUI(PropiedadesCB2.createUI(deudasPE));
+        deudasPE.setPreferredSize(new Dimension(150, 30));
+        deudasPE.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
+        montoDeuPE = new JTextField();
+        montoDeuPE.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        addPlaceHolder("Monto", montoDeuPE);
+        montoDeuPE.setBorder(new LineBorder(Colores.epicColor, 0, true));
+        montoDeuPE.setBackground(Colores.epicColorBajito);
+        montoDeuPE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        montoDeuPE.setPreferredSize(new Dimension(100,30));
+        
+        rellenarDeuPE.add(iconoDeuPE);
+        rellenarDeuPE.add(deudasPE);
+        rellenarDeuPE.add(montoDeuPE);
+        rellenarDeuPE.add(iconoOkDeuPE);
+        
+        return rellenarDeuPE;
+    }
+    
+    public JPanel rellenarAport() throws IOException, IOException{
+        rellenarAport.removeAll();
+        rellenarAport.setBackground(Color.white);
+        
+        Iconos.scaleImage("DeudasP", iconoAport, 50);
+        Iconos.scaleImage("ok", iconoOkAport, 30);
+        
+        String [] arr = {"Inventario Principal", "Equipo y Mob."};
+        tipoAport = new JComboBox(arr);
+        tipoAport.setBackground(Color.white);
+        tipoAport.setUI(PropiedadesCB2.createUI(deudasPE));
+        tipoAport.setPreferredSize(new Dimension(150, 30));
+        tipoAport.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
+        producto = new JTextField();
+        addPlaceHolder("Producto", producto);
+        producto.setBackground(Colores.epicColorBajito);
+        producto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        producto.setPreferredSize(new Dimension(150, 30));
+        
+        montoAport = new JTextField();
+        montoAport.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        addPlaceHolder("Monto", montoAport);
+        montoAport.setBorder(new LineBorder(Colores.epicColor, 0, true));
+        montoAport.setBackground(Colores.epicColorBajito);
+        montoAport.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        montoAport.setPreferredSize(new Dimension(70,30));
+        
+        String [] tipoE = {"Herramientas", "Equipo de Taller", "Mobiliario", "Equipo de Limpieza"};
+        tipoEquipo = new JComboBox(tipoE);
+        tipoEquipo.setBackground(Color.white);
+        tipoEquipo.setUI(PropiedadesCB2.createUI(tipoEquipo));
+        tipoEquipo.setPreferredSize(new Dimension(150, 30));
+        tipoEquipo.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
+        
+        descripcion = new JTextField();
+        addPlaceHolder("Descripcion", descripcion);
+        descripcion.setBackground(Colores.epicColorBajito);
+        descripcion.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        descripcion.setPreferredSize(new Dimension(150, 30));
+        
+        rellenarAport.add(iconoAport);
+        rellenarAport.add(tipoAport);
+        
+        tipoAport.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(tipoAport.getSelectedItem().toString().equals("Inventario Principal")){
+                    rellenarAport.removeAll();
+                    rellenarAport.add(iconoAport);
+                    rellenarAport.add(tipoAport);
+                    rellenarAport.add(iconoOkAport);
+                }
+                else if(tipoAport.getSelectedItem().toString().equals("Equipo y Mob.")){
+                    rellenarAport.removeAll();
+                    rellenarAport.add(iconoAport);
+                    rellenarAport.add(tipoEquipo);
+                    rellenarAport.add(producto);
+                    rellenarAport.add(descripcion);
+                    rellenarAport.add(montoAport);
+                    rellenarAport.add(iconoOkAport);
+                    
+                }
+            }
+        });
+       
+        
+        return rellenarAport;
     }
 
 }
