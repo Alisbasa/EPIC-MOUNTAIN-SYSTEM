@@ -61,6 +61,7 @@ public final class desecharEquipo extends javax.swing.JFrame {
         try{
             listaEq = new javax.swing.JComboBox(LeerExcel.rellenaCB2("src\\excel\\Inventario.xlsx", "Inventario", 0));
             jbRegistrar = new javax.swing.JButton();
+            String [] Arr = {}
             tipoEq = new javax.swing.JComboBox();
 
             jList1.setModel(new javax.swing.AbstractListModel<String>() {
@@ -111,7 +112,7 @@ public final class desecharEquipo extends javax.swing.JFrame {
         }catch(IOException e){}
         listaEq.setUI(PropiedadesCB2.createUI(listaEq));
         listaEq.setBackground(Color.white);
-        jpDescripcion.add(listaEq, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 310, 40));
+        jpDescripcion.add(listaEq, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 270, 40));
 
         jbRegistrar.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
         jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -131,24 +132,7 @@ public final class desecharEquipo extends javax.swing.JFrame {
 
         tipoEq.setBackground(Color.white);
         tipoEq.setUI(PropiedadesCB2.createUI(tipoEq));
-        jpDescripcion.add(tipoEq, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 40));
-        listaEq.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                int numeroUnidades = 1;
-                int indexInventario = 1;
-
-                indexInventario = listaEq.getSelectedIndex();
-                try {
-                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 6, indexInventario + 1);
-                } catch (IOException ex) {
-                    Logger.getLogger(Rellenar.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                tipoEq.removeAllItems();
-                for (int i = 1; i <= numeroUnidades; i++) {
-                    tipoEq.addItem(Integer.toString(i));
-                }
-            }
-        });
+        jpDescripcion.add(tipoEq, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 40));
 
         jpDatos.add(jpDescripcion);
 

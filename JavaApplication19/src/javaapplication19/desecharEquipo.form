@@ -160,7 +160,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="120" y="10" width="310" height="40"/>
+                  <AbsoluteConstraints x="160" y="10" width="270" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -194,15 +194,15 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="listaEq.addActionListener(new ActionListener() {&#xa;            public void actionPerformed(ActionEvent e) {&#xa;            int numeroUnidades = 1;&#xa;            int indexInventario = 1;&#xa;                &#xa;                indexInventario = listaEq.getSelectedIndex();&#xa;                try {&#xa;                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica(&quot;src//excel/Inventario.xlsx&quot;, &quot;Inventario&quot;, 6, indexInventario + 1);&#xa;                } catch (IOException ex) {&#xa;                    Logger.getLogger(Rellenar.class.getName()).log(Level.SEVERE, null, ex);&#xa;                }&#xa;                tipoEq.removeAllItems();&#xa;                for (int i = 1; i &lt;= numeroUnidades; i++) {&#xa;                    tipoEq.addItem(Integer.toString(i));&#xa;                }&#xa;            }&#xa;        });"/>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox()"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="String [] Arr = {}"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="tipoEq.setBackground(Color.white);&#xa;tipoEq.setUI(PropiedadesCB2.createUI(tipoEq));"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="10" width="100" height="40"/>
+                  <AbsoluteConstraints x="10" y="10" width="130" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
