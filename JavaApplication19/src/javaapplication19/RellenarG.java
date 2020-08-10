@@ -545,10 +545,11 @@ public class RellenarG {
         rellenarDesecho.setBackground(Color.white);
         Iconos.scaleImage("Equipo", iconoDesarrollo, 40);
 
-        String[] lista = {"Herramientas", "Equipo de Taller", "Mobiliario", "Equipo de Limpieza"};
+        String[] lista = {"Equipo y Mob.", "Inventario"};
 
         tipoDes = new JComboBox(lista);
         tipoDes.setUI(PropiedadesCB2.createUI(tipoDes));
+        tipoDes.setPreferredSize(new Dimension(150,30));
         Iconos.scaleImage("ok", iconoOkDesecho, 30);
 
         rellenarDesecho.add(iconoDesarrollo);
@@ -559,60 +560,28 @@ public class RellenarG {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                try {
-                    if (tipoDes.getSelectedItem().toString().equals("Herramientas")) {
-                        equipoMob = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\Equipo.xlsx", "Herramientas", 1));
-                        equipoMob.setBackground(Color.white);
-                        equipoMob.setUI(PropiedadesCB2.createUI(equipoMob));
+                    if (tipoDes.getSelectedItem().toString().equals("Equipo y Mob.")) {
+                        
                         rellenarDesecho.removeAll();
                         rellenarDesecho.revalidate();
                         rellenarDesecho.repaint();
 
-                        rellenarDesecho.add(equipoMob);
+                        rellenarDesecho.add(tipoDes);
                         rellenarDesecho.add(iconoOkDesecho);
 
                     }
 
-                    else if (tipoDes.getSelectedItem().toString().equals("Equipo de Taller")) {
-                        equipoMob = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\Equipo.xlsx", "Equipo de Taller", 1));
-                        equipoMob.setBackground(Color.white);
-                        equipoMob.setUI(PropiedadesCB2.createUI(equipoMob));
+                    else if (tipoDes.getSelectedItem().toString().equals("Inventario")) {
+                        
                         rellenarDesecho.removeAll();
                         rellenarDesecho.revalidate();
                         rellenarDesecho.repaint();
-
-                        rellenarDesecho.add(equipoMob);
+                        
+                        rellenarDesecho.add(tipoDes);
                         rellenarDesecho.add(iconoOkDesecho);
+                        
                     }
 
-                    else if (tipoDes.getSelectedItem().toString().equals("Mobiliario")) {
-                        equipoMob = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\Equipo.xlsx", "Mobiliario", 1));
-                        equipoMob.setBackground(Color.white);
-                        equipoMob.setUI(PropiedadesCB2.createUI(equipoMob));
-                        rellenarDesecho.removeAll();
-                        rellenarDesecho.revalidate();
-                        rellenarDesecho.repaint();
-
-                        rellenarDesecho.add(equipoMob);
-                        rellenarDesecho.add(iconoOkDesecho);
-
-                    }
-
-                    else if (tipoDes.getSelectedItem().toString().equals("Equipo de Limpieza")) {
-                        equipoMob = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", 1));
-                        equipoMob.setBackground(Color.white);
-                        equipoMob.setUI(PropiedadesCB2.createUI(equipoMob));
-                        rellenarDesecho.removeAll();
-                        rellenarDesecho.revalidate();
-                        rellenarDesecho.repaint();
-
-                        rellenarDesecho.add(equipoMob);
-                        rellenarDesecho.add(iconoOkDesecho);
-
-                    }
-                } catch (IOException ex) {
-                    Logger.getLogger(RellenarG.class.getName()).log(Level.SEVERE, null, ex);
-                }
             }
         });
 

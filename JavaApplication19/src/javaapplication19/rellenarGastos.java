@@ -1218,12 +1218,11 @@ public class rellenarGastos {
     }
 
     //Para rellenar un Gasto:desechoEqui
-    public void botonDesecho(JComboBox tipo, JComboBox equipoyMob, JLabel iconoOkDes, JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre) {
+    public void botonDesecho(JComboBox tipo, JLabel iconoOkDes, JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre) {
         MouseListener botonImp = new MouseListener() {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                try{
                     scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
                     PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
                     panelGasto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1232,112 +1231,17 @@ public class rellenarGastos {
                     panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
                     panelGasto.setMaximumSize(new Dimension(550, 40));
                     panelGasto.setPreferredSize(new Dimension(550, 100));
+                    
+                    
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     fecha.setText(fechaActual());
-
-                    JLabel montoD = new JLabel();
-                    Escribir EscribirExcel = new Escribir();
-                
                     
-                tipo.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            if (tipo.getSelectedItem().toString().equals("Herramientas")) {
-                        JLabel desecho = new JLabel();
-                        desecho.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                        desecho.setText(equipoyMob.getSelectedItem().toString());
-                        montoD.setText(Double.toString((LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Herramientas", 3, equipoyMob.getSelectedIndex()+1))));
-                        String[] data = {(String) fechaActual(), "Desecho de Equipo y Mob.", (String) equipoyMob.getSelectedItem().toString(), montoD.getText(), ""};
-                        Escribir.removeRow("src\\excel\\Equipo.xlsx", "Herramientas", equipoyMob.getSelectedIndex()+1);
-                        Escribir escribirVentas = new Escribir();
-                        escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
-                        JLabel icono = new JLabel();
-                        Iconos.scaleImage("equipoG", icono, 25);
-                        icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                        listaGastos.add(panelGasto, 1);
-                        panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panel
-
-                        panelGasto.add(fecha);
-                        panelGasto.add(desecho);
-                        panelGasto.add(new JLabel("RELLENAR"));
-                        panelGasto.add(new JLabel(""));
-                        panelGasto.add(icono);
-                        botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "inventarioG", "src//excel/LibrosContables.xlsx", "Gastos");
-
-                } else if (tipo.getSelectedItem().toString().equals("Equipo de Taller")) {
-                        JLabel desecho = new JLabel();
-                        desecho.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                        desecho.setText(equipoyMob.getSelectedItem().toString());
-                        montoD.setText(Double.toString((LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Equipo de Taller", 3, equipoyMob.getSelectedIndex()+1))));
-                        String[] data = {(String) fechaActual(), "Desecho de Equipo y Mob.", (String) equipoyMob.getSelectedItem().toString(), montoD.getText(), ""};
-                        Escribir.removeRow("src\\excel\\Equipo.xlsx", "Equipo de Taller", equipoyMob.getSelectedIndex()+1);
-                        Escribir escribirVentas = new Escribir();
-                        escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
-                        JLabel icono = new JLabel();
-                        Iconos.scaleImage("equipoG", icono, 25);
-                        icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                        listaGastos.add(panelGasto, 1);
-                        panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panel
-
-                        panelGasto.add(fecha);
-                        panelGasto.add(desecho);
-                        panelGasto.add(new JLabel("RELLENAR"));
-                        panelGasto.add(new JLabel(""));
-                        panelGasto.add(icono);
-                        botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "inventarioG", "src//excel/LibrosContables.xlsx", "Gastos");
-
-                } else if (tipo.getSelectedItem().toString().equals("Mobiliario")) {
-                        JLabel desecho = new JLabel();
-                        desecho.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                        desecho.setText(equipoyMob.getSelectedItem().toString());
-                        montoD.setText(Double.toString((LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Mobiliario", 3, equipoyMob.getSelectedIndex()+1))));
-                        String[] data = {(String) fechaActual(), "Desecho de Equipo y Mob.", (String) equipoyMob.getSelectedItem().toString(), montoD.getText(), ""};
-                        Escribir.removeRow("src\\excel\\Equipo.xlsx", "Mobiliario", equipoyMob.getSelectedIndex()+1);
-                        Escribir escribirVentas = new Escribir();
-                        escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
-                        JLabel icono = new JLabel();
-                        Iconos.scaleImage("equipoG", icono, 25);
-                        icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                        listaGastos.add(panelGasto, 1);
-                        panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panel
-
-                        panelGasto.add(fecha);
-                        panelGasto.add(desecho);
-                        panelGasto.add(new JLabel("RELLENAR"));
-                        panelGasto.add(new JLabel(""));
-                        panelGasto.add(icono);
-                        botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "inventarioG", "src//excel/LibrosContables.xlsx", "Gastos");
-
-                } else if (tipo.getSelectedItem().toString().equals("Equipo de Limpieza")) {
-                        JLabel desecho = new JLabel();
-                        desecho.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                        desecho.setText(equipoyMob.getSelectedItem().toString());
-                        montoD.setText(Double.toString((LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", 3, equipoyMob.getSelectedIndex()+1))));
-                        String[] data = {(String) fechaActual(), "Desecho de Equipo y Mob.", (String) equipoyMob.getSelectedItem().toString(), montoD.getText(), ""};
-                        Escribir.removeRow("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", equipoyMob.getSelectedIndex()+1);
-                        Escribir escribirVentas = new Escribir();
-                        escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
-                        JLabel icono = new JLabel();
-                        Iconos.scaleImage("equipoG", icono, 25);
-                        icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                        listaGastos.add(panelGasto, 1);
-                        panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panel
-
-                        panelGasto.add(fecha);
-                        panelGasto.add(desecho);
-                        panelGasto.add(new JLabel("RELLENAR"));
-                        panelGasto.add(new JLabel(""));
-                        panelGasto.add(icono);
-                        botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "inventarioG", "src//excel/LibrosContables.xlsx", "Gastos");
-                        } catch (IOException ex) {
-                    Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                }
-                           
-                        }
-                    });
+                    if(tipo.getSelectedItem().toString().equals("Inventario")){
+                        desecharInv inventarioP = new desecharInv();
+                        inventarioP.setVisible(true);
+                    }
 
                     
                 indice++;
