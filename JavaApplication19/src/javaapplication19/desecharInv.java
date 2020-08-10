@@ -94,7 +94,7 @@ public final class desecharInv extends javax.swing.JFrame {
 
             jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
             jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-            jLabel1.setText("COMPRAS EN TRANSITO");
+            jLabel1.setText("DESECHAR INVENTARIO");
             jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
             jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
 
