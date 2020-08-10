@@ -1045,7 +1045,7 @@ public class Libros extends javax.swing.JFrame {
         comboIngresos.setForeground(new java.awt.Color(51, 51, 51));
         comboIngresos.setModel(new javax.swing.DefaultComboBoxModel<>(ListasCB.getIngresos()));
         comboIngresos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        comboIngresos.setPreferredSize(new java.awt.Dimension(150, 35));
+        comboIngresos.setPreferredSize(new java.awt.Dimension(200, 35));
         comboIngresos.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboIngresosItemStateChanged(evt);

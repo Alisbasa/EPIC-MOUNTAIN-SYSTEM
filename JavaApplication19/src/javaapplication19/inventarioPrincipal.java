@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javaapplication19.rellenarIngresos.fechaActual;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -20,6 +21,7 @@ import javax.swing.JPanel;
  * @author Erick Ivan
  */
 public class inventarioPrincipal extends javax.swing.JFrame {
+
     int mousepX;
     int mousepY;
     static JLabel monto;
@@ -27,13 +29,14 @@ public class inventarioPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form clienteNuevo
+     *
      * @param nombre
      * @param monto
      */
     public inventarioPrincipal(JLabel nombre, JLabel monto) {
         initComponents();
         this.monto = monto;
-        this. nombre = nombre;
+        this.nombre = nombre;
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -269,11 +272,11 @@ public class inventarioPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    public void changeColor(JPanel hover,Color rand){
+
+    public void changeColor(JPanel hover, Color rand) {
         hover.setBackground(rand);
     }
-    
+
     private void cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseClicked
         this.setVisible(false);
     }//GEN-LAST:event_cerrarMouseClicked
@@ -283,7 +286,7 @@ public class inventarioPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_cerrarMouseEntered
 
     private void cerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseExited
-        changeColor(cerrar, new Color(51,51,51));
+        changeColor(cerrar, new Color(51, 51, 51));
     }//GEN-LAST:event_cerrarMouseExited
 
     private void maxiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxiMouseClicked
@@ -297,167 +300,166 @@ public class inventarioPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_maxiMouseClicked
 
     private void maxiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxiMouseEntered
-        changeColor(maxi, new Color(34,180,115));
+        changeColor(maxi, new Color(34, 180, 115));
     }//GEN-LAST:event_maxiMouseEntered
 
     private void maxiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxiMouseExited
-        changeColor(maxi, new Color(51,51,51));
+        changeColor(maxi, new Color(51, 51, 51));
     }//GEN-LAST:event_maxiMouseExited
 
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
         int kordinatX = evt.getXOnScreen();
         int kordinatY = evt.getYOnScreen();
-        this.setLocation(kordinatX-mousepX, kordinatY-mousepY);
+        this.setLocation(kordinatX - mousepX, kordinatY - mousepY);
 
     }//GEN-LAST:event_jPanel1MouseDragged
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
         mousepX = evt.getX();
-        mousepY =evt.getY();
+        mousepY = evt.getY();
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbRegistrarActionPerformed
-    
+
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
         RellenarG rellenar = new RellenarG();
         rellenarGastos rellenar2 = new rellenarGastos();
-               
+
         /*String[] inventario = {rellenar.desarrolloTipoI.getText(),
                                jtDesc.getText(),fechaActual(),
                                jcCond.getSelectedItem().toString(),
                                jcPack.getSelectedItem().toString(),
                                jtTIG.getText(),jtUnidades.getText(),
                                rellenar.montoDesI.getText()};*/
-        String costoBaseNeto =Double.toString(Integer.valueOf(jtUnidades.getText())*Double.valueOf(jtPrecio.getText()));
-        String costoNeto =Double.toString(Integer.valueOf(jtUnidades.getText())*Integer.valueOf(monto.getText()));
-        String precioBaseNeto= Double.toString(((Double.valueOf((jtPrecio.getText()))*.16)+Double.valueOf(jtPrecio.getText()))*Integer.valueOf(jtUnidades.getText()));
-        
-        String [] inventario = {nombre.getText(),
+        String costoBaseNeto = Double.toString(Integer.valueOf(jtUnidades.getText()) * Double.valueOf(jtPrecio.getText()));
+        String costoNeto = Double.toString(Integer.valueOf(jtUnidades.getText()) * Integer.valueOf(monto.getText()));
+        String precioBaseNeto = Double.toString(((Double.valueOf((jtPrecio.getText())) * .16) + Double.valueOf(jtPrecio.getText())) * Integer.valueOf(jtUnidades.getText()));
+
+        String[] inventario = {nombre.getText(),
             jtDesc.getText(),
             fechaActual(),
             jcCond.getSelectedItem().toString(),
             "             ",
-            Double.toString(Double.valueOf(jtPrecio.getText())/Double.valueOf(monto.getText())),
+            Double.toString(Double.valueOf(jtPrecio.getText()) / Double.valueOf(monto.getText())),
             jtUnidades.getText(),
             monto.getText(),
             costoNeto,
-            jtPrecio.getText(), 
-             costoBaseNeto, 
-            Double.toString((Double.valueOf((jtPrecio.getText()))*.16)+Double.valueOf(jtPrecio.getText())),
+            jtPrecio.getText(),
+            costoBaseNeto,
+            Double.toString((Double.valueOf((jtPrecio.getText())) * .16) + Double.valueOf(jtPrecio.getText())),
             precioBaseNeto};
-        
+
         Escribir EscribirCRM = new Escribir();
         try {
-            EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "Inventario",inventario,13);
+            EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", "Inventario", inventario, 13);
             //UNIDADES
             EscribirCRM.escribirCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 6);
-            
+
             //TIG
-            Double TIG = Double.valueOf(jtPrecio.getText())/Double.valueOf(monto.getText());
+            Double TIG = Double.valueOf(jtPrecio.getText()) / Double.valueOf(monto.getText());
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", TIG, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 5);
-            
+
             //COSTO UNIDAD
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(monto.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 7);
             //COSTO NETO
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(costoNeto), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 8);
-            
+
             //PRECIO BASE UNIDAD
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 9);
-            
+
             //PRECIO BASE NETO
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(costoBaseNeto), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 10);
-            
+
             //PRECIO LOCAL UNIDAD
             Double precioL = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 9, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")) * 1.16);
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioL, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 11);
-            
+
             //PRECIO LOCAL NETO
-            Double precioNeto = EscribirCRM.Mulitplicar(6, 11,LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") ,"src\\excel\\Inventario.xlsx", "Inventario");
+            Double precioNeto = EscribirCRM.Mulitplicar(6, 11, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), "src\\excel\\Inventario.xlsx", "Inventario");
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioNeto, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 12);
-            
+
             //COMISION ML
-            Double comisionML = ((LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 11, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"))) *.15)+5;
+            Double comisionML = ((LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 11, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"))) * .15) + 5;
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 15);
-            
+
             //COMISION ML NETO
             Double comisionMLN = EscribirCRM.Mulitplicar(6, 15, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), "src\\excel\\Inventario.xlsx", "Inventario");
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 16);
-            
+
             // IVA UNIDAD
-            Double IVA = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 9, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"))*0.16);
+            Double IVA = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 9, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")) * 0.16);
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", IVA, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 17);
-            
+
             //IVA NETO
             Double ivaN = EscribirCRM.Mulitplicar(6, 17, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), "src\\excel\\Inventario.xlsx", "Inventario");
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", ivaN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 18);
-            
+
             //PRECIO ML
             Double precioML = EscribirCRM.SumarColumnasML(LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 9, 17, 15, "src\\excel\\Inventario.xlsx", "Inventario");
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 13);
-            
+
             //PRECIOML NETO
-            
             Double precioMLN = EscribirCRM.Mulitplicar(6, 13, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), "src\\excel\\Inventario.xlsx", "Inventario");
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 14);
-            
 
             //UTILIDAD UNIDAD LOCAL
             Double utilidad = EscribirCRM.RestarColumnas(LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 11, 7, 17, "src\\excel\\Inventario.xlsx", "Inventario");
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidad, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 19);
-            
+
             //UTILIDAD LOCAL NETA
             Double utilidadLN = EscribirCRM.Mulitplicar(6, 19, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), "src\\excel\\Inventario.xlsx", "Inventario");
             EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidadLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 20);
-            
-            
-            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula,
-                                        LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 8);
-            
-            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula2,
-                                                LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 10);
-            
-            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula3,
-                                                LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 12);
-            
-            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula4,
-                                                LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 14);
-            
-            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula5,
-                                                LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 16);
-            
-            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula6,
-                                                LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 18);
-            
-            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+ 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula7,
-                                                LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario")+1, 20);
-            
-            
-            
-                    
-                    
-        } catch (IOException ex) {
-            Logger.getLogger(inventarioPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.setVisible(false);    
-    }//GEN-LAST:event_jbRegistrarMouseClicked
-    
 
-    
-    public static String fechaActual(){
+            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula,
+                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 8);
+
+            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula2,
+                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 10);
+
+            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula3,
+                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 12);
+
+            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula4,
+                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 14);
+
+            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula5,
+                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 16);
+
+            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula6,
+                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 18);
+
+            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula7,
+                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 20);
+
+            String[] data = {(String) rellenarIngresos.fechaActual(), "Aportacion Inv", nombre.getText(), monto.getText(), "  ", "VERDE", monto.getText()};
+
+            Escribir escribirVentas = new Escribir();
+
+            escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+
+            this.setVisible(false);
+        } catch (IOException ex) {
+            Caption ventanaEx = new Caption("Recuerda cerrar Excel");
+            ventanaEx.setVisible(true);
+        }
+
+    }//GEN-LAST:event_jbRegistrarMouseClicked
+
+    public static String fechaActual() {
         java.util.Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM YY");
         return formatoFecha.format(fecha);
     }
-    
+
     private void jtDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDescActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtDescActionPerformed
