@@ -313,8 +313,7 @@ public class rellenarIngresos {
                         numeroPlataforma = 13;
                     }
                     
-                     Carga carga =new Carga();
-                        carga.setVisible(true);
+                    
                     
                     //MONTO
                     String precioExcel = "precio";
