@@ -182,12 +182,12 @@ public final class desecharInv extends javax.swing.JFrame {
             Escribir escribirD = new Escribir();
             Double costoInv = LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 7, (inventario.getSelectedIndex()+1));
             int unidadesSelec = Integer.valueOf(unidades.getSelectedItem().toString());
-            String [] data = {fechaActual(), "Desecho", inventario.getSelectedItem().toString()};
+            Double costoCompleto = costoInv * unidadesSelec;
+            
+            String [] data = {fechaActual(), "Desecho", inventario.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
             escribirD.escribirExcel("src\\excel\\Inventario.xlsx", "Gastos", data);
             Escribir.removeRow("src\\excel\\Inventario.xlsx", "Inventario", (inventario.getSelectedIndex()+1));
             
-            
-            inventario.getSelectedItem().toString();
         } catch (IOException ex) {
             Logger.getLogger(desecharInv.class.getName()).log(Level.SEVERE, null, ex);
         }
