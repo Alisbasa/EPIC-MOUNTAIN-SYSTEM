@@ -1456,6 +1456,7 @@ public class Libros extends javax.swing.JFrame {
         }
         else if(comboIngresos.getSelectedItem().toString().equals("APORTACIONES") ){
             Rellenar rellenarAportacion = new Rellenar();
+            rellenarIngresos rellenarApor = new rellenarIngresos();
             
             rellenarIngresos.removeAll();
             rellenarIngresos.revalidate();
@@ -1466,6 +1467,7 @@ public class Libros extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
             }
+            rellenarApor.botonAport(rellenarAportacion.tipoAport, rellenarAportacion.producto, rellenarAportacion.montoAport, rellenarAportacion.tipoEquipo, rellenarAportacion.descripcion, rellenarAportacion.iconoOkAport, scrollIngresos, listaIngresos, rellenarAportacion.rellenarAport);
         }
 
         

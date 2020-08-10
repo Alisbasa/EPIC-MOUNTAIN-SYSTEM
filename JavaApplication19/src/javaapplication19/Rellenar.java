@@ -446,12 +446,20 @@ public class Rellenar {
             public void actionPerformed(ActionEvent e) {
                 if(tipoAport.getSelectedItem().toString().equals("Inventario Principal")){
                     rellenarAport.removeAll();
+                    rellenarAport.revalidate();
+                    rellenarAport.repaint();
                     rellenarAport.add(iconoAport);
                     rellenarAport.add(tipoAport);
+                    rellenarAport.add(montoAport);
+                    rellenarAport.add(producto);
+                    
+                    Iconos.scaleImage("ok", iconoOkAport, 30);
                     rellenarAport.add(iconoOkAport);
                 }
                 else if(tipoAport.getSelectedItem().toString().equals("Equipo y Mob.")){
                     rellenarAport.removeAll();
+                    rellenarAport.revalidate();
+                    rellenarAport.repaint();
                     rellenarAport.add(iconoAport);
                     rellenarAport.add(tipoEquipo);
                     rellenarAport.add(producto);
