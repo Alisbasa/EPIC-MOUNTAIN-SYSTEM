@@ -1671,7 +1671,22 @@ public class Libros extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
             }
-            rellenarDevolucion.botonDev(rellenarDev.montoDev,rellenarDev.devolucion, rellenarDev.iconoOkDev, scrollIngresos,listaGastos,rellenarDev.rellenarDevoluciones);
+            rellenarDevolucion.botonDev(rellenarDev.montoDev,rellenarDev.devolucion, rellenarDev.iconoOkDev, scrollGastos,listaGastos,rellenarDev.rellenarDevoluciones);
+          
+        }
+        
+        else if(comboGastos.getSelectedItem().toString().equals("DESECHAR EQUIPO Y MOB.") ) {
+            rellenarGastos rellenarDesecho = new rellenarGastos();
+            RellenarG rellenarDese = new RellenarG();
+                
+            rellenarGastos.removeAll();
+            rellenarGastos.revalidate();
+            rellenarGastos.repaint();
+            
+                
+            
+            rellenarGastos.add(rellenarDes.rellenarDesecho());
+            rellenarDesecho.botonDesecho(rellenarDes.tipoDes, rellenarDes.equipoMob, rellenarDes.iconoOkDesecho, scrollGastos , listaGastos,rellenarDes.rellenarDesecho);
           
         }
     }//GEN-LAST:event_comboGastosActionPerformed
