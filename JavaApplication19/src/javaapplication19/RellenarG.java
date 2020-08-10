@@ -86,8 +86,9 @@ public class RellenarG {
     JComboBox devolucion;
     JComboBox inventario;
     JTextField paqueteria;
-    JComboBox equipoMob;
+    
     JComboBox tipoDes;
+    JComboBox equipoMob;
     
     JTextField montoDesCT;
     JTextField montoDesE;
