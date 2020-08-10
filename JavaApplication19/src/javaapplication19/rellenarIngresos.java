@@ -1208,6 +1208,8 @@ public class rellenarIngresos {
                 panelIngreso.add(montoA);
                 panelIngreso.add(new JLabel());
                 panelIngreso.add(icono);
+                listaIngresos.add(panelIngreso, 1);
+                panelesIngresos.add(panelIngreso);
 
                 String[] data = {(String) fechaActual(), "Aportacion", producto.getText(), montoA.getText(), "  " , "VERDE", "   "};
 

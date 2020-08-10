@@ -203,7 +203,9 @@ public class inventarioPrincipal extends javax.swing.JFrame {
 
         jcCond.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 13)); // NOI18N
         jcCond.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Seminuevo", "Usado" }));
-        jpPack.add(jcCond, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 90, 50));
+        jpPack.add(jcCond, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 90, 50));
+        jcCond.setBackground(Color.white);
+        jcCond.setUI(PropiedadesCB2.createUI(jcCond));
 
         jlPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlPack.setForeground(new java.awt.Color(255, 255, 255));

@@ -450,8 +450,8 @@ public class Rellenar {
                     rellenarAport.repaint();
                     rellenarAport.add(iconoAport);
                     rellenarAport.add(tipoAport);
-                    rellenarAport.add(montoAport);
                     rellenarAport.add(producto);
+                    rellenarAport.add(montoAport);
                     
                     Iconos.scaleImage("ok", iconoOkAport, 30);
                     rellenarAport.add(iconoOkAport);

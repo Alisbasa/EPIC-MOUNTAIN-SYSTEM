@@ -309,11 +309,12 @@
                 </Property>
               </Properties>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jcCond.setBackground(Color.white);&#xa;jcCond.setUI(PropiedadesCB2.createUI(jcCond));"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="240" y="20" width="90" height="50"/>
+                  <AbsoluteConstraints x="250" y="10" width="90" height="50"/>
                 </Constraint>
               </Constraints>
             </Component>
