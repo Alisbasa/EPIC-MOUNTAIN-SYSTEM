@@ -1171,6 +1171,143 @@ public class rellenarIngresos {
         iconoOkDeuPE.addMouseListener(botonDPE);
     }
     
+    //Pone Ingreso: Aportacion
+    void botonAport(JComboBox tipoAport, JTextField producto, JTextField montoAport, JComboBox tipoEquipo, JTextField descripcion, JLabel iconoOkAport, JScrollPane scrollIngresos, JPanel listaIngresos, JPanel panelPadre) {
+        MouseListener botonV = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+                PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
+                panelIngreso.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                panelIngreso.setLayout(new GridLayout(1, 5));
+                panelIngreso.setBackground(Colores.epicColorBajito);
+                panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
+                panelIngreso.setMaximumSize(new Dimension(550, 40));
+                panelIngreso.setPreferredSize(new Dimension(550, 100));;
+
+                JLabel fecha = new JLabel();
+                fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                fecha.setText(fechaActual());
+                
+                JLabel productoA = new JLabel();
+                productoA.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                productoA.setText(producto.getText());
+                
+                JLabel montoA = new JLabel();
+                montoA.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                montoA.setText(montoAport.getText());
+                
+                JLabel icono = new JLabel();
+                Iconos.scaleImage("Aportaciones", icono, 25);
+                icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+                
+                panelIngreso.add(fecha);
+                panelIngreso.add(productoA);
+                panelIngreso.add(montoA);
+                panelIngreso.add(new JLabel());
+                panelIngreso.add(icono);
+                listaIngresos.add(panelIngreso, 1);
+                panelesIngresos.add(panelIngreso);
+
+                String[] data = {(String) fechaActual(), "Aportacion", producto.getText(), montoA.getText(), "  " , "VERDE", "   "};
+
+                Escribir escribirVentas = new Escribir();
+                try {
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                if (tipoAport.getSelectedItem().toString().equals("Inventario Principal")) {
+                    inventarioPrincipal inv = new inventarioPrincipal(productoA, montoA);
+                    inv.setVisible(true);
+                }
+                
+                if (tipoEquipo.getSelectedItem().toString().equals("Herramientas")) {
+                    try {
+                        String[] equipo = {(String) fechaActual(), producto.getText(), descripcion.getText(), montoAport.getText()};
+                        Escribir EscribirExcel = new Escribir();
+
+                        EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Herramientas", equipo, 4);
+                        EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", "Herramientas", Double.valueOf(montoAport.getText()), LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas"), 3);
+                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas") + 1) + ")";
+                        EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Herramientas", formula, LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas") + 1, 3);
+                    } catch (IOException ex) {
+                        Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    } else if (tipoEquipo.getSelectedItem().toString().equals("Equipo de Taller")) {
+                    try {
+                        String[] equipo = {(String) fechaActual(), producto.getText(), descripcion.getText(), montoAport.getText()};
+                        Escribir EscribirExcel = new Escribir();
+
+                        EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Equipo de Taller", equipo, 4);
+                        EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", "Equipo de Taller", Double.valueOf(montoAport.getText()), LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Taller"), 3);
+                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Taller") + 1) + ")";
+                        EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Equipo de Taller", formula, (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Taller") + 1), 3);
+                    } catch (IOException ex) {
+                        Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    } else if (tipoEquipo.getSelectedItem().toString().equals("Mobiliario")) {
+                    try {
+                        String[] equipo = {(String) fechaActual(), producto.getText(), descripcion.getText(), montoAport.getText()};
+                        Escribir EscribirExcel = new Escribir();
+
+                        EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Mobiliario", equipo, 4);
+                        EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", "Mobiliario", Double.valueOf(montoAport.getText()), LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Mobiliario"), 3);
+                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Mobiliario") + 1) + ")";
+                        EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Mobiliario", formula, (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Mobiliario") + 1), 3);
+                    } catch (IOException ex) {
+                        Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    } else if (tipoEquipo.getSelectedItem().toString().equals("Equipo de Limpieza")) {
+                    try {
+                        String[] equipo = {(String) fechaActual(), producto.getText(), descripcion.getText(), montoAport.getText()};
+                        Escribir EscribirExcel = new Escribir();
+
+                        EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", equipo, 4);
+                        EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", Double.valueOf(montoAport.getText()), LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Limpieza"), 3);
+                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Limpieza") + 1) + ")";
+                        EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", formula, (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Limpieza") + 1), 3);
+                    } catch (IOException ex) {
+                        Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    }
+
+                indice++;
+                panelPadre.removeAll();
+                panelPadre.updateUI();
+                listaIngresos.updateUI();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Iconos.scaleImage("okh", iconoOkAport, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                Iconos.scaleImage("ok", iconoOkAport, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+
+        iconoOkAport.addMouseListener(botonV);
+    }
+    
 
     public static String fechaActual() {
         java.util.Date fecha = new Date();
