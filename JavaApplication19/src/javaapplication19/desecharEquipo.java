@@ -59,57 +59,59 @@ public final class desecharEquipo extends javax.swing.JFrame {
         jpDatos = new javax.swing.JPanel();
         jpDescripcion = new javax.swing.JPanel();
         try{
-            listaEq = new javax.swing.JComboBox(LeerExcel.rellenaCB2("src\\excel\\Inventario.xlsx", "Inventario", 0));
-            jbRegistrar = new javax.swing.JButton();
-            String [] Arr = {}
-            tipoEq = new javax.swing.JComboBox();
+            if(tipoEq.getSelectedItem().toString().equals("Herramientas")){
+                listaEq = new javax.swing.JComboBox(LeerExcel.rellenaCB2("src\\excel\\Equipo.xlsx", "HERRAMIENTAS", 1));
+                jbRegistrar = new javax.swing.JButton();
+                String [] Arr = {"Herramientas", "Equipo de Taller", "Mobiliario", "Equipo de Limpieza"};
+                tipoEq = new javax.swing.JComboBox(Arr);
 
-            jList1.setModel(new javax.swing.AbstractListModel<String>() {
-                String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-                public int getSize() { return strings.length; }
-                public String getElementAt(int i) { return strings[i]; }
-            });
-            jScrollPane1.setViewportView(jList1);
+                jList1.setModel(new javax.swing.AbstractListModel<String>() {
+                    String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+                    public int getSize() { return strings.length; }
+                    public String getElementAt(int i) { return strings[i]; }
+                });
+                jScrollPane1.setViewportView(jList1);
 
-            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-            setUndecorated(true);
-            getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                setUndecorated(true);
+                getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-            jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-            jPanel1.setPreferredSize(new java.awt.Dimension(900, 40));
-            jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-                public void mouseDragged(java.awt.event.MouseEvent evt) {
-                    jPanel1MouseDragged(evt);
-                }
-            });
-            jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mousePressed(java.awt.event.MouseEvent evt) {
-                    jPanel1MousePressed(evt);
-                }
-            });
-            jPanel1.setLayout(new java.awt.BorderLayout());
+                jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+                jPanel1.setPreferredSize(new java.awt.Dimension(900, 40));
+                jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                    public void mouseDragged(java.awt.event.MouseEvent evt) {
+                        jPanel1MouseDragged(evt);
+                    }
+                });
+                jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mousePressed(java.awt.event.MouseEvent evt) {
+                        jPanel1MousePressed(evt);
+                    }
+                });
+                jPanel1.setLayout(new java.awt.BorderLayout());
 
-            jPanel10.setBackground(new java.awt.Color(0, 0, 0));
-            jPanel10.setPreferredSize(new java.awt.Dimension(300, 30));
-            jPanel10.setLayout(new java.awt.BorderLayout());
+                jPanel10.setBackground(new java.awt.Color(0, 0, 0));
+                jPanel10.setPreferredSize(new java.awt.Dimension(300, 30));
+                jPanel10.setLayout(new java.awt.BorderLayout());
 
-            jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-            jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-            jLabel1.setText("DESECHAR EQUIPO");
-            jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
-            jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
+                jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+                jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+                jLabel1.setText("DESECHAR EQUIPO");
+                jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
+                jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
 
-            jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
+                jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
 
-            getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
+                getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
-            jpDatos.setBackground(new java.awt.Color(51, 51, 51));
-            jpDatos.setLayout(new java.awt.GridLayout(1, 0));
+                jpDatos.setBackground(new java.awt.Color(51, 51, 51));
+                jpDatos.setLayout(new java.awt.GridLayout(1, 0));
 
-            jpDescripcion.setBackground(new java.awt.Color(51, 51, 51));
-            jpDescripcion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+                jpDescripcion.setBackground(new java.awt.Color(51, 51, 51));
+                jpDescripcion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        }catch(IOException e){}
+            }
+        }catch(IOException ex){}
         listaEq.setUI(PropiedadesCB2.createUI(listaEq));
         listaEq.setBackground(Color.white);
         jpDescripcion.add(listaEq, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 270, 40));
@@ -162,19 +164,48 @@ public final class desecharEquipo extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
-        try {
+
             Escribir escribirD = new Escribir();
-            Double costoInv = LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 7, (listaEq.getSelectedIndex()+1));
-            int unidadesSelec = Integer.valueOf(tipoEq.getSelectedItem().toString());
-            Double costoCompleto = costoInv * unidadesSelec;
-            
-            String [] data = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
-            escribirD.escribirExcel("src\\excel\\Inventario.xlsx", "Gastos", data);
-            Escribir.removeRow("src\\excel\\Inventario.xlsx", "Inventario", (listaEq.getSelectedIndex()+1));
-            
-        } catch (IOException ex) {
-            Logger.getLogger(desecharEquipo.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                if(tipoEq.getSelectedItem().toString().equals("Herramientas")){ 
+                    try {
+                        Double costoCompleto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "HERRAMIENTAS", 3, (listaEq.getSelectedIndex()+1));
+                        String [] data = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
+                        escribirD.escribirExcel("src\\excel\\LibrosContable.xlsx", "Gastos", data);
+                        Escribir.removeRow("src\\excel\\Equipo.xlsx", "HERRAMIENTAS", (listaEq.getSelectedIndex()+1));
+                    } catch (IOException ex) {
+                        Logger.getLogger(desecharEquipo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if(tipoEq.getSelectedItem().toString().equals("Equipo de Taller")){
+                    try {
+                        Double costoCompleto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Equipo de Taller", 3, (listaEq.getSelectedIndex()+1));
+                        String [] data = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
+                        escribirD.escribirExcel("src\\excel\\LibrosContable.xlsx", "Gastos", data);
+                        Escribir.removeRow("src\\excel\\Equipo.xlsx", "Equipo de Taller", (listaEq.getSelectedIndex()+1));
+                    } catch (IOException ex) {
+                        Logger.getLogger(desecharEquipo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if(tipoEq.getSelectedItem().toString().equals("Mobiliario")){
+                    try {
+                        Double costoCompleto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Mobiliario", 3, (listaEq.getSelectedIndex()+1));
+                        String [] data = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
+                        escribirD.escribirExcel("src\\excel\\LibrosContable.xlsx", "Gastos", data);
+                        Escribir.removeRow("src\\excel\\Equipo.xlsx", "Mobiliario", (listaEq.getSelectedIndex()+1));
+                    } catch (IOException ex) {
+                        Logger.getLogger(desecharEquipo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if(tipoEq.getSelectedItem().toString().equals("Equipo de Limpieza")){
+                    try {
+                        Double costoCompleto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", 3, (listaEq.getSelectedIndex()+1));
+                        String [] data = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
+                        escribirD.escribirExcel("src\\excel\\LibrosContable.xlsx", "Gastos", data);
+                        Escribir.removeRow("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", (listaEq.getSelectedIndex()+1));
+                    } catch (IOException ex) {
+                        Logger.getLogger(desecharEquipo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
     }//GEN-LAST:event_jbRegistrarMouseClicked
 
     public static String fechaActual() {
