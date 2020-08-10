@@ -151,10 +151,10 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox(LeerExcel.rellenaCB2(&quot;src\\excel\\Inventario.xlsx&quot;, &quot;Inventario&quot;, 0))"/>
-                <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="try{"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox(LeerExcel.rellenaCB2(&quot;src\\excel\\Equipo.xlsx&quot;, &quot;HERRAMIENTAS&quot;, 1))"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="try{&#xa;if(tipoEq.getSelectedItem().toString().equals(&quot;Herramientas&quot;)){"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="listaEq.setUI(PropiedadesCB2.createUI(listaEq));&#xa;listaEq.setBackground(Color.white);"/>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="}catch(IOException e){}"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="}&#xa;}catch(IOException ex){}"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
@@ -194,8 +194,8 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox()"/>
-                <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="String [] Arr = {}"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox(Arr)"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="String [] Arr = {&quot;Herramientas&quot;, &quot;Equipo de Taller&quot;, &quot;Mobiliario&quot;, &quot;Equipo de Limpieza&quot;};"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="tipoEq.setBackground(Color.white);&#xa;tipoEq.setUI(PropiedadesCB2.createUI(tipoEq));"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
