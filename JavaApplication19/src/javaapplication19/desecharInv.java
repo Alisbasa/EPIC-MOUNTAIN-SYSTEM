@@ -27,6 +27,7 @@ public final class desecharInv extends javax.swing.JFrame {
 
     int mousepX;
     int mousepY;
+    int numeroUnidades = 1;
 
     /**
      * Creates new form clienteNuevo
@@ -134,7 +135,7 @@ public final class desecharInv extends javax.swing.JFrame {
         jpDescripcion.add(unidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 80, 40));
         inventario.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                int numeroUnidades = 1;
+
                 int indexInventario = 1;
 
                 indexInventario = inventario.getSelectedIndex();
@@ -183,11 +184,17 @@ public final class desecharInv extends javax.swing.JFrame {
             Double costoInv = LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 7, (inventario.getSelectedIndex()+1));
             int unidadesSelec = Integer.valueOf(unidades.getSelectedItem().toString());
             Double costoCompleto = costoInv * unidadesSelec;
-            
-            String [] data = {fechaActual(), "Desecho", inventario.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
-            escribirD.escribirExcel("src\\excel\\Inventario.xlsx", "Gastos", data);
-            Escribir.removeRow("src\\excel\\Inventario.xlsx", "Inventario", (inventario.getSelectedIndex()+1));
-            
+
+            String[] data = {fechaActual(), "Desecho Inventario", inventario.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "VERDE", Double.toString(costoCompleto)};
+            escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+            if (numeroUnidades - unidadesSelec == 0) {
+                Escribir.removeRow("src\\excel\\Inventario.xlsx", "Inventario", (inventario.getSelectedIndex() + 1));
+            }else{
+                escribirD.escribirCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", numeroUnidades - unidadesSelec, inventario.getSelectedIndex()+1, 6);
+            }
+            Libros.actualiza();
+            this.dispose();
+
         } catch (IOException ex) {
             Logger.getLogger(desecharInv.class.getName()).log(Level.SEVERE, null, ex);
         }
