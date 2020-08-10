@@ -1686,7 +1686,7 @@ public class Libros extends javax.swing.JFrame {
                 
             
             rellenarGastos.add(rellenarDes.rellenarDesecho());
-            rellenarDesecho.botonDesecho(rellenarDes.tipoDes, rellenarDes.equipoMob, rellenarDes.iconoOkDesecho, scrollGastos , listaGastos,rellenarDes.rellenarDesecho);
+            rellenarDesecho.botonDesecho(rellenarDes.tipoDes, rellenarDes.iconoOkDesecho, scrollGastos , listaGastos,rellenarDes.rellenarDesecho);
           
         }
     }//GEN-LAST:event_comboGastosActionPerformed
