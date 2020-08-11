@@ -242,6 +242,33 @@ public class rellenarIngresos {
                             int suma = (int) (LeerExcel.obtenerCeldaNumerica(filepath, hoja, 6, LeerExcel.contarRenglones(filepath, hoja))) + (int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", 6, i);
                             Escribir escribirVentas = new Escribir();
                             escribirVentas.escribirCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", suma, i, 6);
+                            double costoUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 7, i);
+                            double precioBaseUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 9, i);
+                            Double precioML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 13, i);
+                            Double iva = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 17, i);
+                            Double comisionML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 15, i);
+                            Double utilidadShop = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 19, i);
+                            
+                            
+                            //COSTO NETO
+                            escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", (suma * costoUnidad), i, 8);
+                            //PRECIO BASE NETO
+                            escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * (precioBaseUnidad), i, 10);
+                            //PRECIO LOCAL NETO
+                            Double precioNeto = escribirVentas.Mulitplicar(6, 11, i, "src\\excel\\Inventario.xlsx", "Inventario");
+                            escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioNeto, i, 12);
+                            //COMISION ML NETO
+
+                            escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionML * suma, i, 16);
+
+                            //IVA NETO
+                            escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * iva, i, 18);
+                            //PRECIOML NETO
+
+                            escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * precioML, i, 14);
+
+                            //UTILIDAD LOCAL NETA
+                            escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * utilidadShop, i, 20);
 
                         }
 
@@ -1187,7 +1214,7 @@ public class rellenarIngresos {
 
                     JLabel montoA = new JLabel();
                     montoA.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    montoA.setText( montoAport.getText());
+                    montoA.setText(montoAport.getText());
                     JLabel montoAP = new JLabel();
                     montoAP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     montoAP.setText("$" + montoAport.getText());
@@ -1199,15 +1226,13 @@ public class rellenarIngresos {
                     JLabel icono = new JLabel();
 
                     icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                    
-                    
 
                     if (tipoAport.getSelectedItem().toString().equals("Inventario Principal")) {
                         inventarioPrincipal inv = new inventarioPrincipal(productoA, montoA);
                         inv.setVisible(true);
                         Iconos.scaleImage("inventarioG", icono, 25);
                         botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "inventarioG");
-                        botonBorrarInd( icono, "src\\excel\\Inventario.xlsx", "Inventario");
+                        botonBorrarInd(icono, "src\\excel\\Inventario.xlsx", "Inventario");
                     } else {
                         Iconos.scaleImage("equipoG", icono, 25);
                         if (tipoEquipo.getSelectedItem().toString().equals("Herramientas")) {
@@ -1220,7 +1245,7 @@ public class rellenarIngresos {
                             String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas") + 1) + ")";
                             EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Herramientas", formula, LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas") + 1, 3);
                             botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "equipoG");
-                             botonBorrarInd( icono, "src\\excel\\Equipo.xlsx",tipoEquipo.getSelectedItem().toString() );
+                            botonBorrarInd(icono, "src\\excel\\Equipo.xlsx", tipoEquipo.getSelectedItem().toString());
                         } else if (tipoEquipo.getSelectedItem().toString().equals("Equipo de Taller")) {
 
                             String[] equipo = {(String) fechaActual(), producto.getText(), descripcion.getText(), montoAport.getText()};
@@ -1231,7 +1256,7 @@ public class rellenarIngresos {
                             String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Taller") + 1) + ")";
                             EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Equipo de Taller", formula, (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Taller") + 1), 3);
                             botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "equipoG");
-                             botonBorrarInd( icono, "src\\excel\\Equipo.xlsx",tipoEquipo.getSelectedItem().toString() );
+                            botonBorrarInd(icono, "src\\excel\\Equipo.xlsx", tipoEquipo.getSelectedItem().toString());
                         } else if (tipoEquipo.getSelectedItem().toString().equals("Mobiliario")) {
 
                             String[] equipo = {(String) fechaActual(), producto.getText(), descripcion.getText(), montoAport.getText()};
@@ -1242,7 +1267,7 @@ public class rellenarIngresos {
                             String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Mobiliario") + 1) + ")";
                             EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Mobiliario", formula, (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Mobiliario") + 1), 3);
                             botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "equipoG");
-                             botonBorrarInd( icono, "src\\excel\\Equipo.xlsx",tipoEquipo.getSelectedItem().toString() );
+                            botonBorrarInd(icono, "src\\excel\\Equipo.xlsx", tipoEquipo.getSelectedItem().toString());
                         } else if (tipoEquipo.getSelectedItem().toString().equals("Equipo de Limpieza")) {
 
                             String[] equipo = {(String) fechaActual(), producto.getText(), descripcion.getText(), montoAport.getText()};
@@ -1253,7 +1278,7 @@ public class rellenarIngresos {
                             String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Limpieza") + 1) + ")";
                             EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", formula, (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Limpieza") + 1), 3);
                             botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "equipoG");
-                             botonBorrarInd( icono, "src\\excel\\Equipo.xlsx",tipoEquipo.getSelectedItem().toString() );
+                            botonBorrarInd(icono, "src\\excel\\Equipo.xlsx", tipoEquipo.getSelectedItem().toString());
                         }
                         String[] data = {(String) fechaActual(), "Aportacion EyM", producto.getText(), montoA.getText(), "  ", "VERDE", montoA.getText()};
 
@@ -1586,7 +1611,26 @@ public class rellenarIngresos {
                 Escribir.removeRow("src//excel/Inventario.xlsx", "Inventario", inventario.getSelectedIndex() + 1);
             } else {
                 escribirVentas.escribirCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", restaUnidades, inventario.getSelectedIndex() + 1, 6);
+                //COSTO NETO
+                escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", (restaUnidades * Double.valueOf(costoUnidad)), inventario.getSelectedIndex() + 1, 8);
+                //PRECIO BASE NETO
+                escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", restaUnidades * Double.valueOf(precioBaseUnidad), inventario.getSelectedIndex() + 1, 10);
+                //PRECIO LOCAL NETO
+                Double precioNeto = escribirVentas.Mulitplicar(6, 11, inventario.getSelectedIndex() + 1, "src\\excel\\Inventario.xlsx", "Inventario");
+                escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioNeto, inventario.getSelectedIndex() + 1, 12);
+                //COMISION ML NETO
+
+                escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionML * restaUnidades, inventario.getSelectedIndex() + 1, 16);
             }
+            //IVA NETO
+
+            escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", restaUnidades * iva, inventario.getSelectedIndex() + 1, 18);
+            //PRECIOML NETO
+
+            escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", restaUnidades * precioML, inventario.getSelectedIndex() + 1, 14);
+
+            //UTILIDAD LOCAL NETA
+            escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", restaUnidades * utilidadShop, inventario.getSelectedIndex() + 1, 20);
 
         } catch (NullPointerException e) {
             Caption ventanaEx = new Caption("Olvidaste llenar algún campo");
