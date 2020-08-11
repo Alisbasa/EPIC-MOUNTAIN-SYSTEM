@@ -66,7 +66,7 @@ public final class desecharEquipo extends javax.swing.JFrame {
         tipoEq.setBounds(20, 20, 150, 30);
         jpDescripcion.add(tipoEq);
         
-        jbRegistrar.setBounds(400, 20, 60, 40);
+        jbRegistrar.setBounds(400, 20, 60, 30);
         jpDescripcion.add(jbRegistrar);
         
         tipoEq.addActionListener(new ActionListener() {
@@ -246,64 +246,53 @@ public final class desecharEquipo extends javax.swing.JFrame {
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {                                         
 
-        Escribir escribirD = new Escribir();
-        tipoEq.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(tipoEq.getSelectedItem().toString().equals("Herramientas")){
-                    try {
-                        Double costoCompleto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "HERRAMIENTAS", 3, (listaEq.getSelectedIndex()+1));
-                        String [] data = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
-                        escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
-                        Escribir.removeRow("src\\excel\\Equipo.xlsx", "HERRAMIENTAS", (listaEq.getSelectedIndex()+1));
-                        System.out.println("HOLA COMOSTAS");
-                        Libros.actualiza();
-                        close();
-                    } catch (IOException ex) {
-                        Logger.getLogger(desecharEquipo.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-                else if(tipoEq.getSelectedItem().toString().equals("Equipo de Taller")){
-                    try {
-                        Double costoCompleto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Equipo de Taller", 3, (listaEq.getSelectedIndex()+1));
-                        String [] data = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
-                        escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
-                        Escribir.removeRow("src\\excel\\Equipo.xlsx", "Equipo de Taller", (listaEq.getSelectedIndex()+1));
-                        Libros.actualiza();
-                        close();
-                    } catch (IOException ex) {
-                        Logger.getLogger(desecharEquipo.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-                else if(tipoEq.getSelectedItem().toString().equals("Mobiliario")){
-                    try {
-                        Double costoCompleto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Mobiliario", 3, (listaEq.getSelectedIndex()+1));
-                        String [] data = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
-                        escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
-                        Escribir.removeRow("src\\excel\\Equipo.xlsx", "Mobiliario", (listaEq.getSelectedIndex()+1));
-                        Libros.actualiza();
-                        close();
-                        
-                    } catch (IOException ex) {
-                        Logger.getLogger(desecharEquipo.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-                else if(tipoEq.getSelectedItem().toString().equals("Equipo de Limpieza")){
-                    try {
-                        Double costoCompleto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", 3, (listaEq.getSelectedIndex()+1));
-                        String [] data = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
-                        escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
-                        Escribir.removeRow("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", (listaEq.getSelectedIndex()+1));
-                        Libros.actualiza();
-                        close();
-                    } catch (IOException ex) {
-                        Logger.getLogger(desecharEquipo.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
+        try {
+            Escribir escribirD = new Escribir();
+            String tipo = tipoEq.getSelectedItem().toString();
+            
+            switch(tipo){
+                case "Herramientas":
+                    Double costoCompleto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "HERRAMIENTAS", 3, (listaEq.getSelectedIndex()+1));
+                    String [] data = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
+                    escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                    Escribir.removeRow("src\\excel\\Equipo.xlsx", "HERRAMIENTAS", (listaEq.getSelectedIndex()+1));
+                    Libros.actualiza();
+                    close();
+                    break;
+                    
+                case "Equipo de Taller":
+                    Double costoCompleto2 = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Equipo de Taller", 3, (listaEq.getSelectedIndex()+1));
+                    String [] data2 = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto2), "  ", "   ", "   "};
+                    escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data2);
+                    Escribir.removeRow("src\\excel\\Equipo.xlsx", "Equipo de Taller", (listaEq.getSelectedIndex()+1));
+                    Libros.actualiza();
+                    close();
+                break;
+                
+                case "Mobiliario":
+                    Double costoCompleto3 = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Mobiliario", 3, (listaEq.getSelectedIndex()+1));
+                    String [] data3 = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto3), "  ", "   ", "   "};
+                    escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data3);
+                    Escribir.removeRow("src\\excel\\Equipo.xlsx", "Mobiliario", (listaEq.getSelectedIndex()+1));
+                    Libros.actualiza();
+                    close();
+                break;
+                
+                case "Equipo de Limpieza":
+                    Double costoCompleto4 = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", 3, (listaEq.getSelectedIndex()+1));
+                    String [] data4 = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto4), "  ", "   ", "   "};
+                    escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data4);
+                    Escribir.removeRow("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", (listaEq.getSelectedIndex()+1));
+                    Libros.actualiza();
+                    close();
+                break;
+       
             }
-        });
-        
-    }         
+
+        }catch (IOException ex) {
+            Logger.getLogger(desecharEquipo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     private void close(){
         this.dispose();
