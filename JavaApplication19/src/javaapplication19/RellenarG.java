@@ -5,7 +5,6 @@
  */
 package javaapplication19;
 
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -17,6 +16,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -35,22 +36,22 @@ import javax.swing.border.LineBorder;
  * @author Alex
  */
 public class RellenarG {
-    
-    JPanel rellenarDesEquipo =new JPanel();
-    JPanel rellenarDesInv =new JPanel();
+
+    JPanel rellenarDesEquipo = new JPanel();
+    JPanel rellenarDesInv = new JPanel();
     JPanel rellenarDesPacks = new JPanel();
     JPanel rellenarDesCompras = new JPanel();
-    JPanel rellenarDeudasPagar =new JPanel();
-    JPanel rellenarImpuestoG =new JPanel();
-    JPanel rellenarMantenimiento =new JPanel();
-    JPanel rellenarSuministros =new JPanel();
-    JPanel rellenarPubliidad =new JPanel();
-    JPanel rellenarTransporte =new JPanel();
-    JPanel rellenarHonorarios =new JPanel();
-    JPanel rellenarReducInv =new JPanel();
+    JPanel rellenarDeudasPagar = new JPanel();
+    JPanel rellenarImpuestoG = new JPanel();
+    JPanel rellenarMantenimiento = new JPanel();
+    JPanel rellenarSuministros = new JPanel();
+    JPanel rellenarPubliidad = new JPanel();
+    JPanel rellenarTransporte = new JPanel();
+    JPanel rellenarHonorarios = new JPanel();
+    JPanel rellenarReducInv = new JPanel();
     JPanel rellenarDevoluciones = new JPanel();
     JPanel rellenarDesecho = new JPanel();
-    
+
     JLabel iconoDesarrollo = new JLabel();
     JLabel iconoDeudasPagar = new JLabel();
     JLabel iconoImpuesto = new JLabel();
@@ -61,7 +62,7 @@ public class RellenarG {
     JLabel iconoHonorarios = new JLabel();
     JLabel iconoReducInv = new JLabel();
     JLabel iconoDevoluciones = new JLabel();
-    
+
     JComboBox tipo;
     JComboBox desarrollo;
     JTextField desarrolloTipoCT;
@@ -87,10 +88,10 @@ public class RellenarG {
     JComboBox inventario;
     JTextField paqueteria;
     JComboBox ventas;
-    
+
     JComboBox tipoDes;
     JComboBox equipoMob;
-    
+
     JTextField montoDesCT;
     JTextField montoDesE;
     JTextField montoDesI;
@@ -106,8 +107,7 @@ public class RellenarG {
     JTextField montoReduc;
     JTextField descripcion;
     JTextField montoDev;
-    
-    
+
     JLabel iconoOkDesarrolloEq = new JLabel();
     JLabel iconoOkDesarrolloI = new JLabel();
     JLabel iconoOkDesarrolloP = new JLabel();
@@ -121,37 +121,32 @@ public class RellenarG {
     JLabel iconoOkHonorarios = new JLabel();
     JLabel iconoOkReducInv = new JLabel();
     JLabel iconoOkDev = new JLabel();
-    JLabel iconoOkDesecho = new JLabel(); 
-    
-    
-    
-    
-    public  JPanel rellenarDesEquipo(){
-        
+    JLabel iconoOkDesecho = new JLabel();
+
+    public JPanel rellenarDesEquipo() {
+
         rellenarDesEquipo.removeAll();
         rellenarDesEquipo.setBackground(Color.white);
-        
+
         Iconos.scaleImage("Equipo", iconoDesarrollo, 30);
         rellenarDesEquipo.add(iconoDesarrollo);
-        
+
         String[] lista = {"Herramientas", "Equipo de Taller", "Mobiliario", "Equipo de Limpieza"};
-        
+
         tipo = new JComboBox(lista);
         tipo.setUI(PropiedadesCB2.createUI(tipo));
-        
-        
+
         desarrolloTipoE = new JTextField();
         addPlaceHolder("Equipo y Mobiliario", desarrolloTipoE);
         desarrolloTipoE.setBackground(Colores.epicColorBajito);
         desarrolloTipoE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         desarrolloTipoE.setPreferredSize(new Dimension(150, 30));
-        
+
         descripcion = new JTextField();
         addPlaceHolder("Descripcion", descripcion);
         descripcion.setBackground(Colores.epicColorBajito);
         descripcion.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         descripcion.setPreferredSize(new Dimension(150, 30));
-        
 
         montoDesE = new JTextField();
         addPlaceHolder("Monto", montoDesE);
@@ -160,22 +155,23 @@ public class RellenarG {
         montoDesE.setPreferredSize(new Dimension(60, 30));
 
         Iconos.scaleImage("ok", iconoOkDesarrolloEq, 30);
-        
+
         rellenarDesEquipo.add(tipo);
         rellenarDesEquipo.add(desarrolloTipoE);
         rellenarDesEquipo.add(descripcion);
         rellenarDesEquipo.add(montoDesE);
         rellenarDesEquipo.add(iconoOkDesarrolloEq);
-        
+
         return rellenarDesEquipo;
- 
+
     }
     String tipoI;
-    public JPanel rellenarDesInv(){
-        
+
+    public JPanel rellenarDesInv() {
+
         rellenarDesInv.removeAll();
         rellenarDesInv.setBackground(Color.white);
-        
+
         Iconos.scaleImage("Inventario", iconoDesarrollo, 30);
         Iconos.scaleImage("Inventario", iconoDesarrollo, 30);
         rellenarDesInv.add(iconoDesarrollo);
@@ -186,10 +182,9 @@ public class RellenarG {
         desarrolloTipoI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         desarrolloTipoI.setPreferredSize(new Dimension(150, 30));
         tipoI = desarrolloTipoI.getText();
-                    
-                    
-        String[] listaProductos = {"Nuevo", "Existente" , "Aditamento"};
-        producto = new JComboBox (listaProductos);
+
+        String[] listaProductos = {"Nuevo", "Existente", "Aditamento"};
+        producto = new JComboBox(listaProductos);
         producto.setUI(PropiedadesCB2.createUI(producto));
 
         montoDesI = new JTextField();
@@ -203,18 +198,17 @@ public class RellenarG {
         rellenarDesInv.add(desarrolloTipoI);
         rellenarDesInv.add(producto);
         rellenarDesInv.add(montoDesI);
-        rellenarDesInv.add(iconoOkDesarrolloI);    
-        
-    
+        rellenarDesInv.add(iconoOkDesarrolloI);
+
         return rellenarDesInv;
-    
+
     }
-    
-    public JPanel rellenarDesPacks(){
-        
+
+    public JPanel rellenarDesPacks() {
+
         rellenarDesPacks.removeAll();
         rellenarDesPacks.setBackground(Color.white);
-                 
+
         Iconos.scaleImage("Packs", iconoDesarrollo, 30);
         rellenarDesPacks.add(iconoDesarrollo);
 
@@ -223,33 +217,28 @@ public class RellenarG {
         desarrolloTipoP.setBackground(Colores.epicColorBajito);
         desarrolloTipoP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         desarrolloTipoP.setPreferredSize(new Dimension(150, 30));
-        
-        
-        
-        
-        
-        String []tipos ={"Nuevo", "Rellenar Pack"}; 
+
+        String[] tipos = {"Nuevo", "Rellenar Pack"};
         tipoPack = new JComboBox(tipos);
         tipoPack.setUI(PropiedadesCB2.createUI(tipoPack));
-                    
 
         montoDesP = new JTextField();
         addPlaceHolder("Costo", montoDesP);
         montoDesP.setBackground(Colores.epicColorBajito);
         montoDesP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         montoDesP.setPreferredSize(new Dimension(60, 30));
-        
+
         precioDesP = new JTextField();
         addPlaceHolder("Precio", precioDesP);
         precioDesP.setBackground(Colores.epicColorBajito);
         precioDesP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         precioDesP.setPreferredSize(new Dimension(60, 30));
-        
+
         Iconos.scaleImage("ok", iconoOkDesarrolloP, 30);
         rellenarDesPacks.add(tipoPack);
-        
+
         tipoPack.addActionListener((ActionEvent event) -> {
-            if(tipoPack.getSelectedItem().toString().equals("Nuevo")){
+            if (tipoPack.getSelectedItem().toString().equals("Nuevo")) {
                 rellenarDesPacks.removeAll();
                 rellenarDesPacks.revalidate();
                 rellenarDesPacks.repaint();
@@ -259,9 +248,8 @@ public class RellenarG {
                 rellenarDesPacks.add(montoDesP);
                 rellenarDesPacks.add(precioDesP);
                 rellenarDesPacks.add(iconoOkDesarrolloP);
-                
-            }
-            else if(tipoPack.getSelectedItem().toString().equals("Rellenar Pack")){
+
+            } else if (tipoPack.getSelectedItem().toString().equals("Rellenar Pack")) {
                 desarrolloTipoP.removeAll();
                 desarrolloTipoP.updateUI();
                 addPlaceHolder("Pieza", desarrolloTipoP);
@@ -275,71 +263,69 @@ public class RellenarG {
                 rellenarDesPacks.add(iconoOkDesarrolloP);
             }
         });
-        
+
         return rellenarDesPacks;
     }
-    
-    public JPanel rellenarDesCompras() throws IOException{
-        
+
+    public JPanel rellenarDesCompras() throws IOException {
+
         rellenarDesCompras.removeAll();
         rellenarDesCompras.setBackground(Color.white);
 
         Iconos.scaleImage("Compras", iconoDesarrollo, 30);
         rellenarDesCompras.add(iconoDesarrollo);
-                    
-        String [] listaComprasCT = {"HERRAMIENTAS", "EQUIPO DE TALLER", "MOBILIARIO", "EQUIPO DE LIMPIEZA", "INVENTARIO PRINCIPAL" , "PACK DE VENTAS", "EGRESO"};
-        productoCT = new JComboBox (listaComprasCT);
+
+        String[] listaComprasCT = {"HERRAMIENTAS", "EQUIPO DE TALLER", "MOBILIARIO", "EQUIPO DE LIMPIEZA", "INVENTARIO PRINCIPAL", "PACK DE VENTAS", "EGRESO"};
+        productoCT = new JComboBox(listaComprasCT);
         productoCT.setUI(PropiedadesCB2.createUI(productoCT));
-        productoCT.setPreferredSize(new Dimension(250,30));
-        
+        productoCT.setPreferredSize(new Dimension(250, 30));
+
         paqueteria = new JTextField();
         addPlaceHolder("Paqueteria", paqueteria);
         paqueteria.setBackground(Colores.epicColorBajito);
-        paqueteria.setPreferredSize(new Dimension(100,30));
-        
+        paqueteria.setPreferredSize(new Dimension(100, 30));
+
         Iconos.scaleImage("ok", iconoOkDesarrolloCT, 30);
-                    
+
         rellenarDesCompras.add(productoCT);
         rellenarDesCompras.add(paqueteria);
         rellenarDesCompras.add(iconoOkDesarrolloCT);
-        
+
         return rellenarDesCompras;
     }
-    
-     
-    public  JPanel rellenarDeudasPagar() throws IOException{
-        
+
+    public JPanel rellenarDeudasPagar() throws IOException {
+
         rellenarDeudasPagar.removeAll();
-        
+
         rellenarDeudasPagar.setBackground(Color.white);
         Iconos.scaleImage("DeudasP_1", iconoDeudasPagar, 40);
         rellenarDeudasPagar.add(iconoDeudasPagar);
         Iconos.scaleImage("ok", iconoOkDeudas, 30);
-        
-        
+
         deudas = new JComboBox(LeerExcel.rellenaCB2("src//excel/deudasP.xlsx", "deudasPagar", 1));
         deudas.setBackground(Color.white);
-        deudas.setUI( PropiedadesCB2.createUI(deudas));        
-        
+        deudas.setUI(PropiedadesCB2.createUI(deudas));
+
         montoDeuda = new JTextField();
         addPlaceHolder("Costo", montoDeuda);
         montoDeuda.setPreferredSize(new Dimension(60, 30));
         montoDeuda.setBackground(Colores.epicColorBajito);
         montoDeuda.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        
-        deudas.setPreferredSize(new Dimension(150, 30));      
-        
+
+        deudas.setPreferredSize(new Dimension(150, 30));
+
         rellenarDeudasPagar.add(deudas);
         rellenarDeudasPagar.add(montoDeuda);
         rellenarDeudasPagar.add(iconoOkDeudas);
-        
-        return rellenarDeudasPagar;
-    } 
 
-    public  JPanel rellenarImpuestoG(){
-        
+        return rellenarDeudasPagar;
+    }
+
+    public JPanel rellenarImpuestoG() {
+
         rellenarImpuestoG.removeAll();
-        
+
         rellenarImpuestoG.setBackground(Color.white);
         Iconos.scaleImage("Impuesto", iconoImpuesto, 25);
         rellenarImpuestoG.add(iconoImpuesto);
@@ -347,28 +333,26 @@ public class RellenarG {
         impuesto = new JTextField();
         impuesto.setBackground(Colores.epicColorBajito);
         impuesto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        
+
         addPlaceHolder("Impuesto", impuesto);
-        
+
         montoImpuesto = new JTextField();
         addPlaceHolder("Costo", montoImpuesto);
         montoImpuesto.setPreferredSize(new Dimension(60, 30));
         montoImpuesto.setBackground(Colores.epicColorBajito);
         montoImpuesto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        impuesto.setPreferredSize(new Dimension(150, 30));      
-        
-        
-        
+        impuesto.setPreferredSize(new Dimension(150, 30));
+
         rellenarImpuestoG.add(impuesto);
         rellenarImpuestoG.add(montoImpuesto);
         rellenarImpuestoG.add(iconoOkImpuesto);
-        
+
         return rellenarImpuestoG;
-    } 
-    
-    public  JPanel rellenarMantenimiento(){
+    }
+
+    public JPanel rellenarMantenimiento() {
         rellenarMantenimiento.removeAll();
-        
+
         rellenarMantenimiento.setBackground(Color.white);
         Iconos.scaleImage("Mantenimiento", iconoMantenimiento, 25);
         rellenarMantenimiento.add(iconoMantenimiento);
@@ -377,79 +361,79 @@ public class RellenarG {
         addPlaceHolder("Mantenimiento", mantenimiento);
         mantenimiento.setBackground(Colores.epicColorBajito);
         mantenimiento.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        
+
         montoMant = new JTextField();
         addPlaceHolder("Costo", montoMant);
         montoMant.setPreferredSize(new Dimension(60, 30));
         montoMant.setBackground(Colores.epicColorBajito);
         montoMant.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        
-        mantenimiento.setPreferredSize(new Dimension(150, 30));      
-        
+
+        mantenimiento.setPreferredSize(new Dimension(150, 30));
+
         rellenarMantenimiento.add(mantenimiento);
         rellenarMantenimiento.add(montoMant);
         rellenarMantenimiento.add(iconoOkMantenimiento);
-        
+
         return rellenarMantenimiento;
     }
-    
-    public  JPanel rellenarSuministros(){
+
+    public JPanel rellenarSuministros() {
         rellenarSuministros.removeAll();
-        
+
         rellenarSuministros.setBackground(Color.white);
         Iconos.scaleImage("Suministros", iconoSuministros, 40);
         rellenarSuministros.add(iconoSuministros);
         Iconos.scaleImage("ok", iconoOkSuministros, 30);
         suministros = new JTextField();
         suministros.setBackground(Colores.epicColorBajito);
-       suministros.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        suministros.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         addPlaceHolder("Suministros", suministros);
-        
+
         montoSum = new JTextField();
         addPlaceHolder("Costo", montoSum);
         montoSum.setPreferredSize(new Dimension(60, 30));
         montoSum.setBackground(Colores.epicColorBajito);
         montoSum.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        
-        suministros.setPreferredSize(new Dimension(150, 30));      
-        
+
+        suministros.setPreferredSize(new Dimension(150, 30));
+
         rellenarSuministros.add(suministros);
         rellenarSuministros.add(montoSum);
         rellenarSuministros.add(iconoOkSuministros);
-        
+
         return rellenarSuministros;
     }
-    
-    public  JPanel rellenarPubliidad(){
+
+    public JPanel rellenarPubliidad() {
         rellenarPubliidad.removeAll();
-        
+
         rellenarPubliidad.setBackground(Color.white);
         Iconos.scaleImage("publicidad", iconoPublicidad, 40);
         rellenarPubliidad.add(iconoPublicidad);
         Iconos.scaleImage("ok", iconoOkPublicidad, 30);
         publicidad = new JTextField();
-        publicidad .setBackground(Colores.epicColorBajito);
-        publicidad .setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+        publicidad.setBackground(Colores.epicColorBajito);
+        publicidad.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         addPlaceHolder("Publicidad", publicidad);
-        
+
         montoPublicidad = new JTextField();
         addPlaceHolder("Costo", montoPublicidad);
         montoPublicidad.setPreferredSize(new Dimension(60, 30));
         montoPublicidad.setBackground(Colores.epicColorBajito);
         montoPublicidad.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        
-        publicidad.setPreferredSize(new Dimension(150, 30));      
-         
+
+        publicidad.setPreferredSize(new Dimension(150, 30));
+
         rellenarPubliidad.add(publicidad);
         rellenarPubliidad.add(montoPublicidad);
         rellenarPubliidad.add(iconoOkPublicidad);
-        
+
         return rellenarPubliidad;
     }
-    
-    public  JPanel rellenarTransporte(){
+
+    public JPanel rellenarTransporte() {
         rellenarTransporte.removeAll();
-        
+
         rellenarTransporte.setBackground(Color.white);
         Iconos.scaleImage("transporte", iconoTransporte, 40);
         rellenarTransporte.add(iconoTransporte);
@@ -458,26 +442,26 @@ public class RellenarG {
         transporte.setBackground(Colores.epicColorBajito);
         transporte.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         addPlaceHolder("Transporte", transporte);
-        
+
         montoTrans = new JTextField();
         addPlaceHolder("Costo", montoTrans);
         montoTrans.setPreferredSize(new Dimension(60, 30));
         montoTrans.setBackground(Colores.epicColorBajito);
         montoTrans.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        
-        transporte.setPreferredSize(new Dimension(150, 30));      
-        
+
+        transporte.setPreferredSize(new Dimension(150, 30));
+
         rellenarTransporte.add(transporte);
         rellenarTransporte.add(montoTrans);
         rellenarTransporte.add(iconoOkTransporte);
-        
+
         return rellenarTransporte;
     }
-        
-    public  JPanel rellenarHonorarios(){
-        
+
+    public JPanel rellenarHonorarios() {
+
         rellenarHonorarios.removeAll();
-        
+
         rellenarHonorarios.setBackground(Color.white);
         Iconos.scaleImage("honorarios", iconoHonorarios, 40);
         rellenarHonorarios.add(iconoHonorarios);
@@ -486,93 +470,103 @@ public class RellenarG {
         honorarios.setBackground(Colores.epicColorBajito);
         honorarios.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         addPlaceHolder("Honorarios", honorarios);
-        
+
         montoHonor = new JTextField();
         addPlaceHolder("Costo", montoHonor);
         montoHonor.setPreferredSize(new Dimension(60, 30));
         montoHonor.setBackground(Colores.epicColorBajito);
         montoHonor.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        
-        honorarios.setPreferredSize(new Dimension(150, 30));      
-        
+
+        honorarios.setPreferredSize(new Dimension(150, 30));
+
         rellenarHonorarios.add(honorarios);
         rellenarHonorarios.add(montoHonor);
         rellenarHonorarios.add(iconoOkHonorarios);
-        
+
         return rellenarHonorarios;
     }
-    
-    public  JPanel rellenarReducInv() throws IOException{
-        
+
+    public JPanel rellenarReducInv() throws IOException {
+
         rellenarReducInv.removeAll();
-        
+
         rellenarReducInv.setBackground(Color.white);
         Iconos.scaleImage("Inventario", iconoReducInv, 40);
         rellenarReducInv.add(iconoReducInv);
         Iconos.scaleImage("ok", iconoOkReducInv, 30);
-        
-    
+
         reducInv = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "INVENTARIO", 0));
         reducInv.setBackground(Color.white);
-        reducInv.setUI( PropiedadesCB2.createUI(reducInv));
+        reducInv.setUI(PropiedadesCB2.createUI(reducInv));
 
-        reducInv.setPreferredSize(new Dimension(250, 30));      
-        
+        reducInv.setPreferredSize(new Dimension(250, 30));
+
         rellenarReducInv.add(reducInv);
-        
+
         rellenarReducInv.add(iconoOkReducInv);
-        
+
         return rellenarReducInv;
     }
+
     public JPanel rellenarDevoluciones() throws IOException {
         rellenarDevoluciones.removeAll();
 
         rellenarDevoluciones.setBackground(Color.white);
         Iconos.scaleImage("Inventario", iconoDevoluciones, 40);
-        
+
         Iconos.scaleImage("ok", iconoOkDev, 30);
-        
-        
-        String [] meses = {"ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"};
-        
-        devolucion = new JComboBox();
+        int mesActual = Integer.valueOf(numeroMes()) - 1;
+        int mesAnterior = mesActual - 1;
+        if (mesAnterior < 0) {
+            mesAnterior = 11;
+        }
+        int mesAnterior2 = mesAnterior - 1;
+        if (mesAnterior2 < 0) {
+            mesAnterior2 = 11;
+        }
+        String[] meses = {"ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"};
+
+        String[] meses3 = {meses[mesActual], meses[mesAnterior], meses[mesAnterior2]};
+
+        devolucion = new JComboBox(meses3);
         devolucion.setBackground(Color.white);
         devolucion.setUI(PropiedadesCB2.createUI(devolucion));
-        devolucion.setPreferredSize(new Dimension(100,30));
+        devolucion.setPreferredSize(new Dimension(100, 30));
         devolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-        
         rellenarDevoluciones.add(iconoDevoluciones);
         rellenarDevoluciones.add(devolucion);
-        
-        
-        String mes = devolucion.getSelectedItem().toString();
-        
-        switch(mes){
-            
-            case "ENERO":
-                rellenarDevoluciones.removeAll();
-                rellenarDevoluciones.revalidate();
-                rellenarDevoluciones.repaint();
-                
-                ventas = new JComboBox(LeerExcel.rellenaCB2("src//excel/Ventas.xlsx", "ENERO", 1));
-                ventas.setBackground(Color.white);
-                ventas.setUI(PropiedadesCB2.createUI(ventas));
-                ventas.setPreferredSize(new Dimension(300,30));
-                ventas.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                
-                rellenarDevoluciones.add(iconoDevoluciones);
+
+        devolucion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    rellenarDevoluciones.removeAll();
+                    rellenarDevoluciones.revalidate();
+                    rellenarDevoluciones.repaint();
+
+                    ventas = new JComboBox(LeerExcel.rellenaCB2("src//excel/Ventas.xlsx", meses[devolucion.getSelectedIndex()], 1));
+
+                    ventas.setBackground(Color.white);
+                    ventas.setUI(PropiedadesCB2.createUI(ventas));
+                    ventas.setPreferredSize(new Dimension(300, 30));
+                    ventas.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                    
+                    rellenarDevoluciones.add(iconoDevoluciones);
                 rellenarDevoluciones.add(ventas);
                 rellenarDevoluciones.add(iconoOkDev);
-            break;
-            
-        }
 
-        
+                } catch (IOException ex) {
+                    Logger.getLogger(RellenarG.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+
+       
 
         return rellenarDevoluciones;
     }
-    
-    public JPanel rellenarDesecho(){
+
+    public JPanel rellenarDesecho() {
         rellenarDesecho.removeAll();
         rellenarDesecho.setBackground(Color.white);
         Iconos.scaleImage("Equipo", iconoDesarrollo, 40);
@@ -581,43 +575,46 @@ public class RellenarG {
 
         tipoDes = new JComboBox(lista);
         tipoDes.setUI(PropiedadesCB2.createUI(tipoDes));
-        tipoDes.setPreferredSize(new Dimension(150,30));
+        tipoDes.setPreferredSize(new Dimension(150, 30));
         Iconos.scaleImage("ok", iconoOkDesecho, 30);
 
         rellenarDesecho.add(iconoDesarrollo);
         rellenarDesecho.add(tipoDes);
-        
-        
+
         tipoDes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                    if (tipoDes.getSelectedItem().toString().equals("Equipo y Mob.")) {
-                        
-                        rellenarDesecho.removeAll();
-                        rellenarDesecho.revalidate();
-                        rellenarDesecho.repaint();
+                if (tipoDes.getSelectedItem().toString().equals("Equipo y Mob.")) {
 
-                        rellenarDesecho.add(tipoDes);
-                        rellenarDesecho.add(iconoOkDesecho);
+                    rellenarDesecho.removeAll();
+                    rellenarDesecho.revalidate();
+                    rellenarDesecho.repaint();
 
-                    }
+                    rellenarDesecho.add(tipoDes);
+                    rellenarDesecho.add(iconoOkDesecho);
 
-                    else if (tipoDes.getSelectedItem().toString().equals("Inventario")) {
-                        
-                        rellenarDesecho.removeAll();
-                        rellenarDesecho.revalidate();
-                        rellenarDesecho.repaint();
-                        
-                        rellenarDesecho.add(tipoDes);
-                        rellenarDesecho.add(iconoOkDesecho);
-                        
-                    }
+                } else if (tipoDes.getSelectedItem().toString().equals("Inventario")) {
+
+                    rellenarDesecho.removeAll();
+                    rellenarDesecho.revalidate();
+                    rellenarDesecho.repaint();
+
+                    rellenarDesecho.add(tipoDes);
+                    rellenarDesecho.add(iconoOkDesecho);
+
+                }
 
             }
         });
 
         return rellenarDesecho;
     }
-      
+
+    public static String numeroMes() {
+        java.util.Date fecha = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("MM");
+        return formatoFecha.format(fecha);
+    }
+
 }
