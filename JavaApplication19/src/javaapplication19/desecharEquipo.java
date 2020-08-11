@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javaapplication19.inventarioPrincipal.fechaActual;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,6 +30,7 @@ public final class desecharEquipo extends javax.swing.JFrame {
     int mousepY;
     JComboBox listaEq;
     JComboBox tipoEq;
+    JButton jbRegistrar;
     /**
      * Creates new form clienteNuevo
      *
@@ -39,12 +41,108 @@ public final class desecharEquipo extends javax.swing.JFrame {
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        
+        
+        jbRegistrar = new javax.swing.JButton();
+
+        jbRegistrar.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
+
+        jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+
+        jbRegistrar.setText("OK");
+
+        jbRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbRegistrarMouseClicked(evt);
+            }
+        });
+        
+        jbRegistrar.setBackground(Colores.epicColor);
+
         String[] lista = {"Herramientas", "Equipo de Taller", "Mobiliario", "Equipo de Limpieza"};
         tipoEq = new JComboBox (lista);
         tipoEq.setBackground(Color.white);
         tipoEq.setUI(PropiedadesCB2.createUI(tipoEq));
-        tipoEq.setBounds(20, 10, 120, 30);
+        tipoEq.setBounds(20, 20, 150, 30);
         jpDescripcion.add(tipoEq);
+        
+        jbRegistrar.setBounds(400, 20, 60, 40);
+        jpDescripcion.add(jbRegistrar);
+        
+        tipoEq.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(tipoEq.getSelectedItem().toString().equals("Herramientas")){
+                    try {
+                        jpDescripcion.removeAll();
+                        jpDescripcion.revalidate();
+                        jpDescripcion.repaint();
+                        System.out.println("SI ESTA ENTRANDO");
+                        listaEq = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\Equipo.xlsx", "HERRAMIENTAS", 1));
+                        listaEq.setBackground(Color.white);
+                        listaEq.setUI(PropiedadesCB2.createUI(listaEq));
+                        listaEq.setBounds(180, 20, 200, 30);
+                        jpDescripcion.add(tipoEq);
+                        jpDescripcion.add(listaEq);
+                        jpDescripcion.add(jbRegistrar);
+                        
+
+                    } catch (IOException ex) {
+                        Logger.getLogger(desecharEquipo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if(tipoEq.getSelectedItem().toString().equals("Equipo de Taller")){
+                    try {
+                        jpDescripcion.removeAll();
+                        jpDescripcion.revalidate();
+                        jpDescripcion.repaint();
+                        listaEq = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\Equipo.xlsx", "EQUIPO DE TALLER", 1));
+                        listaEq.setBackground(Color.white);
+                        listaEq.setUI(PropiedadesCB2.createUI(listaEq));
+                        listaEq.setBounds(180, 20, 200, 30);
+                        jpDescripcion.add(tipoEq);
+                        jpDescripcion.add(listaEq);
+                        jpDescripcion.add(jbRegistrar);
+                        
+                    } catch (IOException ex) {
+                        Logger.getLogger(desecharEquipo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if(tipoEq.getSelectedItem().toString().equals("Mobiliario")){
+                    try {
+                        jpDescripcion.removeAll();
+                        jpDescripcion.revalidate();
+                        jpDescripcion.repaint();
+                        listaEq = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\Equipo.xlsx", "MOBILIARIO", 1));
+                        listaEq.setBackground(Color.white);
+                        listaEq.setUI(PropiedadesCB2.createUI(listaEq));
+                        listaEq.setBounds(180, 20, 200, 30);
+                        jpDescripcion.add(tipoEq);
+                        jpDescripcion.add(listaEq);
+                        jpDescripcion.add(jbRegistrar);
+                        
+                    } catch (IOException ex) {
+                        Logger.getLogger(desecharEquipo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if(tipoEq.getSelectedItem().toString().equals("Equipo de Limpieza")){
+                    try {
+                        jpDescripcion.removeAll();
+                        jpDescripcion.revalidate();
+                        jpDescripcion.repaint();
+                        listaEq = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", 1));
+                        listaEq.setBackground(Color.white);
+                        listaEq.setUI(PropiedadesCB2.createUI(listaEq));
+                        listaEq.setBounds(180, 20, 200, 30);
+                        jpDescripcion.add(tipoEq);
+                        jpDescripcion.add(listaEq);
+                        jpDescripcion.add(jbRegistrar);
+                    } catch (IOException ex) {
+                        Logger.getLogger(desecharEquipo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        });
         
         
 
@@ -67,7 +165,6 @@ public final class desecharEquipo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jpDatos = new javax.swing.JPanel();
         jpDescripcion = new javax.swing.JPanel();
-        jbRegistrar = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -113,38 +210,16 @@ public final class desecharEquipo extends javax.swing.JFrame {
 
         jpDescripcion.setBackground(new java.awt.Color(51, 51, 51));
 
-        jbRegistrar.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
-        jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
-        jbRegistrar.setText("OK");
-        jbRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jbRegistrarMouseClicked(evt);
-            }
-        });
-        jbRegistrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbRegistrarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jpDescripcionLayout = new javax.swing.GroupLayout(jpDescripcion);
         jpDescripcion.setLayout(jpDescripcionLayout);
         jpDescripcionLayout.setHorizontalGroup(
             jpDescripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDescripcionLayout.createSequentialGroup()
-                .addContainerGap(437, Short.MAX_VALUE)
-                .addComponent(jbRegistrar)
-                .addContainerGap())
+            .addGap(0, 500, Short.MAX_VALUE)
         );
         jpDescripcionLayout.setVerticalGroup(
             jpDescripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpDescripcionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jbRegistrar)
-                .addContainerGap(42, Short.MAX_VALUE))
+            .addGap(0, 80, Short.MAX_VALUE)
         );
-
-        jbRegistrar.setBackground(Colores.epicColor);
 
         jpDatos.add(jpDescripcion);
 
@@ -169,11 +244,7 @@ public final class desecharEquipo extends javax.swing.JFrame {
         mousepY = evt.getY();
     }//GEN-LAST:event_jPanel1MousePressed
 
-    private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbRegistrarActionPerformed
-
-    private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
+    private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {                                         
 
         Escribir escribirD = new Escribir();
         tipoEq.addActionListener(new ActionListener() {
@@ -181,15 +252,6 @@ public final class desecharEquipo extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 if(tipoEq.getSelectedItem().toString().equals("Herramientas")){
                     try {
-                        jpDescripcion.remove(tipoEq);
-                        jpDescripcion.revalidate();
-                        jpDescripcion.repaint();
-                        listaEq = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\Equipo.xlsx", "HERRAMIENTAS", 1));
-                        listaEq.setBackground(Color.white);
-                        listaEq.setUI(PropiedadesCB2.createUI(listaEq));
-                        listaEq.setBounds(150, 20, 120, 30);
-                        jpDescripcion.add(listaEq);
-
                         Double costoCompleto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "HERRAMIENTAS", 3, (listaEq.getSelectedIndex()+1));
                         String [] data = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
                         escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
@@ -200,11 +262,6 @@ public final class desecharEquipo extends javax.swing.JFrame {
                 }
                 if(tipoEq.getSelectedItem().toString().equals("Equipo de Taller")){
                     try {
-                        listaEq = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\Equipo.xlsx", "Equipo de Taller", 1));
-                        listaEq.setBackground(Color.white);
-                        listaEq.setUI(PropiedadesCB2.createUI(listaEq));
-                        listaEq.setBounds(200, 50, 150, 30);
-                        jpDescripcion.add(listaEq);
                         Double costoCompleto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Equipo de Taller", 3, (listaEq.getSelectedIndex()+1));
                         String [] data = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
                         escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
@@ -215,11 +272,6 @@ public final class desecharEquipo extends javax.swing.JFrame {
                 }
                 if(tipoEq.getSelectedItem().toString().equals("Mobiliario")){
                     try {
-                        listaEq = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\Equipo.xlsx", "Mobiliario", 1));
-                        listaEq.setBackground(Color.white);
-                        listaEq.setUI(PropiedadesCB2.createUI(listaEq));
-                        listaEq.setBounds(200, 50, 150, 30);
-                        jpDescripcion.add(listaEq);
                         Double costoCompleto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Mobiliario", 3, (listaEq.getSelectedIndex()+1));
                         String [] data = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
                         escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
@@ -230,11 +282,6 @@ public final class desecharEquipo extends javax.swing.JFrame {
                 }
                 if(tipoEq.getSelectedItem().toString().equals("Equipo de Limpieza")){
                     try {
-                        listaEq = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", 1));
-                        listaEq.setBackground(Color.white);
-                        listaEq.setUI(PropiedadesCB2.createUI(listaEq));
-                        listaEq.setBounds(200, 50, 150, 30);
-                        jpDescripcion.add(listaEq);
                         Double costoCompleto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", 3, (listaEq.getSelectedIndex()+1));
                         String [] data = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
                         escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
@@ -245,9 +292,8 @@ public final class desecharEquipo extends javax.swing.JFrame {
                 }
             }
         });
-
-    }//GEN-LAST:event_jbRegistrarMouseClicked
-
+    }                                            
+    
     public static String fechaActual() {
         java.util.Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM YY");
@@ -355,7 +401,6 @@ public final class desecharEquipo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbRegistrar;
     private javax.swing.JPanel jpDatos;
     public static javax.swing.JPanel jpDescripcion;
     // End of variables declaration//GEN-END:variables
