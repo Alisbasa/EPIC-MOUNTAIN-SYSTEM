@@ -292,9 +292,14 @@ public class Escribir {
         XSSFRow newRow = newSheet.createRow(renglones + 1);
         newRow.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
         XSSFRow row = newSheet.getRow(0);
-        if (row.getCell(1).getStringCellValue().equals("DESCRIPCIÓN")) {
-            for (int i = 0; i < col; i++) {
 
+        if (row.getCell(1).getStringCellValue().equals("DESCRIPCIÓN")) {
+            newSheet.setColumnWidth(0, 15000);
+            newSheet.setColumnWidth(1, 15000);
+            for (int i = 0; i < col; i++) {
+                if (i >= 2) {
+                    newSheet.setColumnWidth(i, 5000);
+                }
                 XSSFCell newCell = newRow.createCell(i);
                 newCell.setCellValue(data[i]);
                 setCellStyle(newWorkbook, newCell);
