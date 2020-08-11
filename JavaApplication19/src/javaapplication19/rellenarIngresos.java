@@ -248,8 +248,7 @@ public class rellenarIngresos {
                             Double iva = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 17, i);
                             Double comisionML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 15, i);
                             Double utilidadShop = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 19, i);
-                            
-                            
+
                             //COSTO NETO
                             escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", (suma * costoUnidad), i, 8);
                             //PRECIO BASE NETO
@@ -1508,7 +1507,7 @@ public class rellenarIngresos {
 
             //Escribe arreglo de Strings
             escribirVentas.escribirExcelInv("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), data, 10);
-
+            escribirVentas.escribirCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 23);
             //Escribe unidades como int
             escribirVentas.escribirCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), Integer.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 6);
 
@@ -1557,7 +1556,7 @@ public class rellenarIngresos {
             escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), iva, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 17);
 
             //Escribe IVA neto
-            Double ivaN = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 18, seleccion);
+            Double ivaN = iva * Integer.valueOf(unidades);
             escribirVentas.escribirCeldaDouble("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), ivaN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 18);
 
             //Escribe utilidadShop * unidad
@@ -1621,16 +1620,16 @@ public class rellenarIngresos {
                 //COMISION ML NETO
 
                 escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionML * restaUnidades, inventario.getSelectedIndex() + 1, 16);
+
+                //IVA NETO
+                escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", restaUnidades * iva, inventario.getSelectedIndex() + 1, 18);
+                //PRECIOML NETO
+
+                escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", restaUnidades * precioML, inventario.getSelectedIndex() + 1, 14);
+
+                //UTILIDAD LOCAL NETA
+                escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", restaUnidades * utilidadShop, inventario.getSelectedIndex() + 1, 20);
             }
-            //IVA NETO
-
-            escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", restaUnidades * iva, inventario.getSelectedIndex() + 1, 18);
-            //PRECIOML NETO
-
-            escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", restaUnidades * precioML, inventario.getSelectedIndex() + 1, 14);
-
-            //UTILIDAD LOCAL NETA
-            escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", restaUnidades * utilidadShop, inventario.getSelectedIndex() + 1, 20);
 
         } catch (NullPointerException e) {
             Caption ventanaEx = new Caption("Olvidaste llenar algún campo");
