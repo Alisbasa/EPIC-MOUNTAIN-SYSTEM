@@ -86,6 +86,7 @@ public class RellenarG {
     JComboBox devolucion;
     JComboBox inventario;
     JTextField paqueteria;
+    JComboBox ventas;
     
     JComboBox tipoDes;
     JComboBox equipoMob;
@@ -171,6 +172,7 @@ public class RellenarG {
     }
     String tipoI;
     public JPanel rellenarDesInv(){
+        
         rellenarDesInv.removeAll();
         rellenarDesInv.setBackground(Color.white);
         
@@ -209,6 +211,7 @@ public class RellenarG {
     }
     
     public JPanel rellenarDesPacks(){
+        
         rellenarDesPacks.removeAll();
         rellenarDesPacks.setBackground(Color.white);
                  
@@ -277,6 +280,7 @@ public class RellenarG {
     }
     
     public JPanel rellenarDesCompras() throws IOException{
+        
         rellenarDesCompras.removeAll();
         rellenarDesCompras.setBackground(Color.white);
 
@@ -304,6 +308,7 @@ public class RellenarG {
     
      
     public  JPanel rellenarDeudasPagar() throws IOException{
+        
         rellenarDeudasPagar.removeAll();
         
         rellenarDeudasPagar.setBackground(Color.white);
@@ -332,6 +337,7 @@ public class RellenarG {
     } 
 
     public  JPanel rellenarImpuestoG(){
+        
         rellenarImpuestoG.removeAll();
         
         rellenarImpuestoG.setBackground(Color.white);
@@ -469,6 +475,7 @@ public class RellenarG {
     }
         
     public  JPanel rellenarHonorarios(){
+        
         rellenarHonorarios.removeAll();
         
         rellenarHonorarios.setBackground(Color.white);
@@ -496,6 +503,7 @@ public class RellenarG {
     }
     
     public  JPanel rellenarReducInv() throws IOException{
+        
         rellenarReducInv.removeAll();
         
         rellenarReducInv.setBackground(Color.white);
@@ -522,21 +530,44 @@ public class RellenarG {
         rellenarDevoluciones.setBackground(Color.white);
         Iconos.scaleImage("Inventario", iconoDevoluciones, 40);
         
-
-        devolucion = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 0));
-        devolucion.setBackground(Color.white);
-        devolucion.setUI(PropiedadesCB2.createUI(inventario));
-        devolucion.setPreferredSize(new Dimension(300,30));
-        devolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-
-        
-
-        
         Iconos.scaleImage("ok", iconoOkDev, 30);
+        
+        
+        String [] meses = {"ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"};
+        
+        devolucion = new JComboBox(meses);
+        devolucion.setBackground(Color.white);
+        devolucion.setUI(PropiedadesCB2.createUI(devolucion));
+        devolucion.setPreferredSize(new Dimension(100,30));
+        devolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
         rellenarDevoluciones.add(iconoDevoluciones);
         rellenarDevoluciones.add(devolucion);
         
-        rellenarDevoluciones.add(iconoOkDev);
+        
+        String mes = devolucion.getSelectedItem().toString();
+        
+        switch(mes){
+            
+            case "ENERO":
+                rellenarDevoluciones.removeAll();
+                rellenarDevoluciones.revalidate();
+                rellenarDevoluciones.repaint();
+                
+                ventas = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "ENERO", 0));
+                ventas.setBackground(Color.white);
+                ventas.setUI(PropiedadesCB2.createUI(ventas));
+                ventas.setPreferredSize(new Dimension(300,30));
+                ventas.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                
+                rellenarDevoluciones.add(iconoDevoluciones);
+                rellenarDevoluciones.add(ventas);
+                rellenarDevoluciones.add(iconoOkDev);
+            break;
+            
+        }
+
+        
 
         return rellenarDevoluciones;
     }
