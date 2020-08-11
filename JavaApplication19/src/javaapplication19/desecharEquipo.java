@@ -253,7 +253,7 @@ public final class desecharEquipo extends javax.swing.JFrame {
             switch(tipo){
                 case "Herramientas":
                     Double costoCompleto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "HERRAMIENTAS", 3, (listaEq.getSelectedIndex()+1));
-                    String [] data = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
+                    String [] data = {rellenarIngresos.fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
                     escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
                     Escribir.removeRow("src\\excel\\Equipo.xlsx", "HERRAMIENTAS", (listaEq.getSelectedIndex()+1));
                     Libros.actualiza();
@@ -262,7 +262,7 @@ public final class desecharEquipo extends javax.swing.JFrame {
                     
                 case "Equipo de Taller":
                     Double costoCompleto2 = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Equipo de Taller", 3, (listaEq.getSelectedIndex()+1));
-                    String [] data2 = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto2), "  ", "   ", "   "};
+                    String [] data2 = {rellenarIngresos.fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto2), "  ", "   ", "   "};
                     escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data2);
                     Escribir.removeRow("src\\excel\\Equipo.xlsx", "Equipo de Taller", (listaEq.getSelectedIndex()+1));
                     Libros.actualiza();
@@ -271,7 +271,7 @@ public final class desecharEquipo extends javax.swing.JFrame {
                 
                 case "Mobiliario":
                     Double costoCompleto3 = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Mobiliario", 3, (listaEq.getSelectedIndex()+1));
-                    String [] data3 = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto3), "  ", "   ", "   "};
+                    String [] data3 = {rellenarIngresos.fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto3), "  ", "   ", "   "};
                     escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data3);
                     Escribir.removeRow("src\\excel\\Equipo.xlsx", "Mobiliario", (listaEq.getSelectedIndex()+1));
                     Libros.actualiza();
@@ -280,7 +280,7 @@ public final class desecharEquipo extends javax.swing.JFrame {
                 
                 case "Equipo de Limpieza":
                     Double costoCompleto4 = LeerExcel.obtenerCeldaNumerica("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", 3, (listaEq.getSelectedIndex()+1));
-                    String [] data4 = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto4), "  ", "   ", "   "};
+                    String [] data4 = {rellenarIngresos.fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto4), "  ", "   ", "   "};
                     escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data4);
                     Escribir.removeRow("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", (listaEq.getSelectedIndex()+1));
                     Libros.actualiza();
