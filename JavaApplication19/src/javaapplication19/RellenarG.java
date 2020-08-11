@@ -535,7 +535,7 @@ public class RellenarG {
         
         String [] meses = {"ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"};
         
-        devolucion = new JComboBox(meses);
+        devolucion = new JComboBox();
         devolucion.setBackground(Color.white);
         devolucion.setUI(PropiedadesCB2.createUI(devolucion));
         devolucion.setPreferredSize(new Dimension(100,30));
@@ -554,7 +554,7 @@ public class RellenarG {
                 rellenarDevoluciones.revalidate();
                 rellenarDevoluciones.repaint();
                 
-                ventas = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "ENERO", 0));
+                ventas = new JComboBox(LeerExcel.rellenaCB2("src//excel/Ventas.xlsx", "ENERO", 1));
                 ventas.setBackground(Color.white);
                 ventas.setUI(PropiedadesCB2.createUI(ventas));
                 ventas.setPreferredSize(new Dimension(300,30));
