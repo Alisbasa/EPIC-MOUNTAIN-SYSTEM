@@ -256,6 +256,7 @@ public final class desecharEquipo extends javax.swing.JFrame {
                         String [] data = {fechaActual(), "Desecho", listaEq.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "   ", "   "};
                         escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
                         Escribir.removeRow("src\\excel\\Equipo.xlsx", "HERRAMIENTAS", (listaEq.getSelectedIndex()+1));
+                        
                     } catch (IOException ex) {
                         Logger.getLogger(desecharEquipo.class.getName()).log(Level.SEVERE, null, ex);
                     }
