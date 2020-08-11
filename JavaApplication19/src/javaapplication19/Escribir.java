@@ -708,6 +708,5 @@ public class Escribir {
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkbook.write(outputStream);
         outputStream.close();
-
     }
 }
