@@ -1764,11 +1764,11 @@ public class rellenarIngresos {
             escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), formula7, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1, 20);
             
             //Escribe medio de venta
-            escribirVentas.escribirCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), medioVenta.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 21);
+            escribirVentas.escribirCelda("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), medioVenta.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 21);
 
             //Escribe destino
             String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "Clientes", 3, cliente.getSelectedIndex() + 1);
-            escribirVentas.escribirCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), destino, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 22);
+            escribirVentas.escribirCelda("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), destino, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 22);
             
         } else {
             Escribir crear = new Escribir();
