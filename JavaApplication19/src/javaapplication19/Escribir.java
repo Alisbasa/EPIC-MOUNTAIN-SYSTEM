@@ -635,7 +635,8 @@ public class Escribir {
                 "UTILIDAD X UNIDAD",
                 "UTILIDAD NETA",
                 "MEDIO DE VENTA",
-                "DESTINO"
+                "DESTINO",
+                "FOLIO"
             };
 
             for (int i = 0; i < 23; i++) {

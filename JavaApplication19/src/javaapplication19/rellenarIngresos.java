@@ -1424,7 +1424,10 @@ public class rellenarIngresos {
 
             //Escribe arreglo de Strings
             escribirVentas.escribirExcelInv("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), data, 10);
-            escribirVentas.escribirCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 23);
+           
+            
+            //escribirVentas.escribirCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 23);
+            
             //Escribe unidades como int
             escribirVentas.escribirCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), Integer.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 6);
 
@@ -1684,6 +1687,10 @@ public class rellenarIngresos {
             String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "Clientes", 3, cliente.getSelectedIndex() + 1);
             escribirVentas.escribirCelda("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), destino, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 22);
             
+            //Escribe Folio
+            int folio = LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
+            escribirVentas.escribirCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), folio, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 23);
+            
         } else {
             Escribir crear = new Escribir();
             crear.crearHojaPacks("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString());
@@ -1800,8 +1807,12 @@ public class rellenarIngresos {
             String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "Clientes", 3, cliente.getSelectedIndex() + 1);
             escribirVentas.escribirCelda("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), destino, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 22);
             
+            //Escribe Folio
+            int folio = LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
+            escribirVentas.escribirCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), folio, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 23);
         }
     }
+        
 
     public void devolver(JComboBox devo) throws IOException {
         String fecha = fechaActual();
