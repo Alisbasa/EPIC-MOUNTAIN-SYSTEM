@@ -88,6 +88,9 @@ public class RellenarG {
     JComboBox inventario;
     JTextField paqueteria;
     JComboBox ventas;
+    String venta;
+    int folioDev=7;
+    JTextField intento;
 
     JComboBox tipoDes;
     JComboBox equipoMob;
@@ -529,6 +532,7 @@ public class RellenarG {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    
                     rellenarDevoluciones.removeAll();
                     rellenarDevoluciones.revalidate();
                     rellenarDevoluciones.repaint();
@@ -536,7 +540,20 @@ public class RellenarG {
                     
 
                     ventas = new JComboBox(LeerExcel.rellenaCB2("src//excel/historialCompras.xlsx",devolucion.getSelectedItem().toString(), 0));
-
+                    ventas.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            
+                            venta = ventas.getSelectedItem().toString();
+                            folioDev= ventas.getSelectedIndex()+1;
+                            intento= new JTextField(venta);
+                            rellenarDevoluciones.add(iconoOkDev);
+                            rellenarDevoluciones.revalidate();
+                            rellenarDevoluciones.repaint();
+                        }
+                    });
+                     ventas.setSelectedItem(null);
+                    
                     ventas.setBackground(Color.white);
                     ventas.setUI(PropiedadesCB2.createUI(ventas));
                     ventas.setPreferredSize(new Dimension(300, 30));
@@ -544,7 +561,7 @@ public class RellenarG {
                     
                     rellenarDevoluciones.add(iconoDevoluciones);
                 rellenarDevoluciones.add(ventas);
-                rellenarDevoluciones.add(iconoOkDev);
+                
 
                 } catch (IOException ex) {
                     Caption ventanaEx = new Caption("Recuerda cerrar Excel");

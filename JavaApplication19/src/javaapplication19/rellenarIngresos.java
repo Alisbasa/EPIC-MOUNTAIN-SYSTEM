@@ -382,7 +382,7 @@ public class rellenarIngresos {
                         clienteC.setVisible(true);
                     } else {
                         vender(inventario, unidades, plataformacb, cliente.getSelectedItem().toString(), cliente);
-                        historialCHH(cliente, plataformacb);
+                        historialCHH(cliente.getSelectedItem().toString(),cliente, plataformacb);
                     }
                     listaIngresos.add(panelIngreso, 1);
                     panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
@@ -912,6 +912,7 @@ public class rellenarIngresos {
 
                     //Condicional para verificar que exista la hoja y si es asi escriba en la existente
                     String[] hojas = LeerExcel.obtenerHoja("src\\excel\\DeudasC.xlsx");
+                    String stCliente = cliente.getSelectedItem().toString();
 
                     boolean hojaEncontrada = false;
                     for (int i = 0; i < LeerExcel.obtenerNumeroHojas("src\\excel\\DeudasC.xlsx"); i++) {
@@ -934,7 +935,7 @@ public class rellenarIngresos {
                         String formula = escribirVentas.Sumar(2, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1, 'c');
                         escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
                         vender(inventario, unidades, plataformacb, cliente.getSelectedItem().toString(), cliente);
-                        historialCHH(cliente, plataformacb);
+                        historialCHH(stCliente,cliente, plataformacb);
                     } else if (cliente.getSelectedItem().toString().equals("Nuevo Cliente")) {
                         clienteNuevoCobrar clienteN = new clienteNuevoCobrar(precioExcel, inventario, unidades, plataformacb, cliente);
                         clienteN.setVisible(true);
@@ -955,7 +956,8 @@ public class rellenarIngresos {
                         String formula = escribirVentas.Sumar(2, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 'c');
                         escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
                         vender(inventario, unidades, plataformacb, cliente.getSelectedItem().toString(), cliente);
-                        historialCHH(cliente, plataformacb);
+                        
+                        historialCHH(stCliente,cliente, plataformacb);
                     }
                     panelIngreso.add(fecha);
                     panelIngreso.add(inventarioLista);
@@ -1560,20 +1562,20 @@ public class rellenarIngresos {
 
     }
 
-    public void historialCHH(JComboBox cliente, JComboBox medioVenta) throws IOException {
+    public void historialCHH(String cliente,JComboBox clienteCB, JComboBox medioVenta) throws IOException {
         String[] hojas = LeerExcel.obtenerHoja("src\\excel\\historialCompras.xlsx");
 
         boolean hojaEncontrada = false;
         for (int i = 0; i < LeerExcel.obtenerNumeroHojas("src\\excel\\historialCompras.xlsx"); i++) {
-            if (hojas[i].equals(cliente.getSelectedItem().toString())) {
+            if (hojas[i].equals(cliente)) {
                 hojaEncontrada = true;
             }
-            //escribirVentas.crearHoja("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(), "FECHA", "MONTO");
+            //escribirVentas.crearHoja("src\\excel\\DeudasC.xlsx", cliente, "FECHA", "MONTO");
         }
         if (hojaEncontrada == true) {
             //Escribe en Excel y crea hoja
             Escribir crear = new Escribir();
-            //crear.crearHojaPacks("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString());
+            //crear.crearHojaPacks("src\\excel\\historialCompras.xlsx", cliente);
 
             String venta = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 0, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
             String descripion = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 1, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
@@ -1592,108 +1594,108 @@ public class rellenarIngresos {
             Escribir escribirVentas = new Escribir();
 
             //Escribe arreglo de Strings
-            escribirVentas.escribirExcelInv("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), data, 10);
+            escribirVentas.escribirExcelInv("src\\excel\\historialCompras.xlsx", cliente, data, 10);
 
             //Escribe unidades como int
-            escribirVentas.escribirCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), Integer.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 6);
+            escribirVentas.escribirCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente, Integer.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 6);
 
             //Escribe costo*unidad como double
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), Double.valueOf(data[7]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()),7);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, Double.valueOf(data[7]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente),7);
             //Escribe costo neto como double
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), Double.valueOf(data[8]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 8);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, Double.valueOf(data[8]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 8);
 
             //Escribe preciobase*unidad como double
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), Double.valueOf(data[9]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 9);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, Double.valueOf(data[9]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 9);
 
             //Escribe tig como double
-            Double tigBien = LeerExcel.obtenerCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), 9, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString())) / LeerExcel.obtenerCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), 7, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), tigBien, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 5);
+            Double tigBien = LeerExcel.obtenerCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente, 9, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente)) / LeerExcel.obtenerCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente, 7, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente));
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, tigBien, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 5);
 
             //Escribe precio base neto como double
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), Double.valueOf(data[10]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 10);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, Double.valueOf(data[10]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 10);
 
             //Escribe precio shop*unidad como double
             Double precioShop = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 11, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), precioShop, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 11);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, precioShop, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 11);
 
             //Escribe precio shop neto como doble
             Double precioShopN = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 12, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), precioShopN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 12);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, precioShopN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 12);
 
             //Escribe precio Ml por unidad como doble
             Double precioML = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 13, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), precioML, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 13);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, precioML, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 13);
 
             //Escribe precio Ml neto como doble
             Double precioMLN = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 14, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), precioMLN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 14);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, precioMLN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 14);
 
             //Escribe comision ML como doble
             Double comisionML = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 15, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), comisionML, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 15);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, comisionML, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 15);
 
             //Escribe comison ML neta
             Double comisionMLN = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 16, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), comisionMLN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 16);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, comisionMLN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 16);
 
             //Escribe IVA * unidad
             Double iva = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 17, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), iva, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 17);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, iva, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 17);
 
             //Escribe IVA neto
             Double ivaN = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 18, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), ivaN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 18);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, ivaN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 18);
 
             //Escribe utilidadShop * unidad
             Double utilidadShop = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 19, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), utilidadShop, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 19);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, utilidadShop, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 19);
 
             //Escribe utilidadShop neta
             Double utilidadShopN = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 20, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), utilidadShopN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 20);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, utilidadShopN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 20);
             
             //Escribe formula de costo neto en suma
-            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), formula, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1, 8);
+            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 8);
 
             //Escribe formula de precio base neto en suma
-            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), formula2, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1, 10);
+            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula2, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 10);
 
             //Escribe formula de precio local neto en suma
-            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), formula3, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1, 12);
+            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula3, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 12);
 
             //Escribe formula de precio ml neto en suma
-            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), formula4, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1, 14);
+            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula4, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 14);
 
             //Escribe formula de comision ml neta en suma
-            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), formula5, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1, 16);
+            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula5, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 16);
 
             //Escribe formula de IVA neta en suma
-            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), formula6, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1, 18);
+            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula6, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 18);
 
             //Escribe formula de utilidad local neta en suma
-            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), formula7, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1, 20);
+            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula7, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 20);
             
             //Escribe medio de venta
-            escribirVentas.escribirCelda("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), medioVenta.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 21);
+            escribirVentas.escribirCelda("src\\excel\\historialCompras.xlsx", cliente, medioVenta.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 21);
 
             //Escribe destino
-            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "Clientes", 3, cliente.getSelectedIndex() + 1);
-            escribirVentas.escribirCelda("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), destino, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 22);
+            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "Clientes", 3, clienteCB.getSelectedIndex() + 1);
+            escribirVentas.escribirCelda("src\\excel\\historialCompras.xlsx", cliente, destino, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 22);
             
             //Escribe Folio
             int folio = LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
-            escribirVentas.escribirCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), folio, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 23);
+            escribirVentas.escribirCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente, folio, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 23);
             
         } else {
             Escribir crear = new Escribir();
-            crear.crearHojaPacks("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString());
+            crear.crearHojaPacks("src\\excel\\historialCompras.xlsx", cliente);
 
             String venta = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 0, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
             String descripion = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 1, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
@@ -1712,104 +1714,104 @@ public class rellenarIngresos {
             Escribir escribirVentas = new Escribir();
 
             //Escribe arreglo de Strings
-            escribirVentas.escribirExcelInv("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), data, 10);
+            escribirVentas.escribirExcelInv("src\\excel\\historialCompras.xlsx", cliente, data, 10);
 
             //Escribe unidades como int
-            escribirVentas.escribirCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), Integer.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 6);
+            escribirVentas.escribirCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente, Integer.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 6);
 
             //Escribe costo*unidad como double
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), Double.valueOf(data[7]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()),7);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, Double.valueOf(data[7]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente),7);
             //Escribe costo neto como double
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), Double.valueOf(data[8]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 8);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, Double.valueOf(data[8]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 8);
 
             //Escribe preciobase*unidad como double
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), Double.valueOf(data[9]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 9);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, Double.valueOf(data[9]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 9);
 
             //Escribe tig como double
-            Double tigBien = LeerExcel.obtenerCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), 9, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString())) / LeerExcel.obtenerCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), 7, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), tigBien, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 5);
+            Double tigBien = LeerExcel.obtenerCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente, 9, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente)) / LeerExcel.obtenerCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente, 7, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente));
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, tigBien, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 5);
 
             //Escribe precio base neto como double
-            escribirVentas.escribirCeldaDouble("src\\excel\\inventario.xlsx", "Inventario", Double.valueOf(data[10]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 10);
+            escribirVentas.escribirCeldaDouble("src\\excel\\inventario.xlsx", "Inventario", Double.valueOf(data[10]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 10);
 
             //Escribe precio shop*unidad como double
-            Double precioShop = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", cliente.getSelectedItem().toString(), 11, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), precioShop, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 11);
+            Double precioShop = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 11, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, precioShop, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 11);
 
             //Escribe precio shop neto como doble
             Double precioShopN = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 12, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), precioShopN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 12);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, precioShopN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 12);
 
             //Escribe precio Ml por unidad como doble
             Double precioML = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 13, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), precioML, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 13);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, precioML, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 13);
 
             //Escribe precio Ml neto como doble
             Double precioMLN = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 14, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), precioMLN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 14);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, precioMLN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 14);
 
             //Escribe comision ML como doble
             Double comisionML = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 15, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), comisionML, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 15);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, comisionML, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 15);
 
             //Escribe comison ML neta
             Double comisionMLN = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 16, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), comisionMLN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 16);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, comisionMLN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 16);
 
             //Escribe IVA * unidad
             Double iva = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 17, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), iva, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 17);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, iva, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 17);
 
             //Escribe IVA neto
             Double ivaN = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 18, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), ivaN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 18);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, ivaN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 18);
 
             //Escribe utilidadShop * unidad
             Double utilidadShop = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 19, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), utilidadShop, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 19);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, utilidadShop, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 19);
 
             //Escribe utilidadShop neta
             Double utilidadShopN = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 20, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), utilidadShopN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 20);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, utilidadShopN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 20);
             
             //Escribe formula de costo neto en suma
-            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), formula, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1, 8);
+            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 8);
 
             //Escribe formula de precio base neto en suma
-            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), formula2, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1, 10);
+            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula2, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 10);
 
             //Escribe formula de precio local neto en suma
-            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), formula3, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1, 12);
+            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula3, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 12);
 
             //Escribe formula de precio ml neto en suma
-            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), formula4, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1, 14);
+            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula4, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 14);
 
             //Escribe formula de comision ml neta en suma
-            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), formula5, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1, 16);
+            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula5, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 16);
 
             //Escribe formula de IVA neta en suma
-            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), formula6, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1, 18);
+            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula6, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 18);
 
             //Escribe formula de utilidad local neta en suma
-            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), formula7, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()) + 1, 20);
+            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula7, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 20);
             
              //Escribe medio de venta
-            escribirVentas.escribirCelda("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), medioVenta.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 21);
+            escribirVentas.escribirCelda("src\\excel\\historialCompras.xlsx", cliente, medioVenta.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 21);
 
             //Escribe destino
-            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "Clientes", 3, cliente.getSelectedIndex() + 1);
-            escribirVentas.escribirCelda("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), destino, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 22);
+            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "Clientes", 3, clienteCB.getSelectedIndex() + 1);
+            escribirVentas.escribirCelda("src\\excel\\historialCompras.xlsx", cliente, destino, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 22);
             
             //Escribe Folio
             int folio = LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
-            escribirVentas.escribirCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString(), folio, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString()), 23);
+            escribirVentas.escribirCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente, folio, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 23);
         }
     }
         
