@@ -510,7 +510,12 @@ public class RellenarG {
 
         return rellenarReducInv;
     }
-
+    
+    void getVenta(JComboBox venta2){
+        venta2.getSelectedItem();
+        venta =  venta2.getSelectedItem().toString();
+    }
+    
     public JPanel rellenarDevoluciones() throws IOException {
         rellenarDevoluciones.removeAll();
 
@@ -543,8 +548,9 @@ public class RellenarG {
                     ventas.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            
+                            getVenta(ventas);
                             venta = ventas.getSelectedItem().toString();
+                            
                             folioDev= ventas.getSelectedIndex()+1;
                             intento= new JTextField(venta);
                             rellenarDevoluciones.add(iconoOkDev);
@@ -552,7 +558,7 @@ public class RellenarG {
                             rellenarDevoluciones.repaint();
                         }
                     });
-                     ventas.setSelectedItem(null);
+                    
                     
                     ventas.setBackground(Color.white);
                     ventas.setUI(PropiedadesCB2.createUI(ventas));
