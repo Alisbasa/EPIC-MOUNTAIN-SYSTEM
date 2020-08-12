@@ -515,20 +515,9 @@ public class RellenarG {
         Iconos.scaleImage("Inventario", iconoDevoluciones, 40);
 
         Iconos.scaleImage("ok", iconoOkDev, 30);
-        int mesActual = Integer.valueOf(numeroMes()) - 1;
-        int mesAnterior = mesActual - 1;
-        if (mesAnterior < 0) {
-            mesAnterior = 11;
-        }
-        int mesAnterior2 = mesAnterior - 1;
-        if (mesAnterior2 < 0) {
-            mesAnterior2 = 11;
-        }
-        String[] meses = {"ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"};
+        
 
-        String[] meses3 = {meses[mesActual], meses[mesAnterior], meses[mesAnterior2]};
-
-        devolucion = new JComboBox(meses3);
+        devolucion = new JComboBox(LeerExcel.obtenerHoja("src//excel/historialCompras.xlsx"));
         devolucion.setBackground(Color.white);
         devolucion.setUI(PropiedadesCB2.createUI(devolucion));
         devolucion.setPreferredSize(new Dimension(100, 30));
@@ -543,8 +532,10 @@ public class RellenarG {
                     rellenarDevoluciones.removeAll();
                     rellenarDevoluciones.revalidate();
                     rellenarDevoluciones.repaint();
+                    
+                    
 
-                    ventas = new JComboBox(LeerExcel.rellenaCB2("src//excel/Ventas.xlsx", meses[devolucion.getSelectedIndex()], 1));
+                    ventas = new JComboBox(LeerExcel.rellenaCB2("src//excel/historialCompras.xlsx",devolucion.getSelectedItem().toString(), 0));
 
                     ventas.setBackground(Color.white);
                     ventas.setUI(PropiedadesCB2.createUI(ventas));
@@ -556,7 +547,8 @@ public class RellenarG {
                 rellenarDevoluciones.add(iconoOkDev);
 
                 } catch (IOException ex) {
-                    Logger.getLogger(RellenarG.class.getName()).log(Level.SEVERE, null, ex);
+                    Caption ventanaEx = new Caption("Recuerda cerrar Excel");
+                    ventanaEx.setVisible(true);
                 }
             }
         });

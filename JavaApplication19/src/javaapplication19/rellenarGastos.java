@@ -20,6 +20,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javaapplication19.rellenarIngresos.fechaActual;
+import static javaapplication19.rellenarIngresos.fechaActualEscribir;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -1283,6 +1285,112 @@ public class rellenarGastos {
 
         iconoOkDes.addMouseListener(botonImp);
     }
+    
+    
+     public void botonDev(JTextField montoDev, JComboBox devolucion, JLabel iconoOkDev, JScrollPane scrollIngresos, JPanel listaIngresos, JPanel panelPadre) {
+        MouseListener botonDev = new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try{
+
+                scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+                PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
+                panelIngreso.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                panelIngreso.setLayout(new GridLayout(1, 5));
+                panelIngreso.setBackground(Colores.epicColorBajito);
+                panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
+                panelIngreso.setMaximumSize(new Dimension(550, 40));
+                panelIngreso.setPreferredSize(new Dimension(550, 100));
+
+                JLabel fecha = new JLabel();
+                fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                fecha.setText(fechaActual());
+
+                JLabel dev = new JLabel();
+                dev.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                dev.setText(devolucion.getSelectedItem().toString());
+                 JLabel icono = new JLabel();
+                Iconos.scaleImage("inventarioG", icono, 30);
+                icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+                
+                //REGRESAR VENTA A INVENTARIO
+                rellenarIngresos.revertirUnidades(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
+                
+                String plataforma=LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 21, devolucion.getSelectedIndex()+1);
+                double precio=0;
+                double variacion=LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 20, devolucion.getSelectedIndex()+1);
+                
+                switch(plataforma){
+                    case "Mercado Libre":
+                        precio=LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 14, devolucion.getSelectedIndex()+1);
+                        break;
+                    case "Local":
+                        precio=LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 10, devolucion.getSelectedIndex()+1);
+                        break;
+                }
+
+                JLabel montoDevolucion = new JLabel();
+                montoDevolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                montoDevolucion.setText("$"+Double.toString(precio));
+                
+                JLabel variacionL = new JLabel();
+                variacionL.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                variacionL.setText("$"+Double.toString(variacion));
+
+               
+                listaIngresos.add(panelIngreso, 1);
+                panelesGastos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
+              //  botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "inventarioG");
+                panelIngreso.add(fecha);
+                panelIngreso.add(dev);
+                panelIngreso.add(montoDevolucion);
+                panelIngreso.add(variacionL);
+                panelIngreso.add(icono);
+
+               
+
+                String[] data = {(String) fechaActual(), "Devolucion", dev.getText(), Double.toString(precio), "   ", "VERDE",Double.toString(variacion)};
+
+                Escribir escribirVentas = new Escribir();
+               
+                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                } catch (IOException ex) {
+                    Caption ventanaEx = new Caption("Recuerda cerrar Excel");
+                    ventanaEx.setVisible(true);
+                }
+
+                indice++;
+                panelPadre.removeAll();
+                panelPadre.updateUI();
+                listaIngresos.updateUI();
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Iconos.scaleImage("okh", iconoOkDev, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                Iconos.scaleImage("ok", iconoOkDev, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+
+        iconoOkDev.addMouseListener(botonDev);
+    }
+    
 
     public static String fechaActual() {
         java.util.Date fecha = new Date();
