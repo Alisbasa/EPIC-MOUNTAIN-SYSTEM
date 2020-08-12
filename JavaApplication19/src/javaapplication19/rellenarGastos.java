@@ -1287,7 +1287,7 @@ public class rellenarGastos {
     }
     
     
-     public void botonDev(JTextField montoDev, JComboBox cliente,String ventas,int folioDev, JTextField intento, JLabel iconoOkDev, JScrollPane scrollIngresos, JPanel listaIngresos, JPanel panelPadre) {
+     public void botonDev(JComboBox cliente, JComboBox ventas, JLabel iconoOkDev, JScrollPane scrollIngresos, JPanel listaIngresos, JPanel panelPadre) {
         MouseListener botonDev = new MouseListener() {
 
             @Override
@@ -1309,17 +1309,15 @@ public class rellenarGastos {
 
                 JLabel dev = new JLabel();
                 dev.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    System.out.println("ventas"+ ventas);
-                dev.setText(ventas);
+                dev.setText(ventas.getSelectedItem().toString());
                  JLabel icono = new JLabel();
                 Iconos.scaleImage("inventarioG", icono, 30);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                System.out.println(intento.getText());
-                    System.out.println(LeerExcel.obtenerCelda("src//excel/historialCompras.xlsx", cliente.getSelectedItem().toString(), 23,  folioDev));
-                
-                int folio=(int) LeerExcel.obtenerCeldaNumerica("src//excel/historialCompras.xlsx", cliente.getSelectedItem().toString(), 23,  folioDev);
                 
                 
+                int folio=(int) LeerExcel.obtenerCeldaNumerica("src//excel/historialCompras.xlsx", cliente.getSelectedItem().toString(), 23, ventas.getSelectedIndex()+1);
+                
+                System.out.println(folio);
                 
                 String plataforma=LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 21, folio);
                 double precio=0;

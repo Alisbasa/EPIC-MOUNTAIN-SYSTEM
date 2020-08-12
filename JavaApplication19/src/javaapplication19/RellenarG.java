@@ -530,49 +530,25 @@ public class RellenarG {
         devolucion.setUI(PropiedadesCB2.createUI(devolucion));
         devolucion.setPreferredSize(new Dimension(100, 30));
         devolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
+        ventas = new JComboBox(LeerExcel.rellenaCB2("src//excel/historialCompras.xlsx", devolucion.getSelectedItem().toString(), 0));
+        ventas.setBackground(Color.white);
+        ventas.setUI(PropiedadesCB2.createUI(ventas));
+        ventas.setPreferredSize(new Dimension(300, 30));
+        ventas.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
         rellenarDevoluciones.add(iconoDevoluciones);
         rellenarDevoluciones.add(devolucion);
 
         devolucion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    
-                    rellenarDevoluciones.removeAll();
-                    rellenarDevoluciones.revalidate();
-                    rellenarDevoluciones.repaint();
-                    
-                    
-
-                    ventas = new JComboBox(LeerExcel.rellenaCB2("src//excel/historialCompras.xlsx",devolucion.getSelectedItem().toString(), 0));
-                    ventas.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            getVenta(ventas);
-                            venta = ventas.getSelectedItem().toString();
-                            
-                            folioDev= ventas.getSelectedIndex()+1;
-                            intento= new JTextField(venta);
-                            rellenarDevoluciones.add(iconoOkDev);
-                            rellenarDevoluciones.revalidate();
-                            rellenarDevoluciones.repaint();
-                        }
-                    });
-                    
-                    
-                    ventas.setBackground(Color.white);
-                    ventas.setUI(PropiedadesCB2.createUI(ventas));
-                    ventas.setPreferredSize(new Dimension(300, 30));
-                    ventas.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    
-                    rellenarDevoluciones.add(iconoDevoluciones);
+                rellenarDevoluciones.removeAll();
+                rellenarDevoluciones.revalidate();
+                rellenarDevoluciones.repaint();
+                rellenarDevoluciones.add(iconoDevoluciones);
                 rellenarDevoluciones.add(ventas);
-                
-
-                } catch (IOException ex) {
-                    Caption ventanaEx = new Caption("Recuerda cerrar Excel");
-                    ventanaEx.setVisible(true);
-                }
+                rellenarDevoluciones.add(iconoOkDev);
             }
         });
 
