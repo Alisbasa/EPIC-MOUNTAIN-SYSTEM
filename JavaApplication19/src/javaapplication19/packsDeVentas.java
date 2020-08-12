@@ -366,9 +366,6 @@ public class packsDeVentas extends javax.swing.JFrame {
             Double utilidadLN = escribirExcel.Mulitplicar(6, 19, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), "src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString());
             escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), utilidadLN, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 20);
             
-            
-            
-            
             String formula = "SUM(I2:I" + LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()) + ")";
             escribirExcel.escribirFormula("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), formula, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()) + 1, 8);
             
