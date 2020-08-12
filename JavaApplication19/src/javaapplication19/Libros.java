@@ -1927,7 +1927,7 @@ public class Libros extends javax.swing.JFrame {
 
     private void historialCRMIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialCRMIconMouseClicked
         try{
-            Desktop.getDesktop().open(new java.io.File("src//excel/historialCRM.xlsx"));
+            Desktop.getDesktop().open(new java.io.File("src//excel/historialCompras.xlsx"));
         }catch(Exception e){
             e.printStackTrace();       
         }

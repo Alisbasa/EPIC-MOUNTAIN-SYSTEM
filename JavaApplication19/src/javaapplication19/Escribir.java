@@ -633,10 +633,12 @@ public class Escribir {
                 "IVA X UNIDAD",
                 "IVA NETA",
                 "UTILIDAD X UNIDAD",
-                "UTILIDAD NETA"
+                "UTILIDAD NETA",
+                "MEDIO DE VENTA",
+                "DESTINO"
             };
 
-            for (int i = 0; i < 21; i++) {
+            for (int i = 0; i < 23; i++) {
                 XSSFCell newCell = row.createCell(i);
                 XSSFCell newCell2 = row2.createCell(i);
                 setCellStyleVerde(newWorkBook, newCell);

@@ -317,6 +317,7 @@ public class clienteNuevo extends javax.swing.JFrame {
         try {
             EscribirCRM.escribirExcelClientes("src\\excel\\CRM.xlsx", "Clientes", Registro);
             vender.vender(inventario, unidadesCB, plataforma, jtNombre.getText(), cliente);
+            vender.historialCHH(cliente, plataforma);
             
             //EscribirCRM.escribirExcelInv("src\\excel\\CRM.xlsx", "deudasC", Registro, ERROR);
         } catch (IOException ex) {
