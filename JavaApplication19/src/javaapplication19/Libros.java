@@ -1657,7 +1657,7 @@ public class Libros extends javax.swing.JFrame {
         
         }
         else if(comboGastos.getSelectedItem().toString().equals("DEVOLUCIONES") ) {
-            rellenarIngresos rellenarDevolucion = new rellenarIngresos();
+            rellenarGastos rellenarDevolucion = new rellenarGastos();
             RellenarG rellenarDev = new RellenarG();
                 
             rellenarGastos.removeAll();

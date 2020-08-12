@@ -229,7 +229,7 @@ public class rellenarIngresos {
         boton.addMouseListener(botonV);
     }
 
-    void static revertirUnidades(JLabel boton, String filepath, String hoja) {
+     static void revertirUnidades(JLabel boton, String filepath, String hoja) {
         MouseListener botonV = new MouseListener() {
 
             @Override
