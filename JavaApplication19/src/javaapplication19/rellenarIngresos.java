@@ -1644,10 +1644,10 @@ public class rellenarIngresos {
     }
 
     public void historialCHH(JComboBox cliente, JComboBox medioVenta) throws IOException {
-        String[] hojas = LeerExcel.obtenerHoja("src\\excel\\DeudasC.xlsx");
+        String[] hojas = LeerExcel.obtenerHoja("src\\excel\\historialCompras.xlsx");
 
         boolean hojaEncontrada = false;
-        for (int i = 0; i < LeerExcel.obtenerNumeroHojas("src\\excel\\DeudasC.xlsx"); i++) {
+        for (int i = 0; i < LeerExcel.obtenerNumeroHojas("src\\excel\\historialCompras.xlsx"); i++) {
             if (hojas[i].equals(cliente.getSelectedItem().toString())) {
                 hojaEncontrada = true;
             }
@@ -1656,7 +1656,7 @@ public class rellenarIngresos {
         if (hojaEncontrada == true) {
             //Escribe en Excel y crea hoja
             Escribir crear = new Escribir();
-            crear.crearHojaPacks("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString());
+            //crear.crearHojaPacks("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString());
 
             String venta = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 0, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
             String descripion = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 1, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
@@ -1772,7 +1772,7 @@ public class rellenarIngresos {
             
         } else {
             Escribir crear = new Escribir();
-            //crear.crearHojaPacks("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString());
+            crear.crearHojaPacks("src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString());
 
             String venta = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 0, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
             String descripion = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 1, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
