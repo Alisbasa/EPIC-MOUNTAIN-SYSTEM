@@ -1287,7 +1287,7 @@ public class rellenarGastos {
     }
     
     
-     public void botonDev(JTextField montoDev, JComboBox devolucion, JLabel iconoOkDev, JScrollPane scrollIngresos, JPanel listaIngresos, JPanel panelPadre) {
+     public void botonDev(JTextField montoDev, JComboBox cliente,String ventas,int folioDev, JTextField intento, JLabel iconoOkDev, JScrollPane scrollIngresos, JPanel listaIngresos, JPanel panelPadre) {
         MouseListener botonDev = new MouseListener() {
 
             @Override
@@ -1309,27 +1309,34 @@ public class rellenarGastos {
 
                 JLabel dev = new JLabel();
                 dev.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                dev.setText(devolucion.getSelectedItem().toString());
+                    System.out.println("ventas"+ ventas);
+                dev.setText(ventas);
                  JLabel icono = new JLabel();
                 Iconos.scaleImage("inventarioG", icono, 30);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+                System.out.println(intento.getText());
+                    System.out.println(LeerExcel.obtenerCelda("src//excel/historialCompras.xlsx", cliente.getSelectedItem().toString(), 23,  folioDev));
                 
-                //REGRESAR VENTA A INVENTARIO
-                rellenarIngresos.revertirUnidades(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
+                int folio=(int) LeerExcel.obtenerCeldaNumerica("src//excel/historialCompras.xlsx", cliente.getSelectedItem().toString(), 23,  folioDev);
                 
-                String plataforma=LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 21, devolucion.getSelectedIndex()+1);
+                
+                
+                String plataforma=LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 21, folio);
                 double precio=0;
-                double variacion=LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 20, devolucion.getSelectedIndex()+1);
+                double variacion=LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 20, folio);
                 
                 switch(plataforma){
                     case "Mercado Libre":
-                        precio=LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 14, devolucion.getSelectedIndex()+1);
+                        precio=LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 14, folio);
                         break;
                     case "Local":
-                        precio=LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 10, devolucion.getSelectedIndex()+1);
+                        precio=LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 10, folio);
                         break;
                 }
-
+                //REGRESAR VENTA A INVENTARIO
+                Utilidades.revertirUnidades(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(),folio);   
+                
+                
                 JLabel montoDevolucion = new JLabel();
                 montoDevolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                 montoDevolucion.setText("$"+Double.toString(precio));

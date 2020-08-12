@@ -23,8 +23,8 @@ public class Utilidades {
     DecimalFormat twoDForm = new DecimalFormat("#.##");
     return Double.valueOf(twoDForm.format(d));
 }
-    
-    static void revertirUnidades(JLabel boton, String filepath, String hoja) {
+    //FOLIO ES EL NUMERO DE FILA EN EL EXCELL VENTAS
+    static void revertirUnidades(JLabel boton, String filepath, String hoja, int folio) {
         MouseListener botonV = new MouseListener() {
 
             @Override
@@ -32,7 +32,7 @@ public class Utilidades {
                 try {
                     boolean finder = false;
                     for (int i = 0; i <= LeerExcel.contarRenglones("src//excel/Inventario.xlsx", "Inventario"); i++) {
-                        if ((LeerExcel.obtenerCelda(filepath, hoja, 0, LeerExcel.contarRenglones(filepath, hoja))).equals(LeerExcel.obtenerCelda("src//excel/Inventario.xlsx", "INVENTARIO", 0, i))) {
+                        if (LeerExcel.obtenerCelda(filepath, hoja, 0, folio).equals(LeerExcel.obtenerCelda("src//excel/Inventario.xlsx", "INVENTARIO", 0, i))) {
                             finder = true;
                             int suma = (int) (LeerExcel.obtenerCeldaNumerica(filepath, hoja, 6, LeerExcel.contarRenglones(filepath, hoja))) + (int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", 6, i);
                             Escribir escribirVentas = new Escribir();
