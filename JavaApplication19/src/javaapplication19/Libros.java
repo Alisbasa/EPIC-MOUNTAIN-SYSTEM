@@ -1658,7 +1658,7 @@ public class Libros extends javax.swing.JFrame {
         }
         else if(comboGastos.getSelectedItem().toString().equals("DEVOLUCIONES") ) {
             rellenarGastos rellenarDevolucion = new rellenarGastos();
-            RellenarG rellenarDev = new RellenarG();
+            
                 
             rellenarGastos.removeAll();
             rellenarGastos.revalidate();
@@ -1667,11 +1667,11 @@ public class Libros extends javax.swing.JFrame {
                 
             
             try {
-                rellenarGastos.add(rellenarDev.rellenarDevoluciones());
+                rellenarGastos.add(RellenarG.rellenarDevoluciones(rellenarGastos));
             } catch (IOException ex) {
                 Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
             }
-            rellenarDevolucion.botonDev(rellenarDev.devolucion, rellenarDev.ventas, rellenarDev.iconoOkDev, scrollGastos,listaGastos,rellenarDev.rellenarDevoluciones);
+          //  rellenarDevolucion.botonDev(RellenarG.devolucion, RellenarG.ventas,RellenarG.venta, RellenarG.iconoOkDev, scrollGastos,listaGastos,RellenarG.rellenarDevoluciones, rellenarGastos);
           
         }
         

@@ -1287,14 +1287,14 @@ public class rellenarGastos {
     }
     
     
-     public void botonDev(JComboBox cliente, JComboBox ventas, JLabel iconoOkDev, JScrollPane scrollIngresos, JPanel listaIngresos, JPanel panelPadre) {
+     public void botonDev(JComboBox cliente, JComboBox ventas,String venta, JLabel iconoOkDev, JPanel listaIngresos, JPanel panelPadre, JPanel panelAbuelo) {
         MouseListener botonDev = new MouseListener() {
 
             @Override
             public void mouseClicked(MouseEvent e) {
                 try{
 
-                scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+               
                 PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
                 panelIngreso.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                 panelIngreso.setLayout(new GridLayout(1, 5));
@@ -1302,7 +1302,7 @@ public class rellenarGastos {
                 panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
                 panelIngreso.setMaximumSize(new Dimension(550, 40));
                 panelIngreso.setPreferredSize(new Dimension(550, 100));
-
+System.out.println(venta);
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                 fecha.setText(fechaActual());
@@ -1313,7 +1313,7 @@ public class rellenarGastos {
                  JLabel icono = new JLabel();
                 Iconos.scaleImage("inventarioG", icono, 30);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                
+                    System.out.println(venta);
                 
                 int folio=(int) LeerExcel.obtenerCeldaNumerica("src//excel/historialCompras.xlsx", cliente.getSelectedItem().toString(), 23, ventas.getSelectedIndex()+1);
                 

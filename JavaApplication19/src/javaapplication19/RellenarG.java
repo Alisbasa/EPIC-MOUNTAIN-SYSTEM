@@ -26,6 +26,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javaapplication19.Libros;
+import static javaapplication19.Libros.listaGastos;
 import static javaapplication19.Rellenar.addPlaceHolder;
 import static javaapplication19.rellenarIngresos.fechaActualEscribir;
 import javax.swing.BorderFactory;
@@ -49,7 +50,7 @@ public class RellenarG {
     JPanel rellenarTransporte = new JPanel();
     JPanel rellenarHonorarios = new JPanel();
     JPanel rellenarReducInv = new JPanel();
-    JPanel rellenarDevoluciones = new JPanel();
+    static JPanel rellenarDevoluciones = new JPanel();
     JPanel rellenarDesecho = new JPanel();
 
     JLabel iconoDesarrollo = new JLabel();
@@ -61,7 +62,7 @@ public class RellenarG {
     JLabel iconoTransporte = new JLabel();
     JLabel iconoHonorarios = new JLabel();
     JLabel iconoReducInv = new JLabel();
-    JLabel iconoDevoluciones = new JLabel();
+    static JLabel iconoDevoluciones = new JLabel();
 
     JComboBox tipo;
     JComboBox desarrollo;
@@ -84,12 +85,13 @@ public class RellenarG {
     JComboBox tipoPack;
     JComboBox provedores;
     JTextField unidadesCT;
-    JComboBox devolucion;
+    static JComboBox devolucion;
     JComboBox inventario;
     JTextField paqueteria;
-    JComboBox ventas;
-    String venta;
-    int folioDev=7;
+    static JComboBox ventas;
+   static String venta;
+    static String cliente;
+    int folioDev = 7;
     JTextField intento;
 
     JComboBox tipoDes;
@@ -123,7 +125,7 @@ public class RellenarG {
     JLabel iconoOkTransporte = new JLabel();
     JLabel iconoOkHonorarios = new JLabel();
     JLabel iconoOkReducInv = new JLabel();
-    JLabel iconoOkDev = new JLabel();
+    static JLabel iconoOkDev = new JLabel();
     JLabel iconoOkDesecho = new JLabel();
 
     public JPanel rellenarDesEquipo() {
@@ -510,52 +512,92 @@ public class RellenarG {
 
         return rellenarReducInv;
     }
-    
-    void getVenta(JComboBox venta2){
+
+    void getVenta(JComboBox venta2) {
         venta2.getSelectedItem();
-        venta =  venta2.getSelectedItem().toString();
+        venta = venta2.getSelectedItem().toString();
     }
-    
-    public JPanel rellenarDevoluciones() throws IOException {
-        rellenarDevoluciones.removeAll();
 
-        rellenarDevoluciones.setBackground(Color.white);
-        Iconos.scaleImage("Inventario", iconoDevoluciones, 40);
+   static public JPanel rellenarDevoluciones(JPanel panelAbuelo) throws IOException {
+        try {
+            rellenarDevoluciones.removeAll();
 
-        Iconos.scaleImage("ok", iconoOkDev, 30);
-        
+            rellenarDevoluciones.setBackground(Color.white);
+            Iconos.scaleImage("Inventario", iconoDevoluciones, 40);
 
-        devolucion = new JComboBox(LeerExcel.obtenerHoja("src//excel/historialCompras.xlsx"));
-        devolucion.setBackground(Color.white);
-        devolucion.setUI(PropiedadesCB2.createUI(devolucion));
-        devolucion.setPreferredSize(new Dimension(100, 30));
-        devolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-        
-        ventas = new JComboBox(LeerExcel.rellenaCB2("src//excel/historialCompras.xlsx", devolucion.getSelectedItem().toString(), 0));
-        ventas.setBackground(Color.white);
-        ventas.setUI(PropiedadesCB2.createUI(ventas));
-        ventas.setPreferredSize(new Dimension(300, 30));
-        ventas.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-        
-        rellenarDevoluciones.add(iconoDevoluciones);
-        rellenarDevoluciones.add(devolucion);
+            Iconos.scaleImage("ok", iconoOkDev, 30);
 
-        devolucion.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                rellenarDevoluciones.removeAll();
-                rellenarDevoluciones.revalidate();
-                rellenarDevoluciones.repaint();
-                rellenarDevoluciones.add(iconoDevoluciones);
-                rellenarDevoluciones.add(ventas);
-                rellenarDevoluciones.add(iconoOkDev);
+            devolucion = new JComboBox(LeerExcel.obtenerHoja("src//excel/historialCompras.xlsx"));
+            devolucion.setBackground(Color.white);
+            devolucion.setUI(PropiedadesCB2.createUI(devolucion));
+            devolucion.setPreferredSize(new Dimension(200, 30));
+            devolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+
+            
+
+            rellenarDevoluciones.add(iconoDevoluciones);
+            rellenarDevoluciones.add(devolucion);
+
+            devolucion.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    
+                    panelAbuelo.removeAll();
+            panelAbuelo.revalidate();
+            panelAbuelo.repaint();
+             
+             
+                
+            
+            try {
+                panelAbuelo.add(RellenarG.rellenarDevoluciones2(devolucion.getSelectedItem().toString(),panelAbuelo));
+            } catch (IOException ex) {
+                Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
+                }
+            });
 
-       
+        } catch (IOException ex) {
+            Caption ventanaEx = new Caption("Recuerda cerrar Excel");
+            ventanaEx.setVisible(true);
+        }
 
         return rellenarDevoluciones;
     }
+   
+   
+   static public JPanel rellenarDevoluciones2(String cliente,JPanel panelAbuelo) throws IOException {
+        try {
+            rellenarDevoluciones.removeAll();
+
+            rellenarDevoluciones.setBackground(Color.white);
+            Iconos.scaleImage("Inventario", iconoDevoluciones, 40);
+
+            Iconos.scaleImage("ok", iconoOkDev, 30);
+
+            rellenarGastos rellenarDevo = new rellenarGastos();
+
+            ventas = new JComboBox(LeerExcel.rellenaCB2("src//excel/historialCompras.xlsx", cliente, 0));
+            ventas.setBackground(Color.white);
+            ventas.setUI(PropiedadesCB2.createUI(ventas));
+            ventas.setPreferredSize(new Dimension(300, 30));
+            ventas.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+            venta=ventas.getSelectedItem().toString();
+            rellenarDevoluciones.add(iconoDevoluciones);
+            rellenarDevoluciones.add(ventas);
+            rellenarDevoluciones.add(iconoOkDev);
+            rellenarDevo.botonDev(devolucion, ventas,venta, iconoOkDev,listaGastos,rellenarDevoluciones, panelAbuelo);
+            
+
+        } catch (IOException ex) {
+            Caption ventanaEx = new Caption("Recuerda cerrar Excel");
+            ventanaEx.setVisible(true);
+        }
+
+        return rellenarDevoluciones;
+    }
+   
+  
 
     public JPanel rellenarDesecho() {
         rellenarDesecho.removeAll();
