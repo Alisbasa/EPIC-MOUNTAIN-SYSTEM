@@ -229,7 +229,7 @@ public class rellenarIngresos {
         boton.addMouseListener(botonV);
     }
 
-    void revertirUnidades(JLabel boton, String filepath, String hoja) {
+    void static revertirUnidades(JLabel boton, String filepath, String hoja) {
         MouseListener botonV = new MouseListener() {
 
             @Override
@@ -998,92 +998,6 @@ public class rellenarIngresos {
         };
 
         iconoOkVentasC.addMouseListener(botonVC);
-    }
-
-    //Para rellenar un ingreso:devolucion
-    public void botonDev(JTextField montoDev, JComboBox devolucion, JLabel iconoOkDev, JScrollPane scrollIngresos, JPanel listaIngresos, JPanel panelPadre) {
-        MouseListener botonDev = new MouseListener() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-                scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-                PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
-                panelIngreso.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                panelIngreso.setLayout(new GridLayout(1, 5));
-                panelIngreso.setBackground(Colores.epicColorBajito);
-                panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelIngreso.setMaximumSize(new Dimension(550, 40));
-                panelIngreso.setPreferredSize(new Dimension(550, 100));
-
-                JLabel fecha = new JLabel();
-                fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                fecha.setText(fechaActual());
-
-                JLabel dev = new JLabel();
-                dev.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                dev.setText(devolucion.getSelectedItem().toString());
-
-                JLabel montoDevolucion = new JLabel();
-                montoDevolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                montoDevolucion.setText("Devuelto");
-
-                JLabel icono = new JLabel();
-                Iconos.scaleImage("inventarioG", icono, 30);
-                icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                listaIngresos.add(panelIngreso, 1);
-                panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-                botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "inventarioG");
-                panelIngreso.add(fecha);
-                panelIngreso.add(dev);
-                panelIngreso.add(montoDevolucion);
-                panelIngreso.add(new JLabel(""));
-                panelIngreso.add(icono);
-
-                try {
-                    devolver(devolucion);
-                } catch (IOException ex) {
-                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                String[] data = {(String) fechaActual(), "Devolucion", dev.getText(), montoDevolucion.getText(), "   ", "VERDE"};
-
-                Escribir escribirVentas = new Escribir();
-                try {
-                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
-                } catch (IOException ex) {
-                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                indice++;
-                panelPadre.removeAll();
-                panelPadre.updateUI();
-                listaIngresos.updateUI();
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                Iconos.scaleImage("okh", iconoOkDev, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                Iconos.scaleImage("ok", iconoOkDev, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        };
-
-        iconoOkDev.addMouseListener(botonDev);
     }
 
     //Para rellenar un ingreso: Deuda Pagar Existente
@@ -2009,7 +1923,7 @@ public class rellenarIngresos {
 
     }
 
-    public void devolverUltimaVenta() throws IOException {
+    public static void devolverUltimaVenta() throws IOException {
         String fecha = fechaActual();
 
         int seleccion = LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
@@ -2101,7 +2015,7 @@ public class rellenarIngresos {
         }
     }
 
-    public void formulas() throws IOException {
+    public static void formulas() throws IOException {
         Escribir EscribirCRM = new Escribir();
 
         String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
