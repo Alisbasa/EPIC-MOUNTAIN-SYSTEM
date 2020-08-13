@@ -728,7 +728,7 @@ public class rellenarIngresos {
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    fecha.setText(fechaActual());
+                    fecha.setText(fechaActualDia());
 
                     JLabel deuda = new JLabel();
                     deuda.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -857,7 +857,7 @@ public class rellenarIngresos {
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    fecha.setText(fechaActual());
+                    fecha.setText(fechaActualDia());
 
                     JLabel inventarioLista = new JLabel();
                     inventarioLista.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1020,7 +1020,7 @@ public class rellenarIngresos {
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    fecha.setText(fechaActual());
+                    fecha.setText(fechaActualDia());
 
                     JLabel deudor = new JLabel();
                     deudor.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1124,7 +1124,7 @@ public class rellenarIngresos {
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    fecha.setText(fechaActual());
+                    fecha.setText(fechaActualDia());
 
                     JLabel productoA = new JLabel();
                     productoA.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
