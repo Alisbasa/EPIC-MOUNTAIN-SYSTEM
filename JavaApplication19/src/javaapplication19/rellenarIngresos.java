@@ -1253,7 +1253,7 @@ public class rellenarIngresos {
     public static String fechaActual() {
         java.util.Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM");
-        return formatoFecha.format(fecha);
+        return formatoFecha.format(fecha).toUpperCase();
     }
 
     public static String fechaActualEscribir() {
