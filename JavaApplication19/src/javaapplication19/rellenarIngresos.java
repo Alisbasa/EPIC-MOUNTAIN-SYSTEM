@@ -1589,7 +1589,7 @@ public class rellenarIngresos {
             String precioBaseUnidad = Double.toString(LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 9, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase())));
             String precioBaseNeto = Double.toString(unidades * Double.parseDouble(precioBaseUnidad));
 
-            String[] data = {venta, descripion, fechaActual(), condicion, pack, Double.toString(tig), Integer.toString(unidades), Double.toString(costoUnidad), costoNeto, precioBaseUnidad, precioBaseNeto};
+            String[] data = {venta, descripion, fechaActualEscribir(), condicion, pack, Double.toString(tig), Integer.toString(unidades), Double.toString(costoUnidad), costoNeto, precioBaseUnidad, precioBaseNeto};
 
             Escribir escribirVentas = new Escribir();
 
@@ -2156,4 +2156,5 @@ public class rellenarIngresos {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM YY");
         return formatoFecha.format(fecha);
     }
+    
 }
