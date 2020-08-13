@@ -236,6 +236,10 @@ public class equipoymobCT extends javax.swing.JFrame {
             escribirE.escribirCelda("src\\excel\\comprasT.xlsx", "COMPRAS", paqueteria.getText(), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 22);
             String[] data = {(String) fechaActual(), "Compra en Transito", jtProducto.getText(), jtCosto.getText(), (String) tipoGasto.getSelectedItem(), "VERDE", "0"};
             escribirE.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+            escribirE.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
+            escribirE.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Double.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
+            String formula = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
+            escribirE.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 6);
             
             Libros.actualiza();
             this.setVisible(false); 

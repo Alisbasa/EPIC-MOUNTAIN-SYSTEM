@@ -187,6 +187,11 @@ public final class desecharInv extends javax.swing.JFrame {
 
             String[] data = {fechaActual(), "Desecho Inventario", inventario.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "VERDE", Double.toString(costoCompleto)};
             escribirD.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+            escribirD.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
+            escribirD.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Double.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
+            String formula = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
+            escribirD.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
+
             if (numeroUnidades - unidadesSelec == 0) {
                 Escribir.removeRow("src\\excel\\Inventario.xlsx", "Inventario", (inventario.getSelectedIndex() + 1));
             }else{
