@@ -693,7 +693,7 @@ public class rellenarGastos {
                 panelGasto.add(new JLabel(""));
                 panelGasto.add(icono);
 
-                String[] data = {(String) fechaActual(), "Impuesto", (String) imp.getText(), montoImpues.getText(), ""};
+                String[] data = {(String) fechaActual(), "Impuesto", (String) imp.getText(), montoImpues.getText(), "","VERDE",montoImpues.getText()};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -774,7 +774,7 @@ public class rellenarGastos {
                 panelGasto.add(new JLabel(""));
                 panelGasto.add(icono);
 
-                String[] data = {(String) fechaActual(), "Mantenimiento", (String) descripcion.getText(), precioMant.getText(), ""};
+                String[] data = {(String) fechaActual(), "Mantenimiento", (String) descripcion.getText(), precioMant.getText(), "", "VERDE",precioMant.getText()};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -855,7 +855,7 @@ public class rellenarGastos {
                 panelGasto.add(new JLabel(""));
                 panelGasto.add(icono);
 
-                String[] data = {(String) fechaActual(), "Suministros", (String) sum.getText(), monto.getText(), ""};
+                String[] data = {(String) fechaActual(), "Suministros", (String) sum.getText(), monto.getText(), "","VERDE",monto.getText()};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -936,7 +936,7 @@ public class rellenarGastos {
                 panelGasto.add(new JLabel(""));
                 panelGasto.add(icono);
 
-                String[] data = {(String) fechaActual(), "Mantenimiento", (String) pub.getText(), monto.getText(), ""};
+                String[] data = {(String) fechaActual(), "Mantenimiento", (String) pub.getText(), monto.getText(), "","VERDE",monto.getText()};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -1017,7 +1017,7 @@ public class rellenarGastos {
                 panelGasto.add(new JLabel(""));
                 panelGasto.add(icono);
 
-                String[] data = {(String) fechaActual(), "Transporte", (String) trans.getText(), monto.getText(), ""};
+                String[] data = {(String) fechaActual(), "Transporte", (String) trans.getText(), monto.getText(), "", "VERDE", monto.getText()};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -1098,7 +1098,7 @@ public class rellenarGastos {
                 panelGasto.add(new JLabel(""));
                 panelGasto.add(icono);
 
-                String[] data = {(String) fechaActual(), "Honorarios", (String) hon.getText(), monto.getText(), ""};
+                String[] data = {(String) fechaActual(), "Honorarios", (String) hon.getText(), monto.getText(), "","VERDE", monto.getText()};
 
                 Escribir escribirVentas = new Escribir();
                 try {
