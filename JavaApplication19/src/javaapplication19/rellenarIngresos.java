@@ -229,7 +229,7 @@ public class rellenarIngresos {
         boton.addMouseListener(botonV);
     }
 
-     static void revertirUnidades(JLabel boton, String filepath, String hoja) {
+    static void revertirUnidades(JLabel boton, String filepath, String hoja) {
         MouseListener botonV = new MouseListener() {
 
             @Override
@@ -375,15 +375,17 @@ public class rellenarIngresos {
                     Escribir escribirVentas = new Escribir();
 
                     //System.out.println(LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data, 7);
                     escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(utilidadExcel), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                    String formula = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
 
                     if (cliente.getSelectedItem().toString() == "Nuevo Cliente") {
                         clienteNuevo clienteC = new clienteNuevo(inventario, unidades, plataformacb, cliente);
                         clienteC.setVisible(true);
                     } else {
                         vender(inventario, unidades, plataformacb, cliente.getSelectedItem().toString(), cliente);
-                        historialCHH(cliente.getSelectedItem().toString(),cliente, plataformacb);
+                        historialCHH(cliente.getSelectedItem().toString(), cliente, plataformacb);
                     }
                     listaIngresos.add(panelIngreso, 1);
                     panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
@@ -477,7 +479,7 @@ public class rellenarIngresos {
 
                     Escribir escribirVentas = new Escribir();
 
-                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data, 7);
                     escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoC.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
 
                     Escribir EscribirExcel = new Escribir();
@@ -569,8 +571,10 @@ public class rellenarIngresos {
 
                     Escribir escribirVentas = new Escribir();
                     try {
-                        escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                        escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data, 7);
                         escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoI.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                        String formula = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                        escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
                     } catch (IOException ex) {
                         Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -675,8 +679,10 @@ public class rellenarIngresos {
 
                 Escribir escribirVentas = new Escribir();
                 try {
-                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data, 7);
                     escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoImp.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                    String formula = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
                 } catch (IOException ex) {
                     Caption ventanaEx = new Caption("Recuerda cerrar Excel");
                     ventanaEx.setVisible(true);
@@ -764,8 +770,10 @@ public class rellenarIngresos {
                     if (deudor.getSelectedItem().toString() != "Nuevo") {
 
                         //EXCEL INDIVIDUAL
-                        escribirVentas.escribirExcel(excelLibros, "Ingresos", dataLibros);
-                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                        escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data, 7);
+                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos",Utilidades.roundTwoDecimals( Double.valueOf(montoDeudaC.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                        String formula = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                        escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
 
                         escribirVentas.escribirExcelInv("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), data, 2);
                         escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), Double.valueOf(montoDeudaC.getText()) * (-1), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString()), 1);
@@ -774,8 +782,8 @@ public class rellenarIngresos {
 
                         Double suma = LeerExcel.obtenerCeldaNumerica("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), 1, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString()) + 1));
                         escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", suma, deudor.getSelectedIndex() + 1, 2);
-                        String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1) + ")";
-                        escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
+                        String formulaLibro = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1) + ")";
+                        escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formulaLibro, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
 
                         listaIngresos.add(panelIngreso, 1);
                         panelesIngresos.add(panelIngreso);
@@ -913,9 +921,10 @@ public class rellenarIngresos {
 
                     Escribir escribirVentas = new Escribir();
 
-                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(utilidadExcel), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
-                    
+                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data,7);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(utilidadExcel)), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                    String formula = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
                     //Condicional para verificar que exista la hoja y si es asi escriba en la existente
                     String[] hojas = LeerExcel.obtenerHoja("src\\excel\\DeudasC.xlsx");
                     String stCliente = cliente.getSelectedItem().toString();
@@ -938,10 +947,10 @@ public class rellenarIngresos {
                         escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(), formulaInd, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString()) + 1), 1);
 
                         //Escribe en Excel general deudasCobrar                       
-                        String formula = escribirVentas.Sumar(2, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1, 'c');
-                        escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
+                        String formulaD = escribirVentas.Sumar(2, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1, 'c');
+                        escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formulaD, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
                         vender(inventario, unidades, plataformacb, cliente.getSelectedItem().toString(), cliente);
-                        historialCHH(stCliente,cliente, plataformacb);
+                        historialCHH(stCliente, cliente, plataformacb);
                     } else if (cliente.getSelectedItem().toString().equals("Nuevo Cliente")) {
                         clienteNuevoCobrar clienteN = new clienteNuevoCobrar(precioExcel, inventario, unidades, plataformacb, cliente);
                         clienteN.setVisible(true);
@@ -959,11 +968,11 @@ public class rellenarIngresos {
                         String[] ventaC = {fechaActual(), cliente.getSelectedItem().toString(), precioExcel};
                         escribirVentas.escribirExcelInv("src\\excel\\DeudasC.xlsx", "deudasCobrar", ventaC, 3);
                         escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", Double.valueOf(precioExcel), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 2);
-                        String formula = escribirVentas.Sumar(2, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 'c');
-                        escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
+                        String formulaC = escribirVentas.Sumar(2, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 'c');
+                        escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formulaC, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
                         vender(inventario, unidades, plataformacb, cliente.getSelectedItem().toString(), cliente);
-                        
-                        historialCHH(stCliente,cliente, plataformacb);
+
+                        historialCHH(stCliente, cliente, plataformacb);
                     }
                     panelIngreso.add(fecha);
                     panelIngreso.add(inventarioLista);
@@ -1062,8 +1071,10 @@ public class rellenarIngresos {
                     escribirVentas.escribirFormula("src\\excel\\DeudasP.xlsx", "deudasPagar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "deudasPagar") + 1), 2);
 
                     try {
-                        escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
-                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoDeuPE.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                        escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data,7);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(montoDeuPE.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                    String formulalibro = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formulalibro, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
                     } catch (IOException ex) {
                         Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -1209,9 +1220,10 @@ public class rellenarIngresos {
 
                         Escribir escribirVentas = new Escribir();
 
-                        escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
-                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoA.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
-
+                         escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data,7);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(montoA.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                    String formula = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
                     }
 
                     panelIngreso.add(fecha);
@@ -1434,10 +1446,8 @@ public class rellenarIngresos {
 
             //Escribe arreglo de Strings
             escribirVentas.escribirExcelInv("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), data, 10);
-           
-            
+
             //escribirVentas.escribirCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 23);
-            
             //Escribe unidades como int
             escribirVentas.escribirCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), Integer.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 6);
 
@@ -1570,7 +1580,7 @@ public class rellenarIngresos {
 
     }
 
-    public void historialCHH(String cliente,JComboBox clienteCB, JComboBox medioVenta) throws IOException {
+    public void historialCHH(String cliente, JComboBox clienteCB, JComboBox medioVenta) throws IOException {
         String[] hojas = LeerExcel.obtenerHoja("src\\excel\\historialCompras.xlsx");
 
         boolean hojaEncontrada = false;
@@ -1608,7 +1618,7 @@ public class rellenarIngresos {
             escribirVentas.escribirCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente, Integer.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 6);
 
             //Escribe costo*unidad como double
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, Double.valueOf(data[7]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente),7);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, Double.valueOf(data[7]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 7);
             //Escribe costo neto como double
             escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, Double.valueOf(data[8]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 8);
 
@@ -1661,7 +1671,7 @@ public class rellenarIngresos {
             //Escribe utilidadShop neta
             Double utilidadShopN = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 20, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
             escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, utilidadShopN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 20);
-            
+
             //Escribe formula de costo neto en suma
             String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
             escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 8);
@@ -1689,18 +1699,18 @@ public class rellenarIngresos {
             //Escribe formula de utilidad local neta en suma
             String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
             escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula7, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 20);
-            
+
             //Escribe medio de venta
             escribirVentas.escribirCelda("src\\excel\\historialCompras.xlsx", cliente, medioVenta.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 21);
 
             //Escribe destino
             String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "Clientes", 3, clienteCB.getSelectedIndex() + 1);
             escribirVentas.escribirCelda("src\\excel\\historialCompras.xlsx", cliente, destino, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 22);
-            
+
             //Escribe Folio
             int folio = LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
             escribirVentas.escribirCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente, folio, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 23);
-            
+
         } else {
             Escribir crear = new Escribir();
             crear.crearHojaPacks("src\\excel\\historialCompras.xlsx", cliente);
@@ -1728,7 +1738,7 @@ public class rellenarIngresos {
             escribirVentas.escribirCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente, Integer.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 6);
 
             //Escribe costo*unidad como double
-            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, Double.valueOf(data[7]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente),7);
+            escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, Double.valueOf(data[7]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 7);
             //Escribe costo neto como double
             escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, Double.valueOf(data[8]), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 8);
 
@@ -1781,7 +1791,7 @@ public class rellenarIngresos {
             //Escribe utilidadShop neta
             Double utilidadShopN = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 20, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
             escribirVentas.escribirCeldaDouble("src\\excel\\historialCompras.xlsx", cliente, utilidadShopN, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 20);
-            
+
             //Escribe formula de costo neto en suma
             String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
             escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 8);
@@ -1809,20 +1819,19 @@ public class rellenarIngresos {
             //Escribe formula de utilidad local neta en suma
             String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1) + ")";
             escribirVentas.escribirFormula("src\\excel\\historialCompras.xlsx", cliente, formula7, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente) + 1, 20);
-            
-             //Escribe medio de venta
+
+            //Escribe medio de venta
             escribirVentas.escribirCelda("src\\excel\\historialCompras.xlsx", cliente, medioVenta.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 21);
 
             //Escribe destino
             String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "Clientes", 3, clienteCB.getSelectedIndex() + 1);
             escribirVentas.escribirCelda("src\\excel\\historialCompras.xlsx", cliente, destino, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 22);
-            
+
             //Escribe Folio
             int folio = LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
             escribirVentas.escribirCeldaNumerica("src\\excel\\historialCompras.xlsx", cliente, folio, LeerExcel.contarRenglones("src\\excel\\historialCompras.xlsx", cliente), 23);
         }
     }
-        
 
     public void devolver(JComboBox devo) throws IOException {
         String fecha = fechaActual();
@@ -2164,5 +2173,5 @@ public class rellenarIngresos {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM YY");
         return formatoFecha.format(fecha);
     }
-    
+
 }

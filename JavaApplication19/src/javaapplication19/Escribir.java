@@ -308,8 +308,29 @@ public class Escribir {
             }
             XSSFCell desc = newRow.getCell(1);
             setCellStyleDesc(newWorkbook, desc);
+            
+            
+              
 
-        } else {
+        }else if (row.getCell(1).getStringCellValue().equals("Tipo")) {
+            newSheet.setColumnWidth(0, 5000);
+            newSheet.setColumnWidth(1, 7000);
+            newSheet.setColumnWidth(2, 1500);
+            for (int i = 0; i < col; i++) {
+                if (i > 2) {
+                    newSheet.setColumnWidth(i, 5000);
+                }
+                XSSFCell newCell = newRow.createCell(i);
+                newCell.setCellValue(data[i]);
+                setCellStyle(newWorkbook, newCell);
+                //evaluar(newWorkbook, newCell);
+
+            }
+            XSSFCell desc = newRow.getCell(1);
+            setCellStyleDesc(newWorkbook, desc);  
+        
+        
+        }else {
 
             for (int i = 0; i < col; i++) {
 
