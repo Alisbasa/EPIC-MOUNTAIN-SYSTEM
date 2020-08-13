@@ -585,9 +585,9 @@ public class RellenarG {
             venta=ventas.getSelectedItem().toString();
             rellenarDevoluciones.add(iconoDevoluciones);
             rellenarDevoluciones.add(ventas);
-            rellenarDevoluciones.add(iconoOkDev);
-            rellenarDevo.botonDev(devolucion, ventas,venta, iconoOkDev,listaGastos,rellenarDevoluciones, panelAbuelo);
             
+            rellenarDevo.botonDev(devolucion, ventas,venta, iconoOkDev,listaGastos,rellenarDevoluciones, panelAbuelo);
+            rellenarDevoluciones.add(iconoOkDev);
 
         } catch (IOException ex) {
             Caption ventanaEx = new Caption("Recuerda cerrar Excel");

@@ -1302,7 +1302,7 @@ public class rellenarGastos {
                 panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
                 panelIngreso.setMaximumSize(new Dimension(550, 40));
                 panelIngreso.setPreferredSize(new Dimension(550, 100));
-System.out.println(venta);
+
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                 fecha.setText(fechaActual());
@@ -1313,11 +1313,11 @@ System.out.println(venta);
                  JLabel icono = new JLabel();
                 Iconos.scaleImage("inventarioG", icono, 30);
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                    System.out.println(venta);
+                    
                 
                 int folio=(int) LeerExcel.obtenerCeldaNumerica("src//excel/historialCompras.xlsx", cliente.getSelectedItem().toString(), 23, ventas.getSelectedIndex()+1);
                 
-                System.out.println(folio);
+               
                 
                 String plataforma=LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 21, folio);
                 double precio=0;
@@ -1332,8 +1332,9 @@ System.out.println(venta);
                         break;
                 }
                 //REGRESAR VENTA A INVENTARIO
-                Utilidades.revertirUnidades(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(),folio);   
-                
+                String mesVenta=LeerExcel.obtenerCelda("src//excel/historialCompras.xlsx", cliente.getSelectedItem().toString(),2, ventas.getSelectedIndex()+1);
+                Utilidades.revertirUnidades("src\\excel\\Ventas.xlsx", mesVenta,folio);   
+                Escribir.removeRow("src//excel/historialCompras.xlsx", cliente.getSelectedItem().toString(), ventas.getSelectedIndex()+1);
                 
                 JLabel montoDevolucion = new JLabel();
                 montoDevolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1400,7 +1401,7 @@ System.out.println(venta);
     public static String fechaActual() {
         java.util.Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM");
-        return formatoFecha.format(fecha);
+        return formatoFecha.format(fecha).toUpperCase();
     }
 
     public void rellenarLibro(JPanel listaGastos) throws IOException {
