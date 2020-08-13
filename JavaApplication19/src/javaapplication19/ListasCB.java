@@ -35,7 +35,7 @@ public class ListasCB {
                                "HONORARIOS",
                                "REDUC. DE INV.",
                                "DEVOLUCIONES",
-                               "DESECHAR EQUIPO Y MOB."}; 
+                               "DESECHAR"}; 
 
     
     static public String[] getIngresos() {
