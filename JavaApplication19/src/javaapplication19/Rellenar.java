@@ -374,7 +374,11 @@ public class Rellenar {
         Iconos.scaleImage("ok", iconoOkDeuPE, 30);
         
         String [] arr = LeerExcel.obtenerHoja("src\\excel\\DeudasP.xlsx");
+        
+        
+        
         deudasPE = new JComboBox(arr);
+        deudasPE.removeItemAt(0);
         deudasPE.setBackground(Color.white);
         deudasPE.setUI(PropiedadesCB2.createUI(deudasPE));
         deudasPE.setPreferredSize(new Dimension(150, 30));

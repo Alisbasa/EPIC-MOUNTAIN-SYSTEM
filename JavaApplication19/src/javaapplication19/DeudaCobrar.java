@@ -204,7 +204,10 @@ public class DeudaCobrar extends javax.swing.JFrame {
                         String formula2 = escribirExcel.Restar(2, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+ 1),'b');
                         escribirExcel.escribirFormula("src\\excel\\DeudasC.xlsx", jtNombre.getText(),  formula2, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+ 1), 1);
                         //ESCRIBIR LIBROS
-            escribirExcel.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", dataLibros);
+            escribirExcel.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", dataLibros,7);
+             escribirExcel.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos",Utilidades.roundTwoDecimals( 0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                        String formulaLibro = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                        escribirExcel.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formulaLibro, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
             
             Libros.actualiza();
             this.setVisible(false);
