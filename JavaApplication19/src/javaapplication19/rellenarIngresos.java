@@ -328,7 +328,7 @@ public class rellenarIngresos {
                     //FECHA
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    fecha.setText(fechaActual());
+                    fecha.setText(fechaActualDia());
                     //INVENTARIO
                     JLabel inventarioLista = new JLabel();
                     inventarioLista.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -446,7 +446,7 @@ public class rellenarIngresos {
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    fecha.setText(fechaActual());
+                    fecha.setText(fechaActualDia());
 
                     JLabel credito = new JLabel();
                     credito.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -543,7 +543,7 @@ public class rellenarIngresos {
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    fecha.setText(fechaActual());
+                    fecha.setText(fechaActualDia());
 
                     JLabel inversionista = new JLabel();
                     inversionista.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -646,7 +646,7 @@ public class rellenarIngresos {
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                fecha.setText(fechaActual());
+                fecha.setText(fechaActualDia());
 
                 JLabel imp = new JLabel();
                 imp.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1275,7 +1275,7 @@ public class rellenarIngresos {
         JLabel fechaTOP = new JLabel();
         fechaTOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         fechaTOP.setForeground(Colores.gris);
-        fechaTOP.setText("FECHA");
+        fechaTOP.setText(fechaActualEscribir());
 
         JLabel nombreTOP = new JLabel();
         nombreTOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -2154,6 +2154,12 @@ public class rellenarIngresos {
     public static String fechaActualConA() {
         java.util.Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM YY");
+        return formatoFecha.format(fecha);
+    }
+    
+    public static String fechaActualDia() {
+        java.util.Date fecha = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd");
         return formatoFecha.format(fecha);
     }
     
