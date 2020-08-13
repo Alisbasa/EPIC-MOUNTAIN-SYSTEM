@@ -376,6 +376,7 @@ public class rellenarIngresos {
 
                     //System.out.println(LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(utilidadExcel), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
 
                     if (cliente.getSelectedItem().toString() == "Nuevo Cliente") {
                         clienteNuevo clienteC = new clienteNuevo(inventario, unidades, plataformacb, cliente);
@@ -477,6 +478,7 @@ public class rellenarIngresos {
                     Escribir escribirVentas = new Escribir();
 
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoC.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
 
                     Escribir EscribirExcel = new Escribir();
 
@@ -568,6 +570,7 @@ public class rellenarIngresos {
                     Escribir escribirVentas = new Escribir();
                     try {
                         escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoI.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
                     } catch (IOException ex) {
                         Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -673,6 +676,7 @@ public class rellenarIngresos {
                 Escribir escribirVentas = new Escribir();
                 try {
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoImp.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
                 } catch (IOException ex) {
                     Caption ventanaEx = new Caption("Recuerda cerrar Excel");
                     ventanaEx.setVisible(true);
@@ -761,6 +765,7 @@ public class rellenarIngresos {
 
                         //EXCEL INDIVIDUAL
                         escribirVentas.escribirExcel(excelLibros, "Ingresos", dataLibros);
+                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
 
                         escribirVentas.escribirExcelInv("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), data, 2);
                         escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), Double.valueOf(montoDeudaC.getText()) * (-1), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString()), 1);
@@ -909,7 +914,8 @@ public class rellenarIngresos {
                     Escribir escribirVentas = new Escribir();
 
                     escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
-
+                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(utilidadExcel), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                    
                     //Condicional para verificar que exista la hoja y si es asi escriba en la existente
                     String[] hojas = LeerExcel.obtenerHoja("src\\excel\\DeudasC.xlsx");
                     String stCliente = cliente.getSelectedItem().toString();
@@ -1057,6 +1063,7 @@ public class rellenarIngresos {
 
                     try {
                         escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoDeuPE.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
                     } catch (IOException ex) {
                         Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -1203,6 +1210,7 @@ public class rellenarIngresos {
                         Escribir escribirVentas = new Escribir();
 
                         escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Ingresos", data);
+                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoA.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
 
                     }
 
