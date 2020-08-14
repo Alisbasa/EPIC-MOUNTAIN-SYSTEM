@@ -597,6 +597,9 @@ public class Escribir {
                 header,
                 header2
             };
+            
+            newSheet.setColumnWidth(0, 10000);
+            newSheet.setColumnWidth(1, 7000);
 
             for (int i = 0; i < 2; i++) {
                 XSSFCell newCell = row.createCell(i);
@@ -666,8 +669,15 @@ public class Escribir {
                 "DESTINO",
                 "FOLIO"
             };
-
+            
+            newSheet.setColumnWidth(0, 15000);
+            newSheet.setColumnWidth(1, 15000);
+            
+                
             for (int i = 0; i < 24; i++) {
+                if (i >= 2) {
+                    newSheet.setColumnWidth(i, 5000);
+                }
                 XSSFCell newCell = row.createCell(i);
                 XSSFCell newCell2 = row2.createCell(i);
                 setCellStyleVerde(newWorkBook, newCell);
@@ -682,7 +692,7 @@ public class Escribir {
                 font.setItalic(false);
 
                 XSSFCellStyle style = newWorkBook.createCellStyle();
-                XSSFColor color = new XSSFColor(Colores.epicColor);
+                XSSFColor color = new XSSFColor(Colores.verdeExcel);
                 style.setFillForegroundColor(color);//color de fondo
                 style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
                 style.setAlignment(HorizontalAlignment.CENTER);
