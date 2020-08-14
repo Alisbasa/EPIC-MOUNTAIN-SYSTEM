@@ -707,6 +707,17 @@ public class Escribir {
         newWorkBook.write(outputStream);
         outputStream.close();
     }
+    
+    public static void crearDoucumento(String nombre){
+        HSSFWorkbook workbook = new HSSFWorkbook();
+          try (FileOutputStream fos = 
+                 new FileOutputStream(new File("src\\excel\\"+nombre+".xls"))) {
+            workbook.write(fos);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
 
     public static void eliminarHoja(String filepath, int indexHoja) throws FileNotFoundException, IOException {
         File file = new File(filepath);
