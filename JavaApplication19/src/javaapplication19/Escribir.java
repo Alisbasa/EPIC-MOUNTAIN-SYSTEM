@@ -463,7 +463,7 @@ public class Escribir {
         setCellStylePrecio(newWorkbook, newCell);
         evaluar(newWorkbook, newCell);
 //      newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
-        XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+//        XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
         
         XSSFRow rowEv = newSheet.getRow(0);
         if(rowEv.getCell(5).getStringCellValue().equals("T.I.G.")){

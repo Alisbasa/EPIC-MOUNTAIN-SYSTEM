@@ -139,6 +139,7 @@ public class RellenarG {
         String[] lista = {"Herramientas", "Equipo de Taller", "Mobiliario", "Equipo de Limpieza"};
 
         tipo = new JComboBox(lista);
+        tipo.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         tipo.setUI(PropiedadesCB2.createUI(tipo));
 
         desarrolloTipoE = new JTextField();
@@ -185,6 +186,7 @@ public class RellenarG {
         rellenarDesInv.add(iconoDesarrollo);
 
         desarrolloTipoI = new JTextField();
+        desarrolloTipoI.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Inventario", desarrolloTipoI);
         desarrolloTipoI.setBackground(Colores.epicColorBajito);
         desarrolloTipoI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
@@ -193,9 +195,26 @@ public class RellenarG {
 
         String[] listaProductos = {"Nuevo", "Existente", "Aditamento"};
         producto = new JComboBox(listaProductos);
+        producto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         producto.setUI(PropiedadesCB2.createUI(producto));
+        
+        producto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(producto.getSelectedItem().toString().equals("Existente")){
+                    rellenarDesInv.removeAll();
+                    rellenarDesInv.revalidate();
+                    rellenarDesInv.repaint();
+                    
+                    rellenarDesInv.add(iconoDesarrollo);
+                    rellenarDesInv.add(producto);
+                    rellenarDesInv.add(iconoOkDesarrolloI);
+                }
+            }
+        });
 
         montoDesI = new JTextField();
+        montoDesI.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Monto", montoDesI);
         montoDesI.setBackground(Colores.epicColorBajito);
         montoDesI.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
@@ -227,16 +246,19 @@ public class RellenarG {
         desarrolloTipoP.setPreferredSize(new Dimension(150, 30));
 
         String[] tipos = {"Nuevo", "Rellenar Pack"};
+        tipoPack.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         tipoPack = new JComboBox(tipos);
         tipoPack.setUI(PropiedadesCB2.createUI(tipoPack));
 
         montoDesP = new JTextField();
+        montoDesP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Costo", montoDesP);
         montoDesP.setBackground(Colores.epicColorBajito);
         montoDesP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         montoDesP.setPreferredSize(new Dimension(60, 30));
 
         precioDesP = new JTextField();
+        precioDesP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Precio", precioDesP);
         precioDesP.setBackground(Colores.epicColorBajito);
         precioDesP.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
@@ -285,10 +307,12 @@ public class RellenarG {
 
         String[] listaComprasCT = {"HERRAMIENTAS", "EQUIPO DE TALLER", "MOBILIARIO", "EQUIPO DE LIMPIEZA", "INVENTARIO PRINCIPAL", "PACK DE VENTAS", "EGRESO"};
         productoCT = new JComboBox(listaComprasCT);
+        productoCT.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         productoCT.setUI(PropiedadesCB2.createUI(productoCT));
         productoCT.setPreferredSize(new Dimension(250, 30));
 
         paqueteria = new JTextField();
+        paqueteria.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Paqueteria", paqueteria);
         paqueteria.setBackground(Colores.epicColorBajito);
         paqueteria.setPreferredSize(new Dimension(100, 30));
@@ -312,10 +336,12 @@ public class RellenarG {
         Iconos.scaleImage("ok", iconoOkDeudas, 30);
 
         deudas = new JComboBox(LeerExcel.rellenaCB2("src//excel/deudasP.xlsx", "deudasPagar", 1));
+        deudas.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         deudas.setBackground(Color.white);
         deudas.setUI(PropiedadesCB2.createUI(deudas));
 
         montoDeuda = new JTextField();
+        montoDeuda.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Costo", montoDeuda);
         montoDeuda.setPreferredSize(new Dimension(60, 30));
         montoDeuda.setBackground(Colores.epicColorBajito);
@@ -339,12 +365,14 @@ public class RellenarG {
         rellenarImpuestoG.add(iconoImpuesto);
         Iconos.scaleImage("ok", iconoOkImpuesto, 30);
         impuesto = new JTextField();
+        impuesto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         impuesto.setBackground(Colores.epicColorBajito);
         impuesto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
 
         addPlaceHolder("Impuesto", impuesto);
 
         montoImpuesto = new JTextField();
+        montoImpuesto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Costo", montoImpuesto);
         montoImpuesto.setPreferredSize(new Dimension(60, 30));
         montoImpuesto.setBackground(Colores.epicColorBajito);
@@ -366,11 +394,13 @@ public class RellenarG {
         rellenarMantenimiento.add(iconoMantenimiento);
         Iconos.scaleImage("ok", iconoOkMantenimiento, 30);
         mantenimiento = new JTextField();
+        mantenimiento.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Mantenimiento", mantenimiento);
         mantenimiento.setBackground(Colores.epicColorBajito);
         mantenimiento.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
 
         montoMant = new JTextField();
+        montoMant.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Costo", montoMant);
         montoMant.setPreferredSize(new Dimension(60, 30));
         montoMant.setBackground(Colores.epicColorBajito);
@@ -393,11 +423,13 @@ public class RellenarG {
         rellenarSuministros.add(iconoSuministros);
         Iconos.scaleImage("ok", iconoOkSuministros, 30);
         suministros = new JTextField();
+        suministros.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         suministros.setBackground(Colores.epicColorBajito);
         suministros.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         addPlaceHolder("Suministros", suministros);
 
         montoSum = new JTextField();
+        montoSum.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Costo", montoSum);
         montoSum.setPreferredSize(new Dimension(60, 30));
         montoSum.setBackground(Colores.epicColorBajito);
@@ -420,11 +452,13 @@ public class RellenarG {
         rellenarPubliidad.add(iconoPublicidad);
         Iconos.scaleImage("ok", iconoOkPublicidad, 30);
         publicidad = new JTextField();
+        publicidad.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         publicidad.setBackground(Colores.epicColorBajito);
         publicidad.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         addPlaceHolder("Publicidad", publicidad);
 
         montoPublicidad = new JTextField();
+        montoPublicidad.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Costo", montoPublicidad);
         montoPublicidad.setPreferredSize(new Dimension(60, 30));
         montoPublicidad.setBackground(Colores.epicColorBajito);
@@ -447,11 +481,13 @@ public class RellenarG {
         rellenarTransporte.add(iconoTransporte);
         Iconos.scaleImage("ok", iconoOkTransporte, 30);
         transporte = new JTextField();
+        transporte.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         transporte.setBackground(Colores.epicColorBajito);
         transporte.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         addPlaceHolder("Transporte", transporte);
 
         montoTrans = new JTextField();
+        montoTrans.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Costo", montoTrans);
         montoTrans.setPreferredSize(new Dimension(60, 30));
         montoTrans.setBackground(Colores.epicColorBajito);
@@ -475,11 +511,13 @@ public class RellenarG {
         rellenarHonorarios.add(iconoHonorarios);
         Iconos.scaleImage("ok", iconoOkHonorarios, 30);
         honorarios = new JTextField();
+        honorarios.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         honorarios.setBackground(Colores.epicColorBajito);
         honorarios.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         addPlaceHolder("Honorarios", honorarios);
 
         montoHonor = new JTextField();
+        montoHonor.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Costo", montoHonor);
         montoHonor.setPreferredSize(new Dimension(60, 30));
         montoHonor.setBackground(Colores.epicColorBajito);
@@ -504,6 +542,7 @@ public class RellenarG {
         Iconos.scaleImage("ok", iconoOkReducInv, 30);
 
         reducInv = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "INVENTARIO", 0));
+        reducInv.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         reducInv.setBackground(Color.white);
         reducInv.setUI(PropiedadesCB2.createUI(reducInv));
 
@@ -610,6 +649,7 @@ public class RellenarG {
         String[] lista = {"Equipo y Mob.", "Inventario"};
 
         tipoDes = new JComboBox(lista);
+        tipoDes.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         tipoDes.setUI(PropiedadesCB2.createUI(tipoDes));
         tipoDes.setPreferredSize(new Dimension(150, 30));
         Iconos.scaleImage("ok", iconoOkDesecho, 30);

@@ -355,6 +355,16 @@ public class rellenarGastos {
                         Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
+                
+                if (producto.getSelectedItem().toString().equals("Aditamento")){
+                    InventarioAditamento inv;
+                    try {
+                        inv = new InventarioAditamento(precioI, desarrolloListaI);
+                        inv.setVisible(true);
+                    } catch (IOException ex) {
+                        Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
 
                 indice++;
                 panelPadre.removeAll();
