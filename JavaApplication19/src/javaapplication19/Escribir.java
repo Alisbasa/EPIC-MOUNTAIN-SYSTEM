@@ -28,6 +28,7 @@ import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
+import org.apache.poi.xssf.usermodel.XSSFHyperlink;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -308,11 +309,8 @@ public class Escribir {
             }
             XSSFCell desc = newRow.getCell(1);
             setCellStyleDesc(newWorkbook, desc);
-            
-            
-              
 
-        }else if (row.getCell(1).getStringCellValue().equals("Tipo")) {
+        } else if (row.getCell(1).getStringCellValue().equals("Tipo")) {
             newSheet.setColumnWidth(0, 5000);
             newSheet.setColumnWidth(1, 7000);
             newSheet.setColumnWidth(2, 15000);
@@ -326,8 +324,8 @@ public class Escribir {
                 //evaluar(newWorkbook, newCell);
 
             }
-            
-        }else {
+
+        } else {
 
             for (int i = 0; i < col; i++) {
 
@@ -464,16 +462,16 @@ public class Escribir {
         evaluar(newWorkbook, newCell);
 //      newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
 //        XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
-        
-        XSSFRow rowEv = newSheet.getRow(0);
-        if(rowEv.getCell(5).getStringCellValue().equals("T.I.G.")){
-            newCell.setCellValue(data);
-            setCellStyle(newWorkbook, newCell);
-            evaluar(newWorkbook, newCell);
+        XSSFRow NEWrow = newSheet.getRow(0);
+        if (NEWrow.getCell(1).getStringCellValue().equals("DESCRIPCIÓN")&&columna==5) {
+            System.out.println("javaapplication19.Escribir.escribirCeldaDouble()");
+                newCell.setCellValue(data);
+                setCellStyle(newWorkbook, newCell);
+                evaluar(newWorkbook, newCell);
 //          newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
-            XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+                XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+            
         }
-        
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkbook.write(outputStream);
@@ -521,6 +519,7 @@ public class Escribir {
         outputStream.close();
 
     }
+    
 
     public String Restar(int filaInicial, int filaFinal, char columna) {
         String Resta = (Character.toUpperCase(columna) + Integer.toString(filaInicial));
@@ -597,7 +596,7 @@ public class Escribir {
                 header,
                 header2
             };
-            
+
             newSheet.setColumnWidth(0, 10000);
             newSheet.setColumnWidth(1, 7000);
 
@@ -669,11 +668,10 @@ public class Escribir {
                 "DESTINO",
                 "FOLIO"
             };
-            
+
             newSheet.setColumnWidth(0, 15000);
             newSheet.setColumnWidth(1, 15000);
-            
-                
+
             for (int i = 0; i < 24; i++) {
                 if (i >= 2) {
                     newSheet.setColumnWidth(i, 5000);
@@ -707,16 +705,16 @@ public class Escribir {
         newWorkBook.write(outputStream);
         outputStream.close();
     }
-    
-    public static void crearDoucumento(String nombre){
+
+    public static void crearDoucumento(String nombre) {
         XSSFWorkbook workbook = new XSSFWorkbook();
-          try (FileOutputStream fos = 
-                 new FileOutputStream(new File("src\\excel\\Historial de compras\\"+nombre+".xlsx"))) {
+        try ( FileOutputStream fos
+                = new FileOutputStream(new File("src\\excel\\Historial de compras\\" + nombre + ".xlsx"))) {
             workbook.write(fos);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
     }
 
     public static void eliminarHoja(String filepath, int indexHoja) throws FileNotFoundException, IOException {
