@@ -709,9 +709,9 @@ public class Escribir {
     }
     
     public static void crearDoucumento(String nombre){
-        HSSFWorkbook workbook = new HSSFWorkbook();
+        XSSFWorkbook workbook = new XSSFWorkbook();
           try (FileOutputStream fos = 
-                 new FileOutputStream(new File("src\\excel\\"+nombre+".xls"))) {
+                 new FileOutputStream(new File("src\\excel\\Historial de compras\\"+nombre+".xlsx"))) {
             workbook.write(fos);
         } catch (IOException e) {
             e.printStackTrace();
