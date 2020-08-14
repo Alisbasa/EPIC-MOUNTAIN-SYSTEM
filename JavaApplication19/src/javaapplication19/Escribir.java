@@ -707,6 +707,17 @@ public class Escribir {
         newWorkBook.write(outputStream);
         outputStream.close();
     }
+    
+    public static void crearDoucumento(String nombre){
+        XSSFWorkbook workbook = new XSSFWorkbook();
+          try (FileOutputStream fos = 
+                 new FileOutputStream(new File("src\\excel\\Historial de compras\\"+nombre+".xlsx"))) {
+            workbook.write(fos);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
 
     public static void eliminarHoja(String filepath, int indexHoja) throws FileNotFoundException, IOException {
         File file = new File(filepath);
