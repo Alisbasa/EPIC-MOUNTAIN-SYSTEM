@@ -327,8 +327,6 @@ public class Escribir {
 
             }
             
-        
-        
         }else {
 
             for (int i = 0; i < col; i++) {
@@ -464,8 +462,18 @@ public class Escribir {
         newCell.setCellValue(data);
         setCellStylePrecio(newWorkbook, newCell);
         evaluar(newWorkbook, newCell);
-//        newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
+//      newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
         XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+        
+        XSSFRow rowEv = newSheet.getRow(0);
+        if(rowEv.getCell(5).getStringCellValue().equals("T.I.G.")){
+            newCell.setCellValue(data);
+            setCellStyle(newWorkbook, newCell);
+            evaluar(newWorkbook, newCell);
+//          newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
+            XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+        }
+        
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkbook.write(outputStream);
@@ -634,7 +642,7 @@ public class Escribir {
 
             String[] headers = new String[]{
                 "     ",
-                "DESCRIPCION",
+                "DESCRIPCIÓN",
                 "FECHA DE REGISTRO",
                 "CONDICION",
                 "PACK",

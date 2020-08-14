@@ -142,18 +142,21 @@ public class RellenarG {
         tipo.setUI(PropiedadesCB2.createUI(tipo));
 
         desarrolloTipoE = new JTextField();
+        desarrolloTipoE.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Equipo y Mobiliario", desarrolloTipoE);
         desarrolloTipoE.setBackground(Colores.epicColorBajito);
         desarrolloTipoE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         desarrolloTipoE.setPreferredSize(new Dimension(150, 30));
 
         descripcion = new JTextField();
+        descripcion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Descripcion", descripcion);
         descripcion.setBackground(Colores.epicColorBajito);
         descripcion.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         descripcion.setPreferredSize(new Dimension(150, 30));
 
         montoDesE = new JTextField();
+        montoDesE.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         addPlaceHolder("Monto", montoDesE);
         montoDesE.setBackground(Colores.epicColorBajito);
         montoDesE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
