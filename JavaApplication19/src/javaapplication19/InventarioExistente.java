@@ -193,7 +193,9 @@ public class InventarioExistente extends javax.swing.JFrame {
                    
                     escribirInv.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
                    escribirInv.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-                    String formula = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
+                   escribirInv.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(monto), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3); 
+                   
+                   String formula = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
                    escribirInv.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 6);
                    
             } catch (IOException ex) {

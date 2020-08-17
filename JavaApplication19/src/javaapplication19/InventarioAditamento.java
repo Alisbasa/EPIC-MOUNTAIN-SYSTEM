@@ -230,28 +230,20 @@ public class InventarioAditamento extends javax.swing.JFrame {
             
             String[] data = {(String) fechaActual(), "Inventario", nombre.getText() + " agregados a:" + inventarioCB.getSelectedItem().toString(), monto.getText(), "Aditamento", "VERDE", "0"};
             
-            try {  
-                    escribirInv.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-                    escribirInv.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-                    folio = inventarioCB.getSelectedIndex()+1;
-                    /*escribirInv.escribirCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Gastos", folio, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 7);
+                escribirInv.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
+                escribirInv.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
+                folio = inventarioCB.getSelectedIndex() + 1;
+                /*escribirInv.escribirCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Gastos", folio, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 7);
                     System.out.println(folio);*/
-                    escribirInv.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(monto.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
-                    String formula = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
-                    escribirInv.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 6);
-                    
-            
-            } catch (IOException ex) {
-                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            
-        } catch (IOException ex) {
-            Logger.getLogger(InventarioAditamento.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
+                escribirInv.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(monto.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
+                String formula = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
+                escribirInv.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
+
             Libros.actualiza();
             rellenarGastos.botonBorrarAditamento(rellenarGastos.iconoLibros, "src\\excel\\Inventario.xlsx", "Inventario", folio);
             rellenarGastos.botonBorrarInd(rellenarGastos.iconoLibros, "src\\excel\\LibrosContables.xlsx", "Gastos");
+ 
+
 
             
             
