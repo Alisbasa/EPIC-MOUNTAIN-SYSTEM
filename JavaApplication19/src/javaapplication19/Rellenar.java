@@ -52,7 +52,7 @@ public class Rellenar {
     JLabel iconoDeuPE = new JLabel();
     JLabel iconoAport = new JLabel();
 
-    JLabel iconoOkV = new JLabel();
+JLabel iconoOkV = new JLabel();
     JLabel iconoOkC = new JLabel();
     JLabel iconoOkI = new JLabel();
     JLabel iconoOkImp = new JLabel();

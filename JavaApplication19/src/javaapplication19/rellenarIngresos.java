@@ -36,9 +36,12 @@ public class rellenarIngresos {
     public List<String> deudoresCompras;
 
     private String excelLibros = "src\\excel\\LibrosContables.xlsx";
+    
+    static JLabel iconoVentas = new JLabel();
 
     public rellenarIngresos() {
         panelesIngresos = new ArrayList<>();
+        
     }
 
     void botonBorrar(JLabel boton, JPanel padre, JPanel hijo, int panelIndex, String img) {
@@ -117,6 +120,42 @@ public class rellenarIngresos {
         boton.addMouseListener(botonV);
     }
 
+     static void botonBorrarClientes(JLabel boton, String filepath, String hoja) {
+        MouseListener botonV = new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Escribir.removeRow(filepath, hoja, LeerExcel.contarRenglones(filepath, hoja));
+                    //Escribir.removeRow("src//excel/LibrosContables.xlsx", "Gastos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Gastos"));
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //Iconos.scaleImage("cancelG", boton, 20);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                //Iconos.scaleImage(img, boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+
+        boton.addMouseListener(botonV);
+    }
     
 
     
@@ -160,6 +199,8 @@ public class rellenarIngresos {
 
                             //UTILIDAD LOCAL NETA
                             escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * utilidadShop, i, 20);
+                            
+                            
 
                         }
 
@@ -248,13 +289,16 @@ public class rellenarIngresos {
                     plataforma.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     plataforma.setText((String) plataformacb.getSelectedItem());
                     //ICONO
-                    JLabel icono = new JLabel();
-                    Iconos.scaleImage("VentasG", icono, 25);
-                    icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+                    
+                    Iconos.scaleImage("VentasG", iconoVentas, 25);
+                    iconoVentas.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                     //BORRAR
-                    botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "ventasG");
-                    revertirUnidades(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
-                    botonBorrarInd(icono, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
+                    botonBorrar(iconoVentas, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "ventasG");
+                    revertirUnidades(iconoVentas, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
+                    botonBorrarInd(iconoVentas, "src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase());
+                    if(!cliente.getSelectedItem().toString().equals( "Nuevo Cliente")) 
+                        botonBorrarClientes(iconoVentas, "src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString());
+                    
 //                try {
 //                    //borrarVenta();
 //                } catch (IOException ex) {
@@ -272,8 +316,9 @@ public class rellenarIngresos {
                     escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
 
                     if (cliente.getSelectedItem().toString() == "Nuevo Cliente") {
-                        clienteNuevo clienteC = new clienteNuevo(inventario, unidades, plataformacb, cliente);
+                        clienteNuevo clienteC = new clienteNuevo(inventario, unidades, plataformacb, cliente, iconoOkV);
                         clienteC.setVisible(true);
+                        
                     } else {
                         vender(inventario, unidades, plataformacb, cliente.getSelectedItem().toString(), cliente);
                         historialCHH(cliente.getSelectedItem().toString(), cliente, plataformacb);
@@ -284,7 +329,7 @@ public class rellenarIngresos {
                     panelIngreso.add(inventarioLista);
                     panelIngreso.add(precio);
                     panelIngreso.add(utilidad);
-                    panelIngreso.add(icono);
+                    panelIngreso.add(iconoVentas);
                     indice++;
                     panelPadre.removeAll();
                     panelPadre.updateUI();
@@ -1489,7 +1534,7 @@ public class rellenarIngresos {
     public void historialCHH(String cliente, JComboBox clienteCB, JComboBox medioVenta) throws IOException {
         String filepathCompras = "src\\excel\\historialCompras.xlsx";
         String[] hojas = LeerExcel.obtenerHoja(filepathCompras);
-
+        
         boolean hojaEncontrada = false;
         for (int i = 0; i < LeerExcel.obtenerNumeroHojas(filepathCompras); i++) {
             if (hojas[i].equals(cliente)) {
@@ -1743,6 +1788,8 @@ public class rellenarIngresos {
             int folio = LeerExcel.contarRenglones(filepathVentas, fechaActualEscribir().toUpperCase());
             escribirVentas.escribirCeldaNumerica(filepathCliente, cliente, folio, LeerExcel.contarRenglones(filepathCliente, cliente), 23);
         }
+        
+       
     }
 
     public void devolver(JComboBox devo) throws IOException {

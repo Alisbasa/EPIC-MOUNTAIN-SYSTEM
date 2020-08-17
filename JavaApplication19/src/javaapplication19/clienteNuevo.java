@@ -26,16 +26,18 @@ public class clienteNuevo extends javax.swing.JFrame {
     static JComboBox unidadesCB;
     static JComboBox plataforma;
     static JComboBox cliente;
+    static JLabel iconoOk;
     /**
      * Creates new form clienteNuevo
      * @param unidades
      */
-    public clienteNuevo(JComboBox inventario, JComboBox unidadesCB, JComboBox plataforma, JComboBox cliente) {;
+    public clienteNuevo(JComboBox inventario, JComboBox unidadesCB, JComboBox plataforma, JComboBox cliente, JLabel iconoOk) {;
         initComponents();
         this.inventario = inventario;
         this.unidadesCB = unidadesCB;
         this.plataforma = plataforma;
         this.cliente = cliente;
+        this.iconoOk=iconoOk;
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -320,6 +322,7 @@ public class clienteNuevo extends javax.swing.JFrame {
             EscribirCRM.escribirCelda("src\\excel\\CRM.xlsx", "Clientes", formula, LeerExcel.contarRenglones("src\\excel\\CRM.xlsx", "Clientes"), 4);
             vender.vender(inventario, unidadesCB, plataforma, jtNombre.getText(), cliente);
             vender.historialCHH(jtNombre.getText(),cliente, plataforma);
+            rellenarIngresos.botonBorrarClientes(rellenarIngresos.iconoVentas, "src\\excel\\historialCompras.xlsx", jtNombre.getText());
             
             //EscribirCRM.escribirExcelInv("src\\excel\\CRM.xlsx", "deudasC", Registro, ERROR);
         } catch (IOException ex) {
@@ -358,7 +361,7 @@ public class clienteNuevo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new clienteNuevo(inventario, unidadesCB, plataforma, cliente).setVisible(true);
+                new clienteNuevo(inventario, unidadesCB, plataforma, cliente, iconoOk).setVisible(true);
             }
         });
     }

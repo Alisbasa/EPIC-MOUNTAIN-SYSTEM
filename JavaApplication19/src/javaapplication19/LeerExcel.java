@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
+import org.apache.poi.openxml4j.util.ZipSecureFile;
 
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -44,6 +45,7 @@ public class LeerExcel {
     static public int contarRenglones(String filepath, String hoja) throws FileNotFoundException, IOException{
         File file = new File(filepath);
         FileInputStream inputStream = new FileInputStream(file);
+        ZipSecureFile.setMinInflateRatio(0);
         XSSFWorkbook newWorkbook =new XSSFWorkbook(inputStream);
         XSSFSheet newSheet = newWorkbook.getSheet(hoja);
         int rowCount = newSheet.getLastRowNum() - newSheet.getFirstRowNum();
@@ -146,11 +148,11 @@ public class LeerExcel {
        System.out.println("Number of sheets in this workbook : " + newWorkbook.getNumberOfSheets());
        String sheetNames = null;
        
-        for (int i = 0 ; i < newWorkbook.getNumberOfSheets() ; i ++ ) {
-            sheetNames = newWorkbook.getSheetName(i);
+        
+            sheetNames = newWorkbook.getSheetName(newWorkbook.getNumberOfSheets());
             
-            System.out.println("Sheet Name[" + i + "] = " + sheetNames);
-        }
+            System.out.println(sheetNames);
+        
         return sheetNames;
         //Falta que devuelva bien el arreglo de strings sheetNames para rellenar la comboBox
     }
