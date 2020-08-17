@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javaapplication19.rellenarGastos.botonBorrarInd;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -145,6 +146,7 @@ public class packsDeVentas extends javax.swing.JFrame {
         jlPack1.setText("PACK");
         jpDescripcion.add(jlPack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
+        packsDisponibles2.removeItemAt(0);
         packsDisponibles2.setBackground(Color.white);
         packsDisponibles2.setUI(PropiedadesCB2.createUI(packsDisponibles2));
         packsDisponibles2.setModel(new javax.swing.DefaultComboBoxModel<>(arr));
@@ -459,6 +461,8 @@ public class packsDeVentas extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(packsDeVentas.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+         botonBorrarInd(rellenarGastos.iconoPacks, "src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString());
         
         this.setVisible(false);
     }//GEN-LAST:event_jbRegistrarMouseClicked

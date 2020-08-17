@@ -35,6 +35,7 @@ public class rellenarGastos {
     public int indice = 0;
     static JLabel iconoInventario;
     static JLabel iconoLibros;
+    static JLabel iconoPacks = new JLabel();
     public rellenarGastos() {
         panelesGastos = new ArrayList<>();
     }
@@ -116,8 +117,8 @@ public class rellenarGastos {
 
         boton.addMouseListener(botonV);
     }
-
-    static void botonBorrarAditamento(JLabel boton, String filepath, String hoja, int folio) {
+   
+         static void botonBorrarAditamento(JLabel boton, String filepath, String hoja, int folio) {
         MouseListener botonV = new MouseListener() {
 
             @Override
@@ -127,6 +128,76 @@ public class rellenarGastos {
                     Double restaCosto = LeerExcel.obtenerCeldaNumerica(filepath, hoja, 7, folio) - LeerExcel.obtenerCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Gastos", 3, 
                                         LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"));
                     escribirA.escribirCeldaDouble(filepath, hoja, restaCosto, folio, 7);
+                    
+                    Escribir escribirVentas = new Escribir();
+                    
+                    int suma = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 6, folio);
+                    double costoUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 7, folio);
+                    double precioBaseUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 9, folio);
+                    Double precioML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 13, folio);
+                    Double iva = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 17, folio);
+                    Double comisionML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 15, folio);
+                    Double utilidadShop = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 19, folio);
+
+                    //COSTO NETO
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", (suma * costoUnidad), folio, 8);
+                    //PRECIO BASE NETO
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * (precioBaseUnidad), folio, 10);
+                    //PRECIO LOCAL NETO
+                    Double precioNeto = escribirVentas.Mulitplicar(6, 11, folio, "src\\excel\\Inventario.xlsx", "Inventario");
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioNeto, folio, 12);
+                    //COMISION ML NETO
+
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionML * suma, folio, 16);
+
+                    //IVA NETO
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * iva, folio, 18);
+                    //PRECIOML NETO
+
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * precioML, folio, 14);
+
+                    //UTILIDAD LOCAL NETA
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * utilidadShop, folio, 20);
+
+                    
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Iconos.scaleImage("cancelG", boton, 20);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                Iconos.scaleImage("inventarioG", boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+
+        boton.addMouseListener(botonV);
+    }
+
+    static void botonBorrarHoja(JLabel boton, String filepath, int hoja) {
+        MouseListener botonV = new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    
+                    Escribir.eliminarHoja2(filepath, hoja);
                 
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
@@ -479,27 +550,28 @@ public class rellenarGastos {
                     costo.setText("$ " + montoDesP.getText());
                 }
 
-                JLabel icono = new JLabel();
-                icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                Iconos.scaleImage("packsG", icono, 25);
+                
+                iconoPacks.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+                Iconos.scaleImage("packsG", iconoPacks, 25);
                 listaGastos.add(panelGasto, 1);
                 panelesGastos.add(panelGasto);
 
-                botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "packsG", "src//excel/LibrosContables.xlsx", "Gastos");
-                botonBorrarInd(icono, "src\\excel\\Packs.xlsx", "PacksVentas");
+               
+               
 
                 panelGasto.add(fecha);
                 panelGasto.add(desarrolloLista);
                 panelGasto.add(costo);
                 panelGasto.add(new JLabel(""));
-                panelGasto.add(icono);
+                panelGasto.add(iconoPacks);
 
                 String[] data = {(String) fechaActual(), "Pack de Ventas", desarrolloTipoP.getText(), montoDesP.getText(), "    ", "VERDE", "   "};
                 Escribir escribirVentas = new Escribir();
                 try {
-                    escribirVentas.escribirExcel("src//excel/LibrosContables.xlsx", "Gastos", data);
+                    
                     escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(montoDesP.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
                     String formula = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
                     escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 6);
                 
@@ -510,6 +582,8 @@ public class rellenarGastos {
                 if (tipoPack.getSelectedItem().toString().equals("Nuevo")) {
                     try {
                         escribirVentas.crearHojaPacks("src\\excel\\Packs.xlsx", desarrolloTipoP.getText());
+                        botonBorrarHoja(iconoPacks, "src\\excel\\Packs.xlsx", LeerExcel.obtenerNumeroHojas("src\\excel\\Packs.xlsx")-1);
+                        botonBorrar(iconoPacks, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "packsG", "src//excel/LibrosContables.xlsx", "Gastos");
                     } catch (IOException ex) {
                         Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                     }

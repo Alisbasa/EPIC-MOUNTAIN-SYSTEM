@@ -246,8 +246,9 @@ public class RellenarG {
         desarrolloTipoP.setPreferredSize(new Dimension(150, 30));
 
         String[] tipos = {"Nuevo", "Rellenar Pack"};
-        tipoPack.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
         tipoPack = new JComboBox(tipos);
+        tipoPack.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         tipoPack.setUI(PropiedadesCB2.createUI(tipoPack));
 
         montoDesP = new JTextField();

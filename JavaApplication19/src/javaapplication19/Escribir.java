@@ -725,6 +725,19 @@ public class Escribir {
         XSSFWorkbook newWorkBook = newWorkBook = new XSSFWorkbook(inputStream);
         newWorkBook.removeSheetAt(indexHoja);
     }
+    
+    public static void eliminarHoja2(String filepath, int indexHoja) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkBook = newWorkBook = new XSSFWorkbook(inputStream);
+        newWorkBook.removeSheetAt(indexHoja);
+        
+        inputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkBook.write(outputStream);
+        outputStream.close();
+    }
+    
 
     public void escribirFormulaF(String filepath, String hoja, String formula, int fila, int columna) throws FileNotFoundException, IOException {
         File file = new File(filepath);

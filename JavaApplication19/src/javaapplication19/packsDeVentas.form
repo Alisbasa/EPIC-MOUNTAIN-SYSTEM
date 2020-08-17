@@ -164,7 +164,7 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox(arr)"/>
                 <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="String[] arr={&quot;&quot;};&#xa;        try{&#xa;arr = LeerExcel.obtenerHoja(&quot;src\\excel\\Packs.xlsx&quot;);&#xa;        }catch(Exception e){}"/>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="packsDisponibles2.setBackground(Color.white);&#xa;packsDisponibles2.setUI(PropiedadesCB2.createUI(packsDisponibles2));"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="packsDisponibles2.removeItemAt(0);&#xa;packsDisponibles2.setBackground(Color.white);&#xa;packsDisponibles2.setUI(PropiedadesCB2.createUI(packsDisponibles2));"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
               <Constraints>

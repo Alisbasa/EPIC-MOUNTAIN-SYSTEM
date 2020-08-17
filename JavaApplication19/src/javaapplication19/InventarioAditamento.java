@@ -63,7 +63,6 @@ public class InventarioAditamento extends javax.swing.JFrame {
         jpDatos = new javax.swing.JPanel();
         jpDescripcion = new javax.swing.JPanel();
         jlDesc1 = new javax.swing.JLabel();
-        jpPack = new javax.swing.JPanel();
         jbRegistrar = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
@@ -100,7 +99,7 @@ public class InventarioAditamento extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("REGISTRAR NUEVO DEUDA A COBRAR");
+        jLabel1.setText("SELECCIONA UNA BICICLETA");
         jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
@@ -120,10 +119,6 @@ public class InventarioAditamento extends javax.swing.JFrame {
 
         jpDatos.add(jpDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 82));
 
-        jpPack.setBackground(new java.awt.Color(51, 51, 51));
-        jpPack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jpDatos.add(jpPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 82, 500, 82));
-
         jbRegistrar.setFont(new java.awt.Font("Franklin Gothic Book", 2, 24)); // NOI18N
         jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         jbRegistrar.setText("Registrar");
@@ -137,7 +132,7 @@ public class InventarioAditamento extends javax.swing.JFrame {
                 jbRegistrarActionPerformed(evt);
             }
         });
-        jpDatos.add(jbRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 170, 60));
+        jpDatos.add(jbRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 170, 60));
         jbRegistrar.setBackground(Colores.epicColor);
 
         getContentPane().add(jpDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 500, 270));
@@ -175,19 +170,17 @@ public class InventarioAditamento extends javax.swing.JFrame {
             System.out.println(sumaCosto);
             escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", sumaCosto, inventarioCB.getSelectedIndex() + 1, 7);
             escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", sumaPrecio, inventarioCB.getSelectedIndex() + 1, 9);
-            
-   
-            
+
             //TIG
             Double TIG = sumaPrecio/sumaCosto;
             escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", TIG, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 5);
-            
+
             //COSTO NETO
             escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", (unidades*sumaCosto), (inventarioCB.getSelectedIndex()+1), 8);
-            
+
             //PRECIO BASE NETO
             escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", (unidades*sumaPrecio), (inventarioCB.getSelectedIndex()+1), 10);
-            
+
             //PRECIO LOCAL UNIDAD
             Double precioL = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 9, (inventarioCB.getSelectedIndex()+1)) * 1.16);
             escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioL, (inventarioCB.getSelectedIndex()+1), 11);
@@ -226,25 +219,23 @@ public class InventarioAditamento extends javax.swing.JFrame {
             //UTILIDAD LOCAL NETA
             Double utilidadLN = escribirInv.Mulitplicar(6, 19, (inventarioCB.getSelectedIndex()+1), "src\\excel\\Inventario.xlsx", "Inventario");
             escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidadLN, (inventarioCB.getSelectedIndex()+1), 20);
-            
-            
+
             String[] data = {(String) fechaActual(), "Inventario", nombre.getText() + " agregados a:" + inventarioCB.getSelectedItem().toString(), monto.getText(), "Aditamento", "VERDE", "0"};
-            
-            try {  
-                    escribirInv.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-                    escribirInv.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-                    folio = inventarioCB.getSelectedIndex()+1;
-                    /*escribirInv.escribirCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Gastos", folio, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 7);
-                    System.out.println(folio);*/
-                    escribirInv.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(monto.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
-                    String formula = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
-                    escribirInv.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 6);
-                    
-            
+
+            try {
+                escribirInv.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
+                escribirInv.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
+                folio = inventarioCB.getSelectedIndex()+1;
+                /*escribirInv.escribirCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Gastos", folio, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 7);
+                System.out.println(folio);*/
+                escribirInv.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(monto.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
+                String formula = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
+                escribirInv.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 6);
+
             } catch (IOException ex) {
-                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            
+                Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         } catch (IOException ex) {
             Logger.getLogger(InventarioAditamento.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -253,8 +244,6 @@ public class InventarioAditamento extends javax.swing.JFrame {
             rellenarGastos.botonBorrarAditamento(rellenarGastos.iconoLibros, "src\\excel\\Inventario.xlsx", "Inventario", folio);
             rellenarGastos.botonBorrarInd(rellenarGastos.iconoLibros, "src\\excel\\LibrosContables.xlsx", "Gastos");
 
-            
-            
         } catch (IOException ex) {
             Logger.getLogger(InventarioAditamento.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -349,6 +338,5 @@ public class InventarioAditamento extends javax.swing.JFrame {
     private javax.swing.JLabel jlDesc1;
     private javax.swing.JPanel jpDatos;
     private javax.swing.JPanel jpDescripcion;
-    private javax.swing.JPanel jpPack;
     // End of variables declaration//GEN-END:variables
 }
