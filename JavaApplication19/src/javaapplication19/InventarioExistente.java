@@ -25,6 +25,7 @@ public class InventarioExistente extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
     JComboBox inventarioCB;
+    int folio;
     
     /**
      * Creates new form clienteNuevo
@@ -194,7 +195,8 @@ public class InventarioExistente extends javax.swing.JFrame {
                    escribirInv.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
                     String formula = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
                    escribirInv.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 6);
-                } catch (IOException ex) {
+                   
+            } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
             

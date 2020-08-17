@@ -33,7 +33,8 @@ public class rellenarGastos {
 
     public List<JPanel> panelesGastos;
     public int indice = 0;
-
+    static JLabel iconoInventario;
+    static JLabel iconoLibros;
     public rellenarGastos() {
         panelesGastos = new ArrayList<>();
     }
@@ -78,13 +79,14 @@ public class rellenarGastos {
         boton.addMouseListener(botonV);
     }
 
-    void botonBorrarInd(JLabel boton, String filepath, String hoja) {
+    static void botonBorrarInd(JLabel boton, String filepath, String hoja) {
         MouseListener botonV = new MouseListener() {
 
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
                     Escribir.removeRow(filepath, hoja, LeerExcel.contarRenglones(filepath, hoja));
+                    Libros.actualiza();
                     //Escribir.removeRow("src//excel/LibrosContables.xlsx", "Gastos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Gastos"));
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
@@ -115,6 +117,46 @@ public class rellenarGastos {
         boton.addMouseListener(botonV);
     }
 
+    static void botonBorrarAditamento(JLabel boton, String filepath, String hoja, int folio) {
+        MouseListener botonV = new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Escribir escribirA = new Escribir();
+                    Double restaCosto = LeerExcel.obtenerCeldaNumerica(filepath, hoja, 7, folio) - LeerExcel.obtenerCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Gastos", 3, 
+                                        LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"));
+                    escribirA.escribirCeldaDouble(filepath, hoja, restaCosto, folio, 7);
+                
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Iconos.scaleImage("cancelG", boton, 20);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                Iconos.scaleImage("inventarioG", boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+
+        boton.addMouseListener(botonV);
+    }
+    
     //Pone Gasto: Desarollo: Equipo y Mob
     void botonDesEquipo(JComboBox tipo, JTextField desarrolloTipoE, JTextField descripcion, JTextField montoDes, JLabel iconoOkDesarrolloEq, JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre) {
         MouseListener botonV = new MouseListener() {
@@ -310,21 +352,22 @@ public class rellenarGastos {
                 variacion.setText("$0");
 
 
-                JLabel icono = new JLabel();
-                icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                Iconos.scaleImage("inventarioG", icono, 25);
+                iconoInventario = new JLabel();
+                iconoInventario.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+                Iconos.scaleImage("inventarioG", iconoInventario, 25);
                 listaGastos.add(panelGasto, 1);
                 panelesGastos.add(panelGasto);
 
-                botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "inventarioG", "src//excel/LibrosContables.xlsx", "Gastos");;
+                botonBorrar(iconoInventario, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "inventarioG", "src//excel/LibrosContables.xlsx", "Gastos");;
 
-                botonBorrarInd(icono, "src\\excel\\Inventario.xlsx", "Inventario");
+                botonBorrarInd(iconoInventario, "src\\excel\\Inventario.xlsx", "Inventario");
 
+                
                 panelGasto.add(fecha);
                 panelGasto.add(desarrolloListaI);
                 panelGasto.add(precioIPanel);
                 panelGasto.add(variacion);
-                panelGasto.add(icono);
+                panelGasto.add(iconoInventario);
 
                 String[] data = {(String) fechaActual(), "Inventario", desarrolloTipoI.getText(), montoDesI.getText(), (String) producto.getSelectedItem(), "VERDE", variacion.getText()};
                 
@@ -365,7 +408,8 @@ public class rellenarGastos {
                         Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-
+                
+  
                 indice++;
                 panelPadre.removeAll();
                 panelPadre.updateUI();
@@ -1536,7 +1580,7 @@ public class rellenarGastos {
 
                     JLabel monto = new JLabel();
                     monto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    monto.setText("$" + LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Gastos", 3, i));
+                    monto.setText("$" + LeerExcel.obtenerCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Gastos", 3, i));
 
                     JLabel gasto = new JLabel();
                     gasto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1578,9 +1622,9 @@ public class rellenarGastos {
                             break;
                     }
 
-                    JLabel icono = new JLabel();
-                    Iconos.scaleImage(IconoTipo, icono, 30);
-                    icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+                    iconoLibros = new JLabel();
+                    Iconos.scaleImage(IconoTipo, iconoLibros, 30);
+                    iconoLibros.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                     listaGastos.add(panelGasto, 1);
                     panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -1588,7 +1632,7 @@ public class rellenarGastos {
                     panelGasto.add(dev);
                     panelGasto.add(monto);
                     panelGasto.add(gasto);
-                    panelGasto.add(icono);
+                    panelGasto.add(iconoLibros);
 
                     indice++;
                     listaGastos.updateUI();

@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javaapplication19.inventarioPrincipal.fechaActual;
 import static javaapplication19.rellenarGastos.fechaActual;
+import static javaapplication19.rellenarGastos.iconoInventario;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,6 +27,7 @@ public class InventarioAditamento extends javax.swing.JFrame {
     int mousepY;
     JComboBox inventarioCB;
     static JLabel monto;
+    int folio;
     static JLabel nombre;
     
     /**
@@ -62,8 +64,6 @@ public class InventarioAditamento extends javax.swing.JFrame {
         jpDescripcion = new javax.swing.JPanel();
         jlDesc1 = new javax.swing.JLabel();
         jpPack = new javax.swing.JPanel();
-        jlDesc = new javax.swing.JLabel();
-        precio = new javax.swing.JTextField();
         jbRegistrar = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
@@ -122,22 +122,6 @@ public class InventarioAditamento extends javax.swing.JFrame {
 
         jpPack.setBackground(new java.awt.Color(51, 51, 51));
         jpPack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jlDesc.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
-        jlDesc.setForeground(new java.awt.Color(255, 255, 255));
-        jlDesc.setText("PRECIO");
-        jpPack.add(jlDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 60, 30));
-
-        precio.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        precio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        precio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                precioActionPerformed(evt);
-            }
-        });
-        jpPack.add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 110, 48));
-        precio.setBackground(Colores.epicColorBajito);
-
         jpDatos.add(jpPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 82, 500, 82));
 
         jbRegistrar.setFont(new java.awt.Font("Franklin Gothic Book", 2, 24)); // NOI18N
@@ -184,13 +168,15 @@ public class InventarioAditamento extends javax.swing.JFrame {
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
         try {
             double sumaCosto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 7, inventarioCB.getSelectedIndex() + 1) + Double.valueOf(monto.getText());
-            double sumaPrecio = LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 9, inventarioCB.getSelectedIndex() + 1) + Double.valueOf(precio.getText());
+            double sumaPrecio = LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 9, inventarioCB.getSelectedIndex() + 1) + Double.valueOf(monto.getText());
             int unidades = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 6, inventarioCB.getSelectedIndex() + 1);
 
             Escribir escribirInv = new Escribir();
             System.out.println(sumaCosto);
             escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", sumaCosto, inventarioCB.getSelectedIndex() + 1, 7);
             escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", sumaPrecio, inventarioCB.getSelectedIndex() + 1, 9);
+            
+   
             
             //TIG
             Double TIG = sumaPrecio/sumaCosto;
@@ -242,14 +228,20 @@ public class InventarioAditamento extends javax.swing.JFrame {
             escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidadLN, (inventarioCB.getSelectedIndex()+1), 20);
             
             
-            String[] data = {(String) fechaActual(), "Inventario", nombre.getText() + " agregados a:" + inventarioCB.getSelectedItem().toString(), precio.getText(), "Aditamento", "VERDE", "0"};
+            String[] data = {(String) fechaActual(), "Inventario", nombre.getText() + " agregados a:" + inventarioCB.getSelectedItem().toString(), monto.getText(), "Aditamento", "VERDE", "0"};
             
             try {  
                     escribirInv.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
                     escribirInv.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
+                    folio = inventarioCB.getSelectedIndex()+1;
+                    /*escribirInv.escribirCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Gastos", folio, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 7);
+                    System.out.println(folio);*/
+                    escribirInv.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(monto.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
                     String formula = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
                     escribirInv.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 6);
-                } catch (IOException ex) {
+                    
+            
+            } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
             
@@ -258,6 +250,11 @@ public class InventarioAditamento extends javax.swing.JFrame {
         }
         try {
             Libros.actualiza();
+            rellenarGastos.botonBorrarAditamento(rellenarGastos.iconoLibros, "src\\excel\\Inventario.xlsx", "Inventario", folio);
+            rellenarGastos.botonBorrarInd(rellenarGastos.iconoLibros, "src\\excel\\LibrosContables.xlsx", "Gastos");
+
+            
+            
         } catch (IOException ex) {
             Logger.getLogger(InventarioAditamento.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -270,10 +267,6 @@ public class InventarioAditamento extends javax.swing.JFrame {
         return formatoFecha.format(fecha);
     }
     
-    private void precioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_precioActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -353,11 +346,9 @@ public class InventarioAditamento extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbRegistrar;
-    private javax.swing.JLabel jlDesc;
     private javax.swing.JLabel jlDesc1;
     private javax.swing.JPanel jpDatos;
     private javax.swing.JPanel jpDescripcion;
     private javax.swing.JPanel jpPack;
-    private javax.swing.JTextField precio;
     // End of variables declaration//GEN-END:variables
 }
