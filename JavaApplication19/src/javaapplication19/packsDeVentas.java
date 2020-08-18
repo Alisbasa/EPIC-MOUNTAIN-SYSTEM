@@ -91,7 +91,7 @@ public class packsDeVentas extends javax.swing.JFrame {
         jcCondicion = new javax.swing.JComboBox<>();
         jpUbicacion = new javax.swing.JPanel();
         jlPrecio = new javax.swing.JLabel();
-        jtPrecio = new javax.swing.JTextField(new javax.swing.JTextField(precio.getText()));
+        jtPrecio = new javax.swing.JTextField((precio.getText()));
         jlUnidades1 = new javax.swing.JLabel();
         jtUnidades = new javax.swing.JTextField();
         jpBoton = new javax.swing.JPanel();
@@ -294,12 +294,10 @@ public class packsDeVentas extends javax.swing.JFrame {
             
             
             double tig = LeerExcel.obtenerCeldaNumerica("src\\excel\\Packs.xlsx", desarrolloTipoP.getText() , LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 5);
-        } catch (IOException ex) {
-            Logger.getLogger(packsDeVentas.class.getName()).log(Level.SEVERE, null, ex);
-        }
-                        double costoDiv = Doubleprecio.getText();
         
-        String[] Registro = {jtPieza.getText(),
+            double costoDiv = Double.valueOf(precio.getText())/tig;
+        
+            String[] Registro = {jtPieza.getText(),
             jtDesc.getText(),
             fechaActual(),
             jcCondicion.getSelectedItem().toString(),
@@ -312,8 +310,8 @@ public class packsDeVentas extends javax.swing.JFrame {
             Double.toString(Double.valueOf(jtUnidades.getText()) * Integer.valueOf(jtPrecio.getText()))};
         
             
-        Escribir escribirExcel = new Escribir();
-        try {
+            Escribir escribirExcel = new Escribir();
+       
             
             //PACKS DE VENTAS
             escribirExcel.escribirExcelInv("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Registro, 10);
@@ -476,6 +474,7 @@ public class packsDeVentas extends javax.swing.JFrame {
          botonBorrarInd(rellenarGastos.iconoPacks, "src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString());
         
         this.setVisible(false);
+        
     }//GEN-LAST:event_jbRegistrarMouseClicked
 
     public static String fechaActual() {

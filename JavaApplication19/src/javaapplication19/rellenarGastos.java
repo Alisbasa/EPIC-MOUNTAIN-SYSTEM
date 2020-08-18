@@ -554,9 +554,8 @@ public class rellenarGastos {
                 if (tipoPack.getSelectedItem().toString().equals("Rellenar Pack")) {
                     packsDeVentas inv;
                     try {
-                        double tig2 = LeerExcel.obtenerCeldaNumerica("src\\excel\\Packs.xlsx", desarrolloTipoP.getText() , LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 5);
-                        double costoDiv = Doubleprecio.getText();
-                        inv = new packsDeVentas(desarrolloLista, montoDesP, desarrolloTipoP);
+                        
+                        inv = new packsDeVentas(desarrolloLista, precio, desarrolloTipoP);
                         inv.setVisible(true);
                         costo.setText("$" + montoDesP.getText());
                         variacion.setText("$0" );
