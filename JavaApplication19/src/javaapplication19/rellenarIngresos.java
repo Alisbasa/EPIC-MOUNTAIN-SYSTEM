@@ -169,9 +169,9 @@ public class rellenarIngresos {
                     boolean finder = false;
                     String inventario7 = "EPIC MOUNTAIN";
                     for (int i = 0; i <= LeerExcel.contarRenglones("src//excel/Inventario.xlsx", inventario7); i++) {
-                        if ((LeerExcel.obtenerCelda(filepath, hoja, 0, LeerExcel.contarRenglones(filepath, hoja))).equals(LeerExcel.obtenerCelda("src//excel/Inventario.xlsx", "INVENTARIO", 0, i))) {
+                        if ((LeerExcel.obtenerCelda(filepath, hoja, 0, LeerExcel.contarRenglones(filepath, hoja))).equals(LeerExcel.obtenerCelda("src//excel/Inventario.xlsx", inventario7, 0, i))) {
                             finder = true;
-                            int suma = (int) (LeerExcel.obtenerCeldaNumerica(filepath, hoja, 6, LeerExcel.contarRenglones(filepath, hoja))) + (int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", 6, i);
+                            int suma = (int) (LeerExcel.obtenerCeldaNumerica(filepath, hoja, 6, LeerExcel.contarRenglones(filepath, hoja))) + (int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario7, 6, i);
                             Escribir escribirVentas = new Escribir();
                             escribirVentas.escribirCeldaNumerica("src//excel/Inventario.xlsx", inventario7, suma, i, 6);
                             double costoUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", inventario7, 7, i);

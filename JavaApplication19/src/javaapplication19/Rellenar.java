@@ -112,7 +112,7 @@ JLabel iconoOkV = new JLabel();
         unidades.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         
         
-        cliente = new JComboBox(LeerExcel.rellenaCB2("src//excel//CRM.xlsx", "Clientes", 0));
+        cliente = new JComboBox(LeerExcel.rellenaCB2("src//excel//CRM.xlsx", "CLIENTES", 0));
         cliente.addItem("Nuevo Cliente");
         cliente.setBackground(Color.white);
         cliente.setUI(PropiedadesCB2.createUI(cliente));
