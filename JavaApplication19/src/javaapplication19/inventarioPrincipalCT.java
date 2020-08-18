@@ -354,9 +354,10 @@ public class inventarioPrincipalCT extends javax.swing.JFrame {
             //IVA NETO
             Double ivaN = EscribirCRM.Mulitplicar(6, 17, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), "src\\excel\\comprasT.xlsx", "COMPRAS");
             EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", ivaN, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 18);
+            String inventario3 = "EPIC MOUNTAIN";
 
             //PRECIO ML
-            Double precioML = EscribirCRM.SumarColumnasML(LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 9, 17, 15, "src\\excel\\Inventario.xlsx", "Inventario");
+            Double precioML = EscribirCRM.SumarColumnasML(LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario3), 9, 17, 15, "src\\excel\\Inventario.xlsx", inventario3);
             EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", precioML, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 13);
 
             //PRECIOML NETO

@@ -35,7 +35,7 @@ public class InventarioExistente extends javax.swing.JFrame {
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        inventarioCB = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
+        inventarioCB = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 0));
         inventarioCB.setBackground(Color.white);
         inventarioCB.setUI(PropiedadesCB2.createUI(inventarioCB));
         jpDescripcion.add(inventarioCB);
@@ -180,14 +180,15 @@ public class InventarioExistente extends javax.swing.JFrame {
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
         try {
-            int suma = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 6, inventarioCB.getSelectedIndex() + 1) + Integer.valueOf(UNIDADES.getText());
-            double monto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 7, inventarioCB.getSelectedIndex() + 1)*Integer.valueOf(UNIDADES.getText());
+            String inventario5 = "EPIC MOUNTAIN";
+            int suma = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", inventario5, 6, inventarioCB.getSelectedIndex() + 1) + Integer.valueOf(UNIDADES.getText());
+            double monto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", inventario5, 7, inventarioCB.getSelectedIndex() + 1)*Integer.valueOf(UNIDADES.getText());
             
             Escribir escribirInv = new Escribir();
             System.out.println(suma);
-            escribirInv.escribirCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", suma, inventarioCB.getSelectedIndex() + 1, 6);
+            escribirInv.escribirCeldaNumerica("src\\excel\\Inventario.xlsx", inventario5, suma, inventarioCB.getSelectedIndex() + 1, 6);
             
-            String[] data = {(String) fechaActual(), "Inventario", inventarioCB.getSelectedItem().toString(), Double.toString(monto), "Existente", "VERDE", "0"};
+            String[] data = {(String) fechaActual(), inventario5, inventarioCB.getSelectedItem().toString(), Double.toString(monto), "Existente", "VERDE", "0"};
             
             try {
                 escribirInv.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);   

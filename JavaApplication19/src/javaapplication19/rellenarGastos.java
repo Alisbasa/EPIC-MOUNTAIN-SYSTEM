@@ -131,34 +131,35 @@ public class rellenarGastos {
                     escribirA.escribirCeldaDouble(filepath, hoja, restaCosto, folio, 7);
 
                     Escribir escribirVentas = new Escribir();
+                    String inventario = "EPIC MOUNTAIN";
 
-                    int suma = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 6, folio);
-                    double costoUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 7, folio);
-                    double precioBaseUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 9, folio);
-                    Double precioML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 13, folio);
-                    Double iva = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 17, folio);
-                    Double comisionML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 15, folio);
-                    Double utilidadShop = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 19, folio);
+                    int suma = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", inventario, 6, folio);
+                    double costoUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", inventario, 7, folio);
+                    double precioBaseUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", inventario, 9, folio);
+                    Double precioML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario, 13, folio);
+                    Double iva = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario, 17, folio);
+                    Double comisionML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario, 15, folio);
+                    Double utilidadShop = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario, 19, folio);
 
                     //COSTO NETO
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", (suma * costoUnidad), folio, 8);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, (suma * costoUnidad), folio, 8);
                     //PRECIO BASE NETO
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * (precioBaseUnidad), folio, 10);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, suma * (precioBaseUnidad), folio, 10);
                     //PRECIO LOCAL NETO
-                    Double precioNeto = escribirVentas.Mulitplicar(6, 11, folio, "src\\excel\\Inventario.xlsx", "Inventario");
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioNeto, folio, 12);
+                    Double precioNeto = escribirVentas.Mulitplicar(6, 11, folio, "src\\excel\\Inventario.xlsx", inventario);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, precioNeto, folio, 12);
                     //COMISION ML NETO
 
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionML * suma, folio, 16);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, comisionML * suma, folio, 16);
 
                     //IVA NETO
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * iva, folio, 18);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, suma * iva, folio, 18);
                     //PRECIOML NETO
 
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * precioML, folio, 14);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, suma * precioML, folio, 14);
 
                     //UTILIDAD LOCAL NETA
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * utilidadShop, folio, 20);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, suma * utilidadShop, folio, 20);
 
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
