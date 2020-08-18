@@ -1147,12 +1147,29 @@ public class Libros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
+    private void añoNuevo(){
+        Escribir.crearDoucumento("Ventas", fechaA());
+        
+    }
     
+    public static String fechaMA() {
+        java.util.Date fecha = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("MMMM YY");
+        return formatoFecha.format(fecha).toUpperCase();
+    }
+    
+    public static String fechaA() {
+        java.util.Date fecha = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("YY");
+        return formatoFecha.format(fecha).toUpperCase();
+    }
     
     private void myInitComponents() throws IOException{
         
-        comboIngresos.setUI( PropiedadesCB.createUI(rootPane));
-        comboGastos.setUI( PropiedadesCB.createUI(rootPane));
+        
+        
+        comboIngresos.setUI(PropiedadesCB.createUI(rootPane));
+        comboGastos.setUI(PropiedadesCB.createUI(rootPane));
         
         
         rellenar.rellenarLibro(listaIngresos);
