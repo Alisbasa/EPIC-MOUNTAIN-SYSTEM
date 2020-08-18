@@ -24,6 +24,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -52,6 +53,8 @@ public class Libros extends javax.swing.JFrame {
     static String[] listaInventar;
     static rellenarIngresos rellenar = new rellenarIngresos();
     static rellenarGastos rellenarG = new rellenarGastos();
+    private File directorio;
+        
     
     
     
@@ -62,6 +65,21 @@ public class Libros extends javax.swing.JFrame {
 
         initComponents();
         myInitComponents();
+        
+        boolean estadoCreacion = false;
+        System.out.println(fechaDM());
+        
+        
+        if(fechaDM().equals("01 ENERO")){
+            estadoCreacion = true;
+        }
+        if(estadoCreacion = true){
+            crearDirectorio();
+            añoNuevo();
+        }
+        if(fechaDM().equals("02 ENERO"))
+            estadoCreacion = false;
+        
         setIconImage(new ImageIcon(getClass().getResource("..\\img\\LOGO.png")).getImage());
         Iconos("Cerrar",cerrarIcon);
         Iconos("Minimizar_1",maxiIcon);
@@ -99,7 +117,6 @@ public class Libros extends javax.swing.JFrame {
                 panelRegistrar.setBorder(BorderFactory.createEmptyBorder((int) panelCRM.getHeight()/3, ((int) (panelCorte.getWidth()/10)), (int) panelCRM.getHeight()/3, ((int) (panelCorte.getWidth()/10))));
                 maximiza();
                                
-              
             }
         }
         );
@@ -153,12 +170,8 @@ public class Libros extends javax.swing.JFrame {
         scaleImage("Deudas_C",cobrarIcon,imgHeight);
         scaleImage("Equipo",equipoIcon,imgHeight);
         scaleImage("Compras",comprasIcon2,imgHeight);
-        scaleImage("Facturacion",facturacionIcon,imgHeight);
-        
+        scaleImage("Facturacion",facturacionIcon,imgHeight);    
     }
-    
-    
-
     
      public void scaleLabelsText(int size){
         
@@ -202,6 +215,7 @@ public class Libros extends javax.swing.JFrame {
         ImageIcon scaledIcon = new ImageIcon(imgScale);
         label.setIcon(scaledIcon);
     }
+    
     public ImageIcon scaleIcon(String icono,int width, int height) {
         ImageIcon icon = new ImageIcon("src\\img\\"+ icono +".png");
         Image img = icon.getImage();
@@ -1148,13 +1162,24 @@ public class Libros extends javax.swing.JFrame {
 
     
     private void añoNuevo(){
-        Escribir.crearDoucumento("Ventas", fechaA());
+        Escribir.crearDocumento("Ventas", fechaA());
+        Escribir.crearDocumento("Inventario", fechaA());
+        Escribir.crearDocumento("Equipo y Mobiliario", fechaA());
+        Escribir.crearDocumento("Libros Contables", fechaA());
+        Escribir.crearDocumento("Facturacion", fechaA());
+        Escribir.crearDocumento("Provedores", fechaA());
+        Escribir.crearDocumento("Packs", fechaA());
         
     }
     
-    public static String fechaMA() {
+    private void crearDirectorio(){
+        directorio = new File("src\\" + fechaA() + "\\");
+        directorio.mkdir();
+    }
+    
+    public static String fechaDM() {
         java.util.Date fecha = new Date();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("MMMM YY");
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd MMMM");
         return formatoFecha.format(fecha).toUpperCase();
     }
     
@@ -1180,7 +1205,7 @@ public class Libros extends javax.swing.JFrame {
     }
     
     public static void actualiza() throws IOException{
-         System.out.println("HOLA");
+ 
          rellenar.rellenarLibro(listaIngresos);
          rellenarG.rellenarLibro(listaGastos);
          listaGastos.updateUI();

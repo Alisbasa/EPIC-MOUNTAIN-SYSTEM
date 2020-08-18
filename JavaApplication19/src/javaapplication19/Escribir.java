@@ -886,10 +886,10 @@ public class Escribir {
         outputStream.close();
     }
 
-    public static void crearDoucumento(String nombre, String año) {
+    public static void crearDocumento(String nombre, String año) {
         XSSFWorkbook workbook = new XSSFWorkbook();
         try ( FileOutputStream fos
-                = new FileOutputStream(new File("src\\excel\\" + año + "\\" + nombre + ".xlsx"))) {
+                = new FileOutputStream(new File("src\\" + año + "\\" + nombre + ".xlsx"))) {
             workbook.write(fos);
         } catch (IOException e) {
             e.printStackTrace();
