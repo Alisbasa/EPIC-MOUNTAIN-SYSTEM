@@ -391,74 +391,75 @@ public class packsDeVentas extends javax.swing.JFrame {
             
             String formula7 = "SUM(U2:U" + (contarRenglones+1) + ")";
             escribirExcel.escribirFormulaPacks("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), formula7, contarRenglones + 1, 20);
+            String inventario = "EPIC MOUNTAIN";
             
             
             //INVENTARIO PRINCIPAL
-            escribirExcel.escribirExcelInv("src\\excel\\Inventario.xlsx", "Inventario", Registro, 10);
+            escribirExcel.escribirExcelInv("src\\excel\\Inventario.xlsx", inventario, Registro, 10);
             
             //UNIDADES
-            escribirExcel.escribirCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 6);
+            escribirExcel.escribirCeldaNumerica("src\\excel\\Inventario.xlsx", inventario, Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario), 6);
             
             //TIG
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", TIG, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 5);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, TIG, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario), 5);
             
             //COSTO UNIDAD
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(precio.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 7);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, Double.valueOf(precio.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario), 7);
             
             //COSTO NETO
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", costoDiv * Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 8);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, costoDiv * Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario), 8);
             
             //PRECIO BASE UNIDAD
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 9);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, Double.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario), 9);
             
             //PRECIO BASE NETO
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(jtUnidades.getText()) * Integer.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 10);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, Double.valueOf(jtUnidades.getText()) * Integer.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario), 10);
             
             //PRECIO LOCAL UNIDAD 
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioL, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 11);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, precioL, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario), 11);
             
             //PRECIO LOCAL NETO
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioNeto, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 12);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, precioNeto, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario), 12);
             
             //COMISION ML
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 15);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, comisionML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario), 15);
             
             //COMISION ML NETO
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 16);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, comisionMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario), 16);
             
             // IVA UNIDAD         
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", IVA, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 17);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, IVA, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario), 17);
             
             //IVA NETO     
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", ivaN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 18);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, ivaN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario), 18);
             
             //PRECIO ML
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 13);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, precioML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario), 13);
             
             //PRECIOML NETO
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 14);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, precioMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario), 14);
             
 
             //UTILIDAD UNIDAD LOCAL
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidad, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 19);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, utilidad, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario), 19);
             
             //UTILIDAD LOCAL NETA
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidadLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 20);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, utilidadLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario), 20);
             
             //FORMULAS INVENTARIO
-            escribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 8);
+            escribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", inventario, formula, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario) + 1, 8);
 
-            escribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula2, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 10);
+            escribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", inventario, formula2, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario) + 1, 10);
             
-            escribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula3, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 12);
+            escribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", inventario, formula3, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario) + 1, 12);
             
-            escribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula4, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 14);
+            escribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", inventario, formula4, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario) + 1, 14);
             
-            escribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula5, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 16);
+            escribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", inventario, formula5, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario) + 1, 16);
 
-            escribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula6, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 18);
+            escribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", inventario, formula6, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario) + 1, 18);
             
-            escribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula7, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 20);
+            escribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", inventario, formula7, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario) + 1, 20);
             
             
         } catch (IOException ex) {

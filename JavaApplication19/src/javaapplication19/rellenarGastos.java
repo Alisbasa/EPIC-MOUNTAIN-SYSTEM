@@ -1692,9 +1692,18 @@ public class rellenarGastos {
                     String IconoTipo = "VentasG";
                     String tipo = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Gastos", 1, i);
                     switch (tipo) {
-                        case "Equipo y Mob.":
+                        case "Herramientas":
                             IconoTipo = "equipoG";
                             break;
+                        case "Equipo de Taller":
+                            IconoTipo = "equipoG";
+                            break;
+                        case "Mobiliario":
+                            IconoTipo = "equipoG";
+                            break;    
+                        case "Equipo de Limpieza":
+                            IconoTipo = "equipoG";
+                            break;    
                         case "Inventario":
                             IconoTipo = "inventarioG";
                             break;
