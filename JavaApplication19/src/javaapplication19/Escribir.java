@@ -823,12 +823,73 @@ public class Escribir {
         outputStream.close();
     }
     
-    
+    public void crearHojaEquipo(String filepath, String hoja) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        XSSFWorkbook newWorkBook;
+        try ( FileInputStream inputStream = new FileInputStream(file)) {
+            newWorkBook = new XSSFWorkbook(inputStream);
+            XSSFRow row;
+            XSSFRow row2;
+            XSSFRow row3;
+            XSSFSheet newSheet = newWorkBook.createSheet(hoja);
+            row = newSheet.createRow(0);
+            row2 = newSheet.createRow(1);
+            row3 = newSheet.createRow(2);
+            
+            row.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
+            row2.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
+            row3.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
 
-    public static void crearDoucumento(String nombre) {
+            String[] headers = new String[]{
+                "     ",
+                "PRODUCTO",
+                "FECHA DE REGISTRO",
+                "DESCRIPCION",
+                "COSTO X UNIDAD"
+            };
+
+            newSheet.setColumnWidth(0, 15000);
+            newSheet.setColumnWidth(1, 15000);
+
+            for (int i = 0; i < 5; i++) {
+                if (i >= 2) {
+                    newSheet.setColumnWidth(i, 5000);
+                }
+                XSSFCell encabezados = row.createCell(i);
+                XSSFCell pack= row3.createCell(i);
+               
+                setCellStyleVerde(newWorkBook, encabezados);
+                setCellStyleVerde(newWorkBook, pack);
+                
+                encabezados.setCellValue(headers[i]);
+                XSSFFont font = newWorkBook.createFont();
+                font.setFontHeightInPoints((short) 12);
+                font.setFontName("Calibri");
+                font.setColor(IndexedColors.BLACK.getIndex());
+                font.setBold(true);
+                font.setItalic(false);
+
+                XSSFCellStyle style = newWorkBook.createCellStyle();
+                XSSFColor color = new XSSFColor(Colores.verdeExcel);
+                style.setFillForegroundColor(color);//color de fondo
+                style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                style.setAlignment(HorizontalAlignment.CENTER);
+                style.setVerticalAlignment(VerticalAlignment.CENTER);
+                style.setFont(font);
+                encabezados.setCellStyle(style);
+
+            }
+        }
+
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkBook.write(outputStream);
+        outputStream.close();
+    }
+
+    public static void crearDoucumento(String nombre, String año) {
         XSSFWorkbook workbook = new XSSFWorkbook();
         try ( FileOutputStream fos
-                = new FileOutputStream(new File("src\\excel\\Historial de compras\\" + nombre + ".xlsx"))) {
+                = new FileOutputStream(new File("src\\excel\\" + año + "\\" + nombre + ".xlsx"))) {
             workbook.write(fos);
         } catch (IOException e) {
             e.printStackTrace();
