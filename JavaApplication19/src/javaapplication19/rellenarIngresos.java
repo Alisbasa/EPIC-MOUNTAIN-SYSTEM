@@ -898,12 +898,13 @@ public class rellenarIngresos {
                     }
 
                     String precioExcel = "precio";
+                    String inventario14 = "EPIC MOUNTAIN";
 
-                    precioExcel = String.valueOf(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", numeroPlataforma, numeroLista) * (unidades.getSelectedIndex() + 1));
+                    precioExcel = String.valueOf(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario14, numeroPlataforma, numeroLista) * (unidades.getSelectedIndex() + 1));
 
                     String utilidadExcel = "precio";
 
-                    utilidadExcel = String.valueOf(Utilidades.roundTwoDecimals(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", 19, numeroLista) * (Integer.valueOf(unidades.getSelectedItem().toString()))));
+                    utilidadExcel = String.valueOf(Utilidades.roundTwoDecimals(LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario14, 19, numeroLista) * (Integer.valueOf(unidades.getSelectedItem().toString()))));
 
                     JLabel precio = new JLabel();
                     precio.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1378,7 +1379,7 @@ public class rellenarIngresos {
 
                 JLabel montoDevolucion = new JLabel();
                 montoDevolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                montoDevolucion.setText("$" + LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 3, i));
+                montoDevolucion.setText("$" + LeerExcel.obtenerCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Ingresos", 3, i));
 
                 JLabel plataforma = new JLabel();
                 plataforma.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));

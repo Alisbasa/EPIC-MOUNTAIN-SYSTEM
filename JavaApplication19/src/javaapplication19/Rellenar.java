@@ -309,7 +309,7 @@ JLabel iconoOkV = new JLabel();
 
         String[] listaPlataformas = {"Mercado Libre", "Local"};
 
-        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "", 0));
+        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 0));
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
         inventario.setPreferredSize(new Dimension(200, 30));
