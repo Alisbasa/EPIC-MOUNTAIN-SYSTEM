@@ -1549,7 +1549,7 @@ public class rellenarIngresos {
             escribirVentas.escribirCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), medioVenta.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 21);
 
             //Escribe destino
-            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "Clientes", 3, clienteCB.getSelectedIndex() + 1);
+            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "CLIENTES NUEVOS", 3, clienteCB.getSelectedIndex() + 1);
             escribirVentas.escribirCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), destino, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 22);
 
             //Escribe formula de costo neto en suma
@@ -1743,7 +1743,7 @@ public class rellenarIngresos {
             escribirVentas.escribirCelda(filepathCompras, cliente, medioVenta.getSelectedItem().toString(), LeerExcel.contarRenglones(filepathCompras, cliente), 21);
 
             //Escribe destino
-            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "Clientes", 3, clienteCB.getSelectedIndex() + 1);
+            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "CLIENTES NUEVOS", 3, clienteCB.getSelectedIndex() + 1);
             escribirVentas.escribirCelda(filepathCompras, cliente, destino, LeerExcel.contarRenglones(filepathCompras, cliente), 22);
 
             //Escribe Folio
@@ -1867,7 +1867,7 @@ public class rellenarIngresos {
             escribirVentas.escribirCelda(filepathCliente, cliente, medioVenta.getSelectedItem().toString(), LeerExcel.contarRenglones(filepathCliente, cliente), 21);
 
             //Escribe destino
-            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "Clientes", 3, clienteCB.getSelectedIndex() + 1);
+            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "CLIENTES NUEVOS", 3, clienteCB.getSelectedIndex() + 1);
             escribirVentas.escribirCelda(filepathCliente, cliente, destino, LeerExcel.contarRenglones(filepathCliente, cliente), 22);
 
             //Escribe Folio
