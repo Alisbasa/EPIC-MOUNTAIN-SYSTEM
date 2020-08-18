@@ -85,8 +85,6 @@ public class packsDeVentas extends javax.swing.JFrame {
         jlDesc = new javax.swing.JLabel();
         jtDesc = new javax.swing.JTextField();
         jpTIG = new javax.swing.JPanel();
-        jlTIG = new javax.swing.JLabel();
-        jtCosto = new javax.swing.JTextField();
         jlPack = new javax.swing.JLabel();
         jcCondicion = new javax.swing.JComboBox<>();
         jpUbicacion = new javax.swing.JPanel();
@@ -195,24 +193,19 @@ public class packsDeVentas extends javax.swing.JFrame {
         jpTIG.setBackground(new java.awt.Color(51, 51, 51));
         jpTIG.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlTIG.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
-        jlTIG.setForeground(new java.awt.Color(255, 255, 255));
-        jlTIG.setText("COSTO");
-        jpTIG.add(jlTIG, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, 30));
-
-        jtCosto.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtCosto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpTIG.add(jtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 100, 48));
-        jtCosto.setBackground(Colores.epicColorBajito);
-
         jlPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlPack.setForeground(new java.awt.Color(255, 255, 255));
         jlPack.setText("CONDICION");
-        jpTIG.add(jlPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 130, 30));
+        jpTIG.add(jlPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 130, 30));
 
-        jcCondicion.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 13)); // NOI18N
+        jcCondicion.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 18)); // NOI18N
         jcCondicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Seminuevo", "Usado" }));
-        jpTIG.add(jcCondicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 90, 50));
+        jcCondicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcCondicionActionPerformed(evt);
+            }
+        });
+        jpTIG.add(jcCondicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 140, 40));
 
         jpDatos.add(jpTIG);
 
@@ -292,8 +285,8 @@ public class packsDeVentas extends javax.swing.JFrame {
         try {
             //costoPack = jtCosto.getText();
             
-            
-            double tig = LeerExcel.obtenerCeldaNumerica("src\\excel\\Packs.xlsx", desarrolloTipoP.getText() , LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 5);
+            System.out.println(LeerExcel.contarRenglones("src\\excel\\Packs.xlsx",  packsDisponibles2.getSelectedItem().toString()));
+            double tig = LeerExcel.obtenerCeldaNumerica("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString() , 5, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx",  packsDisponibles2.getSelectedItem().toString()));
         
             double costoDiv = Double.valueOf(precio.getText())/tig;
         
@@ -302,10 +295,10 @@ public class packsDeVentas extends javax.swing.JFrame {
             fechaActual(),
             jcCondicion.getSelectedItem().toString(),
             packsDisponibles2.getSelectedItem().toString(),
-            Double.toString(Double.valueOf(jtPrecio.getText()) / Double.valueOf(jtCosto.getText())),
+            Double.toString(tig),
             jtUnidades.getText(),
-            jtCosto.getText(),
-            Double.toString(Double.valueOf(jtCosto.getText()) * Integer.valueOf(jtUnidades.getText())),
+            Double.toString(costoDiv),
+            Double.toString(costoDiv * Integer.valueOf(jtUnidades.getText())),
             jtPrecio.getText(),
             Double.toString(Double.valueOf(jtUnidades.getText()) * Integer.valueOf(jtPrecio.getText()))};
         
@@ -320,14 +313,14 @@ public class packsDeVentas extends javax.swing.JFrame {
             escribirExcel.escribirCeldaNumerica("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 6);
             
             //TIG
-            Double TIG = Double.valueOf(jtPrecio.getText())/Double.valueOf(precio.getText());
+            Double TIG = tig;
             escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), TIG, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 5);
             
             //COSTO UNIDAD
             escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Double.valueOf(precio.getText()), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 7);
             
             //COSTO NETO
-            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Double.valueOf(jtCosto.getText()) * Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 8);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), costoDiv * Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 8);
             
             //PRECIO BASE UNIDAD
             escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Double.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 9);
@@ -412,7 +405,7 @@ public class packsDeVentas extends javax.swing.JFrame {
             escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(precio.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 7);
             
             //COSTO NETO
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(jtCosto.getText()) * Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 8);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", costoDiv * Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 8);
             
             //PRECIO BASE UNIDAD
             escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 9);
@@ -491,6 +484,10 @@ public class packsDeVentas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtPiezaActionPerformed
 
+    private void jcCondicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCondicionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcCondicionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -548,7 +545,6 @@ public class packsDeVentas extends javax.swing.JFrame {
     private javax.swing.JLabel jlPack1;
     private javax.swing.JLabel jlPack2;
     private javax.swing.JLabel jlPrecio;
-    private javax.swing.JLabel jlTIG;
     private javax.swing.JLabel jlUnidades1;
     private javax.swing.JPanel jpBoton;
     private javax.swing.JPanel jpDatos;
@@ -556,7 +552,6 @@ public class packsDeVentas extends javax.swing.JFrame {
     private javax.swing.JPanel jpPack;
     private javax.swing.JPanel jpTIG;
     private javax.swing.JPanel jpUbicacion;
-    private javax.swing.JTextField jtCosto;
     private javax.swing.JTextField jtDesc;
     private javax.swing.JTextField jtPieza;
     private javax.swing.JTextField jtPrecio;
