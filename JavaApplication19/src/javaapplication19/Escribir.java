@@ -73,6 +73,31 @@ public class Escribir {
         R.setCellStyle(style);
 
     }
+    
+    public void setCellStyleGris(XSSFWorkbook wb, XSSFCell R) {
+        XSSFFont font = wb.createFont();
+        font.setFontHeightInPoints((short) 12);
+        font.setFontName("Calibri");
+        font.setColor(IndexedColors.BLACK.getIndex());
+        font.setBold(true);
+        font.setItalic(false);
+
+        XSSFCellStyle style = wb.createCellStyle();
+
+        style.setBorderBottom(BorderStyle.THIN);
+        style.setBorderLeft(BorderStyle.THIN);
+        style.setBorderRight(BorderStyle.THIN);
+        style.setBorderTop(BorderStyle.THIN);
+        XSSFColor color = new XSSFColor(Colores.grisFuertesito);
+        style.setFillForegroundColor(color);//color de fondo
+        //style.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());//color de fondo
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style.setAlignment(HorizontalAlignment.CENTER);
+        style.setVerticalAlignment(VerticalAlignment.CENTER);
+        style.setFont(font);
+        R.setCellStyle(style);
+
+    }
 
     public void setCellStyleDesc(XSSFWorkbook wb, XSSFCell R) {
         XSSFFont font = wb.createFont();
@@ -633,7 +658,7 @@ public class Escribir {
         outputStream.close();
     }
 
-    public void crearHojaPacks(String filepath, String hoja) throws FileNotFoundException, IOException {
+    public void crearHojaFormatoInventario(String filepath, String hoja) throws FileNotFoundException, IOException {
         File file = new File(filepath);
         XSSFWorkbook newWorkBook;
         try ( FileInputStream inputStream = new FileInputStream(file)) {
@@ -643,6 +668,8 @@ public class Escribir {
             XSSFSheet newSheet = newWorkBook.createSheet(hoja);
             row = newSheet.createRow(0);
             row2 = newSheet.createRow(1);
+            row.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
+            row2.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
 
             String[] headers = new String[]{
                 "     ",
@@ -707,6 +734,96 @@ public class Escribir {
         newWorkBook.write(outputStream);
         outputStream.close();
     }
+    
+    public void crearHojaPack(String filepath, String hoja) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        XSSFWorkbook newWorkBook;
+        try ( FileInputStream inputStream = new FileInputStream(file)) {
+            newWorkBook = new XSSFWorkbook(inputStream);
+            XSSFRow row;
+            XSSFRow row2;
+            XSSFRow row3;
+            XSSFSheet newSheet = newWorkBook.createSheet(hoja);
+            row = newSheet.createRow(0);
+            row2 = newSheet.createRow(1);
+            row3 = newSheet.createRow(2);
+            
+            row.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
+            row2.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
+            row3.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
+
+            String[] headers = new String[]{
+                "     ",
+                "DESCRIPCIÓN",
+                "FECHA DE REGISTRO",
+                "CONDICION",
+                "PACK",
+                "T.I.G",
+                "UNIDADES",
+                "COSTO X UNIDAD",
+                "COSTO NETO",
+                "PRECIO BASE X UNIDAD",
+                "PRECIO BASE NETO",
+                "PRECIO SHOP X UNIDAD",
+                "PRECIO SHOP NETO",
+                "PRECIO ML X UNIDAD",
+                "PRECIO ML NETO",
+                "COMISION ML X UNIDAD",
+                "COMISION ML NETA",
+                "IVA X UNIDAD",
+                "IVA NETA",
+                "UTILIDAD X UNIDAD",
+                "UTILIDAD NETA",
+                "MEDIO DE VENTA",
+                "DESTINO",
+                "FOLIO"
+            };
+
+            newSheet.setColumnWidth(0, 15000);
+            newSheet.setColumnWidth(1, 15000);
+
+            for (int i = 0; i < 24; i++) {
+                if (i >= 2) {
+                    newSheet.setColumnWidth(i, 5000);
+                }
+                XSSFCell encabezados = row.createCell(i);
+                XSSFCell suma = row2.createCell(i);
+                XSSFCell pack= row3.createCell(i);
+                
+                if(i==0){
+                    suma.setCellValue("SUMA DE ITEMS");
+                    pack.setCellValue("VALOR DEL PACK");
+                }
+                setCellStyleVerde(newWorkBook, encabezados);
+                setCellStyleGris(newWorkBook, suma);
+                setCellStyleVerde(newWorkBook, pack);
+                
+                encabezados.setCellValue(headers[i]);
+                XSSFFont font = newWorkBook.createFont();
+                font.setFontHeightInPoints((short) 12);
+                font.setFontName("Calibri");
+                font.setColor(IndexedColors.BLACK.getIndex());
+                font.setBold(true);
+                font.setItalic(false);
+
+                XSSFCellStyle style = newWorkBook.createCellStyle();
+                XSSFColor color = new XSSFColor(Colores.verdeExcel);
+                style.setFillForegroundColor(color);//color de fondo
+                style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                style.setAlignment(HorizontalAlignment.CENTER);
+                style.setVerticalAlignment(VerticalAlignment.CENTER);
+                style.setFont(font);
+                encabezados.setCellStyle(style);
+
+            }
+        }
+
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkBook.write(outputStream);
+        outputStream.close();
+    }
+    
+    
 
     public static void crearDoucumento(String nombre) {
         XSSFWorkbook workbook = new XSSFWorkbook();

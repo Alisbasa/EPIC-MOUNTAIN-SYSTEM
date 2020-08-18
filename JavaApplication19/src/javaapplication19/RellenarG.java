@@ -290,7 +290,7 @@ public class RellenarG {
                 rellenarDesPacks.add(iconoDesarrollo);
                 rellenarDesPacks.add(tipoPack);
                 rellenarDesPacks.add(desarrolloTipoP);
-                rellenarDesPacks.add(montoDesP);
+                rellenarDesPacks.add(precioDesP);
                 rellenarDesPacks.add(iconoOkDesarrolloP);
             }
         });

@@ -524,7 +524,7 @@ public class rellenarGastos {
     }
 
     //Pone Gasto: Desarollo: Packs
-    void botonDesP(JTextField desarrolloTipoP, JComboBox tipoPack, JTextField montoDesP, JLabel iconoOkDesarrolloP, JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre) {
+    void botonDesP(JTextField desarrolloTipoP, JComboBox tipoPack, JTextField montoDesP,JTextField precio, JLabel iconoOkDesarrolloP, JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre) {
         MouseListener botonV = new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -547,19 +547,26 @@ public class rellenarGastos {
                 desarrolloLista.setText(desarrolloTipoP.getText());
                 JLabel costo = new JLabel();
                 costo.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-
+                JLabel variacion = new JLabel();
+                variacion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                
+                
                 if (tipoPack.getSelectedItem().toString().equals("Rellenar Pack")) {
                     packsDeVentas inv;
                     try {
+                        double tig2 = LeerExcel.obtenerCeldaNumerica("src\\excel\\Packs.xlsx", desarrolloTipoP.getText() , LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 5);
+                        double costoDiv = Doubleprecio.getText();
                         inv = new packsDeVentas(desarrolloLista, montoDesP, desarrolloTipoP);
                         inv.setVisible(true);
-                        costo.setText("$ " + montoDesP.getText());
+                        costo.setText("$" + montoDesP.getText());
+                        variacion.setText("$0" );
 
                     } catch (IOException ex) {
                         Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else {
                     costo.setText("$ " + montoDesP.getText());
+                    variacion.setText("$0" );
                 }
 
                 
@@ -574,7 +581,7 @@ public class rellenarGastos {
                 panelGasto.add(fecha);
                 panelGasto.add(desarrolloLista);
                 panelGasto.add(costo);
-                panelGasto.add(new JLabel(""));
+                panelGasto.add(variacion);
                 panelGasto.add(iconoPacks);
 
                 String[] data = {(String) fechaActual(), "Pack de Ventas", desarrolloTipoP.getText(), montoDesP.getText(), "    ", "VERDE", "   "};
@@ -598,7 +605,10 @@ public class rellenarGastos {
 
                 if (tipoPack.getSelectedItem().toString().equals("Nuevo")) {
                     try {
-                        escribirVentas.crearHojaPacks("src\\excel\\Packs.xlsx", desarrolloTipoP.getText());
+                        escribirVentas.crearHojaPack("src\\excel\\Packs.xlsx", desarrolloTipoP.getText());
+                        escribirVentas.escribirCeldaDouble("src\\excel\\Packs.xlsx", desarrolloTipoP.getText(),  Utilidades.roundTwoDecimals(Double.valueOf( montoDesP.getText())) , LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 8);
+                        escribirVentas.escribirCeldaDouble("src\\excel\\Packs.xlsx", desarrolloTipoP.getText(),  Utilidades.roundTwoDecimals(Double.valueOf( precio.getText())) , LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 10);
+                        escribirVentas.escribirCeldaDouble("src\\excel\\Packs.xlsx", desarrolloTipoP.getText(),  Utilidades.roundTwoDecimals(Double.valueOf( precio.getText())/Double.valueOf( montoDesP.getText())) , LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 5);
                         botonBorrarHoja(iconoPacks, "src\\excel\\Packs.xlsx", LeerExcel.obtenerNumeroHojas("src\\excel\\Packs.xlsx")-1);
                         botonBorrar(iconoPacks, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "packsG", "src//excel/LibrosContables.xlsx", "Gastos");
                     } catch (IOException ex) {

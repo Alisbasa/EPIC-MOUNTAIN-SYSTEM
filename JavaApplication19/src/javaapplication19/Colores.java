@@ -16,6 +16,7 @@ public class Colores {
     public static final Color verdeExcel = new Color(3,223,123);
     public static final Color epicColorBajito = new Color(222,244,234);
     public static final Color gris = new Color(51,51,51);
+    public static final Color grisFuertesito = new Color(191,191,191);
     public static final Color amarillo = new Color(255,231,103);
     public static final Color grisBajito = new Color(238,238,238);
     

@@ -1670,7 +1670,7 @@ public class rellenarIngresos {
            
             
             
-            crear.crearHojaPacks(filepathCliente, cliente);
+            crear.crearHojaFormatoInventario(filepathCliente, cliente);
 
             String venta = LeerExcel.obtenerCelda(filepathVentas, fechaActualEscribir().toUpperCase(), 0, LeerExcel.contarRenglones(filepathVentas, fechaActualEscribir().toUpperCase()));
             String descripion = LeerExcel.obtenerCelda(filepathVentas, fechaActualEscribir().toUpperCase(), 1, LeerExcel.contarRenglones(filepathVentas, fechaActualEscribir().toUpperCase()));

@@ -29,7 +29,7 @@ public class packsDeVentas extends javax.swing.JFrame {
     int mousepY;
 
     static JLabel desarrolloTipoP;
-    static JTextField costo;
+    static JTextField precio;
     static JTextField pieza;
     //static String costoPack;
     /**
@@ -39,11 +39,11 @@ public class packsDeVentas extends javax.swing.JFrame {
      * @param precio
      * @throws java.io.IOException
      */
-    public packsDeVentas(JLabel desarrolloTipoP,JTextField costo,JTextField pieza) throws IOException {
+    public packsDeVentas(JLabel desarrolloTipoP,JTextField precio,JTextField pieza) throws IOException {
         
 
         this.desarrolloTipoP = desarrolloTipoP;
-        this.costo = costo;
+        this.precio = precio;
         this.pieza = pieza;
         initComponents();
         this.setExtendedState(NORMAL);
@@ -86,12 +86,12 @@ public class packsDeVentas extends javax.swing.JFrame {
         jtDesc = new javax.swing.JTextField();
         jpTIG = new javax.swing.JPanel();
         jlTIG = new javax.swing.JLabel();
-        jtCosto = new javax.swing.JTextField(costo.getText());
+        jtCosto = new javax.swing.JTextField();
         jlPack = new javax.swing.JLabel();
         jcCondicion = new javax.swing.JComboBox<>();
         jpUbicacion = new javax.swing.JPanel();
         jlPrecio = new javax.swing.JLabel();
-        jtPrecio = new javax.swing.JTextField();
+        jtPrecio = new javax.swing.JTextField(new javax.swing.JTextField(precio.getText()));
         jlUnidades1 = new javax.swing.JLabel();
         jtUnidades = new javax.swing.JTextField();
         jpBoton = new javax.swing.JPanel();
@@ -289,7 +289,16 @@ public class packsDeVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
-        //costoPack = jtCosto.getText();
+        try {
+            //costoPack = jtCosto.getText();
+            
+            
+            double tig = LeerExcel.obtenerCeldaNumerica("src\\excel\\Packs.xlsx", desarrolloTipoP.getText() , LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 5);
+        } catch (IOException ex) {
+            Logger.getLogger(packsDeVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                        double costoDiv = Doubleprecio.getText();
+        
         String[] Registro = {jtPieza.getText(),
             jtDesc.getText(),
             fechaActual(),
@@ -301,6 +310,8 @@ public class packsDeVentas extends javax.swing.JFrame {
             Double.toString(Double.valueOf(jtCosto.getText()) * Integer.valueOf(jtUnidades.getText())),
             jtPrecio.getText(),
             Double.toString(Double.valueOf(jtUnidades.getText()) * Integer.valueOf(jtPrecio.getText()))};
+        
+            
         Escribir escribirExcel = new Escribir();
         try {
             
@@ -311,11 +322,11 @@ public class packsDeVentas extends javax.swing.JFrame {
             escribirExcel.escribirCeldaNumerica("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 6);
             
             //TIG
-            Double TIG = Double.valueOf(jtPrecio.getText())/Double.valueOf(costo.getText());
+            Double TIG = Double.valueOf(jtPrecio.getText())/Double.valueOf(precio.getText());
             escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), TIG, LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 5);
             
             //COSTO UNIDAD
-            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Double.valueOf(costo.getText()), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 7);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Double.valueOf(precio.getText()), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 7);
             
             //COSTO NETO
             escribirExcel.escribirCeldaDouble("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString(), Double.valueOf(jtCosto.getText()) * Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", packsDisponibles2.getSelectedItem().toString()), 8);
@@ -400,7 +411,7 @@ public class packsDeVentas extends javax.swing.JFrame {
             escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", TIG, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 5);
             
             //COSTO UNIDAD
-            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(costo.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 7);
+            escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(precio.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 7);
             
             //COSTO NETO
             escribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", Double.valueOf(jtCosto.getText()) * Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 8);
@@ -516,7 +527,7 @@ public class packsDeVentas extends javax.swing.JFrame {
             @Override
             public void run() {
                 try {
-                    new packsDeVentas(desarrolloTipoP,costo,pieza).setVisible(true);
+                    new packsDeVentas(desarrolloTipoP,precio,pieza).setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(packsDeVentas.class.getName()).log(Level.SEVERE, null, ex);
                 }
