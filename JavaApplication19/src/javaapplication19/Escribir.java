@@ -73,7 +73,7 @@ public class Escribir {
         R.setCellStyle(style);
 
     }
-    
+
     public void setCellStyleGris(XSSFWorkbook wb, XSSFCell R) {
         XSSFFont font = wb.createFont();
         font.setFontHeightInPoints((short) 12);
@@ -84,6 +84,33 @@ public class Escribir {
 
         XSSFCellStyle style = wb.createCellStyle();
 
+        style.setBorderBottom(BorderStyle.THIN);
+        style.setBorderLeft(BorderStyle.THIN);
+        style.setBorderRight(BorderStyle.THIN);
+        style.setBorderTop(BorderStyle.THIN);
+        XSSFColor color = new XSSFColor(Colores.grisFuertesito);
+        style.setFillForegroundColor(color);//color de fondo
+        //style.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());//color de fondo
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style.setAlignment(HorizontalAlignment.CENTER);
+        style.setVerticalAlignment(VerticalAlignment.CENTER);
+        style.setFont(font);
+        R.setCellStyle(style);
+
+    }
+    
+    public void setCellStyleGrisPrecio(XSSFWorkbook wb, XSSFCell R) {
+        DataFormat df = wb.createDataFormat();
+
+        XSSFFont font = wb.createFont();
+        font.setFontHeightInPoints((short) 12);
+        font.setFontName("Calibri");
+        font.setColor(IndexedColors.BLACK.getIndex());
+        font.setBold(true);
+        font.setItalic(false);
+
+        XSSFCellStyle style = wb.createCellStyle();
+        style.setDataFormat(df.getFormat("$#,#0.00"));
         style.setBorderBottom(BorderStyle.THIN);
         style.setBorderLeft(BorderStyle.THIN);
         style.setBorderRight(BorderStyle.THIN);
@@ -151,9 +178,10 @@ public class Escribir {
         R.setCellStyle(style);
 
     }
+    public void setCellStylePrecioVerde(XSSFWorkbook wb, XSSFCell R) {
 
-    public void setCellStyleVerde(XSSFWorkbook wb, XSSFCell R) {
         DataFormat df = wb.createDataFormat();
+
         XSSFFont font = wb.createFont();
         font.setFontHeightInPoints((short) 12);
         font.setFontName("Calibri");
@@ -163,6 +191,32 @@ public class Escribir {
 
         XSSFCellStyle style = wb.createCellStyle();
         style.setDataFormat(df.getFormat("$#,#0.00"));
+        style.setBorderBottom(BorderStyle.THIN);
+        style.setBorderLeft(BorderStyle.THIN);
+        style.setBorderRight(BorderStyle.THIN);
+        style.setBorderTop(BorderStyle.THIN);
+        XSSFColor color = new XSSFColor(Colores.verdeExcel);
+        style.setFillForegroundColor(color);//color de fondo
+        //style.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());//color de fondo
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style.setAlignment(HorizontalAlignment.CENTER);
+        style.setVerticalAlignment(VerticalAlignment.CENTER);
+        style.setFont(font);
+        R.setCellStyle(style);
+
+    }
+
+    public void setCellStyleVerde(XSSFWorkbook wb, XSSFCell R) {
+        
+        XSSFFont font = wb.createFont();
+        font.setFontHeightInPoints((short) 12);
+        font.setFontName("Calibri");
+        font.setColor(IndexedColors.BLACK.getIndex());
+        font.setBold(true);
+        font.setItalic(false);
+
+        XSSFCellStyle style = wb.createCellStyle();
+        
         XSSFColor color = new XSSFColor(Colores.verdeExcel);
         style.setFillForegroundColor(color);//color de fondo
         style.setBorderBottom(BorderStyle.THIN);
@@ -369,6 +423,55 @@ public class Escribir {
         outputStream.close();
     }
 
+    public void escribirExcelPacks(String filepath, String hoja, String[] data, int col) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+        int rowCount = newSheet.getLastRowNum() - newSheet.getFirstRowNum();
+        int renglones = 0;
+
+        for (int i = 1; i <= rowCount; i++) {
+
+            XSSFRow row = newSheet.getRow(i);
+            row.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
+
+            if (row.getCell(1).getCellType() != CellType.BLANK) {
+                renglones++;
+
+            } else {
+                break;
+            }
+        }
+
+        newSheet.shiftRows(renglones + 1, renglones + 2, 1, true, true);
+        XSSFRow newRow = newSheet.createRow(renglones + 1);
+        newRow.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
+        XSSFRow row = newSheet.getRow(0);
+
+        newSheet.setColumnWidth(0, 15000);
+        newSheet.setColumnWidth(1, 15000);
+        for (int i = 0; i < col; i++) {
+            if (i >= 2) {
+                newSheet.setColumnWidth(i, 5000);
+            }
+            XSSFCell newCell = newRow.createCell(i);
+            newCell.setCellValue(data[i]);
+            setCellStyle(newWorkbook, newCell);
+            //evaluar(newWorkbook, newCell);
+
+        }
+        XSSFCell desc = newRow.getCell(1);
+        setCellStyleDesc(newWorkbook, desc);
+
+        //newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
+        //XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+        inputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkbook.write(outputStream);
+        outputStream.close();
+    }
+
     public void escribirExcelInv2(String filepath, String hoja, String[] data, int col) throws FileNotFoundException, IOException {
         File file = new File(filepath);
         FileInputStream inputStream = new FileInputStream(file);
@@ -451,8 +554,6 @@ public class Escribir {
         outputStream.close();
 
     }
-    
-     
 
     public void escribirCeldaNumerica(String filepath, String hoja, int data, int fila, int columna) throws FileNotFoundException, IOException {
         File file = new File(filepath);
@@ -490,14 +591,45 @@ public class Escribir {
 //      newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
 //        XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
         XSSFRow NEWrow = newSheet.getRow(0);
-        if (NEWrow.getCell(1).getStringCellValue().equals("DESCRIPCIÓN")&&columna==5) {
+        if (NEWrow.getCell(1).getStringCellValue().equals("DESCRIPCIÓN") && columna == 5) {
             System.out.println("javaapplication19.Escribir.escribirCeldaDouble()");
-                newCell.setCellValue(data);
-                setCellStyle(newWorkbook, newCell);
-                evaluar(newWorkbook, newCell);
+            newCell.setCellValue(data);
+            setCellStyle(newWorkbook, newCell);
+            evaluar(newWorkbook, newCell);
 //          newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
-                XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
-            
+            XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+
+        }
+        inputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkbook.write(outputStream);
+        outputStream.close();
+
+    }
+    
+    public void escribirCeldaDoubleVerde(String filepath, String hoja, double data, int fila, int columna) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+
+        XSSFRow row = newSheet.getRow(fila);
+
+        XSSFCell newCell = row.createCell(columna);
+        newCell.setCellValue(data);
+        setCellStylePrecioVerde(newWorkbook, newCell);
+        evaluar(newWorkbook, newCell);
+//      newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
+//        XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+        XSSFRow NEWrow = newSheet.getRow(0);
+        if (NEWrow.getCell(1).getStringCellValue().equals("DESCRIPCIÓN") && columna == 5) {
+            System.out.println("javaapplication19.Escribir.escribirCeldaDouble()");
+            newCell.setCellValue(data);
+            setCellStyleVerde(newWorkbook, newCell);
+            evaluar(newWorkbook, newCell);
+//          newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
+            XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+
         }
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
@@ -535,7 +667,7 @@ public class Escribir {
 
         XSSFCell newCell = row.createCell(columna);
         newCell.setCellFormula(formula);
-        setCellStyleVerde(newWorkbook, newCell);
+        setCellStylePrecioVerde(newWorkbook, newCell);
         newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
         evaluar(newWorkbook, newCell);
         XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
@@ -547,6 +679,27 @@ public class Escribir {
 
     }
     
+    public void escribirFormulaPacks(String filepath, String hoja, String formula, int fila, int columna) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+
+        XSSFRow row = newSheet.getRow(fila);
+
+        XSSFCell newCell = row.createCell(columna);
+        newCell.setCellFormula(formula);
+        setCellStyleGrisPrecio(newWorkbook, newCell);
+        newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
+        evaluar(newWorkbook, newCell);
+        XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+
+        inputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkbook.write(outputStream);
+        outputStream.close();
+
+    }
 
     public String Restar(int filaInicial, int filaFinal, char columna) {
         String Resta = (Character.toUpperCase(columna) + Integer.toString(filaInicial));
@@ -734,7 +887,7 @@ public class Escribir {
         newWorkBook.write(outputStream);
         outputStream.close();
     }
-    
+
     public void crearHojaPack(String filepath, String hoja) throws FileNotFoundException, IOException {
         File file = new File(filepath);
         XSSFWorkbook newWorkBook;
@@ -747,7 +900,7 @@ public class Escribir {
             row = newSheet.createRow(0);
             row2 = newSheet.createRow(1);
             row3 = newSheet.createRow(2);
-            
+
             row.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
             row2.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
             row3.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
@@ -773,31 +926,29 @@ public class Escribir {
                 "IVA X UNIDAD",
                 "IVA NETA",
                 "UTILIDAD X UNIDAD",
-                "UTILIDAD NETA",
-                "MEDIO DE VENTA",
-                "DESTINO",
-                "FOLIO"
+                "UTILIDAD NETA"
+                
             };
 
             newSheet.setColumnWidth(0, 15000);
             newSheet.setColumnWidth(1, 15000);
 
-            for (int i = 0; i < 24; i++) {
+            for (int i = 0; i < 21; i++) {
                 if (i >= 2) {
                     newSheet.setColumnWidth(i, 5000);
                 }
                 XSSFCell encabezados = row.createCell(i);
                 XSSFCell suma = row2.createCell(i);
-                XSSFCell pack= row3.createCell(i);
-                
-                if(i==0){
+                XSSFCell pack = row3.createCell(i);
+
+                if (i == 0) {
                     suma.setCellValue("SUMA DE ITEMS");
                     pack.setCellValue("VALOR DEL PACK");
                 }
                 setCellStyleVerde(newWorkBook, encabezados);
                 setCellStyleGris(newWorkBook, suma);
                 setCellStyleVerde(newWorkBook, pack);
-                
+
                 encabezados.setCellValue(headers[i]);
                 XSSFFont font = newWorkBook.createFont();
                 font.setFontHeightInPoints((short) 12);
@@ -822,7 +973,7 @@ public class Escribir {
         newWorkBook.write(outputStream);
         outputStream.close();
     }
-    
+
     public void crearHojaEquipo(String filepath, String hoja) throws FileNotFoundException, IOException {
         File file = new File(filepath);
         XSSFWorkbook newWorkBook;
@@ -835,7 +986,7 @@ public class Escribir {
             row = newSheet.createRow(0);
             row2 = newSheet.createRow(1);
             row3 = newSheet.createRow(2);
-            
+
             row.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
             row2.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
             row3.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
@@ -856,11 +1007,11 @@ public class Escribir {
                     newSheet.setColumnWidth(i, 5000);
                 }
                 XSSFCell encabezados = row.createCell(i);
-                XSSFCell pack= row3.createCell(i);
-               
+                XSSFCell pack = row3.createCell(i);
+
                 setCellStyleVerde(newWorkBook, encabezados);
                 setCellStyleVerde(newWorkBook, pack);
-                
+
                 encabezados.setCellValue(headers[i]);
                 XSSFFont font = newWorkBook.createFont();
                 font.setFontHeightInPoints((short) 12);
@@ -903,19 +1054,18 @@ public class Escribir {
         XSSFWorkbook newWorkBook = newWorkBook = new XSSFWorkbook(inputStream);
         newWorkBook.removeSheetAt(indexHoja);
     }
-    
+
     public static void eliminarHoja2(String filepath, int indexHoja) throws FileNotFoundException, IOException {
         File file = new File(filepath);
         FileInputStream inputStream = new FileInputStream(file);
         XSSFWorkbook newWorkBook = newWorkBook = new XSSFWorkbook(inputStream);
         newWorkBook.removeSheetAt(indexHoja);
-        
+
         inputStream.close();
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkBook.write(outputStream);
         outputStream.close();
     }
-    
 
     public void escribirFormulaF(String filepath, String hoja, String formula, int fila, int columna) throws FileNotFoundException, IOException {
         File file = new File(filepath);

@@ -562,9 +562,9 @@ public class rellenarGastos {
                     try {
                         Escribir escribirVentas = new Escribir();
                         escribirVentas.crearHojaPack("src\\excel\\Packs.xlsx", desarrolloTipoP.getText());
-                        escribirVentas.escribirCeldaDouble("src\\excel\\Packs.xlsx", desarrolloTipoP.getText(), Utilidades.roundTwoDecimals(Double.valueOf(montoDesP.getText())), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 8);
-                        escribirVentas.escribirCeldaDouble("src\\excel\\Packs.xlsx", desarrolloTipoP.getText(), Utilidades.roundTwoDecimals(Double.valueOf(precio.getText())), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 10);
-                        escribirVentas.escribirCeldaDouble("src\\excel\\Packs.xlsx", desarrolloTipoP.getText(), Utilidades.roundTwoDecimals(Double.valueOf(precio.getText()) / Double.valueOf(montoDesP.getText())), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 5);
+                        escribirVentas.escribirCeldaDoubleVerde("src\\excel\\Packs.xlsx", desarrolloTipoP.getText(), Utilidades.roundTwoDecimals(Double.valueOf(montoDesP.getText())), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 8);
+                        escribirVentas.escribirCeldaDoubleVerde("src\\excel\\Packs.xlsx", desarrolloTipoP.getText(), Utilidades.roundTwoDecimals(Double.valueOf(precio.getText())), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 10);
+                        escribirVentas.escribirCeldaDoubleVerde("src\\excel\\Packs.xlsx", desarrolloTipoP.getText(), Utilidades.roundTwoDecimals(Double.valueOf(precio.getText()) / Double.valueOf(montoDesP.getText())), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 5);
                         botonBorrarHoja(iconoPacks, "src\\excel\\Packs.xlsx", LeerExcel.obtenerNumeroHojas("src\\excel\\Packs.xlsx") - 1);
                         botonBorrar(iconoPacks, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "packsG", "src//excel/LibrosContables.xlsx", "Gastos");
 
