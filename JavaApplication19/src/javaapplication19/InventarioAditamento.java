@@ -40,7 +40,7 @@ public class InventarioAditamento extends javax.swing.JFrame {
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        inventarioCB = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "Inventario", 0));
+        inventarioCB = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 0));
         inventarioCB.setBackground(Color.white);
         inventarioCB.setUI(PropiedadesCB2.createUI(inventarioCB));
         jpDescripcion.add(inventarioCB);
@@ -167,9 +167,10 @@ public class InventarioAditamento extends javax.swing.JFrame {
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
         try {
-            double sumaCosto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 7, inventarioCB.getSelectedIndex() + 1) + Double.valueOf(monto.getText());
-            double sumaPrecio = LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 9, inventarioCB.getSelectedIndex() + 1) + Double.valueOf(monto.getText());
-            int unidades = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 6, inventarioCB.getSelectedIndex() + 1);
+            String inventario6 = "EPIC MOUNTAIN";
+            double sumaCosto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", inventario6, 7, inventarioCB.getSelectedIndex() + 1) + Double.valueOf(monto.getText());
+            double sumaPrecio = LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", inventario6, 9, inventarioCB.getSelectedIndex() + 1) + Double.valueOf(monto.getText());
+            int unidades = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", inventario6, 6, inventarioCB.getSelectedIndex() + 1);
 
             Escribir escribirInv = new Escribir();
             System.out.println(sumaCosto);
@@ -179,55 +180,55 @@ public class InventarioAditamento extends javax.swing.JFrame {
             
             //TIG
             Double TIG = sumaPrecio/sumaCosto;
-            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", TIG, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 5);
+            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario6, TIG, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario6), 5);
             
             //COSTO NETO
-            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", (unidades*sumaCosto), (inventarioCB.getSelectedIndex()+1), 8);
+            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario6, (unidades*sumaCosto), (inventarioCB.getSelectedIndex()+1), 8);
             
             //PRECIO BASE NETO
-            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", (unidades*sumaPrecio), (inventarioCB.getSelectedIndex()+1), 10);
+            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario6, (unidades*sumaPrecio), (inventarioCB.getSelectedIndex()+1), 10);
             
             //PRECIO LOCAL UNIDAD
-            Double precioL = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 9, (inventarioCB.getSelectedIndex()+1)) * 1.16);
-            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioL, (inventarioCB.getSelectedIndex()+1), 11);
+            Double precioL = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", inventario6, 9, (inventarioCB.getSelectedIndex()+1)) * 1.16);
+            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario6, precioL, (inventarioCB.getSelectedIndex()+1), 11);
 
             //PRECIO LOCAL NETO
-            Double precioNeto = escribirInv.Mulitplicar(6, 11, (inventarioCB.getSelectedIndex()+1), "src\\excel\\Inventario.xlsx", "Inventario");
-            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioNeto, (inventarioCB.getSelectedIndex()+1), 12);
+            Double precioNeto = escribirInv.Mulitplicar(6, 11, (inventarioCB.getSelectedIndex()+1), "src\\excel\\Inventario.xlsx", inventario6);
+            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario6, precioNeto, (inventarioCB.getSelectedIndex()+1), 12);
 
             //COMISION ML
-            Double comisionML = ((LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 11, (inventarioCB.getSelectedIndex()+1))) * .15) + 5;
-            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionML, (inventarioCB.getSelectedIndex()+1), 15);
+            Double comisionML = ((LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", inventario6, 11, (inventarioCB.getSelectedIndex()+1))) * .15) + 5;
+            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario6, comisionML, (inventarioCB.getSelectedIndex()+1), 15);
 
             //COMISION ML NETO
-            Double comisionMLN = escribirInv.Mulitplicar(6, 15, (inventarioCB.getSelectedIndex()+1), "src\\excel\\Inventario.xlsx", "Inventario");
-            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionMLN, (inventarioCB.getSelectedIndex()+1), 16);
+            Double comisionMLN = escribirInv.Mulitplicar(6, 15, (inventarioCB.getSelectedIndex()+1), "src\\excel\\Inventario.xlsx", inventario6);
+            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario6, comisionMLN, (inventarioCB.getSelectedIndex()+1), 16);
 
             // IVA UNIDAD
-            Double IVA = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", 9, (inventarioCB.getSelectedIndex()+1)) * 0.16);
-            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", IVA, (inventarioCB.getSelectedIndex()+1), 17);
+            Double IVA = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", inventario6, 9, (inventarioCB.getSelectedIndex()+1)) * 0.16);
+            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario6, IVA, (inventarioCB.getSelectedIndex()+1), 17);
 
             //IVA NETO
-            Double ivaN = escribirInv.Mulitplicar(6, 17, (inventarioCB.getSelectedIndex()+1), "src\\excel\\Inventario.xlsx", "Inventario");
-            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", ivaN, (inventarioCB.getSelectedIndex()+1), 18);
+            Double ivaN = escribirInv.Mulitplicar(6, 17, (inventarioCB.getSelectedIndex()+1), "src\\excel\\Inventario.xlsx", inventario6);
+            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario6, ivaN, (inventarioCB.getSelectedIndex()+1), 18);
 
             //PRECIO ML
-            Double precioML = escribirInv.SumarColumnasML((inventarioCB.getSelectedIndex()+1), 9, 17, 15, "src\\excel\\Inventario.xlsx", "Inventario");
-            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioML, (inventarioCB.getSelectedIndex()+1), 13);
+            Double precioML = escribirInv.SumarColumnasML((inventarioCB.getSelectedIndex()+1), 9, 17, 15, "src\\excel\\Inventario.xlsx", inventario6);
+            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario6, precioML, (inventarioCB.getSelectedIndex()+1), 13);
 
             //PRECIOML NETO
-            Double precioMLN = escribirInv.Mulitplicar(6, 13,(inventarioCB.getSelectedIndex()+1), "src\\excel\\Inventario.xlsx", "Inventario");
-            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioMLN, (inventarioCB.getSelectedIndex()+1), 14);
+            Double precioMLN = escribirInv.Mulitplicar(6, 13,(inventarioCB.getSelectedIndex()+1), "src\\excel\\Inventario.xlsx", inventario6);
+            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario6, precioMLN, (inventarioCB.getSelectedIndex()+1), 14);
 
             //UTILIDAD UNIDAD LOCAL
-            Double utilidad = escribirInv.RestarColumnas((inventarioCB.getSelectedIndex()+1), 11, 7, 17, "src\\excel\\Inventario.xlsx", "Inventario");
-            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidad, (inventarioCB.getSelectedIndex()+1), 19);
+            Double utilidad = escribirInv.RestarColumnas((inventarioCB.getSelectedIndex()+1), 11, 7, 17, "src\\excel\\Inventario.xlsx", inventario6);
+            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario6, utilidad, (inventarioCB.getSelectedIndex()+1), 19);
             //UTILIDAD LOCAL NETA
-            Double utilidadLN = escribirInv.Mulitplicar(6, 19, (inventarioCB.getSelectedIndex()+1), "src\\excel\\Inventario.xlsx", "Inventario");
-            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidadLN, (inventarioCB.getSelectedIndex()+1), 20);
+            Double utilidadLN = escribirInv.Mulitplicar(6, 19, (inventarioCB.getSelectedIndex()+1), "src\\excel\\Inventario.xlsx", inventario6);
+            escribirInv.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario6, utilidadLN, (inventarioCB.getSelectedIndex()+1), 20);
             
             
-            String[] data = {(String) fechaActual(), "Inventario", nombre.getText() + " agregados a:" + inventarioCB.getSelectedItem().toString(), monto.getText(), "Aditamento", "VERDE", "0"};
+            String[] data = {(String) fechaActual(), inventario6, nombre.getText() + " agregados a:" + inventarioCB.getSelectedItem().toString(), monto.getText(), "Aditamento", "VERDE", "0"};
             
                 escribirInv.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
                 escribirInv.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
@@ -242,7 +243,7 @@ public class InventarioAditamento extends javax.swing.JFrame {
             escribirInv.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 3);
             escribirInv.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 6);
             Libros.actualiza();
-            rellenarGastos.botonBorrarAditamento(rellenarGastos.iconoLibros, "src\\excel\\Inventario.xlsx", "Inventario", folio);
+            rellenarGastos.botonBorrarAditamento(rellenarGastos.iconoLibros, "src\\excel\\Inventario.xlsx", inventario6, folio);
             rellenarGastos.botonBorrarInd(rellenarGastos.iconoLibros, "src\\excel\\LibrosContables.xlsx", "Gastos");
  
 
