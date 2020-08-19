@@ -509,16 +509,16 @@ JLabel iconoOkV = new JLabel();
         
         String [] arr = {"Venta", "Venta a Cobrar"};
         tipoServicio = new JComboBox(arr);
-        tipoServicio.setUI(PropiedadesCB2.createUI(deudasPE));
+        tipoServicio.setUI(PropiedadesCB2.createUI(tipoServicio));
         tipoServicio.setPreferredSize(new Dimension(150, 30));
         tipoServicio.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         
         rellenarServicio.add(iconoSer);
         rellenarServicio.add(tipoServicio);
         rellenarServicio.add(cliente);
-        rellenarServicio.add(iconoOkI);
+        rellenarServicio.add(iconoOkSer);
 
-        return rellenarInversion;
+        return rellenarServicio;
     }
 
 }
