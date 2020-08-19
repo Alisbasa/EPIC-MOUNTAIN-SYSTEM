@@ -196,7 +196,45 @@ public class rellenarIngresos {
 
         boton.addMouseListener(botonV);
     }
-    
+     
+    static void botonBorrarDeudaC(JLabel boton, String filepath, String hoja, int indice) {
+        MouseListener botonV = new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Escribir EscribirExcel = new Escribir();
+                    Double restaDeuda = LeerExcel.obtenerCeldaNumerica(filepath, hoja, 2, indice);
+                    EscribirExcel.escribirCeldaDouble(filepath, "deudasPagar", restaDeuda, LeerExcel.contarRenglones(filepath, "deudasPagar"), 2);
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //Iconos.scaleImage("cancelG", boton, 20);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                //Iconos.scaleImage(img, boton, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+
+        boton.addMouseListener(botonV);
+    }
 
     static void revertirUnidades(JLabel boton, String filepath, String hoja) {
         MouseListener botonV = new MouseListener() {
@@ -1089,14 +1127,17 @@ public class rellenarIngresos {
                     String[] data = {(String) fechaActual(), "Deuda a Pagar", (String) deudasPE.getSelectedItem().toString(), montoDeuPE.getText(), "    ", "VERDE", montoDeuPE.getText()};
                     Escribir escribirVentas = new Escribir();
                     //Escribe en Excel individual y crea hoja
-                    Double suma = LeerExcel.obtenerCeldaNumerica("src\\excel\\DeudasP.xlsx", "deudasPagar", 2, deudasPE.getSelectedIndex()) + Double.valueOf(montoDeuPE.getText());
-                    escribirVentas.escribirCeldaDouble("src\\excel\\DeudasP.xlsx", "deudasPagar", suma, LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "deudasPagar"), 2);
-                    String[] ventaInd = {fechaActual(), montoDeuPE.getName()};
+                    
+                    
+                    String[] ventaInd = {fechaActual(), montoDeuPE.getText()};
                     escribirVentas.escribirExcelInv("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString(), ventaInd, 2);
                     escribirVentas.escribirCeldaDouble("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString(), Double.valueOf(montoDeuPE.getText()), LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString()), 1);
                     String formulaInd = "SUM(B2:B" + (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString()) + 1) + ")";
                     escribirVentas.escribirFormula("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString(), formulaInd, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString()) + 1), 1);
-
+                    
+                    Double suma = LeerExcel.obtenerCeldaNumerica("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString(), 1, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString()))) + Double.valueOf(montoDeuPE.getText());
+                    escribirVentas.escribirCeldaDouble("src\\excel\\DeudasP.xlsx", "deudasPagar", suma, LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "deudasPagar"), 2);
+                    
                     //Escribe en Excel general deudasPagar                      
                     String formula = escribirVentas.Sumar(2, LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "deudasPagar") + 1, 'c');
                     escribirVentas.escribirFormula("src\\excel\\DeudasP.xlsx", "deudasPagar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "deudasPagar") + 1), 2);
@@ -1122,9 +1163,13 @@ public class rellenarIngresos {
                     panelIngreso.add(icono);
                     listaIngresos.add(panelIngreso, 1);
                     panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
-
-                    botonBorrarInd(icono, "src\\excel\\DeudasP.xlsx", "DeudasPagar");
-
+                    
+                    if(LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString()) == 1){
+                        botonBorrarInd(icono, "src\\excel\\DeudasP.xlsx", "DeudasPagar");
+                    }else{
+                        int indice = deudasPE.getSelectedIndex()+1;
+                        botonBorrarDeudaC(icono, "src\\excel\\DeudasP.xlsx", "DeudasPagar", indice);
+                    }
                     indice++;
                     panelPadre.removeAll();
                     panelPadre.updateUI();
