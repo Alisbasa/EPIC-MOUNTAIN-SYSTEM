@@ -6,6 +6,7 @@
 package javaapplication19;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -22,16 +23,16 @@ import javax.swing.JTextField;
  * @author Erick Ivan
  */
 public class SERVICIOS extends javax.swing.JFrame {
+
     int mousepX;
     int mousepY;
-    
 
     /**
      * Creates new form clienteNuevo
      */
     public SERVICIOS() {
         initComponents();
-        
+
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -49,7 +50,6 @@ public class SERVICIOS extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
-        barra = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         LOGO = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -92,21 +92,6 @@ public class SERVICIOS extends javax.swing.JFrame {
         });
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        barra.setPreferredSize(new java.awt.Dimension(80, 30));
-
-        javax.swing.GroupLayout barraLayout = new javax.swing.GroupLayout(barra);
-        barra.setLayout(barraLayout);
-        barraLayout.setHorizontalGroup(
-            barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
-        );
-        barraLayout.setVerticalGroup(
-            barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(barra, java.awt.BorderLayout.LINE_END);
-
         jPanel10.setBackground(new java.awt.Color(0, 0, 0));
         jPanel10.setPreferredSize(new java.awt.Dimension(300, 30));
         jPanel10.setLayout(new java.awt.BorderLayout());
@@ -121,7 +106,7 @@ public class SERVICIOS extends javax.swing.JFrame {
 
         jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
         jpDatos.setBackground(new java.awt.Color(51, 51, 51));
         jpDatos.setLayout(new java.awt.GridLayout(4, 0));
@@ -210,21 +195,21 @@ public class SERVICIOS extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    public void changeColor(JPanel hover,Color rand){
+
+    public void changeColor(JPanel hover, Color rand) {
         hover.setBackground(rand);
     }
-    
+
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
         int kordinatX = evt.getXOnScreen();
         int kordinatY = evt.getYOnScreen();
-        this.setLocation(kordinatX-mousepX, kordinatY-mousepY);
+        this.setLocation(kordinatX - mousepX, kordinatY - mousepY);
 
     }//GEN-LAST:event_jPanel1MouseDragged
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
         mousepX = evt.getX();
-        mousepY =evt.getY();
+        mousepY = evt.getY();
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
@@ -237,30 +222,30 @@ public class SERVICIOS extends javax.swing.JFrame {
         String fecha = fechaActual();
 
         String pack = "    ";
-        String costoNeto = Double.toString(Double.valueOf(jtCosto.getText())*Integer.valueOf(jtUnidades.getText()));
-        String precioBaseNeto = Double.toString(Double.valueOf(jtPrecio.getText())*Integer.valueOf(jtUnidades.getText()));
-        double variacion = Double.valueOf(jtPrecio.getText())-Double.valueOf(jtCosto.getText());
-        String [] inventario = {producto, desc, fecha, "", pack};
+        String costoNeto = Double.toString(Double.valueOf(jtCosto.getText()) * Integer.valueOf(jtUnidades.getText()));
+        String precioBaseNeto = Double.toString(Double.valueOf(jtPrecio.getText()) * Integer.valueOf(jtUnidades.getText()));
+        double variacion = Double.valueOf(jtPrecio.getText()) - Double.valueOf(jtCosto.getText());
+        String[] inventario = {producto, desc, fecha, "", pack};
 
         Escribir EscribirCRM = new Escribir();
 
         try {
             String[] data = {(String) fechaActual(), "Venta", "SERVICIO", jtCosto.getText(), "", "VERDE", Double.toString(variacion)};
-            
+
             EscribirCRM.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
             EscribirCRM.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Double.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
             EscribirCRM.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Double.valueOf(data[3]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
             String formula10 = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
-            EscribirCRM.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula10, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 6);
+            EscribirCRM.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula10, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
             String mesActual = rellenarIngresos.fechaActualEscribir();
 
-            EscribirCRM.escribirExcelInv("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(),inventario,5);
+            EscribirCRM.escribirExcelInv("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), inventario, 5);
 
             //UNIDADES
             EscribirCRM.escribirCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 6);
 
             //TIG
-            Double TIG = Double.valueOf(jtPrecio.getText())/Double.valueOf(jtCosto.getText());
+            Double TIG = Double.valueOf(jtPrecio.getText()) / Double.valueOf(jtCosto.getText());
             EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), TIG, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 5);
 
             //COSTO UNIDAD
@@ -279,11 +264,11 @@ public class SERVICIOS extends javax.swing.JFrame {
             EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), precioL, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 11);
 
             //PRECIO LOCAL NETO
-            Double precioNeto = EscribirCRM.Mulitplicar(6, 11,LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) ,"src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
+            Double precioNeto = EscribirCRM.Mulitplicar(6, 11, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
             EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), precioNeto, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 12);
 
             //COMISION ML
-            Double comisionML = ((LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), 11, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()))) *.15)+5;
+            Double comisionML = ((LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), 11, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()))) * .15) + 5;
             EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), comisionML, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 15);
 
             //COMISION ML NETO
@@ -291,7 +276,7 @@ public class SERVICIOS extends javax.swing.JFrame {
             EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), comisionMLN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 16);
 
             // IVA UNIDAD
-            Double IVA = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), 9, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()))*0.16);
+            Double IVA = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), 9, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())) * 0.16);
             EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), IVA, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 17);
 
             //IVA NETO
@@ -303,7 +288,6 @@ public class SERVICIOS extends javax.swing.JFrame {
             EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), precioML, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 13);
 
             //PRECIOML NETO
-
             Double precioMLN = EscribirCRM.Mulitplicar(6, 13, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
             EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), precioMLN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 14);
 
@@ -315,38 +299,40 @@ public class SERVICIOS extends javax.swing.JFrame {
             Double utilidadLN = EscribirCRM.Mulitplicar(6, 19, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
             EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), utilidadLN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 20);
 
-            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())+ 1) + ")";
+            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula,
-                LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())+1, 8);
+                    LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 8);
 
-            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())+ 1) + ")";
+            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula2,
-                LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())+1, 10);
+                    LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 10);
 
-            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())+ 1) + ")";
+            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula3,
-                LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())+1, 12);
+                    LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 12);
 
-            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())+ 1) + ")";
+            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula4,
-                LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())+1, 14);
+                    LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 14);
 
-            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())+ 1) + ")";
+            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula5,
-                LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())+1, 16);
+                    LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 16);
 
-            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())+ 1) + ")";
+            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula6,
-                LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())+1, 18);
+                    LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 18);
 
-            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())+ 1) + ")";
+            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula7,
-                LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())+1, 20);
+                    LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 20);
             Libros.actualiza();
             this.setVisible(false);
 
         } catch (IOException ex) {
-            Logger.getLogger(SERVICIOS.class.getName()).log(Level.SEVERE, null, ex);
+            Caption ventanaEx = new Caption("Recuerda cerrar Excel");
+            Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+            ventanaEx.setVisible(true);
         }
 
     }//GEN-LAST:event_jbRegistrarMouseClicked
@@ -358,15 +344,13 @@ public class SERVICIOS extends javax.swing.JFrame {
     private void jtDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDescActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtDescActionPerformed
-        
 
-    
-    public static String fechaActual(){
+    public static String fechaActual() {
         java.util.Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM YY");
         return formatoFecha.format(fecha);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -419,7 +403,6 @@ public class SERVICIOS extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LOGO;
-    private javax.swing.JPanel barra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
