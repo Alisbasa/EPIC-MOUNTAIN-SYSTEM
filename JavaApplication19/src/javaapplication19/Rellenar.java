@@ -383,11 +383,11 @@ JLabel iconoOkV = new JLabel();
         Iconos.scaleImage("DeudasP", iconoDeuPE, 50);
         Iconos.scaleImage("ok", iconoOkDeuPE, 30);
         
-        String [] arr = LeerExcel.obtenerHoja("src\\excel\\DeudasP.xlsx");
         
         
         
-        deudasPE = new JComboBox(arr);
+        
+        deudasPE = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\DeudasP.xlsx", "deudasPagar", 1));
         deudasPE.removeItemAt(0);
         deudasPE.setBackground(Color.white);
         deudasPE.setUI(PropiedadesCB2.createUI(deudasPE));
