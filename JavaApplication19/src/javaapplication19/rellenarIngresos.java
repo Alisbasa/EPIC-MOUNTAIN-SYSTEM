@@ -304,7 +304,8 @@ public class rellenarIngresos {
                     //INVENTARIO
                     JLabel inventarioLista = new JLabel();
                     if(inventario.getSelectedItem().toString().equals("SERVICIO")){
-                        
+                        SERVICIOS ventanaS = new SERVICIOS();
+                        ventanaS.setVisible(true);
                     }
                     inventarioLista.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     inventarioLista.setText((String) inventario.getSelectedItem());
