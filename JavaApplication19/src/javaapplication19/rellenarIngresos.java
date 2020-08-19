@@ -1256,7 +1256,7 @@ public class rellenarIngresos {
 
                         Escribir escribirVentas = new Escribir();
 
-                         escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data,7);
+                        escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data,7);
                         escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoA.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
                         String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
                         escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
