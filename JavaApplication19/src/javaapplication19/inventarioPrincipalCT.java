@@ -302,6 +302,7 @@ public class inventarioPrincipalCT extends javax.swing.JFrame {
         Escribir EscribirCRM = new Escribir();
 
         try {
+            
             String[] data = {(String) fechaActual(), "Compra en Transito", jtProducto.getText(), jtCosto.getText(), (String) tipoGasto.getSelectedItem(), "VERDE", jtCosto.getText()};
             EscribirCRM.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
             EscribirCRM.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Double.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
@@ -343,7 +344,7 @@ public class inventarioPrincipalCT extends javax.swing.JFrame {
             EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", precioNeto, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 12);
 
             //COMISION ML
-            Double comisionML = ((LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 11, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"))) *.15)+5;
+            Double comisionML = ((LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 11, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"))) * .15) + 5;
             EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", comisionML, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 15);
 
             //COMISION ML NETO
@@ -351,7 +352,7 @@ public class inventarioPrincipalCT extends javax.swing.JFrame {
             EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", comisionMLN, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 16);
 
             // IVA UNIDAD
-            Double IVA = (LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 9, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"))*0.16);
+            Double IVA = (LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 9, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")) * 0.16);
             EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", IVA, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 17);
 
             //IVA NETO
@@ -364,7 +365,6 @@ public class inventarioPrincipalCT extends javax.swing.JFrame {
             EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", precioML, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 13);
 
             //PRECIOML NETO
-
             Double precioMLN = EscribirCRM.Mulitplicar(6, 13, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), "src\\excel\\comprasT.xlsx", "COMPRAS");
             EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", precioMLN, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 14);
 
@@ -376,33 +376,34 @@ public class inventarioPrincipalCT extends javax.swing.JFrame {
             Double utilidadLN = EscribirCRM.Mulitplicar(6, 19, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), "src\\excel\\comprasT.xlsx", "COMPRAS");
             EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", utilidadLN, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 20);
 
-            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+ 1) + ")";
+            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\comprasT.xlsx", "COMPRAS", formula,
-                LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+1, 8);
+                    LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + 1, 8);
 
-            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+ 1) + ")";
+            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\comprasT.xlsx", "COMPRAS", formula2,
-                LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+1, 10);
+                    LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + 1, 10);
 
-            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+ 1) + ")";
+            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\comprasT.xlsx", "COMPRAS", formula3,
-                LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+1, 12);
+                    LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + 1, 12);
 
-            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+ 1) + ")";
+            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\comprasT.xlsx", "COMPRAS", formula4,
-                LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+1, 14);
+                    LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + 1, 14);
 
-            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+ 1) + ")";
+            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\comprasT.xlsx", "COMPRAS", formula5,
-                LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+1, 16);
+                    LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + 1, 16);
 
-            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+ 1) + ")";
+            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\comprasT.xlsx", "COMPRAS", formula6,
-                LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+1, 18);
+                    LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + 1, 18);
 
-            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+ 1) + ")";
+            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + 1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\comprasT.xlsx", "COMPRAS", formula7,
-                LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+1, 20);
+                    LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") + 1, 20);
+            
             Libros.actualiza();
             this.setVisible(false);
         } catch (IOException ex) {
