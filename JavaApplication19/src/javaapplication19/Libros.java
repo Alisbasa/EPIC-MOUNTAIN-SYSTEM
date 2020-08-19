@@ -67,10 +67,11 @@ public class Libros extends javax.swing.JFrame {
         myInitComponents();
         
         boolean estadoCreacion = false;
-        System.out.println(fechaDM());
+        //System.out.println(fechaDM());
         
         
         if(fechaDM().equals("01 ENERO")){
+            System.out.println(fechaDM());
             estadoCreacion = true;
         }
         if(estadoCreacion = true){
@@ -1585,7 +1586,7 @@ public class Libros extends javax.swing.JFrame {
                 Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            rellenarDesCompra.botonDesCT(scrollGastos,listaGastos, rellenarDes.rellenarDesPacks, rellenarDes.productoCT,rellenarDes.paqueteria, inventario.jtCosto, equipo.jtCosto, packs.jtCosto, rellenarDes.iconoOkDesarrolloCT);  
+            rellenarDesCompra.botonDesCT(scrollGastos,listaGastos, rellenarDes.rellenarDesPacks, rellenarDes.productoCT,rellenarDes.paqueteria, inventarioPrincipalCT.jtCosto, equipo.jtCosto, packs.jtCosto, rellenarDes.iconoOkDesarrolloCT);  
         }
         
         

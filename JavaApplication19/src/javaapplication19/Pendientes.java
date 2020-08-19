@@ -196,108 +196,108 @@ public final class Pendientes extends javax.swing.JFrame {
                     break;
                 case "INVENTARIO PRINCIPAL":
                     double tig = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 5, fila);
-            int unidades = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 6, fila);
-            double costoUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 7, fila);
-            double precioBaseU = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 9, fila);
-            double precioBaseNeto = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 10, fila);
+                    int unidades = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 6, fila);
+                    double costoUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 7, fila);
+                    double precioBaseU = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 9, fila);
+                    double precioBaseNeto = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 10, fila);
                     String[] inventario = {producto, descripcion, fecha, condicion, pack};
 
-                    EscribirExcel.escribirExcelInv("src\\excel\\Inventario.xlsx", "Inventario", inventario, 5);
+                    EscribirExcel.escribirExcelInv("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", inventario, 5);
 
                     //UNIDADES
-                    EscribirExcel.escribirCeldaNumerica("src\\excel\\Inventario.xlsx", "Inventario", unidades, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 6);
+                    EscribirExcel.escribirCeldaNumerica("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", unidades, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN"), 6);
 
                     //TIG
                     Double TIG = tig;
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", TIG, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 5);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", TIG, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN"), 5);
 
                     //COSTO UNIDAD
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", costoUnidad, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 7);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", costoUnidad, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN"), 7);
                     //COSTO NETO
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", costoNeto, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 8);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", costoNeto, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN"), 8);
 
                     //PRECIO BASE UNIDAD
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioBaseU, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 9);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", precioBaseU, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN"), 9);
 
                     //PRECIO BASE NETO
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioBaseNeto, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 10);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", precioBaseNeto, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN"), 10);
 
                     //PRECIO LOCAL UNIDAD
                     Double precioL = precioBaseU * 1.16;
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioL, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 11);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", precioL, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN"), 11);
 
                     //PRECIO LOCAL NETO
                     Double precioNeto = unidades * precioL;
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioNeto, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 12);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", precioNeto, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN"), 12);
 
                     //COMISION ML
                     Double comisionML = (precioL * .15) + 5;
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 15);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", comisionML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN"), 15);
 
                     //COMISION ML NETO
                     Double comisionMLN = unidades * comisionML;
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 16);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", comisionMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN"), 16);
 
                     // IVA UNIDAD
                     Double IVA = precioBaseU * 0.16;
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", IVA, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 17);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", IVA, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN"), 17);
 
                     //IVA NETO
                     Double ivaN = unidades * IVA;
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", ivaN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 18);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", ivaN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN"), 18);
 
                     //PRECIO ML
                     Double precioML = precioBaseU + IVA + comisionML + 35;
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 13);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", precioML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN"), 13);
 
                     //PRECIOML NETO
                     Double precioMLN = precioML * unidades;
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 14);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", precioMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN"), 14);
 
                     //UTILIDAD UNIDAD LOCAL
                     Double utilidad = precioL - costoUnidad - IVA;
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidad, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 19);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", utilidad, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN"), 19);
 
                     //UTILIDAD LOCAL NETA
                     Double utilidadLN = unidades * utilidad;
-                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", utilidadLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 20);
+                    EscribirExcel.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", utilidadLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN"), 20);
 
-                    String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
-                    EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula,
-                            LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 8);
+                    String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN") + 1) + ")";
+                    EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", formula,
+                            LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN") + 1, 8);
 
-                    String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
-                    EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula2,
-                            LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 10);
+                    String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN") + 1) + ")";
+                    EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", formula2,
+                            LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN") + 1, 10);
 
-                    String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
-                    EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula3,
-                            LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 12);
+                    String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN") + 1) + ")";
+                    EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", formula3,
+                            LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN") + 1, 12);
 
-                    String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
-                    EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula4,
-                            LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 14);
+                    String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN") + 1) + ")";
+                    EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", formula4,
+                            LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN") + 1, 14);
 
-                    String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
-                    EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula5,
-                            LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 16);
+                    String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN") + 1) + ")";
+                    EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", formula5,
+                            LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN") + 1, 16);
 
-                    String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
-                    EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula6,
-                            LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 18);
+                    String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN") + 1) + ")";
+                    EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", formula6,
+                            LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN") + 1, 18);
 
-                    String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1) + ")";
-                    EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "Inventario", formula7,
-                            LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario") + 1, 20);
+                    String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN") + 1) + ")";
+                    EscribirExcel.escribirFormula("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", formula7,
+                            LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN") + 1, 20);
                     Escribir.removeRow("src\\excel\\comprasT.xlsx", "COMPRAS", fila);
 
                     break;
                 case "PACK DE VENTAS":
                     double tigP = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 5, fila);
-            int unidadesP = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 6, fila);
-            double costoUnidadP = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 7, fila);
-            double precioBaseUP = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 9, fila);
-            double precioBaseNetoP = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 10, fila);
+                    int unidadesP = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 6, fila);
+                    double costoUnidadP = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 7, fila);
+                    double precioBaseUP = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 9, fila);
+                    double precioBaseNetoP = LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 10, fila);
                     
                     String[] packs = {producto, descripcion, fecha, condicion, pack};
 
@@ -392,10 +392,10 @@ public final class Pendientes extends javax.swing.JFrame {
                     break;
                 case "EGRESO":
                     Escribir.removeRow("src\\excel\\comprasT.xlsx", "COMPRAS", fila);
+                    EscribirExcel.escribirCelda("src\\excel\\LibrosContables.xlsx", "Gastos", "EGRESO", LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 1);
                     break;
 
             }
-
             this.setVisible(false);
         } catch (IOException ex) {
             Logger.getLogger(Pendientes.class.getName()).log(Level.SEVERE, null, ex);

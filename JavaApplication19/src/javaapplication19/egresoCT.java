@@ -23,16 +23,22 @@ import javax.swing.JTextField;
  *
  * @author Erick Ivan
  */
-public class equipoymobCT extends javax.swing.JFrame {
+public class egresoCT extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
     static JTextField paqueteria;
     static JComboBox tipoGasto;
+    static String tipoEgreso;
+    static String [] data2 = new String[7];
+    static String [] data3 = new String[7];
+    static String [] data4 = new String[7];
+    static String [] data5 = new String[7];
+    static Escribir escribirE;
 
     /**
      * Creates new form clienteNuevo
      */
-    public equipoymobCT(JTextField paqueteria, JComboBox tipoGasto) {
+    public egresoCT(JTextField paqueteria, JComboBox tipoGasto) {
         initComponents();
         this.paqueteria = paqueteria;
         this.tipoGasto = tipoGasto;
@@ -105,7 +111,7 @@ public class equipoymobCT extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("COMPRA EN TRANSITO EQUIPO Y MOB.");
+        jLabel1.setText("COMPRA EN TRANSITO EGRESO");
         jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
@@ -146,7 +152,7 @@ public class equipoymobCT extends javax.swing.JFrame {
             }
         });
         jpPack.add(jtDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 370, 48));
-        jtDesc.setBackground(Colores.epicColorBajito);
+        jtProducto.setBackground(Colores.epicColorBajito);
 
         jlDesc1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
         jlDesc1.setForeground(new java.awt.Color(255, 255, 255));
@@ -161,11 +167,11 @@ public class equipoymobCT extends javax.swing.JFrame {
         jlCosto1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlCosto1.setForeground(new java.awt.Color(255, 255, 255));
         jlCosto1.setText("COSTO");
-        jpTIG.add(jlCosto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 80, 30));
+        jpTIG.add(jlCosto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 80, 30));
 
         jtCosto.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         jtCosto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpTIG.add(jtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 130, 48));
+        jpTIG.add(jtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 350, 48));
         jtCosto.setBackground(Colores.epicColorBajito);
 
         jpDatos.add(jpTIG);
@@ -232,9 +238,9 @@ public class equipoymobCT extends javax.swing.JFrame {
         try {
             escribirE.escribirExcelInv("src\\excel\\comprasT.xlsx", "COMPRAS", compraE, 22);
             escribirE.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", Double.valueOf(jtCosto.getText()), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 8);
-            escribirE.escribirCelda("src\\excel\\comprasT.xlsx", "COMPRAS", tipoGasto.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 21);
+            escribirE.escribirCelda("src\\excel\\comprasT.xlsx", "COMPRAS",tipoGasto.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 21);
             escribirE.escribirCelda("src\\excel\\comprasT.xlsx", "COMPRAS", paqueteria.getText(), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 22);
-            String[] data = {(String) fechaActual(), "Compra en Transito", jtProducto.getText(), jtCosto.getText(), (String) tipoGasto.getSelectedItem(), "VERDE", jtCosto.getText()};
+            String[] data = {(String) fechaActual(), "Compra en Transito", jtProducto.getText(), jtCosto.getText(), tipoGasto.getSelectedItem().toString(), "VERDE", jtCosto.getText()};
 
             escribirE.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
             escribirE.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
@@ -248,12 +254,11 @@ public class equipoymobCT extends javax.swing.JFrame {
             this.setVisible(false); 
             
         } catch (IOException ex) {
-            Logger.getLogger(equipoymobCT.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(egresoCT.class.getName()).log(Level.SEVERE, null, ex);
         }
           
     }//GEN-LAST:event_jbRegistrarMouseClicked
     
-
     
     public static String fechaActual(){
         java.util.Date fecha = new Date();
@@ -286,14 +291,22 @@ public class equipoymobCT extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(equipoymobCT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(egresoCT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(equipoymobCT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(egresoCT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(equipoymobCT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(egresoCT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(equipoymobCT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(egresoCT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -306,7 +319,7 @@ public class equipoymobCT extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new equipoymobCT(paqueteria, tipoGasto).setVisible(true);
+                new egresoCT(paqueteria, tipoGasto).setVisible(true);
             }
         });
     }
@@ -328,8 +341,8 @@ public class equipoymobCT extends javax.swing.JFrame {
     private javax.swing.JPanel jpPack;
     private javax.swing.JPanel jpTIG;
     private javax.swing.JPanel jpUbicacion;
-    public javax.swing.JTextField jtCosto;
+    public static javax.swing.JTextField jtCosto;
     private javax.swing.JTextField jtDesc;
-    private javax.swing.JTextField jtProducto;
+    private static javax.swing.JTextField jtProducto;
     // End of variables declaration//GEN-END:variables
 }
