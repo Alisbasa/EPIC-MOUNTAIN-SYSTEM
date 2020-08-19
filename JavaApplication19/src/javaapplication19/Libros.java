@@ -1717,7 +1717,7 @@ public class Libros extends javax.swing.JFrame {
           
         }
         
-        else if(comboGastos.getSelectedItem().toString().equals("DESECHAR") ) {
+        else if(comboGastos.getSelectedItem().toString().equals("DESECHOS") ) {
             rellenarGastos rellenarDesecho = new rellenarGastos();
             RellenarG rellenarDese = new RellenarG();
                 

@@ -21,7 +21,7 @@ import javax.swing.JTextField;
  *
  * @author Erick Ivan
  */
-public class packsCT extends javax.swing.JFrame {
+public class SERVICIOS extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
     static JTextField paqueteria;
@@ -30,7 +30,7 @@ public class packsCT extends javax.swing.JFrame {
     /**
      * Creates new form clienteNuevo
      */
-    public packsCT(JTextField paqueteria, JComboBox tipoGasto) {
+    public SERVICIOS(JTextField paqueteria, JComboBox tipoGasto) {
         initComponents();
         this.paqueteria = paqueteria;
         this.tipoGasto = tipoGasto;
@@ -397,7 +397,7 @@ public class packsCT extends javax.swing.JFrame {
             this.setVisible(false);
 
         } catch (IOException ex) {
-            Logger.getLogger(packsCT.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SERVICIOS.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_jbRegistrarMouseClicked
@@ -423,14 +423,22 @@ public class packsCT extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(packsCT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SERVICIOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(packsCT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SERVICIOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(packsCT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SERVICIOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(packsCT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SERVICIOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -443,7 +451,7 @@ public class packsCT extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new packsCT(paqueteria, tipoGasto).setVisible(true);
+                new SERVICIOS(paqueteria, tipoGasto).setVisible(true);
             }
         });
     }

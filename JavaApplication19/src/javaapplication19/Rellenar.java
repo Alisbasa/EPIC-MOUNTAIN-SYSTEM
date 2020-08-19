@@ -310,6 +310,7 @@ JLabel iconoOkV = new JLabel();
         String[] listaPlataformas = {"Mercado Libre", "Local"};
 
         inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 0));
+        inventario.addItem("SERVICIO");
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
         inventario.setPreferredSize(new Dimension(200, 30));
@@ -419,7 +420,7 @@ JLabel iconoOkV = new JLabel();
         
         producto = new JTextField();
         producto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-        addPlaceHolder("Producto", producto);
+        addPlaceHolder("PRODUCTO", producto);
         producto.setBackground(Colores.epicColorBajito);
         producto.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
         producto.setPreferredSize(new Dimension(150, 30));
@@ -427,7 +428,7 @@ JLabel iconoOkV = new JLabel();
         
         montoAport = new JTextField();
         montoAport.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-        addPlaceHolder("Ingreso", montoAport);
+        addPlaceHolder("MONTO", montoAport);
         montoAport.setBorder(new LineBorder(Colores.epicColor, 0, true));
         montoAport.setBackground(Colores.epicColorBajito);
         montoAport.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));

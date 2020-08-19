@@ -303,6 +303,9 @@ public class rellenarIngresos {
                     fecha.setText(fechaActual());
                     //INVENTARIO
                     JLabel inventarioLista = new JLabel();
+                    if(inventario.getSelectedItem().toString().equals("SERVICIO")){
+                        
+                    }
                     inventarioLista.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     inventarioLista.setText((String) inventario.getSelectedItem());
                     int numeroLista = inventario.getSelectedIndex() + 1;

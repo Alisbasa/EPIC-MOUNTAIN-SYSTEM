@@ -151,7 +151,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox(LeerExcel.rellenaCB2(&quot;src\\excel\\Inventario.xlsx&quot;, &quot;Inventario&quot;, 0))"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox(LeerExcel.rellenaCB2(&quot;src\\excel\\Inventario.xlsx&quot;, &quot;EPIC MOUNTAIN&quot;, 0))"/>
                 <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="try{"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="inventario.setUI(PropiedadesCB2.createUI(inventario));&#xa;inventario.setBackground(Color.white);"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="}catch(IOException e){}"/>
@@ -194,7 +194,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="inventario.addActionListener(new ActionListener() {&#xa;            public void actionPerformed(ActionEvent e) {&#xa;            &#xa;            int indexInventario = 1;&#xa;                &#xa;                indexInventario = inventario.getSelectedIndex();&#xa;                try {&#xa;                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica(&quot;src//excel/Inventario.xlsx&quot;, &quot;Inventario&quot;, 6, indexInventario + 1);&#xa;                } catch (IOException ex) {&#xa;                    Logger.getLogger(Rellenar.class.getName()).log(Level.SEVERE, null, ex);&#xa;                }&#xa;                unidades.removeAllItems();&#xa;                for (int i = 1; i &lt;= numeroUnidades; i++) {&#xa;                    unidades.addItem(Integer.toString(i));&#xa;                }&#xa;            }&#xa;        });"/>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="inventario.addActionListener(new ActionListener() {&#xa;            public void actionPerformed(ActionEvent e) {&#xa;            &#xa;            int indexInventario = 1;&#xa;                &#xa;                indexInventario = inventario.getSelectedIndex();&#xa;                try {&#xa;                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica(&quot;src//excel/Inventario.xlsx&quot;, &quot;EPIC MOUNTAIN&quot;, 6, indexInventario + 1);&#xa;                } catch (IOException ex) {&#xa;                    Logger.getLogger(Rellenar.class.getName()).log(Level.SEVERE, null, ex);&#xa;                }&#xa;                unidades.removeAllItems();&#xa;                for (int i = 1; i &lt;= numeroUnidades; i++) {&#xa;                    unidades.addItem(Integer.toString(i));&#xa;                }&#xa;            }&#xa;        });"/>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox()"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="unidades.setBackground(Color.white);&#xa;unidades.setUI(PropiedadesCB2.createUI(unidades));"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

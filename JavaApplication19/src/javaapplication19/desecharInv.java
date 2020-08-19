@@ -60,7 +60,7 @@ public final class desecharInv extends javax.swing.JFrame {
         jpDatos = new javax.swing.JPanel();
         jpDescripcion = new javax.swing.JPanel();
         try{
-            inventario = new javax.swing.JComboBox(LeerExcel.rellenaCB2("src\\excel\\Inventario.xlsx", "Inventario", 0));
+            inventario = new javax.swing.JComboBox(LeerExcel.rellenaCB2("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", 0));
             jbRegistrar = new javax.swing.JButton();
             unidades = new javax.swing.JComboBox();
 
@@ -140,7 +140,7 @@ public final class desecharInv extends javax.swing.JFrame {
 
                 indexInventario = inventario.getSelectedIndex();
                 try {
-                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 6, indexInventario + 1);
+                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 6, indexInventario + 1);
                 } catch (IOException ex) {
                     Logger.getLogger(Rellenar.class.getName()).log(Level.SEVERE, null, ex);
                 }
