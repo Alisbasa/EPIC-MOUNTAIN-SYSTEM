@@ -303,10 +303,7 @@ public class rellenarIngresos {
                     fecha.setText(fechaActual());
                     //INVENTARIO
                     JLabel inventarioLista = new JLabel();
-                    if(inventario.getSelectedItem().toString().equals("SERVICIO")){
-                        SERVICIOS ventanaS = new SERVICIOS();
-                        ventanaS.setVisible(true);
-                    }
+                    
                     inventarioLista.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     inventarioLista.setText((String) inventario.getSelectedItem());
                     int numeroLista = inventario.getSelectedIndex() + 1;
@@ -1317,22 +1314,24 @@ public class rellenarIngresos {
             @Override
             @SuppressWarnings("empty-statement")
             public void mouseClicked(MouseEvent e) {
-                try {
+               
                       
 
                     if (cliente.getSelectedItem().toString() == "Nuevo Cliente") {
-                        clienteNuevoServicios clienteC = new clienteNuevoServicios(tipoServicios.getSelectedItem().toString());
-                        clienteC.setVisible(true);
+                        SERVICIOS ventanaS = new SERVICIOS(tipoServicios.getSelectedItem().toString(),cliente);
+                    ventanaS.setVisible(true);
                         
                     } else {
                        botonBorrarClientes(iconoVentas, "src\\excel\\historialCompras.xlsx", cliente.getSelectedItem().toString());
 
                                                 
-                        historialCHHServ(cliente.getSelectedItem().toString(), cliente);
+                        
+                        
+                         SERVICIOS ventanaS = new SERVICIOS(tipoServicios.getSelectedItem().toString(),cliente);
+                    ventanaS.setVisible(true);
                     }
                     
-                    SERVICIOS ventanaS = new SERVICIOS();
-                    ventanaS.setVisible(true);
+                   
                     
                     
                     indice++;
@@ -1340,11 +1339,7 @@ public class rellenarIngresos {
                     panelPadre.updateUI();
                     listaIngresos.updateUI();
 
-                }catch (IOException ex) {
-                    Caption ventanaEx = new Caption("Recuerda cerrar Excel");
-                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
-                    ventanaEx.setVisible(true);
-                }
+                
 
             }
 
@@ -1615,7 +1610,7 @@ public class rellenarIngresos {
             escribirVentas.escribirCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), medioVenta.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 21);
 
             //Escribe destino
-            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "CLIENTES NUEVOS", 3, clienteCB.getSelectedIndex() + 1);
+            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "CLIENTES", 3, clienteCB.getSelectedIndex() + 1);
             escribirVentas.escribirCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), destino, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 22);
 
             //Escribe formula de costo neto en suma
@@ -1809,7 +1804,7 @@ public class rellenarIngresos {
             escribirVentas.escribirCelda(filepathCompras, cliente, medioVenta.getSelectedItem().toString(), LeerExcel.contarRenglones(filepathCompras, cliente), 21);
 
             //Escribe destino
-            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "CLIENTES NUEVOS", 3, clienteCB.getSelectedIndex() + 1);
+            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "CLIENTES", 3, clienteCB.getSelectedIndex() + 1);
             escribirVentas.escribirCelda(filepathCompras, cliente, destino, LeerExcel.contarRenglones(filepathCompras, cliente), 22);
 
             //Escribe Folio
@@ -1933,7 +1928,7 @@ public class rellenarIngresos {
             escribirVentas.escribirCelda(filepathCliente, cliente, medioVenta.getSelectedItem().toString(), LeerExcel.contarRenglones(filepathCliente, cliente), 21);
 
             //Escribe destino
-            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "CLIENTES NUEVOS", 3, clienteCB.getSelectedIndex() + 1);
+            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "CLIENTES", 3, clienteCB.getSelectedIndex() + 1);
             escribirVentas.escribirCelda(filepathCliente, cliente, destino, LeerExcel.contarRenglones(filepathCliente, cliente), 22);
 
             //Escribe Folio
@@ -1943,7 +1938,7 @@ public class rellenarIngresos {
         
        
     }
-    public void historialCHHServ(String cliente, JComboBox clienteCB ) throws IOException {
+    public void historialCHHServ(String cliente, JComboBox clienteCB, String destino2 ) throws IOException {
         String filepathCompras = "src\\excel\\historialCompras.xlsx";
         String[] hojas = LeerExcel.obtenerHoja(filepathCompras);
         
@@ -2069,7 +2064,7 @@ public class rellenarIngresos {
             escribirVentas.escribirCelda(filepathCompras, cliente, "", LeerExcel.contarRenglones(filepathCompras, cliente), 21);
 
             //Escribe destino
-            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "CLIENTES NUEVOS", 3, clienteCB.getSelectedIndex() + 1);
+            String destino = destino2;
             escribirVentas.escribirCelda(filepathCompras, cliente, destino, LeerExcel.contarRenglones(filepathCompras, cliente), 22);
 
             //Escribe Folio
@@ -2130,19 +2125,19 @@ public class rellenarIngresos {
             escribirVentas.escribirCeldaDouble(filepathCliente, cliente, precioShopN, LeerExcel.contarRenglones(filepathCliente, cliente), 12);
 
             //Escribe precio Ml por unidad como doble
-            Double precioML = LeerExcel.obtenerCeldaNumerica(filepathVentas, fechaActualEscribir().toUpperCase(), 13, LeerExcel.contarRenglones(filepathVentas, fechaActualEscribir().toUpperCase()));
+            Double precioML = 0.0 ;
             escribirVentas.escribirCeldaDouble(filepathCliente, cliente, precioML, LeerExcel.contarRenglones(filepathCliente, cliente), 13);
 
             //Escribe precio Ml neto como doble
-            Double precioMLN = LeerExcel.obtenerCeldaNumerica(filepathVentas, fechaActualEscribir().toUpperCase(), 14, LeerExcel.contarRenglones(filepathVentas, fechaActualEscribir().toUpperCase()));
+            Double precioMLN = 0.0;
             escribirVentas.escribirCeldaDouble(filepathCliente, cliente, precioMLN, LeerExcel.contarRenglones(filepathCliente, cliente), 14);
 
             //Escribe comision ML como doble
-            Double comisionML = LeerExcel.obtenerCeldaNumerica(filepathVentas, fechaActualEscribir().toUpperCase(), 15, LeerExcel.contarRenglones(filepathVentas, fechaActualEscribir().toUpperCase()));
+            Double comisionML = 0.0;
             escribirVentas.escribirCeldaDouble(filepathCliente, cliente, comisionML, LeerExcel.contarRenglones(filepathCliente, cliente), 15);
 
             //Escribe comison ML neta
-            Double comisionMLN = LeerExcel.obtenerCeldaNumerica(filepathVentas, fechaActualEscribir().toUpperCase(), 16, LeerExcel.contarRenglones(filepathVentas, fechaActualEscribir().toUpperCase()));
+            Double comisionMLN =0.0;
             escribirVentas.escribirCeldaDouble(filepathCliente, cliente, comisionMLN, LeerExcel.contarRenglones(filepathCliente, cliente), 16);
 
             //Escribe IVA * unidad
@@ -2193,7 +2188,7 @@ public class rellenarIngresos {
             escribirVentas.escribirCelda(filepathCliente, cliente, "SERVICIO".toString(), LeerExcel.contarRenglones(filepathCliente, cliente), 21);
 
             //Escribe destino
-            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "CLIENTES NUEVOS", 3, clienteCB.getSelectedIndex() + 1);
+            String destino = LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "CLIENTES", 3, clienteCB.getSelectedIndex() + 1);
             escribirVentas.escribirCelda(filepathCliente, cliente, destino, LeerExcel.contarRenglones(filepathCliente, cliente), 22);
 
             //Escribe Folio

@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javaapplication19.rellenarIngresos.fechaActual;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,13 +27,16 @@ public class SERVICIOS extends javax.swing.JFrame {
 
     int mousepX;
     int mousepY;
+    static String servicioTipo;
+    static JComboBox cliente;
 
     /**
      * Creates new form clienteNuevo
      */
-    public SERVICIOS() {
+    public SERVICIOS(String servicioTipo, JComboBox cliente) {
         initComponents();
-
+        this.servicioTipo = servicioTipo;
+        this.cliente = cliente;
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -226,113 +230,318 @@ public class SERVICIOS extends javax.swing.JFrame {
         String precioBaseNeto = Double.toString(Double.valueOf(jtPrecio.getText()) * Integer.valueOf(jtUnidades.getText()));
         double variacion = Double.valueOf(jtPrecio.getText()) - Double.valueOf(jtCosto.getText());
         String[] inventario = {producto, desc, fecha, "", pack};
+        
+        try{    
+        String destinoCliente="CHIHUAHUA";
+        if(!cliente.getSelectedItem().toString().equals("Nuevo Cliente"))
+        destinoCliente= LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "CLIENTES", 3, cliente.getSelectedIndex()+1);
+            
+        if (servicioTipo.equals("Venta")) {
 
-        Escribir EscribirCRM = new Escribir();
+            Escribir EscribirCRM = new Escribir();
 
-        try {
-            String[] data = {(String) fechaActual(), "Venta", "SERVICIO", jtCosto.getText(), "", "VERDE", Double.toString(variacion)};
+            try {
+                System.out.println("alaverfaf" + (cliente.getSelectedIndex()+1));
+                 
+                 
+                String[] data = {(String) fechaActual(), "Venta", "SERVICIO", jtCosto.getText(), "", "VERDE", Double.toString(variacion)};
 
-            EscribirCRM.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Double.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Double.valueOf(data[3]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
-            String formula10 = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
-            EscribirCRM.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula10, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
-            String mesActual = rellenarIngresos.fechaActualEscribir();
+                EscribirCRM.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data, 7);
+                EscribirCRM.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                EscribirCRM.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(data[3]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
+                String formula10 = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + ")";
+                EscribirCRM.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula10, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+                String mesActual = rellenarIngresos.fechaActualEscribir();
 
-            EscribirCRM.escribirExcelInv("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), inventario, 5);
+                EscribirCRM.escribirExcelInv("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), inventario, 5);
 
-            //UNIDADES
-            EscribirCRM.escribirCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 6);
+                //UNIDADES
+                EscribirCRM.escribirCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 6);
 
-            //TIG
-            Double TIG = Double.valueOf(jtPrecio.getText()) / Double.valueOf(jtCosto.getText());
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), TIG, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 5);
+                //TIG
+                Double TIG = Double.valueOf(jtPrecio.getText()) / Double.valueOf(jtCosto.getText());
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), TIG, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 5);
 
-            //COSTO UNIDAD
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), Double.valueOf(jtCosto.getText()), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 7);
-            //COSTO NETO
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), Double.valueOf(costoNeto), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 8);
+                //COSTO UNIDAD
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), Double.valueOf(jtCosto.getText()), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 7);
+                //COSTO NETO
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), Double.valueOf(costoNeto), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 8);
 
-            //PRECIO BASE UNIDAD
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), Double.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 9);
+                //PRECIO BASE UNIDAD
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), Double.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 9);
 
-            //PRECIO BASE NETO
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), Double.valueOf(precioBaseNeto), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 10);
+                //PRECIO BASE NETO
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), Double.valueOf(precioBaseNeto), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 10);
 
-            //PRECIO LOCAL UNIDAD
-            Double precioL = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), 9, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())) * 1.16);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), precioL, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 11);
+                //PRECIO LOCAL UNIDAD
+                Double precioL = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), 9, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())) * 1.16);
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), precioL, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 11);
 
-            //PRECIO LOCAL NETO
-            Double precioNeto = EscribirCRM.Mulitplicar(6, 11, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), precioNeto, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 12);
+                //PRECIO LOCAL NETO
+                Double precioNeto = EscribirCRM.Mulitplicar(6, 11, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), precioNeto, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 12);
 
-            //COMISION ML
-            Double comisionML = ((LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), 11, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()))) * .15) + 5;
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), comisionML, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 15);
+                //COMISION ML
+                Double comisionML = ((LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), 11, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()))) * .15) + 5;
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), comisionML, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 15);
 
-            //COMISION ML NETO
-            Double comisionMLN = EscribirCRM.Mulitplicar(6, 15, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), comisionMLN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 16);
+                //COMISION ML NETO
+                Double comisionMLN = EscribirCRM.Mulitplicar(6, 15, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), comisionMLN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 16);
 
-            // IVA UNIDAD
-            Double IVA = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), 9, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())) * 0.16);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), IVA, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 17);
+                // IVA UNIDAD
+                Double IVA = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), 9, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())) * 0.16);
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), IVA, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 17);
 
-            //IVA NETO
-            Double ivaN = EscribirCRM.Mulitplicar(6, 17, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), ivaN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 18);
+                //IVA NETO
+                Double ivaN = EscribirCRM.Mulitplicar(6, 17, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), ivaN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 18);
 
-            //PRECIO ML
-            Double precioML = EscribirCRM.SumarColumnasML(LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 9, 17, 15, "src\\excel\\Inventario.xlsx", "Inventario");
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), precioML, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 13);
+                //PRECIO ML
+                Double precioML = 0.0;
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), precioML, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 13);
 
-            //PRECIOML NETO
-            Double precioMLN = EscribirCRM.Mulitplicar(6, 13, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), precioMLN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 14);
+                //PRECIOML NETO
+                Double precioMLN = 0.0;
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), precioMLN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 14);
 
-            //UTILIDAD UNIDAD LOCAL
-            Double utilidad = EscribirCRM.RestarColumnas(LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 11, 7, 17, "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), utilidad, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 19);
+                //UTILIDAD UNIDAD LOCAL
+                Double utilidad = EscribirCRM.RestarColumnas(LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 11, 7, 17, "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), utilidad, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 19);
 
-            //UTILIDAD LOCAL NETA
-            Double utilidadLN = EscribirCRM.Mulitplicar(6, 19, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), utilidadLN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 20);
+                //UTILIDAD LOCAL NETA
+                Double utilidadLN = EscribirCRM.Mulitplicar(6, 19, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), utilidadLN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 20);
 
-            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula,
-                    LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 8);
+                String medio = "";
+                EscribirCRM.escribirCelda("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), medio, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 21);
 
-            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula2,
-                    LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 10);
+                String medio2 = destinoCliente;
+                EscribirCRM.escribirCelda("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), medio2, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 22);
 
-            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula3,
-                    LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 12);
+                String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
+                EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula,
+                        LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 8);
 
-            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula4,
-                    LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 14);
+                String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
+                EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula2,
+                        LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 10);
 
-            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula5,
-                    LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 16);
+                String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
+                EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula3,
+                        LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 12);
 
-            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula6,
-                    LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 18);
+                String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
+                EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula4,
+                        LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 14);
 
-            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula7,
-                    LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 20);
-            Libros.actualiza();
-            this.setVisible(false);
+                String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
+                EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula5,
+                        LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 16);
 
+                String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
+                EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula6,
+                        LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 18);
+
+                String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
+                EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula7,
+                        LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 20);
+
+            } catch (IOException ex) {
+                Caption ventanaEx = new Caption("Recuerda cerrar Excel");
+                Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                ventanaEx.setVisible(true);
+            }
+        }else{
+            
+            Escribir EscribirCRM = new Escribir();
+
+            try {
+                //String destinoCliente= LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "CLIENTES", 3, cliente.getSelectedIndex()+1);
+                String[] data = {(String) fechaActual(), "Venta a Cobrar", "SERVICIO", jtCosto.getText(), "", "VERDE", Double.toString(variacion)};
+
+                EscribirCRM.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data, 7);
+                EscribirCRM.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                EscribirCRM.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(data[3]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
+                String formula10 = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + ")";
+                EscribirCRM.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula10, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+                String mesActual = rellenarIngresos.fechaActualEscribir();
+
+                EscribirCRM.escribirExcelInv("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), inventario, 5);
+
+                //UNIDADES
+                EscribirCRM.escribirCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 6);
+
+                //TIG
+                Double TIG = Double.valueOf(jtPrecio.getText()) / Double.valueOf(jtCosto.getText());
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), TIG, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 5);
+
+                //COSTO UNIDAD
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), Double.valueOf(jtCosto.getText()), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 7);
+                //COSTO NETO
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), Double.valueOf(costoNeto), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 8);
+
+                //PRECIO BASE UNIDAD
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), Double.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 9);
+
+                //PRECIO BASE NETO
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), Double.valueOf(precioBaseNeto), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 10);
+
+                //PRECIO LOCAL UNIDAD
+                Double precioL = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), 9, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())) * 1.16);
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), precioL, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 11);
+
+                //PRECIO LOCAL NETO
+                Double precioNeto = EscribirCRM.Mulitplicar(6, 11, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), precioNeto, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 12);
+
+                //COMISION ML
+                Double comisionML = ((LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), 11, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()))) * .15) + 5;
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), comisionML, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 15);
+
+                //COMISION ML NETO
+                Double comisionMLN = EscribirCRM.Mulitplicar(6, 15, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), comisionMLN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 16);
+
+                // IVA UNIDAD
+                Double IVA = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), 9, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase())) * 0.16);
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), IVA, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 17);
+
+                //IVA NETO
+                Double ivaN = EscribirCRM.Mulitplicar(6, 17, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), ivaN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 18);
+
+                //PRECIO ML
+                Double precioML = 0.0;
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), precioML, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 13);
+
+                //PRECIOML NETO
+                Double precioMLN = 0.0;
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), precioMLN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 14);
+
+                //UTILIDAD UNIDAD LOCAL
+                Double utilidad = EscribirCRM.RestarColumnas(LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 11, 7, 17, "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), utilidad, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 19);
+
+                //UTILIDAD LOCAL NETA
+                Double utilidadLN = EscribirCRM.Mulitplicar(6, 19, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), "src\\excel\\Ventas.xlsx", mesActual.toUpperCase());
+                EscribirCRM.escribirCeldaDouble("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), utilidadLN, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 20);
+
+                String medio = "";
+                EscribirCRM.escribirCelda("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), medio, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 21);
+
+                String medio2 = "";
+                EscribirCRM.escribirCelda("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), medio2, LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()), 22);
+
+                String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
+                EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula,
+                        LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 8);
+
+                String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
+                EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula2,
+                        LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 10);
+
+                String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
+                EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula3,
+                        LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 12);
+
+                String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
+                EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula4,
+                        LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 14);
+
+                String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
+                EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula5,
+                        LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 16);
+
+                String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
+                EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula6,
+                        LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 18);
+
+                String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1) + ")";
+                EscribirCRM.escribirFormula("src\\excel\\Ventas.xlsx", mesActual.toUpperCase(), formula7,
+                        LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 20);
+                
+                String[] hojas = LeerExcel.obtenerHoja("src\\excel\\DeudasC.xlsx");
+                    String stCliente = cliente.getSelectedItem().toString();
+
+                    boolean hojaEncontrada = false;
+                    for (int i = 0; i < LeerExcel.obtenerNumeroHojas("src\\excel\\DeudasC.xlsx"); i++) {
+                        if (hojas[i].equals(cliente.getSelectedItem().toString())) {
+                            hojaEncontrada = true;
+                            Double suma = LeerExcel.obtenerCeldaNumerica("src\\excel\\DeudasC.xlsx", "deudasCobrar", 2, i) + precioNeto;
+                            EscribirCRM.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", suma, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 2);
+                        }
+                        //EscribirCRM.crearHoja("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(), "FECHA", "MONTO");
+                    }
+                    if (hojaEncontrada == true) {
+                        //Escribe en Excel individual y crea hoja
+                        String[] ventaInd = {fechaActual(), precioNeto.toString()};
+                        EscribirCRM.escribirExcelInv("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(), ventaInd, 2);
+                        EscribirCRM.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(), precioNeto, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString()), 1);
+                        String formulaInd = "SUM(B2:B" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
+                        EscribirCRM.escribirFormula("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(), formulaInd, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString()) + 1), 1);
+
+                        //Escribe en Excel general deudasCobrar                       
+                        String formulaD = EscribirCRM.Sumar(2, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1, 'c');
+                        EscribirCRM.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formulaD, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
+                        
+                        
+                    }else {
+                        //Escribe en Excel individual y crea hoja
+                        EscribirCRM.crearHoja("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(), "FECHA", "MONTO");
+                        String[] ventaInd = {fechaActual(), precioNeto.toString()};
+                        EscribirCRM.escribirExcelInv("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(), ventaInd, 2);
+                        EscribirCRM.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(),  precioNeto, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString()), 1);
+                        String formulaInd = "SUM(B2:B" + LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString()) + ")";
+                        EscribirCRM.escribirFormula("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString(), formulaInd, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", cliente.getSelectedItem().toString()) + 1), 1);
+
+                        //Escribe en Excel general deudasCobrar
+                        String[] ventaC = {fechaActual(), cliente.getSelectedItem().toString(),precioNeto.toString()};
+                        EscribirCRM.escribirExcelInv("src\\excel\\DeudasC.xlsx", "deudasCobrar", ventaC, 3);
+                        EscribirCRM.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", precioNeto, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 2);
+                        String formulaC = EscribirCRM.Sumar(2, LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 'c');
+                        EscribirCRM.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formulaC, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
+                      
+
+                        
+                    }
+
+            } catch (IOException ex) {
+                Caption ventanaEx = new Caption("Recuerda cerrar Excel");
+                Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                ventanaEx.setVisible(true);
+            }
+            
+        }
+        
         } catch (IOException ex) {
-            Caption ventanaEx = new Caption("Recuerda cerrar Excel");
-            Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
-            ventanaEx.setVisible(true);
+                Caption ventanaEx = new Caption("Recuerda cerrar Excel");
+                Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
+                ventanaEx.setVisible(true);
+            }
+        
+        try {
+            Libros.actualiza();
+        } catch (IOException ex) {
+            Logger.getLogger(SERVICIOS.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (cliente.getSelectedItem().toString().equals("Nuevo Cliente")) {
+            this.dispose();
+            clienteNuevoServicios clienteC = new clienteNuevoServicios(servicioTipo, cliente);
+            clienteC.setVisible(true);
+        } else {
+            rellenarIngresos histo = new rellenarIngresos();
+            try {   
+            String destinoCliente= LeerExcel.obtenerCelda("src\\excel\\CRM.xlsx", "CLIENTES", 3, cliente.getSelectedIndex()+1);
+            
+                histo.historialCHHServ(cliente.getSelectedItem().toString(), cliente, destinoCliente);
+            } catch (IOException ex) {
+                Logger.getLogger(SERVICIOS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+            
+            this.dispose();
         }
 
     }//GEN-LAST:event_jbRegistrarMouseClicked
@@ -396,7 +605,7 @@ public class SERVICIOS extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SERVICIOS().setVisible(true);
+                new SERVICIOS(servicioTipo, cliente).setVisible(true);
             }
         });
     }

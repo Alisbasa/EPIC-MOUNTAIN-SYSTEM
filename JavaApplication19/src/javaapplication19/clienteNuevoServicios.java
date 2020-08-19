@@ -21,19 +21,18 @@ import javax.swing.JTextField;
 public class clienteNuevoServicios extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
-    static JLabel unidades;
-    static JComboBox inventario;
-    static JComboBox unidadesCB;
-    static JComboBox plataforma;
+    static String servicioTipo;
+    
     static JComboBox cliente;
 
     /**
      * Creates new form clienteNuevo
      * @param unidades
      */
-    public clienteNuevoServicios() {;
+    public clienteNuevoServicios(String servicioTipo, JComboBox cliente) {;
         initComponents();      
-        
+        this.servicioTipo= servicioTipo;
+        this.cliente=cliente;
        
         this.setExtendedState(NORMAL);
         this.setResizable(false);
@@ -310,22 +309,26 @@ public class clienteNuevoServicios extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
+        
+        
         String[] Registro = {jtNombre.getText(),jtNumero.getText(),jtCorreo.getText(),jtUbicacion.getText(), "    "}; 
         rellenarIngresos vender = new rellenarIngresos();
         Escribir EscribirCRM = new Escribir();
         String formula = "=HIPERVINCULO(\"[historialCompras.xlsx]'"+jtNombre.getText()+"'! A1 \",\" IR A HISTORIAL\")";
         try {
-            EscribirCRM.escribirExcelClientes("src\\excel\\CRM.xlsx", "Clientes", Registro);
-            EscribirCRM.escribirCelda("src\\excel\\CRM.xlsx", "Clientes", formula, LeerExcel.contarRenglones("src\\excel\\CRM.xlsx", "Clientes"), 4);
-            vender.vender(inventario, unidadesCB, plataforma, jtNombre.getText(), cliente);
-            vender.historialCHH(jtNombre.getText(),cliente, plataforma);
+            String clienteHoja = "CLIENTES";
+            EscribirCRM.escribirExcelClientes("src\\excel\\CRM.xlsx", clienteHoja, Registro);
+            EscribirCRM.escribirCelda("src\\excel\\CRM.xlsx", clienteHoja, formula, LeerExcel.contarRenglones("src\\excel\\CRM.xlsx", clienteHoja), 4);
+            
+            vender.historialCHHServ(jtNombre.getText(),cliente,jtUbicacion.getText());
             rellenarIngresos.botonBorrarClientes(rellenarIngresos.iconoVentas, "src\\excel\\historialCompras.xlsx", jtNombre.getText());
             
             //EscribirCRM.escribirExcelInv("src\\excel\\CRM.xlsx", "deudasC", Registro, ERROR);
         } catch (IOException ex) {
             Logger.getLogger(clienteNuevoServicios.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.setVisible(false);
+        this.dispose();
+         
     }//GEN-LAST:event_jbRegistrarMouseClicked
 
     /**
@@ -359,7 +362,7 @@ public class clienteNuevoServicios extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new clienteNuevoServicios().setVisible(true);
+                new clienteNuevoServicios(servicioTipo,cliente).setVisible(true);
             }
         });
     }
