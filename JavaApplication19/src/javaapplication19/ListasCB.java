@@ -20,7 +20,8 @@ public class ListasCB {
                                 "DEUDAS A COB.",
                                 "VENTAS A COB.",
                                 "DEUDA A PAG. EXIS.",
-                                "APORTACIONES"};
+                                "APORTACIONES",
+                                "SERVICIO"};
     
     static  String[] gastos = {"EQUIPO Y MOB.",
                                "INVENTARIO PRINCIPAL",

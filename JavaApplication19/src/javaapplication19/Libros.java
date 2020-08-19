@@ -1512,6 +1512,22 @@ public class Libros extends javax.swing.JFrame {
             }
             rellenarApor.botonAport(rellenarAportacion.tipoAport, rellenarAportacion.producto, rellenarAportacion.montoAport, rellenarAportacion.tipoEquipo, rellenarAportacion.descripcion, rellenarAportacion.iconoOkAport, scrollIngresos, listaIngresos, rellenarAportacion.rellenarAport);
         }
+        
+        else if(comboIngresos.getSelectedItem().toString().equals("SERVICIO") ){
+            Rellenar rellenarServi = new Rellenar();
+            rellenarIngresos rellenarSer = new rellenarIngresos();
+            
+            rellenarIngresos.removeAll();
+            rellenarIngresos.revalidate();
+            rellenarIngresos.repaint();
+            
+            try {
+                rellenarIngresos.add(rellenarServi.rellenarServicio());
+            } catch (IOException ex) {
+                Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           // rellenarApor.botonAport(rellenarAportacion.tipoAport, rellenarAportacion.producto, rellenarAportacion.montoAport, rellenarAportacion.tipoEquipo, rellenarAportacion.descripcion, rellenarAportacion.iconoOkAport, scrollIngresos, listaIngresos, rellenarAportacion.rellenarAport);
+        }
 
         
     }//GEN-LAST:event_comboIngresosActionPerformed

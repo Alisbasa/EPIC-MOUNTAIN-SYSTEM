@@ -42,6 +42,7 @@ public class Rellenar {
     JPanel rellenarVentasC = new JPanel();
     JPanel rellenarDeuPE = new JPanel();
     JPanel rellenarAport = new JPanel();
+    JPanel rellenarServicio = new JPanel();
 
     JLabel iconoVentas = new JLabel();
     JLabel iconoCredito = new JLabel();
@@ -51,6 +52,7 @@ public class Rellenar {
     JLabel iconoVentasC = new JLabel();
     JLabel iconoDeuPE = new JLabel();
     JLabel iconoAport = new JLabel();
+    JLabel iconoSer = new JLabel();
 
 JLabel iconoOkV = new JLabel();
     JLabel iconoOkC = new JLabel();
@@ -60,6 +62,7 @@ JLabel iconoOkV = new JLabel();
     JLabel iconoOkVentasC = new JLabel();
     JLabel iconoOkDeuPE = new JLabel();
     JLabel iconoOkAport = new JLabel();
+    JLabel iconoOkSer = new JLabel();
 
     JTextField monto;
     JTextField montoC;
@@ -81,6 +84,7 @@ JLabel iconoOkV = new JLabel();
     JComboBox deudasPE;
     JComboBox tipoAport;
     JComboBox tipoEquipo;
+    JComboBox tipoServicio;
 
     JTextField inversor;
     JTextField inversorI;
@@ -486,6 +490,35 @@ JLabel iconoOkV = new JLabel();
        
         
         return rellenarAport;
+    }
+
+    public JPanel rellenarServicio() throws IOException {
+        rellenarServicio.removeAll();
+
+        rellenarServicio.setBackground(Color.white);
+        Iconos.scaleImage("Inversion", iconoSer, 40);
+        rellenarServicio.add(iconoInversion);
+        Iconos.scaleImage("ok", iconoOkSer, 30);
+        
+        cliente = new JComboBox(LeerExcel.rellenaCB2("src//excel//CRM.xlsx", "CLIENTES NUEVOS", 0));
+        cliente.addItem("Nuevo Cliente");
+        cliente.setBackground(Color.white);
+        cliente.setUI(PropiedadesCB2.createUI(cliente));
+        cliente.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        cliente.setPreferredSize(new Dimension(130, 30));
+        
+        String [] arr = {"Venta", "Venta a Cobrar"};
+        tipoServicio = new JComboBox(arr);
+        tipoServicio.setUI(PropiedadesCB2.createUI(tipoServicio));
+        tipoServicio.setPreferredSize(new Dimension(150, 30));
+        tipoServicio.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
+        rellenarServicio.add(iconoSer);
+        rellenarServicio.add(tipoServicio);
+        rellenarServicio.add(cliente);
+        rellenarServicio.add(iconoOkSer);
+
+        return rellenarServicio;
     }
 
 }

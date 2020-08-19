@@ -230,6 +230,7 @@ public class equipoymobCT extends javax.swing.JFrame {
         Escribir escribirE = new Escribir();
         
         try {
+            
             escribirE.escribirExcelInv("src\\excel\\comprasT.xlsx", "COMPRAS", compraE, 22);
             escribirE.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", Double.valueOf(jtCosto.getText()), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 8);
             escribirE.escribirCelda("src\\excel\\comprasT.xlsx", "COMPRAS", tipoGasto.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 21);
