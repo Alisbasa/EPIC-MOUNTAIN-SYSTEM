@@ -169,9 +169,9 @@ public class inventarioPrincipalReg extends javax.swing.JFrame {
         LOGO.setPreferredSize(new java.awt.Dimension(40, 40));
         jPanel10.add(LOGO, java.awt.BorderLayout.LINE_START);
 
-        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("REGISTRAR NUEVO INVENTARIO");
+        jLabel1.setText("REGISTRAR INVENTARIO REGALADO");
         jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
@@ -446,9 +446,13 @@ public class inventarioPrincipalReg extends javax.swing.JFrame {
             Escribir escribirVentas = new Escribir();
 
             escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data,7);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(monto.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
-                    String formulaLibros = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formulaLibros, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+            escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(monto.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
+            String formulaMonto = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formulaMonto, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
+
+            escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(monto.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+            String formulaGan = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+            escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formulaGan, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
 
             this.setVisible(false);
         } catch (IOException ex) {

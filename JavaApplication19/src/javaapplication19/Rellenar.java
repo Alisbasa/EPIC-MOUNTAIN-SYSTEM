@@ -496,7 +496,7 @@ JLabel iconoOkV = new JLabel();
         rellenarServicio.removeAll();
 
         rellenarServicio.setBackground(Color.white);
-        Iconos.scaleImage("Inversion", iconoSer, 40);
+        Iconos.scaleImage("Ventas", iconoSer, 40);
         rellenarServicio.add(iconoInversion);
         Iconos.scaleImage("ok", iconoOkSer, 30);
         

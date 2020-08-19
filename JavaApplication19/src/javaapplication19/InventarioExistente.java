@@ -97,7 +97,7 @@ public class InventarioExistente extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("REGISTRAR NUEVO DEUDA A COBRAR");
+        jLabel1.setText("SELECCIONA INVENTARIO EXISTENTE");
         jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
@@ -208,6 +208,7 @@ public class InventarioExistente extends javax.swing.JFrame {
             Logger.getLogger(InventarioExistente.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
+            rellenarGastos.botonBorrarInd(rellenarGastos.iconoLibros, "src\\excel\\LibrosContables.xlsx", "Gastos");
             Libros.actualiza();
         } catch (IOException ex) {
             Logger.getLogger(InventarioExistente.class.getName()).log(Level.SEVERE, null, ex);
