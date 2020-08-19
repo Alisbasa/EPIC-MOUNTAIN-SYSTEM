@@ -302,13 +302,16 @@ public class inventarioPrincipalCT extends javax.swing.JFrame {
         Escribir EscribirCRM = new Escribir();
 
         try {
-            String[] data = {(String) fechaActual(), "Compra en Transito", jtProducto.getText(), jtCosto.getText(), (String) tipoGasto.getSelectedItem(), "VERDE", "0"};
+            String[] data = {(String) fechaActual(), "Compra en Transito", jtProducto.getText(), jtCosto.getText(), (String) tipoGasto.getSelectedItem(), "VERDE", jtCosto.getText()};
             EscribirCRM.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
             EscribirCRM.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Double.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-            String formula10 = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
-            EscribirCRM.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula10, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 6);
-            
-            EscribirCRM.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+            EscribirCRM.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
+            String formula37 = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
+            EscribirCRM.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
+            String formula38 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
+            EscribirCRM.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula37, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 3);
+            EscribirCRM.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula38, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);            
+
             EscribirCRM.escribirExcelInv("src\\excel\\comprasT.xlsx", "COMPRAS",inventario,5);
             EscribirCRM.escribirCelda("src\\excel\\comprasT.xlsx", "COMPRAS", tipoGasto.getSelectedItem().toString(), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 21);
             EscribirCRM.escribirCelda("src\\excel\\comprasT.xlsx", "COMPRAS", paqueteria.getText(), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 22);

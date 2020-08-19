@@ -689,7 +689,12 @@ public class rellenarGastos {
 
                     packsCT packs = new packsCT(paqueteria, productoCT);
                     packs.setVisible(true);
+                }else if (productoCT.getSelectedItem().toString().equals("EGRESO")) {
+
+                    egresoCT packs = new egresoCT(paqueteria, productoCT);
+                    packs.setVisible(true);
                 }
+                
 
                 indice++;
                 panelPadre.removeAll();
