@@ -208,6 +208,7 @@ public class InventarioExistente extends javax.swing.JFrame {
             Logger.getLogger(InventarioExistente.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
+            rellenarGastos.botonBorrarInd(rellenarGastos.iconoLibros, "src\\excel\\LibrosContables.xlsx", "Gastos");
             Libros.actualiza();
         } catch (IOException ex) {
             Logger.getLogger(InventarioExistente.class.getName()).log(Level.SEVERE, null, ex);
