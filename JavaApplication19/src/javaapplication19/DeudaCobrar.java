@@ -210,6 +210,7 @@ public class DeudaCobrar extends javax.swing.JFrame {
                         escribirExcel.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formulaLibro, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
             
             Libros.actualiza();
+            rellenarGastos.botonBorrarDeudorC(rellenarIngresos.iconoVentas, "src\\excel\\DeudasP.xlsx", "DeudasPagar");
             this.setVisible(false);
         } catch (IOException ex) {
                     Caption ventanaEx = new Caption("Recuerda cerrar Excel");
