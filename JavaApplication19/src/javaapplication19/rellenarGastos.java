@@ -912,7 +912,7 @@ public class rellenarGastos {
                 panelGasto.add(fecha);
                 panelGasto.add(imp);
                 panelGasto.add(montoImpues);
-                panelGasto.add(new JLabel(""));
+                panelGasto.add(montoImpues);
                 panelGasto.add(icono);
 
                 String[] data = {(String) fechaActual(), "Impuesto", (String) imp.getText(), montoImpuesto.getText(), "", "VERDE", montoImpuesto.getText()};
