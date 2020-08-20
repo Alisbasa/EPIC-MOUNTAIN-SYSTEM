@@ -2003,9 +2003,11 @@ public class Libros extends javax.swing.JFrame {
     private void corteLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_corteLabelMouseClicked
         rellenarIngresos rellenarCorte = new rellenarIngresos();
         rellenarGastos rellenarCorteG = new rellenarGastos();
+        ventanaCuentas ventanaC = new ventanaCuentas();
         try {
             rellenarCorte.corte(scrollIngresos, listaIngresos);
             rellenarCorteG.corte( listaGastos);
+            ventanaC.setVisible(true);
             
         } catch (IOException ex) {
             Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
