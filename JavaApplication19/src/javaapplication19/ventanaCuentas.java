@@ -235,6 +235,20 @@ public class ventanaCuentas extends javax.swing.JFrame {
         try {
             Escribir escribirCuentas = new Escribir();
             escribirCuentas.crearHojaCorte("src\\excel\\Corte.xlsx", fechaActual());
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             this.setVisible(false);
         } catch (IOException ex) {
             Logger.getLogger(ventanaCuentas.class.getName()).log(Level.SEVERE, null, ex);
