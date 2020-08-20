@@ -103,7 +103,7 @@ public class ActualizarInventarios extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("ACTUALIZA TUS INVENTARIOS");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 520, 50));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 520, 50));
 
         MERCADO.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 0, 24)); // NOI18N
         MERCADO.setForeground(new java.awt.Color(255, 255, 255));
@@ -148,7 +148,7 @@ public class ActualizarInventarios extends javax.swing.JFrame {
 
         DRIVE.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 0, 24)); // NOI18N
         DRIVE.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(DRIVE, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 50, 50));
+        jPanel1.add(DRIVE, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 50, 50));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -204,7 +204,7 @@ public class ActualizarInventarios extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseEntered
 
     private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
-        jLabel9.setForeground(Color.white);
+        jLabel3.setForeground(Color.white);
     }//GEN-LAST:event_jLabel3MouseExited
 
     /**

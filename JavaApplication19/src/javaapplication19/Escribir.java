@@ -820,13 +820,14 @@ public class Escribir {
             XSSFSheet newSheet = newWorkBook.createSheet(hoja);
             
 
-            newSheet.setColumnWidth(0, 10000);
-            newSheet.setColumnWidth(1, 7000);
+            newSheet.setColumnWidth(0, 5000);
+            newSheet.setColumnWidth(1, 5000);
+            newSheet.setColumnWidth(2, 5000);
             
 
             for (int i = 0; i < 21; i++) {
                 row2 = newSheet.createRow(i);
-               
+                row2.setHeightInPoints((2 * newSheet.getDefaultRowHeightInPoints()));
   
                 XSSFFont font2 = newWorkBook.createFont();
                 font2.setFontHeightInPoints((short) 12);
