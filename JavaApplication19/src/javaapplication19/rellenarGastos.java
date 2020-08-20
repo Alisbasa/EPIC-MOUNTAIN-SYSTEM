@@ -883,7 +883,7 @@ public class rellenarGastos {
                 scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
                 PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
                 panelGasto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                panelGasto.setLayout(new GridLayout(1, 4));
+                panelGasto.setLayout(new GridLayout(1, 5));
                 panelGasto.setBackground(Colores.epicColorBajito);
                 panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
                 panelGasto.setMaximumSize(new Dimension(550, 40));
@@ -897,9 +897,13 @@ public class rellenarGastos {
                 imp.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                 imp.setText(impuesto.getText());
 
+                JLabel variacion = new JLabel();
+                variacion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                variacion.setText("$" + montoImpuesto.getText());
+                
                 JLabel montoImpues = new JLabel();
                 montoImpues.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                montoImpues.setText("$ " + montoImpuesto.getText());
+                montoImpues.setText("$" + montoImpuesto.getText());
 
                 JLabel icono = new JLabel();
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
@@ -912,7 +916,7 @@ public class rellenarGastos {
                 panelGasto.add(fecha);
                 panelGasto.add(imp);
                 panelGasto.add(montoImpues);
-                panelGasto.add(montoImpues);
+                panelGasto.add(variacion);
                 panelGasto.add(icono);
 
                 String[] data = {(String) fechaActual(), "Impuesto", (String) imp.getText(), montoImpuesto.getText(), "", "VERDE", montoImpuesto.getText()};
@@ -1791,7 +1795,7 @@ public class rellenarGastos {
                     case "VERDE":
                         panelGasto.setBackground(Colores.epicColorBajito);
                         Escribir escribir = new Escribir();
-                        escribir.escribirCelda("src\\excel\\LibrosContables.xlsx", "Gastos", "GRIS", i, 5);
+                        
                         break;
                     
                     case "GRIS":
