@@ -912,7 +912,7 @@ public class rellenarGastos {
                 panelGasto.add(fecha);
                 panelGasto.add(imp);
                 panelGasto.add(montoImpues);
-                panelGasto.add(new JLabel(""));
+                panelGasto.add(montoImpues);
                 panelGasto.add(icono);
 
                 String[] data = {(String) fechaActual(), "Impuesto", (String) imp.getText(), montoImpuesto.getText(), "", "VERDE", montoImpuesto.getText()};
@@ -921,7 +921,7 @@ public class rellenarGastos {
                 try {
 
                     escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
 
                     String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
                     escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
