@@ -421,7 +421,8 @@ public class rellenarIngresos {
                     panelPadre.removeAll();
                     panelPadre.updateUI();
                     listaIngresos.updateUI();
-
+                    ActualizarInventarios actualiza =new ActualizarInventarios();
+                    actualiza.setVisible(true);
                 } catch (IOException ex) {
                     Caption ventanaEx = new Caption("Recuerda cerrar Excel");
                      Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
