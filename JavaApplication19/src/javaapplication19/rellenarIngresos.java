@@ -2499,12 +2499,50 @@ public class rellenarIngresos {
 
     public void corte(JScrollPane scrollIngresos, JPanel listaIngresos) throws IOException {
         listaIngresos.removeAll();
+        JPanel TOP = new JPanel();
+        TOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        TOP.setLayout(new GridLayout(1, 5));
+        TOP.setBackground(Color.WHITE);
+        TOP.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
+        TOP.setMaximumSize(new Dimension(550, 40));
+        TOP.setPreferredSize(new Dimension(550, 100));
+
+        JLabel fechaTOP = new JLabel();
+        fechaTOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        fechaTOP.setForeground(Colores.gris);
+        fechaTOP.setText("FECHA");
+
+        JLabel nombreTOP = new JLabel();
+        nombreTOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        nombreTOP.setForeground(Colores.gris);
+        nombreTOP.setText("");
+        Iconos.scaleImage("mountain", nombreTOP, 30, 15);
+
+        JLabel montoTOP = new JLabel();
+        montoTOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        montoTOP.setForeground(Colores.gris);
+        montoTOP.setText("MONTO");
+
+        JLabel ingresosTOP = new JLabel();
+        ingresosTOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        ingresosTOP.setForeground(Colores.gris);
+        ingresosTOP.setText("VARIACIÓN");
+
+        TOP.add(fechaTOP);
+        TOP.add(nombreTOP);
+        TOP.add(montoTOP);
+        TOP.add(ingresosTOP);
+        TOP.add(new JLabel(""));
+
+        listaIngresos.add(TOP, 0);
+
         if (!LeerExcel.tablaVacia("src\\excel\\LibrosContables.xlsx", "Ingresos")) {
+
             for (int i = 1; i <= LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"); i++) {
                 PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
                 panelIngreso.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                 panelIngreso.setLayout(new GridLayout(1, 5));
-                panelIngreso.setBackground(Colores.grisBajito);
+                panelIngreso.setBackground(Colores.epicColorBajito);
                 panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
                 panelIngreso.setMaximumSize(new Dimension(550, 40));
                 panelIngreso.setPreferredSize(new Dimension(550, 100));
@@ -2519,11 +2557,11 @@ public class rellenarIngresos {
 
                 JLabel montoDevolucion = new JLabel();
                 montoDevolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                montoDevolucion.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 3, i));
+                montoDevolucion.setText("$" + LeerExcel.obtenerCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Ingresos", 3, i));
 
                 JLabel plataforma = new JLabel();
                 plataforma.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                plataforma.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 4, i));
+                plataforma.setText("$" + LeerExcel.obtenerCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Ingresos", 6, i));
 
                 String IconoTipo = "VentasG";
                 String tipo = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 1, i);
@@ -2539,30 +2577,44 @@ public class rellenarIngresos {
                         break;
                     case "Deuda a Cobrar":
                         IconoTipo = "DeudasCG";
+
                         break;
+                    case "Nueva deuda":
+                        IconoTipo = "DeudasC";
+
+                        break;
+
                     case "Impuesto a favor":
                         IconoTipo = "impuestoG";
                         break;
                     case "Venta a Cobrar":
-                        IconoTipo = "VentasG";
+                        IconoTipo = "ventasC";
 
                         break;
                     case "Devolucion":
                         IconoTipo = "devolucionG";
+                        break;
+                    case "Deuda a Pagar":
+                        IconoTipo = "DeudasPG";
+                        break;
+                    case "Aportacion Inv":
+                        IconoTipo = "inventarioG";
+                        break;
+                    case "Aportacion EyM":
+                        IconoTipo = "equipoG";
                         break;
                 }
 
                 String colorR = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 5, i);
                 switch (colorR) {
                     case "VERDE":
-                        Escribir cambiarEstado = new Escribir();
-                        cambiarEstado.escribirCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", "GRIS", i, 5);
-
                         panelIngreso.setBackground(Colores.grisBajito);
+                        Escribir escribir = new Escribir();
+                        escribir.escribirCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", "GRIS", i, 5);
                         break;
-                    case "AMARILLO":
+                    /*case "AMARILLO":
                         panelIngreso.setBackground(Colores.amarillo);
-                        break;
+                        break;*/
                     case "GRIS":
                         panelIngreso.setBackground(Colores.grisBajito);
                         break;
@@ -2585,14 +2637,13 @@ public class rellenarIngresos {
                 listaIngresos.updateUI();
             }
         }
-
     }
-
     public static String fechaActualConA() {
         java.util.Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM YY");
         return formatoFecha.format(fecha);
     }
+    
     
 
 }
