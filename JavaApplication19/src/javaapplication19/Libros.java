@@ -74,12 +74,11 @@ public class Libros extends javax.swing.JFrame {
             System.out.println(fechaDM());
             estadoCreacion = true;
         }
-        if(estadoCreacion = true){
+        if(estadoCreacion == true){
             crearDirectorio();
             añoNuevo();
-        }
-        if(fechaDM().equals("02 ENERO"))
             estadoCreacion = false;
+        }
         
         setIconImage(new ImageIcon(getClass().getResource("..\\img\\LOGO.png")).getImage());
         Iconos("Cerrar",cerrarIcon);

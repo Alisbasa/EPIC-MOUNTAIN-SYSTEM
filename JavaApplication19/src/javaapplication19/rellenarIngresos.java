@@ -1162,11 +1162,11 @@ public class rellenarIngresos {
                     panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
                     
                     if(LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString()) == 1){
-                        botonBorrarInd(icono, "src\\excel\\DeudasP.xlsx", "DeudasPagar");
+                        botonBorrarDeudor(icono, "src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString());    
                     }else{
-                        int indice = deudasPE.getSelectedIndex()+1;
-                        botonBorrarDeudaC(icono, "src\\excel\\DeudasP.xlsx", "DeudasPagar", indice);
+                        botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "DeudasPG");
                     }
+                    
                     indice++;
                     panelPadre.removeAll();
                     panelPadre.updateUI();
