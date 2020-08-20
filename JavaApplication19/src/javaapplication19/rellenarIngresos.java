@@ -197,15 +197,18 @@ public class rellenarIngresos {
         boton.addMouseListener(botonV);
     }
      
-    static void botonBorrarDeudaC(JLabel boton, String filepath, String hoja, int indice) {
+    static void botonBorrarDeudaP(JLabel boton, String filepath, String hoja, int indice, double monto) {
         MouseListener botonV = new MouseListener() {
 
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
                     Escribir EscribirExcel = new Escribir();
-                    Double restaDeuda = LeerExcel.obtenerCeldaNumerica(filepath, hoja, 2, indice);
-                    EscribirExcel.escribirCeldaDouble(filepath, "deudasPagar", restaDeuda, LeerExcel.contarRenglones(filepath, "deudasPagar"), 2);
+                    Double restaDeuda = LeerExcel.obtenerCeldaNumerica(filepath, "deudasPagar", 2, indice) - monto;
+                    EscribirExcel.escribirCeldaDouble(filepath, "deudasPagar", restaDeuda, indice, 2);
+                    Escribir.removeRow(filepath, hoja, LeerExcel.contarRenglones(filepath, hoja));
+                    String formulaInd = "SUM(B2:B" + (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", hoja)) + ")";
+                    EscribirExcel.escribirFormula("src\\excel\\DeudasP.xlsx", hoja, formulaInd, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", hoja) + 1), 1);
                     
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
@@ -1132,8 +1135,8 @@ public class rellenarIngresos {
                     String formulaInd = "SUM(B2:B" + (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString()) + 1) + ")";
                     escribirVentas.escribirFormula("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString(), formulaInd, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString()) + 1), 1);
                     
-                    Double suma = LeerExcel.obtenerCeldaNumerica("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString(), 1, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString()))) + Double.valueOf(montoDeuPE.getText());
-                    escribirVentas.escribirCeldaDouble("src\\excel\\DeudasP.xlsx", "deudasPagar", suma, LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "deudasPagar"), 2);
+                    Double suma = (LeerExcel.obtenerCeldaNumerica("src\\excel\\DeudasP.xlsx", "deudasPagar", 2, (deudasPE.getSelectedIndex()+2))) + (Double.valueOf(montoDeuPE.getText()));
+                    escribirVentas.escribirCeldaDouble("src\\excel\\DeudasP.xlsx", "deudasPagar", suma, (deudasPE.getSelectedIndex()+2), 2);
                     
                     //Escribe en Excel general deudasPagar                      
                     String formula = escribirVentas.Sumar(2, LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "deudasPagar") + 1, 'c');
@@ -1164,7 +1167,10 @@ public class rellenarIngresos {
                     if(LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString()) == 1){
                         botonBorrarDeudor(icono, "src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString());    
                     }else{
+                        Double monto = Double.valueOf(montoDeuPE.getText());
                         botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "DeudasPG");
+                        botonBorrarDeudaP(icono, "src\\excel\\DeudasP.xlsx", deudasPE.getSelectedItem().toString(), (deudasPE.getSelectedIndex()+2), monto);
+                        
                     }
                     
                     indice++;
