@@ -915,7 +915,7 @@ public class rellenarGastos {
                 panelGasto.add(new JLabel(""));
                 panelGasto.add(icono);
 
-                String[] data = {(String) fechaActual(), "Impuesto", (String) imp.getText(), montoImpues.getText(), "", "VERDE", montoImpues.getText()};
+                String[] data = {(String) fechaActual(), "Impuesto", (String) imp.getText(), montoImpuesto.getText(), "", "VERDE", montoImpuesto.getText()};
 
                 Escribir escribirVentas = new Escribir();
                 try {

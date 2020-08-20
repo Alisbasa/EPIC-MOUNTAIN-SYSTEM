@@ -1158,7 +1158,7 @@ public class rellenarIngresos {
 
                     panelIngreso.add(fecha);
                     panelIngreso.add(deudor);
-                    panelIngreso.add(montoDeuPE);
+                    panelIngreso.add(montoDeuda);
                     panelIngreso.add(variacion);
                     panelIngreso.add(icono);
                     listaIngresos.add(panelIngreso, 1);
@@ -1528,7 +1528,7 @@ public class rellenarIngresos {
                         IconoTipo = "devolucionG";
                         break;
                     case "Deuda a Pagar":
-                        IconoTipo = "DeudaPG";
+                        IconoTipo = "DeudasPG";
                         break;
                     case "Aportacion Inv":
                         IconoTipo = "inventarioG";
