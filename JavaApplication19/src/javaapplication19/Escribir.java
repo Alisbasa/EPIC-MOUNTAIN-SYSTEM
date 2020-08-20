@@ -810,7 +810,249 @@ public class Escribir {
         newWorkBook.write(outputStream);
         outputStream.close();
     }
+    
+    public void crearHojaCorte(String filepath, String hoja) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        XSSFWorkbook newWorkBook;
+        try ( FileInputStream inputStream = new FileInputStream(file)) {
+            newWorkBook = new XSSFWorkbook(inputStream);
+            XSSFRow row2;
+            XSSFSheet newSheet = newWorkBook.createSheet(hoja);
+            
 
+            newSheet.setColumnWidth(0, 10000);
+            newSheet.setColumnWidth(1, 7000);
+            
+
+            for (int i = 0; i < 21; i++) {
+                row2 = newSheet.createRow(i);
+               
+  
+                XSSFFont font2 = newWorkBook.createFont();
+                font2.setFontHeightInPoints((short) 12);
+                font2.setFontName("Calibri");
+                font2.setColor(IndexedColors.BLACK.getIndex());
+                font2.setBold(true);
+                font2.setItalic(false);
+
+                
+                if(i == 0){
+                    System.out.println("HOLI BB");
+                    XSSFCell newCell2 = row2.createCell(0);
+                    XSSFCell newCell3 = row2.createCell(1);
+                    XSSFCell newCell4 = row2.createCell(2);
+                    newCell2.setCellValue("   ");
+                    newCell3.setCellValue("CUENTA");
+                    newCell4.setCellValue("CANTIDAD");
+                    
+                    XSSFCellStyle style = newWorkBook.createCellStyle();
+                    XSSFColor color = new XSSFColor(Colores.epicColor);
+                    style.setFillForegroundColor(color);//color de fondo
+                    style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                    style.setAlignment(HorizontalAlignment.CENTER);
+                    style.setVerticalAlignment(VerticalAlignment.CENTER);
+                    style.setFont(font2);
+                    
+                    newCell2.setCellStyle(style);
+                    newCell3.setCellStyle(style);
+                    newCell4.setCellStyle(style);
+                }
+                
+                else if(i>0 && i<=4){
+                    
+                    XSSFCell newCell2 = row2.createCell(0);
+                    XSSFCell newCell3 = row2.createCell(1);
+                    XSSFCell newCell4 = row2.createCell(2);
+                    
+                    XSSFCellStyle style2 = newWorkBook.createCellStyle();
+                    XSSFColor color2 = new XSSFColor(Colores.grisBajito);
+                    style2.setFillForegroundColor(color2);//color de fondo
+                    style2.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                    style2.setAlignment(HorizontalAlignment.CENTER);
+                    style2.setVerticalAlignment(VerticalAlignment.CENTER);
+                    style2.setFillForegroundColor(color2);//color de fondo
+                    style2.setBorderBottom(BorderStyle.THIN);
+                    style2.setBorderLeft(BorderStyle.THIN);
+                    style2.setBorderRight(BorderStyle.THIN);
+                    style2.setBorderTop(BorderStyle.THIN);
+                    style2.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                    style2.setAlignment(HorizontalAlignment.CENTER);
+                    style2.setVerticalAlignment(VerticalAlignment.CENTER);
+                    style2.setFont(font2);
+                    
+                    newCell2.setCellStyle(style2);
+                    newCell3.setCellStyle(style2);
+                    newCell4.setCellStyle(style2);
+                    
+                }
+                else if( i>4 && i<= 9 ){
+                    
+                    XSSFCell newCell2 = row2.createCell(0);
+                    XSSFCell newCell3 = row2.createCell(1);
+                    XSSFCell newCell4 = row2.createCell(2);
+                    
+                    XSSFCellStyle style3 = newWorkBook.createCellStyle();
+                    XSSFColor color3 = new XSSFColor(Colores.grisFuertesito);
+                    style3.setFillForegroundColor(color3);//color de fondo
+                    style3.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                    style3.setAlignment(HorizontalAlignment.CENTER);
+                    style3.setVerticalAlignment(VerticalAlignment.CENTER);
+                    style3.setFillForegroundColor(color3);//color de fondo
+                    style3.setBorderBottom(BorderStyle.THIN);
+                    style3.setBorderLeft(BorderStyle.THIN);
+                    style3.setBorderRight(BorderStyle.THIN);
+                    style3.setBorderTop(BorderStyle.THIN);
+                    style3.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                    style3.setAlignment(HorizontalAlignment.CENTER);
+                    style3.setVerticalAlignment(VerticalAlignment.CENTER);
+                    style3.setFont(font2);
+                    
+                    newCell2.setCellStyle(style3);
+                    newCell3.setCellStyle(style3);
+                    newCell4.setCellStyle(style3);
+                    
+                }
+                else if( i>9 && i<= 11 ){
+                    XSSFCell newCell2 = row2.createCell(0);
+                    XSSFCell newCell3 = row2.createCell(1);
+                    XSSFCell newCell4 = row2.createCell(2);
+                    
+                    XSSFCellStyle style = newWorkBook.createCellStyle();
+                    XSSFColor color = new XSSFColor(Colores.epicColor);
+                    style.setFillForegroundColor(color);//color de fondo
+                    style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                    style.setAlignment(HorizontalAlignment.CENTER);
+                    style.setVerticalAlignment(VerticalAlignment.CENTER);
+                    style.setFillForegroundColor(color);//color de fondo
+                    style.setBorderBottom(BorderStyle.THIN);
+                    style.setBorderLeft(BorderStyle.THIN);
+                    style.setBorderRight(BorderStyle.THIN);
+                    style.setBorderTop(BorderStyle.THIN);
+                    style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                    style.setAlignment(HorizontalAlignment.CENTER);
+                    style.setVerticalAlignment(VerticalAlignment.CENTER);
+                    style.setFont(font2);
+                    
+                    newCell2.setCellStyle(style);
+                    newCell3.setCellStyle(style);
+                    newCell4.setCellStyle(style);
+                }
+                
+                else if( i>11 && i<= 14 ){
+                    XSSFCell newCell2 = row2.createCell(0);
+                    XSSFCell newCell3 = row2.createCell(1);
+                    XSSFCell newCell4 = row2.createCell(2);
+                    
+                    
+                    XSSFCellStyle style3 = newWorkBook.createCellStyle();
+                    XSSFColor color3 = new XSSFColor(Colores.grisFuertesito);
+                    style3.setFillForegroundColor(color3);//color de fondo
+                    style3.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                    style3.setAlignment(HorizontalAlignment.CENTER);
+                    style3.setVerticalAlignment(VerticalAlignment.CENTER);
+                    style3.setFillForegroundColor(color3);//color de fondo
+                    style3.setBorderBottom(BorderStyle.THIN);
+                    style3.setBorderLeft(BorderStyle.THIN);
+                    style3.setBorderRight(BorderStyle.THIN);
+                    style3.setBorderTop(BorderStyle.THIN);
+                    style3.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                    style3.setAlignment(HorizontalAlignment.CENTER);
+                    style3.setVerticalAlignment(VerticalAlignment.CENTER);
+                    style3.setFont(font2);
+                    
+                    newCell2.setCellStyle(style3);
+                    newCell3.setCellStyle(style3);
+                    newCell4.setCellStyle(style3);
+                }
+                else if( i>14 && i<= 16 ){
+                    XSSFCell newCell2 = row2.createCell(0);
+                    XSSFCell newCell3 = row2.createCell(1);
+                    XSSFCell newCell4 = row2.createCell(2);
+                    
+                    XSSFCellStyle style2 = newWorkBook.createCellStyle();
+                    XSSFColor color2 = new XSSFColor(Colores.grisBajito);
+                    style2.setFillForegroundColor(color2);//color de fondo
+                    style2.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                    style2.setAlignment(HorizontalAlignment.CENTER);
+                    style2.setVerticalAlignment(VerticalAlignment.CENTER);
+                    style2.setFillForegroundColor(color2);//color de fondo
+                    style2.setBorderBottom(BorderStyle.THIN);
+                    style2.setBorderLeft(BorderStyle.THIN);
+                    style2.setBorderRight(BorderStyle.THIN);
+                    style2.setBorderTop(BorderStyle.THIN);
+                    style2.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                    style2.setAlignment(HorizontalAlignment.CENTER);
+                    style2.setVerticalAlignment(VerticalAlignment.CENTER);
+                    style2.setFont(font2);
+                    
+                    newCell2.setCellStyle(style2);
+                    newCell3.setCellStyle(style2);
+                    newCell4.setCellStyle(style2);
+                }
+                else if( i>16 && i <= 18 ){
+                    XSSFCell newCell2 = row2.createCell(0);
+                    XSSFCell newCell3 = row2.createCell(1);
+                    XSSFCell newCell4 = row2.createCell(2);
+                    
+                    XSSFCellStyle style3 = newWorkBook.createCellStyle();
+                    XSSFColor color3 = new XSSFColor(Colores.grisFuertesito);
+                    style3.setFillForegroundColor(color3);//color de fondo
+                    style3.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                    style3.setAlignment(HorizontalAlignment.CENTER);
+                    style3.setVerticalAlignment(VerticalAlignment.CENTER);
+                    style3.setFillForegroundColor(color3);//color de fondo
+                    style3.setBorderBottom(BorderStyle.THIN);
+                    style3.setBorderLeft(BorderStyle.THIN);
+                    style3.setBorderRight(BorderStyle.THIN);
+                    style3.setBorderTop(BorderStyle.THIN);
+                    style3.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                    style3.setAlignment(HorizontalAlignment.CENTER);
+                    style3.setVerticalAlignment(VerticalAlignment.CENTER);
+                    style3.setFont(font2);
+
+                    newCell2.setCellStyle(style3);
+                    newCell3.setCellStyle(style3);
+                    newCell4.setCellStyle(style3);
+                }
+                
+                else if( i>18 && i <= 20 ){
+                    XSSFCell newCell2 = row2.createCell(0);
+                    XSSFCell newCell3 = row2.createCell(1);
+                    XSSFCell newCell4 = row2.createCell(2);
+                    
+                    XSSFCellStyle style = newWorkBook.createCellStyle();
+                    XSSFColor color = new XSSFColor(Colores.epicColor);
+                    style.setFillForegroundColor(color);//color de fondo
+                    style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                    style.setAlignment(HorizontalAlignment.CENTER);
+                    style.setVerticalAlignment(VerticalAlignment.CENTER);
+                    style.setFillForegroundColor(color);//color de fondo
+                    style.setBorderBottom(BorderStyle.THIN);
+                    style.setBorderLeft(BorderStyle.THIN);
+                    style.setBorderRight(BorderStyle.THIN);
+                    style.setBorderTop(BorderStyle.THIN);
+                    style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                    style.setAlignment(HorizontalAlignment.CENTER);
+                    style.setVerticalAlignment(VerticalAlignment.CENTER);
+                    style.setFont(font2);
+
+                    newCell2.setCellStyle(style);
+                    newCell3.setCellStyle(style);
+                    newCell4.setCellStyle(style);
+                }
+                
+            }
+            
+                
+                
+
+
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkBook.write(outputStream);
+        outputStream.close();
+        }
+    }
+    
     public void crearHojaFormatoInventario(String filepath, String hoja) throws FileNotFoundException, IOException {
         File file = new File(filepath);
         XSSFWorkbook newWorkBook;
