@@ -232,7 +232,12 @@ public class ventanaCuentas extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarActionPerformed
 
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
-            
+        try {
+            Escribir escribirCuentas = new Escribir();
+            escribirCuentas.crearHojaCorte("src\\excel\\Corte.xlsx", fechaActual());
+        } catch (IOException ex) {
+            Logger.getLogger(ventanaCuentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         
 
