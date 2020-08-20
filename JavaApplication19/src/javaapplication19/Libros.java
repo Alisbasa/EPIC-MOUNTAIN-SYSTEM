@@ -1602,7 +1602,7 @@ public class Libros extends javax.swing.JFrame {
                 Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            rellenarDesCompra.botonDesCT(scrollGastos,listaGastos, rellenarDes.rellenarDesPacks, rellenarDes.productoCT,rellenarDes.paqueteria, inventarioPrincipalCT.jtCosto, equipo.jtCosto, packs.jtCosto, rellenarDes.iconoOkDesarrolloCT);  
+            rellenarDesCompra.botonDesCT(scrollGastos,listaGastos, rellenarDes.rellenarDesCompras, rellenarDes.productoCT,rellenarDes.paqueteria, inventarioPrincipalCT.jtCosto, equipo.jtCosto, packs.jtCosto, rellenarDes.iconoOkDesarrolloCT);  
         }
         
         

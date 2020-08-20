@@ -58,15 +58,15 @@ public class ventanaCuentas extends javax.swing.JFrame {
         jpDatos = new javax.swing.JPanel();
         jpDescripcion = new javax.swing.JPanel();
         jlDesc = new javax.swing.JLabel();
-        jtDesc1 = new javax.swing.JTextField();
+        bbva = new javax.swing.JTextField();
         jpPack = new javax.swing.JPanel();
         jlPack = new javax.swing.JLabel();
-        jtDesc = new javax.swing.JTextField();
+        caja = new javax.swing.JTextField();
         jpTIG = new javax.swing.JPanel();
-        jtPrecio = new javax.swing.JTextField();
+        mp = new javax.swing.JTextField();
         jlCosto = new javax.swing.JLabel();
         jpUbicacion = new javax.swing.JPanel();
-        jtUnidades = new javax.swing.JTextField();
+        liberar = new javax.swing.JTextField();
         jlUnidades = new javax.swing.JLabel();
         jpBoton = new javax.swing.JPanel();
         jbRegistrar = new javax.swing.JButton();
@@ -123,15 +123,15 @@ public class ventanaCuentas extends javax.swing.JFrame {
         jlDesc.setText("BBVA");
         jpDescripcion.add(jlDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 100, 30));
 
-        jtDesc1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtDesc1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtDesc1.addActionListener(new java.awt.event.ActionListener() {
+        bbva.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        bbva.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        bbva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtDesc1ActionPerformed(evt);
+                bbvaActionPerformed(evt);
             }
         });
-        jpDescripcion.add(jtDesc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 370, 48));
-        jtDesc.setBackground(Colores.epicColorBajito);
+        jpDescripcion.add(bbva, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 370, 48));
+        caja.setBackground(Colores.epicColorBajito);
 
         jpDatos.add(jpDescripcion);
 
@@ -143,25 +143,25 @@ public class ventanaCuentas extends javax.swing.JFrame {
         jlPack.setText("CAJA");
         jpPack.add(jlPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 90, 30));
 
-        jtDesc.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtDesc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtDesc.addActionListener(new java.awt.event.ActionListener() {
+        caja.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        caja.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        caja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtDescActionPerformed(evt);
+                cajaActionPerformed(evt);
             }
         });
-        jpPack.add(jtDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 370, 48));
-        jtDesc.setBackground(Colores.epicColorBajito);
+        jpPack.add(caja, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 370, 48));
+        caja.setBackground(Colores.epicColorBajito);
 
         jpDatos.add(jpPack);
 
         jpTIG.setBackground(new java.awt.Color(51, 51, 51));
         jpTIG.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jtPrecio.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtPrecio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpTIG.add(jtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 270, 48));
-        jtPrecio.setBackground(Colores.epicColorBajito);
+        mp.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        mp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jpTIG.add(mp, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 270, 48));
+        mp.setBackground(Colores.epicColorBajito);
 
         jlCosto.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlCosto.setForeground(new java.awt.Color(255, 255, 255));
@@ -173,10 +173,10 @@ public class ventanaCuentas extends javax.swing.JFrame {
         jpUbicacion.setBackground(new java.awt.Color(51, 51, 51));
         jpUbicacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jtUnidades.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
-        jtUnidades.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jpUbicacion.add(jtUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 200, 48));
-        jtUnidades.setBackground(Colores.epicColorBajito);
+        liberar.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        liberar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jpUbicacion.add(liberar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 200, 48));
+        liberar.setBackground(Colores.epicColorBajito);
 
         jlUnidades.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlUnidades.setForeground(new java.awt.Color(255, 255, 255));
@@ -235,8 +235,11 @@ public class ventanaCuentas extends javax.swing.JFrame {
         try {
             Escribir escribirCuentas = new Escribir();
             escribirCuentas.crearHojaCorte("src\\excel\\Corte.xlsx", fechaActual());
-            
-            
+            escribirCuentas.escribirCeldaDouble("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(bbva.getText())), 2, 2);
+            escribirCuentas.escribirCeldaDouble("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(caja.getText())), 3, 2);
+            escribirCuentas.escribirCeldaDouble("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(mp.getText())), 4, 2);
+            escribirCuentas.escribirCeldaDouble("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(liberar.getText())), 5, 2);
+           // double comprasT = LeerExcel.obtenerCeldaNumerica(filepath, hoja, NORMAL, PROPERTIES)
             
             
             
@@ -264,13 +267,13 @@ public class ventanaCuentas extends javax.swing.JFrame {
         return formatoFecha.format(fecha);
     }
 
-    private void jtDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDescActionPerformed
+    private void cajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtDescActionPerformed
+    }//GEN-LAST:event_cajaActionPerformed
 
-    private void jtDesc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDesc1ActionPerformed
+    private void bbvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbvaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtDesc1ActionPerformed
+    }//GEN-LAST:event_bbvaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,6 +315,8 @@ public class ventanaCuentas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LOGO;
+    private javax.swing.JTextField bbva;
+    private javax.swing.JTextField caja;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
@@ -328,9 +333,7 @@ public class ventanaCuentas extends javax.swing.JFrame {
     private javax.swing.JPanel jpPack;
     private javax.swing.JPanel jpTIG;
     private javax.swing.JPanel jpUbicacion;
-    private javax.swing.JTextField jtDesc;
-    private javax.swing.JTextField jtDesc1;
-    private javax.swing.JTextField jtPrecio;
-    private javax.swing.JTextField jtUnidades;
+    private javax.swing.JTextField liberar;
+    private javax.swing.JTextField mp;
     // End of variables declaration//GEN-END:variables
 }
