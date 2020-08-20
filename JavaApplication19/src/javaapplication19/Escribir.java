@@ -837,7 +837,7 @@ public class Escribir {
 
                 
                 if(i == 0){
-                    System.out.println("HOLI BB");
+                    //System.out.println("HOLI BB");
                     XSSFCell newCell2 = row2.createCell(0);
                     XSSFCell newCell3 = row2.createCell(1);
                     XSSFCell newCell4 = row2.createCell(2);
@@ -863,6 +863,9 @@ public class Escribir {
                     XSSFCell newCell2 = row2.createCell(0);
                     XSSFCell newCell3 = row2.createCell(1);
                     XSSFCell newCell4 = row2.createCell(2);
+                    
+                    
+                    
                     
                     XSSFCellStyle style2 = newWorkBook.createCellStyle();
                     XSSFColor color2 = new XSSFColor(Colores.grisBajito);
@@ -1043,9 +1046,70 @@ public class Escribir {
                 
             }
             
-                
-                
+            String bbva = "BBVA";
+            escribirCelda(filepath, hoja, bbva, 1, 1);
 
+            String caja = "CAJA";
+            escribirCelda(filepath, hoja, caja, 2, 1);
+
+            String mercado = "MERCADO PAGO";
+            escribirCelda(filepath, hoja, mercado, 3, 1);
+
+            String liberar = "X LIBERAR";
+            escribirCelda(filepath, hoja, liberar, 4, 1);
+            
+            String compras = "COMPRAS EN TRANSITO";
+            escribirCelda(filepath, hoja, compras, 5, 1);
+            
+            String costoInv = "COSTO DE INVENTARIO";
+            escribirCelda(filepath, hoja, costoInv, 6, 1);
+            
+            String equipoyMob = "EQUIPO Y MOB.";
+            escribirCelda(filepath, hoja, equipoyMob, 7, 1);
+            
+            String deudasC = "DEUDAS A COBRAR";
+            escribirCelda(filepath, hoja, deudasC, 8, 1);
+            
+            String deudasP = "DEUDAS A PAGAR";
+            escribirCelda(filepath, hoja, deudasP, 9, 1);
+            
+            String lkh = "LO QUE HAY";
+            escribirCelda(filepath, hoja, lkh, 10, 0);
+            
+            String totalC = "TOTAL EN CAPITAL";
+            escribirCelda(filepath, hoja, totalC, 10, 1);
+            
+            String totalN = "TOTAL NETO";
+            escribirCelda(filepath, hoja, totalN, 11, 1);
+            
+            String capitalA = "CAPITAL ANTERIOR";
+            escribirCelda(filepath, hoja, capitalA, 12, 1);
+
+            String gastosT = "GASTOS TOTALES";
+            escribirCelda(filepath, hoja, gastosT, 13, 1);
+            
+            String ingresosT = "INGRESOS TOTALES";
+            escribirCelda(filepath, hoja, ingresosT, 14, 1);
+            
+            String fugas = "FUGAS";
+            escribirCelda(filepath, hoja, fugas, 15, 1);
+            
+            String extra = "EXTRA";
+            escribirCelda(filepath, hoja, extra, 16, 1);
+            
+            String egresos = "EGRESOS";
+            escribirCelda(filepath, hoja, egresos, 17, 1);
+            
+            String utilidades = "UTILIDADES";
+            escribirCelda(filepath, hoja, utilidades, 18, 1);
+            
+            String up = "UTILIDAD/PERDIDA";
+            escribirCelda(filepath, hoja, up, 19, 1);
+            
+            String lqh = "LO QUE DEBE DE HABER";
+            escribirCelda(filepath, hoja, lqh, 20, 0);
+            
+            escribirCelda(filepath, hoja, totalC, 20, 1);
 
         FileOutputStream outputStream = new FileOutputStream(file);
         newWorkBook.write(outputStream);
