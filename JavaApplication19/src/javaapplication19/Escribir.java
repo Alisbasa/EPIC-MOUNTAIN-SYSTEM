@@ -646,6 +646,68 @@ public class Escribir {
 
     }
     
+    public void escribirCeldaDoubleGF(String filepath, String hoja, double data, int fila, int columna) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+
+        XSSFRow row = newSheet.getRow(fila);
+
+        XSSFCell newCell = row.createCell(columna);
+        newCell.setCellValue(data);
+        setCellStyleGrisPrecio(newWorkbook, newCell);
+        evaluar(newWorkbook, newCell);
+//      newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
+//        XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+        XSSFRow NEWrow = newSheet.getRow(0);
+        if (NEWrow.getCell(1).getStringCellValue().equals("DESCRIPCIÓN") && columna == 5) {
+            System.out.println("javaapplication19.Escribir.escribirCeldaDouble()");
+            newCell.setCellValue(data);
+            setCellStyle(newWorkbook, newCell);
+            evaluar(newWorkbook, newCell);
+//          newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
+            XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+
+        }
+        inputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkbook.write(outputStream);
+        outputStream.close();
+
+    }
+    
+    public void escribirCeldaDoubleV(String filepath, String hoja, double data, int fila, int columna) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+
+        XSSFRow row = newSheet.getRow(fila);
+
+        XSSFCell newCell = row.createCell(columna);
+        newCell.setCellValue(data);
+        setCellStylePrecioVerde(newWorkbook, newCell);
+        evaluar(newWorkbook, newCell);
+//      newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
+//        XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+        XSSFRow NEWrow = newSheet.getRow(0);
+        if (NEWrow.getCell(1).getStringCellValue().equals("DESCRIPCIÓN") && columna == 5) {
+            System.out.println("javaapplication19.Escribir.escribirCeldaDouble()");
+            newCell.setCellValue(data);
+            setCellStyle(newWorkbook, newCell);
+            evaluar(newWorkbook, newCell);
+//          newWorkbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
+            XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+
+        }
+        inputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkbook.write(outputStream);
+        outputStream.close();
+
+    }
+    
     public void escribirCeldaDoubleVerde(String filepath, String hoja, double data, int fila, int columna) throws FileNotFoundException, IOException {
         File file = new File(filepath);
         FileInputStream inputStream = new FileInputStream(file);

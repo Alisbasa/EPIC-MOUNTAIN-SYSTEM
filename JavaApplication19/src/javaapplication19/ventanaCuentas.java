@@ -259,17 +259,53 @@ public class ventanaCuentas extends javax.swing.JFrame {
             
             escribirCuentas.escribirCeldaV("src\\excel\\Corte.xlsx", fechaActual(), "LO QUE HAY", 10, 0);
             escribirCuentas.escribirCeldaV("src\\excel\\Corte.xlsx", fechaActual(), "LO QUE DEBE HABER", 20, 0);
-            
-            
-            
-            
+
             escribirCuentas.escribirCeldaDouble("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(bbva.getText())), 1, 2);
             escribirCuentas.escribirCeldaDouble("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(caja.getText())), 2, 2);
             escribirCuentas.escribirCeldaDouble("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(mp.getText())), 3, 2);
             escribirCuentas.escribirCeldaDouble("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(liberar.getText())), 4, 2);
-           // double comprasT = LeerExcel.obtenerCeldaNumerica(filepath, hoja, NORMAL, PROPERTIES)
+            
+            Double comprasT = Double.valueOf(LeerExcel.obtenerCeldaFormula("src\\excel\\comprasT.xlsx", "COMPRAS", (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+1), 8));
+            escribirCuentas.escribirCeldaDoubleGF("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(comprasT), 5, 2);
+            
+            Double costoInventario = Double.valueOf(LeerExcel.obtenerCeldaFormula("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN")+1), 8));
+            escribirCuentas.escribirCeldaDoubleGF("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(costoInventario), 6, 2);
+            
+            Double herramientas = Double.valueOf(LeerExcel.obtenerCeldaFormula("src\\excel\\Equipo.xlsx", "Herramientas", (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas")+1), 3));
+            Double eqTaller = Double.valueOf(LeerExcel.obtenerCeldaFormula("src\\excel\\Equipo.xlsx", "Equipo de Taller", (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Taller")+1), 3));
+            Double mob = Double.valueOf(LeerExcel.obtenerCeldaFormula("src\\excel\\Equipo.xlsx", "Mobiliario", (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Mobiliario")+1), 3));
+            Double eqLim = Double.valueOf(LeerExcel.obtenerCeldaFormula("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Limpieza")+1), 3));
+            
+            Double eqMob = herramientas + eqTaller + mob + eqLim;
+            escribirCuentas.escribirCeldaDoubleGF("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(eqMob), 7, 2);
+            
+            Double deudasC = Double.valueOf(LeerExcel.obtenerCeldaFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+1), 2));
+            escribirCuentas.escribirCeldaDoubleGF("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(deudasC), 8, 2);
+            
+            Double deudasP = Double.valueOf(LeerExcel.obtenerCeldaFormula("src\\excel\\DeudasP.xlsx", "deudasPagar", (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "deudasPagar")+1), 2));
+            escribirCuentas.escribirCeldaDoubleGF("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(deudasP), 9, 2);
+            
+            String sumaTotalCapital = "SUM(C2:C9)";
+            escribirCuentas.escribirFormula("src\\excel\\Corte.xlsx", fechaActual(), sumaTotalCapital, 10, 2);
+            
+            Double totalNeto = Double.valueOf(LeerExcel.obtenerCeldaFormula("src\\excel\\Corte.xlsx", fechaActual(), 9, 2)) - deudasP;
+            escribirCuentas.escribirCeldaDoubleV("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(totalNeto), 11, 2);
+            
+            Double utilidades = Double.valueOf(LeerExcel.obtenerCeldaFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos")+1), 6));
+            escribirCuentas.escribirCeldaDoubleGF("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(utilidades), 18, 2);
+            
+            String gastosTotales = "SUM(C18+C16)";
+            escribirCuentas.escribirFormulaPacks("src\\excel\\Corte.xlsx", fechaActual(), gastosTotales, 13 , 2);
             
             
+            String ingresos = "SUM(C18+C6)";
+            escribirCuentas.escribirFormulaPacks("src\\excel\\Corte.xlsx", fechaActual(), ingresos, 14, 2);
+            
+            String up = "C15 - C14";
+            escribirCuentas.escribirFormula("src\\excel\\Corte.xlsx", fechaActual(), up, 19, 2);
+            
+            String totalC = "SUM(C13+C19+C17-C18-C16)";
+            escribirCuentas.escribirFormula("src\\excel\\Corte.xlsx", fechaActual(), totalC, 20, 2);
             
             
             
