@@ -1811,13 +1811,14 @@ public class Libros extends javax.swing.JFrame {
     }//GEN-LAST:event_historialCRMIconMouseEntered
 
     private void regLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regLabelMouseEntered
-        this.setBackground(Color.white);
-        this.setForeground(Colores.epicColor);        // TODO add your handling code here:
+        
+        regLabel.setForeground(Colores.epicColor); 
+        corte1.setBackground(Color.white);// TODO add your handling code here:
     }//GEN-LAST:event_regLabelMouseEntered
 
     private void regLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regLabelMouseExited
-       this.setBackground(Colores.epicColor);
-        this.setForeground(Color.white); 
+       regLabel.setForeground(Color.white); 
+        corte1.setBackground(Colores.epicColor); 
     }//GEN-LAST:event_regLabelMouseExited
 
     private void inventarioIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventarioIconMouseEntered
