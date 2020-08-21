@@ -2159,3 +2159,8 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel ventasLabel;
     // End of variables declaration//GEN-END:variables
 }
+/*cambios 
+equisde 
+equisde eequisde
+
+*/
