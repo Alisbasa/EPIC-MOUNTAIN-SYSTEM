@@ -966,6 +966,12 @@ public class Libros extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 corteLabelMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                corteLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                corteLabelMouseExited(evt);
+            }
         });
         corte.add(corteLabel, java.awt.BorderLayout.CENTER);
 
@@ -2030,6 +2036,16 @@ public class Libros extends javax.swing.JFrame {
             e.printStackTrace();       
         }
     }//GEN-LAST:event_comprasIcon2MouseClicked
+
+    private void corteLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_corteLabelMouseEntered
+        corteLabel.setForeground(Colores.epicColor); 
+        corte.setBackground(Color.white);
+    }//GEN-LAST:event_corteLabelMouseEntered
+
+    private void corteLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_corteLabelMouseExited
+        corteLabel.setForeground(Color.white); 
+        corte.setBackground(Colores.epicColor);
+    }//GEN-LAST:event_corteLabelMouseExited
     
     
     /**/
