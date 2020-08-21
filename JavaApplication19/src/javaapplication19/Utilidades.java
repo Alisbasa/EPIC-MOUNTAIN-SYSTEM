@@ -33,39 +33,40 @@ public class Utilidades {
 
         try {
             boolean finder = false;
-            for (int i = 0; i <= LeerExcel.contarRenglones("src//excel/Inventario.xlsx", "Inventario"); i++) {
-                if (LeerExcel.obtenerCelda(filepathVentas, mes, 0, folio).equals(LeerExcel.obtenerCelda("src//excel/Inventario.xlsx", "INVENTARIO", 0, i))) {
+            for (int i = 0; i <= LeerExcel.contarRenglones("src//excel/Inventario.xlsx", "EPIC MOUNTAIN"); i++) {
+                if (LeerExcel.obtenerCelda(filepathVentas, mes, 0, folio).equals(LeerExcel.obtenerCelda("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 0, i))) {
                     finder = true;
                     System.out.println("HOLA");
                     int suma = (int) (LeerExcel.obtenerCeldaNumerica(filepathVentas, mes, 6, LeerExcel.contarRenglones(filepathVentas, mes))) + (int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", 6, i);
                     Escribir escribirVentas = new Escribir();
-                    escribirVentas.escribirCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", suma, i, 6);
-                    double costoUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 7, i);
-                    double precioBaseUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", "Inventario", 9, i);
-                    Double precioML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 13, i);
-                    Double iva = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 17, i);
-                    Double comisionML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 15, i);
-                    Double utilidadShop = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "Inventario", 19, i);
+                    String inventario = "EPIC MOUNTAIN";
+                    escribirVentas.escribirCeldaNumerica("src//excel/Inventario.xlsx", inventario, suma, i, 6);
+                    double costoUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", inventario, 7, i);
+                    double precioBaseUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", inventario, 9, i);
+                    Double precioML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario, 13, i);
+                    Double iva = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario, 17, i);
+                    Double comisionML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario, 15, i);
+                    Double utilidadShop = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario, 19, i);
 
                     //COSTO NETO
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", (suma * costoUnidad), i, 8);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, (suma * costoUnidad), i, 8);
                     //PRECIO BASE NETO
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * (precioBaseUnidad), i, 10);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, suma * (precioBaseUnidad), i, 10);
                     //PRECIO LOCAL NETO
-                    Double precioNeto = escribirVentas.Mulitplicar(6, 11, i, "src\\excel\\Inventario.xlsx", "Inventario");
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", precioNeto, i, 12);
+                    Double precioNeto = escribirVentas.Mulitplicar(6, 11, i, "src\\excel\\Inventario.xlsx", inventario);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, precioNeto, i, 12);
                     //COMISION ML NETO
 
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", comisionML * suma, i, 16);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, comisionML * suma, i, 16);
 
                     //IVA NETO
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * iva, i, 18);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, suma * iva, i, 18);
                     //PRECIOML NETO
 
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * precioML, i, 14);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, suma * precioML, i, 14);
 
                     //UTILIDAD LOCAL NETA
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", "Inventario", suma * utilidadShop, i, 20);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, suma * utilidadShop, i, 20);
 
                 }
 

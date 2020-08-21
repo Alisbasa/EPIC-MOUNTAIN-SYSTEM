@@ -993,6 +993,9 @@ public class rellenarGastos {
                 JLabel precioMant = new JLabel();
                 precioMant.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                 precioMant.setText("$ " + montoMant.getText());
+                JLabel gasto = new JLabel();
+                gasto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+                gasto.setText("$ " + montoMant.getText());
 
                 JLabel icono = new JLabel();
                 icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
@@ -1005,10 +1008,10 @@ public class rellenarGastos {
                 panelGasto.add(fecha);
                 panelGasto.add(descripcion);
                 panelGasto.add(precioMant);
-                panelGasto.add(new JLabel(""));
+                panelGasto.add(gasto);
                 panelGasto.add(icono);
 
-                String[] data = {(String) fechaActual(), "Mantenimiento", (String) descripcion.getText(), precioMant.getText(), "", "VERDE", precioMant.getText()};
+                String[] data = {(String) fechaActual(), "Mantenimiento", (String) descripcion.getText(), montoMant.getText(), "", "VERDE", montoMant.getText()};
 
                 Escribir escribirVentas = new Escribir();
                 try {
@@ -1103,7 +1106,7 @@ public class rellenarGastos {
                 try {
 
                     escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
 
                     String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
                     escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
@@ -1413,90 +1416,7 @@ public class rellenarGastos {
     }
 
     //Para rellenar un Gasto:reducInv
-    public void botonReducInv(JComboBox reducInv, JTextField montoReduc, JLabel iconoOkReducInv, JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre) {
-        MouseListener botonImp = new MouseListener() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-                scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-                PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
-                panelGasto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                panelGasto.setLayout(new GridLayout(1, 4));
-                panelGasto.setBackground(Colores.epicColorBajito);
-                panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelGasto.setMaximumSize(new Dimension(550, 40));
-                panelGasto.setPreferredSize(new Dimension(550, 100));
-
-                JLabel fecha = new JLabel();
-                fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                fecha.setText(fechaActual());
-
-                JLabel reduc = new JLabel();
-                reduc.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                reduc.setText((String) reducInv.getSelectedItem());
-
-                JLabel montoR = new JLabel();
-
-                JLabel icono = new JLabel();
-                Iconos.scaleImage("inventarioG", icono, 25);
-                icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
-                listaGastos.add(panelGasto, 1);
-                panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
-
-                botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "inventarioG", "src//excel/LibrosContables.xlsx", "Gastos");
-
-                panelGasto.add(fecha);
-                panelGasto.add(reduc);
-                panelGasto.add(new JLabel("RELLENAR DE INV"));
-                panelGasto.add(new JLabel(""));
-                panelGasto.add(icono);
-
-                String[] data = {(String) fechaActual(), "Reduccion de Inventario", (String) reduc.getText(), montoR.getText(), ""};
-
-                Escribir escribirVentas = new Escribir();
-                try {
-                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
-                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 3);
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
-                } catch (IOException ex) {
-                    Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                indice++;
-                panelPadre.removeAll();
-                panelPadre.updateUI();
-                listaGastos.updateUI();
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                Iconos.scaleImage("okh", iconoOkReducInv, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                Iconos.scaleImage("ok", iconoOkReducInv, 30);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        };
-
-        iconoOkReducInv.addMouseListener(botonImp);
-    }
+   
 
     //Para rellenar un Gasto:desechoEqui
     public void botonDesecho(JComboBox tipo, JLabel iconoOkDes, JScrollPane scrollGastos, JPanel listaGastos, JPanel panelPadre) {
@@ -1592,8 +1512,9 @@ public class rellenarGastos {
                     Iconos.scaleImage("inventarioG", icono, 30);
                     icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
 
+                    
+                   
                     int folio = (int) LeerExcel.obtenerCeldaNumerica("src//excel/historialCompras.xlsx", cliente.getSelectedItem().toString(), 23, ventas.getSelectedIndex() + 1);
-
                     String plataforma = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 21, folio);
                     double precio = 0;
                     double variacion = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 20, folio);
@@ -1632,12 +1553,14 @@ public class rellenarGastos {
 
                     Escribir escribirVentas = new Escribir();
 
-                    escribirVentas.escribirExcel("src\\excel\\LibrosContables.xlsx", "Gastos", data);
+                    
                     escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
+                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
                     escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
                     String formula3 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
+                    String formula4 = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
                     escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula3, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
-
+                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula4, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 3);
                 } catch (IOException ex) {
                     Caption ventanaEx = new Caption("Recuerda cerrar Excel");
                     ventanaEx.setVisible(true);

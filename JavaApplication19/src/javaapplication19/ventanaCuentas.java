@@ -12,6 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javaapplication19.Libros.listaGastos;
+import static javaapplication19.Libros.listaIngresos;
 import static javaapplication19.rellenarIngresos.fechaActual;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -292,12 +294,12 @@ public class ventanaCuentas extends javax.swing.JFrame {
             escribirCuentas.escribirCeldaDoubleV("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(totalNeto), 11, 2);
             
             
-            double sumaUtilidades=  Escribir.SumarFile(LeerExcel.buscaVerdes("src\\excel\\LibrosContables.xlsx", "Ingresos"), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6, "src\\excel\\LibrosContables.xlsx", "Ingresos");
+            double sumaUtilidades=  Escribir.SumarFile(LeerExcel.buscaVerdes("src\\excel\\LibrosContables.xlsx", "Ingresos")+1, LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6, "src\\excel\\LibrosContables.xlsx", "Ingresos");
                       
             escribirCuentas.escribirCeldaDoubleGF("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(sumaUtilidades), 18, 2);
             
             
-             double sumaEgresos=  Escribir.SumarFile(LeerExcel.buscaVerdes("src\\excel\\LibrosContables.xlsx", "Gastos"), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6, "src\\excel\\LibrosContables.xlsx", "Gastos");
+             double sumaEgresos=  Escribir.SumarFile(LeerExcel.buscaVerdes("src\\excel\\LibrosContables.xlsx", "Gastos")+1, LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6, "src\\excel\\LibrosContables.xlsx", "Gastos");
                       
             escribirCuentas.escribirCeldaDoubleGF("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(sumaEgresos), 17, 2);
             
@@ -315,6 +317,13 @@ public class ventanaCuentas extends javax.swing.JFrame {
             String totalC = "SUM(C13+C19+C17-C18-C16)";
             escribirCuentas.escribirFormula("src\\excel\\Corte.xlsx", fechaActual(), totalC, 20, 2);
             
+            
+            rellenarIngresos rellenarCorte = new rellenarIngresos();
+            rellenarGastos rellenarCorteG = new rellenarGastos();
+            
+            rellenarCorte.corte( listaIngresos);
+            rellenarCorteG.corte( listaGastos);
+            
             this.setVisible(false);
         } catch (IOException ex) {
             Logger.getLogger(ventanaCuentas.class.getName()).log(Level.SEVERE, null, ex);
@@ -326,7 +335,7 @@ public class ventanaCuentas extends javax.swing.JFrame {
 
     public static String fechaActual() {
         java.util.Date fecha = new Date();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd  MMMM YY");
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd MMMM YY - HH:mm");
         return formatoFecha.format(fecha);
     }
 

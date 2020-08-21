@@ -2499,7 +2499,7 @@ public class rellenarIngresos {
                 LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario12) + 1, 20);
     }
 
-    public void corte(JScrollPane scrollIngresos, JPanel listaIngresos) throws IOException {
+    public void corte( JPanel listaIngresos) throws IOException {
         listaIngresos.removeAll();
         JPanel TOP = new JPanel();
         TOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));

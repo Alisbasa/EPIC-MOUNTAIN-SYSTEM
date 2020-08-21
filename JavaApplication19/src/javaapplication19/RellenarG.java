@@ -542,7 +542,7 @@ public class RellenarG {
         rellenarReducInv.add(iconoReducInv);
         Iconos.scaleImage("ok", iconoOkReducInv, 30);
 
-        reducInv = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "INVENTARIO", 0));
+        reducInv = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 0));
         reducInv.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         reducInv.setBackground(Color.white);
         reducInv.setUI(PropiedadesCB2.createUI(reducInv));

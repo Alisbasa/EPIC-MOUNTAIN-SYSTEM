@@ -1702,22 +1702,7 @@ public class Libros extends javax.swing.JFrame {
             rellenarHonorarios.botonHonorarios(rellenarHon.honorarios,rellenarHon.montoHonor , rellenarHon.iconoOkHonorarios, scrollGastos, listaGastos, rellenarHon.rellenarHonorarios);
         
         }
-        else if(comboGastos.getSelectedItem().toString().equals("REDUC. DE INV.")) {
-            RellenarG rellenarRed = new RellenarG();
-            rellenarGastos rellenarReduccion = new rellenarGastos();
-
-            rellenarGastos.removeAll();
-            rellenarGastos.revalidate();
-            rellenarGastos.repaint();
-            
-            try {
-                rellenarGastos.add(rellenarRed.rellenarReducInv());
-            } catch (IOException ex) {
-                Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            rellenarReduccion.botonReducInv(rellenarRed.reducInv,rellenarRed.montoReduc , rellenarRed.iconoOkReducInv, scrollGastos, listaGastos, rellenarRed.rellenarReducInv);
-        
-        }
+       
         else if(comboGastos.getSelectedItem().toString().equals("DEVOLUCIONES") ) {
             rellenarGastos rellenarDevolucion = new rellenarGastos();
             
@@ -2005,17 +1990,13 @@ public class Libros extends javax.swing.JFrame {
     }//GEN-LAST:event_historialCuentasIconMouseClicked
 
     private void corteLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_corteLabelMouseClicked
-        rellenarIngresos rellenarCorte = new rellenarIngresos();
-        rellenarGastos rellenarCorteG = new rellenarGastos();
+        
         ventanaCuentas ventanaC = new ventanaCuentas();
-        try {
-            rellenarCorte.corte(scrollIngresos, listaIngresos);
-            rellenarCorteG.corte( listaGastos);
+       
+            
             ventanaC.setVisible(true);
             
-        } catch (IOException ex) {
-            Logger.getLogger(Libros.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_corteLabelMouseClicked
 
     private void panelCompras2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCompras2MouseClicked
@@ -2136,7 +2117,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JPanel libroGastos;
     private javax.swing.JPanel libroIngresos;
     public static javax.swing.JPanel listaGastos;
-    private static javax.swing.JPanel listaIngresos;
+    public static javax.swing.JPanel listaIngresos;
     private javax.swing.JPanel maxi;
     private javax.swing.JLabel maxiIcon;
     private javax.swing.JLabel packsIcon;

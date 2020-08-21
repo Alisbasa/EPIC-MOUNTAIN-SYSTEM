@@ -34,7 +34,6 @@ public class ListasCB {
                                "PUBLICIDAD",
                                "TRANSPORTE",
                                "HONORARIOS",
-                               "REDUC. DE INV.",
                                "DEVOLUCIONES",
                                "DESECHOS"}; 
 

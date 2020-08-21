@@ -340,6 +340,8 @@ public class clienteNuevoCobrar extends javax.swing.JFrame {
             String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+1) + ")";
             EscribirCRM.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+1), 2);
         
+            
+            this.setVisible(false);
         } catch (IOException ex) {
                     Caption ventanaEx = new Caption("Recuerda cerrar Excel");
                     ventanaEx.setVisible(true);
@@ -348,7 +350,7 @@ public class clienteNuevoCobrar extends javax.swing.JFrame {
                     Caption ventanaEx = new Caption(jtNombre.getText()+ " es un deudor registrado");
                     ventanaEx.setVisible(true);
         }
-        this.setVisible(false);
+        
     }//GEN-LAST:event_jbRegistrarMouseClicked
 
     /**
