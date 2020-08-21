@@ -545,7 +545,46 @@ public class Escribir {
 
         XSSFCell newCell = row.createCell(columna);
         newCell.setCellValue(data);
-        setCellStyle(newWorkbook, newCell);
+        setCellStyleDesc(newWorkbook, newCell);
+
+        XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+        inputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkbook.write(outputStream);
+        outputStream.close();
+
+    }
+    
+    public void escribirCeldaV(String filepath, String hoja, String data, int fila, int columna) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+
+        XSSFRow row = newSheet.getRow(fila);
+
+        XSSFCell newCell = row.createCell(columna);
+        newCell.setCellValue(data);
+        setCellStylePrecioVerde(newWorkbook, newCell);
+
+        XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
+        inputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(file);
+        newWorkbook.write(outputStream);
+        outputStream.close();
+
+    }
+    public void escribirCeldaGF(String filepath, String hoja, String data, int fila, int columna) throws FileNotFoundException, IOException {
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook = new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+
+        XSSFRow row = newSheet.getRow(fila);
+
+        XSSFCell newCell = row.createCell(columna);
+        newCell.setCellValue(data);
+        setCellStyleGrisPrecio(newWorkbook, newCell);
 
         XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
         inputStream.close();

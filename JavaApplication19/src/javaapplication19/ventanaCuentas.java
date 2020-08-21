@@ -235,10 +235,38 @@ public class ventanaCuentas extends javax.swing.JFrame {
         try {
             Escribir escribirCuentas = new Escribir();
             escribirCuentas.crearHojaCorte("src\\excel\\Corte.xlsx", fechaActual());
-            escribirCuentas.escribirCeldaDouble("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(bbva.getText())), 2, 2);
-            escribirCuentas.escribirCeldaDouble("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(caja.getText())), 3, 2);
-            escribirCuentas.escribirCeldaDouble("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(mp.getText())), 4, 2);
-            escribirCuentas.escribirCeldaDouble("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(liberar.getText())), 5, 2);
+            
+            escribirCuentas.escribirCelda("src\\excel\\Corte.xlsx", fechaActual(), "BBVA", 1, 1);
+            escribirCuentas.escribirCelda("src\\excel\\Corte.xlsx", fechaActual(), "CAJA", 2, 1);
+            escribirCuentas.escribirCelda("src\\excel\\Corte.xlsx", fechaActual(), "MERCADO PAGO", 3, 1);
+            escribirCuentas.escribirCelda("src\\excel\\Corte.xlsx", fechaActual(), "X LIBERAR", 4, 1);
+            escribirCuentas.escribirCeldaGF("src\\excel\\Corte.xlsx", fechaActual(), "COMPRAS EN TRANSITO", 5, 1);
+            escribirCuentas.escribirCeldaGF("src\\excel\\Corte.xlsx", fechaActual(), "COSTO DE INVENTARIO", 6, 1);
+            escribirCuentas.escribirCeldaGF("src\\excel\\Corte.xlsx", fechaActual(), "EQUIPO Y MOBILIARIO", 7, 1);
+            escribirCuentas.escribirCeldaGF("src\\excel\\Corte.xlsx", fechaActual(), "DEUDAS A COBRAR", 8, 1);
+            escribirCuentas.escribirCeldaGF("src\\excel\\Corte.xlsx", fechaActual(), "DEUDAS A PAGAR", 9, 1);
+            escribirCuentas.escribirCeldaV("src\\excel\\Corte.xlsx", fechaActual(), "TOTAL EN CAPITAL", 10, 1);
+            escribirCuentas.escribirCeldaV("src\\excel\\Corte.xlsx", fechaActual(), "TOTAL NETO", 11, 1);
+            escribirCuentas.escribirCeldaGF("src\\excel\\Corte.xlsx", fechaActual(), "CAPITAL ANTERIOR", 12, 1);
+            escribirCuentas.escribirCeldaGF("src\\excel\\Corte.xlsx", fechaActual(), "GASTOS TOTALES", 13, 1);
+            escribirCuentas.escribirCeldaGF("src\\excel\\Corte.xlsx", fechaActual(), "INGRESOS TOTALES", 14, 1);
+            escribirCuentas.escribirCelda("src\\excel\\Corte.xlsx", fechaActual(), "FUGAS", 15, 1);
+            escribirCuentas.escribirCelda("src\\excel\\Corte.xlsx", fechaActual(), "EXTRA", 16, 1);
+            escribirCuentas.escribirCeldaGF("src\\excel\\Corte.xlsx", fechaActual(), "EGRESOS", 17, 1);
+            escribirCuentas.escribirCeldaGF("src\\excel\\Corte.xlsx", fechaActual(), "UTILIDADES", 18, 1);
+            escribirCuentas.escribirCeldaV("src\\excel\\Corte.xlsx", fechaActual(), "UTILIDAD/PERDIDA", 19, 1);
+            escribirCuentas.escribirCeldaV("src\\excel\\Corte.xlsx", fechaActual(), "TOTAL EN CAPITAL", 20, 1);
+            
+            escribirCuentas.escribirCeldaV("src\\excel\\Corte.xlsx", fechaActual(), "LO QUE HAY", 10, 0);
+            escribirCuentas.escribirCeldaV("src\\excel\\Corte.xlsx", fechaActual(), "LO QUE DEBE HABER", 20, 0);
+            
+            
+            
+            
+            escribirCuentas.escribirCeldaDouble("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(bbva.getText())), 1, 2);
+            escribirCuentas.escribirCeldaDouble("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(caja.getText())), 2, 2);
+            escribirCuentas.escribirCeldaDouble("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(mp.getText())), 3, 2);
+            escribirCuentas.escribirCeldaDouble("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(liberar.getText())), 4, 2);
            // double comprasT = LeerExcel.obtenerCeldaNumerica(filepath, hoja, NORMAL, PROPERTIES)
             
             
