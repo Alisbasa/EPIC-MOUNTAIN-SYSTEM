@@ -124,7 +124,20 @@ public class LeerExcel {
         
         
         return cell.getNumericCellValue();
-    }    
+    }  
+    
+    static public String obtenerCeldaFormula (String filepath, String hoja, int rowNumber, int columna) throws FileNotFoundException, IOException{ 
+        File file = new File(filepath);
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook newWorkbook =new XSSFWorkbook(inputStream);
+        XSSFSheet newSheet = newWorkbook.getSheet(hoja);
+        XSSFRow row = newSheet.getRow(rowNumber);
+        XSSFCell cell = row.getCell(columna);
+        
+        
+        return cell.getRawValue();
+    } 
+    
     @SuppressWarnings("empty-statement")
    static public String[] obtenerHoja(String filepath) throws IOException{
        File file = new File(filepath);
