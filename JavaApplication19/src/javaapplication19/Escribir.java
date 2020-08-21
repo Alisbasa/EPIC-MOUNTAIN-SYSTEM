@@ -948,7 +948,7 @@ public class Escribir {
                     newCell4.setCellValue("CANTIDAD");
                     
                     XSSFCellStyle style = newWorkBook.createCellStyle();
-                    XSSFColor color = new XSSFColor(Colores.epicColor);
+                    XSSFColor color = new XSSFColor(Colores.verdeExcel);
                     style.setFillForegroundColor(color);//color de fondo
                     style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
                     style.setAlignment(HorizontalAlignment.CENTER);
@@ -1023,7 +1023,7 @@ public class Escribir {
                     XSSFCell newCell4 = row2.createCell(2);
                     
                     XSSFCellStyle style = newWorkBook.createCellStyle();
-                    XSSFColor color = new XSSFColor(Colores.epicColor);
+                    XSSFColor color = new XSSFColor(Colores.verdeExcel);
                     style.setFillForegroundColor(color);//color de fondo
                     style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
                     style.setAlignment(HorizontalAlignment.CENTER);
@@ -1126,7 +1126,7 @@ public class Escribir {
                     XSSFCell newCell4 = row2.createCell(2);
                     
                     XSSFCellStyle style = newWorkBook.createCellStyle();
-                    XSSFColor color = new XSSFColor(Colores.epicColor);
+                    XSSFColor color = new XSSFColor(Colores.verdeExcel);
                     style.setFillForegroundColor(color);//color de fondo
                     style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
                     style.setAlignment(HorizontalAlignment.CENTER);
