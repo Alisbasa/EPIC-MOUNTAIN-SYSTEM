@@ -291,8 +291,16 @@ public class ventanaCuentas extends javax.swing.JFrame {
             Double totalNeto = Double.valueOf(LeerExcel.obtenerCeldaFormula("src\\excel\\Corte.xlsx", fechaActual(), 9, 2)) - deudasP;
             escribirCuentas.escribirCeldaDoubleV("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(totalNeto), 11, 2);
             
-            Double utilidades = Double.valueOf(LeerExcel.obtenerCeldaFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos")+1), 6));
-            escribirCuentas.escribirCeldaDoubleGF("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(utilidades), 18, 2);
+            
+            double sumaUtilidades=  Escribir.SumarFile(LeerExcel.buscaVerdes("src\\excel\\LibrosContables.xlsx", "Ingresos"), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6, "src\\excel\\LibrosContables.xlsx", "Ingresos");
+                      
+            escribirCuentas.escribirCeldaDoubleGF("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(sumaUtilidades), 18, 2);
+            
+            
+             double sumaEgresos=  Escribir.SumarFile(LeerExcel.buscaVerdes("src\\excel\\LibrosContables.xlsx", "Gastos"), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6, "src\\excel\\LibrosContables.xlsx", "Gastos");
+                      
+            escribirCuentas.escribirCeldaDoubleGF("src\\excel\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(sumaEgresos), 17, 2);
+            
             
             String gastosTotales = "SUM(C18+C16)";
             escribirCuentas.escribirFormulaPacks("src\\excel\\Corte.xlsx", fechaActual(), gastosTotales, 13 , 2);

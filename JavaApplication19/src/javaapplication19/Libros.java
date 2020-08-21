@@ -966,6 +966,9 @@ public class Libros extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 corteLabelMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                corteLabelMouseEntered(evt);
+            }
         });
         corte.add(corteLabel, java.awt.BorderLayout.CENTER);
 
@@ -2030,6 +2033,10 @@ public class Libros extends javax.swing.JFrame {
             e.printStackTrace();       
         }
     }//GEN-LAST:event_comprasIcon2MouseClicked
+
+    private void corteLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_corteLabelMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_corteLabelMouseEntered
     
     
     /**/

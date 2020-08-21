@@ -819,6 +819,14 @@ public class Escribir {
         System.out.println(Resta);
         return Resta;
     }
+    
+    public static double SumarFile(int filaInicial ,int filaFinal, int columna, String filepath, String hoja) throws IOException, IOException {
+        double suma=0;
+        for(int i = filaInicial; i<=filaFinal;i++){
+            suma=suma+LeerExcel.obtenerCeldaNumerica(filepath, hoja, columna, i);
+        }
+        return suma;
+    }
 
     public Double Mulitplicar(int columnaInicial, int columnaFinal, int fila, String filepath, String hoja) throws IOException, IOException {
         Double columnaUno = LeerExcel.obtenerCeldaNumerica(filepath, hoja, columnaInicial, fila);
