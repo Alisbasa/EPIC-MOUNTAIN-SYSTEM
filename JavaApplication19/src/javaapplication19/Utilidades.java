@@ -72,7 +72,7 @@ public class Utilidades {
 
             }
             if (finder == false) {
-                rellenarIngresos.devolverUltimaVenta();
+                rellenarIngresos.devolverUltimaVenta(rellenarIngresos.fechaActualEscribir().toUpperCase());
                 rellenarIngresos.formulas();
 
             }
