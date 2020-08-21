@@ -348,7 +348,7 @@ public class rellenarIngresos {
                     inventarioLista.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     inventarioLista.setText((String) inventario.getSelectedItem());
                     int numeroLista = inventario.getSelectedIndex() + 1;
-                    int numeroPlataforma = 11;
+                    int numeroPlataforma = 9;
                     if (plataformacb.getSelectedIndex() == 0) {
                         numeroPlataforma = 13;
                     }
@@ -935,7 +935,7 @@ public class rellenarIngresos {
                     inventarioLista.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     inventarioLista.setText((String) inventario.getSelectedItem());
                     int numeroLista = inventario.getSelectedIndex() + 1;
-                    int numeroPlataforma = 11;
+                    int numeroPlataforma = 9;
                     if (plataformacb.getSelectedIndex() == 0) {
                         numeroPlataforma = 13;
                     }
