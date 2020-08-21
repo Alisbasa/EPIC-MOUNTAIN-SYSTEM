@@ -1119,6 +1119,7 @@ public class rellenarIngresos {
                     variacion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     variacion.setText("$" + montoDeuPE.getText());
 
+                    
                     JLabel icono = new JLabel();
                     Iconos.scaleImage("DeudasPG", icono, 25);
                     icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));

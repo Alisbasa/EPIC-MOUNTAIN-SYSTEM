@@ -545,7 +545,7 @@ public class Escribir {
 
         XSSFCell newCell = row.createCell(columna);
         newCell.setCellValue(data);
-        setCellStyleDesc(newWorkbook, newCell);
+        setCellStyleGris(newWorkbook, newCell);
 
         XSSFFormulaEvaluator.evaluateAllFormulaCells(newWorkbook);
         inputStream.close();
