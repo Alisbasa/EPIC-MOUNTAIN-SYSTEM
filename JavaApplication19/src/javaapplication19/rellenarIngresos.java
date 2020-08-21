@@ -35,7 +35,7 @@ public class rellenarIngresos {
 
     public List<String> deudoresCompras;
 
-    private String excelLibros = "src\\excel\\LibrosContables.xlsx";
+    private String excelLibros = "C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx";
     
     static JLabel iconoVentas = new JLabel();
 
@@ -392,15 +392,15 @@ public class rellenarIngresos {
                     Escribir escribirVentas = new Escribir();
 
                     //System.out.println(LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()));
-                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data, 7);
+                    escribirVentas.escribirExcelInv("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", data, 7);
                     
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(precioExcel)), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
-                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
+                    escribirVentas.escribirCeldaDouble("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(precioExcel)), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
+                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                    escribirVentas.escribirFormula("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
                     
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(utilidadExcel)), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
-                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+                    escribirVentas.escribirCeldaDouble("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(utilidadExcel)), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                    escribirVentas.escribirFormula("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", formula2, (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
 
                     if (cliente.getSelectedItem().toString() == "Nuevo Cliente") {
                         clienteNuevo clienteC = new clienteNuevo(inventario, unidades, plataformacb, cliente, iconoOkV);
@@ -509,15 +509,15 @@ public class rellenarIngresos {
 
                     Escribir escribirVentas = new Escribir();
 
-                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data, 7);
+                    escribirVentas.escribirExcelInv("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", data, 7);
                     
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(montoC.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
-                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
+                    escribirVentas.escribirCeldaDouble("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(montoC.getText())), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
+                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                    escribirVentas.escribirFormula("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
                     
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(montoC.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
-                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+                    escribirVentas.escribirCeldaDouble("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(montoC.getText())), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                    escribirVentas.escribirFormula("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", formula2, (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
                     
                     Escribir EscribirExcel = new Escribir();
 
@@ -609,14 +609,14 @@ public class rellenarIngresos {
 
                     Escribir escribirVentas = new Escribir();
                     try {
-                        escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data, 7);
-                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(montoI.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
-                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                        escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
+                        escribirVentas.escribirExcelInv("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", data, 7);
+                        escribirVentas.escribirCeldaDouble("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(montoI.getText())), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
+                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                        escribirVentas.escribirFormula("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
 
-                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(montoI.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
-                        String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                        escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+                        escribirVentas.escribirCeldaDouble("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(montoI.getText())), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                        String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                        escribirVentas.escribirFormula("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", formula2, (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
                     
                     } catch (IOException ex) {
                         Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
@@ -726,14 +726,14 @@ public class rellenarIngresos {
 
                 Escribir escribirVentas = new Escribir();
                 try {
-                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data, 7);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(montoImp.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
-                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
+                    escribirVentas.escribirExcelInv("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", data, 7);
+                    escribirVentas.escribirCeldaDouble("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(montoImp.getText())), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
+                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                    escribirVentas.escribirFormula("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
                     
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(montoImp.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
-                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+                    escribirVentas.escribirCeldaDouble("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(montoImp.getText())), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                    escribirVentas.escribirFormula("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", formula2, (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
                     
                 } catch (IOException ex) {
                     Caption ventanaEx = new Caption("Recuerda cerrar Excel");
@@ -822,15 +822,15 @@ public class rellenarIngresos {
                     if (deudor.getSelectedItem().toString() != "Nuevo") {
 
                         //EXCEL INDIVIDUAL
-                        escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", dataLibros, 7);
+                        escribirVentas.escribirExcelInv("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", dataLibros, 7);
                         
-                       escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
-                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                        escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
+                       escribirVentas.escribirCeldaDouble("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
+                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                        escribirVentas.escribirFormula("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
 
-                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(montoDeudaC.getText())), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
-                        String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                        escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+                        escribirVentas.escribirCeldaDouble("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(montoDeudaC.getText())), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                        String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                        escribirVentas.escribirFormula("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", formula2, (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
                     
 
                         escribirVentas.escribirExcelInv("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), data, 2);
@@ -975,14 +975,14 @@ public class rellenarIngresos {
 
                     Escribir escribirVentas = new Escribir();
 
-                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data,7);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(precioExcel)), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
-                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
+                    escribirVentas.escribirExcelInv("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", data,7);
+                    escribirVentas.escribirCeldaDouble("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(precioExcel)), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
+                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                    escribirVentas.escribirFormula("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
                     
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(utilidadExcel)), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
-                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+                    escribirVentas.escribirCeldaDouble("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(Double.valueOf(utilidadExcel)), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                    escribirVentas.escribirFormula("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", formula2, (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
                     
                     //Condicional para verificar que exista la hoja y si es asi escriba en la existente
                     String[] hojas = LeerExcel.obtenerHoja("src\\excel\\DeudasC.xlsx");
@@ -1145,14 +1145,14 @@ public class rellenarIngresos {
                     escribirVentas.escribirFormula("src\\excel\\DeudasP.xlsx", "deudasPagar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", "deudasPagar") + 1), 2);
 
                     try {
-                        escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data,7);
-                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoDeuPE.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
-                        String formula2 = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                        escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
+                        escribirVentas.escribirExcelInv("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", data,7);
+                        escribirVentas.escribirCeldaDouble("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoDeuPE.getText()), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
+                        String formula2 = "SUM(D2:D" + (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                        escribirVentas.escribirFormula("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", formula2, (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
 
-                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoDeuPE.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
-                        String formula3 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                        escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula3, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+                        escribirVentas.escribirCeldaDouble("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoDeuPE.getText()), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                        String formula3 = "SUM(G2:G" + (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                        escribirVentas.escribirFormula("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", formula3, (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
                     
                     } catch (IOException ex) {
                         Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
@@ -1306,14 +1306,14 @@ public class rellenarIngresos {
 
                         Escribir escribirVentas = new Escribir();
 
-                        escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data,7);
-                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoA.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
-                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                        escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
+                        escribirVentas.escribirExcelInv("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", data,7);
+                        escribirVentas.escribirCeldaDouble("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoA.getText()), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
+                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                        escribirVentas.escribirFormula("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", formula, (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
 
-                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoA.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
-                        String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                        escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+                        escribirVentas.escribirCeldaDouble("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(montoA.getText()), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+                        String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+                        escribirVentas.escribirFormula("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", formula2, (LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
                     
                     }
 
@@ -1471,9 +1471,9 @@ public class rellenarIngresos {
 
         listaIngresos.add(TOP, 0);
 
-        if (!LeerExcel.tablaVacia("src\\excel\\LibrosContables.xlsx", "Ingresos")) {
+        if (!LeerExcel.tablaVacia("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos")) {
 
-            for (int i = 1; i <= LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"); i++) {
+            for (int i = 1; i <= LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"); i++) {
                 PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
                 panelIngreso.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                 panelIngreso.setLayout(new GridLayout(1, 5));
@@ -1484,22 +1484,22 @@ public class rellenarIngresos {
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                fecha.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 0, i));
+                fecha.setText(LeerExcel.obtenerCelda("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", 0, i));
 
                 JLabel dev = new JLabel();
                 dev.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                dev.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 2, i));
+                dev.setText(LeerExcel.obtenerCelda("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", 2, i));
 
                 JLabel montoDevolucion = new JLabel();
                 montoDevolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                montoDevolucion.setText("$" + LeerExcel.obtenerCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Ingresos", 3, i));
+                montoDevolucion.setText("$" + LeerExcel.obtenerCeldaNumerica("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", 3, i));
 
                 JLabel plataforma = new JLabel();
                 plataforma.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                plataforma.setText("$" + LeerExcel.obtenerCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Ingresos", 6, i));
+                plataforma.setText("$" + LeerExcel.obtenerCeldaNumerica("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", 6, i));
 
                 String IconoTipo = "VentasG";
-                String tipo = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 1, i);
+                String tipo = LeerExcel.obtenerCelda("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", 1, i);
                 switch (tipo) {
                     case "Venta":
                         IconoTipo = "VentasG";
@@ -1540,7 +1540,7 @@ public class rellenarIngresos {
                         break;
                 }
 
-                String colorR = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 5, i);
+                String colorR = LeerExcel.obtenerCelda("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", 5, i);
                 switch (colorR) {
                     case "VERDE":
                         panelIngreso.setBackground(Colores.epicColorBajito);
@@ -1598,7 +1598,7 @@ public class rellenarIngresos {
             //Escribe arreglo de Strings
             escribirVentas.escribirExcelInv("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), data, 10);
 
-            //escribirVentas.escribirCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 23);
+            //escribirVentas.escribirCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 23);
             //Escribe unidades como int
             escribirVentas.escribirCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), Integer.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase()), 6);
 
@@ -2538,9 +2538,9 @@ public class rellenarIngresos {
 
         listaIngresos.add(TOP, 0);
 
-        if (!LeerExcel.tablaVacia("src\\excel\\LibrosContables.xlsx", "Ingresos")) {
+        if (!LeerExcel.tablaVacia("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos")) {
 
-            for (int i = 1; i <= LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"); i++) {
+            for (int i = 1; i <= LeerExcel.contarRenglones("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos"); i++) {
                 PanelCurvoSinSombra panelIngreso = new PanelCurvoSinSombra();
                 panelIngreso.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                 panelIngreso.setLayout(new GridLayout(1, 5));
@@ -2551,22 +2551,22 @@ public class rellenarIngresos {
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                fecha.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 0, i));
+                fecha.setText(LeerExcel.obtenerCelda("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", 0, i));
 
                 JLabel dev = new JLabel();
                 dev.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                dev.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 2, i));
+                dev.setText(LeerExcel.obtenerCelda("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", 2, i));
 
                 JLabel montoDevolucion = new JLabel();
                 montoDevolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                montoDevolucion.setText("$" + LeerExcel.obtenerCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Ingresos", 3, i));
+                montoDevolucion.setText("$" + LeerExcel.obtenerCeldaNumerica("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", 3, i));
 
                 JLabel plataforma = new JLabel();
                 plataforma.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                plataforma.setText("$" + LeerExcel.obtenerCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Ingresos", 6, i));
+                plataforma.setText("$" + LeerExcel.obtenerCeldaNumerica("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", 6, i));
 
                 String IconoTipo = "VentasG";
-                String tipo = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 1, i);
+                String tipo = LeerExcel.obtenerCelda("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", 1, i);
                 switch (tipo) {
                     case "Venta":
                         IconoTipo = "VentasG";
@@ -2607,12 +2607,12 @@ public class rellenarIngresos {
                         break;
                 }
 
-                String colorR = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", 5, i);
+                String colorR = LeerExcel.obtenerCelda("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", 5, i);
                 switch (colorR) {
                     case "VERDE":
                         panelIngreso.setBackground(Colores.grisBajito);
                         Escribir escribir = new Escribir();
-                        escribir.escribirCelda("src\\excel\\LibrosContables.xlsx", "Ingresos", "GRIS", i, 5);
+                        escribir.escribirCelda("C:\\Users\\Usuario\\Desktop\\epic\\excel\\LibrosContables.xlsx", "Ingresos", "GRIS", i, 5);
                         break;
                     /*case "AMARILLO":
                         panelIngreso.setBackground(Colores.amarillo);

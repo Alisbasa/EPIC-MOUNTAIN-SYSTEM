@@ -79,8 +79,8 @@ public class Libros extends javax.swing.JFrame {
             añoNuevo();
             estadoCreacion = false;
         }
-        
-        setIconImage(new ImageIcon(getClass().getResource("..\\img\\LOGO.png")).getImage());
+        System.out.println(new File("src\\img\\LOGO.png").getAbsolutePath());
+        setIconImage(new ImageIcon(("src\\img\\LOGO.png")).getImage());
         Iconos("Cerrar",cerrarIcon);
         Iconos("Minimizar_1",maxiIcon);
         
