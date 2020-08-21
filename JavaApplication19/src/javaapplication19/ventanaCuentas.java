@@ -315,15 +315,6 @@ public class ventanaCuentas extends javax.swing.JFrame {
             String totalC = "SUM(C13+C19+C17-C18-C16)";
             escribirCuentas.escribirFormula("src\\excel\\Corte.xlsx", fechaActual(), totalC, 20, 2);
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
             this.setVisible(false);
         } catch (IOException ex) {
             Logger.getLogger(ventanaCuentas.class.getName()).log(Level.SEVERE, null, ex);
