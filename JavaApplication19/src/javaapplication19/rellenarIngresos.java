@@ -815,7 +815,7 @@ public class rellenarIngresos {
                     //Ingresa el panelVenta a la arraylist panelesInresos
                     botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "DeudasCG");
 
-                    String[] data = {(String) fechaActualConA(), Integer.toString(Integer.valueOf(montoDeudaC.getText()) * -1)};
+                    String[] data = {(String) fechaActualConA(), Double.toString(Double.valueOf(montoDeudaC.getText()) * -1)};
                     String[] dataLibros = {(String) fechaActual(), "Deuda a Cobrar", (String) deuda.getText(), montoDeudaC.getText(), "", "VERDE", "0"};
                     Escribir escribirVentas = new Escribir();
 
@@ -839,8 +839,8 @@ public class rellenarIngresos {
                         escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), formula3, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString()) + 1), 1);
 
                         Double suma = LeerExcel.obtenerCeldaNumerica("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(), 1, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString()) + 1));
-                        escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", suma, deudor.getSelectedIndex() + 1, 2);
-                        String formulaLibro = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1) + ")";
+                        escribirVentas.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", suma, deudor.getSelectedIndex(), 2);
+                        String formulaLibro = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")) + ")";
                         escribirVentas.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formulaLibro, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
 
                         listaIngresos.add(panelIngreso, 1);
@@ -870,8 +870,10 @@ public class rellenarIngresos {
                         panelIngreso.add(icono);
 
                     }
-                    if (LeerExcel.obtenerCeldaNumerica("src\\excel\\DeudasC.xlsx", "deudasCobrar", 2, deudor.getSelectedIndex() + 1) == 0) {
-                        Escribir.saldarDeuda("src\\excel\\DeudasC.xlsx", "deudasCobrar", deudor.getSelectedIndex() + 1);
+                    if (Double.valueOf(LeerExcel.obtenerCeldaFormula("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(),(LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString())+1), 1)) == 0) {
+                        Escribir.saldarDeuda("src\\excel\\DeudasC.xlsx", "deudasCobrar", deudor.getSelectedIndex()+1);
+                    }else{
+                        
                     }
 
                     indice++;
