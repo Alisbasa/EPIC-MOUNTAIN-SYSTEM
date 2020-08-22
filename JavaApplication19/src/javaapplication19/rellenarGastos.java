@@ -516,9 +516,9 @@ public class rellenarGastos {
                 }
 
                 if (producto.getSelectedItem().toString().equals("Aditamento")) {
-                    InventarioAditamento inv;
+                   
                     try {
-                        inv = new InventarioAditamento(precioI, desarrolloListaI);
+                        InventarioAditamento inv = new InventarioAditamento(precioI, desarrolloListaI);
                         inv.setVisible(true);
                     } catch (IOException ex) {
                         Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
@@ -1515,6 +1515,7 @@ public class rellenarGastos {
                     
                    
                     int folio = (int) LeerExcel.obtenerCeldaNumerica("src//excel/historialCompras.xlsx", cliente.getSelectedItem().toString(), 23, ventas.getSelectedIndex() + 1);
+                    
                     String plataforma = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 21, folio);
                     double precio = 0;
                     double variacion = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 20, folio);
@@ -1524,7 +1525,7 @@ public class rellenarGastos {
                             precio = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 14, folio);
                             break;
                         case "Local":
-                            precio = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 10, folio);
+                            precio = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 9, folio);
                             break;
                     }
                     //REGRESAR VENTA A INVENTARIO

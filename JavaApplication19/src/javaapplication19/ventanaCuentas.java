@@ -238,6 +238,7 @@ public class ventanaCuentas extends javax.swing.JFrame {
             Escribir escribirCuentas = new Escribir();
             escribirCuentas.crearHojaCorte("src\\excel\\Corte.xlsx", fechaActual());
             
+            escribirCuentas.escribirCelda("src\\excel\\Corte.xlsx", fechaActual(), rellenarIngresos.fechaActual(), 1, 1);
             escribirCuentas.escribirCelda("src\\excel\\Corte.xlsx", fechaActual(), "BBVA", 1, 1);
             escribirCuentas.escribirCelda("src\\excel\\Corte.xlsx", fechaActual(), "CAJA", 2, 1);
             escribirCuentas.escribirCelda("src\\excel\\Corte.xlsx", fechaActual(), "MERCADO PAGO", 3, 1);
