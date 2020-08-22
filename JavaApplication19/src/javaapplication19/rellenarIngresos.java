@@ -870,12 +870,13 @@ public class rellenarIngresos {
                         panelIngreso.add(icono);
 
                     }
-                    if (Double.valueOf(LeerExcel.obtenerCeldaFormula("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(),(LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString())+1), 1)) == 0) {
-                        Escribir.saldarDeuda("src\\excel\\DeudasC.xlsx", "deudasCobrar", deudor.getSelectedIndex()+1);
-                    }else{
-                        
-                    }
+                    if(!deudor.getSelectedItem().toString().equals("NUEVO")){
+                        if (Double.valueOf(LeerExcel.obtenerCeldaFormula("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(),(LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString())+1), 1)) == 0) {
+                            Escribir.saldarDeuda("src\\excel\\DeudasC.xlsx", "deudasCobrar", deudor.getSelectedIndex()+1);
+                        }else{
 
+                        }
+                    }   
                     indice++;
                     panelPadre.removeAll();
                     panelPadre.updateUI();
