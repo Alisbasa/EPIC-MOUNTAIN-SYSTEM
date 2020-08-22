@@ -51,7 +51,6 @@ public class packsCT extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
-        barra = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         LOGO = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -99,21 +98,6 @@ public class packsCT extends javax.swing.JFrame {
         });
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        barra.setPreferredSize(new java.awt.Dimension(80, 30));
-
-        javax.swing.GroupLayout barraLayout = new javax.swing.GroupLayout(barra);
-        barra.setLayout(barraLayout);
-        barraLayout.setHorizontalGroup(
-            barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
-        );
-        barraLayout.setVerticalGroup(
-            barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(barra, java.awt.BorderLayout.LINE_END);
-
         jPanel10.setBackground(new java.awt.Color(0, 0, 0));
         jPanel10.setPreferredSize(new java.awt.Dimension(300, 30));
         jPanel10.setLayout(new java.awt.BorderLayout());
@@ -128,7 +112,7 @@ public class packsCT extends javax.swing.JFrame {
 
         jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
         jpDatos.setBackground(new java.awt.Color(51, 51, 51));
         jpDatos.setLayout(new java.awt.GridLayout(5, 0));
@@ -164,7 +148,7 @@ public class packsCT extends javax.swing.JFrame {
             }
         });
         jpPack.add(jtDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 370, 48));
-        jtProducto.setBackground(Colores.epicColorBajito);
+        jtDesc.setBackground(Colores.epicColorBajito);
 
         jlDesc1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
         jlDesc1.setForeground(new java.awt.Color(255, 255, 255));
@@ -194,7 +178,7 @@ public class packsCT extends javax.swing.JFrame {
         jtCosto.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         jtCosto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jpTIG.add(jtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 120, 48));
-        jtPrecio.setBackground(Colores.epicColorBajito);
+        jtCosto.setBackground(Colores.epicColorBajito);
 
         jpDatos.add(jpTIG);
 
@@ -219,6 +203,8 @@ public class packsCT extends javax.swing.JFrame {
             }
         });
         jpUbicacion.add(jcCond, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 70, 50));
+        jcCond.setBackground(Color.white);
+        jcCond.setUI(PropiedadesCB2.createUI(jcCond));
 
         jlPack.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
         jlPack.setForeground(new java.awt.Color(255, 255, 255));
@@ -304,6 +290,11 @@ public class packsCT extends javax.swing.JFrame {
             EscribirCRM.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Double.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
             String formula10 = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
             EscribirCRM.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula10, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 6);
+            EscribirCRM.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Double.valueOf(data[3]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
+            String formula11 = "SUM(D2:D" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
+            EscribirCRM.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula11, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 3);
+            
+            
             
             EscribirCRM.escribirExcelInv("src\\excel\\comprasT.xlsx", "COMPRAS",inventario,5);
             
@@ -350,7 +341,7 @@ public class packsCT extends javax.swing.JFrame {
             EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", ivaN, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 18);
 
             //PRECIO ML
-            Double precioML = EscribirCRM.SumarColumnasML(LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", "Inventario"), 9, 17, 15, "src\\excel\\Inventario.xlsx", "Inventario");
+            Double precioML = EscribirCRM.SumarColumnasML(LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 9, 17, 15, "src\\excel\\comprasT.xlsx", "COMPRAS");
             EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", precioML, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 13);
 
             //PRECIOML NETO
@@ -450,7 +441,6 @@ public class packsCT extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LOGO;
-    private javax.swing.JPanel barra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
