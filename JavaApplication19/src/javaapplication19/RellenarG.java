@@ -222,8 +222,9 @@ public class RellenarG {
 
         Iconos.scaleImage("ok", iconoOkDesarrolloI, 30);
 
-        rellenarDesInv.add(desarrolloTipoI);
         rellenarDesInv.add(producto);
+        rellenarDesInv.add(desarrolloTipoI);
+        
         rellenarDesInv.add(montoDesI);
         rellenarDesInv.add(iconoOkDesarrolloI);
 
