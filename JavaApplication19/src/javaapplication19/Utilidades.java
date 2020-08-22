@@ -37,7 +37,7 @@ public class Utilidades {
                 if (LeerExcel.obtenerCelda(filepathVentas, mes, 0, folio).equals(LeerExcel.obtenerCelda("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 0, i))) {
                     finder = true;
                     System.out.println("HOLA");
-                    int suma = (int) (LeerExcel.obtenerCeldaNumerica(filepathVentas, mes, 6, LeerExcel.contarRenglones(filepathVentas, mes))) + (int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "INVENTARIO", 6, i);
+                    int suma = (int) (LeerExcel.obtenerCeldaNumerica(filepathVentas, mes, 6, LeerExcel.contarRenglones(filepathVentas, mes))) + (int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 6, i);
                     Escribir escribirVentas = new Escribir();
                     String inventario = "EPIC MOUNTAIN";
                     escribirVentas.escribirCeldaNumerica("src//excel/Inventario.xlsx", inventario, suma, i, 6);
