@@ -335,7 +335,7 @@ public class ventanaCuentas extends javax.swing.JFrame {
 
     public static String fechaActual() {
         java.util.Date fecha = new Date();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd MMMM YY - HH:mm");
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd MMMM YY HH mm");
         return formatoFecha.format(fecha);
     }
 

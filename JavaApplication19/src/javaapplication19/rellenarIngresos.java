@@ -815,7 +815,7 @@ public class rellenarIngresos {
                     //Ingresa el panelVenta a la arraylist panelesInresos
                     botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "DeudasCG");
 
-                    String[] data = {(String) fechaActualConA(), Integer.toString(Integer.valueOf(montoDeudaC.getText()) * -1)};
+                    String[] data = {(String) fechaActualConA(), Double.toString(Double.valueOf(montoDeudaC.getText()) * -1)};
                     String[] dataLibros = {(String) fechaActual(), "Deuda a Cobrar", (String) deuda.getText(), montoDeudaC.getText(), "", "VERDE", "0"};
                     Escribir escribirVentas = new Escribir();
 
