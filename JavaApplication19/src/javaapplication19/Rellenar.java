@@ -277,8 +277,9 @@ JLabel iconoOkV = new JLabel();
         Iconos.scaleImage("DeudasC", iconoDeudasC, 40);
         rellenarDeudasC.add(iconoDeudasC);
 
-        deudor = new JComboBox(LeerExcel.rellenaCB2("src//excel/deudasC.xlsx", "deudasCobrar", 1));
-        //deudor = new JComboBox(LeerExcel.obtenerHoja("src//excel/deudasC.xlsx"));
+
+        deudor = new JComboBox(LeerExcel.obtenerHoja("src//excel/deudasC.xlsx"));
+        deudor.removeItemAt(0);
         deudor.addItem("Nuevo");
         deudor.setBackground(Color.white);
         deudor.setUI(PropiedadesCB2.createUI(deudor));

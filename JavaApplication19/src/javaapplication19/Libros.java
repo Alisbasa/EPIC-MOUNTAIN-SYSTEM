@@ -969,6 +969,9 @@ public class Libros extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 corteLabelMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                corteLabelMouseExited(evt);
+            }
         });
         corte.add(corteLabel, java.awt.BorderLayout.CENTER);
 
@@ -2016,8 +2019,14 @@ public class Libros extends javax.swing.JFrame {
     }//GEN-LAST:event_comprasIcon2MouseClicked
 
     private void corteLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_corteLabelMouseEntered
-        // TODO add your handling code here:
+            corteLabel.setForeground(Colores.epicColor); 
+            corte.setBackground(Color.white);        // TODO add your handling code here:
     }//GEN-LAST:event_corteLabelMouseEntered
+
+    private void corteLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_corteLabelMouseExited
+        corteLabel.setForeground(Color.white); 
+        corte.setBackground(Colores.epicColor);
+    }//GEN-LAST:event_corteLabelMouseExited
     
     
     /**/

@@ -725,7 +725,7 @@ public class rellenarGastos {
                     equipoymobCT equipo = new equipoymobCT(paqueteria, productoCT);
                     equipo.setVisible(true);
 
-                } else if (productoCT.getSelectedItem().toString().equals("Packs de Ventas")) {
+                } else if (productoCT.getSelectedItem().toString().equals("PACK DE VENTAS")) {
 
                     packsCT packs = new packsCT(paqueteria, productoCT);
                     packs.setVisible(true);
