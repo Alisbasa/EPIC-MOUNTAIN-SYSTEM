@@ -869,8 +869,8 @@ public class rellenarIngresos {
                         panelIngreso.add(utilidadDeudaCPanel);
                         panelIngreso.add(icono);
 
-                    }
-                    if(!"NUEVO".equals(deudor.getSelectedItem().toString())){
+                    }else{
+                    
                         if (Double.valueOf(LeerExcel.obtenerCeldaFormula("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString(),(LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", deudor.getSelectedItem().toString())+1), 1)) == 0) {
                             Escribir.saldarDeuda("src\\excel\\DeudasC.xlsx", "deudasCobrar", deudor.getSelectedIndex()+1);
                         }else{
