@@ -59,7 +59,7 @@ public class InventarioAditamento extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         LOGO = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        labelInvEx = new javax.swing.JLabel();
         jpDatos = new javax.swing.JPanel();
         jpDescripcion = new javax.swing.JPanel();
         jlDesc1 = new javax.swing.JLabel();
@@ -97,48 +97,48 @@ public class InventarioAditamento extends javax.swing.JFrame {
         LOGO.setPreferredSize(new java.awt.Dimension(40, 40));
         jPanel10.add(LOGO, java.awt.BorderLayout.LINE_START);
 
-        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("SELECCIONAR PRODUCTO);
-            jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
+        labelInvEx.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        labelInvEx.setForeground(new java.awt.Color(255, 255, 255));
+        labelInvEx.setText("SELECCIONAR PRODUCTO");
+        jPanel10.add(labelInvEx, java.awt.BorderLayout.CENTER);
 
-            jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
+        jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
 
-            getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
-            jpDatos.setBackground(new java.awt.Color(51, 51, 51));
-            jpDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpDatos.setBackground(new java.awt.Color(51, 51, 51));
+        jpDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-            jpDescripcion.setBackground(new java.awt.Color(51, 51, 51));
-            jpDescripcion.setBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1));
+        jpDescripcion.setBackground(new java.awt.Color(51, 51, 51));
+        jpDescripcion.setBorder(javax.swing.BorderFactory.createEmptyBorder(30, 1, 1, 1));
 
-            jlDesc1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
-            jlDesc1.setForeground(new java.awt.Color(255, 255, 255));
-            jlDesc1.setText("INVENTARIO");
-            jpDescripcion.add(jlDesc1);
+        jlDesc1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
+        jlDesc1.setForeground(new java.awt.Color(255, 255, 255));
+        jlDesc1.setText("INVENTARIO");
+        jpDescripcion.add(jlDesc1);
 
-            jpDatos.add(jpDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 82));
+        jpDatos.add(jpDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 82));
 
-            jbRegistrar.setFont(new java.awt.Font("Franklin Gothic Book", 2, 24)); // NOI18N
-            jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
-            jbRegistrar.setText("Registrar");
-            jbRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    jbRegistrarMouseClicked(evt);
-                }
-            });
-            jbRegistrar.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jbRegistrarActionPerformed(evt);
-                }
-            });
-            jpDatos.add(jbRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 170, 60));
-            jbRegistrar.setBackground(Colores.epicColor);
+        jbRegistrar.setFont(new java.awt.Font("Franklin Gothic Book", 2, 24)); // NOI18N
+        jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        jbRegistrar.setText("Registrar");
+        jbRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbRegistrarMouseClicked(evt);
+            }
+        });
+        jbRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbRegistrarActionPerformed(evt);
+            }
+        });
+        jpDatos.add(jbRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 170, 60));
+        jbRegistrar.setBackground(Colores.epicColor);
 
-            getContentPane().add(jpDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 500, 160));
+        getContentPane().add(jpDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 500, 160));
 
-            pack();
-        }// </editor-fold>//GEN-END:initComponents
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
     
     public void changeColor(JPanel hover,Color rand){
         hover.setBackground(rand);
@@ -330,7 +330,6 @@ public class InventarioAditamento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LOGO;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -339,5 +338,6 @@ public class InventarioAditamento extends javax.swing.JFrame {
     private javax.swing.JLabel jlDesc1;
     private javax.swing.JPanel jpDatos;
     private javax.swing.JPanel jpDescripcion;
+    private javax.swing.JLabel labelInvEx;
     // End of variables declaration//GEN-END:variables
 }
