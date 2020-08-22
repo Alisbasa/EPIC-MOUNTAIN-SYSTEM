@@ -205,9 +205,13 @@ public class DeudaCobrar extends javax.swing.JFrame {
                         escribirExcel.escribirFormula("src\\excel\\DeudasC.xlsx", jtNombre.getText(),  formula2, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+ 1), 1);
                         //ESCRIBIR LIBROS
             escribirExcel.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", dataLibros,7);
-             escribirExcel.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos",Utilidades.roundTwoDecimals( 0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
-                        String formulaLibro = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-                        escribirExcel.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formulaLibro, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+            escribirExcel.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos",Utilidades.roundTwoDecimals( 0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+            String formulaLibro = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+            escribirExcel.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formulaLibro, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+            escribirExcel.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos",Utilidades.roundTwoDecimals(Double.valueOf(dataLibros[6])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
+            String formulaLibro2 = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+            escribirExcel.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formulaLibro2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
+            
             
             Libros.actualiza();
             
