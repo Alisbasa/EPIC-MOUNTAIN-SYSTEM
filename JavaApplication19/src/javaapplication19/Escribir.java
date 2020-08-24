@@ -870,7 +870,7 @@ public class Escribir {
         return Resta;
     }
 
-    public void crearHoja(String filepath, String hoja, String header, String header2) throws FileNotFoundException, IOException {
+    public void ruta(String filepath, String hoja, String header, String header2) throws FileNotFoundException, IOException {
         File file = new File(filepath);
         XSSFWorkbook newWorkBook;
         try ( FileInputStream inputStream = new FileInputStream(file)) {

@@ -351,7 +351,7 @@ public class Provedores extends javax.swing.JFrame {
                                 jtUbicacion.getText()};
         Escribir EscribirCRM = new Escribir();
         try {
-            EscribirCRM.escribirExcelInv("src\\excel\\Provedores.xlsx", "MIS PROVEEDORES", provedor, 5);
+            EscribirCRM.escribirExcelInv(rutas.excel + "\\Provedores.xlsx", "MIS PROVEEDORES", provedor, 5);
         } catch (IOException ex) {
             Logger.getLogger(Provedores.class.getName()).log(Level.SEVERE, null, ex);
         }

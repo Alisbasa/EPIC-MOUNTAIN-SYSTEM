@@ -35,7 +35,7 @@ public class InventarioExistente extends javax.swing.JFrame {
         this.setExtendedState(NORMAL);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        inventarioCB = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 0));
+        inventarioCB = new JComboBox(LeerExcel.rellenaCB2(rutas.excel + "/Inventario.xlsx", "EPIC MOUNTAIN", 0));
         inventarioCB.setBackground(Color.white);
         inventarioCB.setUI(PropiedadesCB2.createUI(inventarioCB));
         jpDescripcion.add(inventarioCB);
@@ -181,24 +181,24 @@ public class InventarioExistente extends javax.swing.JFrame {
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
         try {
             String inventario5 = "EPIC MOUNTAIN";
-            int suma = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", inventario5, 6, inventarioCB.getSelectedIndex() + 1) + Integer.valueOf(UNIDADES.getText());
-            double monto = LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", inventario5, 7, inventarioCB.getSelectedIndex() + 1)*Integer.valueOf(UNIDADES.getText());
+            int suma = (int) LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\Inventario.xlsx", inventario5, 6, inventarioCB.getSelectedIndex() + 1) + Integer.valueOf(UNIDADES.getText());
+            double monto = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\Inventario.xlsx", inventario5, 7, inventarioCB.getSelectedIndex() + 1)*Integer.valueOf(UNIDADES.getText());
             
             Escribir escribirInv = new Escribir();
             System.out.println(suma);
-            escribirInv.escribirCeldaNumerica("src\\excel\\Inventario.xlsx", inventario5, suma, inventarioCB.getSelectedIndex() + 1, 6);
+            escribirInv.escribirCeldaNumerica(rutas.excel + "\\Inventario.xlsx", inventario5, suma, inventarioCB.getSelectedIndex() + 1, 6);
             
             String[] data = {(String) fechaActual(), inventario5, inventarioCB.getSelectedItem().toString(), Double.toString(monto), "Existente", "VERDE", "0"};
             
             try {
-                escribirInv.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);   
-                escribirInv.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(monto), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
-                String formula = "SUM(D2:D" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
+                escribirInv.escribirExcelInv(rutas.excel + "\\LibrosContables.xlsx", "Gastos", data, 7);   
+                escribirInv.escribirCeldaDouble(rutas.excel + "\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(monto), LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Gastos"), 3);
+                String formula = "SUM(D2:D" + LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Gastos") + ")";
 
-                escribirInv.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(0)), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-                String formula2 = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
-                escribirInv.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 3);
-                escribirInv.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 6);
+                escribirInv.escribirCeldaDouble(rutas.excel + "\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(0)), LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Gastos"), 6);
+                String formula2 = "SUM(G2:G" + LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Gastos") + ")";
+                escribirInv.escribirFormula(rutas.excel + "\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Gastos") + 1), 3);
+                escribirInv.escribirFormula(rutas.excel + "\\LibrosContables.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Gastos")+1), 6);
  
             } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
@@ -208,7 +208,7 @@ public class InventarioExistente extends javax.swing.JFrame {
             Logger.getLogger(InventarioExistente.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            rellenarGastos.botonBorrarInd(rellenarGastos.iconoLibros, "src\\excel\\LibrosContables.xlsx", "Gastos");
+            rellenarGastos.botonBorrarInd(rellenarGastos.iconoLibros, rutas.excel + "\\LibrosContables.xlsx", "Gastos");
             Libros.actualiza();
         } catch (IOException ex) {
             Logger.getLogger(InventarioExistente.class.getName()).log(Level.SEVERE, null, ex);

@@ -323,22 +323,22 @@ public class clienteNuevoCobrar extends javax.swing.JFrame {
         try {
             
             
-            EscribirCRM.escribirExcelClientes("src\\excel\\CRM.xlsx", "Clientes", Registro);
+            EscribirCRM.escribirExcelClientes(rutas.excel + "\\CRM.xlsx", "Clientes", Registro);
             vender.vender(inventario, unidadesCB, plataforma, jtNombre.getText(), cliente);
 
             //Escribe en Excel individual y crea hoja
-            EscribirCRM.crearHoja("src\\excel\\DeudasC.xlsx", jtNombre.getText(), "FECHA", "MONTO");
+            EscribirCRM.ruta(rutas.excel + "\\DeudasC.xlsx", jtNombre.getText(), "FECHA", "MONTO");
             String[] ventaInd = {fechaActual(), precioExcel};
-            EscribirCRM.escribirExcelInv("src\\excel\\DeudasC.xlsx", jtNombre.getText(), ventaInd, 2);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", jtNombre.getText(), Double.valueOf(precioExcel), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText()), 1);
-            String formulaInd = "SUM(B2:B" + LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText()) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\DeudasC.xlsx", jtNombre.getText(), formulaInd, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+1), 1);
+            EscribirCRM.escribirExcelInv(rutas.excel + "\\DeudasC.xlsx", jtNombre.getText(), ventaInd, 2);
+            EscribirCRM.escribirCeldaDouble(rutas.excel + "\\DeudasC.xlsx", jtNombre.getText(), Double.valueOf(precioExcel), LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", jtNombre.getText()), 1);
+            String formulaInd = "SUM(B2:B" + LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", jtNombre.getText()) + ")";
+            EscribirCRM.escribirFormula(rutas.excel + "\\DeudasC.xlsx", jtNombre.getText(), formulaInd, (LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", jtNombre.getText())+1), 1);
             //Escribe en Excel general
             String [] ventaC = {fechaActual(), jtNombre.getText(), precioExcel};
-            EscribirCRM.escribirExcelInv("src\\excel\\DeudasC.xlsx", "deudasCobrar", ventaC, 3);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", Double.valueOf(precioExcel), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 2);
-            String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+1), 2);
+            EscribirCRM.escribirExcelInv(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar", ventaC, 3);
+            EscribirCRM.escribirCeldaDouble(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar", Double.valueOf(precioExcel), LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar"), 2);
+            String formula = "SUM(C2:C" + (LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar")+1) + ")";
+            EscribirCRM.escribirFormula(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar")+1), 2);
         
             
             this.setVisible(false);

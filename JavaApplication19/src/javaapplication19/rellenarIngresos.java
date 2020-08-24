@@ -38,7 +38,9 @@ public class rellenarIngresos {
     private String excelLibros = rutas.excel+"/LibrosContables.xlsx";
     
     static JLabel iconoVentas = new JLabel();
-
+    static JLabel iconoDeudaC = new JLabel();
+    static JLabel iconoLibrosRI = new JLabel();
+    
     public rellenarIngresos() {
         panelesIngresos = new ArrayList<>();
         
@@ -525,7 +527,7 @@ public class rellenarIngresos {
                     EscribirExcel.escribirCeldaDouble(rutas.excel+"/DeudasP.xlsx", "DeudasPagar", Double.valueOf(deuda[2]), LeerExcel.contarRenglones(rutas.excel+"/DeudasP.xlsx", "DeudasPagar"), 2);
                     String formula3 = "SUM(C2:C" + (LeerExcel.contarRenglones(rutas.excel+"/DeudasP.xlsx", "DeudasPagar") + 1) + ")";
                     EscribirExcel.escribirFormula(rutas.excel+"/DeudasP.xlsx", "DeudasPagar", formula3, (LeerExcel.contarRenglones(rutas.excel+"/DeudasP.xlsx", "DeudasPagar") + 1), 2);
-                    EscribirExcel.crearHoja(rutas.excel+"/DeudasP.xlsx", inversor.getText(), "FECHA", "MONTO");
+                    EscribirExcel.ruta(rutas.excel+"/DeudasP.xlsx", inversor.getText(), "FECHA", "MONTO");
                     String[] deudaInd = {fechaActual(), montoC.getText()};
                     EscribirExcel.escribirExcelInv(rutas.excel+"/DeudasP.xlsx", inversor.getText(), deudaInd, 2);
                     EscribirExcel.escribirCeldaDouble(rutas.excel+"/DeudasP.xlsx", inversor.getText(), Double.valueOf(montoC.getText()), (LeerExcel.contarRenglones(rutas.excel+"/DeudasP.xlsx", inversor.getText())), 1);
@@ -629,7 +631,7 @@ public class rellenarIngresos {
                     EscribirExcel.escribirCeldaDouble(rutas.excel+"/DeudasP.xlsx", "DeudasPagar", Double.valueOf(inversion[2]), LeerExcel.contarRenglones(rutas.excel+"/DeudasP.xlsx", "DeudasPagar"), 2);
                     String formula = "SUM(C2:C" + (LeerExcel.contarRenglones(rutas.excel+"/DeudasP.xlsx", "DeudasPagar") + 1) + ")";
                     EscribirExcel.escribirFormula(rutas.excel+"/DeudasP.xlsx", "DeudasPagar", formula, (LeerExcel.contarRenglones(rutas.excel+"/DeudasP.xlsx", "DeudasPagar") + 1), 2);
-                    EscribirExcel.crearHoja(rutas.excel+"/DeudasP.xlsx", inversorI.getText(), "FECHA", "MONTO");
+                    EscribirExcel.ruta(rutas.excel+"/DeudasP.xlsx", inversorI.getText(), "FECHA", "MONTO");
                     String[] deudaInd = {fechaActual(), montoI.getText()};
                     EscribirExcel.escribirExcelInv(rutas.excel+"/DeudasP.xlsx", inversorI.getText(), deudaInd, 2);
                     EscribirExcel.escribirCeldaDouble(rutas.excel+"/DeudasP.xlsx", inversorI.getText(), Double.valueOf(montoI.getText()), (LeerExcel.contarRenglones(rutas.excel+"/DeudasP.xlsx", inversorI.getText())), 1);
@@ -808,12 +810,12 @@ public class rellenarIngresos {
                     utilidadDeudaCPanel.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     utilidadDeudaCPanel.setText("$" + montoDeuC.getText());
 
-                    JLabel icono = new JLabel();
-                    Iconos.scaleImage("DeudasCG", icono, 30);
-                    icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+                    
+                    Iconos.scaleImage("DeudasCG", iconoDeudaC, 30);
+                    iconoDeudaC.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
 
                     //Ingresa el panelVenta a la arraylist panelesInresos
-                    botonBorrar(icono, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "DeudasCG");
+                    botonBorrar(iconoDeudaC, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "DeudasCG");
 
                     String[] data = {(String) fechaActualConA(), Double.toString(Double.valueOf(montoDeudaC.getText()) * -1)};
                     String[] dataLibros = {(String) fechaActual(), "Deuda a Cobrar", (String) deuda.getText(), montoDeudaC.getText(), "", "VERDE", "0"};
@@ -852,7 +854,7 @@ public class rellenarIngresos {
                         utilidadDeudaCPanel.setText("$0.00");
 
                         panelIngreso.add(utilidadDeudaCPanel);
-                        panelIngreso.add(icono);
+                        panelIngreso.add(iconoDeudaC);
                     }
 
                     if (deudor.getSelectedItem().toString().equals("Nuevo")) {
@@ -867,7 +869,7 @@ public class rellenarIngresos {
                         panelIngreso.add(deuda);
                         panelIngreso.add(montoDeudaCPanel);
                         panelIngreso.add(utilidadDeudaCPanel);
-                        panelIngreso.add(icono);
+                        panelIngreso.add(iconoDeudaC);
 
                     }else{
                     
@@ -1020,7 +1022,7 @@ public class rellenarIngresos {
 
                     } else {
                         //Escribe en Excel individual y crea hoja
-                        escribirVentas.crearHoja(rutas.excel+"/DeudasC.xlsx", cliente.getSelectedItem().toString(), "FECHA", "MONTO");
+                        escribirVentas.ruta(rutas.excel+"/DeudasC.xlsx", cliente.getSelectedItem().toString(), "FECHA", "MONTO");
                         String[] ventaInd = {fechaActual(), precioExcel};
                         escribirVentas.escribirExcelInv(rutas.excel+"/DeudasC.xlsx", cliente.getSelectedItem().toString(), ventaInd, 2);
                         escribirVentas.escribirCeldaDouble(rutas.excel+"/DeudasC.xlsx", cliente.getSelectedItem().toString(), Double.valueOf(precioExcel), LeerExcel.contarRenglones(rutas.excel+"/DeudasC.xlsx", cliente.getSelectedItem().toString()), 1);
@@ -1558,9 +1560,9 @@ public class rellenarIngresos {
 
                 }
 
-                JLabel icono = new JLabel();
-                Iconos.scaleImage(IconoTipo, icono, 30);
-                icono.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
+                JLabel iconoLibrosRI = new JLabel();
+                Iconos.scaleImage(IconoTipo, iconoLibrosRI, 30);
+                iconoLibrosRI.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso, 1);
                 panelesIngresos.add(panelIngreso);//Ingresa el panelVenta a la arraylist panelesInresos
 
@@ -1568,7 +1570,7 @@ public class rellenarIngresos {
                 panelIngreso.add(dev);
                 panelIngreso.add(montoDevolucion);
                 panelIngreso.add(plataforma);
-                panelIngreso.add(icono);
+                panelIngreso.add(iconoLibrosRI);
 
                 indice++;
                 listaIngresos.updateUI();

@@ -318,13 +318,13 @@ public class clienteNuevo extends javax.swing.JFrame {
         Escribir EscribirCRM = new Escribir();
         String formula = "=HIPERVINCULO(\"[historialCompras.xlsx]'"+jtNombre.getText()+"'! A1 \",\" IR A HISTORIAL\")";
         try {
-            EscribirCRM.escribirExcelClientes("src\\excel\\CRM.xlsx", "Clientes", Registro);
-            EscribirCRM.escribirCelda("src\\excel\\CRM.xlsx", "Clientes", formula, LeerExcel.contarRenglones("src\\excel\\CRM.xlsx", "Clientes"), 4);
+            EscribirCRM.escribirExcelClientes(rutas.excel + "\\CRM.xlsx", "Clientes", Registro);
+            EscribirCRM.escribirCelda(rutas.excel + "\\CRM.xlsx", "Clientes", formula, LeerExcel.contarRenglones(rutas.excel + "\\CRM.xlsx", "Clientes"), 4);
             vender.vender(inventario, unidadesCB, plataforma, jtNombre.getText(), cliente);
             vender.historialCHH(jtNombre.getText(),cliente, plataforma);
-            rellenarIngresos.botonBorrarClientes(rellenarIngresos.iconoVentas, "src\\excel\\historialCompras.xlsx", jtNombre.getText());
+            rellenarIngresos.botonBorrarClientes(rellenarIngresos.iconoVentas, rutas.excel + "\\historialCompras.xlsx", jtNombre.getText());
             
-            //EscribirCRM.escribirExcelInv("src\\excel\\CRM.xlsx", "deudasC", Registro, ERROR);
+            //EscribirCRM.escribirExcelInv(rutas.excel + "\\CRM.xlsx", "deudasC", Registro, ERROR);
         } catch (IOException ex) {
             Logger.getLogger(clienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
         }

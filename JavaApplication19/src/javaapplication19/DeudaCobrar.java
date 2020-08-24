@@ -192,31 +192,35 @@ public class DeudaCobrar extends javax.swing.JFrame {
             
             
             //ESCRIBIR DEUDAS
-            escribirExcel.crearHoja("src\\excel\\DeudasC.xlsx", jtNombre.getText(), "FECHA", "MONTO");
-            escribirExcel.escribirExcelInv("src\\excel\\DeudasC.xlsx","deudasCobrar", Registro,3);
-            escribirExcel.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", "deudasCobrar", Double.valueOf(Registro[2]), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar"), 2);
+            escribirExcel.ruta(rutas.excel+"\\DeudasC.xlsx", jtNombre.getText(), "FECHA", "MONTO");
+            escribirExcel.escribirExcelInv(rutas.excel+"\\DeudasC.xlsx","deudasCobrar", Registro,3);
+            escribirExcel.escribirCeldaDouble(rutas.excel+"\\DeudasC.xlsx", "deudasCobrar", Double.valueOf(Registro[2]), LeerExcel.contarRenglones(rutas.excel+"\\DeudasC.xlsx", "deudasCobrar"), 2);
             
-            escribirExcel.escribirExcelInv("src\\excel\\DeudasC.xlsx", jtNombre.getText(), Registro2,2);
-            escribirExcel.escribirCeldaDouble("src\\excel\\DeudasC.xlsx", jtNombre.getText(), Double.valueOf(Registro2[1]), LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText()), 1);
-            String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+1) + ")";
-                        escribirExcel.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar",formula,(LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar")+ 1), 2);
-                        System.out.println((LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+ 1));
-                        String formula2 = escribirExcel.Restar(2, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+ 1),'b');
-                        escribirExcel.escribirFormula("src\\excel\\DeudasC.xlsx", jtNombre.getText(),  formula2, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", jtNombre.getText())+ 1), 1);
+            escribirExcel.escribirExcelInv(rutas.excel+"\\DeudasC.xlsx", jtNombre.getText(), Registro2,2);
+            escribirExcel.escribirCeldaDouble(rutas.excel+"\\DeudasC.xlsx", jtNombre.getText(), Double.valueOf(Registro2[1]), LeerExcel.contarRenglones(rutas.excel+"\\DeudasC.xlsx", jtNombre.getText()), 1);
+            String formula = "SUM(C2:C" + (LeerExcel.contarRenglones(rutas.excel+"\\DeudasC.xlsx", "deudasCobrar")+1) + ")";
+                        escribirExcel.escribirFormula(rutas.excel+"\\DeudasC.xlsx", "deudasCobrar",formula,(LeerExcel.contarRenglones(rutas.excel+"\\DeudasC.xlsx", "deudasCobrar")+ 1), 2);
+                        System.out.println((LeerExcel.contarRenglones(rutas.excel+"\\DeudasC.xlsx", jtNombre.getText())+ 1));
+                        String formula2 = escribirExcel.Restar(2, (LeerExcel.contarRenglones(rutas.excel+"\\DeudasC.xlsx", jtNombre.getText())+ 1),'b');
+                        escribirExcel.escribirFormula(rutas.excel+"\\DeudasC.xlsx", jtNombre.getText(),  formula2, (LeerExcel.contarRenglones(rutas.excel+"\\DeudasC.xlsx", jtNombre.getText())+ 1), 1);
                         //ESCRIBIR LIBROS
-            escribirExcel.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", dataLibros,7);
-            escribirExcel.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos",Utilidades.roundTwoDecimals( 0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
-            String formulaLibro = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-            escribirExcel.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formulaLibro, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
-            escribirExcel.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos",Utilidades.roundTwoDecimals(Double.valueOf(dataLibros[6])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
-            String formulaLibro2 = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-            escribirExcel.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formulaLibro2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
+            escribirExcel.escribirExcelInv(rutas.excel+"\\LibrosContables.xlsx", "Ingresos", dataLibros,7);
+            escribirExcel.escribirCeldaDouble(rutas.excel+"\\LibrosContables.xlsx", "Ingresos",Utilidades.roundTwoDecimals( 0), LeerExcel.contarRenglones(rutas.excel+"\\LibrosContables.xlsx", "Ingresos"), 6);
+            String formulaLibro = "SUM(G2:G" + (LeerExcel.contarRenglones(rutas.excel+"\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+            escribirExcel.escribirFormula(rutas.excel+"\\LibrosContables.xlsx", "Ingresos", formulaLibro, (LeerExcel.contarRenglones(rutas.excel+"\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+            escribirExcel.escribirCeldaDouble(rutas.excel+"\\LibrosContables.xlsx", "Ingresos",Utilidades.roundTwoDecimals(Double.valueOf(dataLibros[3])), LeerExcel.contarRenglones(rutas.excel+"\\LibrosContables.xlsx", "Ingresos"), 3);
+            String formulaLibro2 = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel+"\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
+            escribirExcel.escribirFormula(rutas.excel+"\\LibrosContables.xlsx", "Ingresos", formulaLibro2, (LeerExcel.contarRenglones(rutas.excel+"\\LibrosContables.xlsx", "Ingresos") + 1), 3);
             
             
             Libros.actualiza();
             
             //CAMBIAR A RELLENARINGRESOS.ICONOVENTASC AL HACERLO ESTATICO
-            rellenarGastos.botonBorrarDeudorC(rellenarIngresos.iconoVentas, "src\\excel\\DeudasP.xlsx", "DeudasPagar");
+                //rellenarGastos.botonBorrarDeudorC(rellenarIngresos.iconoLibrosRI, rutas.excel+"\\DeudasC.xlsx", jtNombre.getText());
+
+ 
+            
+            
             this.setVisible(false);
         } catch (IOException ex) {
                     Caption ventanaEx = new Caption("Recuerda cerrar Excel");

@@ -33,20 +33,20 @@ public class Utilidades {
 
         try {
             boolean finder = false;
-            for (int i = 0; i <= LeerExcel.contarRenglones("src//excel/Inventario.xlsx", "EPIC MOUNTAIN"); i++) {
-                if (LeerExcel.obtenerCelda(filepathVentas, mes, 0, folio).equals(LeerExcel.obtenerCelda("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 0, i))) {
+            for (int i = 0; i <= LeerExcel.contarRenglones(rutas.excel + "/Inventario.xlsx", "EPIC MOUNTAIN"); i++) {
+                if (LeerExcel.obtenerCelda(filepathVentas, mes, 0, folio).equals(LeerExcel.obtenerCelda(rutas.excel + "/Inventario.xlsx", "EPIC MOUNTAIN", 0, i))) {
                     finder = true;
                     System.out.println("HOLA");
-                    int suma = (int) (LeerExcel.obtenerCeldaNumerica(filepathVentas, mes, 6, LeerExcel.contarRenglones(filepathVentas, mes))) + (int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 6, i);
+                    int suma = (int) (LeerExcel.obtenerCeldaNumerica(filepathVentas, mes, 6, LeerExcel.contarRenglones(filepathVentas, mes))) + (int) LeerExcel.obtenerCeldaNumerica(rutas.excel + "/Inventario.xlsx", "EPIC MOUNTAIN", 6, i);
                     Escribir escribirVentas = new Escribir();
                     String inventario = "EPIC MOUNTAIN";
-                    escribirVentas.escribirCeldaNumerica("src//excel/Inventario.xlsx", inventario, suma, i, 6);
+                    escribirVentas.escribirCeldaNumerica(rutas.excel + "/Inventario.xlsx", inventario, suma, i, 6);
                     double costoUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", inventario, 7, i);
                     double precioBaseUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", inventario, 9, i);
-                    Double precioML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario, 13, i);
-                    Double iva = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario, 17, i);
-                    Double comisionML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario, 15, i);
-                    Double utilidadShop = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario, 19, i);
+                    Double precioML = LeerExcel.obtenerCeldaNumerica(rutas.excel + "/Inventario.xlsx", inventario, 13, i);
+                    Double iva = LeerExcel.obtenerCeldaNumerica(rutas.excel + "/Inventario.xlsx", inventario, 17, i);
+                    Double comisionML = LeerExcel.obtenerCeldaNumerica(rutas.excel + "/Inventario.xlsx", inventario, 15, i);
+                    Double utilidadShop = LeerExcel.obtenerCeldaNumerica(rutas.excel + "/Inventario.xlsx", inventario, 19, i);
 
                     //COSTO NETO
                     escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, (suma * costoUnidad), i, 8);
@@ -77,7 +77,7 @@ public class Utilidades {
 
             }
 
-            //Escribir.removeRow("src//excel/LibrosContables.xlsx", "Gastos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Gastos"));
+            //Escribir.removeRow(rutas.excel + "/LibrosContables.xlsx", "Gastos", LeerExcel.contarRenglones(rutas.excel + "/LibrosContables.xlsx", "Gastos"));
         } catch (IOException ex) {
             Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
         }

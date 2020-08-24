@@ -388,7 +388,7 @@ JLabel iconoOkV = new JLabel();
         
         
         
-        deudasPE = new JComboBox(LeerExcel.rellenaCB2("src\\excel\\DeudasP.xlsx", "deudasPagar", 1));
+        deudasPE = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"\\DeudasP.xlsx", "deudasPagar", 1));
         deudasPE.removeItemAt(0);
         deudasPE.setBackground(Color.white);
         deudasPE.setUI(PropiedadesCB2.createUI(deudasPE));

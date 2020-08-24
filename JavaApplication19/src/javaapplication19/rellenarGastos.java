@@ -41,16 +41,21 @@ public class rellenarGastos {
         panelesGastos = new ArrayList<>();
     }
 
-    static void botonBorrarDeudorC(JLabel boton, String filepath, String hoja) {
+    static void botonBorrarDeudorP(JLabel boton, String filepath, String hoja) {
         MouseListener botonV = new MouseListener() {
 
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
                     Escribir EscribirExcel = new Escribir();
-                    Escribir.saldarDeuda(filepath, hoja, LeerExcel.obtenerIndexHoja(filepath, hoja));
-                    String formula = "SUM(C2:C" + (LeerExcel.contarRenglones(rutas.excel+"\\DeudasC.xlsx", "deudasCobrar") + 1) + ")";
-                    EscribirExcel.escribirFormula(rutas.excel+"\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones(rutas.excel+"\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
+                    
+                        Escribir.saldarDeuda(filepath, hoja, LeerExcel.obtenerIndexHoja(filepath, hoja));
+                        String formula = "SUM(C2:C" + (LeerExcel.contarRenglones(rutas.excel+"\\DeudasP.xlsx", "deudasPagar") + 1) + ")";
+                        EscribirExcel.escribirFormula(rutas.excel+"\\DeudasP.xlsx", "deudasPagar", formula, (LeerExcel.contarRenglones(rutas.excel+"\\DeudasP.xlsx", "deudasPagar") + 1), 2);
+                        botonBorrarInd(rellenarIngresos.iconoLibrosRI, rutas.excel+"\\LibrosContables.xlsx", "Ingresos");
+                        Libros.actualiza();
+                    
+                    
                     //Escribir.removeRow("recursos//excel/LibrosContables.xlsx", "Gastos", LeerExcel.contarRenglones("recursos//excel/LibrosContables.xlsx", "Gastos"));
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
@@ -831,8 +836,10 @@ public class rellenarGastos {
                     listaGastos.add(panelGastoC, 1);
                     panelesGastos.add(panelGastoC);//Ingresa el panelVenta a la arraylist panelesInresos
 
+
                     botonBorrar(icono, listaGastos, panelGastoC, panelesGastos.indexOf(panelGastoC), "DeudasPG", "recursos//excel/LibrosContables.xlsx", "Gastos");
 
+                    
                     panelGastoC.add(fecha);
                     panelGastoC.add(deudasPagar);
                     panelGastoC.add(precioP);
