@@ -30,7 +30,7 @@ public class PropiedadesCB2 extends BasicComboBoxUI {
         return new PropiedadesCB2();
     }
     public ImageIcon scaleIcon(String icono,int width, int height) {
-        ImageIcon icon = new ImageIcon("src\\img\\"+ icono +".png");
+        ImageIcon icon = new ImageIcon(rutas.img+"\\"+ icono +".png");
         Image img = icon.getImage();
         Image imgScale = img.getScaledInstance(width, height,Image.SCALE_SMOOTH);
        

@@ -103,7 +103,7 @@ JLabel iconoOkV = new JLabel();
 
         String[] listaPlataformas = {"Mercado Libre", "Local"};
 
-        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 0));
+        inventario = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"/Inventario.xlsx", "EPIC MOUNTAIN", 0));
         inventario.addItem("SERVICIO");
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
@@ -117,7 +117,7 @@ JLabel iconoOkV = new JLabel();
         unidades.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         
         
-        cliente = new JComboBox(LeerExcel.rellenaCB2("src//excel//CRM.xlsx", "CLIENTES", 0));
+        cliente = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"//CRM.xlsx", "CLIENTES", 0));
         cliente.addItem("Nuevo Cliente");
         cliente.setBackground(Color.white);
         cliente.setUI(PropiedadesCB2.createUI(cliente));
@@ -143,7 +143,7 @@ JLabel iconoOkV = new JLabel();
                 
                 indexInventario = inventario.getSelectedIndex();
                 try {
-                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 6, indexInventario + 1);
+                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica(rutas.excel+"/Inventario.xlsx", "EPIC MOUNTAIN", 6, indexInventario + 1);
                 } catch (IOException ex) {
                     Logger.getLogger(Rellenar.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -278,7 +278,7 @@ JLabel iconoOkV = new JLabel();
         rellenarDeudasC.add(iconoDeudasC);
 
 
-        deudor = new JComboBox(LeerExcel.obtenerHoja("src//excel/deudasC.xlsx"));
+        deudor = new JComboBox(LeerExcel.obtenerHoja(rutas.excel+"/deudasC.xlsx"));
         deudor.removeItemAt(0);
         deudor.addItem("Nuevo");
         deudor.setBackground(Color.white);
@@ -315,7 +315,7 @@ JLabel iconoOkV = new JLabel();
 
         String[] listaPlataformas = {"Mercado Libre", "Local"};
 
-        inventario = new JComboBox(LeerExcel.rellenaCB2("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 0));
+        inventario = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"/Inventario.xlsx", "EPIC MOUNTAIN", 0));
         
         inventario.addItem("SERVICIO");
         inventario.setBackground(Color.white);
@@ -331,7 +331,7 @@ JLabel iconoOkV = new JLabel();
         unidades.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         
 
-        cliente = new JComboBox(LeerExcel.rellenaCB2("src//excel//CRM.xlsx", "CLIENTES", 0));
+        cliente = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"//CRM.xlsx", "CLIENTES", 0));
         cliente.addItem("Nuevo Cliente");
         cliente.setBackground(Color.white);
         cliente.setUI(PropiedadesCB2.createUI(cliente));
@@ -356,7 +356,7 @@ JLabel iconoOkV = new JLabel();
             public void actionPerformed(ActionEvent e) {
                 indexInventario = inventario.getSelectedIndex();
                 try {
-                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 6, indexInventario + 1);
+                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica(rutas.excel+"/Inventario.xlsx", "EPIC MOUNTAIN", 6, indexInventario + 1);
                 } catch (IOException ex) {
                     Logger.getLogger(Rellenar.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -501,7 +501,7 @@ JLabel iconoOkV = new JLabel();
         rellenarServicio.add(iconoInversion);
         Iconos.scaleImage("ok", iconoOkSer, 30);
         
-        cliente = new JComboBox(LeerExcel.rellenaCB2("src//excel//CRM.xlsx", "CLIENTES", 0));
+        cliente = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"//CRM.xlsx", "CLIENTES", 0));
         cliente.addItem("Nuevo Cliente");
         cliente.setBackground(Color.white);
         cliente.setUI(PropiedadesCB2.createUI(cliente));

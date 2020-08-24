@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 public class Iconos {
     Iconos(){}
     public static ImageIcon scaleIcon(String icono,int width, int height) {
-        ImageIcon icon = new ImageIcon("src\\img\\"+ icono +".png");
+        ImageIcon icon = new ImageIcon(rutas.img+"\\"+ icono +".png");
         Image img = icon.getImage();
         Image imgScale = img.getScaledInstance(width, height,Image.SCALE_SMOOTH);
        
@@ -25,7 +25,7 @@ public class Iconos {
         
     }
     public static void scaleImage(String icono,JLabel label, int height){
-        ImageIcon icon = new ImageIcon("src\\img\\"+ icono +".png");
+        ImageIcon icon = new ImageIcon(rutas.img+"\\"+ icono +".png");
         Image img = icon.getImage();
         Image imgScale = img.getScaledInstance(height, height,Image.SCALE_SMOOTH);
        
@@ -34,7 +34,7 @@ public class Iconos {
     }
     
     public static void scaleGif(String icono,JLabel label, int height){
-        ImageIcon icon = new ImageIcon("src\\img\\"+ icono +".gif");
+        ImageIcon icon = new ImageIcon(rutas.img+"\\"+ icono +".gif");
         Image img = icon.getImage();
         Image imgScale = img.getScaledInstance(height, height,Image.SCALE_SMOOTH);
        
@@ -43,7 +43,7 @@ public class Iconos {
     }
     
     public static void scaleImage(String icono,JLabel label, int height, int width){
-        ImageIcon icon = new ImageIcon("src\\img\\"+ icono +".png");
+        ImageIcon icon = new ImageIcon(rutas.img+"\\"+ icono +".png");
         Image img = icon.getImage();
         Image imgScale = img.getScaledInstance(height, width,Image.SCALE_SMOOTH);
        
