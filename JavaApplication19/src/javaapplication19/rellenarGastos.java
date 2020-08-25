@@ -831,7 +831,11 @@ public class rellenarGastos {
                     escribirVentas.escribirCeldaDouble(rutas.excel+"\\DeudasP.xlsx", deudas.getSelectedItem().toString(), Double.valueOf(precio.getText()) * (-1), (LeerExcel.contarRenglones(rutas.excel+"\\DeudasP.xlsx", deudas.getSelectedItem().toString())), 1);
                     String formula3 = escribirVentas.Sumar(2, (LeerExcel.contarRenglones(rutas.excel+"\\DeudasP.xlsx", deudas.getSelectedItem().toString()) + 1), 'b');
                     escribirVentas.escribirFormula(rutas.excel+"\\DeudasP.xlsx", deudas.getSelectedItem().toString(), formula3, (LeerExcel.contarRenglones(rutas.excel+"\\DeudasP.xlsx", deudas.getSelectedItem().toString()) + 1), 1);
-
+                    
+                    if (Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+"/DeudasP.xlsx", deudas.getSelectedItem().toString(),(LeerExcel.contarRenglones(rutas.excel+"/DeudasP.xlsx",  deudas.getSelectedItem().toString())+1), 1)) == 0){
+                        Escribir.saldarDeuda(rutas.excel+"\\DeudasP.xlsx", "deudasPagar", deudas.getSelectedIndex()+1);
+                    }
+                    
                     //AGREGAR PANEL
                     listaGastos.add(panelGastoC, 1);
                     panelesGastos.add(panelGastoC);//Ingresa el panelVenta a la arraylist panelesInresos

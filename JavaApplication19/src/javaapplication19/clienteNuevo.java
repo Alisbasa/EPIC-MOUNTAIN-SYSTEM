@@ -322,7 +322,7 @@ public class clienteNuevo extends javax.swing.JFrame {
             EscribirCRM.escribirCelda(rutas.excel + "\\CRM.xlsx", "Clientes", formula, LeerExcel.contarRenglones(rutas.excel + "\\CRM.xlsx", "Clientes"), 4);
             vender.vender(inventario, unidadesCB, plataforma, jtNombre.getText(), cliente);
             vender.historialCHH(jtNombre.getText(),cliente, plataforma);
-            rellenarIngresos.botonBorrarClientes(rellenarIngresos.iconoVentas, rutas.excel + "\\historialCompras.xlsx", jtNombre.getText());
+//            rellenarIngresos.botonBorrarClientes(rellenarIngresos.iconoVentas, rutas.excel + "\\historialCompras.xlsx", jtNombre.getText());
             
             //EscribirCRM.escribirExcelInv(rutas.excel + "\\CRM.xlsx", "deudasC", Registro, ERROR);
         } catch (IOException ex) {

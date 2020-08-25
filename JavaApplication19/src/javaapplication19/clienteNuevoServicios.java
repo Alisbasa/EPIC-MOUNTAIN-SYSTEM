@@ -321,7 +321,7 @@ public class clienteNuevoServicios extends javax.swing.JFrame {
             EscribirCRM.escribirCelda(rutas.excel + "\\CRM.xlsx", clienteHoja, formula, LeerExcel.contarRenglones(rutas.excel + "\\CRM.xlsx", clienteHoja), 4);
             
             vender.historialCHHServ(jtNombre.getText(),cliente,jtUbicacion.getText());
-            rellenarIngresos.botonBorrarClientes(rellenarIngresos.iconoVentas, rutas.excel + "\\historialCompras.xlsx", jtNombre.getText());
+           // rellenarIngresos.botonBorrarClientes(rellenarIngresos.iconoVentas, rutas.excel + "\\historialCompras.xlsx", jtNombre.getText());
             
             //EscribirCRM.escribirExcelInv(rutas.excel + "\\CRM.xlsx", "deudasC", Registro, ERROR);
         } catch (IOException ex) {

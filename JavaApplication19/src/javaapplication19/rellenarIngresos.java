@@ -37,7 +37,7 @@ public class rellenarIngresos {
 
     private String excelLibros = rutas.excel+"/LibrosContables.xlsx";
     
-    static JLabel iconoVentas = new JLabel();
+    JLabel iconoVentas = new JLabel();
     static JLabel iconoDeudaC = new JLabel();
     static JLabel iconoLibrosRI = new JLabel();
     
@@ -821,9 +821,28 @@ public class rellenarIngresos {
                     String[] dataLibros = {(String) fechaActual(), "Deuda a Cobrar", (String) deuda.getText(), montoDeudaC.getText(), "", "VERDE", "0"};
                     Escribir escribirVentas = new Escribir();
 
-                    if (deudor.getSelectedItem().toString() != "Nuevo") {
+                    
 
-                        //EXCEL INDIVIDUAL
+                      
+                    
+
+                    if (deudor.getSelectedItem().toString().equals("Nuevo")) {
+
+                        String[] dataLibros2 = {(String) fechaActual(), "Nueva deuda", (String) deuda.getText(), montoDeudaC.getText(), "", "VERDE", "0"};
+                       
+
+                        DeudaCobrar deudorNuevo = new DeudaCobrar(montoDeudaC, dataLibros2);
+
+                        deudorNuevo.setVisible(true);
+                        panelIngreso.add(fecha);
+                        panelIngreso.add(deuda);
+                        panelIngreso.add(montoDeudaCPanel);
+                        panelIngreso.add(utilidadDeudaCPanel);
+                        panelIngreso.add(iconoDeudaC);
+
+                    }else{
+                        
+                          //EXCEL INDIVIDUAL
                         escribirVentas.escribirExcelInv(rutas.excel+"/LibrosContables.xlsx", "Ingresos", dataLibros, 7);
                         
                        escribirVentas.escribirCeldaDouble(rutas.excel+"/LibrosContables.xlsx", "Ingresos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones(rutas.excel+"/LibrosContables.xlsx", "Ingresos"), 3);
@@ -855,28 +874,11 @@ public class rellenarIngresos {
 
                         panelIngreso.add(utilidadDeudaCPanel);
                         panelIngreso.add(iconoDeudaC);
-                    }
-
-                    if (deudor.getSelectedItem().toString().equals("Nuevo")) {
-
-                        String[] dataLibros2 = {(String) fechaActual(), "Nueva deuda", (String) deuda.getText(), montoDeudaC.getText(), "", "VERDE", "0"};
-                       
-
-                        DeudaCobrar deudorNuevo = new DeudaCobrar(montoDeudaC, dataLibros2);
-
-                        deudorNuevo.setVisible(true);
-                        panelIngreso.add(fecha);
-                        panelIngreso.add(deuda);
-                        panelIngreso.add(montoDeudaCPanel);
-                        panelIngreso.add(utilidadDeudaCPanel);
-                        panelIngreso.add(iconoDeudaC);
-
-                    }else{
+                        
                     
                         if (Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+"/DeudasC.xlsx", deudor.getSelectedItem().toString(),(LeerExcel.contarRenglones(rutas.excel+"/DeudasC.xlsx", deudor.getSelectedItem().toString())+1), 1)) == 0) {
                             Escribir.saldarDeuda(rutas.excel+"/DeudasC.xlsx", "deudasCobrar", deudor.getSelectedIndex()+1);
-                        }else{
-
+                            
                         }
                     }   
                     
