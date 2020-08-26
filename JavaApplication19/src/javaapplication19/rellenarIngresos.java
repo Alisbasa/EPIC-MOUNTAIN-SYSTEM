@@ -876,7 +876,7 @@ public class rellenarIngresos {
                         panelIngreso.add(iconoDeudaC);
                         
                     
-                        if (Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+"/DeudasC.xlsx", deudor.getSelectedItem().toString(),(LeerExcel.contarRenglones(rutas.excel+"/DeudasC.xlsx", deudor.getSelectedItem().toString())+1), 1)) == 0) {
+                        if (Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+"/DeudasC.xlsx", deudor.getSelectedItem().toString(),(LeerExcel.contarRenglones(rutas.excel+"/DeudasC.xlsx", deudor.getSelectedItem().toString())+1), 1)) <= 0.01) {
                             Escribir.saldarDeuda(rutas.excel+"/DeudasC.xlsx", "deudasCobrar", deudor.getSelectedIndex()+1);
                             
                         }
@@ -1505,14 +1505,23 @@ public class rellenarIngresos {
                 JLabel plataforma = new JLabel();
                 plataforma.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                 plataforma.setText("$" + LeerExcel.obtenerCeldaNumerica(rutas.excel+"/LibrosContables.xlsx", "Ingresos", 6, i));
-
+                
+                JLabel iconoLibrosRI = new JLabel();
+                
                 String IconoTipo = "VentasG";
                 String tipo = LeerExcel.obtenerCelda(rutas.excel+"/LibrosContables.xlsx", "Ingresos", 1, i);
                 switch (tipo) {
                     case "Venta":
+                        
                         IconoTipo = "VentasG";
+                         botonBorrar(iconoLibrosRI, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "ventasG");
+                    revertirUnidades(iconoLibrosRI, rutas.excel+"/Ventas.xlsx", fechaActualEscribir().toUpperCase());
+                    botonBorrarInd(iconoLibrosRI, rutas.excel+"/Ventas.xlsx", fechaActualEscribir().toUpperCase());
                         break;
                     case "Inversión":
+                         botonBorrar(iconoLibrosRI, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "inversionG");
+                    botonBorrarDeudor(iconoLibrosRI, rutas.excel+"/DeudasP.xlsx", dev.getText());
+                        
                         IconoTipo = "inversionG";
                         break;
                     case "Crédito":
@@ -1562,7 +1571,7 @@ public class rellenarIngresos {
 
                 }
 
-                JLabel iconoLibrosRI = new JLabel();
+                
                 Iconos.scaleImage(IconoTipo, iconoLibrosRI, 30);
                 iconoLibrosRI.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
                 listaIngresos.add(panelIngreso, 1);
