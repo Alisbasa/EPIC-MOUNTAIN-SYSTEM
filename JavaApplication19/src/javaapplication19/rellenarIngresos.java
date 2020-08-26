@@ -1515,17 +1515,19 @@ public class rellenarIngresos {
                         
                         IconoTipo = "VentasG";
                          botonBorrar(iconoLibrosRI, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "ventasG");
-                    revertirUnidades(iconoLibrosRI, rutas.excel+"/Ventas.xlsx", fechaActualEscribir().toUpperCase());
-                    botonBorrarInd(iconoLibrosRI, rutas.excel+"/Ventas.xlsx", fechaActualEscribir().toUpperCase());
+                        revertirUnidades(iconoLibrosRI, rutas.excel+"/Ventas.xlsx", fechaActualEscribir().toUpperCase());
+                        botonBorrarInd(iconoLibrosRI, rutas.excel+"/Ventas.xlsx", fechaActualEscribir().toUpperCase());
                         break;
                     case "Inversión":
                          botonBorrar(iconoLibrosRI, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "inversionG");
-                    botonBorrarDeudor(iconoLibrosRI, rutas.excel+"/DeudasP.xlsx", dev.getText());
+                         botonBorrarDeudor(iconoLibrosRI, rutas.excel+"/DeudasP.xlsx", dev.getText());
                         
                         IconoTipo = "inversionG";
                         break;
                     case "Crédito":
                         IconoTipo = "CreditoG";
+                        botonBorrar(iconoLibrosRI, listaIngresos, panelIngreso, panelesIngresos.indexOf(panelIngreso), "inversionG");
+                        botonBorrarDeudor(iconoLibrosRI, rutas.excel+"/DeudasP.xlsx", dev.getText());
                         break;
                     case "Deuda a Cobrar":
                         IconoTipo = "DeudasCG";

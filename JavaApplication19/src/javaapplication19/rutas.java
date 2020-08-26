@@ -10,6 +10,6 @@ package javaapplication19;
  * @author Alex
  */
 public class rutas {
-    static String excel="C:\\Users\\Usuario\\Desktop\\epic\\excel";
-    static String img="C:\\Users\\Usuario\\Desktop\\epic\\img";
+    static String excel="C:\\Users\\Erick Ivan\\Desktop\\epic\\excel";
+    static String img="C:\\Users\\Erick Ivan\\Desktop\\epic\\img";
 }
