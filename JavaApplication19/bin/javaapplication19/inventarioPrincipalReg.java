@@ -354,105 +354,105 @@ public class inventarioPrincipalReg extends javax.swing.JFrame {
         Escribir EscribirCRM = new Escribir();
         try {
             String inventario4 = "EPIC MOUNTAIN";
-            EscribirCRM.escribirExcelInv("src\\excel\\Inventario.xlsx", inventario4, inventario, 13);
+            EscribirCRM.escribirExcelInv(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, inventario, 13);
             //UNIDADES
-            EscribirCRM.escribirCeldaNumerica("src\\excel\\Inventario.xlsx", inventario4, Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 6);
+            EscribirCRM.escribirCeldaNumerica(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 6);
 
             //TIG
             Double TIG = Double.valueOf(jtPrecio.getText()) / Double.valueOf(monto.getText());
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario4, TIG, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 5);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, TIG, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 5);
 
             //COSTO UNIDAD
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario4, Double.valueOf(monto.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 7);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, Double.valueOf(monto.getText()), LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 7);
             //COSTO NETO
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario4, Double.valueOf(costoNeto), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 8);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, Double.valueOf(costoNeto), LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 8);
 
             //PRECIO BASE UNIDAD
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario4, Double.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 9);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, Double.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 9);
 
             //PRECIO BASE NETO
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario4, Double.valueOf(costoBaseNeto), LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 10);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, Double.valueOf(costoBaseNeto), LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 10);
 
             //PRECIO LOCAL UNIDAD
-            Double precioL = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", inventario4, 9, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4)) * 1.16);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario4, precioL, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 11);
+            Double precioL = (LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, 9, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4)) * 1.16);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, precioL, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 11);
 
             //PRECIO LOCAL NETO
-            Double precioNeto = EscribirCRM.Mulitplicar(6, 11, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), "src\\excel\\Inventario.xlsx", inventario4);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario4, precioNeto, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 12);
+            Double precioNeto = EscribirCRM.Mulitplicar(6, 11, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), rutas.excel+"\\INVENTARIOS.xlsx", inventario4);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, precioNeto, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 12);
 
             //COMISION ML
-            Double comisionML = ((LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", inventario4, 11, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4))) * .15) + 5;
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario4, comisionML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 15);
+            Double comisionML = ((LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, 11, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4))) * .15) + 5;
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, comisionML, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 15);
 
             //COMISION ML NETO
-            Double comisionMLN = EscribirCRM.Mulitplicar(6, 15, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), "src\\excel\\Inventario.xlsx", inventario4);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario4, comisionMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 16);
+            Double comisionMLN = EscribirCRM.Mulitplicar(6, 15, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), rutas.excel+"\\INVENTARIOS.xlsx", inventario4);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, comisionMLN, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 16);
 
             // IVA UNIDAD
-            Double IVA = (LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", inventario4, 9, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4)) * 0.16);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario4, IVA, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 17);
+            Double IVA = (LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, 9, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4)) * 0.16);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, IVA, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 17);
 
             //IVA NETO
-            Double ivaN = EscribirCRM.Mulitplicar(6, 17, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), "src\\excel\\Inventario.xlsx", inventario4);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario4, ivaN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 18);
+            Double ivaN = EscribirCRM.Mulitplicar(6, 17, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), rutas.excel+"\\INVENTARIOS.xlsx", inventario4);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, ivaN, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 18);
 
             //PRECIO ML
-            Double precioML = EscribirCRM.SumarColumnasML(LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 9, 17, 15, "src\\excel\\Inventario.xlsx", inventario4);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario4, precioML, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 13);
+            Double precioML = EscribirCRM.SumarColumnasML(LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 9, 17, 15, rutas.excel+"\\INVENTARIOS.xlsx", inventario4);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, precioML, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 13);
 
             //PRECIOML NETO
-            Double precioMLN = EscribirCRM.Mulitplicar(6, 13, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), "src\\excel\\Inventario.xlsx", inventario4);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario4, precioMLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 14);
+            Double precioMLN = EscribirCRM.Mulitplicar(6, 13, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), rutas.excel+"\\INVENTARIOS.xlsx", inventario4);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, precioMLN, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 14);
 
             //UTILIDAD UNIDAD LOCAL
-            Double utilidad = EscribirCRM.RestarColumnas(LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 11, 7, 17, "src\\excel\\Inventario.xlsx", inventario4);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario4, utilidad, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 19);
+            Double utilidad = EscribirCRM.RestarColumnas(LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 11, 7, 17, rutas.excel+"\\INVENTARIOS.xlsx", inventario4);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, utilidad, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 19);
 
             //UTILIDAD LOCAL NETA
-            Double utilidadLN = EscribirCRM.Mulitplicar(6, 19, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), "src\\excel\\Inventario.xlsx", inventario4);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario4, utilidadLN, LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4), 20);
+            Double utilidadLN = EscribirCRM.Mulitplicar(6, 19, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), rutas.excel+"\\INVENTARIOS.xlsx", inventario4);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, utilidadLN, LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4), 20);
 
-            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4) + 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", inventario4, formula,
-                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4) + 1, 8);
+            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4) + 1) + ")";
+            EscribirCRM.escribirFormula(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, formula,
+                    LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4) + 1, 8);
 
-            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4) + 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", inventario4, formula2,
-                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4) + 1, 10);
+            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4) + 1) + ")";
+            EscribirCRM.escribirFormula(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, formula2,
+                    LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4) + 1, 10);
 
-            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4) + 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", inventario4, formula3,
-                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4) + 1, 12);
+            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4) + 1) + ")";
+            EscribirCRM.escribirFormula(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, formula3,
+                    LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4) + 1, 12);
 
-            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4) + 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", inventario4, formula4,
-                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4) + 1, 14);
+            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4) + 1) + ")";
+            EscribirCRM.escribirFormula(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, formula4,
+                    LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4) + 1, 14);
 
-            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4) + 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", inventario4, formula5,
-                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4) + 1, 16);
+            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4) + 1) + ")";
+            EscribirCRM.escribirFormula(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, formula5,
+                    LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4) + 1, 16);
 
-            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4) + 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", inventario4, formula6,
-                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4) + 1, 18);
+            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4) + 1) + ")";
+            EscribirCRM.escribirFormula(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, formula6,
+                    LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4) + 1, 18);
 
-            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4) + 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\Inventario.xlsx", inventario4, formula7,
-                    LeerExcel.contarRenglones("src\\excel\\Inventario.xlsx", inventario4) + 1, 20);
+            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4) + 1) + ")";
+            EscribirCRM.escribirFormula(rutas.excel+"\\INVENTARIOS.xlsx", inventario4, formula7,
+                    LeerExcel.contarRenglones(rutas.excel+"\\INVENTARIOS.xlsx", inventario4) + 1, 20);
 
             String[] data = {(String) rellenarIngresos.fechaActual(), "Aportacion Inv", nombre.getText(), monto.getText(), "  ", "VERDE", monto.getText()};
 
             Escribir escribirVentas = new Escribir();
 
-            escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Ingresos", data,7);
-            escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(monto.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 3);
-            String formulaMonto = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formulaMonto, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 3);
+            escribirVentas.escribirExcelInv(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Ingresos", data,7);
+            escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Ingresos", Double.valueOf(monto.getText()), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Ingresos"), 3);
+            String formulaMonto = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Ingresos") + 1) + ")";
+            escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Ingresos", formulaMonto, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Ingresos") + 1), 3);
 
-            escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Ingresos", Double.valueOf(monto.getText()), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos"), 6);
-            String formulaGan = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1) + ")";
-            escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Ingresos", formulaGan, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+            escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Ingresos", Double.valueOf(monto.getText()), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Ingresos"), 6);
+            String formulaGan = "SUM(G2:G" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Ingresos") + 1) + ")";
+            escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Ingresos", formulaGan, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Ingresos") + 1), 6);
 
             this.setVisible(false);
         } catch (IOException ex) {

@@ -268,24 +268,24 @@ public class ventanaCuentas extends javax.swing.JFrame {
             escribirCuentas.escribirCeldaDouble(rutas.excel+ "\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(mp.getText())), 3, 2);
             escribirCuentas.escribirCeldaDouble(rutas.excel+ "\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(Double.valueOf(liberar.getText())), 4, 2);
             
-            Double comprasT = Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+ "\\comprasT.xlsx", "COMPRAS", (LeerExcel.contarRenglones(rutas.excel+ "\\comprasT.xlsx", "COMPRAS")+1), 8));
+            Double comprasT = Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+ "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", (LeerExcel.contarRenglones(rutas.excel+ "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS")+1), 8));
             escribirCuentas.escribirCeldaDoubleGF(rutas.excel+ "\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(comprasT), 5, 2);
             
-            Double costoInventario = Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+ "\\Inventario.xlsx", "EPIC MOUNTAIN", (LeerExcel.contarRenglones(rutas.excel+ "\\Inventario.xlsx", "EPIC MOUNTAIN")+1), 8));
+            Double costoInventario = Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+ "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", (LeerExcel.contarRenglones(rutas.excel+ "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN")+1), 8));
             escribirCuentas.escribirCeldaDoubleGF(rutas.excel+ "\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(costoInventario), 6, 2);
             
-            Double herramientas = Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+ "\\Equipo.xlsx", "Herramientas", (LeerExcel.contarRenglones(rutas.excel+ "\\Equipo.xlsx", "Herramientas")+1), 3));
-            Double eqTaller = Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+ "\\Equipo.xlsx", "Equipo de Taller", (LeerExcel.contarRenglones(rutas.excel+ "\\Equipo.xlsx", "Equipo de Taller")+1), 3));
-            Double mob = Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+ "\\Equipo.xlsx", "Mobiliario", (LeerExcel.contarRenglones(rutas.excel+ "\\Equipo.xlsx", "Mobiliario")+1), 3));
-            Double eqLim = Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+ "\\Equipo.xlsx", "Equipo de Limpieza", (LeerExcel.contarRenglones(rutas.excel+ "\\Equipo.xlsx", "Equipo de Limpieza")+1), 3));
+            Double herramientas = Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+ "\\EQUIPO Y MOBILIARIO.xlsx", "Herramientas", (LeerExcel.contarRenglones(rutas.excel+ "\\EQUIPO Y MOBILIARIO.xlsx", "Herramientas")+1), 3));
+            Double eqTaller = Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+ "\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Taller", (LeerExcel.contarRenglones(rutas.excel+ "\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Taller")+1), 3));
+            Double mob = Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+ "\\EQUIPO Y MOBILIARIO.xlsx", "Mobiliario", (LeerExcel.contarRenglones(rutas.excel+ "\\EQUIPO Y MOBILIARIO.xlsx", "Mobiliario")+1), 3));
+            Double eqLim = Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+ "\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Limpieza", (LeerExcel.contarRenglones(rutas.excel+ "\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Limpieza")+1), 3));
             
             Double eqMob = herramientas + eqTaller + mob + eqLim;
             escribirCuentas.escribirCeldaDoubleGF(rutas.excel+ "\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(eqMob), 7, 2);
             
-            Double deudasC = Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+ "\\DeudasC.xlsx", "deudasCobrar", (LeerExcel.contarRenglones(rutas.excel+ "\\DeudasC.xlsx", "deudasCobrar")+1), 2));
+            Double deudasC = Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+ "\\DEUDAS A COBRAR.xlsx", "deudasCobrar", (LeerExcel.contarRenglones(rutas.excel+ "\\DEUDAS A COBRAR.xlsx", "deudasCobrar")+1), 2));
             escribirCuentas.escribirCeldaDoubleGF(rutas.excel+ "\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(deudasC), 8, 2);
             
-            Double deudasP = Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+ "\\DeudasP.xlsx", "deudasPagar", (LeerExcel.contarRenglones(rutas.excel+ "\\DeudasP.xlsx", "deudasPagar")+1), 2));
+            Double deudasP = Double.valueOf(LeerExcel.obtenerCeldaFormula(rutas.excel+ "\\DEUDAS A PAGAR.xlsx", "deudasPagar", (LeerExcel.contarRenglones(rutas.excel+ "\\DEUDAS A PAGAR.xlsx", "deudasPagar")+1), 2));
             escribirCuentas.escribirCeldaDoubleGF(rutas.excel+ "\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(deudasP), 9, 2);
             
             String sumaTotalCapital = "SUM(C2:C9)";
@@ -295,12 +295,12 @@ public class ventanaCuentas extends javax.swing.JFrame {
             escribirCuentas.escribirCeldaDoubleV(rutas.excel+ "\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(totalNeto), 11, 2);
             
             
-            double sumaUtilidades=  Escribir.SumarFile(LeerExcel.buscaVerdes(rutas.excel+ "\\LibrosContables.xlsx", "Ingresos")+1, LeerExcel.contarRenglones(rutas.excel+ "\\LibrosContables.xlsx", "Ingresos"), 6, rutas.excel+ "\\LibrosContables.xlsx", "Ingresos");
+            double sumaUtilidades=  Escribir.SumarFile(LeerExcel.buscaVerdes(rutas.excel+ "\\LIBROS DE CONTROL.xlsx", "Ingresos")+1, LeerExcel.contarRenglones(rutas.excel+ "\\LIBROS DE CONTROL.xlsx", "Ingresos"), 6, rutas.excel+ "\\LIBROS DE CONTROL.xlsx", "Ingresos");
                       
             escribirCuentas.escribirCeldaDoubleGF(rutas.excel+ "\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(sumaUtilidades), 18, 2);
             
             
-             double sumaEgresos=  Escribir.SumarFile(LeerExcel.buscaVerdes(rutas.excel+ "\\LibrosContables.xlsx", "Gastos")+1, LeerExcel.contarRenglones(rutas.excel+ "\\LibrosContables.xlsx", "Gastos"), 6, rutas.excel+ "\\LibrosContables.xlsx", "Gastos");
+             double sumaEgresos=  Escribir.SumarFile(LeerExcel.buscaVerdes(rutas.excel+ "\\LIBROS DE CONTROL.xlsx", "Gastos")+1, LeerExcel.contarRenglones(rutas.excel+ "\\LIBROS DE CONTROL.xlsx", "Gastos"), 6, rutas.excel+ "\\LIBROS DE CONTROL.xlsx", "Gastos");
                       
             escribirCuentas.escribirCeldaDoubleGF(rutas.excel+ "\\Corte.xlsx", fechaActual(), Utilidades.roundTwoDecimals(sumaEgresos), 17, 2);
             

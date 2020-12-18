@@ -51,6 +51,8 @@ public class SetRutas extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(500, 300));
 
         jPanel1.setBackground(new java.awt.Color(34, 180, 115));
+        jPanel1.setMinimumSize(new java.awt.Dimension(532, 540));
+        jPanel1.setPreferredSize(new java.awt.Dimension(563, 340));
         jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jPanel1MouseDragged(evt);

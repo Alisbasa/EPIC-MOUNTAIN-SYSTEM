@@ -246,11 +246,11 @@ public class SERVICIOS extends javax.swing.JFrame {
                  
                 String[] data = {(String) fechaActual(), "Venta", "SERVICIO", jtCosto.getText(), "", "VERDE", Double.toString(variacion)};
 
-                EscribirCRM.escribirExcelInv(rutas.excel + "\\LibrosContables.xlsx", "Ingresos", data, 7);
-                EscribirCRM.escribirCeldaDouble(rutas.excel + "\\LibrosContables.xlsx", "Ingresos", Double.valueOf(data[6]), LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Ingresos"), 6);
-                EscribirCRM.escribirCeldaDouble(rutas.excel + "\\LibrosContables.xlsx", "Ingresos", Double.valueOf(data[3]), LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Ingresos"), 3);
-                String formula10 = "SUM(G2:G" + LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Ingresos") + ")";
-                EscribirCRM.escribirFormula(rutas.excel + "\\LibrosContables.xlsx", "Ingresos", formula10, (LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+                EscribirCRM.escribirExcelInv(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Ingresos", data, 7);
+                EscribirCRM.escribirCeldaDouble(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Ingresos", Double.valueOf(data[6]), LeerExcel.contarRenglones(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Ingresos"), 6);
+                EscribirCRM.escribirCeldaDouble(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Ingresos", Double.valueOf(data[3]), LeerExcel.contarRenglones(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Ingresos"), 3);
+                String formula10 = "SUM(G2:G" + LeerExcel.contarRenglones(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Ingresos") + ")";
+                EscribirCRM.escribirFormula(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Ingresos", formula10, (LeerExcel.contarRenglones(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Ingresos") + 1), 6);
                 String mesActual = rellenarIngresos.fechaActualEscribir();
 
                 EscribirCRM.escribirExcelInv(rutas.excel + "\\Ventas.xlsx", mesActual.toUpperCase(), inventario, 5);
@@ -360,11 +360,11 @@ public class SERVICIOS extends javax.swing.JFrame {
                 //String destinoCliente= LeerExcel.obtenerCelda(rutas.excel + "\\CRM.xlsx", "CLIENTES", 3, cliente.getSelectedIndex()+1);
                 String[] data = {(String) fechaActual(), "Venta a Cobrar", "SERVICIO", jtCosto.getText(), "", "VERDE", Double.toString(variacion)};
 
-                EscribirCRM.escribirExcelInv(rutas.excel + "\\LibrosContables.xlsx", "Ingresos", data, 7);
-                EscribirCRM.escribirCeldaDouble(rutas.excel + "\\LibrosContables.xlsx", "Ingresos", Double.valueOf(data[6]), LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Ingresos"), 6);
-                EscribirCRM.escribirCeldaDouble(rutas.excel + "\\LibrosContables.xlsx", "Ingresos", Double.valueOf(data[3]), LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Ingresos"), 3);
-                String formula10 = "SUM(G2:G" + LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Ingresos") + ")";
-                EscribirCRM.escribirFormula(rutas.excel + "\\LibrosContables.xlsx", "Ingresos", formula10, (LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Ingresos") + 1), 6);
+                EscribirCRM.escribirExcelInv(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Ingresos", data, 7);
+                EscribirCRM.escribirCeldaDouble(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Ingresos", Double.valueOf(data[6]), LeerExcel.contarRenglones(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Ingresos"), 6);
+                EscribirCRM.escribirCeldaDouble(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Ingresos", Double.valueOf(data[3]), LeerExcel.contarRenglones(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Ingresos"), 3);
+                String formula10 = "SUM(G2:G" + LeerExcel.contarRenglones(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Ingresos") + ")";
+                EscribirCRM.escribirFormula(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Ingresos", formula10, (LeerExcel.contarRenglones(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Ingresos") + 1), 6);
                 String mesActual = rellenarIngresos.fechaActualEscribir();
 
                 EscribirCRM.escribirExcelInv(rutas.excel + "\\Ventas.xlsx", mesActual.toUpperCase(), inventario, 5);
@@ -461,46 +461,46 @@ public class SERVICIOS extends javax.swing.JFrame {
                 EscribirCRM.escribirFormula(rutas.excel + "\\Ventas.xlsx", mesActual.toUpperCase(), formula7,
                         LeerExcel.contarRenglones(rutas.excel + "\\Ventas.xlsx", mesActual.toUpperCase()) + 1, 20);
                 
-                String[] hojas = LeerExcel.obtenerHoja(rutas.excel + "\\DeudasC.xlsx");
+                String[] hojas = LeerExcel.obtenerHoja(rutas.excel + "\\DEUDAS A COBRAR.xlsx");
                     String stCliente = cliente.getSelectedItem().toString();
 
                     boolean hojaEncontrada = false;
-                    for (int i = 0; i < LeerExcel.obtenerNumeroHojas(rutas.excel + "\\DeudasC.xlsx"); i++) {
+                    for (int i = 0; i < LeerExcel.obtenerNumeroHojas(rutas.excel + "\\DEUDAS A COBRAR.xlsx"); i++) {
                         if (hojas[i].equals(cliente.getSelectedItem().toString())) {
                             hojaEncontrada = true;
-                            Double suma = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar", 2, i) + precioNeto;
-                            EscribirCRM.escribirCeldaDouble(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar", suma, LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar"), 2);
+                            Double suma = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\DEUDAS A COBRAR.xlsx", "deudasCobrar", 2, i) + precioNeto;
+                            EscribirCRM.escribirCeldaDouble(rutas.excel + "\\DEUDAS A COBRAR.xlsx", "deudasCobrar", suma, LeerExcel.contarRenglones(rutas.excel + "\\DEUDAS A COBRAR.xlsx", "deudasCobrar"), 2);
                         }
-                        //EscribirCRM.crearHoja(rutas.excel + "\\DeudasC.xlsx", cliente.getSelectedItem().toString(), "FECHA", "MONTO");
+                        //EscribirCRM.crearHoja(rutas.excel + "\\DEUDAS A COBRAR.xlsx", cliente.getSelectedItem().toString(), "FECHA", "MONTO");
                     }
                     if (hojaEncontrada == true) {
                         //Escribe en Excel individual y crea hoja
                         String[] ventaInd = {fechaActual(), precioNeto.toString()};
-                        EscribirCRM.escribirExcelInv(rutas.excel + "\\DeudasC.xlsx", cliente.getSelectedItem().toString(), ventaInd, 2);
-                        EscribirCRM.escribirCeldaDouble(rutas.excel + "\\DeudasC.xlsx", cliente.getSelectedItem().toString(), precioNeto, LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", cliente.getSelectedItem().toString()), 1);
-                        String formulaInd = "SUM(B2:B" + (LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
-                        EscribirCRM.escribirFormula(rutas.excel + "\\DeudasC.xlsx", cliente.getSelectedItem().toString(), formulaInd, (LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", cliente.getSelectedItem().toString()) + 1), 1);
+                        EscribirCRM.escribirExcelInv(rutas.excel + "\\DEUDAS A COBRAR.xlsx", cliente.getSelectedItem().toString(), ventaInd, 2);
+                        EscribirCRM.escribirCeldaDouble(rutas.excel + "\\DEUDAS A COBRAR.xlsx", cliente.getSelectedItem().toString(), precioNeto, LeerExcel.contarRenglones(rutas.excel + "\\DEUDAS A COBRAR.xlsx", cliente.getSelectedItem().toString()), 1);
+                        String formulaInd = "SUM(B2:B" + (LeerExcel.contarRenglones(rutas.excel + "\\DEUDAS A COBRAR.xlsx", cliente.getSelectedItem().toString()) + 1) + ")";
+                        EscribirCRM.escribirFormula(rutas.excel + "\\DEUDAS A COBRAR.xlsx", cliente.getSelectedItem().toString(), formulaInd, (LeerExcel.contarRenglones(rutas.excel + "\\DEUDAS A COBRAR.xlsx", cliente.getSelectedItem().toString()) + 1), 1);
 
                         //Escribe en Excel general deudasCobrar                       
-                        String formulaD = EscribirCRM.Sumar(2, LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar") + 1, 'c');
-                        EscribirCRM.escribirFormula(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar", formulaD, (LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
+                        String formulaD = EscribirCRM.Sumar(2, LeerExcel.contarRenglones(rutas.excel + "\\DEUDAS A COBRAR.xlsx", "deudasCobrar") + 1, 'c');
+                        EscribirCRM.escribirFormula(rutas.excel + "\\DEUDAS A COBRAR.xlsx", "deudasCobrar", formulaD, (LeerExcel.contarRenglones(rutas.excel + "\\DEUDAS A COBRAR.xlsx", "deudasCobrar") + 1), 2);
                         
                         
                     }else {
                         //Escribe en Excel individual y crea hoja
-                        EscribirCRM.ruta(rutas.excel + "\\DeudasC.xlsx", cliente.getSelectedItem().toString(), "FECHA", "MONTO");
+                        EscribirCRM.ruta(rutas.excel + "\\DEUDAS A COBRAR.xlsx", cliente.getSelectedItem().toString(), "FECHA", "MONTO");
                         String[] ventaInd = {fechaActual(), precioNeto.toString()};
-                        EscribirCRM.escribirExcelInv(rutas.excel + "\\DeudasC.xlsx", cliente.getSelectedItem().toString(), ventaInd, 2);
-                        EscribirCRM.escribirCeldaDouble(rutas.excel + "\\DeudasC.xlsx", cliente.getSelectedItem().toString(),  precioNeto, LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", cliente.getSelectedItem().toString()), 1);
-                        String formulaInd = "SUM(B2:B" + LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", cliente.getSelectedItem().toString()) + ")";
-                        EscribirCRM.escribirFormula(rutas.excel + "\\DeudasC.xlsx", cliente.getSelectedItem().toString(), formulaInd, (LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", cliente.getSelectedItem().toString()) + 1), 1);
+                        EscribirCRM.escribirExcelInv(rutas.excel + "\\DEUDAS A COBRAR.xlsx", cliente.getSelectedItem().toString(), ventaInd, 2);
+                        EscribirCRM.escribirCeldaDouble(rutas.excel + "\\DEUDAS A COBRAR.xlsx", cliente.getSelectedItem().toString(),  precioNeto, LeerExcel.contarRenglones(rutas.excel + "\\DEUDAS A COBRAR.xlsx", cliente.getSelectedItem().toString()), 1);
+                        String formulaInd = "SUM(B2:B" + LeerExcel.contarRenglones(rutas.excel + "\\DEUDAS A COBRAR.xlsx", cliente.getSelectedItem().toString()) + ")";
+                        EscribirCRM.escribirFormula(rutas.excel + "\\DEUDAS A COBRAR.xlsx", cliente.getSelectedItem().toString(), formulaInd, (LeerExcel.contarRenglones(rutas.excel + "\\DEUDAS A COBRAR.xlsx", cliente.getSelectedItem().toString()) + 1), 1);
 
                         //Escribe en Excel general deudasCobrar
                         String[] ventaC = {fechaActual(), cliente.getSelectedItem().toString(),precioNeto.toString()};
-                        EscribirCRM.escribirExcelInv(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar", ventaC, 3);
-                        EscribirCRM.escribirCeldaDouble(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar", precioNeto, LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar"), 2);
-                        String formulaC = EscribirCRM.Sumar(2, LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar"), 'c');
-                        EscribirCRM.escribirFormula(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar", formulaC, (LeerExcel.contarRenglones(rutas.excel + "\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
+                        EscribirCRM.escribirExcelInv(rutas.excel + "\\DEUDAS A COBRAR.xlsx", "deudasCobrar", ventaC, 3);
+                        EscribirCRM.escribirCeldaDouble(rutas.excel + "\\DEUDAS A COBRAR.xlsx", "deudasCobrar", precioNeto, LeerExcel.contarRenglones(rutas.excel + "\\DEUDAS A COBRAR.xlsx", "deudasCobrar"), 2);
+                        String formulaC = EscribirCRM.Sumar(2, LeerExcel.contarRenglones(rutas.excel + "\\DEUDAS A COBRAR.xlsx", "deudasCobrar"), 'c');
+                        EscribirCRM.escribirFormula(rutas.excel + "\\DEUDAS A COBRAR.xlsx", "deudasCobrar", formulaC, (LeerExcel.contarRenglones(rutas.excel + "\\DEUDAS A COBRAR.xlsx", "deudasCobrar") + 1), 2);
                       
 
                         

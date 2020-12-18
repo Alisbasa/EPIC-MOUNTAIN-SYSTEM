@@ -231,26 +231,27 @@ public class equipoymobCT extends javax.swing.JFrame {
         
         try {
             
-            escribirE.escribirExcelInv(rutas.excel + "\\comprasT.xlsx", "COMPRAS", compraE, 22);
-            escribirE.escribirCeldaDouble(rutas.excel + "\\comprasT.xlsx", "COMPRAS", Double.valueOf(jtCosto.getText()), LeerExcel.contarRenglones(rutas.excel + "\\comprasT.xlsx", "COMPRAS"), 8);
-            escribirE.escribirCelda(rutas.excel + "\\comprasT.xlsx", "COMPRAS", tipoGasto.getSelectedItem().toString(), LeerExcel.contarRenglones(rutas.excel + "\\comprasT.xlsx", "COMPRAS"), 21);
-            escribirE.escribirCelda(rutas.excel + "\\comprasT.xlsx", "COMPRAS", paqueteria.getText(), LeerExcel.contarRenglones(rutas.excel + "\\comprasT.xlsx", "COMPRAS"), 22);
+            escribirE.escribirExcelInv(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", compraE, 22);
+            escribirE.escribirCeldaDouble(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", Double.valueOf(jtCosto.getText()), LeerExcel.contarRenglones(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 8);
+            escribirE.escribirCelda(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", tipoGasto.getSelectedItem().toString(), LeerExcel.contarRenglones(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 21);
+            escribirE.escribirCelda(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", paqueteria.getText(), LeerExcel.contarRenglones(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 22);
             String[] data = {(String) fechaActual(), "Compra en Transito", jtProducto.getText(), jtCosto.getText(), (String) tipoGasto.getSelectedItem(), "VERDE", jtCosto.getText()};
 
-            escribirE.escribirExcelInv(rutas.excel + "\\LibrosContables.xlsx", "Gastos", data, 7);
-            escribirE.escribirCeldaDouble(rutas.excel + "\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Gastos"), 3);
-            String formula = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-            escribirE.escribirCeldaDouble(rutas.excel + "\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Gastos"), 6);
-            String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-            escribirE.escribirFormula(rutas.excel + "\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Gastos") + 1), 3);
-            escribirE.escribirFormula(rutas.excel + "\\LibrosContables.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones(rutas.excel + "\\LibrosContables.xlsx", "Gastos") + 1), 6);
+            escribirE.escribirExcelInv(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Gastos", data, 7);
+            escribirE.escribirCeldaDouble(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Gastos"), 3);
+            String formula = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
+            escribirE.escribirCeldaDouble(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Gastos"), 6);
+            String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
+            escribirE.escribirFormula(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Gastos", formula, (LeerExcel.contarRenglones(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 3);
+            escribirE.escribirFormula(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 6);
             
             Libros.actualiza();
             this.setVisible(false); 
             
-        } catch (IOException ex) {
-            Logger.getLogger(equipoymobCT.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }catch (IOException ex) {
+                    Caption ventanaEx = new Caption("Recuerda cerrar Excel");
+                    ventanaEx.setVisible(true);
+            }
           
     }//GEN-LAST:event_jbRegistrarMouseClicked
     

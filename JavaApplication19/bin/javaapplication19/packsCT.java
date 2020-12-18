@@ -286,104 +286,104 @@ public class packsCT extends javax.swing.JFrame {
         try {
             String[] data = {(String) fechaActual(), "Compra en Transito", jtProducto.getText(), jtCosto.getText(), (String) tipoGasto.getSelectedItem(), "VERDE", "0"};
             
-            EscribirCRM.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Double.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-            String formula10 = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
-            EscribirCRM.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula10, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 6);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Double.valueOf(data[3]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
-            String formula11 = "SUM(D2:D" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
-            EscribirCRM.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula11, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos")+1), 3);
+            EscribirCRM.escribirExcelInv(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", data, 7);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Double.valueOf(data[6]), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 6);
+            String formula10 = "SUM(G2:G" + LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + ")";
+            EscribirCRM.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula10, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos")+1), 6);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Double.valueOf(data[3]), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 3);
+            String formula11 = "SUM(D2:D" + LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + ")";
+            EscribirCRM.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula11, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos")+1), 3);
             
             
             
-            EscribirCRM.escribirExcelInv("src\\excel\\comprasT.xlsx", "COMPRAS",inventario,5);
+            EscribirCRM.escribirExcelInv(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS",inventario,5);
             
             //UNIDADES
-            EscribirCRM.escribirCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 6);
+            EscribirCRM.escribirCeldaNumerica(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 6);
 
             //TIG
             Double TIG = Double.valueOf(jtPrecio.getText())/Double.valueOf(jtCosto.getText());
-            EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", TIG, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 5);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", TIG, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 5);
 
             //COSTO UNIDAD
-            EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", Double.valueOf(jtCosto.getText()), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 7);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", Double.valueOf(jtCosto.getText()), LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 7);
             //COSTO NETO
-            EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", Double.valueOf(costoNeto), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 8);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", Double.valueOf(costoNeto), LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 8);
 
             //PRECIO BASE UNIDAD
-            EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", Double.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 9);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", Double.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 9);
 
             //PRECIO BASE NETO
-            EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", Double.valueOf(precioBaseNeto), LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 10);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", Double.valueOf(precioBaseNeto), LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 10);
 
             //PRECIO LOCAL UNIDAD
-            Double precioL = (LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 9, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")) * 1.16);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", precioL, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 11);
+            Double precioL = (LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 9, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS")) * 1.16);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", precioL, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 11);
 
             //PRECIO LOCAL NETO
-            Double precioNeto = EscribirCRM.Mulitplicar(6, 11,LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS") ,"src\\excel\\comprasT.xlsx", "COMPRAS");
-            EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", precioNeto, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 12);
+            Double precioNeto = EscribirCRM.Mulitplicar(6, 11,LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS") ,rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS");
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", precioNeto, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 12);
 
             //COMISION ML
-            Double comisionML = ((LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 11, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"))) *.15)+5;
-            EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", comisionML, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 15);
+            Double comisionML = ((LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 11, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"))) *.15)+5;
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", comisionML, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 15);
 
             //COMISION ML NETO
-            Double comisionMLN = EscribirCRM.Mulitplicar(6, 15, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), "src\\excel\\comprasT.xlsx", "COMPRAS");
-            EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", comisionMLN, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 16);
+            Double comisionMLN = EscribirCRM.Mulitplicar(6, 15, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS");
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", comisionMLN, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 16);
 
             // IVA UNIDAD
-            Double IVA = (LeerExcel.obtenerCeldaNumerica("src\\excel\\comprasT.xlsx", "COMPRAS", 9, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"))*0.16);
-            EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", IVA, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 17);
+            Double IVA = (LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 9, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"))*0.16);
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", IVA, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 17);
 
             //IVA NETO
-            Double ivaN = EscribirCRM.Mulitplicar(6, 17, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), "src\\excel\\comprasT.xlsx", "COMPRAS");
-            EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", ivaN, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 18);
+            Double ivaN = EscribirCRM.Mulitplicar(6, 17, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS");
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", ivaN, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 18);
 
             //PRECIO ML
-            Double precioML = EscribirCRM.SumarColumnasML(LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 9, 17, 15, "src\\excel\\comprasT.xlsx", "COMPRAS");
-            EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", precioML, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 13);
+            Double precioML = EscribirCRM.SumarColumnasML(LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 9, 17, 15, rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS");
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", precioML, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 13);
 
             //PRECIOML NETO
 
-            Double precioMLN = EscribirCRM.Mulitplicar(6, 13, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), "src\\excel\\comprasT.xlsx", "COMPRAS");
-            EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", precioMLN, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 14);
+            Double precioMLN = EscribirCRM.Mulitplicar(6, 13, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS");
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", precioMLN, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 14);
 
             //UTILIDAD UNIDAD LOCAL
-            Double utilidad = EscribirCRM.RestarColumnas(LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 11, 7, 17, "src\\excel\\comprasT.xlsx", "COMPRAS");
-            EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", utilidad, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 19);
+            Double utilidad = EscribirCRM.RestarColumnas(LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 11, 7, 17, rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS");
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", utilidad, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 19);
 
             //UTILIDAD LOCAL NETA
-            Double utilidadLN = EscribirCRM.Mulitplicar(6, 19, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), "src\\excel\\comprasT.xlsx", "COMPRAS");
-            EscribirCRM.escribirCeldaDouble("src\\excel\\comprasT.xlsx", "COMPRAS", utilidadLN, LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS"), 20);
+            Double utilidadLN = EscribirCRM.Mulitplicar(6, 19, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS");
+            EscribirCRM.escribirCeldaDouble(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", utilidadLN, LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS"), 20);
 
-            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+ 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\comprasT.xlsx", "COMPRAS", formula,
-                LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+1, 8);
+            String formula = "SUM(I2:I" + (LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS")+ 1) + ")";
+            EscribirCRM.escribirFormula(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", formula,
+                LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS")+1, 8);
 
-            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+ 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\comprasT.xlsx", "COMPRAS", formula2,
-                LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+1, 10);
+            String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS")+ 1) + ")";
+            EscribirCRM.escribirFormula(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", formula2,
+                LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS")+1, 10);
 
-            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+ 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\comprasT.xlsx", "COMPRAS", formula3,
-                LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+1, 12);
+            String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS")+ 1) + ")";
+            EscribirCRM.escribirFormula(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", formula3,
+                LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS")+1, 12);
 
-            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+ 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\comprasT.xlsx", "COMPRAS", formula4,
-                LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+1, 14);
+            String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS")+ 1) + ")";
+            EscribirCRM.escribirFormula(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", formula4,
+                LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS")+1, 14);
 
-            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+ 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\comprasT.xlsx", "COMPRAS", formula5,
-                LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+1, 16);
+            String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS")+ 1) + ")";
+            EscribirCRM.escribirFormula(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", formula5,
+                LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS")+1, 16);
 
-            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+ 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\comprasT.xlsx", "COMPRAS", formula6,
-                LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+1, 18);
+            String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS")+ 1) + ")";
+            EscribirCRM.escribirFormula(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", formula6,
+                LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS")+1, 18);
 
-            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+ 1) + ")";
-            EscribirCRM.escribirFormula("src\\excel\\comprasT.xlsx", "COMPRAS", formula7,
-                LeerExcel.contarRenglones("src\\excel\\comprasT.xlsx", "COMPRAS")+1, 20);
+            String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS")+ 1) + ")";
+            EscribirCRM.escribirFormula(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", formula7,
+                LeerExcel.contarRenglones(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS")+1, 20);
             Libros.actualiza();
             this.setVisible(false);
 

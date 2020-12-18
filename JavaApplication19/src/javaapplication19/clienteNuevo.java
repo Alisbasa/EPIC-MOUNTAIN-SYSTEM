@@ -316,13 +316,13 @@ public class clienteNuevo extends javax.swing.JFrame {
         String[] Registro = {jtNombre.getText(),jtNumero.getText(),jtCorreo.getText(),jtUbicacion.getText(), "    "}; 
         rellenarIngresos vender = new rellenarIngresos();
         Escribir EscribirCRM = new Escribir();
-        String formula = "=HIPERVINCULO(\"[historialCompras.xlsx]'"+jtNombre.getText()+"'! A1 \",\" IR A HISTORIAL\")";
+        String formula = "=HIPERVINCULO(\"[HISTORIAL DE COMPRAS.xlsx]'"+jtNombre.getText()+"'! A1 \",\" IR A HISTORIAL\")";
         try {
             EscribirCRM.escribirExcelClientes(rutas.excel + "\\CRM.xlsx", "Clientes", Registro);
             EscribirCRM.escribirCelda(rutas.excel + "\\CRM.xlsx", "Clientes", formula, LeerExcel.contarRenglones(rutas.excel + "\\CRM.xlsx", "Clientes"), 4);
             vender.vender(inventario, unidadesCB, plataforma, jtNombre.getText(), cliente);
             vender.historialCHH(jtNombre.getText(),cliente, plataforma);
-//            rellenarIngresos.botonBorrarClientes(rellenarIngresos.iconoVentas, rutas.excel + "\\historialCompras.xlsx", jtNombre.getText());
+//            rellenarIngresos.botonBorrarClientes(rellenarIngresos.iconoVentas, rutas.excel + "\\HISTORIAL DE COMPRAS.xlsx", jtNombre.getText());
             
             //EscribirCRM.escribirExcelInv(rutas.excel + "\\CRM.xlsx", "deudasC", Registro, ERROR);
         } catch (IOException ex) {

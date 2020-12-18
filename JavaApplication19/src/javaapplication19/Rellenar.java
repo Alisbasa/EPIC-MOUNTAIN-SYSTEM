@@ -103,7 +103,7 @@ JLabel iconoOkV = new JLabel();
 
         String[] listaPlataformas = {"Mercado Libre", "Local"};
 
-        inventario = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"/Inventario.xlsx", "EPIC MOUNTAIN", 0));
+        inventario = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"/INVENTARIOS.xlsx", "EPIC MOUNTAIN", 0));
         inventario.addItem("SERVICIO");
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
@@ -143,7 +143,7 @@ JLabel iconoOkV = new JLabel();
                 
                 indexInventario = inventario.getSelectedIndex();
                 try {
-                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica(rutas.excel+"/Inventario.xlsx", "EPIC MOUNTAIN", 6, indexInventario + 1);
+                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica(rutas.excel+"/INVENTARIOS.xlsx", "EPIC MOUNTAIN", 6, indexInventario + 1);
                 } catch (IOException ex) {
                     Logger.getLogger(Rellenar.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -278,7 +278,7 @@ JLabel iconoOkV = new JLabel();
         rellenarDeudasC.add(iconoDeudasC);
 
 
-        deudor = new JComboBox(LeerExcel.obtenerHoja(rutas.excel+"/deudasC.xlsx"));
+        deudor = new JComboBox(LeerExcel.obtenerHoja(rutas.excel+"/DEUDAS A COBRAR.xlsx"));
         deudor.removeItemAt(0);
         deudor.addItem("Nuevo");
         deudor.setBackground(Color.white);
@@ -315,7 +315,7 @@ JLabel iconoOkV = new JLabel();
 
         String[] listaPlataformas = {"Mercado Libre", "Local"};
 
-        inventario = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"/Inventario.xlsx", "EPIC MOUNTAIN", 0));
+        inventario = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"/INVENTARIOS.xlsx", "EPIC MOUNTAIN", 0));
         
         inventario.addItem("SERVICIO");
         inventario.setBackground(Color.white);
@@ -356,7 +356,7 @@ JLabel iconoOkV = new JLabel();
             public void actionPerformed(ActionEvent e) {
                 indexInventario = inventario.getSelectedIndex();
                 try {
-                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica(rutas.excel+"/Inventario.xlsx", "EPIC MOUNTAIN", 6, indexInventario + 1);
+                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica(rutas.excel+"/INVENTARIOS.xlsx", "EPIC MOUNTAIN", 6, indexInventario + 1);
                 } catch (IOException ex) {
                     Logger.getLogger(Rellenar.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -388,7 +388,7 @@ JLabel iconoOkV = new JLabel();
         
         
         
-        deudasPE = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"\\DeudasP.xlsx", "deudasPagar", 1));
+        deudasPE = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"\\DEUDAS A PAGAR.xlsx", "deudasPagar", 1));
         deudasPE.removeItemAt(0);
         deudasPE.setBackground(Color.white);
         deudasPE.setUI(PropiedadesCB2.createUI(deudasPE));

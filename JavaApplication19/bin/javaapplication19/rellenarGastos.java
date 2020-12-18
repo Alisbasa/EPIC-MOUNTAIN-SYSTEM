@@ -49,9 +49,9 @@ public class rellenarGastos {
                 try {
                     Escribir EscribirExcel = new Escribir();
                     Escribir.saldarDeuda(filepath, hoja, LeerExcel.obtenerIndexHoja(filepath, hoja));
-                    String formula = "SUM(C2:C" + (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1) + ")";
-                    EscribirExcel.escribirFormula("src\\excel\\DeudasC.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones("src\\excel\\DeudasC.xlsx", "deudasCobrar") + 1), 2);
-                    //Escribir.removeRow("src//excel/LibrosContables.xlsx", "Gastos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Gastos"));
+                    String formula = "SUM(C2:C" + (LeerExcel.contarRenglones(rutas.excel+"\\DEUDAS A COBRAR.xlsx", "deudasCobrar") + 1) + ")";
+                    EscribirExcel.escribirFormula(rutas.excel+"\\DEUDAS A COBRAR.xlsx", "deudasCobrar", formula, (LeerExcel.contarRenglones(rutas.excel+"\\DEUDAS A COBRAR.xlsx", "deudasCobrar") + 1), 2);
+                    //Escribir.removeRow("src//excel/LIBROS DE CONTROL.xlsx", "Gastos", LeerExcel.contarRenglones("src//excel/LIBROS DE CONTROL.xlsx", "Gastos"));
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -91,7 +91,7 @@ public class rellenarGastos {
                 padre.updateUI();
                 try {
                     Escribir.removeRow(filepath, hoja, LeerExcel.contarRenglones(filepath, hoja));
-                    //Escribir.removeRow("src//excel/LibrosContables.xlsx", "Gastos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Gastos"));
+                    //Escribir.removeRow("src//excel/LIBROS DE CONTROL.xlsx", "Gastos", LeerExcel.contarRenglones("src//excel/LIBROS DE CONTROL.xlsx", "Gastos"));
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -129,7 +129,7 @@ public class rellenarGastos {
                 try {
                     Escribir.removeRow(filepath, hoja, LeerExcel.contarRenglones(filepath, hoja));
                     Libros.actualiza();
-                    //Escribir.removeRow("src//excel/LibrosContables.xlsx", "Gastos", LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Gastos"));
+                    //Escribir.removeRow("src//excel/LIBROS DE CONTROL.xlsx", "Gastos", LeerExcel.contarRenglones("src//excel/LIBROS DE CONTROL.xlsx", "Gastos"));
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -166,40 +166,40 @@ public class rellenarGastos {
             public void mouseClicked(MouseEvent e) {
                 try {
                     Escribir escribirA = new Escribir();
-                    Double restaCosto = LeerExcel.obtenerCeldaNumerica(filepath, hoja, 7, folio) - LeerExcel.obtenerCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Gastos", 3,
-                            LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"));
+                    Double restaCosto = LeerExcel.obtenerCeldaNumerica(filepath, hoja, 7, folio) - LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", 3,
+                            LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"));
                     escribirA.escribirCeldaDouble(filepath, hoja, restaCosto, folio, 7);
 
                     Escribir escribirVentas = new Escribir();
                     String inventario = "EPIC MOUNTAIN";
 
-                    int suma = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", inventario, 6, folio);
-                    double costoUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", inventario, 7, folio);
-                    double precioBaseUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", inventario, 9, folio);
-                    Double precioML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario, 13, folio);
-                    Double iva = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario, 17, folio);
-                    Double comisionML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario, 15, folio);
-                    Double utilidadShop = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventario, 19, folio);
+                    int suma = (int) LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\INVENTARIOS.xlsx", inventario, 6, folio);
+                    double costoUnidad = LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\INVENTARIOS.xlsx", inventario, 7, folio);
+                    double precioBaseUnidad = LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\INVENTARIOS.xlsx", inventario, 9, folio);
+                    Double precioML = LeerExcel.obtenerCeldaNumerica("src//excel/INVENTARIOS.xlsx", inventario, 13, folio);
+                    Double iva = LeerExcel.obtenerCeldaNumerica("src//excel/INVENTARIOS.xlsx", inventario, 17, folio);
+                    Double comisionML = LeerExcel.obtenerCeldaNumerica("src//excel/INVENTARIOS.xlsx", inventario, 15, folio);
+                    Double utilidadShop = LeerExcel.obtenerCeldaNumerica("src//excel/INVENTARIOS.xlsx", inventario, 19, folio);
 
                     //COSTO NETO
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, (suma * costoUnidad), folio, 8);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario, (suma * costoUnidad), folio, 8);
                     //PRECIO BASE NETO
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, suma * (precioBaseUnidad), folio, 10);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario, suma * (precioBaseUnidad), folio, 10);
                     //PRECIO LOCAL NETO
-                    Double precioNeto = escribirVentas.Mulitplicar(6, 11, folio, "src\\excel\\Inventario.xlsx", inventario);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, precioNeto, folio, 12);
+                    Double precioNeto = escribirVentas.Mulitplicar(6, 11, folio, rutas.excel+"\\INVENTARIOS.xlsx", inventario);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario, precioNeto, folio, 12);
                     //COMISION ML NETO
 
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, comisionML * suma, folio, 16);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario, comisionML * suma, folio, 16);
 
                     //IVA NETO
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, suma * iva, folio, 18);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario, suma * iva, folio, 18);
                     //PRECIOML NETO
 
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, suma * precioML, folio, 14);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario, suma * precioML, folio, 14);
 
                     //UTILIDAD LOCAL NETA
-                    escribirVentas.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventario, suma * utilidadShop, folio, 20);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventario, suma * utilidadShop, folio, 20);
 
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
@@ -308,60 +308,60 @@ public class rellenarGastos {
                         String[] equipo = {(String) fechaActual(), desarrolloTipoE.getText(), descripcion.getText(), montoDes.getText()};
                         Escribir EscribirExcel = new Escribir();
 
-                        EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Herramientas", equipo, 4);
-                        EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", "Herramientas", Utilidades.roundTwoDecimals(Double.valueOf(montoDes.getText())), LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas"), 3);
-                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas") + 1) + ")";
-                        EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Herramientas", formula, LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Herramientas") + 1, 3);
+                        EscribirExcel.escribirExcelInv(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Herramientas", equipo, 4);
+                        EscribirExcel.escribirCeldaDouble(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Herramientas", Utilidades.roundTwoDecimals(Double.valueOf(montoDes.getText())), LeerExcel.contarRenglones(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Herramientas"), 3);
+                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Herramientas") + 1) + ")";
+                        EscribirExcel.escribirFormula(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Herramientas", formula, LeerExcel.contarRenglones(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Herramientas") + 1, 3);
 
                     } else if (tipo.getSelectedItem().toString().equals("Equipo de Taller")) {
                         String[] equipo = {(String) fechaActual(), desarrolloTipoE.getText(), descripcion.getText(), montoDes.getText()};
                         Escribir EscribirExcel = new Escribir();
 
-                        EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Equipo de Taller", equipo, 4);
-                        EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", "Equipo de Taller", Double.valueOf(montoDes.getText()), LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Taller"), 3);
-                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Taller") + 1) + ")";
-                        EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Equipo de Taller", formula, (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Taller") + 1), 3);
+                        EscribirExcel.escribirExcelInv(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Taller", equipo, 4);
+                        EscribirExcel.escribirCeldaDouble(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Taller", Double.valueOf(montoDes.getText()), LeerExcel.contarRenglones(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Taller"), 3);
+                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Taller") + 1) + ")";
+                        EscribirExcel.escribirFormula(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Taller", formula, (LeerExcel.contarRenglones(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Taller") + 1), 3);
 
                     } else if (tipo.getSelectedItem().toString().equals("Mobiliario")) {
                         String[] equipo = {(String) fechaActual(), desarrolloTipoE.getText(), descripcion.getText(), montoDes.getText()};
                         Escribir EscribirExcel = new Escribir();
 
-                        EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Mobiliario", equipo, 4);
-                        EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", "Mobiliario", Double.valueOf(montoDes.getText()), LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Mobiliario"), 3);
-                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Mobiliario") + 1) + ")";
-                        EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Mobiliario", formula, (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Mobiliario") + 1), 3);
+                        EscribirExcel.escribirExcelInv(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Mobiliario", equipo, 4);
+                        EscribirExcel.escribirCeldaDouble(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Mobiliario", Double.valueOf(montoDes.getText()), LeerExcel.contarRenglones(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Mobiliario"), 3);
+                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Mobiliario") + 1) + ")";
+                        EscribirExcel.escribirFormula(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Mobiliario", formula, (LeerExcel.contarRenglones(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Mobiliario") + 1), 3);
 
                     } else if (tipo.getSelectedItem().toString().equals("Equipo de Limpieza")) {
                         String[] equipo = {(String) fechaActual(), desarrolloTipoE.getText(), descripcion.getText(), montoDes.getText()};
                         Escribir EscribirExcel = new Escribir();
 
-                        EscribirExcel.escribirExcelInv("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", equipo, 4);
-                        EscribirExcel.escribirCeldaDouble("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", Double.valueOf(montoDes.getText()), LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Limpieza"), 3);
-                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Limpieza") + 1) + ")";
-                        EscribirExcel.escribirFormula("src\\excel\\Equipo.xlsx", "Equipo de Limpieza", formula, (LeerExcel.contarRenglones("src\\excel\\Equipo.xlsx", "Equipo de Limpieza") + 1), 3);
+                        EscribirExcel.escribirExcelInv(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Limpieza", equipo, 4);
+                        EscribirExcel.escribirCeldaDouble(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Limpieza", Double.valueOf(montoDes.getText()), LeerExcel.contarRenglones(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Limpieza"), 3);
+                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Limpieza") + 1) + ")";
+                        EscribirExcel.escribirFormula(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Limpieza", formula, (LeerExcel.contarRenglones(rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Limpieza") + 1), 3);
 
                     }
 
                     String tipoEquipo;
 
-                    tipoEquipo = tipo.getSelectedItem().toString();// LeerExcel.obtenerCelda("src//excel/LibrosContables.xlsx", "Gastos", 4,
-                    // LeerExcel.contarRenglones("src//excel/LibrosContables.xlsx", "Gastos"));
+                    tipoEquipo = tipo.getSelectedItem().toString();// LeerExcel.obtenerCelda("src//excel/LIBROS DE CONTROL.xlsx", "Gastos", 4,
+                    // LeerExcel.contarRenglones("src//excel/LIBROS DE CONTROL.xlsx", "Gastos"));
 
                     switch (tipoEquipo) {
                         case "Herramientas":
-                            botonBorrarInd(icono, "src\\excel\\Equipo.xlsx", "HERRAMIENTAS");
+                            botonBorrarInd(icono, rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "HERRAMIENTAS");
                             break;
 
                         case "Equipo de Taller":
-                            botonBorrarInd(icono, "src\\excel\\Equipo.xlsx", "Equipo de Taller");
+                            botonBorrarInd(icono, rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Taller");
                             break;
 
                         case "Mobiliario":
-                            botonBorrarInd(icono, "src\\excel\\Equipo.xlsx", "Mobiliario");
+                            botonBorrarInd(icono, rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Mobiliario");
                             break;
 
                         case "Equipo de Limpieza":
-                            botonBorrarInd(icono, "src\\excel\\Equipo.xlsx", "Equipo de Limpieza");
+                            botonBorrarInd(icono, rutas.excel+"\\EQUIPO Y MOBILIARIO.xlsx", "Equipo de Limpieza");
                             break;
 
                     }
@@ -370,19 +370,19 @@ public class rellenarGastos {
 
                     Escribir escribirVentas = new Escribir();
 
-                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
-                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirExcelInv(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", data, 7);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 3);
+                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
 
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 3);
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 6);
+                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 3);
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 6);
 
                     listaGastos.add(panelGasto, 1);
                     panelesGastos.add(panelGasto);
 
-                    botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "equipoG", "src//excel/LibrosContables.xlsx", "Gastos");
+                    botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "equipoG", "src//excel/LIBROS DE CONTROL.xlsx", "Gastos");
 
                     panelGasto.add(fecha);
                     panelGasto.add(desarrolloLista);
@@ -472,9 +472,9 @@ public class rellenarGastos {
                 listaGastos.add(panelGasto, 1);
                 panelesGastos.add(panelGasto);
 
-                botonBorrar(iconoInventario, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "inventarioG", "src//excel/LibrosContables.xlsx", "Gastos");;
+                botonBorrar(iconoInventario, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "inventarioG", "src//excel/LIBROS DE CONTROL.xlsx", "Gastos");;
 
-                botonBorrarInd(iconoInventario, "src\\excel\\Inventario.xlsx", "Inventario");
+                botonBorrarInd(iconoInventario, rutas.excel+"\\INVENTARIOS.xlsx", "Inventario");
 
                 panelGasto.add(fecha);
                 panelGasto.add(desarrolloListaI);
@@ -491,14 +491,14 @@ public class rellenarGastos {
                     inv.setVisible(true);
                     try {
 
-                        escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
-                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
+                        escribirVentas.escribirExcelInv(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", data, 7);
+                        escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 3);
+                        String formula = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
 
-                        escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-                        String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-                        escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 3);
-                        escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
+                        escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 6);
+                        String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
+                        escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 3);
+                        escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 6);
 
                     } catch (IOException ex) {
                         Logger.getLogger(rellenarIngresos.class.getName()).log(Level.SEVERE, null, ex);
@@ -604,25 +604,25 @@ public class rellenarGastos {
                         try {
 
                             Escribir escribirVentas = new Escribir();
-                            escribirVentas.crearHojaPack("src\\excel\\Packs.xlsx", desarrolloTipoP.getText());
-                            escribirVentas.escribirCeldaDoubleVerde("src\\excel\\Packs.xlsx", desarrolloTipoP.getText(), Utilidades.roundTwoDecimals(Double.valueOf(montoDesP.getText())), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 8);
-                            escribirVentas.escribirCeldaDoubleVerde("src\\excel\\Packs.xlsx", desarrolloTipoP.getText(), Utilidades.roundTwoDecimals(Double.valueOf(precio.getText())), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 10);
-                            escribirVentas.escribirCeldaDoubleVerde("src\\excel\\Packs.xlsx", desarrolloTipoP.getText(), Utilidades.roundTwoDecimals(Double.valueOf(precio.getText()) / Double.valueOf(montoDesP.getText())), LeerExcel.contarRenglones("src\\excel\\Packs.xlsx", desarrolloTipoP.getText()), 5);
-                            botonBorrarHoja(iconoPacks, "src\\excel\\Packs.xlsx", LeerExcel.obtenerNumeroHojas("src\\excel\\Packs.xlsx") - 1);
-                            botonBorrar(iconoPacks, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "packsG", "src//excel/LibrosContables.xlsx", "Gastos");
+                            escribirVentas.crearHojaPack(rutas.excel+"\\Packs.xlsx", desarrolloTipoP.getText());
+                            escribirVentas.escribirCeldaDoubleVerde(rutas.excel+"\\Packs.xlsx", desarrolloTipoP.getText(), Utilidades.roundTwoDecimals(Double.valueOf(montoDesP.getText())), LeerExcel.contarRenglones(rutas.excel+"\\Packs.xlsx", desarrolloTipoP.getText()), 8);
+                            escribirVentas.escribirCeldaDoubleVerde(rutas.excel+"\\Packs.xlsx", desarrolloTipoP.getText(), Utilidades.roundTwoDecimals(Double.valueOf(precio.getText())), LeerExcel.contarRenglones(rutas.excel+"\\Packs.xlsx", desarrolloTipoP.getText()), 10);
+                            escribirVentas.escribirCeldaDoubleVerde(rutas.excel+"\\Packs.xlsx", desarrolloTipoP.getText(), Utilidades.roundTwoDecimals(Double.valueOf(precio.getText()) / Double.valueOf(montoDesP.getText())), LeerExcel.contarRenglones(rutas.excel+"\\Packs.xlsx", desarrolloTipoP.getText()), 5);
+                            botonBorrarHoja(iconoPacks, rutas.excel+"\\Packs.xlsx", LeerExcel.obtenerNumeroHojas(rutas.excel+"\\Packs.xlsx") - 1);
+                            botonBorrar(iconoPacks, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "packsG", "src//excel/LIBROS DE CONTROL.xlsx", "Gastos");
 
                             String[] data = {(String) fechaActual(), "Pack de Ventas", desarrolloTipoP.getText(), montoDesP.getText(), "    ", "VERDE", "   "};
 
-                            escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
+                            escribirVentas.escribirExcelInv(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", data, 7);
 
-                            escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
-                            String formula = ("SUM(D2:D" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
+                            escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 3);
+                            String formula = ("SUM(D2:D" + LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
 
-                            escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-                            String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
+                            escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(0), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 6);
+                            String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
 
-                            escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 3);
-                            escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
+                            escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 3);
+                            escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 6);
 
                             panelGasto.add(fecha);
                             panelGasto.add(desarrolloLista);
@@ -812,26 +812,26 @@ public class rellenarGastos {
 
                     Escribir escribirVentas = new Escribir();
 
-                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
+                    escribirVentas.escribirExcelInv(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", data, 7);
 
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
-                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 3);
+                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
 
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 3);
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 6);
+                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 3);
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 6);
 
-                    escribirVentas.escribirExcelInv("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString(), deuda, 2);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString(), Double.valueOf(precio.getText()) * (-1), (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString())), 1);
-                    String formula3 = escribirVentas.Sumar(2, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString()) + 1), 'b');
-                    escribirVentas.escribirFormula("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString(), formula3, (LeerExcel.contarRenglones("src\\excel\\DeudasP.xlsx", deudas.getSelectedItem().toString()) + 1), 1);
+                    escribirVentas.escribirExcelInv(rutas.excel+"\\DEUDAS A PAGAR.xlsx", deudas.getSelectedItem().toString(), deuda, 2);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\DEUDAS A PAGAR.xlsx", deudas.getSelectedItem().toString(), Double.valueOf(precio.getText()) * (-1), (LeerExcel.contarRenglones(rutas.excel+"\\DEUDAS A PAGAR.xlsx", deudas.getSelectedItem().toString())), 1);
+                    String formula3 = escribirVentas.Sumar(2, (LeerExcel.contarRenglones(rutas.excel+"\\DEUDAS A PAGAR.xlsx", deudas.getSelectedItem().toString()) + 1), 'b');
+                    escribirVentas.escribirFormula(rutas.excel+"\\DEUDAS A PAGAR.xlsx", deudas.getSelectedItem().toString(), formula3, (LeerExcel.contarRenglones(rutas.excel+"\\DEUDAS A PAGAR.xlsx", deudas.getSelectedItem().toString()) + 1), 1);
 
                     //AGREGAR PANEL
                     listaGastos.add(panelGastoC, 1);
                     panelesGastos.add(panelGastoC);//Ingresa el panelVenta a la arraylist panelesInresos
 
-                    botonBorrar(icono, listaGastos, panelGastoC, panelesGastos.indexOf(panelGastoC), "DeudasPG", "src//excel/LibrosContables.xlsx", "Gastos");
+                    botonBorrar(icono, listaGastos, panelGastoC, panelesGastos.indexOf(panelGastoC), "DeudasPG", "src//excel/LIBROS DE CONTROL.xlsx", "Gastos");
 
                     panelGastoC.add(fecha);
                     panelGastoC.add(deudasPagar);
@@ -911,7 +911,7 @@ public class rellenarGastos {
                 listaGastos.add(panelGasto, 1);
                 panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
-                botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "impuestoG", "src//excel/LibrosContables.xlsx", "Gastos");
+                botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "impuestoG", "src//excel/LIBROS DE CONTROL.xlsx", "Gastos");
 
                 panelGasto.add(fecha);
                 panelGasto.add(imp);
@@ -924,14 +924,14 @@ public class rellenarGastos {
                 Escribir escribirVentas = new Escribir();
                 try {
 
-                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
+                    escribirVentas.escribirExcelInv(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", data, 7);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 3);
 
-                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 3);
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
+                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 6);
+                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 3);
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 6);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1003,7 +1003,7 @@ public class rellenarGastos {
                 listaGastos.add(panelGasto, 1);
                 panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
-                botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "mantenimientoG", "src//excel/LibrosContables.xlsx", "Gastos");
+                botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "mantenimientoG", "src//excel/LIBROS DE CONTROL.xlsx", "Gastos");
 
                 panelGasto.add(fecha);
                 panelGasto.add(descripcion);
@@ -1016,14 +1016,14 @@ public class rellenarGastos {
                 Escribir escribirVentas = new Escribir();
                 try {
 
-                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
-                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirExcelInv(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", data, 7);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 3);
+                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
 
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 3);
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 6);
+                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 3);
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 6);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1092,7 +1092,7 @@ public class rellenarGastos {
                 listaGastos.add(panelGasto, 1);
                 panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
-                botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "mantenimientoG", "src//excel/LibrosContables.xlsx", "Gastos");
+                botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "mantenimientoG", "src//excel/LIBROS DE CONTROL.xlsx", "Gastos");
 
                 panelGasto.add(fecha);
                 panelGasto.add(sum);
@@ -1105,14 +1105,14 @@ public class rellenarGastos {
                 Escribir escribirVentas = new Escribir();
                 try {
 
-                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
+                    escribirVentas.escribirExcelInv(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", data, 7);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 3);
 
-                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 3);
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
+                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 6);
+                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 3);
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 6);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1181,7 +1181,7 @@ public class rellenarGastos {
                 listaGastos.add(panelGasto, 1);
                 panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
-                botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "publicidadG", "src//excel/LibrosContables.xlsx", "Gastos");
+                botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "publicidadG", "src//excel/LIBROS DE CONTROL.xlsx", "Gastos");
 
                 panelGasto.add(fecha);
                 panelGasto.add(pub);
@@ -1194,14 +1194,14 @@ public class rellenarGastos {
                 Escribir escribirVentas = new Escribir();
                 try {
 
-                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
-                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirExcelInv(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", data, 7);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 3);
+                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
 
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 3);
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 6);
+                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 3);
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 6);
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1270,7 +1270,7 @@ public class rellenarGastos {
                 listaGastos.add(panelGasto, 1);
                 panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
-                botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "transporteG", "src//excel/LibrosContables.xlsx", "Gastos");
+                botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "transporteG", "src//excel/LIBROS DE CONTROL.xlsx", "Gastos");
 
                 panelGasto.add(fecha);
                 panelGasto.add(trans);
@@ -1283,14 +1283,14 @@ public class rellenarGastos {
                 Escribir escribirVentas = new Escribir();
                 try {
 
-                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
-                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirExcelInv(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", data, 7);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 3);
+                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
 
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 3);
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 6);
+                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 3);
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 6);
 
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
@@ -1360,7 +1360,7 @@ public class rellenarGastos {
                 listaGastos.add(panelGasto, 1);
                 panelesGastos.add(panelGasto);//Ingresa el panelVenta a la arraylist panelesInresos
 
-                botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "honorariosG", "src//excel/LibrosContables.xlsx", "Gastos");
+                botonBorrar(icono, listaGastos, panelGasto, panelesGastos.indexOf(panelGasto), "honorariosG", "src//excel/LIBROS DE CONTROL.xlsx", "Gastos");
 
                 panelGasto.add(fecha);
                 panelGasto.add(hon);
@@ -1372,14 +1372,14 @@ public class rellenarGastos {
 
                 Escribir escribirVentas = new Escribir();
                 try {
-                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
-                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirExcelInv(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", data, 7);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 3);
+                    String formula = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
 
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 3);
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 6);
+                    String formula2 = "SUM(G2:G" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 3);
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula2, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 6);
 
                 } catch (IOException ex) {
                     Logger.getLogger(rellenarGastos.class.getName()).log(Level.SEVERE, null, ex);
@@ -1514,24 +1514,24 @@ public class rellenarGastos {
 
                     
                    
-                    int folio = (int) LeerExcel.obtenerCeldaNumerica("src//excel/historialCompras.xlsx", cliente.getSelectedItem().toString(), 23, ventas.getSelectedIndex() + 1);
+                    int folio = (int) LeerExcel.obtenerCeldaNumerica("src//excel/HISTORIAL DE COMPRAS.xlsx", cliente.getSelectedItem().toString(), 23, ventas.getSelectedIndex() + 1);
                     
-                    String plataforma = LeerExcel.obtenerCelda("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 21, folio);
+                    String plataforma = LeerExcel.obtenerCelda(rutas.excel+"\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 21, folio);
                     double precio = 0;
-                    double variacion = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 20, folio);
+                    double variacion = LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 20, folio);
 
                     switch (plataforma) {
                         case "Mercado Libre":
-                            precio = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 14, folio);
+                            precio = LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 14, folio);
                             break;
                         case "Local":
-                            precio = LeerExcel.obtenerCeldaNumerica("src\\excel\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 9, folio);
+                            precio = LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\Ventas.xlsx", fechaActualEscribir().toUpperCase(), 9, folio);
                             break;
                     }
                     //REGRESAR VENTA A INVENTARIO
-                    String mesVenta = LeerExcel.obtenerCelda("src//excel/historialCompras.xlsx", cliente.getSelectedItem().toString(), 2, ventas.getSelectedIndex() + 1);
-                    Utilidades.revertirUnidades("src\\excel\\Ventas.xlsx", mesVenta, folio);
-                    Escribir.removeRow("src//excel/historialCompras.xlsx", cliente.getSelectedItem().toString(), ventas.getSelectedIndex() + 1);
+                    String mesVenta = LeerExcel.obtenerCelda("src//excel/HISTORIAL DE COMPRAS.xlsx", cliente.getSelectedItem().toString(), 2, ventas.getSelectedIndex() + 1);
+                    Utilidades.revertirUnidades(rutas.excel+"\\Ventas.xlsx", mesVenta, folio);
+                    Escribir.removeRow("src//excel/HISTORIAL DE COMPRAS.xlsx", cliente.getSelectedItem().toString(), ventas.getSelectedIndex() + 1);
 
                     JLabel montoDevolucion = new JLabel();
                     montoDevolucion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1555,13 +1555,13 @@ public class rellenarGastos {
                     Escribir escribirVentas = new Escribir();
 
                     
-                    escribirVentas.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
-                    escribirVentas.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-                    String formula3 = "SUM(G2:G" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-                    String formula4 = "SUM(D2:D" + (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1) + ")";
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula3, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
-                    escribirVentas.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula4, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 3);
+                    escribirVentas.escribirExcelInv(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", data, 7);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[3])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 3);
+                    escribirVentas.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Utilidades.roundTwoDecimals(Double.valueOf(data[6])), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 6);
+                    String formula3 = "SUM(G2:G" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
+                    String formula4 = "SUM(D2:D" + (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1) + ")";
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula3, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 6);
+                    escribirVentas.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula4, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 3);
                 } catch (IOException ex) {
                     Caption ventanaEx = new Caption("Recuerda cerrar Excel");
                     ventanaEx.setVisible(true);
@@ -1643,9 +1643,9 @@ public class rellenarGastos {
         TOP.add(new JLabel(""));
 
         listaGastos.add(TOP, 0);
-        if (!LeerExcel.tablaVacia("src\\excel\\LibrosContables.xlsx", "Gastos")) {
+        if (!LeerExcel.tablaVacia(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos")) {
             try {
-                for (int i = 1; i <= LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"); i++) {
+                for (int i = 1; i <= LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"); i++) {
                     PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
                     panelGasto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     panelGasto.setLayout(new GridLayout(1, 5));
@@ -1656,22 +1656,22 @@ public class rellenarGastos {
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    fecha.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Gastos", 0, i));
+                    fecha.setText(LeerExcel.obtenerCelda(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", 0, i));
 
                     JLabel dev = new JLabel();
                     dev.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    dev.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Gastos", 2, i));
+                    dev.setText(LeerExcel.obtenerCelda(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", 2, i));
 
                     JLabel monto = new JLabel();
                     monto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    monto.setText("$" + LeerExcel.obtenerCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Gastos", 3, i));
+                    monto.setText("$" + LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", 3, i));
 
                     JLabel gasto = new JLabel();
                     gasto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    gasto.setText("$" + LeerExcel.obtenerCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Gastos", 6, i));
+                    gasto.setText("$" + LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", 6, i));
 
                     String IconoTipo = "VentasG";
-                    String tipo = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Gastos", 1, i);
+                    String tipo = LeerExcel.obtenerCelda(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", 1, i);
                     switch (tipo) {
                         case "Herramientas":
                             IconoTipo = "equipoG";
@@ -1714,7 +1714,7 @@ public class rellenarGastos {
                             IconoTipo = "inventarioG";
                             break;
                     }
-                    String colorR = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Gastos", 5, i);
+                    String colorR = LeerExcel.obtenerCelda(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", 5, i);
                 switch (colorR) {
                     case "VERDE":
                         panelGasto.setBackground(Colores.epicColorBajito);
@@ -1790,9 +1790,9 @@ public class rellenarGastos {
         TOP.add(new JLabel(""));
 
         listaGastos.add(TOP, 0);
-        if (!LeerExcel.tablaVacia("src\\excel\\LibrosContables.xlsx", "Gastos")) {
+        if (!LeerExcel.tablaVacia(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos")) {
             try {
-                for (int i = 1; i <= LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"); i++) {
+                for (int i = 1; i <= LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"); i++) {
                     PanelCurvoSinSombra panelGasto = new PanelCurvoSinSombra();
                     panelGasto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
                     panelGasto.setLayout(new GridLayout(1, 5));
@@ -1803,22 +1803,22 @@ public class rellenarGastos {
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    fecha.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Gastos", 0, i));
+                    fecha.setText(LeerExcel.obtenerCelda(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", 0, i));
 
                     JLabel dev = new JLabel();
                     dev.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    dev.setText(LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Gastos", 2, i));
+                    dev.setText(LeerExcel.obtenerCelda(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", 2, i));
 
                     JLabel monto = new JLabel();
                     monto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    monto.setText("$" + LeerExcel.obtenerCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Gastos", 3, i));
+                    monto.setText("$" + LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", 3, i));
 
                     JLabel gasto = new JLabel();
                     gasto.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-                    gasto.setText("$" + LeerExcel.obtenerCeldaNumerica("src\\excel\\LibrosContables.xlsx", "Gastos", 6, i));
+                    gasto.setText("$" + LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", 6, i));
 
                     String IconoTipo = "VentasG";
-                    String tipo = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Gastos", 1, i);
+                    String tipo = LeerExcel.obtenerCelda(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", 1, i);
                     switch (tipo) {
                         case "Herramientas":
                             IconoTipo = "equipoG";
@@ -1862,12 +1862,12 @@ public class rellenarGastos {
                             break;
                     }
                     
-                    String colorR = LeerExcel.obtenerCelda("src\\excel\\LibrosContables.xlsx", "Gastos", 5, i);
+                    String colorR = LeerExcel.obtenerCelda(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", 5, i);
                 switch (colorR) {
                     case "VERDE":
                         panelGasto.setBackground(Colores.grisBajito);
                         Escribir escribir = new Escribir();
-                        escribir.escribirCelda("src\\excel\\LibrosContables.xlsx", "Gastos", "GRIS", i, 5);
+                        escribir.escribirCelda(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", "GRIS", i, 5);
                         break;
                     
                     case "GRIS":

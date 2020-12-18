@@ -1233,7 +1233,7 @@ public class Libros extends javax.swing.JFrame {
     //Abre archivo Excel Ventas
     private void panelVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelVentasMouseClicked
         try{
-            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/Ventas.xlsx"));
+            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/VENTAS.xlsx"));
         }catch(Exception e){
             e.printStackTrace();       
         }
@@ -1251,7 +1251,7 @@ public class Libros extends javax.swing.JFrame {
     //Abre archivo Excel Deudas a Pagar
     private void panelDeudasPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDeudasPMouseClicked
         try{
-            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/DeudasP.xlsx"));
+            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/DEUDAS A PAGAR.xlsx"));
         }catch(Exception e){
             e.printStackTrace();       
         }
@@ -1260,7 +1260,7 @@ public class Libros extends javax.swing.JFrame {
     //Abre archivo Excel Deudas a Cobrar
     private void panelDeudasCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDeudasCMouseClicked
         try{
-            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/DeudasC.xlsx"));
+            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/DEUDAS A COBRAR.xlsx"));
         }catch(Exception e){
             e.printStackTrace();       
         }
@@ -1269,7 +1269,7 @@ public class Libros extends javax.swing.JFrame {
     //Abre archivo Excel Equipo y Mobiliario
     private void panelEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelEquipoMouseClicked
         try{
-            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/Equipo.xlsx"));
+            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/EQUIPO Y MOBILIARIO.xlsx"));
         }catch(Exception e){
             e.printStackTrace();       
         }
@@ -1278,7 +1278,7 @@ public class Libros extends javax.swing.JFrame {
     //Abre archivo Excel Inventario
     private void panelnventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelnventarioMouseClicked
         try{
-            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/Inventario.xlsx"));
+            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/INVENTARIOS.xlsx"));
         }catch(Exception e){
             e.printStackTrace();       
         }
@@ -1296,7 +1296,7 @@ public class Libros extends javax.swing.JFrame {
     //Abre archivo Excel Suministros
     private void panelSuministrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSuministrosMouseClicked
         try{
-            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/Suministros.xlsx"));
+            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/SUMINISTROS.xlsx"));
         }catch(Exception e){
             e.printStackTrace();       
         }
@@ -1883,7 +1883,7 @@ public class Libros extends javax.swing.JFrame {
 
     private void inventarioIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventarioIconMouseClicked
       try{
-            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/Inventario.xlsx"));
+            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/INVENTARIOS.xlsx"));
         }catch(Exception e){
             e.printStackTrace();       
         }
@@ -1899,7 +1899,7 @@ public class Libros extends javax.swing.JFrame {
 
     private void suministrosIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_suministrosIconMouseClicked
         try{
-            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/Suministros.xlsx"));
+            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/SUMINISTROS.xlsx"));
         }catch(Exception e){
             e.printStackTrace();       
         }
@@ -1939,7 +1939,7 @@ public class Libros extends javax.swing.JFrame {
 
     private void ventasIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventasIconMouseClicked
         try{
-            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/Ventas.xlsx"));
+            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/VENTAS.xlsx"));
         }catch(Exception e){
             e.printStackTrace();       
         }
@@ -1955,7 +1955,7 @@ public class Libros extends javax.swing.JFrame {
 
     private void pagarIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagarIconMouseClicked
         try{
-            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/DeudasP.xlsx"));
+            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/DEUDAS A PAGAR.xlsx"));
         }catch(Exception e){
             e.printStackTrace();       
         }
@@ -1963,7 +1963,7 @@ public class Libros extends javax.swing.JFrame {
 
     private void cobrarIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cobrarIconMouseClicked
         try{
-            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/DeudasC.xlsx"));
+            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/DEUDAS A COBRAR.xlsx"));
         }catch(Exception e){
             e.printStackTrace();       
         }
@@ -1971,7 +1971,7 @@ public class Libros extends javax.swing.JFrame {
 
     private void equipoIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_equipoIconMouseClicked
         try{
-            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/Equipo.xlsx"));
+            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/EQUIPO Y MOBILIARIO.xlsx"));
         }catch(Exception e){
             e.printStackTrace();       
         }
@@ -1979,7 +1979,7 @@ public class Libros extends javax.swing.JFrame {
 
     private void historialCRMIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialCRMIconMouseClicked
         try{
-            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/historialCompras.xlsx"));
+            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/HISTORIAL DE COMPRAS.xlsx"));
         }catch(Exception e){
             e.printStackTrace();       
         }
@@ -2005,7 +2005,7 @@ public class Libros extends javax.swing.JFrame {
 
     private void panelCompras2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCompras2MouseClicked
         try{
-            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/comprasT.xlsx"));
+            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/COMPRAS EN TRANSITO.xlsx"));
         }catch(Exception e){
             e.printStackTrace();       
         }
@@ -2013,7 +2013,7 @@ public class Libros extends javax.swing.JFrame {
 
     private void comprasIcon2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprasIcon2MouseClicked
         try{
-            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/comprasT.xlsx"));
+            Desktop.getDesktop().open(new java.io.File(rutas.excel+"/COMPRAS EN TRANSITO.xlsx"));
         }catch(Exception e){
             e.printStackTrace();       
         }

@@ -75,7 +75,7 @@ public class packsDeVentas extends javax.swing.JFrame {
         jlPack1 = new javax.swing.JLabel();
         String[] arr={""};
         try{
-            arr = LeerExcel.obtenerHoja("src\\excel\\Packs.xlsx");
+            arr = LeerExcel.obtenerHoja(rutas.excel+"\\Packs.xlsx");
         }catch(Exception e){}
         packsDisponibles2 = new javax.swing.JComboBox(arr);
         jPanel2 = new javax.swing.JPanel();
@@ -395,71 +395,71 @@ public class packsDeVentas extends javax.swing.JFrame {
             
             
             //INVENTARIO PRINCIPAL
-            escribirExcel.escribirExcelInv(rutas.excel + "\\Inventario.xlsx", inventario, Registro, 10);
+            escribirExcel.escribirExcelInv(rutas.excel + "\\INVENTARIOS.xlsx", inventario, Registro, 10);
             
             //UNIDADES
-            escribirExcel.escribirCeldaNumerica(rutas.excel + "\\Inventario.xlsx", inventario, Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario), 6);
+            escribirExcel.escribirCeldaNumerica(rutas.excel + "\\INVENTARIOS.xlsx", inventario, Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario), 6);
             
             //TIG
-            escribirExcel.escribirCeldaDouble(rutas.excel + "\\Inventario.xlsx", inventario, TIG, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario), 5);
+            escribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", inventario, TIG, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario), 5);
             
             //COSTO UNIDAD
-            escribirExcel.escribirCeldaDouble(rutas.excel + "\\Inventario.xlsx", inventario, Double.valueOf(precio.getText()), LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario), 7);
+            escribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", inventario, Double.valueOf(precio.getText()), LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario), 7);
             
             //COSTO NETO
-            escribirExcel.escribirCeldaDouble(rutas.excel + "\\Inventario.xlsx", inventario, costoDiv * Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario), 8);
+            escribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", inventario, costoDiv * Integer.valueOf(jtUnidades.getText()), LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario), 8);
             
             //PRECIO BASE UNIDAD
-            escribirExcel.escribirCeldaDouble(rutas.excel + "\\Inventario.xlsx", inventario, Double.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario), 9);
+            escribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", inventario, Double.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario), 9);
             
             //PRECIO BASE NETO
-            escribirExcel.escribirCeldaDouble(rutas.excel + "\\Inventario.xlsx", inventario, Double.valueOf(jtUnidades.getText()) * Integer.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario), 10);
+            escribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", inventario, Double.valueOf(jtUnidades.getText()) * Integer.valueOf(jtPrecio.getText()), LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario), 10);
             
             //PRECIO LOCAL UNIDAD 
-            escribirExcel.escribirCeldaDouble(rutas.excel + "\\Inventario.xlsx", inventario, precioL, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario), 11);
+            escribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", inventario, precioL, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario), 11);
             
             //PRECIO LOCAL NETO
-            escribirExcel.escribirCeldaDouble(rutas.excel + "\\Inventario.xlsx", inventario, precioNeto, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario), 12);
+            escribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", inventario, precioNeto, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario), 12);
             
             //COMISION ML
-            escribirExcel.escribirCeldaDouble(rutas.excel + "\\Inventario.xlsx", inventario, comisionML, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario), 15);
+            escribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", inventario, comisionML, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario), 15);
             
             //COMISION ML NETO
-            escribirExcel.escribirCeldaDouble(rutas.excel + "\\Inventario.xlsx", inventario, comisionMLN, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario), 16);
+            escribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", inventario, comisionMLN, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario), 16);
             
             // IVA UNIDAD         
-            escribirExcel.escribirCeldaDouble(rutas.excel + "\\Inventario.xlsx", inventario, IVA, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario), 17);
+            escribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", inventario, IVA, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario), 17);
             
             //IVA NETO     
-            escribirExcel.escribirCeldaDouble(rutas.excel + "\\Inventario.xlsx", inventario, ivaN, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario), 18);
+            escribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", inventario, ivaN, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario), 18);
             
             //PRECIO ML
-            escribirExcel.escribirCeldaDouble(rutas.excel + "\\Inventario.xlsx", inventario, precioML, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario), 13);
+            escribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", inventario, precioML, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario), 13);
             
             //PRECIOML NETO
-            escribirExcel.escribirCeldaDouble(rutas.excel + "\\Inventario.xlsx", inventario, precioMLN, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario), 14);
+            escribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", inventario, precioMLN, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario), 14);
             
 
             //UTILIDAD UNIDAD LOCAL
-            escribirExcel.escribirCeldaDouble(rutas.excel + "\\Inventario.xlsx", inventario, utilidad, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario), 19);
+            escribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", inventario, utilidad, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario), 19);
             
             //UTILIDAD LOCAL NETA
-            escribirExcel.escribirCeldaDouble(rutas.excel + "\\Inventario.xlsx", inventario, utilidadLN, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario), 20);
+            escribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", inventario, utilidadLN, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario), 20);
             
             //FORMULAS INVENTARIO
-            escribirExcel.escribirFormula(rutas.excel + "\\Inventario.xlsx", inventario, formula, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario) + 1, 8);
+            escribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", inventario, formula, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario) + 1, 8);
 
-            escribirExcel.escribirFormula(rutas.excel + "\\Inventario.xlsx", inventario, formula2, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario) + 1, 10);
+            escribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", inventario, formula2, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario) + 1, 10);
             
-            escribirExcel.escribirFormula(rutas.excel + "\\Inventario.xlsx", inventario, formula3, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario) + 1, 12);
+            escribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", inventario, formula3, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario) + 1, 12);
             
-            escribirExcel.escribirFormula(rutas.excel + "\\Inventario.xlsx", inventario, formula4, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario) + 1, 14);
+            escribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", inventario, formula4, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario) + 1, 14);
             
-            escribirExcel.escribirFormula(rutas.excel + "\\Inventario.xlsx", inventario, formula5, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario) + 1, 16);
+            escribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", inventario, formula5, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario) + 1, 16);
 
-            escribirExcel.escribirFormula(rutas.excel + "\\Inventario.xlsx", inventario, formula6, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario) + 1, 18);
+            escribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", inventario, formula6, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario) + 1, 18);
             
-            escribirExcel.escribirFormula(rutas.excel + "\\Inventario.xlsx", inventario, formula7, LeerExcel.contarRenglones(rutas.excel + "\\Inventario.xlsx", inventario) + 1, 20);
+            escribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", inventario, formula7, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", inventario) + 1, 20);
             
             
         } catch (IOException ex) {

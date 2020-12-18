@@ -60,7 +60,7 @@ public final class desecharInv extends javax.swing.JFrame {
         jpDatos = new javax.swing.JPanel();
         jpDescripcion = new javax.swing.JPanel();
         try{
-            inventario = new javax.swing.JComboBox(LeerExcel.rellenaCB2("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", 0));
+            inventario = new javax.swing.JComboBox(LeerExcel.rellenaCB2(rutas.excel+"\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", 0));
             jbRegistrar = new javax.swing.JButton();
             unidades = new javax.swing.JComboBox();
 
@@ -140,7 +140,7 @@ public final class desecharInv extends javax.swing.JFrame {
 
                 indexInventario = inventario.getSelectedIndex();
                 try {
-                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", "EPIC MOUNTAIN", 6, indexInventario + 1);
+                    numeroUnidades =(int) LeerExcel.obtenerCeldaNumerica("src//excel/INVENTARIOS.xlsx", "EPIC MOUNTAIN", 6, indexInventario + 1);
                 } catch (IOException ex) {
                     Logger.getLogger(Rellenar.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -181,51 +181,51 @@ public final class desecharInv extends javax.swing.JFrame {
     private void jbRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarMouseClicked
         try {
             Escribir escribirD = new Escribir();
-            Double costoInv = LeerExcel.obtenerCeldaNumerica("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", 7, (inventario.getSelectedIndex()+1));
+            Double costoInv = LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", 7, (inventario.getSelectedIndex()+1));
             int unidadesSelec = Integer.valueOf(unidades.getSelectedItem().toString());
             Double costoCompleto = costoInv * unidadesSelec;
 
             String[] data = {fechaActual(), "Desecho Inventario", inventario.getSelectedItem().toString(), Double.toString(costoCompleto), "  ", "VERDE", Double.toString(costoCompleto)};
           
-            escribirD.escribirExcelInv("src\\excel\\LibrosContables.xlsx", "Gastos", data, 7);
-            escribirD.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Double.valueOf(data[3]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 3);
-            escribirD.escribirCeldaDouble("src\\excel\\LibrosContables.xlsx", "Gastos", Double.valueOf(data[6]), LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos"), 6);
-            String formula = "SUM(G2:G" + LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + ")";
-            escribirD.escribirFormula("src\\excel\\LibrosContables.xlsx", "Gastos", formula, (LeerExcel.contarRenglones("src\\excel\\LibrosContables.xlsx", "Gastos") + 1), 6);
+            escribirD.escribirExcelInv(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", data, 7);
+            escribirD.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Double.valueOf(data[3]), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 3);
+            escribirD.escribirCeldaDouble(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", Double.valueOf(data[6]), LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos"), 6);
+            String formula = "SUM(G2:G" + LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + ")";
+            escribirD.escribirFormula(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos", formula, (LeerExcel.contarRenglones(rutas.excel+"\\LIBROS DE CONTROL.xlsx", "Gastos") + 1), 6);
             
             if (numeroUnidades - unidadesSelec == 0) {
-                Escribir.removeRow("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", (inventario.getSelectedIndex() + 1));
+                Escribir.removeRow(rutas.excel+"\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", (inventario.getSelectedIndex() + 1));
             }else{
-                escribirD.escribirCeldaNumerica("src\\excel\\Inventario.xlsx", "EPIC MOUNTAIN", numeroUnidades - unidadesSelec, inventario.getSelectedIndex()+1, 6);
+                escribirD.escribirCeldaNumerica(rutas.excel+"\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", numeroUnidades - unidadesSelec, inventario.getSelectedIndex()+1, 6);
                  String inventarioHoja = "EPIC MOUNTAIN";
 
-                    int suma = (int) LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", inventarioHoja, 6, inventario.getSelectedIndex()+1);
-                    double costoUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", inventarioHoja, 7, inventario.getSelectedIndex()+1);
-                    double precioBaseUnidad = LeerExcel.obtenerCeldaNumerica("src\\excel\\inventario.xlsx", inventarioHoja, 9, inventario.getSelectedIndex()+1);
-                    Double precioML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventarioHoja, 13, inventario.getSelectedIndex()+1);
-                    Double iva = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventarioHoja, 17, inventario.getSelectedIndex()+1);
-                    Double comisionML = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventarioHoja, 15, inventario.getSelectedIndex()+1);
-                    Double utilidadShop = LeerExcel.obtenerCeldaNumerica("src//excel/Inventario.xlsx", inventarioHoja, 19, inventario.getSelectedIndex()+1);
+                    int suma = (int) LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\INVENTARIOS.xlsx", inventarioHoja, 6, inventario.getSelectedIndex()+1);
+                    double costoUnidad = LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\INVENTARIOS.xlsx", inventarioHoja, 7, inventario.getSelectedIndex()+1);
+                    double precioBaseUnidad = LeerExcel.obtenerCeldaNumerica(rutas.excel+"\\INVENTARIOS.xlsx", inventarioHoja, 9, inventario.getSelectedIndex()+1);
+                    Double precioML = LeerExcel.obtenerCeldaNumerica("src//excel/INVENTARIOS.xlsx", inventarioHoja, 13, inventario.getSelectedIndex()+1);
+                    Double iva = LeerExcel.obtenerCeldaNumerica("src//excel/INVENTARIOS.xlsx", inventarioHoja, 17, inventario.getSelectedIndex()+1);
+                    Double comisionML = LeerExcel.obtenerCeldaNumerica("src//excel/INVENTARIOS.xlsx", inventarioHoja, 15, inventario.getSelectedIndex()+1);
+                    Double utilidadShop = LeerExcel.obtenerCeldaNumerica("src//excel/INVENTARIOS.xlsx", inventarioHoja, 19, inventario.getSelectedIndex()+1);
 
                     //COSTO NETO
-                    escribirD.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventarioHoja, (suma * costoUnidad), inventario.getSelectedIndex()+1, 8);
+                    escribirD.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventarioHoja, (suma * costoUnidad), inventario.getSelectedIndex()+1, 8);
                     //PRECIO BASE NETO
-                    escribirD.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventarioHoja, suma * (precioBaseUnidad), inventario.getSelectedIndex()+1, 10);
+                    escribirD.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventarioHoja, suma * (precioBaseUnidad), inventario.getSelectedIndex()+1, 10);
                     //PRECIO LOCAL NETO
-                    Double precioNeto = escribirD.Mulitplicar(6, 11, inventario.getSelectedIndex()+1, "src\\excel\\Inventario.xlsx", inventarioHoja);
-                    escribirD.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventarioHoja, precioNeto, inventario.getSelectedIndex()+1, 12);
+                    Double precioNeto = escribirD.Mulitplicar(6, 11, inventario.getSelectedIndex()+1, rutas.excel+"\\INVENTARIOS.xlsx", inventarioHoja);
+                    escribirD.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventarioHoja, precioNeto, inventario.getSelectedIndex()+1, 12);
                     //COMISION ML NETO
 
-                    escribirD.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventarioHoja, comisionML * suma, inventario.getSelectedIndex()+1, 16);
+                    escribirD.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventarioHoja, comisionML * suma, inventario.getSelectedIndex()+1, 16);
 
                     //IVA NETO
-                    escribirD.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventarioHoja, suma * iva, inventario.getSelectedIndex()+1, 18);
+                    escribirD.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventarioHoja, suma * iva, inventario.getSelectedIndex()+1, 18);
                     //PRECIOML NETO
 
-                    escribirD.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventarioHoja, suma * precioML, inventario.getSelectedIndex()+1, 14);
+                    escribirD.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventarioHoja, suma * precioML, inventario.getSelectedIndex()+1, 14);
 
                     //UTILIDAD LOCAL NETA
-                    escribirD.escribirCeldaDouble("src\\excel\\Inventario.xlsx", inventarioHoja, suma * utilidadShop, inventario.getSelectedIndex()+1, 20);
+                    escribirD.escribirCeldaDouble(rutas.excel+"\\INVENTARIOS.xlsx", inventarioHoja, suma * utilidadShop, inventario.getSelectedIndex()+1, 20);
             }
             
             Libros.actualiza();
