@@ -174,7 +174,7 @@ public class ActualizarInventarios extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-            openWebpage("http://www.fb.com");        // TODO add your handling code here:
+            openWebpage("https://business.facebook.com/commerce_manager/?source=CATALOG_MANAGER_LANDING_PAGE");        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
@@ -187,7 +187,7 @@ public class ActualizarInventarios extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseExited
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-                    openWebpage("http://www.mercadolibre.com");        // TODO add your handling code here:
+                    openWebpage("https://www.mercadolibre.com.mx/publicaciones/listado?filters=ACTIVE");        // TODO add your handling code here:
 
     }//GEN-LAST:event_jLabel9MouseClicked
 

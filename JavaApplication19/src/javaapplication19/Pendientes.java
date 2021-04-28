@@ -53,13 +53,12 @@ public final class Pendientes extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jpDatos = new javax.swing.JPanel();
-        jpDescripcion = new javax.swing.JPanel();
+        cerrar = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         try{
-            compraT = new javax.swing.JComboBox(LeerExcel.rellenaCB2(rutas.excel+"\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 0));
+            compraT = new javax.swing.JComboBox(LeerExcel.rellenaCB2("src\\excel\\comprasT.xlsx", "COMPRAS", 0));
             jbRegistrar = new javax.swing.JButton();
 
             jList1.setModel(new javax.swing.AbstractListModel<String>() {
@@ -71,46 +70,43 @@ public final class Pendientes extends javax.swing.JFrame {
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
             setUndecorated(true);
-            getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+            setPreferredSize(new java.awt.Dimension(600, 120));
 
-            jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-            jPanel1.setPreferredSize(new java.awt.Dimension(900, 40));
-            jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-                public void mouseDragged(java.awt.event.MouseEvent evt) {
-                    jPanel1MouseDragged(evt);
-                }
-            });
-            jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mousePressed(java.awt.event.MouseEvent evt) {
-                    jPanel1MousePressed(evt);
-                }
-            });
-            jPanel1.setLayout(new java.awt.BorderLayout());
+            jPanel2.setLayout(new java.awt.BorderLayout());
 
-            jPanel10.setBackground(new java.awt.Color(0, 0, 0));
-            jPanel10.setPreferredSize(new java.awt.Dimension(300, 30));
-            jPanel10.setLayout(new java.awt.BorderLayout());
-
+            jLabel1.setBackground(new java.awt.Color(0, 0, 0));
             jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
             jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-            jLabel1.setText("COMPRAS EN TRANSITO");
+            jLabel1.setText("PENDIENTES");
             jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
-            jPanel10.add(jLabel1, java.awt.BorderLayout.CENTER);
+            jLabel1.setOpaque(true);
+            jLabel1.setPreferredSize(new java.awt.Dimension(82, 30));
+            jPanel2.add(jLabel1, java.awt.BorderLayout.CENTER);
 
-            jPanel1.add(jPanel10, java.awt.BorderLayout.LINE_START);
+            cerrar.setBackground(new java.awt.Color(51, 51, 51));
+            cerrar.setMinimumSize(new java.awt.Dimension(30, 30));
+            cerrar.setPreferredSize(new java.awt.Dimension(30, 30));
+            cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    cerrarMouseClicked(evt);
+                }
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    cerrarMouseEntered(evt);
+                }
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    cerrarMouseExited(evt);
+                }
+            });
+            jPanel2.add(cerrar, java.awt.BorderLayout.LINE_END);
 
-            getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
+            getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-            jpDatos.setBackground(new java.awt.Color(51, 51, 51));
-            jpDatos.setLayout(new java.awt.GridLayout());
-
-            jpDescripcion.setBackground(new java.awt.Color(51, 51, 51));
-            jpDescripcion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+            jPanel3.setBackground(new java.awt.Color(51, 51, 51));
 
         }catch(IOException e){}
         compraT.setUI(PropiedadesCB2.createUI(compraT));
         compraT.setBackground(Color.white);
-        jpDescripcion.add(compraT, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 310, 40));
+        jPanel3.add(compraT);
 
         jbRegistrar.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 14)); // NOI18N
         jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -125,31 +121,13 @@ public final class Pendientes extends javax.swing.JFrame {
                 jbRegistrarActionPerformed(evt);
             }
         });
-        jpDescripcion.add(jbRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 50, 40));
+        jPanel3.add(jbRegistrar);
         jbRegistrar.setBackground(Colores.epicColor);
 
-        jpDatos.add(jpDescripcion);
-
-        getContentPane().add(jpDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 500, 80));
+        getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public void changeColor(JPanel hover, Color rand) {
-        hover.setBackground(rand);
-    }
-
-    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
-        int kordinatX = evt.getXOnScreen();
-        int kordinatY = evt.getYOnScreen();
-        this.setLocation(kordinatX - mousepX, kordinatY - mousepY);
-
-    }//GEN-LAST:event_jPanel1MouseDragged
-
-    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
-        mousepX = evt.getX();
-        mousepY = evt.getY();
-    }//GEN-LAST:event_jPanel1MousePressed
 
     private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
         // TODO add your handling code here:
@@ -167,233 +145,232 @@ public final class Pendientes extends javax.swing.JFrame {
             String descripcion = LeerExcel.obtenerCelda(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 1, fila);
             String condicion = LeerExcel.obtenerCelda(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 3, fila);
             String pack = LeerExcel.obtenerCelda(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 4, fila);
-            
+
             double costoNeto = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 8, fila);
-            
 
             String[] equipo = {fecha, producto, descripcion, Double.toString(costoNeto)};
 
             switch (tipo) {
                 case "HERRAMIENTAS":
-                    EscribirExcel.escribirExcelInv(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo, equipo, 4);
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo, costoNeto, LeerExcel.contarRenglones(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo), 3);
-                    Escribir.removeRow(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", fila);
-                    break;
+                EscribirExcel.escribirExcelInv(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo, equipo, 4);
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo, costoNeto, LeerExcel.contarRenglones(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo), 3);
+                Escribir.removeRow(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", fila);
+                break;
                 case "EQUIPO DE TALLER":
-                    EscribirExcel.escribirExcelInv(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo, equipo, 4);
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo, costoNeto, LeerExcel.contarRenglones(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo), 3);
-                    Escribir.removeRow(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", fila);
-                    break;
+                EscribirExcel.escribirExcelInv(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo, equipo, 4);
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo, costoNeto, LeerExcel.contarRenglones(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo), 3);
+                Escribir.removeRow(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", fila);
+                break;
                 case "MOBILIARIO":
-                    EscribirExcel.escribirExcelInv(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo, equipo, 4);
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo, costoNeto, LeerExcel.contarRenglones(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo), 3);
-                    Escribir.removeRow(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", fila);
-                    break;
+                EscribirExcel.escribirExcelInv(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo, equipo, 4);
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo, costoNeto, LeerExcel.contarRenglones(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo), 3);
+                Escribir.removeRow(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", fila);
+                break;
                 case "EQUIPO DE LIMPIEZA":
-                    EscribirExcel.escribirExcelInv(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo, equipo, 4);
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo, costoNeto, LeerExcel.contarRenglones(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo), 3);
-                    Escribir.removeRow(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", fila);
-                    break;
+                EscribirExcel.escribirExcelInv(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo, equipo, 4);
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo, costoNeto, LeerExcel.contarRenglones(rutas.excel + "\\EQUIPO Y MOBILIARIO.xlsx", tipo), 3);
+                Escribir.removeRow(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", fila);
+                break;
                 case "INVENTARIO PRINCIPAL":
-                    double tig = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 5, fila);
-                    int unidades = (int) LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 6, fila);
-                    double costoUnidad = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 7, fila);
-                    double precioBaseU = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 9, fila);
-                    double precioBaseNeto = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 10, fila);
-                    String[] inventario = {producto, descripcion, fecha, condicion, pack};
+                double tig = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 5, fila);
+                int unidades = (int) LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 6, fila);
+                double costoUnidad = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 7, fila);
+                double precioBaseU = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 9, fila);
+                double precioBaseNeto = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 10, fila);
+                String[] inventario = {producto, descripcion, fecha, condicion, pack};
 
-                    EscribirExcel.escribirExcelInv(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", inventario, 5);
+                EscribirExcel.escribirExcelInv(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", inventario, 5);
 
-                    //UNIDADES
-                    EscribirExcel.escribirCeldaNumerica(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", unidades, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 6);
+                //UNIDADES
+                EscribirExcel.escribirCeldaNumerica(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", unidades, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 6);
 
-                    //TIG
-                    Double TIG = tig;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", TIG, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 5);
+                //TIG
+                Double TIG = tig;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", TIG, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 5);
 
-                    //COSTO UNIDAD
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", costoUnidad, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 7);
-                    //COSTO NETO
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", costoNeto, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 8);
+                //COSTO UNIDAD
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", costoUnidad, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 7);
+                //COSTO NETO
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", costoNeto, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 8);
 
-                    //PRECIO BASE UNIDAD
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", precioBaseU, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 9);
+                //PRECIO BASE UNIDAD
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", precioBaseU, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 9);
 
-                    //PRECIO BASE NETO
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", precioBaseNeto, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 10);
+                //PRECIO BASE NETO
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", precioBaseNeto, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 10);
 
-                    //PRECIO LOCAL UNIDAD
-                    Double precioL = precioBaseU * 1.16;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", precioL, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 11);
+                //PRECIO LOCAL UNIDAD
+                Double precioL = precioBaseU * 1.16;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", precioL, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 11);
 
-                    //PRECIO LOCAL NETO
-                    Double precioNeto = unidades * precioL;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", precioNeto, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 12);
+                //PRECIO LOCAL NETO
+                Double precioNeto = unidades * precioL;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", precioNeto, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 12);
 
-                    //COMISION ML
-                    Double comisionML = (precioL * .15) + 5;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", comisionML, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 15);
+                //COMISION ML
+                Double comisionML = (precioL * .15) + 5;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", comisionML, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 15);
 
-                    //COMISION ML NETO
-                    Double comisionMLN = unidades * comisionML;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", comisionMLN, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 16);
+                //COMISION ML NETO
+                Double comisionMLN = unidades * comisionML;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", comisionMLN, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 16);
 
-                    // IVA UNIDAD
-                    Double IVA = precioBaseU * 0.16;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", IVA, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 17);
+                // IVA UNIDAD
+                Double IVA = precioBaseU * 0.16;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", IVA, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 17);
 
-                    //IVA NETO
-                    Double ivaN = unidades * IVA;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", ivaN, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 18);
+                //IVA NETO
+                Double ivaN = unidades * IVA;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", ivaN, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 18);
 
-                    //PRECIO ML
-                    Double precioML = precioBaseU + IVA + comisionML + 35;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", precioML, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 13);
+                //PRECIO ML
+                Double precioML = precioBaseU + IVA + comisionML + 35;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", precioML, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 13);
 
-                    //PRECIOML NETO
-                    Double precioMLN = precioML * unidades;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", precioMLN, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 14);
+                //PRECIOML NETO
+                Double precioMLN = precioML * unidades;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", precioMLN, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 14);
 
-                    //UTILIDAD UNIDAD LOCAL
-                    Double utilidad = precioL - costoUnidad - IVA;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", utilidad, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 19);
+                //UTILIDAD UNIDAD LOCAL
+                Double utilidad = precioL - costoUnidad - IVA;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", utilidad, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 19);
 
-                    //UTILIDAD LOCAL NETA
-                    Double utilidadLN = unidades * utilidad;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", utilidadLN, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 20);
+                //UTILIDAD LOCAL NETA
+                Double utilidadLN = unidades * utilidad;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", utilidadLN, LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN"), 20);
 
-                    String formula = "SUM(I2:I" + (LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1) + ")";
-                    EscribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", formula,
-                            LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1, 8);
+                String formula = "SUM(I2:I" + (LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1) + ")";
+                EscribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", formula,
+                    LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1, 8);
 
-                    String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1) + ")";
-                    EscribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", formula2,
-                            LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1, 10);
+                String formula2 = "SUM(K2:K" + (LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1) + ")";
+                EscribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", formula2,
+                    LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1, 10);
 
-                    String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1) + ")";
-                    EscribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", formula3,
-                            LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1, 12);
+                String formula3 = "SUM(M2:M" + (LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1) + ")";
+                EscribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", formula3,
+                    LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1, 12);
 
-                    String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1) + ")";
-                    EscribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", formula4,
-                            LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1, 14);
+                String formula4 = "SUM(O2:O" + (LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1) + ")";
+                EscribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", formula4,
+                    LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1, 14);
 
-                    String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1) + ")";
-                    EscribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", formula5,
-                            LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1, 16);
+                String formula5 = "SUM(Q2:Q" + (LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1) + ")";
+                EscribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", formula5,
+                    LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1, 16);
 
-                    String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1) + ")";
-                    EscribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", formula6,
-                            LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1, 18);
+                String formula6 = "SUM(S2:S" + (LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1) + ")";
+                EscribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", formula6,
+                    LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1, 18);
 
-                    String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1) + ")";
-                    EscribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", formula7,
-                            LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1, 20);
-                    Escribir.removeRow(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", fila);
+                String formula7 = "SUM(U2:U" + (LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1) + ")";
+                EscribirExcel.escribirFormula(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN", formula7,
+                    LeerExcel.contarRenglones(rutas.excel + "\\INVENTARIOS.xlsx", "EPIC MOUNTAIN") + 1, 20);
+                Escribir.removeRow(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", fila);
 
-                    break;
+                break;
                 case "PACK DE VENTAS":
-                    double tigP = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 5, fila);
-                    int unidadesP = (int) LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 6, fila);
-                    double costoUnidadP = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 7, fila);
-                    double precioBaseUP = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 9, fila);
-                    double precioBaseNetoP = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 10, fila);
-                    
-                    String[] packs = {producto, descripcion, fecha, condicion, pack};
+                double tigP = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 5, fila);
+                int unidadesP = (int) LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 6, fila);
+                double costoUnidadP = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 7, fila);
+                double precioBaseUP = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 9, fila);
+                double precioBaseNetoP = LeerExcel.obtenerCeldaNumerica(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", 10, fila);
 
-                    EscribirExcel.escribirExcelInv(rutas.excel + "\\Packs.xlsx", pack, packs, 5);
+                String[] packs = {producto, descripcion, fecha, condicion, pack};
 
-                    //UNIDADES
-                    EscribirExcel.escribirCeldaNumerica(rutas.excel + "\\Packs.xlsx", pack, unidadesP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 6);
+                EscribirExcel.escribirExcelInv(rutas.excel + "\\Packs.xlsx", pack, packs, 5);
 
-                    //TIG
-                    Double TIGP = tigP;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, TIGP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 5);
+                //UNIDADES
+                EscribirExcel.escribirCeldaNumerica(rutas.excel + "\\Packs.xlsx", pack, unidadesP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 6);
 
-                    //COSTO UNIDAD
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, costoUnidadP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 7);
-                    //COSTO NETO
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, costoNeto, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 8);
+                //TIG
+                Double TIGP = tigP;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, TIGP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 5);
 
-                    //PRECIO BASE UNIDAD
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, precioBaseUP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 9);
+                //COSTO UNIDAD
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, costoUnidadP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 7);
+                //COSTO NETO
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, costoNeto, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 8);
 
-                    //PRECIO BASE NETO
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, precioBaseNetoP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 10);
+                //PRECIO BASE UNIDAD
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, precioBaseUP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 9);
 
-                    //PRECIO LOCAL UNIDAD
-                    Double precioLP = precioBaseUP * 1.16;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, precioLP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 11);
+                //PRECIO BASE NETO
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, precioBaseNetoP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 10);
 
-                    //PRECIO LOCAL NETO
-                    Double precioNetoP = unidadesP * precioLP;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, precioNetoP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 12);
+                //PRECIO LOCAL UNIDAD
+                Double precioLP = precioBaseUP * 1.16;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, precioLP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 11);
 
-                    //COMISION ML
-                    Double comisionMLP = (precioLP * .15) + 5;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, comisionMLP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 15);
+                //PRECIO LOCAL NETO
+                Double precioNetoP = unidadesP * precioLP;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, precioNetoP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 12);
 
-                    //COMISION ML NETO
-                    Double comisionMLNP = unidadesP * comisionMLP;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, comisionMLNP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 16);
+                //COMISION ML
+                Double comisionMLP = (precioLP * .15) + 5;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, comisionMLP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 15);
 
-                    // IVA UNIDAD
-                    Double IVAP = precioBaseUP * 0.16;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, IVAP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 17);
+                //COMISION ML NETO
+                Double comisionMLNP = unidadesP * comisionMLP;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, comisionMLNP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 16);
 
-                    //IVA NETO
-                    Double ivaNP = unidadesP * IVAP;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, ivaNP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 18);
+                // IVA UNIDAD
+                Double IVAP = precioBaseUP * 0.16;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, IVAP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 17);
 
-                    //PRECIO ML
-                    Double precioMLP = precioBaseUP + IVAP + comisionMLP + 35;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, precioMLP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 13);
+                //IVA NETO
+                Double ivaNP = unidadesP * IVAP;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, ivaNP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 18);
 
-                    //PRECIOML NETO
-                    Double precioMLNP = precioMLP * unidadesP;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, precioMLNP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 14);
+                //PRECIO ML
+                Double precioMLP = precioBaseUP + IVAP + comisionMLP + 35;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, precioMLP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 13);
 
-                    //UTILIDAD UNIDAD LOCAL
-                    Double utilidadP = precioLP - costoUnidadP - IVAP;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, utilidadP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 19);
+                //PRECIOML NETO
+                Double precioMLNP = precioMLP * unidadesP;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, precioMLNP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 14);
 
-                    //UTILIDAD LOCAL NETA
-                    Double utilidadLNP = unidadesP * utilidadP;
-                    EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, utilidadLNP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 20);
+                //UTILIDAD UNIDAD LOCAL
+                Double utilidadP = precioLP - costoUnidadP - IVAP;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, utilidadP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 19);
 
-                    String formulaP = "SUM(I2:I" + (LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1) + ")";
-                    EscribirExcel.escribirFormula(rutas.excel + "\\Packs.xlsx", pack, formulaP,
-                            LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1, 8);
+                //UTILIDAD LOCAL NETA
+                Double utilidadLNP = unidadesP * utilidadP;
+                EscribirExcel.escribirCeldaDouble(rutas.excel + "\\Packs.xlsx", pack, utilidadLNP, LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack), 20);
 
-                    String formula2P = "SUM(K2:K" + (LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1) + ")";
-                    EscribirExcel.escribirFormula(rutas.excel + "\\Packs.xlsx", pack, formula2P,
-                            LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1, 10);
+                String formulaP = "SUM(I2:I" + (LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1) + ")";
+                EscribirExcel.escribirFormula(rutas.excel + "\\Packs.xlsx", pack, formulaP,
+                    LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1, 8);
 
-                    String formula3P= "SUM(M2:M" + (LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1) + ")";
-                    EscribirExcel.escribirFormula(rutas.excel + "\\Packs.xlsx", pack, formula3P,
-                            LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1, 12);
+                String formula2P = "SUM(K2:K" + (LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1) + ")";
+                EscribirExcel.escribirFormula(rutas.excel + "\\Packs.xlsx", pack, formula2P,
+                    LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1, 10);
 
-                    String formula4P = "SUM(O2:O" + (LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1) + ")";
-                    EscribirExcel.escribirFormula(rutas.excel + "\\Packs.xlsx", pack, formula4P,
-                            LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1, 14);
+                String formula3P= "SUM(M2:M" + (LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1) + ")";
+                EscribirExcel.escribirFormula(rutas.excel + "\\Packs.xlsx", pack, formula3P,
+                    LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1, 12);
 
-                    String formula5P = "SUM(Q2:Q" + (LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1) + ")";
-                    EscribirExcel.escribirFormula(rutas.excel + "\\Packs.xlsx", pack, formula5P,
-                            LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1, 16);
+                String formula4P = "SUM(O2:O" + (LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1) + ")";
+                EscribirExcel.escribirFormula(rutas.excel + "\\Packs.xlsx", pack, formula4P,
+                    LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1, 14);
 
-                    String formula6P = "SUM(S2:S" + (LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1) + ")";
-                    EscribirExcel.escribirFormula(rutas.excel + "\\Packs.xlsx", pack, formula6P,
-                            LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1, 18);
+                String formula5P = "SUM(Q2:Q" + (LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1) + ")";
+                EscribirExcel.escribirFormula(rutas.excel + "\\Packs.xlsx", pack, formula5P,
+                    LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1, 16);
 
-                    String formula7P = "SUM(U2:U" + (LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1) + ")";
-                    EscribirExcel.escribirFormula(rutas.excel + "\\Packs.xlsx", pack, formula7P,
-                            LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1, 20);
-                    Escribir.removeRow(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", fila);
-                    break;
+                String formula6P = "SUM(S2:S" + (LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1) + ")";
+                EscribirExcel.escribirFormula(rutas.excel + "\\Packs.xlsx", pack, formula6P,
+                    LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1, 18);
+
+                String formula7P = "SUM(U2:U" + (LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1) + ")";
+                EscribirExcel.escribirFormula(rutas.excel + "\\Packs.xlsx", pack, formula7P,
+                    LeerExcel.contarRenglones(rutas.excel + "\\Packs.xlsx", pack) + 1, 20);
+                Escribir.removeRow(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", fila);
+                break;
                 case "EGRESO":
-                    Escribir.removeRow(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", fila);
-                    EscribirExcel.escribirCelda(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Gastos", "EGRESO", LeerExcel.contarRenglones(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Gastos"), 1);
-                    break;
+                Escribir.removeRow(rutas.excel + "\\COMPRAS EN TRANSITO.xlsx", "COMPRAS", fila);
+                EscribirExcel.escribirCelda(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Gastos", "EGRESO", LeerExcel.contarRenglones(rutas.excel + "\\LIBROS DE CONTROL.xlsx", "Gastos"), 1);
+                break;
 
             }
             this.setVisible(false);
@@ -401,6 +378,22 @@ public final class Pendientes extends javax.swing.JFrame {
             Logger.getLogger(Pendientes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbRegistrarMouseClicked
+
+    private void cerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseEntered
+        changeColor(cerrar, Color.red);          // TODO add your handling code here:
+    }//GEN-LAST:event_cerrarMouseEntered
+
+    private void cerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseExited
+        changeColor(cerrar, new Color(51,51,51));        // TODO add your handling code here:
+    }//GEN-LAST:event_cerrarMouseExited
+
+    private void cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseClicked
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_cerrarMouseClicked
+
+    public void changeColor(JPanel hover, Color rand) {
+        hover.setBackground(rand);
+    }
 
     public static String fechaActual() {
         java.util.Date fecha = new Date();
@@ -456,14 +449,13 @@ public final class Pendientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JComboBox<String> compraT;
+    private javax.swing.JPanel cerrar;
+    private javax.swing.JComboBox<String> compraT;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbRegistrar;
-    private javax.swing.JPanel jpDatos;
-    private javax.swing.JPanel jpDescripcion;
     // End of variables declaration//GEN-END:variables
 }

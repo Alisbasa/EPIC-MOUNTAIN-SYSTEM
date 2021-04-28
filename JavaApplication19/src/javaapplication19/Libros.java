@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -79,6 +80,9 @@ public class Libros extends javax.swing.JFrame {
             añoNuevo();
             estadoCreacion = false;
         }
+        
+        
+        
         
         setIconImage(new ImageIcon(rutas.img+"/LOGO.png").getImage());
         Iconos("Cerrar",cerrarIcon);
@@ -790,7 +794,7 @@ public class Libros extends javax.swing.JFrame {
         estrategiaLabel.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
         estrategiaLabel.setForeground(new java.awt.Color(255, 255, 255));
         estrategiaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        estrategiaLabel.setText("ESTRATEGIA");
+        estrategiaLabel.setText("DEMANDA");
         estrategiaLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 5, 1));
         panelEstrategia.add(estrategiaLabel, java.awt.BorderLayout.PAGE_END);
 
@@ -1120,7 +1124,7 @@ public class Libros extends javax.swing.JFrame {
         comboGastos.setMaximumRowCount(9);
         comboGastos.setModel(new javax.swing.DefaultComboBoxModel<>(ListasCB.getGastos()));
         comboGastos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        comboGastos.setPreferredSize(new java.awt.Dimension(300, 35));
+        comboGastos.setPreferredSize(new java.awt.Dimension(200, 35));
         comboGastos.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboGastosItemStateChanged(evt);
@@ -1203,7 +1207,8 @@ public class Libros extends javax.swing.JFrame {
         comboIngresos.setUI(PropiedadesCB.createUI(rootPane));
         comboGastos.setUI(PropiedadesCB.createUI(rootPane));
         
-        
+        scrollIngresos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollGastos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         rellenar.rellenarLibro(listaIngresos);
         rellenarG.rellenarLibro(listaGastos);        
         

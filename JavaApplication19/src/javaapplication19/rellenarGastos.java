@@ -8,6 +8,8 @@ package javaapplication19;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,6 +42,11 @@ public class rellenarGastos {
     public rellenarGastos() {
         panelesGastos = new ArrayList<>();
     }
+    GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    int scWidth = gd.getDisplayMode().getWidth();
+    int scHeight = gd.getDisplayMode().getHeight();
+    int longitudBarra= Utilidades.getLongitudDeBarra();
+
 
     static void botonBorrarDeudorP(JLabel boton, String filepath, String hoja) {
         MouseListener botonV = new MouseListener() {
@@ -285,8 +292,8 @@ public class rellenarGastos {
                     panelGasto.setLayout(new GridLayout(1, 5));
                     panelGasto.setBackground(Colores.epicColorBajito);
                     panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                    panelGasto.setMaximumSize(new Dimension(550, 40));
-                    panelGasto.setPreferredSize(new Dimension(550, 100));
+                    panelGasto.setMaximumSize(new Dimension(longitudBarra, 40));
+                    panelGasto.setPreferredSize(new Dimension(longitudBarra, 100));
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -442,8 +449,8 @@ public class rellenarGastos {
                 panelGasto.setLayout(new GridLayout(1, 5));
                 panelGasto.setBackground(Colores.epicColorBajito);
                 panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelGasto.setMaximumSize(new Dimension(550, 40));
-                panelGasto.setPreferredSize(new Dimension(550, 100));;
+                panelGasto.setMaximumSize(new Dimension(longitudBarra, 40));
+                panelGasto.setPreferredSize(new Dimension(longitudBarra, 100));;
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -568,8 +575,8 @@ public class rellenarGastos {
                 panelGasto.setLayout(new GridLayout(1, 4));
                 panelGasto.setBackground(Colores.epicColorBajito);
                 panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelGasto.setMaximumSize(new Dimension(550, 40));
-                panelGasto.setPreferredSize(new Dimension(550, 100));
+                panelGasto.setMaximumSize(new Dimension(longitudBarra, 40));
+                panelGasto.setPreferredSize(new Dimension(longitudBarra, 100));
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -687,8 +694,8 @@ public class rellenarGastos {
                 panelGasto.setLayout(new GridLayout(1, 4));
                 panelGasto.setBackground(Colores.amarillo);
                 panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelGasto.setMaximumSize(new Dimension(550, 40));
-                panelGasto.setPreferredSize(new Dimension(550, 100));
+                panelGasto.setMaximumSize(new Dimension(longitudBarra, 40));
+                panelGasto.setPreferredSize(new Dimension(longitudBarra, 100));
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -784,8 +791,8 @@ public class rellenarGastos {
                     panelGastoC.setLayout(new GridLayout(1, 4));
                     panelGastoC.setBackground(Colores.epicColorBajito);
                     panelGastoC.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                    panelGastoC.setMaximumSize(new Dimension(550, 40));
-                    panelGastoC.setPreferredSize(new Dimension(550, 100));;
+                    panelGastoC.setMaximumSize(new Dimension(longitudBarra, 40));
+                    panelGastoC.setPreferredSize(new Dimension(longitudBarra, 100));;
                     //SET PANEL
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -894,8 +901,8 @@ public class rellenarGastos {
                 panelGasto.setLayout(new GridLayout(1, 5));
                 panelGasto.setBackground(Colores.epicColorBajito);
                 panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelGasto.setMaximumSize(new Dimension(550, 40));
-                panelGasto.setPreferredSize(new Dimension(550, 100));
+                panelGasto.setMaximumSize(new Dimension(longitudBarra, 40));
+                panelGasto.setPreferredSize(new Dimension(longitudBarra, 100));
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -989,8 +996,8 @@ public class rellenarGastos {
                 panelGasto.setLayout(new GridLayout(1, 4));
                 panelGasto.setBackground(Colores.epicColorBajito);
                 panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelGasto.setMaximumSize(new Dimension(550, 40));
-                panelGasto.setPreferredSize(new Dimension(550, 100));
+                panelGasto.setMaximumSize(new Dimension(longitudBarra, 40));
+                panelGasto.setPreferredSize(new Dimension(longitudBarra, 100));
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1082,8 +1089,8 @@ public class rellenarGastos {
                 panelGasto.setLayout(new GridLayout(1, 4));
                 panelGasto.setBackground(Colores.epicColorBajito);
                 panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelGasto.setMaximumSize(new Dimension(550, 40));
-                panelGasto.setPreferredSize(new Dimension(550, 100));;
+                panelGasto.setMaximumSize(new Dimension(longitudBarra, 40));
+                panelGasto.setPreferredSize(new Dimension(longitudBarra, 100));;
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1173,8 +1180,8 @@ public class rellenarGastos {
                 panelGasto.setLayout(new GridLayout(1, 4));
                 panelGasto.setBackground(Colores.epicColorBajito);
                 panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelGasto.setMaximumSize(new Dimension(550, 40));
-                panelGasto.setPreferredSize(new Dimension(550, 100));
+                panelGasto.setMaximumSize(new Dimension(longitudBarra, 40));
+                panelGasto.setPreferredSize(new Dimension(longitudBarra, 100));
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1269,8 +1276,8 @@ public class rellenarGastos {
                 panelGasto.setLayout(new GridLayout(1, 4));
                 panelGasto.setBackground(Colores.epicColorBajito);
                 panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelGasto.setMaximumSize(new Dimension(550, 40));
-                panelGasto.setPreferredSize(new Dimension(550, 100));
+                panelGasto.setMaximumSize(new Dimension(longitudBarra, 40));
+                panelGasto.setPreferredSize(new Dimension(longitudBarra, 100));
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1369,8 +1376,8 @@ public class rellenarGastos {
                 panelGasto.setLayout(new GridLayout(1, 4));
                 panelGasto.setBackground(Colores.epicColorBajito);
                 panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelGasto.setMaximumSize(new Dimension(550, 40));
-                panelGasto.setPreferredSize(new Dimension(550, 100));
+                panelGasto.setMaximumSize(new Dimension(longitudBarra, 40));
+                panelGasto.setPreferredSize(new Dimension(longitudBarra, 100));
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1463,8 +1470,8 @@ public class rellenarGastos {
                 panelGasto.setLayout(new GridLayout(1, 4));
                 panelGasto.setBackground(Colores.epicColorBajito);
                 panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelGasto.setMaximumSize(new Dimension(550, 40));
-                panelGasto.setPreferredSize(new Dimension(550, 100));
+                panelGasto.setMaximumSize(new Dimension(longitudBarra, 40));
+                panelGasto.setPreferredSize(new Dimension(longitudBarra, 100));
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1530,8 +1537,8 @@ public class rellenarGastos {
                     panelIngreso.setLayout(new GridLayout(1, 5));
                     panelIngreso.setBackground(Colores.epicColorBajito);
                     panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                    panelIngreso.setMaximumSize(new Dimension(550, 40));
-                    panelIngreso.setPreferredSize(new Dimension(550, 100));
+                    panelIngreso.setMaximumSize(new Dimension(longitudBarra, 40));
+                    panelIngreso.setPreferredSize(new Dimension(longitudBarra, 100));
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1634,15 +1641,19 @@ public class rellenarGastos {
     }
 
     public void rellenarLibro(JPanel listaGastos) throws IOException {
-
+        
+        if(scHeight<=768){
+            longitudBarra=420;
+        }
+        
         listaGastos.removeAll();
         JPanel TOP = new JPanel();
         TOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         TOP.setLayout(new GridLayout(1, 5));
         TOP.setBackground(Color.WHITE);
         TOP.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-        TOP.setMaximumSize(new Dimension(550, 40));
-        TOP.setPreferredSize(new Dimension(550, 100));
+        TOP.setMaximumSize(new Dimension(longitudBarra, 40));
+        TOP.setPreferredSize(new Dimension(longitudBarra, 100));
 
         JLabel fechaTOP = new JLabel();
         fechaTOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1680,8 +1691,8 @@ public class rellenarGastos {
                     panelGasto.setLayout(new GridLayout(1, 5));
                     panelGasto.setBackground(Colores.epicColorBajito);
                     panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                    panelGasto.setMaximumSize(new Dimension(550, 40));
-                    panelGasto.setPreferredSize(new Dimension(550, 100));
+                    panelGasto.setMaximumSize(new Dimension(longitudBarra, 40));
+                    panelGasto.setPreferredSize(new Dimension(longitudBarra, 100));
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1788,8 +1799,8 @@ public class rellenarGastos {
         TOP.setLayout(new GridLayout(1, 5));
         TOP.setBackground(Color.WHITE);
         TOP.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-        TOP.setMaximumSize(new Dimension(550, 40));
-        TOP.setPreferredSize(new Dimension(550, 100));
+        TOP.setMaximumSize(new Dimension(longitudBarra, 40));
+        TOP.setPreferredSize(new Dimension(longitudBarra, 100));
 
         JLabel fechaTOP = new JLabel();
         fechaTOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1827,8 +1838,8 @@ public class rellenarGastos {
                     panelGasto.setLayout(new GridLayout(1, 5));
                     panelGasto.setBackground(Colores.epicColorBajito);
                     panelGasto.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                    panelGasto.setMaximumSize(new Dimension(550, 40));
-                    panelGasto.setPreferredSize(new Dimension(550, 100));
+                    panelGasto.setMaximumSize(new Dimension(longitudBarra, 40));
+                    panelGasto.setPreferredSize(new Dimension(longitudBarra, 100));
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));

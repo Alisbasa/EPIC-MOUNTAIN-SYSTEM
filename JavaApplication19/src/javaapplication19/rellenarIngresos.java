@@ -8,6 +8,8 @@ package javaapplication19;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -40,6 +42,15 @@ public class rellenarIngresos {
     JLabel iconoVentas = new JLabel();
     static JLabel iconoDeudaC = new JLabel();
     static JLabel iconoLibrosRI = new JLabel();
+    
+    GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    int scWidth = gd.getDisplayMode().getWidth();
+    int scHeight = gd.getDisplayMode().getHeight();
+    int longitudBarra= Utilidades.getLongitudDeBarra();
+    
+    
+    
+    
     
     public rellenarIngresos() {
         panelesIngresos = new ArrayList<>();
@@ -338,8 +349,8 @@ public class rellenarIngresos {
                     panelIngreso.setLayout(new GridLayout(1, 5));
                     panelIngreso.setBackground(Colores.epicColorBajito);
                     panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                    panelIngreso.setMaximumSize(new Dimension(550, 40));
-                    panelIngreso.setPreferredSize(new Dimension(550, 100));
+                    panelIngreso.setMaximumSize(new Dimension(longitudBarra, 40));
+                    panelIngreso.setPreferredSize(new Dimension(longitudBarra, 100));
                     //FECHA
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -471,8 +482,8 @@ public class rellenarIngresos {
                     panelIngreso.setLayout(new GridLayout(1, 5));
                     panelIngreso.setBackground(Colores.epicColorBajito);
                     panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                    panelIngreso.setMaximumSize(new Dimension(550, 40));
-                    panelIngreso.setPreferredSize(new Dimension(550, 100));
+                    panelIngreso.setMaximumSize(new Dimension(longitudBarra, 40));
+                    panelIngreso.setPreferredSize(new Dimension(longitudBarra, 100));
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -581,8 +592,8 @@ public class rellenarIngresos {
                     panelIngreso.setLayout(new GridLayout(1, 5));
                     panelIngreso.setBackground(Colores.epicColorBajito);
                     panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                    panelIngreso.setMaximumSize(new Dimension(550, 40));
-                    panelIngreso.setPreferredSize(new Dimension(550, 100));
+                    panelIngreso.setMaximumSize(new Dimension(longitudBarra, 40));
+                    panelIngreso.setPreferredSize(new Dimension(longitudBarra, 100));
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -693,8 +704,8 @@ public class rellenarIngresos {
                 panelIngreso.setLayout(new GridLayout(1, 5));
                 panelIngreso.setBackground(Colores.epicColorBajito);
                 panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelIngreso.setMaximumSize(new Dimension(550, 40));
-                panelIngreso.setPreferredSize(new Dimension(550, 100));
+                panelIngreso.setMaximumSize(new Dimension(longitudBarra, 40));
+                panelIngreso.setPreferredSize(new Dimension(longitudBarra, 100));
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -787,8 +798,8 @@ public class rellenarIngresos {
                     panelIngreso.setLayout(new GridLayout(1, 5));
                     panelIngreso.setBackground(Colores.epicColorBajito);
                     panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                    panelIngreso.setMaximumSize(new Dimension(550, 40));
-                    panelIngreso.setPreferredSize(new Dimension(550, 100));
+                    panelIngreso.setMaximumSize(new Dimension(longitudBarra, 40));
+                    panelIngreso.setPreferredSize(new Dimension(longitudBarra, 100));
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -932,8 +943,8 @@ public class rellenarIngresos {
                     panelIngreso.setLayout(new GridLayout(1, 5));
                     panelIngreso.setBackground(Colores.epicColorBajito);
                     panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                    panelIngreso.setMaximumSize(new Dimension(550, 40));
-                    panelIngreso.setPreferredSize(new Dimension(550, 100));
+                    panelIngreso.setMaximumSize(new Dimension(longitudBarra, 40));
+                    panelIngreso.setPreferredSize(new Dimension(longitudBarra, 100));
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1108,8 +1119,8 @@ public class rellenarIngresos {
                     panelIngreso.setLayout(new GridLayout(1, 5));
                     panelIngreso.setBackground(Colores.epicColorBajito);
                     panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                    panelIngreso.setMaximumSize(new Dimension(550, 40));
-                    panelIngreso.setPreferredSize(new Dimension(550, 100));
+                    panelIngreso.setMaximumSize(new Dimension(longitudBarra, 40));
+                    panelIngreso.setPreferredSize(new Dimension(longitudBarra, 100));
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1231,8 +1242,8 @@ public class rellenarIngresos {
                     panelIngreso.setLayout(new GridLayout(1, 5));
                     panelIngreso.setBackground(Colores.epicColorBajito);
                     panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                    panelIngreso.setMaximumSize(new Dimension(550, 40));
-                    panelIngreso.setPreferredSize(new Dimension(550, 100));;
+                    panelIngreso.setMaximumSize(new Dimension(longitudBarra, 40));
+                    panelIngreso.setPreferredSize(new Dimension(longitudBarra, 100));;
 
                     JLabel fecha = new JLabel();
                     fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1441,14 +1452,18 @@ public class rellenarIngresos {
     }
 
     public void rellenarLibro(JPanel listaIngresos) throws IOException {
+        
+        if (scHeight<=768){
+            longitudBarra =420;
+        }
         listaIngresos.removeAll();
         JPanel TOP = new JPanel();
         TOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         TOP.setLayout(new GridLayout(1, 5));
         TOP.setBackground(Color.WHITE);
         TOP.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-        TOP.setMaximumSize(new Dimension(550, 40));
-        TOP.setPreferredSize(new Dimension(550, 100));
+        TOP.setMaximumSize(new Dimension(350, 40));
+        TOP.setPreferredSize(new Dimension(350, 100));
 
         JLabel fechaTOP = new JLabel();
         fechaTOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -1487,8 +1502,8 @@ public class rellenarIngresos {
                 panelIngreso.setLayout(new GridLayout(1, 5));
                 panelIngreso.setBackground(Colores.epicColorBajito);
                 panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelIngreso.setMaximumSize(new Dimension(550, 40));
-                panelIngreso.setPreferredSize(new Dimension(550, 100));
+                panelIngreso.setMaximumSize(new Dimension(longitudBarra, 40));
+                panelIngreso.setPreferredSize(new Dimension(longitudBarra, 100));
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -2526,8 +2541,8 @@ public class rellenarIngresos {
         TOP.setLayout(new GridLayout(1, 5));
         TOP.setBackground(Color.WHITE);
         TOP.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-        TOP.setMaximumSize(new Dimension(550, 40));
-        TOP.setPreferredSize(new Dimension(550, 100));
+        TOP.setMaximumSize(new Dimension(longitudBarra, 40));
+        TOP.setPreferredSize(new Dimension(longitudBarra, 100));
 
         JLabel fechaTOP = new JLabel();
         fechaTOP.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
@@ -2566,8 +2581,8 @@ public class rellenarIngresos {
                 panelIngreso.setLayout(new GridLayout(1, 5));
                 panelIngreso.setBackground(Colores.epicColorBajito);
                 panelIngreso.setBorder(BorderFactory.createEmptyBorder(5, 20, 5, 10));
-                panelIngreso.setMaximumSize(new Dimension(550, 40));
-                panelIngreso.setPreferredSize(new Dimension(550, 100));
+                panelIngreso.setMaximumSize(new Dimension(longitudBarra, 40));
+                panelIngreso.setPreferredSize(new Dimension(longitudBarra, 100));
 
                 JLabel fecha = new JLabel();
                 fecha.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));

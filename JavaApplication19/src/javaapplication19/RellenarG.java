@@ -8,6 +8,8 @@ package javaapplication19;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -127,6 +129,12 @@ public class RellenarG {
     JLabel iconoOkReducInv = new JLabel();
     static JLabel iconoOkDev = new JLabel();
     JLabel iconoOkDesecho = new JLabel();
+    
+    GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    int scWidth = gd.getDisplayMode().getWidth();
+    int scHeight = gd.getDisplayMode().getHeight();
+
+    
 
     public JPanel rellenarDesEquipo() {
 
@@ -137,31 +145,57 @@ public class RellenarG {
         rellenarDesEquipo.add(iconoDesarrollo);
 
         String[] lista = {"Herramientas", "Equipo de Taller", "Mobiliario", "Equipo de Limpieza"};
+        if (scHeight<=768){
+            tipo = new JComboBox(lista);
+            tipo.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 12));
+            tipo.setUI(PropiedadesCB2.createUI(tipo));
 
-        tipo = new JComboBox(lista);
-        tipo.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-        tipo.setUI(PropiedadesCB2.createUI(tipo));
+            desarrolloTipoE = new JTextField();
+            desarrolloTipoE.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 12));
+            addPlaceHolder("Equipo y Mobiliario", desarrolloTipoE);
+            desarrolloTipoE.setBackground(Colores.epicColorBajito);
+            desarrolloTipoE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+            desarrolloTipoE.setPreferredSize(new Dimension(100, 30));
 
-        desarrolloTipoE = new JTextField();
-        desarrolloTipoE.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-        addPlaceHolder("Equipo y Mobiliario", desarrolloTipoE);
-        desarrolloTipoE.setBackground(Colores.epicColorBajito);
-        desarrolloTipoE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        desarrolloTipoE.setPreferredSize(new Dimension(150, 30));
+            descripcion = new JTextField();
+            descripcion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 12));
+            addPlaceHolder("Descripcion", descripcion);
+            descripcion.setBackground(Colores.epicColorBajito);
+            descripcion.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+            descripcion.setPreferredSize(new Dimension(100, 30));
 
-        descripcion = new JTextField();
-        descripcion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-        addPlaceHolder("Descripcion", descripcion);
-        descripcion.setBackground(Colores.epicColorBajito);
-        descripcion.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        descripcion.setPreferredSize(new Dimension(150, 30));
+            montoDesE = new JTextField();
+            montoDesE.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 12));
+            addPlaceHolder("Monto", montoDesE);
+            montoDesE.setBackground(Colores.epicColorBajito);
+            montoDesE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+            montoDesE.setPreferredSize(new Dimension(50, 30));
+        }else{
+            tipo = new JComboBox(lista);
+            tipo.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+            tipo.setUI(PropiedadesCB2.createUI(tipo));
 
-        montoDesE = new JTextField();
-        montoDesE.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-        addPlaceHolder("Monto", montoDesE);
-        montoDesE.setBackground(Colores.epicColorBajito);
-        montoDesE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
-        montoDesE.setPreferredSize(new Dimension(60, 30));
+            desarrolloTipoE = new JTextField();
+            desarrolloTipoE.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+            addPlaceHolder("Equipo y Mobiliario", desarrolloTipoE);
+            desarrolloTipoE.setBackground(Colores.epicColorBajito);
+            desarrolloTipoE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+            desarrolloTipoE.setPreferredSize(new Dimension(150, 30));
+
+            descripcion = new JTextField();
+            descripcion.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+            addPlaceHolder("Descripcion", descripcion);
+            descripcion.setBackground(Colores.epicColorBajito);
+            descripcion.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+            descripcion.setPreferredSize(new Dimension(150, 30));
+
+            montoDesE = new JTextField();
+            montoDesE.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+            addPlaceHolder("Monto", montoDesE);
+            montoDesE.setBackground(Colores.epicColorBajito);
+            montoDesE.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+            montoDesE.setPreferredSize(new Dimension(60, 30));
+        }
 
         Iconos.scaleImage("ok", iconoOkDesarrolloEq, 30);
 

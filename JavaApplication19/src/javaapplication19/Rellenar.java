@@ -8,6 +8,8 @@ package javaapplication19;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,6 +28,7 @@ import javax.swing.JTextField;
 import javaapplication19.Libros;
 import static javaapplication19.rellenarIngresos.fechaActualEscribir;
 import javax.swing.BorderFactory;
+import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 
 /**
@@ -90,9 +93,14 @@ JLabel iconoOkV = new JLabel();
     JTextField inversorI;
     JTextField impuesto;
     int indexInventario = 1;
+    
 
 
     JComboBox deudor; //DeudasC
+    
+    GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    int scWidth = gd.getDisplayMode().getWidth();
+    int scHeight = gd.getDisplayMode().getHeight();
 
     public JPanel rellenarVentas() throws IOException {
         rellenarVentas.removeAll();
@@ -107,33 +115,65 @@ JLabel iconoOkV = new JLabel();
         inventario.addItem("SERVICIO");
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
-        inventario.setPreferredSize(new Dimension(200, 30));
-        inventario.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-        
-        unidades = new JComboBox();
-        unidades.setBackground(Color.white);
-        unidades.setUI(PropiedadesCB2.createUI(inventario));
-        unidades.setPreferredSize(new Dimension(65, 30));
-        unidades.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-        
-        
-        cliente = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"//CRM.xlsx", "CLIENTES", 0));
-        cliente.addItem("Nuevo Cliente");
-        cliente.setBackground(Color.white);
-        cliente.setUI(PropiedadesCB2.createUI(cliente));
-        cliente.setPreferredSize(new Dimension(130, 30));
-        cliente.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-        
+        if (scHeight<=768){
+            inventario.setPreferredSize(new Dimension(100, 30));
+            inventario.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 12));
+            
+            unidades = new JComboBox();
+            unidades.setBackground(Color.white);
+            unidades.setUI(PropiedadesCB2.createUI(inventario));
+            unidades.setPreferredSize(new Dimension(50, 30));
+            unidades.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 12));
 
-        plataformacb = new JComboBox(listaPlataformas);
-        plataformacb.setBackground(Color.white);
-        plataformacb.setUI(PropiedadesCB2.createUI(plataformacb));
-        plataformacb.setPreferredSize(new Dimension(130, 30));
-        plataformacb.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+
+            cliente = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"//CRM.xlsx", "CLIENTES", 0));
+            cliente.addItem("Nuevo Cliente");
+            cliente.setBackground(Color.white);
+            cliente.setUI(PropiedadesCB2.createUI(cliente));
+            cliente.setPreferredSize(new Dimension(100, 30));
+            cliente.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 12));
+
+
+            plataformacb = new JComboBox(listaPlataformas);
+            plataformacb.setBackground(Color.white);
+            plataformacb.setUI(PropiedadesCB2.createUI(plataformacb));
+            plataformacb.setPreferredSize(new Dimension(100, 30));
+            plataformacb.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 12));
         
         
 
         Iconos.scaleImage("ok", iconoOkV, 30);
+        }
+        else{
+            inventario.setPreferredSize(new Dimension(200, 30));
+            inventario.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+
+            unidades = new JComboBox();
+            unidades.setBackground(Color.white);
+            unidades.setUI(PropiedadesCB2.createUI(inventario));
+            unidades.setPreferredSize(new Dimension(65, 30));
+            unidades.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+
+
+            cliente = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"//CRM.xlsx", "CLIENTES", 0));
+            cliente.addItem("Nuevo Cliente");
+            cliente.setBackground(Color.white);
+            cliente.setUI(PropiedadesCB2.createUI(cliente));
+            cliente.setPreferredSize(new Dimension(130, 30));
+            cliente.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+
+
+            plataformacb = new JComboBox(listaPlataformas);
+            plataformacb.setBackground(Color.white);
+            plataformacb.setUI(PropiedadesCB2.createUI(plataformacb));
+            plataformacb.setPreferredSize(new Dimension(130, 30));
+            plataformacb.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
+        
+
+        Iconos.scaleImage("ok", iconoOkV, 30);
+        }
+        
 
         rellenarVentas.add(inventario);
         
@@ -314,40 +354,74 @@ JLabel iconoOkV = new JLabel();
         rellenarVentas.add(iconoVentas);
 
         String[] listaPlataformas = {"Mercado Libre", "Local"};
+         
 
         inventario = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"/INVENTARIOS.xlsx", "EPIC MOUNTAIN", 0));
         
         inventario.addItem("SERVICIO");
         inventario.setBackground(Color.white);
         inventario.setUI(PropiedadesCB2.createUI(inventario));
-        inventario.setPreferredSize(new Dimension(200, 30));
-        inventario.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
         
-        
-        unidades = new JComboBox();
-        unidades.setBackground(Color.white);
-        unidades.setUI(PropiedadesCB2.createUI(inventario));
-        unidades.setPreferredSize(new Dimension(65, 30));
-        unidades.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-        
+        if (scHeight<=768){
+            inventario.setPreferredSize(new Dimension(100, 30));
+            inventario.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 12));
+            
+            unidades = new JComboBox();
+            unidades.setBackground(Color.white);
+            unidades.setUI(PropiedadesCB2.createUI(inventario));
+            unidades.setPreferredSize(new Dimension(50, 30));
+            unidades.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 12));
 
-        cliente = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"//CRM.xlsx", "CLIENTES", 0));
-        cliente.addItem("Nuevo Cliente");
-        cliente.setBackground(Color.white);
-        cliente.setUI(PropiedadesCB2.createUI(cliente));
-        cliente.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-        cliente.setPreferredSize(new Dimension(130, 30));
 
-        plataformacb = new JComboBox(listaPlataformas);
-        plataformacb.setBackground(Color.white);
-        plataformacb.setUI(PropiedadesCB2.createUI(plataformacb));
-        plataformacb.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
-        plataformacb.setPreferredSize(new Dimension(130, 30));
+            cliente = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"//CRM.xlsx", "CLIENTES", 0));
+            cliente.addItem("Nuevo Cliente");
+            cliente.setBackground(Color.white);
+            cliente.setUI(PropiedadesCB2.createUI(cliente));
+            cliente.setPreferredSize(new Dimension(100, 30));
+            cliente.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 12));
+
+
+            plataformacb = new JComboBox(listaPlataformas);
+            plataformacb.setBackground(Color.white);
+            plataformacb.setUI(PropiedadesCB2.createUI(plataformacb));
+            plataformacb.setPreferredSize(new Dimension(100, 30));
+            plataformacb.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 12));
         
-
-       
+        
 
         Iconos.scaleImage("ok", iconoOkVentasC, 30);
+        }
+        else{
+            inventario.setPreferredSize(new Dimension(200, 30));
+            inventario.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+
+            unidades = new JComboBox();
+            unidades.setBackground(Color.white);
+            unidades.setUI(PropiedadesCB2.createUI(inventario));
+            unidades.setPreferredSize(new Dimension(65, 30));
+            unidades.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+
+
+            cliente = new JComboBox(LeerExcel.rellenaCB2(rutas.excel+"//CRM.xlsx", "CLIENTES", 0));
+            cliente.addItem("Nuevo Cliente");
+            cliente.setBackground(Color.white);
+            cliente.setUI(PropiedadesCB2.createUI(cliente));
+            cliente.setPreferredSize(new Dimension(130, 30));
+            cliente.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+
+
+            plataformacb = new JComboBox(listaPlataformas);
+            plataformacb.setBackground(Color.white);
+            plataformacb.setUI(PropiedadesCB2.createUI(plataformacb));
+            plataformacb.setPreferredSize(new Dimension(130, 30));
+            plataformacb.setFont(new Font("Franklin Gothic Demi Cond", Font.PLAIN, 14));
+        
+        
+
+         Iconos.scaleImage("ok", iconoOkVentasC, 30);
+        }
+        
+       
 
         rellenarVentas.add(inventario);
         

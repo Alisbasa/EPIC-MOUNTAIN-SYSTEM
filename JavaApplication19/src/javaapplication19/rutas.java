@@ -10,8 +10,8 @@ package javaapplication19;
  * @author Alex
  */
 public class rutas {
-   static String root="C:\\Users\\Usuario\\Desktop\\epic\\";
-   // static String root="C:\\Users\\52627\\Google Drive (epicmountain.mtb@gmail.com)\\SISTEMAS (EPIC MOUNTAIN)\\";
+   //static String root="C:\\Users\\Usuario\\Desktop\\epic\\";
+   static String root="C:\\Users\\52627\\Google Drive (epicmountain.mtb@gmail.com)\\SISTEMAS (EPIC MOUNTAIN)\\";
     static String excel=root+"SISTEMA DE PROGRAMA (EPIC SYSTEM)";
     static String img=excel+"\\img";
 }

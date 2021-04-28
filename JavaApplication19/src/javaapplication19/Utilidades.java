@@ -5,6 +5,8 @@
  */
 package javaapplication19;
 
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -87,5 +89,23 @@ public class Utilidades {
         java.util.Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd");
         return formatoFecha.format(fecha);
+    }
+    
+    public static int getScHeight() {
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    
+    int scHeight = gd.getDisplayMode().getHeight();
+    return scHeight;
+
+    }
+    public static int getLongitudDeBarra() {
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    
+    int scHeight = gd.getDisplayMode().getHeight();
+    if (scHeight<=768)
+        return 420;
+    else
+        return 550;
+
     }
 }
